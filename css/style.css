@@ -1,0 +1,15 @@
+:root {
+    --bg: hsl(var(--hue),90%,5%);
+    --fg: hsl(var(--hue),90%,95%);
+}
+
+html {
+    background: var(--bg);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: fadein 1s;
+}

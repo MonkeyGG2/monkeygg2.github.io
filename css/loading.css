@@ -1,0 +1,206 @@
+:root {
+    --hue: 223;
+    --bg: hsl(var(--hue), 90%, 5%);
+    --infinity-dur: 0.3s;
+}
+
+html {
+    background: var(--bg);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: fadein 1s;
+}
+
+.loading {
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.loading-icon {
+    justify-self: center;
+    display: block;
+    position: absolute;
+}
+
+.loading-icon img {
+    width: 256;
+    height: 256;
+    scale: 0.6;
+    pointer-events: visiblePainted;
+}
+
+.loading-tip {
+    font-family: 'Flexi IBM VGA True (437)';
+    font-weight: 400;
+    text-rendering: optimizelegibility;
+    color: #009400;
+    font-size: 40px;
+    min-height: 50px;
+    display: flex;
+    margin-bottom: 12rem;
+}
+
+.loading-infinity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infinity {
+    width: 16em;
+    height: 8em;
+    padding-top: 10em;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.infinity-track {
+    stroke: hsl(var(--hue), 90%, 90%);
+    transition: stroke var(--infinity-dur);
+}
+
+.worm1,
+.worm2 {
+    animation: worm1 2s linear infinite;
+}
+
+.worm2 {
+    animation-name: worm2;
+}
+
+@keyframes worm1 {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        animation-timing-function: steps(1);
+        stroke-dashoffset: -358;
+    }
+
+    50.01% {
+        animation-timing-function: linear;
+        stroke-dashoffset: 358;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes worm2 {
+    from {
+        stroke-dashoffset: 358;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -358;
+    }
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@font-face {
+    font-family: 'Flexi IBM VGA True (437)';
+    src: url('../fonts/Flexi_IBM_VGA_True_437.woff2') format('woff2'),
+        url('../fonts/Flexi_IBM_VGA_True_437.woff') format('woff'),
+        url('../fonts/Flexi_IBM_VGA_True_437.svg#Flexi_IBM_VGA_True_437') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+section {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.particles {
+    background: var(--bg);
+}
+
+.hexagonGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.hexagonGrid .row {
+    display: inline-flex;
+    margin-top: -32px;
+    margin-left: -50px;
+}
+
+.hexagonGrid .row:nth-child(even) {
+    margin-left: 2px;
+}
+
+.hexagonGrid .row .hexagon {
+    position: relative;
+    width: 100px;
+    height: 110px;
+    margin: 4px 2px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagonGrid .row .hexagon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    opacity: 0.95;
+    transition: 1s;
+}
+
+.hexagonGrid .row .hexagon::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    bottom: 4px;
+    left: 4px;
+    background: var(--bg);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagonGrid .row .hexagon:hover::before {
+    background: #3dd429;
+    opacity: 1;
+    transition: 0s;
+}
+
+.hexagonGrid .row .hexagon:hover::after {
+    background: var(--bg);
+}
