@@ -76,6 +76,10 @@ body {
     animation-name: worm2;
 }
 
+.stopped {
+    animation-play-state: paused;
+}
+
 @keyframes worm1 {
     from {
         stroke-dashoffset: 0;
@@ -136,7 +140,6 @@ section {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 5;
     overflow: hidden;
 }
 
@@ -151,7 +154,12 @@ section {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 9;
+    z-index: 1;
+
+    /* this makes browser use GPU acceleration for blur */
+    will-change: contents;
+
+    filter: blur(2.5px);
 }
 
 .hexagonGrid .row {

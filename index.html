@@ -7,17 +7,43 @@
     <meta name="og:image" content="favicon.png">
 
     <link href="css/loading.css" rel="preload" as="style" onload="this.rel = 'stylesheet'">
-    <noscript>
-        <link href="css/loading.css" rel="stylesheet">
-    </noscript>
+    
+    <link href="js/loading.js" rel="preload" as="script">
+    <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js" rel="preload" as="script">
 </head>
 <body>
+    <noscript>
+        <p id="noscript-text">
+            This site requires you to be able to run JavaScript.
+        </p>
+        <style>
+            body *:not(noscript) {
+                display: none;
+            }
+
+            #noscript-text {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                height: 100vh;
+                width: 100vw;
+                background-color: black;
+                color: white;
+                z-index: 999;
+            }
+        </style>
+    </noscript>
+
     <div class="loading">
         <div>
             <div class="loading-tip">
                 <script>
                     const tips = ["Press CTRL+C to cloak your current tab","Press CTRL+M to mask your current tab", "Press CTRL+B to go back to the home page", "Join our discord server!", "Make sure to enable popups for automatic cloak", "Why are you here?"]
-                    document.getElementsByClassName("loading-tip")[0].textContent = tips[Math.floor(Math.random() * tips.length)];
+                    document.getElementsByClassName("loading-tip")[0].textContent = "Loading...\n" + tips[Math.floor(Math.random() * tips.length)];
                 </script>
             </div>
             <div class="loading-infinity">
@@ -55,10 +81,46 @@
         </div>
     </div>
     <section>
+        
+    </section>
+    <section id="everything-else">
         <canvas class="particles"></canvas>
         
         <div class="hexagonGrid"></div>
+
+        <!-- TEMPORARY!!! increases loading times to demonstrate loading screen -->
+        <img src="https://random.imagecdn.app/1500/1500">
     </section>
-    <script src="js/loading.js" async defer></script>
+
+    <!-- loading.js file and jQuery are preloaded -->
+    <script defer>
+        const loading = document.createElement("script");
+        loading.src = "js/loading.js";
+        document.body.appendChild(loading);
+
+        const jquery = document.createElement("script");
+        jquery.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js";
+        document.body.appendChild(jquery);
+        
+        jquery.onload = () => {            
+            $(window).on("load", () => {
+                $(".track").attr("stroke", "url(#grad2)");
+                $(".worm1").hide();
+                $(".worm2").hide();
+
+                $(".loading").fadeOut({
+                    duration: 300,
+                    /*complete: () => {
+                        setTimeout(500, () => {
+                            $("#everything-else").fadeIn({
+                                duration: 500,
+                                easing: "easeInOutSine"
+                            });
+                        });
+                    }*/
+                });
+            });
+        }
+    </script>
 </body>
 </html>

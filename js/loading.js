@@ -2,7 +2,7 @@ function changeLoadingTip() {
     const tips = ["Press CTRL+C to cloak your current tab","Press CTRL+M to mask your current tab", "Press CTRL+B to go back to the home page", "Join our discord server!", "Make sure to enable popups for automatic cloak", "Why are you here?"]
     const element = document.getElementsByClassName("loading-tip")[0];
 
-    element.textContent =  tips[Math.floor(Math.random() * tips.length)];
+    element.textContent =  "Loading... \n" + tips[Math.floor(Math.random() * tips.length)];
 }
 
 let changeTip = setInterval(() => {
@@ -32,10 +32,9 @@ window.addEventListener('mousemove', function(event) {
     mouse.x = event.x;
     mouse.y = event.y;
     mouse.radius = 170;
-    console.log(mouse.radius);
 });
 
-document.onmousemove = (function(event) {
+document.onmousemove = (function(_) {
     var onmousestop = function() {
         mouse.radius = 0;
     }, thread;
