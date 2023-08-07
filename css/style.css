@@ -1,6 +1,9 @@
 :root {
-    --bg: hsl(var(--hue),90%,5%);
-    --fg: hsl(var(--hue),90%,95%);
+    --bg: #0c232f;
+    --font-color: #f3fff4;
+    --bg-second: #0b0e18;
+    --hover-color: #a3f6fd;
+    --button-color: #026b7e;
 }
 
 html {
