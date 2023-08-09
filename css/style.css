@@ -1,6 +1,10 @@
+/*i titled these poorly, without trying how any of it looks*/
 :root {
-    --bg: hsl(var(--hue),90%,5%);
-    --fg: hsl(var(--hue),90%,95%);
+    --bg-second: #0c232f;
+    --hover-color: #f3fff4;
+    --bg: #0b0e18;
+    --font-color: #a3f6fd;
+    --button-color: #026b7e;
 }
 
 html {
@@ -12,4 +16,24 @@ body {
     padding: 0;
     box-sizing: border-box;
     animation: fadein 1s;
+    color: var(--font-color)
+}
+
+body.noscript {
+    display: none;
+}
+
+#noscript-text {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    z-index: 999;
 }
