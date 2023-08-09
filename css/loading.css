@@ -204,7 +204,7 @@ section {
 }
 
 .hexagonGrid .row .hexagon:hover::before {
-    background: #3dd429;
+    background: #72acb1;
     opacity: 1;
     transition: 0s;
 }
