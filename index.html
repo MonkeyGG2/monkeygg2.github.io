@@ -6,15 +6,14 @@
     <meta name="keywords" content="games, gamez, unblocked, unblocked games, tunnel rush, run 3, run, 3, hacks, chrome dino unblocked, chrome dino, chrome dinosaur, dinosaur game, dinosaur, chrome hacks, chrome dino hacks, chrome dinosaur hacks, chrome dino game hack, unblocked game site, idle breakout, idle breakout hack, idle breakout save, idle breakout code, idle breakout save generator, idle breakout unblocked, 2048, 2048 unblocked, 2048 no ads, no ads, ads, 2048 high score, cookie clicker, cookie clicker unblocked, cookie clicker github, cookie clicker no ads, flappy bird, flappy bird no ads, flappy bird unblocked, flash games, flash, bloons, bloons tower defense, bloons td, bloons td 1, bloons td 2, bloons td 3, bloons td 4, bloons td 5, bloons td 6, online, duck life, duck life 1, duck life 2, ducklife 3, factory balls, learn to fly, learn to fly game, raft wars, the impossible quiz, this is the only level, impossible quiz, impossible quiz online, impossible quiz answers, impossible quiz question, imposible quiz, quiz, quiz answers, hextris, retrobowl, retrobowl unblocked, retrobowl online, rooftop snipers, rooftop snipers unblocked, slope, slope online, slope unblocked, slope unblocked site, slope unblocked no ads, slope unblocked google site, slope unblocked online, slope unblocked school, smart ball, tunnel rush, tunnel rush online, tunnel rush unblocked, tunnel rush unblocked site, tunnel rush unblocked no ads, tunnel rush unblocked google site, slope google site, tunnel rush google site, tunnel rush unblocked online, tunnel rush unblocked school">
     <meta name="og:image" content="favicon.png">
 
-    <!--changed this so there isnt a flash of no css-->
-    <link href="css/loading.css" rel="stylesheet" type="text/css"> 
-    <link href="css/style.css" rel="stylesheet" type="text/css"> 
-    
-
-    <!-- not sure why this isnt <script src="js/loading.js"></script> -->
-    <!-- <script src="js/loading.js"></script> if you replace the below with this the image loads but the hexagons disappear completely-->
+    <!-- preloading some resources -->
     <link href="js/loading.js" rel="preload" as="script">
     <link href="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js" rel="preload" as="script">
+    <link href="css/loading.css" rel="preload" as="style" type="text/css"> 
+
+    <!-- now loading css -->
+    <link href="css/loading.css" rel="stylesheet" type="text/css"> 
+    <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <noscript>
@@ -26,10 +25,6 @@
     <div class="loading">
         <div>
             <div class="loading-tip">
-                <script>
-                    const tips = ["Press CTRL+C to cloak your current tab","Press CTRL+M to mask your current tab", "Press CTRL+B to go back to the home page", "Join our discord server!", "Make sure to enable popups for automatic cloak", "Why are you here?"]
-                    document.getElementsByClassName("loading-tip")[0].textContent = "Loading...\n" + tips[Math.floor(Math.random() * tips.length)];
-                </script>
             </div>
             <div class="loading-infinity">
                 <br>
@@ -65,48 +60,51 @@
             <img src="imgs/icon.png" alt="MonkeyGG2 Icon" onclick="this.src = 'imgs/secret-icon.png'">
         </div>
     </div>
-    <div>
-    </div>
     <section id="everything-else">
         <h1>MonkeyGG2</h1>
-        <canvas class="particles"></canvas>
-        
-        <div class="hexagonGrid"></div>
+        <div id="particles"></div>
 
-        <!-- TEMPORARY!!! increases loading times to demonstrate loading screen -->
-        <img src="https://random.imagecdn.app/1500/1500" alt="random image">
+        <div class="homepage">
+            <div class="card-row">
+                <div class="column">
+                    <button>
+                        <div class="card">
+                            <img src="" alt="">
+                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore repellat blanditiis exercitationem nesciunt enim esse nihil aliquam deserunt ratione, rerum possimus placeat consequuntur excepturi repudiandae tenetur eos ut delectus fuga?</h5>
+                        </div>
+                    </button>
+                </div>
+                <div class="column">
+                    <button>
+                        <div class="card">
+                            <img src="" alt="">
+                            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, ut molestias sapiente corrupti odio vitae in illum consectetur nam veniam. Quis explicabo exercitationem vitae asperiores esse libero, voluptates magnam praesentium.</h5>
+                        </div>
+                    </button>
+                </div>
+                <div class="column">
+                    <button>
+                        <div class="card">
+                            <img src="" alt="">
+                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, fugit placeat. Esse, accusamus amet in accusantium minus debitis fuga? Rem, eius. Laudantium, accusantium? Deleniti suscipit sint, doloremque sed enim ipsum?</h5>
+                        </div>
+                    </button>
+                </div>
+                <div class="column">
+                    <button>
+                        <div class="card">
+                            <img src="" alt="">
+                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis explicabo provident quae similique placeat. Magni commodi odit dolorum sed eaque impedit animi explicabo dignissimos? Id dolorem eum et nisi expedita!</h5>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- loading.js file and jQuery are preloaded -->
-    <!-- they are loaded before though? -->
-    <script>
-        const loading = document.createElement("script");
-        loading.src = "js/loading.js";
-        document.body.appendChild(loading);
-
-        const jquery = document.createElement("script");
-        jquery.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js";
-        document.body.appendChild(jquery);
-        
-        jquery.onload = () => {            
-            $(window).on("load", () => {
-                $(".track").attr("stroke", "url(#grad2)");
-                $(".worm1").hide();
-                $(".worm2").hide();
-
-                $(".loading").fadeOut({
-                    duration: 300,
-                    /*complete: () => {
-                        setTimeout(500, () => {
-                            $("#everything-else").fadeIn({
-                                duration: 500,
-                                easing: "easeInOutSine"
-                            });
-                        });
-                    }*/
-                });
-            });
-        }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js" defer></script>
+    <script src="js/loading.js" defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.min.js' defer></script>
+    <script src="js/bg.js" defer></script>
 </body>
 </html>

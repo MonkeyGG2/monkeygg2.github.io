@@ -37,3 +37,67 @@ body.noscript {
     color: white;
     z-index: 999;
 }
+
+#particles {
+    position: absolute;
+    z-index: 0;
+    background: var(--bg);
+    margin: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    filter: blur(2px);  
+}
+
+.homepage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+h1 {
+    z-index: 50;
+    margin-left: 2.5%;
+    position: absolute;
+}
+
+.card-row {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-top: 12.5%;
+}
+
+.column {
+    text-align: center;
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+button {
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    color: var(--font-color);
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 hsl(from var(--button-color) h s l);
+    padding: 16px;
+    text-align: center;
+    background-color: var(--bg-second);
+    border-radius: 50px;
+    font-size: 150%;
+    color: var(--font-color);
+    transition: all 0.2s ease-in;
+}
