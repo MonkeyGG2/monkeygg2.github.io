@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
 /*i titled these poorly, without trying how any of it looks*/
 :root {
-    --bg-second: #0c232f;
-    --hover-color: #f3fff4;
-    --bg: #0b0e18;
-    --font-color: #a3f6fd;
-    --button-color: #026b7e;
+    --bg: #202020;
+    --block-color: #2b2b2b;
+    --button-color: #373737;
+    --hover-color: #3c3c3c;
+    --font-color: #dcddde;
+    --font-family: 'Lato', sans-serif;
 }
 
 html {
@@ -51,10 +55,15 @@ body.noscript {
     filter: blur(2px);  
 }
 
+#everything-else {
+    display: grid;
+}
+
 .homepage {
     position: absolute;
     top: 0;
     left: 0;
+    margin-top: 15rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,15 +72,30 @@ body.noscript {
 
 h1 {
     z-index: 50;
-    margin-left: 2.5%;
-    position: absolute;
+    position: relative;
+    display: flex;
+    justify-self: center;
+    text-align: center;
+    margin-top: 3.5rem; 
+    font-size: 128px;
+    font-weight: 100;
+    font-family: 'Trispace', sans-serif;
+    letter-spacing: 5px;
+    color: -webkit-linear-gradient(white, #38495a)
+}
+
+logo img {
+    z-index: 50;
+    position: fixed;
+    top: -2.5%;
+    left: -1%;
+    scale: 0.45;
 }
 
 .card-row {
     display: flex;
     flex-direction: row;
     width: 90%;
-    margin-top: 12.5%;
 }
 
 .column {
@@ -82,7 +106,7 @@ h1 {
     cursor: pointer;
 }
 
-button {
+.column button {
     text-decoration: none;
     background: transparent;
     border: none;
@@ -92,12 +116,13 @@ button {
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 hsl(from var(--button-color) h s l);
+    box-shadow: var(--button-color) 0 4px 8px 0;
     padding: 16px;
     text-align: center;
-    background-color: var(--bg-second);
+    background-color: var(--button-color);
     border-radius: 50px;
     font-size: 150%;
     color: var(--font-color);
+    font-family: var(--font-family);
     transition: all 0.2s ease-in;
 }
