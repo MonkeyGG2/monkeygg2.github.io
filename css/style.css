@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Trispace:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
 
 /*i titled these poorly, without trying how any of it looks*/
 :root {
@@ -8,7 +8,7 @@
     --button-color: #373737;
     --hover-color: #3c3c3c;
     --font-color: #dcddde;
-    --font-family: 'Lato', sans-serif;
+    --font-family: 'Work Sans', sans-serif;
 }
 
 html {
@@ -73,15 +73,21 @@ body.noscript {
 h1 {
     z-index: 50;
     position: relative;
-    display: flex;
+    display: inline-block;
     justify-self: center;
     text-align: center;
+    width: fit-content;
+    height: fit-content;
     margin-top: 3.5rem; 
     font-size: 128px;
     font-weight: 100;
     font-family: 'Trispace', sans-serif;
     letter-spacing: 5px;
-    color: -webkit-linear-gradient(white, #38495a)
+    color: transparent;
+    background-image: linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    pointer-events: none;
 }
 
 logo img {
@@ -125,4 +131,9 @@ logo img {
     color: var(--font-color);
     font-family: var(--font-family);
     transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: var(--hover-color);
 }

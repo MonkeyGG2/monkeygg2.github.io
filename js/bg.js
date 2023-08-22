@@ -16,6 +16,8 @@ const opt = {
   strokeWeight: 2,
   tail: 82 };
 
+changeTitleColor();
+
 const Particles = [];
 let time = 0;
 document.body.addEventListener("click", () => {
@@ -26,6 +28,7 @@ document.body.addEventListener("click", () => {
   opt.l1 = rand(30, 80);
   opt.l2 = rand(30, 80);
   opt.angle += deg(random(60, 60)) * (Math.random() > 0.5 ? 1 : -1);
+  changeTitleColor();
 
   for (let p of Particles) {
     p.randomize();
@@ -157,4 +160,8 @@ Resize
 --------------------*/
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function changeTitleColor() {
+  document.querySelector("#everything-else h1").style.background = `text linear-gradient(hsl(${opt.h1}, ${opt.s1}, ${opt.l1}), hsl(${opt.h2}, ${opt.s2}, ${opt.l2}));`;
 }
