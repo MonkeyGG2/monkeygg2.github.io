@@ -28,7 +28,9 @@ document.body.addEventListener("click", () => {
   opt.l1 = rand(30, 80);
   opt.l2 = rand(30, 80);
   opt.angle += deg(random(60, 60)) * (Math.random() > 0.5 ? 1 : -1);
-  changeTitleColor();
+  setTimeout(() => {
+    changeTitleColor();
+  }, 100);
 
   for (let p of Particles) {
     p.randomize();
@@ -140,6 +142,7 @@ function setup() {
     Particles.push(new Particle(Math.random() * width, Math.random() * height));
   }
   strokeWeight(opt.strokeWeight);
+  console.log(document.getElementById("title").style);
 }
 
 /*--------------------
@@ -163,5 +166,5 @@ function windowResized() {
 }
 
 function changeTitleColor() {
-  document.querySelector("#everything-else h1").style.background = `text linear-gradient(hsl(${opt.h1}, ${opt.s1}, ${opt.l1}), hsl(${opt.h2}, ${opt.s2}, ${opt.l2}));`;
+  document.getElementById("title").style.backgroundImage = `linear-gradient(hsl(${opt.h1 + 20}, ${opt.s1}%, ${opt.l1}%), hsl(${opt.h2}, ${opt.s2}%, ${opt.l2}%))`;
 }

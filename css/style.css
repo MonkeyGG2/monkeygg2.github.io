@@ -70,7 +70,7 @@ body.noscript {
     z-index: 10;
 }
 
-h1 {
+#title {
     z-index: 50;
     position: relative;
     display: inline-block;
@@ -84,7 +84,6 @@ h1 {
     font-family: 'Trispace', sans-serif;
     letter-spacing: 5px;
     color: transparent;
-    background-image: linear-gradient(white, #38495a);
     -webkit-background-clip: text;
     background-clip: text;
     pointer-events: none;
@@ -128,6 +127,7 @@ logo img {
     background-color: var(--button-color);
     border-radius: 50px;
     font-size: 150%;
+    text-decoration: none;
     color: var(--font-color);
     font-family: var(--font-family);
     transition: all 0.2s ease-in;
