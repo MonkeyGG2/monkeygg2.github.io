@@ -1,0 +1,72 @@
+<div class="shop" ng-if="zm.sidePanels.graveyard">
+  <div class="shop-title">
+    <h2>Cursed Graveyard</h2>
+    <button ng-click="zm.closeSidePanels();">Close</button>
+  </div>
+  <div class="tabs">
+    <button ng-click="zm.graveyardTabSelect('minions')" class="{{zm.graveyardTab == 'minions' ? 'active' : ''}}">Minions</button>
+    <button ng-click="zm.graveyardTabSelect('trophies')" class="{{zm.graveyardTab == 'trophies' ? 'active' : ''}}">Trophies</button>
+  </div>
+  <div class="upgrades" ng-if="zm.graveyardTab == 'minions'">
+    <div class="bone-collectors bones">
+      <h4>Bone Collectors <button ng-click="zm.bcinfo = !zm.bcinfo" class="{{zm.bcinfo ? 'active' : ''}}">Info</button></h4>
+      <p ng-show="zm.bcinfo">Hire bone collectors to gather bones from the town's dead and your own fallen zombies. Each bone collector consumes 1 energy per second. They're hungry little creatures. Must be all that running around.</p>
+      <h4>Energy rate {{zm.model.getEnergyRate()|decimal}} per second</h4>
+      <button ng-click="zm.setBoneCollectors(0);">0</button>
+      <button ng-click="zm.subtractBoneCollector();">-</button>
+      <label>{{zm.model.persistentData.boneCollectors|whole}} collectors</label>
+      <button ng-click="zm.addBoneCollector();">+</button>
+      <button ng-click="zm.setBoneCollectors(zm.maxBoneCollectors());">{{zm.maxBoneCollectors()}}</button>
+    </div>
+    <div class="bone-collectors bones">
+      <h4>Zombies to Spawn <button ng-click="zm.zsinfo = !zm.zsinfo" class="{{zm.zsinfo ? 'active' : ''}}">Info</button></h4>
+      <p ng-show="zm.zsinfo">Control how many zombies the graveyard spawns each time your energy is full. This is limited by your maximum energy.</p>
+      <div class="clear">
+        <button ng-click="zm.setGraveyardZombies(0);">0</button>
+        <button ng-click="zm.setGraveyardZombies(zm.model.persistentData.graveyardZombies - 1);">-</button>
+        <label>{{zm.model.persistentData.graveyardZombies|whole}} zombies</label>
+        <button ng-click="zm.setGraveyardZombies(zm.model.persistentData.graveyardZombies + 1);">+</button>
+        <button ng-click="zm.setGraveyardZombies(zm.maxGraveyardZombies());">{{zm.maxGraveyardZombies()}}</button>
+      </div>
+    </div>
+    <div class="bone-collectors bones" ng-if="zm.model.zombieCages > 0">
+      <h4>Caged Zombies <button ng-click="zm.czinfo = ! zm.czinfo" class="{{zm.czinfo ? 'active' : ''}}">Info</button></h4>
+      <div class="clear cages">
+        <h4>You currently have {{zm.model.zombiesInCages}} / {{zm.model.zombieCages}} zombies caged</h4>
+        <p ng-show="zm.czinfo">You can release them to fight again, or sacrifice them to gain {{zm.model.cagedZombieSacrificeValue().blood|whole}} blood, {{zm.model.cagedZombieSacrificeValue().brains}} brains, and {{zm.model.cagedZombieSacrificeValue().bones}} bones</p>
+        <button ng-click="zm.model.releaseCagedZombies()" ng-disabled="zm.model.zombiesInCages == 0 || zm.model.currentState != zm.model.states.playingLevel">Release</button>
+        <button ng-click="zm.model.persistentData.autoRelease = !zm.model.persistentData.autoRelease" class="{{zm.model.persistentData.autoRelease ? 'active' : ''}}">Auto Release</button>
+        <button ng-click="zm.model.sacrificeCagedZombies()" ng-disabled="zm.model.zombiesInCages == 0">Sacrifice</button>
+      </div>
+    </div>
+    <div class="bone-collectors bones" ng-if="zm.model.constructions.aviary">
+      <h4>Harpies <button ng-click="zm.hpinfo = ! zm.hpinfo" class="{{zm.hpinfo ? 'active' : ''}}">Info</button></h4>
+      <p ng-show="zm.hpinfo">Release harpies that drop barrels of plague infected zombie flesh on unsuspecting humans. Each harpy consumes 1 energy per second. Harpy bombs infect humans with plague and cause {{zm.model.zombieHealth * 0.2|whole}} damage. The damage scales with zombie health.</p>
+      <h4>Energy rate {{zm.model.getEnergyRate()|decimal}} per second</h4>
+      <button ng-click="zm.setHarpies(0);">0</button>
+      <button ng-click="zm.setHarpies(zm.model.persistentData.harpies - 1);">-</button>
+      <label>{{zm.model.persistentData.harpies|whole}} harpies</label>
+      <button ng-click="zm.setHarpies(zm.model.persistentData.harpies + 1);">+</button>
+      <button ng-click="zm.setHarpies(zm.maxHarpies());">{{zm.maxHarpies()}}</button>
+    </div>
+    <!-- <div class="bone-collectors bones" ng-if="zm.model.gigazombies">
+      <h4>Gigazombies <button ng-click="zm.gzinfo = ! zm.gzinfo" class="{{zm.gzinfo ? 'active' : ''}}">Info</button></h4>
+      <p ng-show="zm.gzinfo">Causes any zombie spawned using energy to be a Gigazombie. This will increase their health and damage by 10x, and energy cost by 5x.</p>
+      <h4>Energy cost per zombie {{zm.model.zombieCost}}</h4>
+      <button ng-click="zm.model.toggleGigazombies();" class="{{zm.model.persistentData.gigazombiesOn ? 'active' : ''}}">{{zm.model.persistentData.gigazombiesOn ? 'Gigazombies On' : 'Gigazombies Off'}}</button>
+    </div> -->
+  </div>
+  <p ng-if="zm.graveyardTab == 'trophies'">Earn bonuses by collecting the severed heads of VIPs from certain towns. These trophies persist through prestige resets, while escaped VIPs will return to town.</p>
+  <div class="tabs" ng-if="zm.graveyardTab == 'trophies'">
+    <button ng-click="zm.trophyTabSelect('all')" class="{{zm.trophyTab == 'all' ? 'active' : ''}}">All</button>
+    <button ng-click="zm.trophyTabSelect('collected')" class="{{zm.trophyTab == 'collected' ? 'active' : ''}}">Collected</button>
+    <button ng-click="zm.trophyTabSelect('uncollected')" class="{{zm.trophyTab == 'uncollected' ? 'active' : ''}}">Uncollected</button>
+    <button ng-click="zm.trophyTabSelect('totals')" class="{{zm.trophyTab == 'totals' ? 'active' : ''}}">Stat Totals</button>
+  </div>
+  <div class="upgrades" ng-if="zm.graveyardTab == 'trophies'">
+    <div ng-repeat="trophy in zm.trophies" class="upgrade bones {{trophy.owned ? 'owned' : 'uncollected'}}">
+      <label ng-if="zm.trophyTab != 'totals'">Level: {{trophy.level}}<span ng-if="trophy.escaped" class="escaped">VIP Escaped</span></label>
+      <label>{{zm.upgradeSubtitle(trophy)}}</label>
+    </div>
+  </div>
+</div>

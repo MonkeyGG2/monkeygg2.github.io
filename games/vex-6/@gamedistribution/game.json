@@ -1,0 +1,177 @@
+{
+    "success": true,
+    "result": {
+        "game": {
+            "gameMd5": "4925e12574364121a48c61c35f649c36",
+            "title": "Vex 6",
+            "status": 2,
+            "description": "VEX 6 is the latest addition in the series of this stickman-parkour-platformer! Jump and slide your stickman through 9 new Acts + 9 new Hard Acts. Each Act ends with it's final stage to complete: 'Vexation.' Make sure to collect the coins on your way to unlock 64 different skins for your stickman. You want to earn extra coins? Then come back to VEX 6 every day to complete the daily tasks and play the daily bonus level. VEX 6 is visually stunning as it's now running on a higher resolution and 60fps!",
+            "category": "Action",
+            "tags": [
+                {
+                    "id": 5688,
+                    "title": "#stickman"
+                },
+                {
+                    "id": 6201,
+                    "title": "#platformer"
+                },
+                {
+                    "id": 6625,
+                    "title": "#parkour"
+                }
+            ],
+            "assets": [
+                {
+                    "id": 79897,
+                    "name": "4925e12574364121a48c61c35f649c36-512x384.jpeg",
+                    "width": 512,
+                    "height": 384
+                },
+                {
+                    "id": 79898,
+                    "name": "4925e12574364121a48c61c35f649c36-512x512.jpeg",
+                    "width": 512,
+                    "height": 512
+                },
+                {
+                    "id": 79899,
+                    "name": "4925e12574364121a48c61c35f649c36-512x340.jpeg",
+                    "width": 512,
+                    "height": 340
+                },
+                {
+                    "id": 79900,
+                    "name": "4925e12574364121a48c61c35f649c36-1280x720.jpeg",
+                    "width": 1280,
+                    "height": 720
+                },
+                {
+                    "id": 79901,
+                    "name": "4925e12574364121a48c61c35f649c36-1280x550.jpeg",
+                    "width": 1280,
+                    "height": 550
+                }
+            ],
+            "slug": "vex-6",
+            "enableAds": true,
+            "preRoll": true,
+            "rewardedAds": true,
+            "type": 0,
+            "externalUrl": null,
+            "timeAds": 2,
+            "androidBundleId": null,
+            "iosBundleId": null,
+            "ctry": "VN",
+            "company": "Agame",
+            "dmain": false,
+            "crtv": null,
+            "dname": "Agame",
+            "dmn": "spy.games235.com",
+            "loader": {
+                "enabled": true,
+                "sdk_version": "1.15.2"
+            },
+            "splash": {
+                "template": "pluto",
+                "package_version": "1.3.6",
+                "package": "gd-sdk-air-dynamic"
+            },
+            "promo": {
+                "puzzle": {
+                    "enabled": false
+                },
+                "rainbow": {
+                    "enabled": true
+                }
+            },
+            "dads": {
+                "enabled": true,
+                "left": {
+                    "enabled": false,
+                    "script": {
+                        "src": "https://pm.gamedistribution.com/@bygd/gd-tag-js/0.5.2/dist/default/iife/index.js",
+                        "data-slot-id": "pluto-splash-slot-left",
+                        "data-flow": "hl"
+                    }
+                }
+            },
+            "pads": [
+                {
+                    "weight": 2,
+                    "t4r": {
+                        "enabled": true,
+                        "min": 4321,
+                        "max": 5432
+                    },
+                    "dp": {
+                        "enabled": true
+                    }
+                },
+                {
+                    "weight": 2,
+                    "vmap": {
+                        "enabled": false
+                    },
+                    "retry_on_failure": false,
+                    "dp": {
+                        "enabled": true
+                    }
+                }
+            ],
+            "mads": [
+                {
+                    "weight": 2,
+                    "vmap": {
+                        "enabled": false
+                    },
+                    "retry_on_failure": false,
+                    "t4r": {
+                        "enabled": true,
+                        "min": 4321,
+                        "max": 5432
+                    },
+                    "dp": {
+                        "enabled": true
+                    }
+                },
+                {
+                    "weight": 2,
+                    "vmap": {
+                        "enabled": false
+                    },
+                    "dp": {
+                        "enabled": true
+                    },
+                    "retry_on_failure": false
+                }
+            ],
+            "rads": [
+                {
+                    "weight": 2,
+                    "vmap": {
+                        "enabled": false
+                    },
+                    "t4r": {
+                        "enabled": true,
+                        "min": 4321,
+                        "max": 5432
+                    },
+                    "dp": {
+                        "enabled": true
+                    }
+                },
+                {
+                    "weight": 2,
+                    "vmap": {
+                        "enabled": false
+                    },
+                    "dp": {
+                        "enabled": true
+                    }
+                }
+            ],
+            "ctry_vst": 5135462
+        }
+    }
+}

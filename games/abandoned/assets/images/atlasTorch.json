@@ -1,0 +1,100 @@
+{"frames": {
+
+"torch_0":
+{
+	"frame": {"x":1210,"y":2,"w":129,"h":196},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":23,"w":129,"h":196},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_1":
+{
+	"frame": {"x":238,"y":2,"w":127,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":22,"w":127,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_10":
+{
+	"frame": {"x":978,"y":2,"w":115,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":23,"w":115,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_2":
+{
+	"frame": {"x":494,"y":2,"w":123,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":21,"w":123,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_3":
+{
+	"frame": {"x":740,"y":2,"w":119,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":22,"w":119,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_4":
+{
+	"frame": {"x":861,"y":2,"w":115,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":22,"w":115,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_5":
+{
+	"frame": {"x":1095,"y":2,"w":113,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":27,"y":22,"w":113,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_6":
+{
+	"frame": {"x":121,"y":2,"w":115,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":21,"w":115,"h":200},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_7":
+{
+	"frame": {"x":2,"y":2,"w":117,"h":200},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":21,"w":117,"h":200},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_8":
+{
+	"frame": {"x":367,"y":2,"w":125,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":23,"w":125,"h":198},
+	"sourceSize": {"w":169,"h":238}
+},
+"torch_9":
+{
+	"frame": {"x":619,"y":2,"w":119,"h":198},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":22,"y":23,"w":119,"h":198},
+	"sourceSize": {"w":169,"h":238}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "atlasTorch.png",
+	"format": "RGBA8888",
+	"size": {"w":1341,"h":204},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cbdef855314782a2c30cda1142dc06b1:454495fb4700b4f07a1f85df24a013b5:d07dff255aea6620f5e3e490ba21e1fb$"
+}
+}

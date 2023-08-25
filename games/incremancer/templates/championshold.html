@@ -1,0 +1,83 @@
+<div class="level-select {{zm.skeletonMenu.tab == 'talents' ? 'overflow' : ''}}" ng-if="zm.skeletonMenu.isShown" id="champ-hold">
+  <div class="shop-title">
+    <h2>Skeleton Champion {{zm.skeletonMenu.trophies()}}
+      <button ng-click="zm.skeletonMenu.changeTab('inventory')" class="{{zm.skeletonMenu.tab == 'inventory' ? 'active' : ''}}">Inventory</button>
+      <button ng-click="zm.skeletonMenu.changeTab('talents')" class="{{zm.skeletonMenu.tab == 'talents' ? 'active' : ''}}">Talents</button>
+    </h2>
+    <button ng-click="zm.skeletonMenu.show()">Close</button>
+    <div style="clear: both;"></div>
+  </div>
+  <div ng-if="zm.skeletonMenu.tab == 'inventory'">
+    <div ng-if="zm.skeleton().skeletons == 0" class="ranges">
+      <p>The Skeleton Champion respects your strength and is willing to join you.</p>
+      <p><em>Give me those trophies of yours as tribute and I will fight for you to scour the humans from this world!</em></p>
+      <button ng-click="zm.skeletonMenu.acceptOffer()">Accept the offer</button>
+      <button ng-click="zm.skeletonMenu.show()">Reject the offer</button>
+    </div>
+    <div ng-if="zm.skeletonMenu.anotherOffer()" class="ranges">
+      <p>The Skeleton Champion has another offer for you.</p>
+      <p><em>Give me some more of those trophies and I'll work twice as hard, I promise!</em></p>
+      <button ng-click="zm.skeletonMenu.acceptOffer()">Accept the offer</button>
+      <button ng-click="zm.skeletonMenu.show()">Reject the offer</button>
+    </div>
+    <div ng-if="zm.skeleton().skeletons > 0">
+      <div class="inventory">
+        <div class="equipped">
+          <div class="row" ng-repeat="itemRow in zm.skeletonMenu.equipped track by $index">
+            <div class="item {{zm.skeletonMenu.itemClass(item)}} {{zm.skeletonMenu.itemType(item)}} droppable" ng-repeat="item in itemRow track by item.id" ng-mousemove="zm.moveTooltip($event, $event.currentTarget);" 
+              droppable-target="true" dropType="{{item.s}}" dropEndCall="zm.skeletonMenu.itemDropped" ng-click="item.s != -1 || zm.skeletonMenu.trashAll()">
+              <div class="icon"></div>
+                <div class="tooltip">
+                  <span class="name">{{zm.skeletonMenu.itemName(item)}}</span>
+                  <span class="desc" ng-if="item.id > -1 || item.s == -1">{{zm.skeletonMenu.itemSubName(item)}}</span>
+                  <span class="stat" ng-if="item.id > -1" ng-repeat="stat in zm.skeletonMenu.itemStats(item)">{{stat}}</span>
+                  <span class="effect" ng-if="item.id > -1" ng-repeat="stat in zm.skeletonMenu.itemEffects(item)">{{stat}}</span>
+                  <span class="xp" ng-if="item.id > -1">Can be destroyed for {{item.l * item.r * 10|whole}} xp</span>
+                </div>
+              <div class="level" ng-if="item.l">{{item.l}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="items">
+          <div class="item {{zm.skeletonMenu.itemClass(item)}} {{zm.skeletonMenu.itemType(item)}}" ng-repeat="item in zm.skeletonMenu.inventoryItems() track by item.id" ng-mousemove="zm.moveTooltip($event, $event.currentTarget);" 
+            draggable-item="true" drag-object="item" ng-click="zm.skeletonMenu.equipItem(item)">
+            <div class="icon"></div>
+            <div class="level" ng-if="item.l">{{item.l}}</div>
+              <div class="tooltip">
+                <span class="name">{{zm.skeletonMenu.itemName(item)}}</span>
+                <span class="desc">{{zm.skeletonMenu.itemSubName(item)}}</span>
+                <span class="stat" ng-repeat="stat in zm.skeletonMenu.itemStats(item)">{{stat}}</span>
+                <span class="effect" ng-repeat="stat in zm.skeletonMenu.itemEffects(item)">{{stat}}</span>
+                <span class="xp">Can be destroyed for {{item.l * item.r * 10|whole}} xp</span>
+              </div>
+          </div>
+        </div>
+      </div>
+      <p>Level: {{zm.skeleton().level}} - {{zm.skeleton().xp|whole}} / {{zm.skeletonMenu.xpForNextLevel()|whole}} xp ({{zm.skeletonMenu.xpRate()}}% xp rate)<br/>Earn xp by killing humans while the Champion is alive, higher level humans reward more xp</p>
+      <p>Increases zombie health and damage by {{zm.skeleton().level}}%, all resource generation by {{zm.skeleton().level}}%,<br/>and receive {{zm.skeleton().level}} prestige points when the Skeleton Champion lands a killing blow. (20 second cooldown)</p>
+    </div>
+  </div>
+  <div ng-if="zm.skeletonMenu.tab == 'talents'" class="talents">
+    <h4>Talent Points: {{zm.skeletonMenu.talentPoints()}} ({{zm.skeletonMenu.talentsAssigned()}} assigned)
+      <button ng-click="zm.buyUpgrade(zm.skeletonMenu.upgrade);" ng-disabled="zm.upgradeTooExpensive(zm.skeletonMenu.upgrade);">
+        {{zm.upgradeTooExpensive(zm.skeletonMenu.upgrade) ? zm.requiredForUpgrade(zm.skeletonMenu.upgrade) : zm.purchaseText(zm.skeletonMenu.upgrade)}}
+      </button>
+      <button ng-click="zm.skeletonMenu.talentsReset()" ng-disabled="!zm.skeletonMenu.canReset()">
+        {{zm.skeletonMenu.canReset() ? 'Reset Talents' : 'Prestige to unlock reset'}}
+      </button>
+    </h4>
+    <div class="talent-grid">
+      <div ng-repeat="group in zm.skeletonMenu.upgrades" class="{{group.class}}">
+        <h4>{{group.name}}</h4>
+        <div ng-repeat="upgrade in group.talents" class="talent {{upgrade.active() ? '' : 'inactive'}} {{upgrade.full() ? 'full' : ''}}">
+          <p>{{upgrade.name}}</p>
+          <p>{{zm.skeletonMenu.talentValue(upgrade)}}</p>
+          <button ng-click="zm.skeletonMenu.talentSet(upgrade, 1)">+</button>
+          <button ng-click="zm.skeletonMenu.talentMax(upgrade)">Max</button>
+          <p class="info">{{upgrade.description()}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,21 @@
+#loadingParent {
+	width: 1280px;
+	height: 720px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	background-image: linear-gradient(#20c4c7, #19999c);
+}
+
+.letter {
+	position: relative;
+	display: table-cell;
+	font-size: 100px;
+	font-family: "matiz";
+	color: rgba(255,255,255,.5);
+}
+
+#unity-canvas {
+	width: 1280px;
+	height: 720px;
+}

@@ -1,0 +1,6 @@
+translations = {
+	"settings.about.headline": "About",
+
+	"settings.donate.headline": "Donate",
+	"settings.donate.description": "By donating, you are showing your appreciation for this quirky little game, and by that increasing the chance that we will spend more time on it later.</br></br> You are also being an extremely amazing person",
+};

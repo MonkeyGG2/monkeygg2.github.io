@@ -1,0 +1,57 @@
+html, body, #gameContainer {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	border: 0;
+	overflow: hidden; 
+	display: block; 
+}
+
+#percent{
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin:0px;
+	padding:0px;
+	font-size: 70px;
+	transform: translate(-50%,-50%);
+	font-family:monospace;
+}
+
+
+#loading {
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin-left:-128px;
+	margin-top:-128px;
+	-webkit-animation: rotation 2s infinite linear;
+}
+
+#centerlink {
+	position: absolute;
+	width: 200px;
+	
+	bottom: 10px;
+	text-align:center;
+	display: none;
+	
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+
+#gameslink {
+	font-family: monospace;
+	font-size: 16px;
+	text-decoration: none;
+	color: black;
+}
+@-webkit-keyframes rotation {
+	from {
+			-webkit-transform: rotate(0deg);
+	}
+	to {
+			-webkit-transform: rotate(359deg);
+	}
+}

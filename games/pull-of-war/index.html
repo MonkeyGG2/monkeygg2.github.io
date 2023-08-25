@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>                
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L02W3ZMS5"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7L02W3ZMS5');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648726754785335"
+ crossorigin="anonymous"></script>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<title>Pull of War</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="/global.js"> </script>
+</head>
+<body>
+
+<div style="height:100%;font-family:Arial, Helvetica, serif;color:#484848;display:block;font-weight:800;">
+<div id="mainColumn" style="width:100%;margin-left:20px;display:none;text-align:center;">
+<!--<div style="text-align:right;width:100%"><div id="mainTitle" style="font-size:40px;margin:10px;margin-right:15%;">Pull of War v.5</div></div> -->
+<div id='mainBox' style='border:3px solid;padding:20px;text-align:left;width:1200px;' >
+<div id='displaySpace' onmouseover="removeHover()" style="width:100%;text-align:center;border: 2px solid; height:100px;background-color:rgb(247, 230, 220);position:relative"> 
+	<div id='resourceDisplayBox' style='position:absolute;left:9px;width:400px;text-align:left;'>
+		<div style='top:4px;' class='statusLabel'>Gold: <div class='goldIcon'></div><div id='gold' class='bigNumber' style=''></div></div>
+		<div id='territoryContainer' style='top:28px;' class='statusLabel'>Territory: <img src='pics/territory.png' height='18' width='15'><div id='territory' class='bigNumber'></div></div>
+		<div id='manaContainer' style='top:54px;background-color:rgb(247, 230, 220);' class='statusLabel'>Mana: <img src='pics/mana.png' height='18' width='18'><div id='mana' class='bigNumber'>100f</div></div>
+	</div>
+	<div id='victoryConditionBox' style='position:absolute;left:113px;width:800px;'>
+		<div style='left:139px;top:2px;' class='statusLabel'>Your Wall Health: <div id='wallHealth' class='number' >801f</div></div>
+		<div style='left:445px;top:2px;' class='statusLabel'>Enemy Wall Health: <div id='enemyWallHealth' class='number' >800f</div></div>
+		<div id='wallProgressBar' style='position:absolute;width:200px;height:20px;margin-top:2px;background-color:grey;display:block;left:119px;padding:5px 10px;top:21px;'>
+			<div id='compete3' style='width:50%;background-color:#ff0003;float:left' class='progressBar'></div><div id='compete4' style='width:50%;background-color:#000000;float:right;' class='progressBar'></div>
+		</div>
+		<div id='enemyWallProgressBar' style='position:absolute;width:200px;height:20px;margin-top:2px;background-color:grey;display:block;left:429px;padding:5px 10px;top:21px;'>
+			<div id='compete5' style='width:50%;background-color:#ff0003;float:left' class='progressBar'></div><div id='compete6' style='width:50%;background-color:#000000;float:right;' class='progressBar'></div>
+		</div>
+		<div id='goldGainContainer' style='top:72px;left:162px;' class='statusLabel'>Gain <div class='goldIcon'></div><div id='goldGain' style='vertical-align:bottom' class='number'>10f</div> base gold per kill</div>
+		<div id='territoryGainContainer' style='top:72px;left:402px;' class='statusLabel'>Gain <img src='pics/territory.png' height='18' width='15'><div id='territoryGain' style='vertical-align:bottom' class='number'>10</div> territory upon victory</div>
+		<div style='top:55px;left:361px' class='statusLabel'>Stage <div id='stage' class='bigNumber'></div></div>
+	</div>
+	<div id='unitDisplayBox' style='position:absolute;left:203px;width:600px;border:1px solid;top:5px;height:87px;border-radius:15px;display:none;'>
+		<div class='buyName' style='left:357px;top:10px;'>Damage Done: <div id='curDamageDone' class='number'></div></div>
+		<div class='buyName' style='left:55px;top:35px'>Kills: <div id='curKills' class='number'></div></div>
+		<div class='buyName' style='left:221px;top:35px;'>Health: <div id='curHealth' class='number'></div></div>
+		<div class='buyName' style='left:10px;top:10px;'>Unit Count: <div id='curUnitCount' class='number'></div></div>
+		<div class='buyName' style='left:10px;top:60px;'>Time Alive: <div id='curTimeAlive' class='number'></div></div>
+		<div class='buyName' style='left:185px;top:10px;'>Max Health: <div id='curActualHealth' class='number'></div></div>
+		<div class='buyName' style='left:177px;top:60px;'>Total Health: <div id='totalHealth' class='number'></div></div>
+		<div class='buyName' style='left:400px;top:35px;'>Damage: <div id='curDamage' class='number'></div></div>
+		<div class='buyName' style='left:356px;top:60px;'>Total Damage: <div id='totalDamage' class='number'></div></div>
+	</div>
+	<div id='pauseButton' class='button' style='position:absolute;right:5px;top:5px;padding:3px;' onclick='pause()'>Pause</div>
+	<div id='fps' style='position:absolute;left:3px;bottom:3px;font-size:11px;'></div>
+</div>
+
+<div id='allTabs' style='width:100%;height:40px;border:2px solid;text-align:center;color:black;margin-bottom:15px;'>
+	<div id='warTab' class='mainTab' onclick='switchMainTab(0)'>Battle</div>
+	<div id='mapTab' class='mainTab' onclick='switchMainTab(1)'>Map</div>
+	<div id='territoryTab' class='mainTab' onclick='switchMainTab(2)'>Unit Spawning</div>
+	<div id='unitTab' class='mainTab' onclick='switchMainTab(3)'>Unit Upgrades</div>
+	<div id='buildingsTab' class='mainTab' onclick='switchMainTab(4)'>Buildings</div>
+	<div id='manaTab' class='mainTab' onclick='switchMainTab(5)'>Spells</div>
+	<div id='optionsTab' class='mainTab' onclick='switchMainTab(6)'>Options</div>
+</div>
+
+
+
+<div id='warSpace' style="width:100%;vertical-align:top;text-align:left;border:2px solid;height:400px;background-color:rgb(223, 255, 221);position:relative;font-size:12px;">
+	<img id='line1'  src='pics/line3.png' width='1200' height='400' style='position:absolute;display:none;'>
+	<img id='line2' src='pics/line2.png' width='1200' height='400' style='position:absolute;display:none;'>
+	<img id='line3'  src='pics/line3.png' width='1200' height='400' style='position:absolute;display:none;'>
+	<img id='line4'  src='pics/line4.png' width='1200' height='400' style='position:absolute;display:none;'>
+	<img id='line5'  src='pics/line5.png' width='1200' height='400' style='position:absolute;display:none;'>
+	<img id='line6'  src='pics/line6.png' width='1200' height='400' style='position:absolute;display:none;'>
+	<div id="fightTime" style="position:absolute;z-index:7"></div>
+	<canvas id='damageLines' width="1204" height="404" style="position:absolute;z-index:6" onmouseout="removeHover()"></canvas>
+	<div id="spawnTimers" class='hyperVisible' style="width:1200px;position:absolute;margin-top:5px;height:50px">
+		<div id='soldierContainer' class='unitSpawnBox' style=''>
+			<div id='soldierAutoSpawnAmount' class='spawnAutoAmount'></div>
+			<img src='pics/soldier.png' height='30' width='50'>
+			<div id='soldierSpawnTimer' class='f20' style='vertical-align:top'></div>
+		</div>
+		<div id='spearContainer' class='unitSpawnBox'>
+			<div id='spearAutoSpawnAmount' class='spawnAutoAmount'></div>
+			<img src='pics/spear.png' height='30' width='50'>
+			<div id='spearSpawnTimer' class='f20' style='vertical-align:top'></div>
+		</div> 
+		<div class='enemyUnitSpawnBox' style='position:absolute;right:-53px;'>
+			<div id='enemySoldierSpawnAmount' class='spawnAutoAmount'></div>
+			<img src='pics/enemysoldier.png' height='30' width='50'>
+			<div id='enemySpawnTimer' class='f20' style='vertical-align:top'></div>
+		</div>
+		<div class='enemyUnitSpawnBox' style='position:absolute;right:-2px;'>
+			<div id='enemySpearSpawnAmount' class='spawnAutoAmount' style='left:25px;'></div>
+			<img src='pics/enemyspear.png' height='30' width='50'>
+		</div>
+	</div>
+	<!--<div id='wall' style='position:absolute;left:78px;height:350px;top:25px;width:10px;background-color:grey;z-index:5;'></div>
+	<div id='enemyWall' style='position:absolute;left:1126px;height:350px;top:25px;width:10px;background-color:grey;z-index:5;'></div>-->
+	<img id='wall' src='pics/wall.png' height='350' width='78' style='position:absolute;left:-1px;top:48px;z-index:5;'>
+	<img id='enemyWall' src='pics/enemywall.png' height='350' width='78' style='position:absolute;left:1123px;top:48px;z-index:5;'>
+	<div id='fenceHealth' class='hyperVisible' style='position:absolute;left:112px;top:61px;'></div>
+	<div id='enemyFenceHealth' class='hyperVisible' style='position:absolute;left:1080px;top:61px;'></div>
+	<img id='fence' src='pics/fence.png' height='300' width='15' style='position:absolute;left:114px;top:83px;z-index:5;'>
+	<img id='enemyFence' src='pics/fence.png' height='300' width='15' style='position:absolute;left:1090px;top:83px;z-index:5;'>
+</div>
+
+<div id='manaSpace' style="width:100%;height:60px;background-color:#78AFFF;border:2px solid; margin-top:5px;position:relative;">
+	<div id='spell0' class='spell' style='margin-left:50px;' onclick='clickedSpell(0)'>
+    <div class='hotkeyNum' >(1)</div>
+		<div>Fireball</div>
+		<div id='spellCost0' class='spellCost'></div>
+	</div>
+	<div id='spell1' class='spell' onclick='clickedSpell(1)'>
+    <div class='hotkeyNum' >(2)</div>
+		<div>Chain Lightning</div>
+		<div id='spellCost1' class='spellCost'></div>
+	</div>
+	<div style='background-color:#C4E3FF;width:400px;height:46px;position:absolute;right:10px;top:5px;border:2px solid black;'>
+		<div style='position:absolute;right:10px;top:6px;'>Spell Level: <div id='spellLevel' class='number'>1f</div></div>
+		<div id='curSpellExp' class='number' style='position:absolute;left:10px;bottom:-2px;'>2f</div>
+		<div id='expNeeded' class='number' style='position:absolute;right:176px;bottom:-2px;'>3f</div>
+		<div id='spellProgressBar' style='position:absolute;width:200px;height:20px;margin-top:2px;background-color:grey;display:block;left:6px;padding:2px 10px;top:3px;'>
+			<div id='curExpBar' style='width:50%;background-color:blue;float:left;height:13px;' class='progressBar'></div>
+		</div>
+	</div>
+</div>
+
+<div id='mapSpace' class="buyColumn" style="background-color:#AFCDC2;overflow:auto;">
+</div>
+
+<div id='placesSpace' class="buyColumn" style="background-color:#89D496;">
+	<div id='defaultScreen' class='unitScreen'>
+		<div style='font-size:18px;'>Unit Spawning</div>
+		<div style='display:block;margin-top:-6px;'>Click a unit type to add it to the spawn list</div>
+		<div style='left:12px;top:9px;position:absolute;font-size:14px;'>Construction Total: <div class='number' id='constructionTotal'>0f</div></div>
+		<div style='left:12px;top:25px;position:absolute;font-size:14px;'>Construction Rate: <div class='number' id='constructionRate'>0f</div></div>
+		<div style='left:12px;top:40px;position:absolute;font-size:14px;'>Territory Used: <div class='number' id='territoryUsed'>0f</div> / <img src="pics/territory.png" height="18" width="15"><div class='number' id='totalTerritoryPlaces'>0ff</div></div>
+		<div style='width:300px;background-color:#C6EECE;position:absolute;left:10px;top:62px;height:360px;border:2px solid'>
+			<div id='spawnListBox' style='margin:5px;border:2px solid black;width:276px;height:342px;overflow:auto;padding-top:5px;position:relative;'></div>
+		</div>
+		<div style='width:840px;background-color:#C6EECE;position:absolute;right:15px;top:58px;height:360px;border:2px solid'>
+			<div style='font-size:14px;'>Fill up your territory with unit producing buildings!<br>This will decide which order your units spawn over the level!<br>
+			Click the spawn list to remove a building!</div><br>
+			<div style='width:80%;text-align:center;margin-top:20px;'>
+      
+				<div id='soldierPlace' class='placeButton' onclick='addToPlaceList("soldier")'>
+					<img width='50' height='30' src='pics/soldier.png' style='margin-top:6px;'>
+					<div style='position:absolute;left:50px;top:3px;'>Barracks</div>
+					<img src="pics/territory.png" height="18" width="15" style='left:46px;bottom:5px;position:absolute'>
+					<div id='soldierPlaceCost' class='number' style='position:absolute;left:61px;bottom:1px;'>1f</div>
+				</div><div id='spearPlace' class='placeButton' onclick='addToPlaceList("spear")'>
+					<img width='50' height='30' src='pics/spear.png' style='margin-top:6px;'>
+					<div style='position:absolute;left:50px;top:3px;'>Lumber Yard</div>
+					<img src="pics/territory.png" height="18" width="15" style='left:46px;bottom:5px;position:absolute'>
+					<div id='spearPlaceCost' class='number' style='position:absolute;left:61px;bottom:1px;'>1f</div>
+				</div>
+        
+			</div>
+			<div style='width:80%;text-align:center;margin-top:20px;' onclick='upgradeConstructionRate()'>
+        <div id='upgradeConstructionRate' class='placeButton' style='font-size:14px;width:auto;height:auto;text-align:center;padding:5px;'>
+          Sell Land for Construction Workers<br>
+          -<img src="pics/territory.png" height="18" width="15" style=''><div id='costructionRateCost' class='number' >100</div>, +.5 Construction Rate<br>
+          Can only be purchased with unused Territory
+        </div>
+        
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id='unitsSpace' class="buyColumn" style='background-color:rgb(255, 237, 190);' >
+	<div id='' class='unitScreen'>
+		<div style='font-size:18px;'>Unit Upgrades</div>
+		<div style='display:block;margin-top:-6px;'>Click a unit type for possible upgrades</div>
+		<div id='unitList' style='width:400px;border:2px solid;position:absolute;left:10px;top:58px;height:350px;overflow:auto;'>
+			<div class='unitUpgradeContainer' onclick='changeUnitScreen("soldier")'>
+				<img src='pics/soldier.png' height='30' width='50'>
+				Soldier
+			</div>
+			<div class='unitUpgradeContainer' onclick='changeUnitScreen("spear")'>
+				<img src='pics/spear.png' height='30' width='50'>
+				Spearman
+			</div>
+			<!--<div class='unitUpgradeContainer' onclick='changeUnitScreen("spear")'>
+				<div id='unitContainer3' class='unitContainer displayLeft' >
+					<div id='body' class='spear unit' style=''> </div>
+					<div id='unitWeapon' class='weapon'><div class='weaponspear'></div> </div>
+				</div>
+				Lightning Wizard
+			</div>
+			<div class='unitUpgradeContainer' onclick='changeUnitScreen("spear")'>
+				<div id='unitContainer4' class='unitContainer displayLeft' >
+					<div id='body' class='spear unit' style=''> </div>
+					<div id='unitWeapon' class='weapon'><div class='weaponspear'></div> </div>
+				</div>
+				Knight
+			</div>
+			<div class='unitUpgradeContainer' onclick='changeUnitScreen("spear")'>
+				<div id='unitContainer5' class='unitContainer displayLeft' >
+					<div id='body' class='spear unit' style=''> </div>
+					<div id='unitWeapon' class='weapon'><div class='weaponspear'></div> </div>
+				</div>
+				Archer
+			</div>
+			<div class='unitUpgradeContainer' onclick='changeUnitScreen("spear")'>
+				<div id='unitContainer6' class='unitContainer displayLeft' >
+					<div id='body' class='spear unit' style=''> </div>
+					<div id='unitWeapon' class='weapon'><div class='weaponspear'></div> </div>
+				</div>
+				Priest
+			</div>
+			<div class='unitUpgradeContainer' onclick='changeUnitScreen("spear")'>
+				<div id='unitContainer7' class='unitContainer displayLeft' >
+					<div id='body' class='spear unit' style=''> </div>
+					<div id='unitWeapon' class='weapon'><div class='weaponspear'></div> </div>
+				</div>
+				Catapult
+			</div>-->
+		</div>
+		<div id='unitUpgradesBox' style='width:740px;border:2px solid;position:absolute;right:15px;top:58px;height:350px;'>
+			
+		</div>
+	</div>
+</div>
+
+<div id='buildingsSpace' class="buyColumn" style='background-color:#E1A95F;text-align:center;' >
+	<div style='font-size:18px;margin-top:10px;'>Buildings</div>
+	<div style='display:block;margin-top:-6px;'>Click a building type for possible upgrades</div>
+	<div style='width:400px;border:2px solid;position:absolute;left:10px;top:58px;height:350px;overflow:auto;background-color:#EABD95'>
+			<div class='unitUpgradeContainer' onclick='changeBuildingScreen("wall")'>
+				<img src='pics/smallwall.png' height='50' width='50'>
+				<div style='vertical-align:top;margin-top:16px;'>Upgrade Wall</div>
+			</div>
+			<div class='unitUpgradeContainer' onclick='changeBuildingScreen("fence")'>
+				<img src='pics/smallfence.png' height='50' width='25'>
+				<div style='vertical-align:top;margin-top:16px;'>Upgrade Fence</div>
+			</div>
+	</div>
+	<div id='buildingUpgradesBox' style='width:740px;border:2px solid;position:absolute;right:15px;top:58px;height:350px;background-color:#EABD95'></div>
+</div>
+  
+<div id='spellUpgradeSpace' class="buyColumn" style="background-color:#AFCDC2;overflow:auto;">
+</div>
+  
+<div id='optionsPage' class='buyColumn'>
+	<div style='width:90%;margin-top:30px;margin-left:30px;'>
+		<div style="float:left;">Created by: Stop_Sign AKA Phurple</div><br><br>
+    <h3>How to Play:</h3><br>
+		Click Unit Spawning, then Barracks, then War to start the game<br>
+    Watch the fight in Battle<br>
+    Use hotkeys or tap spells and use them on enemies<br>
+    Upgrade units, kill the enemy wall health, go further on the map<br>
+    You'll need more wood to complete map 2<br>
+    Even if you die on harder levels, you'll still get more gold<br>
+    You have saving, but no offline. The game works full speed in a different tab<br>
+		<div class='button' style='padding:5px;' onclick='clearStorage()'>Clear Save (CAREFUL!)</div>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="helpers.js"></script>
+<script src="spells.js"></script>
+<script src="mapvalues.js"></script>
+<script src="classes.js"></script>
+<script src="manualActions.js"></script>
+<script src="pullofwar.js"></script>
+<script src="graphics.js"></script>
+<script src="handleSavingPull.js"></script>
+<script src="hacks.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60978932-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</html>

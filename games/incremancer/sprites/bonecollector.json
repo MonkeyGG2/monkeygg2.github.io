@@ -1,0 +1,26 @@
+{
+  "frames": {
+    "bonecollector1.png":
+    {
+      "frame":{"x":0,"y":0,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    },
+    "bonecollector2.png":
+    {
+      "frame":{"x":0,"y":8,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    }
+  },
+  "meta": {
+    "image":"bonecollector.png",
+    "format":"RGBA8888",
+    "size":{"w":8,"h":32},
+    "scale":1
+  }
+}

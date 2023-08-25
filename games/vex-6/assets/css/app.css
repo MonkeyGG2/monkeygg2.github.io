@@ -1,0 +1,34 @@
+/*Stylesheet*/
+body,html{
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    background-color: #000000;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*with out this line ios safari in gd splash preloader has issue with dimmed box from splash preloader button */
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    outline:0;
+    position: relative;
+}
+
+#orientation {
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../rotate.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(0, 0, 0);
+    background-size:25%;
+    z-index: 999;
+    display: none;
+}

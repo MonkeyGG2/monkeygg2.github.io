@@ -1,0 +1,34 @@
+{
+  "frames": {
+    "fort1.png":
+    {
+      "frame":{"x":0,"y":0,"w":32,"h":64},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":32,"h":64},
+      "sourceSize":{"w":32,"h":64}
+    },
+    "fort2.png":
+    {
+      "frame":{"x":0,"y":64,"w":32,"h":64},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":32,"h":64},
+      "sourceSize":{"w":32,"h":64}
+    },
+    "fort3.png":
+    {
+      "frame":{"x":0,"y":128,"w":32,"h":64},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":32,"h":64},
+      "sourceSize":{"w":32,"h":64}
+    }
+  },
+  "meta": {
+    "image":"fortress.png",
+    "format":"RGBA8888",
+    "size":{"w":32,"h":196},
+    "scale":1
+  }
+}

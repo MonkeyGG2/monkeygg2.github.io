@@ -1,0 +1,6 @@
+/*
+ * Generic styles
+ */
+html {overflow: hidden; height: 100%; -webkit-text-size-adjust: none}
+body {overflow: hidden; height: 100%; margin: 0; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+canvas {display: block; touch-action: none}
