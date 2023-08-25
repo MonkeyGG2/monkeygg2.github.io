@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="zombieApp">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56478232-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-56478232-3');
+
+      var errors = 1;
+
+      // Track basic JavaScript errors
+      window.addEventListener('error', function(e) {
+          gtag('event', 'error', {
+            'event_category': 'JS exception',
+            'event_label': e.message + ": " + e.filename + ":  " + e.lineno,
+            'value': errors++
+          });
+      });
+    </script>
+    <title>Incremancer</title>
+    <meta name="description" content="Zombie necromancer idle game">
+    <meta name="keywords" content="zombie,game,idle,javascript">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#104510" />
+    <meta charset="utf-8"/>
+    <link rel="manifest" href="manifest.json">
+    <script src="js/lz-string.min.js"></script>
+    <script src="js/pixi-legacy.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="dist/bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="zombiemancer.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <script src="/global.js" type="text/javascript" defer></script>
+  </head>
+  <body ng-controller="ZombieController as zm">
+    <div class="message" ng-if="zm.message">
+      <p>{{zm.message}}</p>
+    </div>
+      
+    <div class="stats {{zm.model.persistentData.zoomButtons ? 'zoom' : ''}}">
+      <label>Level: {{zm.model.level}}</label>
+      <button ng-click="zm.showStats = !zm.showStats" class="{{zm.showStats ? 'active' : ''}}">Stats</button>
+      <label>Humans: {{zm.model.getHumanCount()}}</label>
+      <label>Zombies: {{zm.model.zombieCount}}</label>
+      <label ng-if="zm.model.constructions.monsterFactory">Creatures: {{zm.model.creatureCount}} / {{zm.model.creatureLimit}}</label>
+      <label ng-if="zm.model.persistentData.showfps">FPS: {{zm.model.frameRate|whole}}</label>
+    </div>
+
+    <div class="resources">
+      <label class="energy">Energy:<span class="value">{{zm.model.energy|decimal}} / {{zm.model.energyMax|whole}}</span><span class="percent" ng-style="{'width':zm.energyPercent() + '%'}"></span></label>
+      <label class="blood">Blood:<span class="value">{{zm.model.persistentData.blood|whole}} / {{zm.model.bloodMax|whole}}</span><span class="percent" ng-style="{'width':zm.bloodPercent() + '%'}"></span></label>
+      <label class="brains">Brains:<span class="value">{{zm.model.persistentData.brains|whole}} / {{zm.model.brainsMax|whole}}</span><span class="percent" ng-style="{'width':zm.brainsPercent() + '%'}"></span></label>
+      <label class="bones" ng-if="zm.model.constructions.graveyard || zm.model.persistentData.bones > 0">Bones:<span class="value">{{zm.model.persistentData.bones|whole}}</span></label>
+      <label class="parts" ng-if="zm.model.constructions.factory || zm.model.persistentData.parts > 0">Parts:<span class="value">{{zm.model.persistentData.parts|whole}}</span></label>
+      <div class="spells">
+        <button ng-repeat="spell in zm.spells.getUnlockedSpells()" ng-click="zm.spells.castSpell(spell)" class="spell {{spell.active ? 'active' : (spell.onCooldown ? 'cooldown' : '')}}" ng-disabled="spell.onCooldown || spell.energyCost > zm.model.energy">
+          <span class="icon">{{spell.name}}</span>
+          <span class="timer" ng-if="spell.active || spell.onCooldown">{{spell.active ? spell.timer : spell.cooldownLeft|whole}}</span>
+          <span class="tooltip" ng-if="!spell.active && !spell.onCooldown">{{spell.tooltip}}</span>
+        </button>
+        <div class="skeleton" ng-if="zm.model.persistentData.allTimeHighestLevel >= 50" ng-click="zm.skeletonMenu.show()">
+          <div class="bg" id="skeleton"></div>
+          <div class="xp">
+            <span ng-style="{'height': zm.skeletonMenu.xpPercent() + '%'}"></span>
+          </div>
+          <div class="lvl" ng-if="zm.skeleton().skeletons > 0 && zm.skeletonMenu.isAlive()">
+            lvl {{zm.skeleton().level}}
+          </div>
+          <div class="lvl dead" ng-if="zm.skeleton().skeletons > 0 && !zm.skeletonMenu.isAlive()">
+            DEAD: {{zm.skeletonMenu.timer()}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons {{zm.sidePanels.open ? 'open' : ''}}">
+      <button ng-click="zm.openSidePanel('shop');" class="{{zm.sidePanels.shop ? 'active' : ''}}">Shop</button>
+      <button ng-click="zm.openSidePanel('construction');" ng-if="zm.model.construction" class="{{zm.sidePanels.construction ? 'active' : ''}}"><span ng-if="zm.model.persistentData.currentConstruction" class="tag">{{zm.constructionPercent()}}%</span>Construction</button>
+      <button ng-click="zm.openSidePanel('graveyard');" ng-if="zm.model.constructions.graveyard" class="{{zm.sidePanels.graveyard ? 'active' : ''}}">Graveyard</button>
+      <button ng-click="zm.openSidePanel('factory');" ng-if="zm.model.constructions.factory" class="{{zm.sidePanels.factory ? 'active' : ''}}">Factory</button>
+      <button ng-click="zm.openSidePanel('runesmith');" ng-if="zm.model.constructions.runesmith" class="{{zm.sidePanels.runesmith ? 'active' : ''}}{{zm.canShatter() ? 'shatter' : ''}}">Runesmith</button>
+      <button ng-click="zm.openSidePanel('prestige');" ng-if="zm.isShowPrestige()" class="{{zm.sidePanels.prestige ? 'active' : ''}}" id="prestige-button"><div id="prestige-bg"></div>Prestige</button>
+      <button ng-click="zm.openSidePanel('options');" class="{{zm.sidePanels.options ? 'active' : ''}}">Options</button>
+      <button ng-click="zm.levelSelect.show()" class="{{zm.levelSelect.shown ? 'active' : ''}}" ng-if="zm.levelSelect.showButton()">Level Select</button>
+    </div>
+
+    <div class="zoom-buttons" ng-if="zm.model.persistentData.zoomButtons">
+      <button ng-click="zm.zoom(-1);">-</button>
+      <button ng-click="zm.resetZoom();">Reset</button>
+      <button ng-click="zm.zoom(+1);">+</button>
+    </div>
+    
+    
+    <shop-menu></shop-menu>
+    <construction-menu></construction-menu>
+    <graveyard-menu></graveyard-menu>
+    <factory-menu></factory-menu>
+    <runesmith-menu></runesmith-menu>
+    <champions-hold-menu></champions-hold-menu>
+    <prestige-menu></prestige-menu>
+    <options-menu></options-menu>
+    <level-select></level-select>
+    <level-stats></level-stats>
+
+    <div class="end-level confirm" ng-if="zm.confirmCallback">
+      <div><label>{{zm.confirmMessage}}</label></div>
+      <button ng-click="zm.confirmCallback();">Yes</button><button ng-click="zm.confirmCancel();">No</button>
+    </div>
+
+    <div class="start-game" ng-if="zm.model.currentState == zm.model.states.startGame">
+      <h2>Incremancer</h2>
+      <h4>Take control of a horde of zombies to ravage small towns</h4>
+      <ul>
+        <li ng-repeat="text in zm.howToPlay">{{text}}</li>
+      </ul>
+      <a href="https://discord.gg/TxPyNDh" target="_blank">Join the Discord - https://discord.gg/TxPyNDh</a>
+      <h3 ng-if="zm.model.offlineMessage">{{zm.model.offlineMessage}}</h3>
+      <button ng-click="zm.startGame();">Start Level {{zm.model.level}}</button>
+    </div>
+
+    <div class="end-level" ng-if="zm.model.currentState == zm.model.states.failed">
+      <h2>Level {{zm.model.level}} Failed</h2>
+      <h4>You have been defeated</h4>
+      <button ng-click="zm.model.startLevel(zm.model.level - 1);">Go back to Level {{zm.model.level - 1}}</button>
+      <button ng-click="zm.model.startLevel(zm.model.level);">Retry Level {{zm.model.level}}</button>
+    </div>
+
+    <div class="end-level" ng-if="zm.model.currentState == zm.model.states.levelCompleted">
+      <h2>Level {{zm.model.level}} Complete</h2>
+      <h4>All the humans are either dead or undead!</h4>
+      <h4 ng-if="zm.model.prestigePointsEarned > 0">You have earned {{zm.model.prestigePointsEarned}} prestige points</h4>
+      <h4 ng-if="zm.model.endLevelBones" style="margin:1em">Your bone collectors have gathered the remaining {{zm.model.endLevelBones}} bones from the town</h4>
+      <button ng-click="zm.nextLevel();">Start Level {{zm.model.level + 1}}</button>
+    </div>
+
+    <div class="start-game" ng-if="zm.model.currentState == zm.model.states.prestiged">
+      <h2>You have prestiged!</h2>
+      <p>It's time to start from the beginning again, but this time stronger and faster.</p>
+      <h4>You have {{zm.model.persistentData.prestigePointsToSpend}} prestige points to spend</h4>
+      <p>It is recommended to spend your points before clicking start game</p>
+      <p>as some of their effects will only activate when a new level is started.</p>
+      <button ng-click="zm.startGame();">Start Level {{zm.model.level}}</button>
+    </div>
+  </body>
+</html>

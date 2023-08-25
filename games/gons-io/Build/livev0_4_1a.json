@@ -1,0 +1,13 @@
+{
+"companyName": "Sam Hogan",
+"productName": "Gons.io",
+"dataUrl": "livev0_4_1a.data.unityweb",
+"wasmCodeUrl": "livev0_4_1a.wasm.code.unityweb",
+"wasmFrameworkUrl": "livev0_4_1a.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"backgroundUrl": "livev0_4_1a.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF"
+}

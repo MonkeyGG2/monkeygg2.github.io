@@ -1,0 +1,88 @@
+<div class="shop" ng-if="zm.sidePanels.factory">
+  <div class="shop-title">
+    <h2>Factory</h2>
+    <button ng-click="zm.closeSidePanels();">Close</button>
+  </div>
+  <div class="tabs">
+    <button ng-click="zm.factory.changeFactoryTab('parts');" class="parts {{zm.factoryTab == 'parts' ? 'active' : ''}}">Parts</button>
+    <button ng-click="zm.factory.changeFactoryTab('creatures');" class="blood {{zm.factoryTab == 'creatures' ? 'active' : ''}}" ng-if="zm.model.constructions.monsterFactory">Creatures</button>
+    <button ng-click="zm.factory.changeFactoryTab('level');" class="blood {{zm.factoryTab == 'level' ? 'active' : ''}}" ng-if="zm.model.constructions.monsterFactory">Upgrade</button>
+  </div>
+  <p ng-if="zm.factoryTab == 'parts'">You currently have {{zm.factoryStats.machines}} machines, producing an average of {{zm.factoryStats.partsPerSec * zm.model.gameSpeed|whole}} creature parts per second.</p>
+  <div class="upgrades" ng-if="zm.factoryTab == 'parts'">
+    <div ng-repeat="generator in zm.upgrades" class="upgrade {{generator.costType}}">
+      <h4>{{generator.name}} ({{zm.currentRank(generator)}})</h4>
+      <h4 class="cost">{{zm.factory.generatorPrice(generator)|whole}} {{generator.costType}}</h4>
+      <div class="generator-progress clear {{zm.currentRank(generator) > 0 ? 'active' : ''}}">
+        <span class="percent" ng-style="{'animation-duration':(generator.time / zm.model.gameSpeed) + 's', 'animation-delay' : (zm.factory.delays[generator.id]) + 's'}"></span>
+      </div>
+      <button ng-click="zm.factory.buyGenerator(generator);" ng-disabled="zm.upgradeTooExpensive(generator);">{{zm.upgradeButtonText(generator)}}
+        <span class="percent" ng-style="{'width':zm.upgradePercent(generator) + '%'}"></span>
+      </button>
+      <button ng-click="generator.selected = !generator.selected" class="info  {{generator.selected ? 'active' : ''}}">i</button>
+      <button ng-click="generator.auto = !generator.auto" class="info {{generator.auto ? 'active' : ''}}" ng-if="zm.model.autoUpgrades">{{generator.auto ? 'On' : 'Auto'}}</button>
+      <div class="clear"></div>
+      <p ng-show="generator.selected">{{generator.description}}</p>
+      <p ng-show="generator.selected">Owned: {{zm.currentRank(generator)}} - Producing {{zm.currentRank(generator) * generator.produces|decimal}} parts every {{generator.time}} seconds</p>
+    </div>
+  </div>
+  <p ng-if="zm.factoryTab == 'creatures'">You currently have {{zm.model.creatureCount}} creatures, and a maximum of {{zm.model.creatureLimit}}.</p>
+  <p ng-if="zm.factoryTab == 'creatures'">Creatures can be automatically built until they reach your set limit.</p>
+  <div class="upgrades" ng-if="zm.factoryTab == 'creatures'">
+    <div ng-repeat="creature in zm.upgrades" class="upgrade parts">
+      <h4>{{creature.name}} Level:{{creature.level}}</h4>
+      <h4 class="cost">{{zm.factory.creaturePrice(creature)|whole}} parts</h4>
+      <div class="clear"></div>
+      <button ng-click="zm.factory.buyCreature(creature);" ng-disabled="!zm.factory.canBuildCreature(creature)">{{zm.factory.creatureButtonText(creature)}}
+        <span class="percent" ng-style="{'width':zm.factory.creaturePercent(creature) + '%'}"></span>
+      </button>
+      <button ng-click="creature.selected = !creature.selected" class="info  {{creature.selected ? 'active' : ''}}">i</button>
+      <p ng-show="creature.selected">{{creature.description}}</p>
+      <div class="clear" style="margin-top:5px;">
+        <button ng-click="zm.factory.autoBuild(creature, -1)">-</button><span style="padding:0 10px;">Auto build {{creature.autobuild}}</span><button ng-click="zm.factory.autoBuild(creature, 1)">+</button>
+      </div>
+    </div>
+  </div>
+  <p ng-if="zm.factoryTab == 'level'">Each time you level up a creature its health and damage will increase by 75%, but the cost will increase by 100%. Make sure you can afford it because there's no going back.</p>
+  <div class="upgrades" ng-if="zm.factoryTab == 'level'">
+    <div ng-repeat="creature in zm.upgrades" class="upgrade parts">
+      <h4>{{creature.name}} Level:{{creature.level}}</h4>
+      <h4 class="cost">{{zm.factory.creatureLevelPrice(creature)|whole}} parts</h4>
+      <div class="clear"></div>
+      <button ng-click="zm.factory.levelCreature(creature);" ng-disabled="!zm.factory.canLevelCreature(creature)">{{zm.factory.creatureLevelButtonText(creature)}}
+        <span class="percent" ng-style="{'width':zm.factory.creatureLevelPercent(creature) + '%'}"></span>
+      </button>
+      <button ng-click="creature.selected = !creature.selected" class="info  {{creature.selected ? 'active' : ''}}">i</button>
+      <table style="width:100%;margin-top:5px;text-align: left;" ng-show="creature.selected">
+        <tr>
+          <th colspan="2">Current Level: {{creature.level}}</th>
+          <th colspan="2">Next Level: {{creature.level+1}}</th>
+        </tr>
+        <tr>
+          <th>Health</th>
+          <td>{{zm.factory.creatureStats(creature).thisLevel.health|decimal}}</td>
+          <th>Health</th>
+          <td>{{zm.factory.creatureStats(creature).nextLevel.health|decimal}}</td>
+        </tr>
+        <tr>
+          <th>Damage</th>
+          <td>{{zm.factory.creatureStats(creature).thisLevel.damage|decimal}}</td>
+          <th>Damage</th>
+          <td>{{zm.factory.creatureStats(creature).nextLevel.damage|decimal}}</td>
+        </tr>
+        <tr>
+          <th>Speed</th>
+          <td>{{creature.speed}}</td>
+          <th>Speed</th>
+          <td>{{creature.speed}}</td>
+        </tr>
+        <tr>
+          <th>Cost</th>
+          <td>{{zm.factory.creatureStats(creature).thisLevel.cost|decimal}}</td>
+          <th>Cost</th>
+          <td>{{zm.factory.creatureStats(creature).nextLevel.cost|decimal}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

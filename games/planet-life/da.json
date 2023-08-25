@@ -1,0 +1,8 @@
+translations = {
+	"settings.about.headline": "Om os",
+
+	"settings.sound.off": "Lyd (fra)",
+
+	"settings.donate.headline": "Donér",
+	"settings.donate.description": "By donating, you are showing your appreciation for this quirky little game, and by that increasing the chance that we will spend more time on it later.</br></br> You are also being an extremely amazing person",
+};

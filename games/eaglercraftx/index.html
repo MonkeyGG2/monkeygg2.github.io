@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Play minecraft 1.8 in your browser" />
+    <meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
+    <title>EaglercraftX 1.8</title>
+    <meta property="og:locale" content="en-US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EaglercraftX 1.8" />
+    <meta property="og:description" content="Play minecraft 1.8 in your browser" />
+    <meta property="og:image" content="favicon.png" />
+    <link type="image/png" rel="shortcut icon" href="favicon.png" />
+    <script type="text/javascript" src="classes.js"></script>
+    <script type="text/javascript" src="fix-webm-duration.js"></script>
+    <script type="text/javascript">
+      "use strict";
+      window.addEventListener("load", () => {
+        if (document.location.href.startsWith("file:")) {
+          alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
+        } else {
+          // %%%%%%%%% launch options %%%%%%%%%%%%
+
+          window.eaglercraftXOpts = {
+            container: "game_frame",
+            assetsURI: "assets.epk",
+            localesURI: "lang/",
+            servers: [
+                { addr: "wss://ffb34837-a1e2-43f1-98bd-5637d0b193d0.id.repl.co", name: "MonkeyGG2 Server" }
+              /* example: { addr: "ws://localhost:8081/", name: "Local test server" } */
+            ],
+            mainMenu: {
+							splashes: ["OrangutanGG2!", "pay attention", "Violet or Purple?", "Yeeeeeee!", "yeee",
+								"EEEEEEEEE!", "Suggest stuff in MonkeyGG2 Discord!", "Me when 5k users :O", "C(O_O)D", "United States-craft", "This is targeted to: no one yet",
+								"MonkeyGG2 is good", "MonkeyGG3?"
+							], eaglerLogo: false
+						}
+          };
+
+          // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+          var q = window.location.search;
+          if (typeof q === "string" && q.startsWith("?")) {
+            q = new URLSearchParams(q);
+            var s = q.get("server");
+            if (s) window.eaglercraftXOpts.joinServer = s;
+          }
+
+          main();
+        }
+      });
+    </script>
+  </head>
+  <body style="margin: 0px; width: 100vw; height: 100vh; overflow: hidden;" id="game_frame"></body>
+</html>

@@ -1,0 +1,100 @@
+{"frames": {
+
+"portal_10":
+{
+	"frame": {"x":1086,"y":2,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_11":
+{
+	"frame": {"x":815,"y":2,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_12":
+{
+	"frame": {"x":544,"y":1126,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_13":
+{
+	"frame": {"x":544,"y":564,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_14":
+{
+	"frame": {"x":544,"y":2,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_15":
+{
+	"frame": {"x":273,"y":1126,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_16":
+{
+	"frame": {"x":273,"y":564,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_17":
+{
+	"frame": {"x":273,"y":2,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_18":
+{
+	"frame": {"x":2,"y":1126,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_19":
+{
+	"frame": {"x":2,"y":564,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+},
+"portal_20":
+{
+	"frame": {"x":2,"y":2,"w":269,"h":560},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":269,"h":560},
+	"sourceSize": {"w":269,"h":560}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "atlasPortal.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:877ee077192d75b6c32c67789bc8680f:6873f9faa3725da01610aafa094d9654:c2a7b7de389717cee883fcbba543822d$"
+}
+}

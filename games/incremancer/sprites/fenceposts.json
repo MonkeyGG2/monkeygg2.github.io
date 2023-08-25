@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "fencepost1.png":
+    {
+      "frame":{"x":0,"y":0,"w":9,"h":9},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":9,"h":9},
+      "sourceSize":{"w":9,"h":9}
+    },
+    "fencepost2.png":
+    {
+      "frame":{"x":0,"y":9,"w":9,"h":9},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":9,"h":9},
+      "sourceSize":{"w":9,"h":9}
+    },
+    "fencepost3.png":
+    {
+      "frame":{"x":0,"y":18,"w":9,"h":9},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":9,"h":9},
+      "sourceSize":{"w":9,"h":9}
+    },
+    "fencepost4.png":
+    {
+      "frame":{"x":0,"y":27,"w":9,"h":9},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":9,"h":9},
+      "sourceSize":{"w":9,"h":9}
+    }
+  },
+  "meta": {
+    "image":"fenceposts.png",
+    "format":"RGBA8888",
+    "size":{"w":9,"h":36},
+    "scale":1
+  }
+}

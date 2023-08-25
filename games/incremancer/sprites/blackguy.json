@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "blackguy1.png":
+    {
+      "frame":{"x":0,"y":0,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    },
+    "blackguy2.png":
+    {
+      "frame":{"x":0,"y":8,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    },
+    "blackguy3.png":
+    {
+      "frame":{"x":0,"y":16,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    },
+    "blackguy4.png":
+    {
+      "frame":{"x":0,"y":24,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    }
+  },
+  "meta": {
+    "image":"blackguy.png",
+    "format":"RGBA8888",
+    "size":{"w":8,"h":32},
+    "scale":1
+  }
+}

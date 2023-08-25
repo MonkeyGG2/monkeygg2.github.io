@@ -1,0 +1,26 @@
+{
+  "frames": {
+    "harpy1.png":
+    {
+      "frame":{"x":0,"y":0,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    },
+    "harpy2.png":
+    {
+      "frame":{"x":0,"y":8,"w":8,"h":8},
+      "rotated":false,
+      "trimmed":false,
+      "spriteSourceSize":{"x":0,"y":0,"w":8,"h":8},
+      "sourceSize":{"w":8,"h":8}
+    }
+  },
+  "meta": {
+    "image":"harpy.png",
+    "format":"RGBA8888",
+    "size":{"w":8,"h":16},
+    "scale":1
+  }
+}

@@ -1,0 +1,18 @@
+<div class="level-select scroll" ng-if="zm.levelSelect.shown">
+  <label>Level Select</label>
+  <p>You can go directly to any level previously completed, but only after the preceding boss level has been beaten.</p>
+  <div class="ranges">
+    <button ng-repeat="range in zm.levelSelect.levelRanges" ng-click="zm.levelSelect.selectRange(range)" class="{{zm.levelSelect.start == range ? 'active' : ''}}">Levels {{range}} to {{range + zm.levelSelect.levelsPerPage - 1}}</button>
+  </div>
+  <div class="levels">
+    <button ng-repeat="level in zm.levelSelect.levels" ng-click="zm.levelSelect.select(level)" class="{{level.trophy ? 'trophy' : ''}} {{level.completed ? 'completed' : ''}} {{level.bossStage ? 'boss' : ''}} {{zm.levelSelect.level.level == level.level ? 'active' : ''}}" ng-disabled="level.locked">{{level.level}}</button>
+  </div>
+  <div class="clear start">
+    <label ng-if="zm.levelSelect.level.completed">Level {{zm.levelSelect.level.level}} already completed. No prestige points will be rewarded.</label>
+    <label ng-if="!zm.levelSelect.level.completed">Level {{zm.levelSelect.level.level}} has yet to be completed. {{zm.levelSelect.level.level}} prestige points are available.</label>
+    <label ng-if="zm.levelSelect.level.bossStage">Warning: Level {{zm.levelSelect.level.level}} is a boss level. On boss levels your graveyard can be attacked. The health of your graveyard is increased by upgrading your zombie health.</label>
+    <label ng-if="zm.levelSelect.level.trophy">A trophy is available on this level.</label>
+    <button ng-click="zm.levelSelect.startLevel()" ng-if="zm.levelSelect.level" class="clear">Start Level {{zm.levelSelect.level.level}}</button>
+    <button ng-click="zm.levelSelect.show()" class="clear">Cancel</button>
+  </div>
+</div>

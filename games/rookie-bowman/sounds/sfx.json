@@ -1,0 +1,115 @@
+{
+  "resources": [
+    "output.ogg",
+    "output.m4a",
+    "output.mp3",
+    "output.ac3"
+  ],
+  "spritemap": {
+    "blockjump": {
+      "start": 0,
+      "end": 0.14038548752834468,
+      "loop": false
+    },
+    "bonk": {
+      "start": 2,
+      "end": 2.408004535147392,
+      "loop": false
+    },
+    "bubble": {
+      "start": 4,
+      "end": 4.142403628117914,
+      "loop": false
+    },
+    "chardie": {
+      "start": 6,
+      "end": 6.14281179138322,
+      "loop": false
+    },
+    "charjump": {
+      "start": 8,
+      "end": 8.230839002267574,
+      "loop": false
+    },
+    "checkpoint": {
+      "start": 10,
+      "end": 10.90045351473923,
+      "loop": false
+    },
+    "earthquake": {
+      "start": 12,
+      "end": 15.057233560090703,
+      "loop": false
+    },
+    "fire": {
+      "start": 17,
+      "end": 17.241995464852607,
+      "loop": false
+    },
+    "flicker": {
+      "start": 19,
+      "end": 19.220702947845805,
+      "loop": false
+    },
+    "getitem": {
+      "start": 21,
+      "end": 22.141315192743765,
+      "loop": false
+    },
+    "hover": {
+      "start": 24,
+      "end": 24.24707482993197,
+      "loop": false
+    },
+    "jump": {
+      "start": 26,
+      "end": 26.236167800453515,
+      "loop": false
+    },
+    "laser": {
+      "start": 28,
+      "end": 28.38233560090703,
+      "loop": false
+    },
+    "rockexplode": {
+      "start": 30,
+      "end": 31.263514739229024,
+      "loop": false
+    },
+    "shield": {
+      "start": 33,
+      "end": 33.270113378684805,
+      "loop": false
+    },
+    "speed": {
+      "start": 35,
+      "end": 36.145215419501135,
+      "loop": false
+    },
+    "splash": {
+      "start": 38,
+      "end": 39.3312925170068,
+      "loop": false
+    },
+    "stomp": {
+      "start": 41,
+      "end": 42.95920634920635,
+      "loop": false
+    },
+    "switch": {
+      "start": 44,
+      "end": 44.20802721088435,
+      "loop": false
+    },
+    "teleport": {
+      "start": 46,
+      "end": 46.087165532879816,
+      "loop": false
+    },
+    "throw": {
+      "start": 48,
+      "end": 48.14229024943311,
+      "loop": false
+    }
+  }
+}
