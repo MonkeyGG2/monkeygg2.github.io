@@ -6,11 +6,29 @@ function changeLoadingTip() {
 }
 
 changeLoadingTip();
-$("#everything-else").hide();
+$("#everything-else, #page-loader, .games, .proxy, .settings").hide();
 
 let changeTip = setInterval(() => {
     changeLoadingTip();
 }, 3000);
+
+fetch("./game-info.jsonc").then((e) => e.text()).then((jsonc) => {
+    // removing all the comments from the jsonc file
+    let json = JSON.parse(jsonc.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m));
+    
+    let gamesList = $("#gamesList");
+    for (game in json) {
+        gamesList.append(`<li url="games/${json[game]}">${game}</li>`);
+    }
+
+    $("#gamesList li").on("click", function() {
+        let url = $(this).attr("url");
+        $("#everything-else").fadeOut();
+        $("#page-loader").fadeIn();
+        $("#page-loader iframe")[0].src = url;
+        $("#page-loader iframe")[0].focus();
+    });    
+});
 
 $(window).on("load", () => {
     $(".track").attr("stroke", "url(#grad2)");

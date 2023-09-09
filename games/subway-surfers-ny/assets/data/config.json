@@ -1,0 +1,21 @@
+{
+  "lang": "en",
+  "bundlepath": " ",
+  "env": "1103_seoul",
+  "env_builtin": "1103_seoul",
+  "char": "jake",
+  "loading_en": "loading",
+  "loading_pt-br": "carregando",
+  "revivals": 3,
+  "reviveTimeout": 6,
+  "pokiSdkDebug": false,
+  "commercials": false,
+  "rewardedBreaks": false,
+  "rewardedBreaksMobile": false,
+  "autoload": false,
+  "leaderboards": false,
+  "useDefaultPrompt": false,
+  "vconsole": false,
+  "monitor": false,
+  "maxNicknameChars": 15
+}
