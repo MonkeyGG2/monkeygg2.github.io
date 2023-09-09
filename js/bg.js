@@ -21,6 +21,9 @@ changeTitleColor();
 const Particles = [];
 let time = 0;
 document.body.addEventListener("click", () => {
+  if (inGame) {
+    return;
+  }
   opt.h1 = rand(0, 360);
   opt.h2 = rand(0, 360);
   opt.s1 = rand(20, 90);
@@ -30,7 +33,7 @@ document.body.addEventListener("click", () => {
   opt.angle += deg(random(60, 60)) * (Math.random() > 0.5 ? 1 : -1);
   setTimeout(() => {
     changeTitleColor();
-  }, 100);
+  }, 120);
 
   for (let p of Particles) {
     p.randomize();
@@ -142,19 +145,22 @@ function setup() {
     Particles.push(new Particle(Math.random() * width, Math.random() * height));
   }
   strokeWeight(opt.strokeWeight);
-  console.log(document.getElementById("title").style);
 }
 
 /*--------------------
 Draw
 --------------------*/
-function draw() {
-  time++;
-  background(0, 100 - opt.tail);
 
-  for (let p of Particles) {
-    p.update();
-    p.render();
+let inGame = true;
+function draw() {
+  if (!inGame && document.visibilityState == "visible") {
+    time++;
+    background(0, 100 - opt.tail);
+  
+    for (let p of Particles) {
+      p.update();
+      p.render();
+    }  
   }
 }
 

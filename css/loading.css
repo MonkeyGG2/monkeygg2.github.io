@@ -22,7 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 6;
-    pointer-events: none;
+    cursor: progress;
 }
 
 .loading-icon {
@@ -35,7 +35,6 @@ body {
     width: 256;
     height: 256;
     scale: 0.6;
-    pointer-events: visiblePainted;
 }
 
 .loading-tip {
