@@ -151,7 +151,7 @@ function setup() {
 Draw
 --------------------*/
 
-let inGame = true;
+let inGame = false;
 function draw() {
   if (!inGame && document.visibilityState == "visible") {
     time++;
