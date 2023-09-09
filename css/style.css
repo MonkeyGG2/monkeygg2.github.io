@@ -232,7 +232,7 @@ img[alt="Proxy Icon"] {
     font-family: var(--font-family);
     transition: all 0.2s ease-in;
     cursor: pointer;
-}
+}   
 
 .card h5 {
     font-size: 2rem;
@@ -242,6 +242,7 @@ img[alt="Proxy Icon"] {
 
 .card:hover {
     background-color: var(--hover-color);
+    transform: scale(1.05);
 }
 
 #page-loader iframe {
