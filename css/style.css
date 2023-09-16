@@ -175,6 +175,13 @@ logo img {
     top: -2.5%;
     left: -1%;
     scale: 0.45;
+    pointer-events: painted;
+    transition: all 0.2s ease-in-out;
+}
+
+logo img:hover {
+    filter: brightness(80%);
+    transform: scale(0.95);
 }
 
 img[alt="MonkeyGG2 Icon"] {
@@ -255,4 +262,113 @@ img[alt="Proxy Icon"] {
     margin: 0;
     padding: 0;
     border: 0;
+}
+
+button.in-game-button {
+    cursor: pointer;
+    position: absolute;
+    z-index: 9999;
+    top: 61px;
+    left: 0;
+    width: 75px;
+    height: 50px;
+    background: var(--hover-color);
+    border-radius: 0 290486px 290486px 0;
+    color: #000;
+    padding: 0 10px;
+    line-height: 50px;
+    min-height: 50px;
+    border: none;
+    border-bottom: 3px solid var(--font-color);
+    will-change: transform;
+    animation: bounceY 2s .5s;
+    transition: transform .5s cubic-bezier(.55,0,.1,1);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+button.in-game-button svg {
+    pointer-events: none;
+    color: var(--font-color);
+    margin-right: .625rem;
+    display: inline-block
+}
+
+button.in-game-button img {
+    pointer-events: none;
+    width: 33px
+}
+
+button.in-game-button:active {
+    background: #aaa
+}
+
+button.in-game-button[attr-active=true] {
+    transform: translateX(0)
+}
+
+button.in-game-button:not(hover) {
+    transform: translateX(-32px)
+}
+
+button.in-game-button:hover, button.in-game-button:active {
+    transform: translateX(0px)
+}
+
+@media(max-height: 350px) and (orientation:landscape) {
+    button.in-game-button[attr-active=true] {
+        transform:translateX(-75px)
+    }
+}
+
+button.in-game-button[attr-snapped=true] svg {
+    display: none
+}
+
+button.in-game-button[attr-snapped=true] img {
+    transform: translate(-5px)
+}
+
+#refresh{right:0;border-radius: 290486px 0 0 290486px;left:auto}
+
+#refresh:not(hover) {
+    transform: translateX(32px);
+}
+
+#refresh:hover {
+    transform: translateX(0px);
+}
+
+#disabled {
+    background: var(--button-color);
+    filter: brightness(80%);
+    padding: 0;
+    font-family: var(--font-family);
+    font-size: 1.5rem;
+    max-width: 20vw;
+    text-align: center;
+    color: red;
+}
+
+#disabled[open] {
+    animation: fade 0.2s ease-in-out forwards;
+}
+
+#disabled div {
+    padding: 3rem;
+}
+
+#disabled::backdrop {
+    pointer-events: disabled;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.9;
+    }
 }
