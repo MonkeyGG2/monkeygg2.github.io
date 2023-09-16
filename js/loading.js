@@ -1,3 +1,7 @@
+let config;
+let games;
+let themes;
+
 function changeLoadingTip() {
     const tips = ["Press CTRL+C to cloak your current tab", "Press CTRL+M to mask your current tab", "Press CTRL+B to go back to the home page", "Join our discord server!", "Make sure to enable popups for automatic cloak", "Why are you here?"]
     const element = document.getElementsByClassName("loading-tip")[0];
@@ -12,13 +16,16 @@ let changeTip = setInterval(() => {
     changeLoadingTip();
 }, 3000);
 
-fetch("./game-info.jsonc").then((e) => e.text()).then((jsonc) => {
+fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
     // removing all the comments from the jsonc file
     let json = JSON.parse(jsonc.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m));
+    games = json["games"];
+    themes = json["themes"];
+    config = json["config"];
     
     let gamesList = $("#gamesList");
-    for (game in json) {
-        gamesList.append(`<li url="games/${json[game]}">${game}</li>`);
+    for (game in games) {
+        gamesList.append(`<li url="games/${json[game["path"]]}" ${game["aliases"] ? "aliases=\"" + game["aliases"].join(',') + "\"" : ''}>${game}</li>`);
     }
 
     $("#gamesList li").on("click", function() {
@@ -49,6 +56,14 @@ $(window).on("load", () => {
         }
     });
 });
+
+jQuery.fn.extend({showModal: function() {
+    return this.each(function() {
+       if(this.tagName=== "DIALOG"){
+            this.showModal();
+        }
+    });
+}});
 
 (function () {
     let previousTime = Date.now();

@@ -4,7 +4,7 @@ Vars
 const deg = a => Math.PI / 180 * a;
 const rand = (v1, v2) => Math.floor(v1 + Math.random() * (v2 - v1));
 const opt = {
-  particles: window.width / 500 ? 1000 : 500,
+  particles: window.width / 500 ? 250 : 125,
   noiseScale: 0.005,
   angle: Math.PI / 180 * -90,
   h1: rand(0, 360),
