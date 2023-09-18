@@ -108,12 +108,11 @@ body.noscript {
 
 .homepage,
 .games,
-.proxy,
 .settings {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 15rem;
+  margin-top: 11rem;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -142,8 +141,8 @@ body.noscript {
   text-align: center;
   width: fit-content;
   height: fit-content;
-  margin-top: 3.5rem;
-  font-size: 128px;
+  margin-top: 2.5rem;
+  font-size: 6rem;
   font-weight: 100;
   font-family: 'Trispace', sans-serif;
   letter-spacing: 5px;
@@ -165,7 +164,7 @@ body.noscript {
 }
 
 #gamesList li {
-  padding: 1rem;
+  padding: 1.4%;
   transition: all 0.2s ease-in;
   letter-spacing: 1px;
   background-color: var(--games-color);
@@ -228,6 +227,34 @@ img[alt="MonkeyGG2 Icon"] {
 
 img[alt="Proxy Icon"] {
   margin: -1rem 0;
+}
+
+@media screen and (max-height: 700px) {
+  .card .img-container {
+    margin: 1rem 0;
+    max-width: 128px;
+    max-height: 128px;
+  }
+  .card .img-container>img,svg {
+    max-width: 128px;
+    max-height: 128px;
+  }
+  logo img {
+    top: -4%;
+    left: -2%;
+  }
+  .card p {
+    font-size: 1rem;
+  }
+  .card h5 {
+    font-size: 1.8rem;
+  }
+  #gamesList li {
+    font-size: 0.95rem;
+  }
+  #gamesList {
+    height: 55vh;
+  }
 }
 
 .card .img-container {
@@ -368,6 +395,7 @@ input:active+.switch__wrapper .switch__toggle {
 input:checked+.switch__wrapper {
   transform-origin: right center;
   animation-name: checked__wrapper--r;
+  background-color: var(--block-color);
 }
 
 input:checked+.switch__wrapper .switch__toggle {
@@ -471,9 +499,7 @@ input:checked+.switch__wrapper .switch__toggle {
   }
 }
 
-
 /*input*/
-
 .text-field {
   border: 1px solid var(--bg);
   border-radius: 3px;
@@ -499,8 +525,36 @@ input:checked+.switch__wrapper .switch__toggle {
 }
 
 /* Hover effect for the button */
-.submit-button:hover {
+.submit-button:hover, .save-button:hover {
   background-color: var(--hover-color);
+}
+
+.save-button {
+  background-color: var(--button-color);
+  color: var(--font-color);
+  border-radius: 12px;
+  border: solid transparent;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 20%;
+}
+
+h4 {
+  font-family: 'Trispace', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.setting h5 {
+  font-family: 'Trispace', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 1000;
+  margin: 0 0 1% 0;
+}
+
+.setting {
+  margin: 5% 0;
 }
 
 button.in-game-button {
@@ -582,6 +636,12 @@ button.in-game-button[attr-snapped=true] img {
 
 #refresh:hover {
   transform: translateX(0px);
+}
+
+#refresh svg {
+  margin-right: 0;
+  margin-left: 0.625rem;
+  rotate: 180deg;
 }
 
 #disabled {
