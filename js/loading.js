@@ -25,7 +25,7 @@ fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
     
     let gamesList = $("#gamesList");
     for (game in games) {
-        gamesList.append(`<li url="games/${json[game["path"]]}" ${game["aliases"] ? "aliases=\"" + game["aliases"].join(',') + "\"" : ''}>${game}</li>`);
+        gamesList.append(`<li url="games/${games[game]["path"]}" ${games[game]["aliases"] ? "aliases=\"" + games[game]["aliases"].join(',') + "\"" : ''}>${game}</li>`);
     }
 
     $("#gamesList li").on("click", function() {
@@ -33,8 +33,9 @@ fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
         inGame = true;
         $("#everything-else").fadeOut();
         $("#page-loader").fadeIn();
-        $("#page-loader iframe")[0].src = url;
+        $("#page-loader iframe").attr("src", url);
         $("#page-loader iframe")[0].focus();
+        currentMenu = $("#page-loader");
     });    
 });
 
@@ -91,9 +92,10 @@ jQuery.fn.extend({showModal: function() {
     fpsMeter.style.right = "1%";
     fpsMeter.style.zIndex = "50";
     fpsMeter.style.background = "rgba(0, 0, 0, 0.5)";
+    fpsMeter.style.opacity = "0.5";
     fpsMeter.style.padding = "10px";
     fpsMeter.style.color = "rgba(255, 255, 255, 0.75)";
     fpsMeter.style.fontFamily = "'Flexi IBM VGA True (437', monospace";
     fpsMeter.style.fontSize = "24px";
     fpsMeter.style.zIndex = "10000";
-})();  
+})();

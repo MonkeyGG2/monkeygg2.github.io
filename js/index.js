@@ -10,9 +10,11 @@ $(".column button .card").on("click", function () {
         }
         $("#everything-else").fadeOut(300, () => {
             $("#page-loader").fadeIn(200);
-            $("#page-loader").attr("src", "/proxy");
+            $("#page-loader iframe").attr("src", config["proxyPath"] || "/proxy");
+            $("#page-loader iframe")[0].focus();
         });
         currentMenu = $("#page-loader");
+        inGame = true;
         return;
     }
 
@@ -24,6 +26,7 @@ $(".column button .card").on("click", function () {
 
 $("logo img").on("click", returnHome);
 $("#gameButton").on("click", returnHome);
+$("#refresh").on("click", refreshPage);
 
 $("dialog").on("click", function (e) {
     if (!e.originalEvent.target.closest("div")) {
@@ -293,8 +296,12 @@ function dragElement(elmnt) {
 function returnHome() {
     currentMenu.fadeOut(300, () => {
         $("#everything-else").fadeIn(200);
+        $(".games").hide();
+        $(".homepage").fadeIn(200);
     });
     currentMenu = $(".homepage");
+    inGame = false;
+    console.log("e");
 }
 
 /**
@@ -303,5 +310,12 @@ function returnHome() {
  * @return {void}
  */
 function refreshPage() {
-    location.reload();
+    const oldUrl = $("#page-loader iframe").attr("src");
+    console.log(oldUrl);
+    $("#page-loader iframe").attr("src", "");
+
+    // delay is needed for some reason
+    setTimeout(() => {
+        $("#page-loader iframe").attr("src", oldUrl);
+    }, 10);
 }
