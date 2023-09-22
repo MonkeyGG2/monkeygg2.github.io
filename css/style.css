@@ -219,6 +219,7 @@ logo img {
 logo img:hover {
   filter: brightness(80%);
   transform: scale(0.95);
+  cursor: pointer;
 }
 
 img[alt="MonkeyGG2 Icon"] {
