@@ -208,34 +208,6 @@ function updateList() {
 $("#search").on("input", updateList);
 $("#sort").on("change", updateList);
 
-/**
- * Generates a clone of the current window in an about:blank.
- *
- * @return {void}
- */
-function makeclone() {
-    if ((window.top.location.href != "about:blank")) {
-        var url = window.location.href;
-        win = window.open();
-        if (!win || win.closed || typeof win.closed == 'undefined') {
-            alert('Please allow Pop-Ups - By disabling popups, you allow this website to show up in your history.');
-        } else {
-            win.document.body.style.margin = "0";
-            win.document.body.style.height = "100vh";
-            var iframe = win.document.createElement("iframe");
-            iframe.style.border = "none";
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.margin = "0";
-            iframe.referrerpolicy = "no-referrer";
-            iframe.allow = "fullscreen";
-            iframe.src = url.toString();
-            win.document.body.appendChild(iframe);
-            window.location.replace("https://classroom.google.com");
-        }
-    }
-}
-
 dragElement(document.getElementById("gameButton"));
 dragElement(document.getElementById("refresh"));
 
@@ -318,4 +290,97 @@ function refreshPage() {
     setTimeout(() => {
         $("#page-loader iframe").attr("src", oldUrl);
     }, 10);
+}
+
+/**
+ * Generates a clone of the current window in an about:blank.
+ *
+ * @return {void}
+ */
+function makeclone(url) {
+    if ((window.top.location.href !== "about:blank")) {
+        var url = window.location.href;
+        const win = window.open();
+        if (!win || win.closed || typeof win.closed == 'undefined') {
+            alert('Please allow Pop-Ups - By disabling popups, you allow this website to show up in your history.');
+        } else {
+            win.document.body.style.margin = "0";
+            win.document.body.style.height = "100vh";
+            var iframe = win.document.createElement("iframe");
+            iframe.style.border = "none";
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.margin = "0";
+            iframe.referrerpolicy = "no-referrer";
+            iframe.allow = "fullscreen";
+            iframe.src = url.toString();
+            win.document.body.appendChild(iframe);
+            window.location.replace(url);
+        }
+    }
+}
+
+/**
+ * Changes the browser tab's title and favicon
+ *
+ * @return {void}
+ */
+function mask(title, iconUrl) {
+     const e = window.top.document;
+     e.title = title;
+     var link = e.querySelector("link[rel*='icon']") || document.createElement('link');
+     link.type = 'image/x-icon';
+     link.rel = 'shortcut icon';
+     link.href = iconUrl;
+     e.getElementsByTagName('head')[0].appendChild(link);
+}
+
+function popupsAllowed(){
+    var windowName = 'userConsole'; 
+    var popUp = window.open('/popup-page.php', windowName, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
+    if (popUp == null || typeof(popUp)=='undefined') {  
+        return false;
+    } 
+    else {  
+        popUp.close();
+        return true;
+    }
+}
+
+const prefrenceDefaults = {
+    cloak: true,
+    cloakUrl: "https://classroom.google.com",
+    mask: true,
+    maskTitle: "Home",
+    maskIconUrl: "https://ssl.gstatic.com/classroom/ic_product_classroom_32.png"
+};  
+
+
+if (localStorage.getItem("prefrences") == null) {
+    localStorage.setItem("prefrences", JSON.stringify(prefrenceDefaults));
+}
+const prefrences = JSON.parse(localStorage.getItem("prefrences"));
+const maskCheckbox = document.getElementById('maskCheckbox');
+maskCheckbox.checked = prefrences.mask;
+
+
+maskCheckbox.addEventListener('change', function () {
+    preferences.mask = maskCheckbox.checked;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+});
+
+/* if (prefrences.cloak && !localStorage.getItem("cloakTabOpened")){
+    if (window.top.location.href !== "about:blank"){
+        localStorage.setItem("cloakTabOpened", "true");
+        document.addEventListener("click", (event) => {event.preventDefault(); makeclone(prefrences.cloakUrl)});
+    }
+    makeclone(prefrences.cloakUrl);
+
+    window.addEventListener("beforeunload", () => {
+        localStorage.removeItem("cloakTabOpened");
+    });
+} */
+
+if (prefrences.mask){
+    mask(prefrences.maskTitle, prefrences.maskIconUrl)
 }

@@ -254,14 +254,30 @@
 
                 <div class="setting">
                     <h5>Cloak URL</h5>
-                    <p>This site will appear in your history everytime you open MonkeyGG2.</p>
+                    <p>This site will appear in your history instead of MonkeyGG2.</p>
                     <input class="text-field" type="text" placeholder="https://classroom.google.com">
                     <button class="submit-button">Submit</button>
                 </div>
                 <div class="setting">
-                    <h5>Mask URL</h5>
-                    <p>This site's title and icon will replace MonkeyGG2's title and icon in your browser tab.</p>
-                    <input class="text-field" type="text" placeholder="https://classroom.google.com">
+                    <h5>Mask</h5>
+                    <p>Toggles if mask is applied on loading of a page automatically</p>
+                    <label class="switch">
+                        <input type="checkbox" id="maskCheckbox" hidden>
+                        <div class="switch__wrapper">
+                            <div class="switch__toggle"></div>
+                        </div>
+                    </label>
+                </div>
+                <div class="setting">
+                    <h5>Mask Title</h5>
+                    <p>This site's title will replace MonkeyGG2's title in your browser tab.</p>
+                    <input class="text-field" type="text" placeholder="Home">
+                    <button class=submit-button>Submit</button>
+                </div>
+                <div class="setting">
+                    <h5>Mask Icon URL</h5>
+                    <p>This site's icon will replace MonkeyGG2's icon in your browser tab.</p>
+                    <input class="text-field" type="text" placeholder="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png">
                     <button class=submit-button>Submit</button>
                 </div>
                 <div class="setting">
