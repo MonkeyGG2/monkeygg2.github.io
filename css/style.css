@@ -108,7 +108,8 @@ body.noscript {
 
 .homepage,
 .games,
-.settings {
+.settings
+.cloaklaunch {
   position: absolute;
   top: 0;
   left: 0;

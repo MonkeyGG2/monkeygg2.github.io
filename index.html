@@ -82,6 +82,12 @@
                 This feature has been disabled by whoever is hosting this MonkeyGG2 instance.
             </div>
         </dialog>
+        
+
+        <div class="cloaklaunch">
+            <h1>Press Anywhere to cloak</h1>
+            <h4>(If you want to stop seeing this enable popups)</h4>
+        </div>
 
         <div class="homepage">
             <div class="card-row">
@@ -246,7 +252,7 @@
         <div class="settings">
             <div class="setting-bg">
                 <h4>Settings</h4>
-
+                <h6>Notice: All changes occur on page refresh</h6>
                 <div class="setting">
                     <button class="save-button">Download Game Data</button>
                     <button class="save-button">Upload Game Data</button>
@@ -262,7 +268,7 @@
                     <h5>Mask</h5>
                     <p>Toggles if mask is applied on loading of a page automatically</p>
                     <label class="switch">
-                        <input type="checkbox" id="maskCheckbox" hidden>
+                        <input id="maskCheckboxInput" type="checkbox" hidden>
                         <div class="switch__wrapper">
                             <div class="switch__toggle"></div>
                         </div>
@@ -271,14 +277,14 @@
                 <div class="setting">
                     <h5>Mask Title</h5>
                     <p>This site's title will replace MonkeyGG2's title in your browser tab.</p>
-                    <input class="text-field" type="text" placeholder="Home">
-                    <button class=submit-button>Submit</button>
+                    <input id="maskTitleInput" class="text-field" type="text" placeholder="Home">
+                    <button id="maskTitleSubmit" class=submit-button>Submit</button>
                 </div>
                 <div class="setting">
                     <h5>Mask Icon URL</h5>
-                    <p>This site's icon will replace MonkeyGG2's icon in your browser tab.</p>
-                    <input class="text-field" type="text" placeholder="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png">
-                    <button class=submit-button>Submit</button>
+                    <p>This site's icon will replace MonkeyGG2's icon in your browser tab. (Don't forget https://)</p>
+                    <input id="maskIconInput" class="text-field" type="text" placeholder="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png">
+                    <button id="maskIconSubmit" class=submit-button>Submit</button>
                 </div>
                 <div class="setting">
                     <h5>Shortcuts</h5>
