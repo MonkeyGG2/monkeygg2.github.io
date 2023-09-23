@@ -297,7 +297,7 @@ function refreshPage() {
  *
  * @return {void}
  */
-function makeclone(url) {
+function makecloak(url = preferences.cloakUrl) {
     if ((window.top.location.href !== "about:blank")) {
         var url = window.location.href;
         const win = window.open();
@@ -325,7 +325,7 @@ function makeclone(url) {
  *
  * @return {void}
  */
-function mask(title, iconUrl) {
+function mask(title = preferences.maskTitle, iconUrl = preferences.maskIconUrl) {
      const e = window.top.document;
      e.title = title;
      var link = e.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -347,7 +347,7 @@ function popupsAllowed(){
     }
 }
 
-const prefrenceDefaults = {
+const preferencesDefaults = {
     cloak: true,
     cloakUrl: "https://classroom.google.com",
     mask: true,
@@ -356,31 +356,58 @@ const prefrenceDefaults = {
 };  
 
 
-if (localStorage.getItem("prefrences") == null) {
-    localStorage.setItem("prefrences", JSON.stringify(prefrenceDefaults));
+if (localStorage.getItem("preferences") == null) {
+    localStorage.setItem("preferences", JSON.stringify(preferencesDefaults));
 }
-const prefrences = JSON.parse(localStorage.getItem("prefrences"));
-const maskCheckbox = document.getElementById('maskCheckbox');
-maskCheckbox.checked = prefrences.mask;
+const preferences = JSON.parse(localStorage.getItem("preferences"));
+const maskCheckbox = document.getElementById('maskCheckboxInput');
+const maskTitle = document.getElementById('maskTitleInput');
+const maskIcon = document.getElementById('maskIconInput');
+maskCheckbox.checked = preferences.mask;
+maskTitle.value = preferences.maskTitle;
+maskIcon.value = preferences.maskIconUrl;
 
+if (preferences.cloak && (window.location.href === window.top.location.href)){
+    currentMenu.fadeOut(300, () => {
+        $(".cloaklaunch").fadeIn(200);
+    });
+    currentMenu = $(".cloaklaunch");
+}
 
 maskCheckbox.addEventListener('change', function () {
     preferences.mask = maskCheckbox.checked;
     localStorage.setItem('preferences', JSON.stringify(preferences));
 });
 
-/* if (prefrences.cloak && !localStorage.getItem("cloakTabOpened")){
+
+/* if it is wanted to save on input change wather than submission
+document.querySelector('.text-field').addEventListener('change', function () {
+    preferences.maskTitle = maskTitle.value;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+});
+*/
+
+document.getElementById('maskTitleSubmit').addEventListener('click', function () {
+    preferences.maskTitle = maskTitle.value;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+});
+
+document.getElementById('maskIconSubmit').addEventListener('click', function () {
+    preferences.maskIconUrl = maskIcon.value;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+});
+/* if (preferences.cloak && !localStorage.getItem("cloakTabOpened")){
     if (window.top.location.href !== "about:blank"){
         localStorage.setItem("cloakTabOpened", "true");
-        document.addEventListener("click", (event) => {event.preventDefault(); makeclone(prefrences.cloakUrl)});
+        document.addEventListener("click", (event) => {event.preventDefault(); makecloak()});
     }
-    makeclone(prefrences.cloakUrl);
+    makecloak();
 
     window.addEventListener("beforeunload", () => {
         localStorage.removeItem("cloakTabOpened");
     });
 } */
 
-if (prefrences.mask){
-    mask(prefrences.maskTitle, prefrences.maskIconUrl)
+if (preferences.mask){
+    mask()
 }
