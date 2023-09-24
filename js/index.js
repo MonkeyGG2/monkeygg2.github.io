@@ -297,7 +297,7 @@ function refreshPage() {
  *
  * @return {void}
  */
-function makecloak(url = preferences.cloakUrl) {
+function makecloak(replaceUrl = preferences.cloakUrl) {
     if ((window.top.location.href !== "about:blank")) {
         var url = window.location.href;
         const win = window.open();
@@ -315,7 +315,7 @@ function makecloak(url = preferences.cloakUrl) {
             iframe.allow = "fullscreen";
             iframe.src = url.toString();
             win.document.body.appendChild(iframe);
-            window.location.replace(url);
+            window.location.replace(replaceUrl)
         }
     }
 }
@@ -367,11 +367,17 @@ maskCheckbox.checked = preferences.mask;
 maskTitle.value = preferences.maskTitle;
 maskIcon.value = preferences.maskIconUrl;
 
-if (preferences.cloak && (window.location.href === window.top.location.href)){
-    currentMenu.fadeOut(300, () => {
-        $(".cloaklaunch").fadeIn(200);
-    });
-    currentMenu = $(".cloaklaunch");
+if (preferences.cloak && (window.location.href == window.top.location.href)){
+    if (popupsAllowed()){
+        makecloak()
+    }
+    else {
+        currentMenu.fadeOut(300, () => {
+            $(".cloaklaunch").fadeIn(200);
+        });
+        currentMenu = $(".cloaklaunch");
+        document.addEventListener("click", (event) => {event.preventDefault(); makecloak()});
+    }
 }
 
 maskCheckbox.addEventListener('change', function () {

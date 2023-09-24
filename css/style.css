@@ -109,7 +109,7 @@ body.noscript {
 .homepage,
 .games,
 .settings
-.cloaklaunch {
+{
   position: absolute;
   top: 0;
   left: 0;
@@ -119,6 +119,20 @@ body.noscript {
   justify-content: center;
   align-items: center;
   z-index: 10;
+}
+
+.cloaklaunch {
+  color: var(--font-color);
+  text-align: center;
+  font-size: 200%;
+  padding: 30vh 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--games-color);
+  border: 50px, solid, var(--bg);
+  cursor: pointer;
+
 }
 
 .games {
