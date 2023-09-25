@@ -346,6 +346,22 @@ function popupsAllowed(){
     }
 }
 
+const keySlots = document.querySelectorAll('.keySlot');
+
+keySlots.forEach((slot) => {
+    slot.addEventListener('click', () => {
+        slot.textContent = 'Press any key';
+
+        // Add a one-time event listener to capture the key press
+        const keyPressHandler = (event) => {
+            slot.textContent = event.key;
+            document.removeEventListener('keydown', keyPressHandler);
+        };
+
+        document.addEventListener('keydown', keyPressHandler);
+    });
+});
+
 const preferencesDefaults = {
     cloak: true,
     cloakUrl: "https://classroom.google.com",
@@ -359,9 +375,13 @@ if (localStorage.getItem("preferences") == null) {
     localStorage.setItem("preferences", JSON.stringify(preferencesDefaults));
 }
 const preferences = JSON.parse(localStorage.getItem("preferences"));
+const cloakCheckbox = document.getElementById('cloakCheckboxInput');
+const cloakUrl = document.getElementById('cloakUrlInput');
 const maskCheckbox = document.getElementById('maskCheckboxInput');
 const maskTitle = document.getElementById('maskTitleInput');
 const maskIcon = document.getElementById('maskIconInput');
+cloakCheckbox.checked = preferences.cloak;
+cloakUrl.value = preferences.cloakUrl;
 maskCheckbox.checked = preferences.mask;
 maskTitle.value = preferences.maskTitle;
 maskIcon.value = preferences.maskIconUrl;
@@ -384,6 +404,11 @@ maskCheckbox.addEventListener('change', function () {
     localStorage.setItem('preferences', JSON.stringify(preferences));
 });
 
+cloakCheckbox.addEventListener('change', function () {
+    preferences.cloak = cloakCheckbox.checked;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+});
+
 
 /* if it is wanted to save on input change wather than submission
 document.querySelector('.text-field').addEventListener('change', function () {
@@ -392,14 +417,22 @@ document.querySelector('.text-field').addEventListener('change', function () {
 });
 */
 
+document.getElementById('cloakUrlSubmit').addEventListener('click', function () {
+    preferences.cloakUrl = cloakUrl.value;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+    alert("Submitted! Change will take place upon refresh");
+});
+
 document.getElementById('maskTitleSubmit').addEventListener('click', function () {
     preferences.maskTitle = maskTitle.value;
     localStorage.setItem('preferences', JSON.stringify(preferences));
+    alert("Submitted! Change will take place upon refresh");
 });
 
 document.getElementById('maskIconSubmit').addEventListener('click', function () {
     preferences.maskIconUrl = maskIcon.value;
     localStorage.setItem('preferences', JSON.stringify(preferences));
+    alert("Submitted! Change will take place upon refresh");
 });
 /* if (preferences.cloak && !localStorage.getItem("cloakTabOpened")){
     if (window.top.location.href !== "about:blank"){
