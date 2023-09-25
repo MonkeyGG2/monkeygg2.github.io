@@ -3,14 +3,14 @@ let games;
 let themes;
 
 function changeLoadingTip() {
-    const tips = ["Press CTRL+C to cloak your current tab", "Press CTRL+M to mask your current tab", "Press CTRL+B to go back to the home page", "Join our discord server!", "Make sure to enable popups for automatic cloak", "Why are you here?"]
+    const tips = ["Welcome to the land of Nothing!", "Here there is absolutely nothing for you.", "Just gotta wait for it to load", "Shouldn't take any longer", "Why are you here?", "Just one more minute", "Go read a book :)"];
     const element = document.getElementsByClassName("loading-tip")[0];
 
     element.textContent = "Loading... \n" + tips[Math.floor(Math.random() * tips.length)];
 }
 
 changeLoadingTip();
-$("#everything-else, #page-loader, .games, .proxy, .settings").hide();
+$("#everything-else, #page-loader, .games, .proxy, .settings, .cloaklaunch").hide();
 
 let changeTip = setInterval(() => {
     changeLoadingTip();
