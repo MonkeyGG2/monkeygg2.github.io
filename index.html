@@ -260,10 +260,21 @@
                 </div>
 
                 <div class="setting">
+                    <h5>Cloak</h5>
+                    <p>Toggles if Cloak (Hides site from history and being view online) is forced</p>
+                    <label class="switch">
+                        <input id="cloakCheckboxInput" type="checkbox" hidden>
+                        <div class="switch__wrapper">
+                            <div class="switch__toggle"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="setting">
                     <h5>Cloak URL</h5>
                     <p>This site will appear in your history instead of MonkeyGG2.</p>
-                    <input class="text-field" type="text" placeholder="https://classroom.google.com">
-                    <button class="submit-button">Submit</button>
+                    <input id="cloakUrlInput" class="text-field" type="text" placeholder="https://classroom.google.com">
+                    <button id="cloakUrlSubmit" class="submit-button">Submit</button>
                 </div>
                 <div class="setting">
                     <h5>Mask</h5>
