@@ -260,10 +260,21 @@
                 </div>
 
                 <div class="setting">
+                    <h5>Cloak</h5>
+                    <p>Toggles if Cloak (Hides site from history and being view online) is forced</p>
+                    <label class="switch">
+                        <input id="cloakCheckboxInput" type="checkbox" hidden>
+                        <div class="switch__wrapper">
+                            <div class="switch__toggle"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="setting">
                     <h5>Cloak URL</h5>
                     <p>This site will appear in your history instead of MonkeyGG2.</p>
-                    <input class="text-field" type="text" placeholder="https://classroom.google.com">
-                    <button class="submit-button">Submit</button>
+                    <input id="cloakUrlInput" class="text-field" type="text" placeholder="https://classroom.google.com">
+                    <button id="cloakUrlSubmit" class="submit-button">Submit</button>
                 </div>
                 <div class="setting">
                     <h5>Mask</h5>
@@ -298,6 +309,22 @@
                         </div>
                     </label>
                 </div>
+                
+                <div class="setting">
+                    <h5>Slot 1</h5>
+                    <p>Press a button then press a key on your keyboard to choose </p>
+                    <button class="keySlot">Set Key</button> <!-- add some inline "+" between buttons later -->
+                    <button class="keySlot">Set Key</button>
+                    <button class="keySlot">Set Key (Optional)</button>
+                    <select id="keybind-slot-1">
+                        <option value="#">Cloak</option>
+                        <option value="#">Mask</option>
+                        <option value="#">Close</option>
+                        <option value="#">Custom JS</option>
+                        <option value="#">Select an option   ▼</option>
+                    </select>
+                </div>
+
                 <div class="setting">
                     <h5>Background</h5>
                     <p>Background can cause a lot of lag. Disable if your computer is diagnosed with low FPS.</p>
