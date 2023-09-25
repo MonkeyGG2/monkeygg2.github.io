@@ -1,20 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="en-us">
-  <head>                
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-7L02W3ZMS5"></script>
-	<script>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L02W3ZMS5"></script>
+<script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
 
 	gtag('config', 'G-7L02W3ZMS5');
 	</script>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Clicker Heroes</title>
-	<link rel="preload" href="builds/2885/fonts/Matiz-webfont.woff" as="font" type="font/woff" crossorigin>
-	<style>
+<meta charset="utf-8"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Clicker Heroes</title>
+<link as="font" crossorigin="" href="builds/2885/fonts/Matiz-webfont.woff" rel="preload" type="font/woff"/>
+<style>
 		.container {
 			width: 100%;
 			height: 100%;
@@ -189,9 +190,9 @@
 			background-color: rgba(255,255,255,.5);
 		}
 	</style>
-	<link rel="stylesheet" id="portalTheme" href="portal.css" type="text/css">
-	<link rel="stylesheet" id="hostTheme" href="hosted.css" type="text/css" disabled>
-	<script>
+<link href="portal.css" id="portalTheme" rel="stylesheet" type="text/css"/>
+<link disabled="" href="hosted.css" id="hostTheme" rel="stylesheet" type="text/css"/>
+<script>
 		var build = "v1.0e12-2885";
 		var tabHiddenTime = 0;
 		var ch1 = null;
@@ -742,161 +743,154 @@
 			textarea.remove();
 		}
 	</script>
-	<script onload="onPaymentAPILoaded()" src="payments.js"></script>
-	<script onload="onStatSigReady()" src="https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js"></script>
-	<script src="/global.js"></script>
-  </head>
-  <body style="text-align: center" onload="onPageLoaded()">
-	
-	<img src="builds/2885/img/button_x.png?v=2885" style="display: none;"/>
-	<img src="builds/2885/img/button_x_hover.png?v=2885" style="display: none;"/>
-	<img src="builds/2885/img/import_save_data_popup_bg.png?v=2885" style="display: none;"/>
-	<img src="builds/2885/img/redemption_code_popup_bg.png?v=2885" style="display: none;"/>
-	
-	<div class="container" id="loadSaveErrorUI">
-		<div class="largeWindow">
-			<div id="loadSaveErrorDisplay" class="largeWindowInfo">
-			</div>
-			<a onlick="hideSaveErrorWindow()"><img class="closeButton"/></a>
-		</div>
-	</div>
-	
-	<div class="container" id="troubleshootUI">
-		
-		<div class="largeWindow">
-			<div class="largeWindowInfo">
-				<h1>Troubleshoot Help</h1>
+<script onload="onPaymentAPILoaded()" src="payments.js"></script>
+<script onload="onStatSigReady()" src="https://cdn.jsdelivr.net/npm/statsig-js/build/statsig-prod-web-sdk.min.js"></script>
+
+</head>
+<body onload="onPageLoaded()" style="text-align: center">
+<img src="builds/2885/img/button_x.png?v=2885" style="display: none;"/>
+<img src="builds/2885/img/button_x_hover.png?v=2885" style="display: none;"/>
+<img src="builds/2885/img/import_save_data_popup_bg.png?v=2885" style="display: none;"/>
+<img src="builds/2885/img/redemption_code_popup_bg.png?v=2885" style="display: none;"/>
+<div class="container" id="loadSaveErrorUI">
+<div class="largeWindow">
+<div class="largeWindowInfo" id="loadSaveErrorDisplay">
+</div>
+<a onlick="hideSaveErrorWindow()"><img class="closeButton"/></a>
+</div>
+</div>
+<div class="container" id="troubleshootUI">
+<div class="largeWindow">
+<div class="largeWindowInfo">
+<h1>Troubleshoot Help</h1>
 				Here are some common issues players sometimes encounter while loading the game and how to fix them:
 				<ul>
-					<li><a href="#cache">Clear your browser cache.</a></li>
-					<li><a href="#webgl">Make sure WebGL is enabled.</a></li>
-					<li><a href="#cookies">Make sure third-party cookies are enabled for localStorage.</a></li>
-					<li><a href="#restart">Restart.</a></li>
-					<li><a href="#retrieve">Still stuck? You can still retrieve your save data.</a></li>
-				</ul>
-				<br/>
-				<a id="cache"><h3>Clear your browser cache.</h3></a>
+<li><a href="#cache">Clear your browser cache.</a></li>
+<li><a href="#webgl">Make sure WebGL is enabled.</a></li>
+<li><a href="#cookies">Make sure third-party cookies are enabled for localStorage.</a></li>
+<li><a href="#restart">Restart.</a></li>
+<li><a href="#retrieve">Still stuck? You can still retrieve your save data.</a></li>
+</ul>
+<br/>
+<a id="cache"><h3>Clear your browser cache.</h3></a>
 				Sometimes the browser will cache older versions of the game. Clearing the cache and reloading the page will force it to fetch the most up-to-date version.
 				<br/>
-				<br/>
+<br/>
 				In Chrome, Firefox, Edge, Opera, and Vivaldi, you can quickly clear your cache by pressing CTRL+SHIFT+DEL on your keyboard.
 				<br/>
-				<br/>
+<br/>
 				A window similar to the one below will appear.
 				<br/>
+<br/>
+<center>
+<img src="builds/2885/img/clear_cache.jpg"/>
+</center>
+<br/>
+<strong>Make sure only the "Cached images and files" option is selected</strong> and click "Clear Data". Then, reload the browser tab.
 				<br/>
-				<center>
-				<img src="builds/2885/img/clear_cache.jpg"/>
-				</center>
-				<br/>
-				<strong>Make sure only the "Cached images and files" option is selected</strong> and click "Clear Data". Then, reload the browser tab.
-				<br/>
-				<br/>
-				<a id="webgl"><h3>Make sure WebGL is enabled.</h3></a>
+<br/>
+<a id="webgl"><h3>Make sure WebGL is enabled.</h3></a>
 				Check below to see how to check for your browser:
 				<ul>
-					<li><strong>Chrome</strong> - Enter in "chrome://gpu" in the URL bar.</li>
-					<li><strong>Firefox</strong> - Enter in "about:support" in the URL bar and scroll down to 
+<li><strong>Chrome</strong> - Enter in "chrome://gpu" in the URL bar.</li>
+<li><strong>Firefox</strong> - Enter in "about:support" in the URL bar and scroll down to 
 					<li><strong>Edge</strong> - Enter in "edge://gpu" in the URL bar.</li>
-					<li><strong>Opera</strong> - Enter in "opera://gpu" in the URL bar.</li>
-					<li><strong>Vivaldi</strong> - Enter in "vivaldi://gpu" in the URL bar.</li>"Graphics"</li>
-				</ul>
-				<br/>
-				<a id="cookies"><h3>Make sure third-party cookies are enabled for localStorage.</h3></a>
+<li><strong>Opera</strong> - Enter in "opera://gpu" in the URL bar.</li>
+<li><strong>Vivaldi</strong> - Enter in "vivaldi://gpu" in the URL bar.</li>"Graphics"</li>
+</ul>
+<br/>
+<a id="cookies"><h3>Make sure third-party cookies are enabled for localStorage.</h3></a>
 				The game requires third-party cookies to be enabled in order to save your progress.
 				<br/>
-				<br/>
+<br/>
 				If you see the following error window, that means that third-party cookies have been disabled.
 				<br/>
-				<br/>
-				<center>
-					<img src="builds/2885/img/local_storage_error.png"/>
-				</center>
-				<br/>
+<br/>
+<center>
+<img src="builds/2885/img/local_storage_error.png"/>
+</center>
+<br/>
 				Below you will find instructions for your browser on how to change your cookie settings.
 				<ul>
-					<li><strong>Chrome</strong> - Enter "chrome://settings/cookies" in the URL bar.
+<li><strong>Chrome</strong> - Enter "chrome://settings/cookies" in the URL bar.
 					<li><strong>Firefox</strong> - Enter "about:preferences#privacy" in the URL bar. You will be presented with options for managing your tracking and cookies.
 					<li><strong>Edge</strong> - Enter "edge://settings/content/cookies" in the URL bar. Make sure "Allow sites to save and read cookie data (recommended)" is checked and "Block third-party cookies" is unchecked.
 					<li><strong>Opera</strong> - Enter "opera://settings/cookies" in the URL bar. You will find cookie settings under "General settings".
 					<li><strong>Vivaldi</strong> - Enter "vivaldi://settings/privacy/" in the URL bar. Scroll down to "Cookies" and adjust the "Third-Party Cookies" section.
-				</ul>
-				<br/>
-				<a id="restart"><h3>Restart.</h3></a>
+				</li></li></li></li></li></ul>
+<br/>
+<a id="restart"><h3>Restart.</h3></a>
 				Sometimes WebGL will stay disabled until the browser is completely restarted.
 				<br/>
-				<br/>
+<br/>
 				Some browsers continue running background processes even when they seem to be completely closed. If you suspect this to be the case, we recommend restarting your computer.
 				<br/>
-				<br/>
-				<a id="retrieve"><h3>Still stuck? You can still retrieve your save data.</h3></a>
+<br/>
+<a id="retrieve"><h3>Still stuck? You can still retrieve your save data.</h3></a>
 				If none of the above worked, you can still retrieve your save data.
 				<br/>
-				<br/>
+<br/>
 				Click <a onlick="fetchSaveData()">here to download it</a>.
 				<br/>
-				<br/>
+<br/>
 				We recommend sending us a copy so we can see if there are any issues loading the data.
 				<br/>
-				<br/>
-			</div>
-			<a onlick="hideTroubleshootWindow()"><img class="closeButton"/></a>
-		</div>
-	</div>
-	
-	<div class="container" id="importUI">
-		<div id="importWindow">
-			<a onlick="hideImportWindow()"><img class="closeButton"/></a>
-			<div class="prompt" id="importPrompt">Enter your save data below.</div>
-			<textarea id="importData" contenteditable="true"></textarea>
-			<br/>
-			<br/>
-			<input type="button" value="Okay" style="width: 120px; height: 30px;" onclick="importSave()">
-		</div>
-	</div>
-	<div class="container" id="redeemUI">
-		<div id="redeemWindow">
-			<a onlick="hideRedeemWindow()"><img class="closeButton"/></a>
-			<div class="prompt" id="redeemPrompt">Enter your code below.</div>
-			<input id="redemptionCode" type="text" style="width: 300px; text-align: center;" contenteditable="true"/>
-			<br/>
-			<br/>
-			<input type="button" value="Okay" style="width: 120px; height: 30px;" onclick="redeemCode()">
-		</div>
-	</div>
-	
-	<div id="loadingContainer">
-		<div id="loadingParent">
-			<div id="word">
-				<center>
-					<span class="letter" id="letter0">L</span>
-					<span class="letter" id="letter1">o</span>
-					<span class="letter" id="letter2">a</span>
-					<span class="letter" id="letter3">d</span>
-					<span class="letter" id="letter4">i</span>
-					<span class="letter" id="letter5">n</span>
-					<span class="letter" id="letter6">g</span>
-					<br/>
-					<span id="buildInfo">v1.0e12-2885</span>
-					<br/>
-					<br/>
-					<div id="progressBar">
-						<div id="progressFill"></div>
-						<div id="progressText"></div>
-					</div>
-					<br/>
-				</center>
-			</div>
-		</div>
-	</div>
-	<div id="loadingCheck">Don't worry, the game is still loading!<br/>If it still hasn't loaded after a few minutes, <a onlick="showTroubleshootWindow()">click here to troubleshoot</a>.</div>
-	
-    <canvas id="unity-canvas" width=1280 height=720 style="width: 1280px; height: 720px; background: url('builds/2885/Build/Web.jpg.unityweb') center / cover"></canvas>
-	<script>
+<br/>
+</div>
+<a onlick="hideTroubleshootWindow()"><img class="closeButton"/></a>
+</div>
+</div>
+<div class="container" id="importUI">
+<div id="importWindow">
+<a onlick="hideImportWindow()"><img class="closeButton"/></a>
+<div class="prompt" id="importPrompt">Enter your save data below.</div>
+<textarea contenteditable="true" id="importData"></textarea>
+<br/>
+<br/>
+<input onclick="importSave()" style="width: 120px; height: 30px;" type="button" value="Okay"/>
+</div>
+</div>
+<div class="container" id="redeemUI">
+<div id="redeemWindow">
+<a onlick="hideRedeemWindow()"><img class="closeButton"/></a>
+<div class="prompt" id="redeemPrompt">Enter your code below.</div>
+<input contenteditable="true" id="redemptionCode" style="width: 300px; text-align: center;" type="text"/>
+<br/>
+<br/>
+<input onclick="redeemCode()" style="width: 120px; height: 30px;" type="button" value="Okay">
+</input></div>
+</div>
+<div id="loadingContainer">
+<div id="loadingParent">
+<div id="word">
+<center>
+<span class="letter" id="letter0">L</span>
+<span class="letter" id="letter1">o</span>
+<span class="letter" id="letter2">a</span>
+<span class="letter" id="letter3">d</span>
+<span class="letter" id="letter4">i</span>
+<span class="letter" id="letter5">n</span>
+<span class="letter" id="letter6">g</span>
+<br/>
+<span id="buildInfo">v1.0e12-2885</span>
+<br/>
+<br/>
+<div id="progressBar">
+<div id="progressFill"></div>
+<div id="progressText"></div>
+</div>
+<br/>
+</center>
+</div>
+</div>
+</div>
+<div id="loadingCheck">Don't worry, the game is still loading!<br/>If it still hasn't loaded after a few minutes, <a onlick="showTroubleshootWindow()">click here to troubleshoot</a>.</div>
+<canvas height="720" id="unity-canvas" style="width: 1280px; height: 720px; background: url('builds/2885/Build/Web.jpg.unityweb') center / cover" width="1280"></canvas>
+<script>
 		updateClientLoadingProgress(0);
 	</script>
-    <script src="builds/2885/Build/Web.loader.js"></script>
-    <script>
+<script src="builds/2885/Build/Web.loader.js"></script>
+<script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement('meta');
@@ -956,5 +950,5 @@
 		true;
 	}
     </script>
-  </body>
+</body>
 </html>

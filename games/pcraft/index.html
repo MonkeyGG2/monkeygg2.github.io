@@ -1,23 +1,21 @@
 
 <html>
-    <head>                
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7L02W3ZMS5"></script>
-        <script>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-7L02W3ZMS5"></script>
+<script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-7L02W3ZMS5');
         </script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648726754785335"
-     crossorigin="anonymous"></script>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>P.Craft</title>
-        <meta name="description" content="">
-
-<STYLE TYPE="text/css">
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5648726754785335"></script>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>P.Craft</title>
+<meta content="" name="description"/>
+<style type="text/css">
 <!--
 
 canvas#canvas { width: 512px; height: 512px; }
@@ -60,17 +58,13 @@ canvas{
 }
 
 -->
-</STYLE>
-	<script text="text/javascript" src="/global.js" defer></script>
+</style>
+
 </head>
-
-<body bgcolor=#000000>
-
-	<center><div style="width:512px;">
-
-	<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-
-	<script type="text/javascript">
+<body bgcolor="#000000">
+<center><div style="width:512px;">
+<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+<script type="text/javascript">
 		var canvas = document.getElementById("canvas");
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
@@ -128,10 +122,8 @@ canvas{
 			var pico8_gpio = new Array(128);
 		*/
 	</script>
-
-	<script async type="text/javascript" src="pcraft.js"></script>
-
-	<script>
+<script async="" src="pcraft.js" type="text/javascript"></script>
+<script>
 		// key blocker. prevent cursor keys from scrolling page while playing cart.
 
 		function onKeyDown_blocker(event) {
@@ -149,8 +141,7 @@ canvas{
 		document.addEventListener('keydown', onKeyDown_blocker, false);
 
 	</script>
-
-	<br>
+<br/>
 <!--
 	<div class=pico8_el onclick="Module.pico8Reset();">
 
@@ -158,17 +149,16 @@ canvas{
 
 	Reset</div>
 -->
-	<div class=pico8_el onclick="Module.pico8TogglePaused();">
-
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAPUlEQVR4Ae3doQ0AIAxEUWABLPtPh2WCq26DwFSU/JPNT166QSu/Hg86W9dwLte+diP7AwAAAAAAgD+A+jM2ZAgo84I0PgAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Pause" width=12 height=12/>
+<div class="pico8_el" onclick="Module.pico8TogglePaused();">
+<img alt="Pause" height="12/" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAPUlEQVR4Ae3doQ0AIAxEUWABLPtPh2WCq26DwFSU/JPNT166QSu/Hg86W9dwLte+diP7AwAAAAAAgD+A+jM2ZAgo84I0PgAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" width="12"/>
 
 	Pause</div>
-	<div class=pico8_el onclick="Module.requestFullScreen(true, false);">
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dsQ1AIQhExfze1v2ns3UCrfgFhmgUUAoGgHscp21wX9BqaZoDojbB96OkDJKNcTN2BHTyYNYmoT2BlPL7BKgcPfHjAVXKKadkHOn9K1r16N0czN6a95N8mnA7Aq2fTZ3Af3UKmCSMazL8HwAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Fullscreen" width=12 height=12/>
+<div class="pico8_el" onclick="Module.requestFullScreen(true, false);">
+<img alt="Fullscreen" height="12/" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAaklEQVR4Ae2dsQ1AIQhExfze1v2ns3UCrfgFhmgUUAoGgHscp21wX9BqaZoDojbB96OkDJKNcTN2BHTyYNYmoT2BlPL7BKgcPfHjAVXKKadkHOn9K1r16N0czN6a95N8mnA7Aq2fTZ3Af3UKmCSMazL8HwAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" width="12"/>
 
 	Fullscreen</div>
-	<div class=pico8_el onclick="Module.pico8ToggleSound();">
-	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXklEQVR4Ae2doQ4AIQxD4YLH8v9fh+ULhjpxxSwLg2uyapr1JRu1iV5Z+1BGl4+xNpX38SYo2uRvYiT5LwEmt+ocgXVLrhPEgBiw8Q5w7/kueSkK+D2tJO4E/I3GrwkqQCBabEj/4QAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" alt="Toggle Sound" width=12 height=12/>
+<div class="pico8_el" onclick="Module.pico8ToggleSound();">
+<img alt="Toggle Sound" height="12/" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAXklEQVR4Ae2doQ4AIQxD4YLH8v9fh+ULhjpxxSwLg2uyapr1JRu1iV5Z+1BGl4+xNpX38SYo2uRvYiT5LwEmt+ocgXVLrhPEgBiw8Q5w7/kueSkK+D2tJO4E/I3GrwkqQCBabEj/4QAAABB0RVh0TG9kZVBORwAyMDExMDIyMeNZtsEAAAAASUVORK5CYII=" width="12"/>
 
 	Sound</div>
 <!--
@@ -177,8 +167,6 @@ canvas{
 
 	Carts</a></div>
 -->
-	<br>
-
-	</div></center>
-
+<br/>
+</div></center>
 </body></html>

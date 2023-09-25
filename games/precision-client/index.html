@@ -1,36 +1,32 @@
 <!DOCTYPE html>
-<html>
 
+<html>
 <head>
-	<title>Precision Client (1.5.2-beta_0.2)</title>
-	<meta charset="UTF-8" />
-	<meta content="Precision Client is a custom eaglercraft client with QOL features, custom texture packs, and more."
-		name="description" />
-	<meta content="//precisionclient.vercel.app" name="url" />
-	<meta content="EtcherFX" name="author" />
-	<meta content="Precision Client" property="og:title" />
-	<meta content="en-US" property="og:locale" />
-	<meta content="website" property="og:type" />
-	<meta content="//precisionclient.vercel.app" property="og:url" />
-	<!--meta content="IMAGE" property="og:image"/>-->
-	<meta content="Precision Client is a custom eaglercraft client with QOL features, custom texture packs, and more."
-		property="og:description" />
-	<script type="text/javascript" src="eagswebrtc.js"></script>
-	<script type="text/javascript" src="classes.js"></script>
-	<script async src="https://arc.io/widget.min.js#pchPqjfw"></script>
-	<style>
+<title>Precision Client (1.5.2-beta_0.2)</title>
+<meta charset="utf-8"/>
+<meta content="Precision Client is a custom eaglercraft client with QOL features, custom texture packs, and more." name="description"/>
+<meta content="//precisionclient.vercel.app" name="url"/>
+<meta content="EtcherFX" name="author"/>
+<meta content="Precision Client" property="og:title"/>
+<meta content="en-US" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="//precisionclient.vercel.app" property="og:url"/>
+<!--meta content="IMAGE" property="og:image"/>-->
+<meta content="Precision Client is a custom eaglercraft client with QOL features, custom texture packs, and more." property="og:description"/>
+<script src="eagswebrtc.js" type="text/javascript"></script>
+<script src="classes.js" type="text/javascript"></script>
+<script async="" src="https://arc.io/widget.min.js#pchPqjfw"></script>
+<style>
 		@font-face {
 			font-family: "Product Sans";
 			src: url(ProductSans.ttf);
 		}
 	</style>
 </head>
-
-<body style="margin: 0; width: 100vw; height: 100vh; font-family:
-'Product Sans'" id="game_frame" class="gameframe">
-	<div id="Selection"
-		style="display: inline-block; position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%)">
-		<style>
+<body class="gameframe" id="game_frame" style="margin: 0; width: 100vw; height: 100vh; font-family:
+'Product Sans'">
+<div id="Selection" style="display: inline-block; position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%)">
+<style>
 			html {
 				color: #fff;
 			}
@@ -57,26 +53,26 @@
 				background-repeat: no-repeat;
 			}
 		</style>
-		<h1>Precision Client</h1>
-		<h3>Select a texture pack:</h3>
-		<select id="Packs" class="dropdown">
-			<option>-- Choose one --</option>
-			<option value="defaultold">Default Old</option>
-			<option value="defaultnew">Default 1.17+</option>
-			<option value="bombies">Bombies 180k</option>
-			<option value="bones">Bare Bones</option>
-			<option value="modifiednew">Modified 1.17+</option>
-			<option value="miamiprivate">Miami Private</option>
-			<option value="nebula">Nebula</option>
-			<option value="rhedd">Rhedd</option>
-			<option value="ricefault">Ricefault</option>
-			<option value="tightfault">Tightfault</option>
-			<option value="walifault">Walifault</option>
-		</select>
-		<br /><br />
-		<input class="starter" type="button" value="Launch" onclick="Start();" />
-	</div>
-	<script type="text/javascript">
+<h1>Precision Client</h1>
+<h3>Select a texture pack:</h3>
+<select class="dropdown" id="Packs">
+<option>-- Choose one --</option>
+<option value="defaultold">Default Old</option>
+<option value="defaultnew">Default 1.17+</option>
+<option value="bombies">Bombies 180k</option>
+<option value="bones">Bare Bones</option>
+<option value="modifiednew">Modified 1.17+</option>
+<option value="miamiprivate">Miami Private</option>
+<option value="nebula">Nebula</option>
+<option value="rhedd">Rhedd</option>
+<option value="ricefault">Ricefault</option>
+<option value="tightfault">Tightfault</option>
+<option value="walifault">Walifault</option>
+</select>
+<br/><br/>
+<input class="starter" onclick="Start();" type="button" value="Launch"/>
+</div>
+<script type="text/javascript">
 		if (document.location.href.startsWith("file:")) {
 			alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation.");
 		} else {
@@ -155,5 +151,4 @@
 				}
 	</script>
 </body>
-
 </html>
