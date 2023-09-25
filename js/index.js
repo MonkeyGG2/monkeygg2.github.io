@@ -346,6 +346,22 @@ function popupsAllowed(){
     }
 }
 
+const keySlots = document.querySelectorAll('.keySlot');
+
+keySlots.forEach((slot) => {
+    slot.addEventListener('click', () => {
+        slot.textContent = 'Press any key';
+
+        // Add a one-time event listener to capture the key press
+        const keyPressHandler = (event) => {
+            slot.textContent = event.key;
+            document.removeEventListener('keydown', keyPressHandler);
+        };
+
+        document.addEventListener('keydown', keyPressHandler);
+    });
+});
+
 const preferencesDefaults = {
     cloak: true,
     cloakUrl: "https://classroom.google.com",

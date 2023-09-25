@@ -208,7 +208,7 @@ body.noscript {
   background-color: var(--block-color);
 }
 
-#sort {
+#sort, #keybind-slot-1 {
   all: unset;
   margin: 0;
   border: none;
@@ -220,6 +220,17 @@ body.noscript {
   width: 20%;
 }
 
+.keySlot{
+  margin: 0;
+  border: none;
+  background-color: var(--bg);
+  color: var(--font-color);
+  font-size: 1rem;
+  font-family: var(--font-family);
+  padding: 1rem;
+  width: 20%;
+  cursor: pointer;
+}
 
 logo img {
   z-index: 50;
