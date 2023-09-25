@@ -1,15 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Monkey Mart</title>
-        <meta name="description" content="Monkey Mart is a fun game that you can play at school from chromebook. In our catalog you can find many cool online games that you may enjoy.">
-        <script type="text/javascript" src="Jump_Game.js"></script>
-        <style type="text/css">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui, shrink-to-fit=no" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Monkey Mart</title>
+<meta content="Monkey Mart is a fun game that you can play at school from chromebook. In our catalog you can find many cool online games that you may enjoy." name="description"/>
+<script src="Jump_Game.js" type="text/javascript"></script>
+<style type="text/css">
             /* Disable user selection to avoid strange bug in Chrome on Windows:
 	* Selecting a text outside the canvas, then clicking+draging would
 	* drag the selected text but block mouse down/up events to the engine.
@@ -139,28 +140,28 @@
                 background-image: url("bg_loading.png");
             }
         </style>
-        <script src="/global.js"></script>
-    </head>
-    <body>
-        <div id="app-container" class="canvas-app-container">
-            <div id="canvas-container" class="canvas-app-canvas-container">
-                <canvas id="canvas" class="canvas-app-canvas" tabindex="1" width="960" height="640"></canvas>
-            </div>
-            <div class="buttons-background"></div>
-            <!-- center and anchor to bottom of page -->
-            <div id="progress-bar-root" style="position: absolute; bottom: 16%; left: 50%; visibility: hidden; z-index: 4;">
-                <!-- <div id="progress-bar-text"> -->
-                <img id="progress-bar-bg" src="load_bar_bg.png">
-                <img id="progress-bar-fg" src="load_bar_fg.png" style="position:absolute; clip: rect(0px,0px,0px,0px);">
-            </div>
-        </div>
-        <!-- -->
-        <!-- <div id="bannerTop" class="banner-styleTop"></div> -->
-        <!-- <div id="bannerBottom" class="banner-styleBottom"></div> -->
-        <!-- -->
-        <script id="engine-loader" type="text/javascript" src="dmloader.js"></script>
-        <!-- -->
-        <script id="engine-setup" type="text/javascript">
+
+</head>
+<body>
+<div class="canvas-app-container" id="app-container">
+<div class="canvas-app-canvas-container" id="canvas-container">
+<canvas class="canvas-app-canvas" height="640" id="canvas" tabindex="1" width="960"></canvas>
+</div>
+<div class="buttons-background"></div>
+<!-- center and anchor to bottom of page -->
+<div id="progress-bar-root" style="position: absolute; bottom: 16%; left: 50%; visibility: hidden; z-index: 4;">
+<!-- <div id="progress-bar-text"> -->
+<img id="progress-bar-bg" src="load_bar_bg.png"/>
+<img id="progress-bar-fg" src="load_bar_fg.png" style="position:absolute; clip: rect(0px,0px,0px,0px);"/>
+</div>
+</div>
+<!-- -->
+<!-- <div id="bannerTop" class="banner-styleTop"></div> -->
+<!-- <div id="bannerBottom" class="banner-styleBottom"></div> -->
+<!-- -->
+<script id="engine-loader" src="dmloader.js" type="text/javascript"></script>
+<!-- -->
+<script id="engine-setup" type="text/javascript">
             var extra_params = {
                 archive_location_filter: function(path) {
                     return ("archive" + path + "");
@@ -318,7 +319,7 @@
             }
             ;
         </script>
-        <script id="engine-start" type="text/javascript">
+<script id="engine-start" type="text/javascript">
             var currentPercentage = 0
 
             Progress.updateProgress = function(percentage) {
@@ -354,7 +355,7 @@
             EngineLoader.stream_wasm = "false" === "true";
             EngineLoader.load("canvas", "MonkeyMart");
         </script>
-        <script type="text/javascript">
+<script type="text/javascript">
             function poki_showBanner(vBanner) {}
 
             function poki_showBigBanner(vBanner) {}
@@ -364,7 +365,7 @@
             function poki_check() {
             }
         </script>
-        <script id="poki-sdk-setup" type="text/javascript">
+<script id="poki-sdk-setup" type="text/javascript">
 
             var data = {};
             var isLoadFinished = false;
@@ -380,6 +381,6 @@
             }
             ;
         </script>
-        <script type="text/javascript" src="GameAnalytics.js"></script>
-    </body>
+<script src="GameAnalytics.js" type="text/javascript"></script>
+</body>
 </html>
