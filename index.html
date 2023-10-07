@@ -255,8 +255,9 @@
                 <h4>Settings</h4>
                 <h6>Notice: All changes occur on page refresh</h6>
                 <div class="setting">
-                    <button class="save-button">Download Game Data</button>
-                    <button class="save-button">Upload Game Data</button>
+                    <button class="save-button" id="download">Download Game Data</button>
+                    <button class="save-button" id="upload">Upload Game Data</button>
+                    <p class="upload-result"></p>
                 </div>
 
                 <div class="setting">
@@ -363,9 +364,10 @@
         </button>
     </section>
 
-    <script src="js/jquery-dev.js" defer></script>
+    <script src="js/jquery-min.js" defer></script>
     <script src="js/loading.js" defer></script>
-    <script src='js/p5-dev.js' defer></script>
+    <script src='js/p5-min.js' defer></script>
+    <script src="js/cryptojs.js" defer></script>
     <script src="js/bg.js" defer></script>
     <script src="js/index.js" defer></script>
 </body>
