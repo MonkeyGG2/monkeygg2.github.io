@@ -211,6 +211,12 @@ $("#sort").on("change", updateList);
 dragElement(document.getElementById("gameButton"));
 dragElement(document.getElementById("refresh"));
 
+function toggleStar(event, star) {
+    event.preventDefault();
+    event.stopPropagation();
+    star.classList.toggle('filled');
+}
+
 /**
  * Adds drag functionality to an HTML element.
  *

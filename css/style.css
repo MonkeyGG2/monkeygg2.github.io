@@ -191,6 +191,16 @@ body.noscript {
   background-color: var(--hover-color);
 }
 
+.star {
+  cursor: pointer;
+  color: #ccc;
+  float: right;
+}
+
+.filled {
+  color: gold;
+}
+
 .searchbar {
   display: flex;
   width: 75%;
