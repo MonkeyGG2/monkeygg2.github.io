@@ -813,7 +813,7 @@
         // coming soon
     },
     "config": {
-        "proxy": true, // proxy only works when self-hosted
+        "proxy": false, // proxy only works when self-hosted
         "proxyPath": "http://localhost:8080" // absolute or relative path to proxy; proxy must be set to true for this setting to have any effect
     }
 }

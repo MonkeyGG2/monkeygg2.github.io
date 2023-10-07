@@ -25,7 +25,7 @@ fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
     
     let gamesList = $("#gamesList");
     for (game in games) {
-        gamesList.append(`<li url="games/${games[game]["path"]}" ${games[game]["aliases"] ? "aliases=\"" + games[game]["aliases"].join(',') + "\"" : ''}>${game}</li>`);
+        gamesList.append(`<li url="games/${games[game]["path"]}" ${games[game]["aliases"] ? "aliases=\"" + games[game]["aliases"].join(',') + "\"" : ''}>${game} <span class="star" onclick="toggleStar(event, this)">★</span> </li>`);
     }
 
     $("#gamesList li").on("click", function() {
