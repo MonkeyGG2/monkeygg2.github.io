@@ -315,7 +315,7 @@ function makecloak(replaceUrl = preferences.cloakUrl) {
         iframe.allow = "fullscreen";
         iframe.src = url.toString();
         win.document.body.appendChild(iframe);
-        window.location.replace(replaceUrl)
+        window.location.replace(replaceUrl);
     }
 }
 
@@ -325,25 +325,105 @@ function makecloak(replaceUrl = preferences.cloakUrl) {
  * @return {void}
  */
 function mask(title = preferences.maskTitle, iconUrl = preferences.maskIconUrl) {
-     const e = window.top.document;
-     e.title = title;
-     var link = e.querySelector("link[rel*='icon']") || document.createElement('link');
-     link.type = 'image/x-icon';
-     link.rel = 'shortcut icon';
-     link.href = iconUrl;
-     e.getElementsByTagName('head')[0].appendChild(link);
+    const e = window.top.document;
+    e.title = title;
+    var link = e.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = iconUrl;
+    e.getElementsByTagName('head')[0].appendChild(link);
 }
 
-function popupsAllowed(){
-    var windowName = 'userConsole'; 
+function popupsAllowed() {
+    var windowName = 'userConsole';
     var popUp = window.open('/popup-page.php', windowName, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
-    if (popUp == null || typeof(popUp)=='undefined') {  
+    if (popUp == null || typeof (popUp) == 'undefined') {
         return false;
-    } 
-    else {  
+    }
+    else {
         popUp.close();
         return true;
     }
+}
+
+function getMainSave() {
+    var mainSave = {};
+
+    localStorageSave = Object.entries(localStorage);
+
+    localStorageSave = btoa(JSON.stringify(localStorageSave));
+
+    mainSave.localStorage = localStorageSave;
+
+    cookiesSave = document.cookie;
+
+    cookiesSave = btoa(cookiesSave);
+
+    mainSave.cookies = cookiesSave;
+
+    mainSave = btoa(JSON.stringify(mainSave));
+
+    mainSave = CryptoJS.AES.encrypt(mainSave, "save").toString();
+
+    return mainSave;
+}
+
+function downloadMainSave() {
+    var data = new Blob([getMainSave()]);
+    var dataURL = URL.createObjectURL(data);
+
+    var fakeElement = document.createElement("a");
+    fakeElement.href = dataURL;
+    fakeElement.download = "monkey.data";
+    fakeElement.click();
+    URL.revokeObjectURL(dataURL);
+}
+
+function getMainSaveFromUpload(data) {
+    data = CryptoJS.AES.decrypt(data, "save").toString(CryptoJS.enc.Utf8);
+
+    var mainSave = JSON.parse(atob(data));
+    var mainLocalStorageSave = JSON.parse(atob(mainSave.localStorage));
+    var cookiesSave = atob(mainSave.cookies);
+
+    for (let item in mainLocalStorageSave) {
+        localStorage.setItem(mainLocalStorageSave[item][0], mainLocalStorageSave[item][1]);
+    }
+
+    document.cookie = cookiesSave;
+}
+
+function uploadMainSave() {
+    var hiddenUpload = document.createElement("input");
+    hiddenUpload.type = "file";
+    hiddenUpload.accept = ".data";
+    document.body.appendChild(hiddenUpload);
+    hiddenUpload.click();
+
+    hiddenUpload.addEventListener("change", function (e) {
+        var files = e.target.files;
+        var file = files[0];
+
+        if (!file) {
+            return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            getMainSaveFromUpload(e.target.result);
+
+            var uploadResult = document.querySelector(".upload-result");
+            uploadResult.innerText = "Uploaded save!";
+            setTimeout(function () {
+                uploadResult.innerText = "";
+            }, 3000);
+        };
+
+        reader.readAsText(file);
+
+        document.body.removeChild(hiddenUpload);
+    });
 }
 
 const keySlots = document.querySelectorAll('.keySlot');
@@ -368,7 +448,7 @@ const preferencesDefaults = {
     mask: true,
     maskTitle: "Home",
     maskIconUrl: "https://ssl.gstatic.com/classroom/ic_product_classroom_32.png"
-};  
+};
 
 
 if (localStorage.getItem("preferences") == null) {
@@ -386,16 +466,16 @@ maskCheckbox.checked = preferences.mask;
 maskTitle.value = preferences.maskTitle;
 maskIcon.value = preferences.maskIconUrl;
 
-if (preferences.cloak && (window.location.href == window.top.location.href)){
-    if (popupsAllowed()){
-        makecloak()
+if (preferences.cloak && (window.location.href == window.top.location.href)) {
+    if (popupsAllowed()) {
+        makecloak();
     }
     else {
         currentMenu.fadeOut(300, () => {
             $(".cloaklaunch").fadeIn(200);
         });
         currentMenu = $(".cloaklaunch");
-        document.addEventListener("click", (event) => {event.preventDefault(); makecloak()});
+        document.addEventListener("click", (event) => { event.preventDefault(); makecloak(); });
     }
 }
 
@@ -434,6 +514,15 @@ document.getElementById('maskIconSubmit').addEventListener('click', function () 
     localStorage.setItem('preferences', JSON.stringify(preferences));
     alert("Submitted! Change will take place upon refresh");
 });
+
+document.getElementById('download').addEventListener('click', function () {
+    downloadMainSave();
+});
+
+document.getElementById('upload').addEventListener('click', function () {
+    uploadMainSave();
+})
+
 /* if (preferences.cloak && !localStorage.getItem("cloakTabOpened")){
     if (window.top.location.href !== "about:blank"){
         localStorage.setItem("cloakTabOpened", "true");
@@ -446,6 +535,6 @@ document.getElementById('maskIconSubmit').addEventListener('click', function () 
     });
 } */
 
-if (preferences.mask){
-    mask()
+if (preferences.mask) {
+    mask();
 }
