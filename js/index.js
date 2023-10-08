@@ -203,6 +203,7 @@ function updateList() {
     // then fill it with the sorted and filtered list
     for (const item of elems) {
         document.getElementById("gamesList").appendChild(item);
+        updateGameList();
     }
 }
 $("#search").on("input", updateList);
@@ -210,12 +211,6 @@ $("#sort").on("change", updateList);
 
 dragElement(document.getElementById("gameButton"));
 dragElement(document.getElementById("refresh"));
-
-function toggleStar(event, star) {
-    event.preventDefault();
-    event.stopPropagation();
-    star.classList.toggle('filled');
-}
 
 /**
  * Adds drag functionality to an HTML element.
@@ -283,6 +278,11 @@ function returnHome() {
 }
 
 /**
+function toggleStar(event, star) {
+    event.preventDefault();
+    event.stopPropagation();
+    star.classList.toggle('filled');
+}
  * Refreshes the current page by reloading it.
  *
  * @return {void}
