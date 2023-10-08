@@ -25,8 +25,62 @@ fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
     
     let gamesList = $("#gamesList");
     for (game in games) {
-        gamesList.append(`<li url="games/${games[game]["path"]}" ${games[game]["aliases"] ? "aliases=\"" + games[game]["aliases"].join(',') + "\"" : ''}>${game} <span class="star" onclick="toggleStar(event, this)">★</span> </li>`);
+        gamesList.append(`<li url="games/${games[game]["path"]}" ${games[game]["aliases"] ? "aliases=\"" + games[game]["aliases"].join(',') + "\"" : ''}>${game} <span class="star">★</span> </li>`);
     }
+
+    let starredGamesList = JSON.parse(localStorage.getItem('starredGamesList')) || [];
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+        star.addEventListener('click', function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+            star.classList.toggle('filled');
+            
+            const gameItem = star.parentNode;
+            var gameName = gameItem.textContent;
+            const isStarred = starredGamesList.includes(gameName);
+
+            if (isStarred) {
+                starredGamesList = starredGamesList.filter(gameName => gameName !== gameName);
+
+                //THIS DOES NOT PUT THE GAME BACK IN ORDER ACCORDING TO THE WAY THE USER SORTED IT
+                //so for the weird ppl that sort by reverse alphabetical it should act pretty weird
+                //this is bc im layz and copy pasted this alphabetical sort thing, ill implement based off users sort later
+                const gameItem = star.closest('li');
+                const parent = gameItem.parentNode;
+
+                const originalPosition = Array.from(parent.children)
+                    .sort((a, b) => a.textContent.localeCompare(b.textContent))
+                    .findIndex(item => item === gameItem);
+
+                parent.removeChild(gameItem);
+
+                parent.insertBefore(gameItem, parent.children[originalPosition]);
+            } else {
+                starredGamesList.unshift(gameName);
+            }
+
+            localStorage.setItem('starredGamesList', JSON.stringify(starredGamesList));
+            updateGameList();
+        });
+    });
+    function updateGameList() {
+        const gamesList = document.getElementById('gamesList');
+        const children = Array.from(gamesList.children);
+      
+        children.forEach(gameItem => {
+          const currentGameName = gameItem.textContent;
+          const stars = gameItem.querySelector('.star');
+      
+          if (starredGamesList.includes(currentGameName)) {
+            stars.classList.add('filled');
+            gamesList.insertBefore(gameItem, gamesList.firstChild);
+          }
+        });
+      }
+      
+      updateGameList();
 
     $("#gamesList li").on("click", function() {
         let url = $(this).attr("url");
