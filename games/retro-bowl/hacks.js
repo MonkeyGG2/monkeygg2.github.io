@@ -1,14 +1,13 @@
 let isCtrlPressed = false;
 
 document.addEventListener('keydown', function(event) {
-  if (event.ctrlKey && event.key === '`') {
+  if (event.ctrlKey && event.key === 'q') {
     document.addEventListener('keydown', keyPressHandler);
   }
 });
 
 function keyPressHandler(event) {
   if (event.key >= '1' && event.key <= '6') {
-    console.log('Key between 1-6 pressed:', event.key);
     handleOption(event.key);
   } else {
     document.removeEventListener('keydown', keyPressHandler);
