@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Geometry Lite v2",
+"productVersion": "0.1",
+"dataUrl": "geo.data.unityweb",
+"wasmCodeUrl": "geo.wasm.code.unityweb",
+"wasmFrameworkUrl": "geo.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.24f1"
+}
