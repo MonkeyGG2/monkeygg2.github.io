@@ -478,6 +478,16 @@
             "aliases": [],
             "categories": []
         },
+        "OvO": {
+            "path": "ovo/1.4.4",
+            "aliases": [],
+            "categories": []
+        },
+        "OvO 2": {
+            "path": "ovo/2.0.2alpha",
+            "aliases": [],
+            "categories": []
+        },
         "Papas Pizzeria": {
             "path": "flash/?game=papas-pizzaria",
             "aliases": [],

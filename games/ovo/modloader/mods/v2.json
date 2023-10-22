@@ -1,0 +1,30 @@
+{
+    "chaos": {
+        "name": "Chaos",
+        "author": "drakeerv",
+        "description": "CHAOS!",
+        "advanced": false,
+        "url": "chaos.js"
+    },
+    "levelselector": {
+        "name": "Level Selector",
+        "author": "drakeerv",
+        "description": "Load any level in the game.",
+        "advanced": false,
+        "url": "levelselector.js"
+    },
+    "dark": {
+        "name": "Dark",
+        "author": "drakeerv",
+        "description": "Dark Mode for OvO!",
+        "advanced": false,
+        "url": "dark.js"
+    },
+    "resetbutton": {
+        "name": "Reset Button",
+        "author": "drakeerv",
+        "description": "Allows you to reset using R.",
+        "advanced": false,
+        "url": "resetbutton.js" 
+    }
+}
