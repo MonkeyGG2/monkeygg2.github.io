@@ -65,6 +65,7 @@ fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
             updateGameList();
         });
     });
+    // Pushes all starred games to the top
     function updateGameList() {
         const gamesList = document.getElementById('gamesList');
         const children = Array.from(gamesList.children);
