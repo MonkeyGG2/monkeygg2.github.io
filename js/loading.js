@@ -153,4 +153,5 @@ jQuery.fn.extend({showModal: function() {
     fpsMeter.style.fontFamily = "'Flexi IBM VGA True (437', monospace";
     fpsMeter.style.fontSize = "24px";
     fpsMeter.style.zIndex = "10000";
+    fpsMeter.style.pointerEvents = "none";
 })();
