@@ -28,6 +28,11 @@
                 "battle"
             ]
         },
+        "10-minutes-till-dawn": {
+            "path": "10-minutes-till-dawn",
+            "aliases": [],
+            "categories": []
+        },
         "2048": {
             "path": "2048",
             "aliases": [],
@@ -210,6 +215,11 @@
         },
         "Dadish 2": {
             "path": "dadish-2",
+            "aliases": [],
+            "categories": []
+        },
+        "Dadish 3": {
+            "path": "dadish-3",
             "aliases": [],
             "categories": []
         },
