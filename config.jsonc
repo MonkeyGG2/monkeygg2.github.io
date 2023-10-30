@@ -28,7 +28,7 @@
                 "battle"
             ]
         },
-        "10-minutes-till-dawn": {
+        "10 minutes till dawn": {
             "path": "10-minutes-till-dawn",
             "aliases": [],
             "categories": []
@@ -480,6 +480,12 @@
         },
         "N-gon": {
             "path": "n-gon",
+            "aliases": [],
+            "categories": []
+        },
+        
+        "N Step Steve": {
+            "path": "n-step-steve",
             "aliases": [],
             "categories": []
         },
