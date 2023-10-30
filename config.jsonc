@@ -483,9 +483,13 @@
             "aliases": [],
             "categories": []
         },
-        
-        "N Step Steve part 2": {
-            "path": "n-step-steve",
+        "N Step Steve Part 1": {
+            "path": "n-step-steve-part-1",
+            "aliases": [],
+            "categories": []
+        },
+        "N Step Steve Part 2": {
+            "path": "n-step-steve-part-2",
             "aliases": [],
             "categories": []
         },
