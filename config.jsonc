@@ -544,6 +544,11 @@
             "aliases": [],
             "categories": []
         },
+        "Restless Wing Syndrome": {
+            "path": "restless-flappy-disease",
+            "aliases": [],
+            "categories": []
+        },
         "Raft Wars": {
             "path": "flash/?game=raft-wars",
             "aliases": [],
