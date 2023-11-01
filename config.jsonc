@@ -228,6 +228,11 @@
             "aliases": [],
             "categories": []
         },
+        "Doge Miner": {
+            "path": "doge-miner",
+            "aliases": [],
+            "categories": []
+        },
         "Don't Escape": {
             "path": "w-flash/?game=dont-escape",
             "aliases": [],
