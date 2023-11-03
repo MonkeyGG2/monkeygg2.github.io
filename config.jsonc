@@ -113,6 +113,11 @@
             "aliases": [],
             "categories": []
         },
+        "Bit Life": {
+            "path": "bit-life",
+            "aliases": [],
+            "categories": []
+        },
         "Bloons": {
             "path": "flash/?game=bloons",
             "aliases": [],
