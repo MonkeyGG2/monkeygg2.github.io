@@ -501,7 +501,6 @@ function randomGame() {
     const randomIndex = Math.floor(Math.random() * gameLinks.length);
     const randomGameLink = gameLinks[randomIndex];
     window.location.href = randomGameLink.getAttribute('url');
-    ;
 } 
 
 
