@@ -496,6 +496,15 @@ function restoreColorChanges() {
     alert("Defaults Restored! Changes will take place upon reload");
 }
 
+function randomGame() {
+    const gameLinks = document.querySelectorAll('#gamesList li');
+    const randomIndex = Math.floor(Math.random() * gameLinks.length);
+    const randomGameLink = gameLinks[randomIndex];
+    window.location.href = randomGameLink.getAttribute('url');
+    ;
+} 
+
+
 const preferencesDefaults = {
     cloak: true,
     cloakUrl: "https://classroom.google.com",

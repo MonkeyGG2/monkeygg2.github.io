@@ -208,10 +208,22 @@ body.noscript {
   margin-bottom: 5px;
 }
 
+.randgame {
+  cursor: pointer;
+  width: 15%;
+  border: none;
+  margin-left: 4px;
+  font-size: 100%;
+  font-family: var(--font-family);
+  color: var(--font-color);
+  background-color: var(--block-color);
+
+}
+
 #search {
   all: unset;
   margin-right: 4px;
-  width: 100%;
+  width: 70%;
   padding: 1rem;
   font-family: var(--font-family);
   color: var(--font-color);
@@ -227,7 +239,7 @@ body.noscript {
   font-size: 1rem;
   font-family: var(--font-family);
   padding: 1rem;
-  width: 20%;
+  width: 15%;
 }
 
 .keySlot{
