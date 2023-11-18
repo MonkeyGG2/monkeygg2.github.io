@@ -259,6 +259,14 @@
                     <button class="save-button" id="upload">Upload Game Data</button>
                     <p class="upload-result"></p>
                 </div>
+                
+                <h5>Cloak and Mask presets</h5>
+                <select id="presets">
+                    <option value="classroom">Google Classroom</option>
+                    <option value="drive">Google Drive</option>
+                    <option value="mail">Google Mail</option>
+                  </select>
+                <button onclick="updatePreset()">Submit</button>
 
                 <div class="setting">
                     <h5>Cloak</h5>
@@ -336,6 +344,37 @@
                         </div>
                     </label>
                 </div>
+
+
+                <h4>Apperance</h4>
+                <h6>Theme and stuff - yet again changes take place upon refresh</h6>
+                <label for="bg">Background Color:</label>
+                <input type="color" id="bg" name="bg" value="#202020">
+                <br>
+                <label for="block-color">Block Color:</label>
+                <input type="color" id="block-color" name="block-color" value="#2b2b2b">
+                <br>
+                <label for="button-color">Button Color:</label>
+                <input type="color" id="button-color" name="button-color" value="#373737">
+                <br>
+                <label for="games-color">Games Color:</label>
+                <input type="color" id="games-color" name="games-color" value="#373737a6">
+                <br>
+                <label for="hover-color">Hover Color:</label>
+                <input type="color" id="hover-color" name="hover-color" value="#3c3c3c">
+                <br>
+                <label for="scrollbar-color">Scrollbar Color:</label>
+                <input type="color" id="scrollbar-color" name="scrollbar-color" value="#434343">
+                <br>
+                <label for="scroll-track-color">Scroll Track Color:</label>
+                <input type="color" id="scroll-track-color" name="scroll-track-color" value="#111">
+                <br>
+                <label for="font-color">Font Color:</label>
+                <input type="color" id="font-color" name="font-color" value="#dcddde">
+                <br>
+                <button class="save-button" onclick="restoreColorChanges()">Restore Defaults</button>
+                <button class="save-button" onClick="saveColorChanges()">Save Changes</button>
+
             </div>
         </div>
     </section>
