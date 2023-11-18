@@ -448,6 +448,54 @@ keySlots.forEach((slot) => {
     });
 });
 
+const defaultColorSettings = {
+    'bg': '#202020',
+    'block-color': '#2b2b2b',
+    'button-color': '#373737',
+    'games-color': '#373737a6',
+    'hover-color': '#3c3c3c',
+    'scrollbar-color': '#434343',
+    'scroll-track-color': '#111',
+    'font-color': '#dcddde'
+};
+
+const colorSettings = JSON.parse(localStorage.getItem('colorSettings')) || defaultColorSettings;
+            
+
+// Set input values
+Object.keys(colorSettings).forEach(key => {
+    const inputElement = document.getElementById(key);
+    if (inputElement) {
+        inputElement.value = colorSettings[key];
+    }
+});
+
+// Set CSS variables
+Object.entries(colorSettings).forEach(([key, value]) => {
+    document.documentElement.style.setProperty(`--${key}`, value);
+});
+
+// Save changes button event listener
+function saveColorChanges() {
+    const inputs = document.querySelectorAll('input[type="color"]');
+    const newColorSettings = {};
+    
+    inputs.forEach(input => {
+        newColorSettings[input.id] = input.value;
+    });
+
+    // Save to local storage
+    localStorage.setItem('colorSettings', JSON.stringify(newColorSettings));
+    alert("Colors saved! Changes will take place upon reload");
+}
+
+// Restore defaults button event listener
+function restoreColorChanges() {
+    // Reset to default values
+    localStorage.removeItem('colorSettings');
+    alert("Defaults Restored! Changes will take place upon reload");
+}
+
 const preferencesDefaults = {
     cloak: true,
     cloakUrl: "https://classroom.google.com",
@@ -471,6 +519,36 @@ cloakUrl.value = preferences.cloakUrl;
 maskCheckbox.checked = preferences.mask;
 maskTitle.value = preferences.maskTitle;
 maskIcon.value = preferences.maskIconUrl;
+
+const presets = {
+    classroom: {
+      url: 'https://classroom.google.com/',
+      title: 'Home',
+      icon: 'https://ssl.gstatic.com/classroom/ic_product_classroom_32.png'
+    },
+    drive: {
+      url: 'https://drive.google.com/',
+      title: 'My Drive - Google Drive',
+      icon: 'https://ssl.gstatic.com/images/branding/product/2x/hh_drive_36dp.png'
+    },
+    mail: {
+      url: 'https://mail.google.com/',
+      title: 'Inbox (12) - Google Mail',
+      icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png'
+    }
+  };
+
+function setPreset(object) {
+    preferences.cloakUrl = object.url;
+    preferences.maskTitle = object.title;
+    preferences.maskIconUrl = object.icon;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+    alert("Preset will take place upon next opening!");
+}
+
+function updatePreset() {
+    setPreset(presets[document.getElementById("presets").value]);
+}
 
 if (preferences.cloak && (window.location.href == window.top.location.href)) {
     if (popupsAllowed()) {
