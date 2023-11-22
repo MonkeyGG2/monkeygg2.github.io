@@ -500,7 +500,14 @@ function randomGame() {
     const gameLinks = document.querySelectorAll('#gamesList li');
     const randomIndex = Math.floor(Math.random() * gameLinks.length);
     const randomGameLink = gameLinks[randomIndex];
-    window.location.href = randomGameLink.getAttribute('url');
+    // window.location.href = randomGameLink.getAttribute('url');
+    const url = randomGameLink.getAttribute('url');
+    inGame = true;
+    $("#everything-else").fadeOut();
+    $("#page-loader").fadeIn();
+    $("#page-loader iframe").attr("src", url);
+    $("#page-loader iframe")[0].focus();
+    currentMenu = $("#page-loader");
 } 
 
 
@@ -543,7 +550,12 @@ const presets = {
       url: 'https://mail.google.com/',
       title: 'Inbox (12) - Google Mail',
       icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png'
-    }
+    },
+    canvas: {
+        url: 'https://www.instructure.com/',
+        title: 'Dashboard',
+        icon: 'https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico'
+      }
   };
 
 function setPreset(object) {

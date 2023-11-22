@@ -118,6 +118,11 @@
             "aliases": [],
             "categories": []
         },
+        "Boxing Random": {
+            "path": "boxing-random",
+            "aliases": [],
+            "categories": []
+        },
         "Bloons": {
             "path": "flash/?game=bloons",
             "aliases": [],
