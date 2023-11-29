@@ -85,7 +85,6 @@ fetch("./config.jsonc").then((e) => e.text()).then((jsonc) => {
 
     $("#gamesList li").on("click", function() {
         let url = $(this).attr("url");
-        alert(url);
         inGame = true;
         $("#everything-else").fadeOut();
         $("#page-loader").fadeIn();
