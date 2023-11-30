@@ -23,10 +23,7 @@
         "1v1.LOL": {
             "path": "1v1-lol",
             "aliases": [],
-            "categories": [
-                "online",
-                "battle"
-            ]
+            "categories": ["online", "battle"]
         },
         "10 minutes till dawn": {
             "path": "10-minutes-till-dawn",
