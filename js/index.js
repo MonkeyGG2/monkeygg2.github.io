@@ -1,35 +1,35 @@
-let currentMenu = $(".homepage");
+let currentMenu = $('.homepage');
 
-$(".column button .card").on("click", function () {
-    let nextMenu = this.getAttribute("data");
+$('.column button .card').on('click', function () {
+    let nextMenu = this.getAttribute('data');
 
-    if (nextMenu === "proxy") {
-        if (!config["proxy"]) {
-            $("#disabled").showModal();
+    if (nextMenu === 'proxy') {
+        if (!config['proxy']) {
+            $('#disabled').showModal();
             return;
         }
-        $("#everything-else").fadeOut(300, () => {
-            $("#page-loader").fadeIn(200);
-            $("#page-loader iframe").attr("src", config["proxyPath"] || "/proxy");
-            $("#page-loader iframe")[0].focus();
+        $('#everything-else').fadeOut(300, () => {
+            $('#page-loader').fadeIn(200);
+            $('#page-loader iframe').attr('src', config['proxyPath'] || '/proxy');
+            $('#page-loader iframe')[0].focus();
         });
-        currentMenu = $("#page-loader");
-        inGame = true;
+        currentMenu = $('#page-loader');
+        inGame = !preferences.background; // if background is disabled (false) then inGame is set to to true turning off the background
         return;
     }
 
     currentMenu.fadeOut(300, () => {
-        $("." + nextMenu).fadeIn(200);
+        $('.' + nextMenu).fadeIn(200);
     });
-    currentMenu = $("." + nextMenu);
+    currentMenu = $('.' + nextMenu);
 });
 
-$("logo img").on("click", returnHome);
-$("#gameButton").on("click", returnHome);
-$("#refresh").on("click", refreshPage);
+$('logo img').on('click', returnHome);
+$('#gameButton').on('click', returnHome);
+$('#refresh').on('click', refreshPage);
 
-$("dialog").on("click", function (e) {
-    if (!e.originalEvent.target.closest("div")) {
+$('dialog').on('click', function (e) {
+    if (!e.originalEvent.target.closest('div')) {
         e.originalEvent.target.close();
     }
 });
@@ -39,14 +39,13 @@ $("dialog").on("click", function (e) {
 // from https://www.geeksforgeeks.org/jaro-and-jaro-winkler-similarity/
 function jaro_distance(s1, s2) {
     // If the strings are equal
-    if (s1 == s2)
-        return 1.0;
+    if (s1 == s2) return 1.0;
 
     // Length of two strings
-    let len1 = s1.length, len2 = s2.length;
+    let len1 = s1.length,
+        len2 = s2.length;
 
-    if (len1 == 0 || len2 == 0)
-        return 0.0;
+    if (len1 == 0 || len2 == 0) return 0.0;
 
     // Maximum distance upto which matching
     // is allowed
@@ -63,14 +62,10 @@ function jaro_distance(s1, s2) {
 
     // Traverse through the first string
     for (let i = 0; i < len1; i++) {
-
         // Check if there is any matches
-        for (let j = Math.max(0, i - max_dist);
-            j < Math.min(len2, i + max_dist + 1); j++)
-
+        for (let j = Math.max(0, i - max_dist); j < Math.min(len2, i + max_dist + 1); j++)
             // If there is a match
-            if (s1[i] == s2[j] &&
-                hash_s2[j] == 0) {
+            if (s1[i] == s2[j] && hash_s2[j] == 0) {
                 hash_s1[i] = 1;
                 hash_s2[j] = 1;
                 match++;
@@ -79,8 +74,7 @@ function jaro_distance(s1, s2) {
     }
 
     // If there is no match
-    if (match == 0)
-        return 0.0;
+    if (match == 0) return 0.0;
 
     // Number of transpositions
     let t = 0;
@@ -93,22 +87,16 @@ function jaro_distance(s1, s2) {
     // in between the indices
     for (let i = 0; i < len1; i++)
         if (hash_s1[i] == 1) {
-
             // Find the next matched character
             // in second string
-            while (hash_s2[point] == 0)
-                point++;
+            while (hash_s2[point] == 0) point++;
 
-            if (s1[i] != s2[point++])
-                t++;
+            if (s1[i] != s2[point++]) t++;
         }
     t /= 2;
 
     // Return the Jaro Similarity
-    return ((match) / (len1)
-        + (match) / (len2)
-        + (match - t) / (match))
-        / 3.0;
+    return (match / len1 + match / len2 + (match - t) / match) / 3.0;
 }
 
 // Jaro Winkler Similarity
@@ -117,19 +105,14 @@ function jaroWinklerSimilarity(s1, s2) {
 
     // If the jaro Similarity is above a threshold
     if (jaro_dist > 0.7) {
-
         // Find the length of common prefix
         let prefix = 0;
 
         for (let i = 0; i < Math.min(s1.length, s2.length); i++) {
-
             // If the characters match
-            if (s1[i] == s2[i])
-                prefix++;
-
+            if (s1[i] == s2[i]) prefix++;
             // Else break
-            else
-                break;
+            else break;
         }
 
         // Maximum of 4 characters are allowed in prefix
@@ -147,9 +130,9 @@ function jaroWinklerSimilarity(s1, s2) {
  * @return {void}
  */
 function updateList() {
-    const filter = $("#search").val().toLowerCase();
-    const elems = Array.from(document.querySelectorAll("#gamesList li"));
-    const sortType = $("#sort").val();
+    const filter = $('#search').val().toLowerCase();
+    const elems = Array.from(document.querySelectorAll('#gamesList li'));
+    const sortType = $('#sort').val();
 
     // sort by selected sort type
     elems.sort(function (a, b) {
@@ -163,10 +146,10 @@ function updateList() {
     // then filter items with the search input
     elems.forEach(function (item) {
         let similarity = jaroWinklerSimilarity(filter, item.innerHTML.toLowerCase().slice(0, filter.length - 1));
-        if (item.getAttribute("aliases")) {
-            for (alias in item.getAttribute("aliases").split(',')) {
+        if (item.getAttribute('aliases')) {
+            for (alias in item.getAttribute('aliases').split(',')) {
                 if (alias.length > 1) {
-                    console.log("alias");
+                    console.log('alias');
                     console.log(alias);
                     console.log(typeof alias);
                     console.log(alias.length);
@@ -175,25 +158,25 @@ function updateList() {
             }
         }
 
-        if (similarity >= 0.7 && item.innerHTML.length > 2 || item.innerHTML.toLowerCase().indexOf(filter) > -1) {
-            item.style.display = "";
+        if ((similarity >= 0.7 && item.innerHTML.length > 2) || item.innerHTML.toLowerCase().indexOf(filter) > -1) {
+            item.style.display = '';
         } else {
-            item.style.display = "none";
+            item.style.display = 'none';
         }
     });
 
     // now sort by jaro winkler distance
     elems.sort(function (a, b) {
         let distanceA = jaroWinklerSimilarity(filter, a.textContent.toLowerCase());
-        if (a.getAttribute("aliases")) {
-            for (alias in a.getAttribute("aliases").split(',')) {
+        if (a.getAttribute('aliases')) {
+            for (alias in a.getAttribute('aliases').split(',')) {
                 distanceA += jaroWinklerSimilarity(filter, alias.toLowerCase());
             }
         }
 
         let distanceB = jaroWinklerSimilarity(filter, b.textContent.toLowerCase());
-        if (b.getAttribute("aliases")) {
-            for (alias in b.getAttribute("aliases").split(',')) {
+        if (b.getAttribute('aliases')) {
+            for (alias in b.getAttribute('aliases').split(',')) {
                 distanceB += jaroWinklerSimilarity(filter, alias.toLowerCase());
             }
         }
@@ -202,15 +185,15 @@ function updateList() {
 
     // then fill it with the sorted and filtered list
     for (const item of elems) {
-        document.getElementById("gamesList").appendChild(item);
+        document.getElementById('gamesList').appendChild(item);
         updateGameList();
     }
 }
-$("#search").on("input", updateList);
-$("#sort").on("change", updateList);
+$('#search').on('input', updateList);
+$('#sort').on('change', updateList);
 
-dragElement(document.getElementById("gameButton"));
-dragElement(document.getElementById("refresh"));
+dragElement(document.getElementById('gameButton'));
+dragElement(document.getElementById('refresh'));
 
 /**
  * Adds drag functionality to an HTML element.
@@ -219,7 +202,10 @@ dragElement(document.getElementById("refresh"));
  * @return {void}
  */
 function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
     if (document.getElementById(elmnt.id)) {
         document.getElementById(elmnt.id).onmousedown = dragMouseDown;
     } else {
@@ -244,12 +230,10 @@ function dragElement(elmnt) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         window.click = 1;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-
+        elmnt.style.top = elmnt.offsetTop - pos2 + 'px';
     }
 
     function closeDragElement() {
-
         document.onmouseup = null;
         document.onmousemove = null;
 
@@ -257,7 +241,9 @@ function dragElement(elmnt) {
             window.hold = true;
             window.click = 0;
         }
-        setTimeout(function () { window.hold = false; }, 100);
+        setTimeout(function () {
+            window.hold = false;
+        }, 100);
     }
 }
 
@@ -268,13 +254,13 @@ function dragElement(elmnt) {
  */
 function returnHome() {
     currentMenu.fadeOut(300, () => {
-        $("#everything-else").fadeIn(200);
-        $(".games").hide();
-        $(".homepage").fadeIn(200);
+        $('#everything-else').fadeIn(200);
+        $('.games').hide();
+        $('.homepage').fadeIn(200);
     });
-    currentMenu = $(".homepage");
-    inGame = false;
-    console.log("e");
+    currentMenu = $('.homepage');
+    inGame = !preferences.background; // if background is disabled (false) then inGame is set to to true turning off the background
+    console.log('e');
 }
 
 /**
@@ -288,13 +274,13 @@ function toggleStar(event, star) {
  * @return {void}
  */
 function refreshPage() {
-    const oldUrl = $("#page-loader iframe").attr("src");
+    const oldUrl = $('#page-loader iframe').attr('src');
     console.log(oldUrl);
-    $("#page-loader iframe").attr("src", "");
+    $('#page-loader iframe').attr('src', '');
 
     // delay is needed for some reason
     setTimeout(() => {
-        $("#page-loader iframe").attr("src", oldUrl);
+        $('#page-loader iframe').attr('src', oldUrl);
     }, 10);
 }
 
@@ -304,21 +290,21 @@ function refreshPage() {
  * @return {void}
  */
 function makecloak(replaceUrl = preferences.cloakUrl) {
-    if ((window.top.location.href !== "about:blank")) {
+    if (window.top.location.href !== 'about:blank') {
         var url = window.location.href;
         const win = window.open();
         if (!win || win.closed || typeof win.closed == 'undefined') {
             return;
         }
-        win.document.body.style.margin = "0";
-        win.document.body.style.height = "100vh";
-        var iframe = win.document.createElement("iframe");
-        iframe.style.border = "none";
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.margin = "0";
-        iframe.referrerpolicy = "no-referrer";
-        iframe.allow = "fullscreen";
+        win.document.body.style.margin = '0';
+        win.document.body.style.height = '100vh';
+        var iframe = win.document.createElement('iframe');
+        iframe.style.border = 'none';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.margin = '0';
+        iframe.referrerpolicy = 'no-referrer';
+        iframe.allow = 'fullscreen';
         iframe.src = url.toString();
         win.document.body.appendChild(iframe);
         window.location.replace(replaceUrl);
@@ -342,11 +328,14 @@ function mask(title = preferences.maskTitle, iconUrl = preferences.maskIconUrl) 
 
 function popupsAllowed() {
     var windowName = 'userConsole';
-    var popUp = window.open('/popup-page.php', windowName, 'width=1000, height=700, left=24, top=24, scrollbars, resizable');
-    if (popUp == null || typeof (popUp) == 'undefined') {
+    var popUp = window.open(
+        '/popup-page.php',
+        windowName,
+        'width=1000, height=700, left=24, top=24, scrollbars, resizable'
+    );
+    if (popUp == null || typeof popUp == 'undefined') {
         return false;
-    }
-    else {
+    } else {
         popUp.close();
         return true;
     }
@@ -369,7 +358,7 @@ function getMainSave() {
 
     mainSave = btoa(JSON.stringify(mainSave));
 
-    mainSave = CryptoJS.AES.encrypt(mainSave, "save").toString();
+    mainSave = CryptoJS.AES.encrypt(mainSave, 'save').toString();
 
     return mainSave;
 }
@@ -378,15 +367,15 @@ function downloadMainSave() {
     var data = new Blob([getMainSave()]);
     var dataURL = URL.createObjectURL(data);
 
-    var fakeElement = document.createElement("a");
+    var fakeElement = document.createElement('a');
     fakeElement.href = dataURL;
-    fakeElement.download = "monkey.data";
+    fakeElement.download = 'monkey.data';
     fakeElement.click();
     URL.revokeObjectURL(dataURL);
 }
 
 function getMainSaveFromUpload(data) {
-    data = CryptoJS.AES.decrypt(data, "save").toString(CryptoJS.enc.Utf8);
+    data = CryptoJS.AES.decrypt(data, 'save').toString(CryptoJS.enc.Utf8);
 
     var mainSave = JSON.parse(atob(data));
     var mainLocalStorageSave = JSON.parse(atob(mainSave.localStorage));
@@ -400,13 +389,13 @@ function getMainSaveFromUpload(data) {
 }
 
 function uploadMainSave() {
-    var hiddenUpload = document.createElement("input");
-    hiddenUpload.type = "file";
-    hiddenUpload.accept = ".data";
+    var hiddenUpload = document.createElement('input');
+    hiddenUpload.type = 'file';
+    hiddenUpload.accept = '.data';
     document.body.appendChild(hiddenUpload);
     hiddenUpload.click();
 
-    hiddenUpload.addEventListener("change", function (e) {
+    hiddenUpload.addEventListener('change', function (e) {
         var files = e.target.files;
         var file = files[0];
 
@@ -419,10 +408,10 @@ function uploadMainSave() {
         reader.onload = function (e) {
             getMainSaveFromUpload(e.target.result);
 
-            var uploadResult = document.querySelector(".upload-result");
-            uploadResult.innerText = "Uploaded save!";
+            var uploadResult = document.querySelector('.upload-result');
+            uploadResult.innerText = 'Uploaded save!';
             setTimeout(function () {
-                uploadResult.innerText = "";
+                uploadResult.innerText = '';
             }, 3000);
         };
 
@@ -449,21 +438,20 @@ keySlots.forEach((slot) => {
 });
 
 const defaultColorSettings = {
-    'bg': '#202020',
+    bg: '#202020',
     'block-color': '#2b2b2b',
     'button-color': '#373737',
     'games-color': '#373737a6',
     'hover-color': '#3c3c3c',
     'scrollbar-color': '#434343',
     'scroll-track-color': '#111',
-    'font-color': '#dcddde'
+    'font-color': '#dcddde',
 };
 
 const colorSettings = JSON.parse(localStorage.getItem('colorSettings')) || defaultColorSettings;
-            
 
 // Set input values
-Object.keys(colorSettings).forEach(key => {
+Object.keys(colorSettings).forEach((key) => {
     const inputElement = document.getElementById(key);
     if (inputElement) {
         inputElement.value = colorSettings[key];
@@ -479,21 +467,21 @@ Object.entries(colorSettings).forEach(([key, value]) => {
 function saveColorChanges() {
     const inputs = document.querySelectorAll('input[type="color"]');
     const newColorSettings = {};
-    
-    inputs.forEach(input => {
+
+    inputs.forEach((input) => {
         newColorSettings[input.id] = input.value;
     });
 
     // Save to local storage
     localStorage.setItem('colorSettings', JSON.stringify(newColorSettings));
-    alert("Colors saved! Changes will take place upon reload");
+    alert('Colors saved! Changes will take place upon reload');
 }
 
 // Restore defaults button event listener
 function restoreColorChanges() {
     // Reset to default values
     localStorage.removeItem('colorSettings');
-    alert("Defaults Restored! Changes will take place upon reload");
+    alert('Defaults Restored! Changes will take place upon reload');
 }
 
 function randomGame() {
@@ -503,28 +491,28 @@ function randomGame() {
     // window.location.href = randomGameLink.getAttribute('url');
     const url = randomGameLink.getAttribute('url');
     inGame = true;
-    $("#everything-else").fadeOut();
-    $("#page-loader").fadeIn();
-    $("#page-loader iframe").attr("src", url);
-    $("#page-loader iframe")[0].focus();
-    currentMenu = $("#page-loader");
-} 
-
+    $('#everything-else').fadeOut();
+    $('#page-loader').fadeIn();
+    $('#page-loader iframe').attr('src', url);
+    $('#page-loader iframe')[0].focus();
+    currentMenu = $('#page-loader');
+}
 
 const preferencesDefaults = {
     cloak: true,
-    cloakUrl: "https://classroom.google.com",
+    cloakUrl: 'https://classroom.google.com',
     mask: true,
-    maskTitle: "Home",
-    maskIconUrl: "https://ssl.gstatic.com/classroom/ic_product_classroom_32.png"
+    maskTitle: 'Home',
+    maskIconUrl: 'https://ssl.gstatic.com/classroom/ic_product_classroom_32.png',
+    background: true,
 };
 
-
-if (localStorage.getItem("preferences") == null) {
-    localStorage.setItem("preferences", JSON.stringify(preferencesDefaults));
+if (localStorage.getItem('preferences') == null) {
+    localStorage.setItem('preferences', JSON.stringify(preferencesDefaults));
 }
-const preferences = JSON.parse(localStorage.getItem("preferences"));
+const preferences = JSON.parse(localStorage.getItem('preferences'));
 const cloakCheckbox = document.getElementById('cloakCheckboxInput');
+const backgroundCheckbox = document.getElementById('backgroundCheckboxInput');
 const cloakUrl = document.getElementById('cloakUrlInput');
 const maskCheckbox = document.getElementById('maskCheckboxInput');
 const maskTitle = document.getElementById('maskTitleInput');
@@ -534,52 +522,55 @@ cloakUrl.value = preferences.cloakUrl;
 maskCheckbox.checked = preferences.mask;
 maskTitle.value = preferences.maskTitle;
 maskIcon.value = preferences.maskIconUrl;
+backgroundCheckbox.checked = preferences.background;
 
 const presets = {
     classroom: {
-      url: 'https://classroom.google.com/',
-      title: 'Home',
-      icon: 'https://ssl.gstatic.com/classroom/ic_product_classroom_32.png'
+        url: 'https://classroom.google.com/',
+        title: 'Home',
+        icon: 'https://ssl.gstatic.com/classroom/ic_product_classroom_32.png',
     },
     drive: {
-      url: 'https://drive.google.com/',
-      title: 'My Drive - Google Drive',
-      icon: 'https://ssl.gstatic.com/images/branding/product/2x/hh_drive_36dp.png'
+        url: 'https://drive.google.com/',
+        title: 'My Drive - Google Drive',
+        icon: 'https://ssl.gstatic.com/images/branding/product/2x/hh_drive_36dp.png',
     },
     mail: {
-      url: 'https://mail.google.com/',
-      title: 'Inbox (12) - Google Mail',
-      icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png'
+        url: 'https://mail.google.com/',
+        title: 'Inbox (12) - Google Mail',
+        icon: 'https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_512dp.png',
     },
     canvas: {
         url: 'https://www.instructure.com/',
         title: 'Dashboard',
-        icon: 'https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico'
-      }
-  };
+        icon: 'https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico',
+    },
+};
 
 function setPreset(object) {
     preferences.cloakUrl = object.url;
     preferences.maskTitle = object.title;
     preferences.maskIconUrl = object.icon;
     localStorage.setItem('preferences', JSON.stringify(preferences));
-    alert("Preset will take place upon next opening!");
+    alert('Preset will take place upon next opening!');
 }
 
 function updatePreset() {
-    setPreset(presets[document.getElementById("presets").value]);
+    setPreset(presets[document.getElementById('presets').value]);
 }
 
-if (preferences.cloak && (window.location.href == window.top.location.href)) {
+if (preferences.cloak && window.location.href == window.top.location.href) {
     if (popupsAllowed()) {
         makecloak();
-    }
-    else {
+    } else {
         currentMenu.fadeOut(300, () => {
-            $(".cloaklaunch").fadeIn(200);
+            $('.cloaklaunch').fadeIn(200);
         });
-        currentMenu = $(".cloaklaunch");
-        document.addEventListener("click", (event) => { event.preventDefault(); makecloak(); });
+        currentMenu = $('.cloaklaunch');
+        document.addEventListener('click', (event) => {
+            event.preventDefault();
+            makecloak();
+        });
     }
 }
 
@@ -593,6 +584,11 @@ cloakCheckbox.addEventListener('change', function () {
     localStorage.setItem('preferences', JSON.stringify(preferences));
 });
 
+backgroundCheckbox.addEventListener('change', function () {
+    preferences.background = backgroundCheckbox.checked;
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+    inGame = !preferences.background;
+});
 
 /* if it is wanted to save on input change wather than submission
 document.querySelector('.text-field').addEventListener('change', function () {
@@ -604,19 +600,19 @@ document.querySelector('.text-field').addEventListener('change', function () {
 document.getElementById('cloakUrlSubmit').addEventListener('click', function () {
     preferences.cloakUrl = cloakUrl.value;
     localStorage.setItem('preferences', JSON.stringify(preferences));
-    alert("Submitted! Change will take place upon refresh");
+    alert('Submitted! Change will take place upon refresh');
 });
 
 document.getElementById('maskTitleSubmit').addEventListener('click', function () {
     preferences.maskTitle = maskTitle.value;
     localStorage.setItem('preferences', JSON.stringify(preferences));
-    alert("Submitted! Change will take place upon refresh");
+    alert('Submitted! Change will take place upon refresh');
 });
 
 document.getElementById('maskIconSubmit').addEventListener('click', function () {
     preferences.maskIconUrl = maskIcon.value;
     localStorage.setItem('preferences', JSON.stringify(preferences));
-    alert("Submitted! Change will take place upon refresh");
+    alert('Submitted! Change will take place upon refresh');
 });
 
 document.getElementById('download').addEventListener('click', function () {
@@ -625,7 +621,7 @@ document.getElementById('download').addEventListener('click', function () {
 
 document.getElementById('upload').addEventListener('click', function () {
     uploadMainSave();
-})
+});
 
 /* if (preferences.cloak && !localStorage.getItem("cloakTabOpened")){
     if (window.top.location.href !== "about:blank"){
