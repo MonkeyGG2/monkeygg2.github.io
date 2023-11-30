@@ -1,36 +1,46 @@
 // hexagons will be used as a separate theme later
 
 function changeLoadingTip() {
-    const tips = ["Press CTRL+C to cloak your current tab","Press CTRL+M to mask your current tab", "Press CTRL+B to go back to the home page", "Join our discord server!", "Make sure to enable popups for automatic cloak", "Why are you here?"]
-    const element = document.getElementsByClassName("loading-tip")[0];
+    const tips = [
+        'Press CTRL+C to cloak your current tab',
+        'Press CTRL+M to mask your current tab',
+        'Press CTRL+B to go back to the home page',
+        'Join our discord server!',
+        'Make sure to enable popups for automatic cloak',
+        'Why are you here?',
+    ];
+    const element = document.getElementsByClassName('loading-tip')[0];
 
-    element.textContent =  "Loading... \n" + tips[Math.floor(Math.random() * tips.length)];
+    element.textContent = 'Loading... \n' + tips[Math.floor(Math.random() * tips.length)];
 }
 
 changeLoadingTip();
-$("#everything-else").hide();
+$('#everything-else').hide();
 
 let changeTip = setInterval(() => {
     changeLoadingTip();
 }, 3000);
 
-$(window).on("load", () => {
-    $(".track").attr("stroke", "url(#grad2)");
-    $(".worm1").hide();
-    $(".worm2").hide();
+$(window).on('load', () => {
+    $('.track').attr('stroke', 'url(#grad2)');
+    $('.worm1').hide();
+    $('.worm2').hide();
     clearInterval(changeTip);
 
-    $(".loading").fadeOut({
+    $('.loading').fadeOut({
         duration: 300,
         complete: () => {
             setTimeout(() => {
-                $("#everything-else").fadeIn({
-                    duration: 500,
-                    easing: "swing"
-                }, 200);
+                $('#everything-else').fadeIn(
+                    {
+                        duration: 500,
+                        easing: 'swing',
+                    },
+                    200
+                );
                 hexagonGrid();
             }, 100);
-        }
+        },
     });
 });
 
@@ -46,26 +56,26 @@ let particlesArray;
 let mouse = {
     x: null,
     y: null,
-    radius: 170
-}
+    radius: 170,
+};
 
-window.addEventListener('mousemove', function(event) {
+window.addEventListener('mousemove', function (event) {
     mouse.x = event.x;
     mouse.y = event.y;
     mouse.radius = 170;
 });
 
-document.onmousemove = (function(_) {
-    var onmousestop = function() {
-        mouse.radius = 0;
-    }, thread;
+document.onmousemove = (function (_) {
+    var onmousestop = function () {
+            mouse.radius = 0;
+        },
+        thread;
 
-    return function() {
+    return function () {
         clearTimeout(thread);
         thread = setTimeout(onmousestop, 10);
     };
 })();
-
 
 class Particle {
     constructor(x, y, directionX, directionY, size, color) {
@@ -124,11 +134,11 @@ function init() {
     particlesArray = [];
     let numberOfParticles = (cvs.height * cvs.width) / 9000;
     for (let i = 0; i < numberOfParticles * 0.25; i++) {
-        let size = (Math.random() * 35) + 1;
-        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-        let y = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-        let directionX = (Math.random() * 5) - 2.5;
-        let directionY = (Math.random() * 5) - 2.5;
+        let size = Math.random() * 35 + 1;
+        let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
+        let y = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
+        let directionX = Math.random() * 5 - 2.5;
+        let directionY = Math.random() * 5 - 2.5;
         let color = '#a3f6fd';
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }
@@ -138,10 +148,12 @@ function connect() {
     let opacityValue = 1;
     for (let i = 0; i < particlesArray.length; i++) {
         for (let j = i; j < particlesArray.length; j++) {
-            let distance = ((particlesArray[i].x - particlesArray[j].x) * (particlesArray[i].x - particlesArray[j].x)) + ((particlesArray[i].y - particlesArray[j].y) * (particlesArray[i].y - particlesArray[j].y));
+            let distance =
+                (particlesArray[i].x - particlesArray[j].x) * (particlesArray[i].x - particlesArray[j].x) +
+                (particlesArray[i].y - particlesArray[j].y) * (particlesArray[i].y - particlesArray[j].y);
 
-            if (distance < (cvs.width/ 7) * (cvs.height / 7)) {
-                opacityValue = 1 - (distance / 20000);
+            if (distance < (cvs.width / 7) * (cvs.height / 7)) {
+                opacityValue = 1 - distance / 20000;
                 ctx.strokeStyle = 'rgba(159, 253, 50,' + opacityValue + ')';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
@@ -162,14 +174,14 @@ function animate() {
     connect();
 }
 
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     cvs.width = innerWidth;
     cvs.height = this.innerHeight;
     mouse.radius = 170;
     init();
 });
 
-window.addEventListener('mouseout', function() {
+window.addEventListener('mouseout', function () {
     mouse.x = undefined;
     mouse.y = undefined;
 });
@@ -179,71 +191,71 @@ animate();
 
 // HEXAGON GRID
 function hexagonGrid() {
-  const HEXAGON_GRID = document.getElementsByClassName("hexagonGrid")[0];
-  const CONTAINER = HEXAGON_GRID.parentNode;
+    const HEXAGON_GRID = document.getElementsByClassName('hexagonGrid')[0];
+    const CONTAINER = HEXAGON_GRID.parentNode;
 
-  let wall = {
-    width: CONTAINER.offsetWidth,
-    height: CONTAINER.offsetHeight
-  };
+    let wall = {
+        width: CONTAINER.offsetWidth,
+        height: CONTAINER.offsetHeight,
+    };
 
-  let rowsNumber = Math.ceil(wall.height / 80);
-  let columnsNumber = Math.ceil(wall.width / 100) + 1;
+    let rowsNumber = Math.ceil(wall.height / 80);
+    let columnsNumber = Math.ceil(wall.width / 100) + 1;
 
-  HEXAGON_GRID.innerHTML = "";
+    HEXAGON_GRID.innerHTML = '';
 
-  for (let i = 0; i < rowsNumber; i++) {
-    let row = document.createElement("div");
-    row.className = "row";
-    HEXAGON_GRID.appendChild(row);
-  }
-
-  let rows = HEXAGON_GRID.querySelectorAll(".row");
-
-  for (let i = 0; i < rows.length; i++) {
-    for (let j = 0; j < columnsNumber; j++) {
-      let hexagon = document.createElement("div");
-      hexagon.className = "hexagon";
-      rows[i].appendChild(hexagon);
+    for (let i = 0; i < rowsNumber; i++) {
+        let row = document.createElement('div');
+        row.className = 'row';
+        HEXAGON_GRID.appendChild(row);
     }
-  }
+
+    let rows = HEXAGON_GRID.querySelectorAll('.row');
+
+    for (let i = 0; i < rows.length; i++) {
+        for (let j = 0; j < columnsNumber; j++) {
+            let hexagon = document.createElement('div');
+            hexagon.className = 'hexagon';
+            rows[i].appendChild(hexagon);
+        }
+    }
 }
 
 hexagonGrid();
 
-window.addEventListener('resize', function() {
-  hexagonGrid();
+window.addEventListener('resize', function () {
+    hexagonGrid();
 });
 
 // FPS METER
 (function () {
-  let previousTime = Date.now();
-  let frames = 0;
-  let refreshRate = 1000;
+    let previousTime = Date.now();
+    let frames = 0;
+    let refreshRate = 1000;
 
-  let fpsMeter = document.createElement("div");
-  fpsMeter.id = "fpsMeter";
-  document.body.appendChild(fpsMeter);
+    let fpsMeter = document.createElement('div');
+    fpsMeter.id = 'fpsMeter';
+    document.body.appendChild(fpsMeter);
 
-  requestAnimationFrame(function loop() {
-    const TIME = Date.now();
-    frames++;
-    if (TIME > previousTime + refreshRate) {
-      let fps = Math.round((frames * refreshRate) / (TIME - previousTime));
-      previousTime = TIME;
-      frames = 0;
-      fpsMeter.innerHTML = "FPS: " + fps * (1000 / refreshRate);
-    }
-    requestAnimationFrame(loop);
-  });
+    requestAnimationFrame(function loop() {
+        const TIME = Date.now();
+        frames++;
+        if (TIME > previousTime + refreshRate) {
+            let fps = Math.round((frames * refreshRate) / (TIME - previousTime));
+            previousTime = TIME;
+            frames = 0;
+            fpsMeter.innerHTML = 'FPS: ' + fps * (1000 / refreshRate);
+        }
+        requestAnimationFrame(loop);
+    });
 
-  fpsMeter.style.position = "fixed";
-  fpsMeter.style.top = "25px";
-  fpsMeter.style.right = "25px";
-  fpsMeter.style.background = "rgba(0, 0, 0, 0.5)";
-  fpsMeter.style.padding = "10px";
-  fpsMeter.style.color = "rgba(255, 255, 255, 0.75)";
-  fpsMeter.style.fontFamily = "Monospace";
-  fpsMeter.style.fontSize = "24px";
-  fpsMeter.style.zIndex = "10000";
+    fpsMeter.style.position = 'fixed';
+    fpsMeter.style.top = '25px';
+    fpsMeter.style.right = '25px';
+    fpsMeter.style.background = 'rgba(0, 0, 0, 0.5)';
+    fpsMeter.style.padding = '10px';
+    fpsMeter.style.color = 'rgba(255, 255, 255, 0.75)';
+    fpsMeter.style.fontFamily = 'Monospace';
+    fpsMeter.style.fontSize = '24px';
+    fpsMeter.style.zIndex = '10000';
 })();
