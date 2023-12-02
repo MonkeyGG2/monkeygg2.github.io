@@ -415,15 +415,18 @@
                         <button class="save-button" id="upload">Upload Game Data</button>
                         <p class="upload-result"></p>
                     </div>
-                    <!--Make this part fit with theme later-->
-                    <h5>Cloak and Mask presets</h5>
-                    <select id="presets">
-                        <option value="classroom">Google Classroom</option>
-                        <option value="drive">Google Drive</option>
-                        <option value="mail">Google Mail</option>
-                        <option value="canvas">Canvas</option>
-                    </select>
-                    <button onclick="updatePreset()">Submit</button>
+
+                    <div class="setting">
+                        <h5>Cloak and Mask Presets</h5>
+                        <p>If the 2 settings are enabled, choose without typing it out</p>
+                        <select id="presets">
+                            <option value="classroom">Google Classroom</option>
+                            <option value="drive">Google Drive</option>
+                            <option value="mail">Google Mail</option>
+                            <option value="canvas">Canvas</option>
+                        </select>
+                        <button class="submit-button" onclick="updatePreset()">Submit</button>
+                    </div>
 
                     <div class="setting">
                         <h5>Cloak</h5>
@@ -518,33 +521,35 @@
                     </div>
 
                     <h4>Apperance</h4>
-                    <h6>Theme and stuff - yet again changes take place upon refresh</h6>
-                    <label for="bg">Background Color:</label>
-                    <input type="color" id="bg" name="bg" value="#202020" />
-                    <br />
-                    <label for="block-color">Block Color:</label>
-                    <input type="color" id="block-color" name="block-color" value="#2b2b2b" />
-                    <br />
-                    <label for="button-color">Button Color:</label>
-                    <input type="color" id="button-color" name="button-color" value="#373737" />
-                    <br />
-                    <label for="games-color">Games Color:</label>
-                    <input type="color" id="games-color" name="games-color" value="#373737a6" />
-                    <br />
-                    <label for="hover-color">Hover Color:</label>
-                    <input type="color" id="hover-color" name="hover-color" value="#3c3c3c" />
-                    <br />
-                    <label for="scrollbar-color">Scrollbar Color:</label>
-                    <input type="color" id="scrollbar-color" name="scrollbar-color" value="#434343" />
-                    <br />
-                    <label for="scroll-track-color">Scroll Track Color:</label>
-                    <input type="color" id="scroll-track-color" name="scroll-track-color" value="#111" />
-                    <br />
-                    <label for="font-color">Font Color:</label>
-                    <input type="color" id="font-color" name="font-color" value="#dcddde" />
-                    <br />
-                    <button class="save-button" onclick="restoreColorChanges()">Restore Defaults</button>
-                    <button class="save-button" onClick="saveColorChanges()">Save Changes</button>
+                    <div class="setting">
+                    <h5>Custom Theme (change on refresh)</h5>
+                        <label for="bg">Background Color:</label>
+                        <input type="color" id="bg" name="bg" value="#202020" class="color-input" />
+                        <br />
+                        <label for="block-color">Block Color:</label>
+                        <input type="color" id="block-color" name="block-color" value="#2b2b2b" class="color-input" />
+                        <br />
+                        <label for="button-color">Button Color:</label>
+                        <input type="color" id="button-color" name="button-color" value="#373737" class="color-input" />
+                        <br />
+                        <label for="games-color">Games Color:</label>
+                        <input type="color" id="games-color" name="games-color" value="#373737a6" class="color-input" />
+                        <br />
+                        <label for="hover-color">Hover Color:</label>
+                        <input type="color" id="hover-color" name="hover-color" value="#3c3c3c" class="color-input" />
+                        <br />
+                        <label for="scrollbar-color">Scrollbar Color:</label>
+                        <input type="color" id="scrollbar-color" name="scrollbar-color" value="#434343" class="color-input" />
+                        <br />
+                        <label for="scroll-track-color">Scroll Track Color:</label>
+                        <input type="color" id="scroll-track-color" name="scroll-track-color" value="#111" class="color-input" />
+                        <br />
+                        <label for="font-color">Font Color:</label>
+                        <input type="color" id="font-color" name="font-color" value="#dcddde" class="color-input" />
+                        <br />
+                        <button class="save-button" onclick="restoreColorChanges()">Restore Defaults</button>
+                        <button class="save-button" onClick="saveColorChanges()">Save Changes</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -566,8 +571,9 @@
                     <path
                         fill="currentColor"
                         d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
-                    ></path></svg
-                ><!-- <i class="fas fa-chevron-left"></i> Font Awesome fontawesome.com -->
+                    ></path>
+                    </svg>
+                    <!-- <i class="fas fa-chevron-left"></i> Font Awesome fontawesome.com -->
                 <img src="imgs/icon-256-256.png" width="36" height="36" alt="Logo" />
             </button>
             <button id="refresh" class="in-game-button">
@@ -586,8 +592,9 @@
                     <path
                         fill="currentColor"
                         d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"
-                    ></path></svg
-                ><!-- <i class="fas fa-chevron-left"></i> Font Awesome fontawesome.com -->
+                    ></path>
+                    </svg>
+                    <!-- <i class="fas fa-chevron-left"></i> Font Awesome fontawesome.com -->
             </button>
         </section>
 
