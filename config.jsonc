@@ -545,8 +545,13 @@
             "aliases": [],
             "categories": []
         },
-        "Progress Knight": {
-            "path": "progress-knight",
+        "Progress Knight Quest": {
+            "path": "progress-knight-quest",
+            "aliases": [],
+            "categories": []
+        },
+        "Progress Knight Reborn": {
+            "path": "progress-knight-reborn",
             "aliases": [],
             "categories": []
         },
