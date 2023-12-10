@@ -1,0 +1,38 @@
+@keyframes currency-rainbow{
+    0% {
+        color: #FF4040;
+    }
+    16% {
+        color: #FFFF40;
+    }
+    33% {
+        color: #40FF40;
+    }
+    50% {
+        color: #40FFFF;
+    }
+    66% {
+        color: #4040FF;
+    }
+    83% {
+        color: #FF40FF;
+    }
+    100% {
+        color: #FF4040;
+    }
+}
+
+.currency-bold{
+    font-weight: bold;
+}
+
+.currency-shadow{
+    font-weight: bold;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.currency-shadow-rainbow{
+    font-weight: bold;
+    text-shadow: 0 0 5px currentColor;
+    animation: currency-rainbow 12s infinite;
+}
