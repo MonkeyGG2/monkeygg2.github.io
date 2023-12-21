@@ -195,6 +195,19 @@ $('#sort').on('change', updateList);
 dragElement(document.getElementById('gameButton'));
 dragElement(document.getElementById('refresh'));
 
+const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA', 'Enter'];
+let index = 0;
+
+document.addEventListener('keydown', (event) => {
+  index = (event.code === sequence[index]) ? index + 1 : 0;
+
+  if (index === sequence.length) {
+    alert('No easter egg here');
+    index = 0;
+  }
+});
+
+
 /**
  * Adds drag functionality to an HTML element.
  *

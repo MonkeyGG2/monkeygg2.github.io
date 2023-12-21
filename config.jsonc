@@ -350,24 +350,24 @@
             "aliases": [],
             "categories": []
         },
-        "Fireboy and Watergirl": {
+        "Fireboy and Watergirl in the Forest Temple": {
             "path": "fireboy-and-watergirl",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl", "Fireboy and Watergirl 1"],
             "categories": []
         },
-        "Fireboy and Watergirl 2": {
+        "Fireboy and Watergirl in the Light Temple": {
             "path": "fireboy-and-watergirl-2",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl 2"],
             "categories": []
         },
-        "Fireboy and Watergirl 3": {
+        "Fireboy and Watergirl in the Ice Temple": {
             "path": "fireboy-and-watergirl-3",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl 3"],
             "categories": []
         },
-        "Fireboy and Watergirl 4": {
+        "Fireboy and Watergirl in the Crystal Temple": {
             "path": "fireboy-and-watergirl-4",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl 4"],
             "categories": []
         },
         "Flash Chess": {
