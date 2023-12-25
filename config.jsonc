@@ -465,6 +465,11 @@
             "aliases": [],
             "categories": []
         },
+        "Learn To Fly 3": {
+            "path": "flash/?game=learn-to-fly-3",
+            "aliases": [],
+            "categories": []
+        },
         "Idle Breakout": {
             "path": "idle-breakout",
             "aliases": [],
