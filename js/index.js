@@ -354,6 +354,11 @@ function popupsAllowed() {
     }
 }
 
+// Function to mute or unmute all sounds
+function toggleMute() {
+    // cant find working code rn
+  }
+
 function getMainSave() {
     var mainSave = {};
 
@@ -449,6 +454,18 @@ keySlots.forEach((slot) => {
         document.addEventListener('keydown', keyPressHandler);
     });
 });
+
+// ik we didnt set up keybinds but ill keep mute default for now
+function onKeyPress(event) {
+    if (event.ctrlKey && event.key === 'm') {
+      event.preventDefault();
+      toggleMute();
+    }
+    // copy paste for other shortcuts
+  }
+  
+  // Attach the keydown event listener to the document
+  document.addEventListener('keydown', onKeyPress);
 
 const defaultColorSettings = {
     bg: '#202020',

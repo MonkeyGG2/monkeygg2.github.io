@@ -136,17 +136,17 @@
             "categories": []
         },
         "Bloons TD 3": {
-            "path": "w-flash/?game=bloons-tower-defense-3",
+            "path": "flash/?game=bloons-td-3",
             "aliases": [],
             "categories": []
         },
         "Bloons TD 4": {
-            "path": "w-flash/?game=bloons-tower-defense-4",
+            "path": "flash/?game=bloons-td-4",
             "aliases": [],
             "categories": []
         },
         "Bloons TD 5": {
-            "path": "w-flash/?game=bloons-tower-defense-5",
+            "path": "flash/?game=bloons-td-5",
             "aliases": [],
             "categories": []
         },
@@ -241,17 +241,17 @@
             "categories": []
         },
         "Don't Escape": {
-            "path": "w-flash/?game=dont-escape",
+            "path": "flash/?game=dont-escape",
             "aliases": [],
             "categories": []
         },
         "Don't Escape 2": {
-            "path": "w-flash/?game=dont-escape-2",
+            "path": "flash/?game=dont-escape-2",
             "aliases": [],
             "categories": []
         },
         "Don't Escape 3": {
-            "path": "w-flash/?game=dont-escape-3",
+            "path": "flash/?game=dont-escape-3",
             "aliases": [],
             "categories": []
         },
@@ -296,7 +296,7 @@
             "categories": []
         },
         "Duck Life Treasure Hunt": {
-            "path": "w-flash/?game=duck-life-treasure-hunt",
+            "path": "flash/?game=duck-life-treasure-hunt",
             "aliases": [],
             "categories": []
         },
@@ -341,12 +341,12 @@
             "categories": []
         },
         "Escape The Freezer": {
-            "path": "w-flash/?game=escape-the-freezer",
+            "path": "flash/?game=escape-the-freezer",
             "aliases": [],
             "categories": []
         },
         "Escape The Shack": {
-            "path": "w-flash/?game=escape-the-shack",
+            "path": "flash/?game=escape-the-shack",
             "aliases": [],
             "categories": []
         },
@@ -461,7 +461,7 @@
             "categories": []
         },
         "Learn To Fly 2": {
-            "path": "w-flash/?game=learn-to-fly-2",
+            "path": "flash/?game=learn-to-fly-2",
             "aliases": [],
             "categories": []
         },
@@ -596,12 +596,12 @@
             "categories": []
         },
         "Rogue Soul": {
-            "path": "w-flash/?game=rogue-soul",
+            "path": "flash/?game=rogue-soul",
             "aliases": [],
             "categories": []
         },
         "Rogue Soul 2": {
-            "path": "w-flash/?game=rogue-soul-2",
+            "path": "flash/?game=rogue-soul-2",
             "aliases": [],
             "categories": []
         },
@@ -861,7 +861,7 @@
             "categories": []
         },
         "Ultimate Chess": {
-            "path": "w-flash/?game=ultimate-chess",
+            "path": "flash/?game=ultimate-chess",
             "aliases": [],
             "categories": []
         },
