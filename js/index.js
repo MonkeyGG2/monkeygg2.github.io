@@ -222,7 +222,6 @@ const sequences = [
     if (failed){
         index = 0;
     }
-    console.log(index);
   });
   
   function snow() {
@@ -372,7 +371,6 @@ function returnHome() {
     });
     currentMenu = $('.homepage');
     inGame = !preferences.background; // if background is disabled (false) then inGame is set to to true turning off the background
-    console.log('e');
 }
 
 /**
@@ -538,7 +536,50 @@ function uploadMainSave() {
     });
 }
 
+const keyConfig = JSON.parse(localStorage.getItem('keyConfig')) || {};
 const keySlots = document.querySelectorAll('.keySlot');
+const actions = document.querySelectorAll('.slot-action');
+
+for (var slot in keyConfig) {
+    if (keyConfig.hasOwnProperty(slot)) {
+      for (var key in keyConfig[slot]) {
+        if (keyConfig[slot].hasOwnProperty(key)) {
+        var correctKey = keyConfig[slot][key];
+        var slotDiv = document.getElementById(slot);
+        if (slotDiv) {
+            if (key.includes("keySlot")) {
+                key = key.replace(/-/g, " ");
+            }
+            var keyElement = slotDiv.getElementsByClassName(key)[0];
+            if (keyElement) {
+                if (key != "slot-action"){
+                    keyElement.textContent = correctKey;
+                } else {
+                    for (var i = 0; i < keyElement.options.length; i++) {
+                        if (keyElement.options[i].value === correctKey) {
+                          keyElement.selectedIndex = i;
+                          break;
+                        }
+                      }
+                    }
+                }
+            }
+        }
+      }
+    }
+  }
+  
+
+actions.forEach((action) => {
+    action.addEventListener('change', () => {
+        slot = action.parentNode.id;
+        if (!keyConfig[slot]) {
+            keyConfig[slot] = {};
+        }
+        keyConfig[slot]["slot-action"] = action.value;
+        localStorage.setItem('keyConfig', JSON.stringify(keyConfig));
+    });
+});
 
 keySlots.forEach((slot) => {
     slot.addEventListener('click', () => {
@@ -548,23 +589,54 @@ keySlots.forEach((slot) => {
         const keyPressHandler = (event) => {
             slot.textContent = event.key;
             document.removeEventListener('keydown', keyPressHandler);
+            parSlot = event.target.parentNode.id;
+            if (!keyConfig[parSlot]) {
+                keyConfig[parSlot] = {};
+            }
+            key = event.target.className.replace(/ /g, "-");
+            keyConfig[parSlot ][key] = event.key;
+            localStorage.setItem('keyConfig', JSON.stringify(keyConfig));
         };
 
         document.addEventListener('keydown', keyPressHandler);
     });
 });
 
-// ik we didnt set up keybinds but ill keep mute default for now
+var pressedKeys = {};
+
+
+function onKeyRelease(event) {
+    var key = event.key.toLowerCase();
+    pressedKeys[key] = false;
+}
+
 function onKeyPress(event) {
-    if (event.ctrlKey && event.key === 'm') {
-      event.preventDefault();
-      toggleMute();
+    var key = event.key.toLowerCase();
+    pressedKeys[key] = true
+    for (var slot in keyConfig) {
+      if (keyConfig.hasOwnProperty(slot)) {
+        // Check if the slot has configurations for key-1, key-2, and action
+        if (
+          keyConfig[slot]["keySlot-1"] &&
+          keyConfig[slot]["keySlot-1"] &&
+          keyConfig[slot]["slot-action"]
+        ) {
+          // Check if the pressed keys match the configured keys
+          var keyPressed = event.key.toLowerCase();
+          var key1Config = keyConfig[slot]["keySlot-1"].toLowerCase();
+          var key2Config = keyConfig[slot]["keySlot-2"].toLowerCase();
+          var key3Config = (keyConfig[slot]["keySlot-3"] || "").toLowerCase(); //  case where key-3 might not exist
+          if (pressedKeys[key1Config] && pressedKeys[key2Config] && ((key3Config) ? pressedKeys[key3Config] : true)) {
+            eval(keyConfig[slot]["slot-action"]);
+          }
+        }
+      }
     }
-    // copy paste for other shortcuts
   }
   
-  // Attach the keydown event listener to the document
+  
   document.addEventListener('keydown', onKeyPress);
+  document.addEventListener('keyup', onKeyRelease);
 
 const defaultColorSettings = {
     bg: '#202020',

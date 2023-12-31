@@ -41,12 +41,12 @@
             "categories": []
         },
         "Achievement Unlocked 2": {
-            "path": "w-flash/?game=achievement-unlocked-2",
+            "path": "flash/?game=achievement-unlocked-2",
             "aliases": [],
             "categories": []
         },
         "Achievement Unlocked 3": {
-            "path": "w-flash/?game=achievement-unlocked-3",
+            "path": "flash/?game=achievement-unlocked-3",
             "aliases": [],
             "categories": []
         },
@@ -821,7 +821,7 @@
             "categories": []
         },
         "This Is The Only Level 2": {
-            "path": "w-flash/?game=this-is-the-only-level-2",
+            "path": "flash/?game=this-is-the-only-level-2",
             "aliases": [],
             "categories": []
         },
