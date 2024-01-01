@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="minimal-ui">
+    <title></title>
+
+    <style media='screen' type='text/css'>
+    @font-face {
+        font-family: menuFont;
+        src: url('images/menu/11449.otf');
+        font-weight:400;
+        font-weight:normal;
+    }
+    @font-face {
+        font-family: textFont;
+        src: url('fonts/rough-draft.ttf');
+        font-weight:400;
+        font-weight:normal;
+    }
+     .fontLoader { position: absolute; left: -1000px; visibility: hidden; }
+
+     html, body {
+         padding:0;
+         margin:0;
+         background: #000;
+         text-align: center;
+     }
+      body, canvas, div {
+         -moz-user-select: none;
+         -webkit-user-select: none;
+         -ms-user-select: none;
+         -khtml-user-select: none;
+         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+     }
+	</style>
+</head>
+<div class='fontLoader' style='font-family: menuFont;'>-</div>
+<div class='fontLoader' style='font-family: textFont;'>-</div>
+<body>
+    <a href="http://www.izzygames.com" target="blank" style="width:100%;height:100%;position:absolute;display:none;" id="url"></a>
+    <script type="text/javascript" src="./js/phaser.min.js"></script>
+    <script type="text/javascript" src="./js/output.min.js"></script>
+</body>
+</html>
