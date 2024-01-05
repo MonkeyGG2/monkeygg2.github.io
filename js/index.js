@@ -552,7 +552,7 @@ for (var slot in keyConfig) {
             }
             var keyElement = slotDiv.getElementsByClassName(key)[0];
             if (keyElement) {
-                if (key != "slot-action"){ru
+                if (key != "slot-action"){
                     keyElement.textContent = correctKey;
                 } else {
                     for (var i = 0; i < keyElement.options.length; i++) {
