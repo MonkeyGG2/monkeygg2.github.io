@@ -58,7 +58,7 @@
         "Abandoned": {
             "path": "abandoned",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Abandoned 2": {
             "path": "abandoned-2",
@@ -68,7 +68,7 @@
         "Ages of Conflict": {
             "path": "ages-of-conflict",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Age of War": {
             "path": "flash/?game=age-of-war",
@@ -618,37 +618,37 @@
         "Riddle School": {
             "path": "flash/?game=riddle-school",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 2": {
             "path": "flash/?game=riddle-school-2",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 3": {
             "path": "flash/?game=riddle-school-3",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 4": {
             "path": "flash/?game=riddle-school-4",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 5": {
             "path": "flash/?game=riddle-school-5",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle Transfer": {
             "path": "flash/?game=riddle-transfer",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle Transfer 2": {
             "path": "flash/?game=riddle-transfer-2",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Rooftop Snipers": {
             "path": "rooftop-snipers",
@@ -708,67 +708,67 @@
         "Submachine": {
             "path": "flash/?game=submachine",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 2": {
             "path": "flash/?game=submachine-2",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 3": {
             "path": "flash/?game=submachine-3",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 4": {
             "path": "flash/?game=submachine-4",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 5": {
             "path": "flash/?game=submachine-5",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 6": {
             "path": "flash/?game=submachine-6",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 7": {
             "path": "flash/?game=submachine-7",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 8": {
             "path": "flash/?game=submachine-8",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 9": {
             "path": "flash/?game=submachine-9",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 10": {
             "path": "flash/?game=submachine-10",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 0": {
             "path": "flash/?game=submachine-0",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 32 Chambers": {
             "path": "flash/?game=submachine-32-chambers",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine FLF": {
             "path": "flash/?game=submachine-flf",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Sugar Sugar": {
             "path": "w-flash/?game=sugar-sugar",
@@ -779,6 +779,11 @@
             "path": "the-final-earth",
             "aliases": [],
             "categories": []
+        },
+        "The Treasure": {
+            "path": "the-treasure",
+            "aliases": [],
+            "categories": ["escape"]
         },
         "There Is No Game": {
             "path": "there-is-no-game",
@@ -803,7 +808,7 @@
         "Trace": {
             "path": "trace",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Tanuki Sunset": {
             "path": "tanuki-sunset",
