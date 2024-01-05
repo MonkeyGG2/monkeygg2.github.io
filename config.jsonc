@@ -475,6 +475,12 @@
             "aliases": [],
             "categories": []
         },
+
+        "Learn To Fly Idle": {
+            "path": "flash/?game=learn-to-fly-idle",
+            "aliases": [],
+            "categories": []
+        },
         "Idle Breakout": {
             "path": "idle-breakout",
             "aliases": [],
