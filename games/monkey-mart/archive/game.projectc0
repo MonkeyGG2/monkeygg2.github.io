@@ -1,6 +1,6 @@
 [project]
 title = MonkeyMart
-version = 4.7
+version = 2.1
 write_log = 0
 compress_archive = 1
 publisher = unnamed
@@ -17,7 +17,7 @@ fullscreen = 0
 update_frequency = 60
 swap_interval = 1
 vsync = 1
-display_profiles = /my.display_profilesc
+display_profiles = /builtins/render/default.display_profilesc
 dynamic_orientation = 0
 display_device_info = 0
 
@@ -29,7 +29,6 @@ clear_color_alpha = 0
 
 [physics]
 type = 2D
-max_collision_object_count = 128
 use_fixed_timestep = 0
 gravity_y = -10
 debug = 0
@@ -87,7 +86,7 @@ game_binding = /input/game.input_bindingc
 use_accelerometer = 1
 
 [sprite]
-max_count = 512
+max_count = 1024
 subpixels = 1
 
 [model]
@@ -101,14 +100,13 @@ max_count = 128
 max_count = 64
 max_particlefx_count = 64
 max_particle_count = 1024
-max_animation_count = 1024
 
 [collection]
 max_instances = 2048
 max_input_stack_entries = 16
 
 [collection_proxy]
-max_count = 10
+max_count = 8
 
 [collectionfactory]
 max_count = 128
@@ -127,9 +125,9 @@ localizations = en
 
 [android]
 version_code = 1
-minimum_sdk_version = 19
-target_sdk_version = 33
-package = com.tinydobbins.testmonkey
+minimum_sdk_version = 16
+target_sdk_version = 31
+package = com.example.todo
 gcm_sender_id = 
 manifest = /builtins/manifests/android/AndroidManifest.xml
 iap_provider = GooglePlay
@@ -153,7 +151,7 @@ app_icon =
 
 [html5]
 custom_heap_size = 0
-heap_size = 128
+heap_size = 64
 htmlfile = /engine_template.html
 cssfile = /css_theme.css
 splash_image = /images/bg_loading.png
@@ -187,7 +185,7 @@ include_dirs =
 shared_state = 1
 
 [label]
-max_count = 128
+max_count = 64
 subpixels = 1
 
 [profiler]
@@ -206,16 +204,10 @@ max_tile_count = 0
 run_while_iconified = 0
 fixed_update_frequency = 60
 
-[gameanalytics]
-game_key_html5 = 8460790931685c9f59f3e669a97521bd
-secret_key_html5 = 6d3a08c1c25fca8bb1587ed50c42a81ddff80aa0
-
-[spine]
-max_count = 512
-
 [native_extension]
 app_manifest = /manifest.appmanifest
 
-[liveupdate_reszip]
-wipe_on_start = 1
+[gameanalytics]
+game_key_html5 = 8460790931685c9f59f3e669a97521bd
+secret_key_html5 = 6d3a08c1c25fca8bb1587ed50c42a81ddff80aa0
 
