@@ -41,12 +41,12 @@
             "categories": []
         },
         "Achievement Unlocked 2": {
-            "path": "w-flash/?game=achievement-unlocked-2",
+            "path": "flash/?game=achievement-unlocked-2",
             "aliases": [],
             "categories": []
         },
         "Achievement Unlocked 3": {
-            "path": "w-flash/?game=achievement-unlocked-3",
+            "path": "flash/?game=achievement-unlocked-3",
             "aliases": [],
             "categories": []
         },
@@ -58,12 +58,17 @@
         "Abandoned": {
             "path": "abandoned",
             "aliases": [],
+            "categories": ["escape"]
+        },
+        "Abandoned 2": {
+            "path": "abandoned-2",
+            "aliases": [],
             "categories": []
         },
         "Ages of Conflict": {
             "path": "ages-of-conflict",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Age of War": {
             "path": "flash/?game=age-of-war",
@@ -136,17 +141,17 @@
             "categories": []
         },
         "Bloons TD 3": {
-            "path": "w-flash/?game=bloons-tower-defense-3",
+            "path": "flash/?game=bloons-td-3",
             "aliases": [],
             "categories": []
         },
         "Bloons TD 4": {
-            "path": "w-flash/?game=bloons-tower-defense-4",
+            "path": "flash/?game=bloons-td-4",
             "aliases": [],
             "categories": []
         },
         "Bloons TD 5": {
-            "path": "w-flash/?game=bloons-tower-defense-5",
+            "path": "flash/?game=bloons-td-5",
             "aliases": [],
             "categories": []
         },
@@ -241,17 +246,17 @@
             "categories": []
         },
         "Don't Escape": {
-            "path": "w-flash/?game=dont-escape",
+            "path": "flash/?game=dont-escape",
             "aliases": [],
             "categories": []
         },
         "Don't Escape 2": {
-            "path": "w-flash/?game=dont-escape-2",
+            "path": "flash/?game=dont-escape-2",
             "aliases": [],
             "categories": []
         },
         "Don't Escape 3": {
-            "path": "w-flash/?game=dont-escape-3",
+            "path": "flash/?game=dont-escape-3",
             "aliases": [],
             "categories": []
         },
@@ -296,7 +301,7 @@
             "categories": []
         },
         "Duck Life Treasure Hunt": {
-            "path": "w-flash/?game=duck-life-treasure-hunt",
+            "path": "flash/?game=duck-life-treasure-hunt",
             "aliases": [],
             "categories": []
         },
@@ -341,33 +346,33 @@
             "categories": []
         },
         "Escape The Freezer": {
-            "path": "w-flash/?game=escape-the-freezer",
+            "path": "flash/?game=escape-the-freezer",
             "aliases": [],
             "categories": []
         },
         "Escape The Shack": {
-            "path": "w-flash/?game=escape-the-shack",
+            "path": "flash/?game=escape-the-shack",
             "aliases": [],
             "categories": []
         },
-        "Fireboy and Watergirl": {
+        "Fireboy and Watergirl in the Forest Temple": {
             "path": "fireboy-and-watergirl",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl", "Fireboy and Watergirl 1"],
             "categories": []
         },
-        "Fireboy and Watergirl 2": {
+        "Fireboy and Watergirl in the Light Temple": {
             "path": "fireboy-and-watergirl-2",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl 2"],
             "categories": []
         },
-        "Fireboy and Watergirl 3": {
+        "Fireboy and Watergirl in the Ice Temple": {
             "path": "fireboy-and-watergirl-3",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl 3"],
             "categories": []
         },
-        "Fireboy and Watergirl 4": {
+        "Fireboy and Watergirl in the Crystal Temple": {
             "path": "fireboy-and-watergirl-4",
-            "aliases": [],
+            "aliases": ["Fireboy and Watergirl 4"],
             "categories": []
         },
         "Flash Chess": {
@@ -461,7 +466,18 @@
             "categories": []
         },
         "Learn To Fly 2": {
-            "path": "w-flash/?game=learn-to-fly-2",
+            "path": "flash/?game=learn-to-fly-2",
+            "aliases": [],
+            "categories": []
+        },
+        "Learn To Fly 3": {
+            "path": "flash/?game=learn-to-fly-3",
+            "aliases": [],
+            "categories": []
+        },
+
+        "Learn To Fly Idle": {
+            "path": "flash/?game=learn-to-fly-idle",
             "aliases": [],
             "categories": []
         },
@@ -545,8 +561,13 @@
             "aliases": [],
             "categories": []
         },
-        "Progress Knight": {
-            "path": "progress-knight",
+        "Progress Knight Quest": {
+            "path": "progress-knight-quest",
+            "aliases": [],
+            "categories": []
+        },
+        "Progress Knight Reborn": {
+            "path": "progress-knight-reborn",
             "aliases": [],
             "categories": []
         },
@@ -591,49 +612,49 @@
             "categories": []
         },
         "Rogue Soul": {
-            "path": "w-flash/?game=rogue-soul",
+            "path": "flash/?game=rogue-soul",
             "aliases": [],
             "categories": []
         },
         "Rogue Soul 2": {
-            "path": "w-flash/?game=rogue-soul-2",
+            "path": "flash/?game=rogue-soul-2",
             "aliases": [],
             "categories": []
         },
         "Riddle School": {
             "path": "flash/?game=riddle-school",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 2": {
             "path": "flash/?game=riddle-school-2",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 3": {
             "path": "flash/?game=riddle-school-3",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 4": {
             "path": "flash/?game=riddle-school-4",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle School 5": {
             "path": "flash/?game=riddle-school-5",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle Transfer": {
             "path": "flash/?game=riddle-transfer",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Riddle Transfer 2": {
             "path": "flash/?game=riddle-transfer-2",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Rooftop Snipers": {
             "path": "rooftop-snipers",
@@ -693,67 +714,67 @@
         "Submachine": {
             "path": "flash/?game=submachine",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 2": {
             "path": "flash/?game=submachine-2",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 3": {
             "path": "flash/?game=submachine-3",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 4": {
             "path": "flash/?game=submachine-4",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 5": {
             "path": "flash/?game=submachine-5",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 6": {
             "path": "flash/?game=submachine-6",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 7": {
             "path": "flash/?game=submachine-7",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 8": {
             "path": "flash/?game=submachine-8",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 9": {
             "path": "flash/?game=submachine-9",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 10": {
             "path": "flash/?game=submachine-10",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 0": {
             "path": "flash/?game=submachine-0",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine 32 Chambers": {
             "path": "flash/?game=submachine-32-chambers",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Submachine FLF": {
             "path": "flash/?game=submachine-flf",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Sugar Sugar": {
             "path": "w-flash/?game=sugar-sugar",
@@ -764,6 +785,11 @@
             "path": "the-final-earth",
             "aliases": [],
             "categories": []
+        },
+        "The Treasure": {
+            "path": "the-treasure",
+            "aliases": [],
+            "categories": ["escape"]
         },
         "There Is No Game": {
             "path": "there-is-no-game",
@@ -788,7 +814,7 @@
         "Trace": {
             "path": "trace",
             "aliases": [],
-            "categories": []
+            "categories": ["escape"]
         },
         "Tanuki Sunset": {
             "path": "tanuki-sunset",
@@ -811,7 +837,7 @@
             "categories": []
         },
         "This Is The Only Level 2": {
-            "path": "w-flash/?game=this-is-the-only-level-2",
+            "path": "flash/?game=this-is-the-only-level-2",
             "aliases": [],
             "categories": []
         },
@@ -856,7 +882,7 @@
             "categories": []
         },
         "Ultimate Chess": {
-            "path": "w-flash/?game=ultimate-chess",
+            "path": "flash/?game=ultimate-chess",
             "aliases": [],
             "categories": []
         },

@@ -233,7 +233,7 @@ body.noscript {
 }
 
 #sort,
-#keybind-slot-1 {
+.slot-action {
     all: unset;
     margin: 0;
     border: none;
