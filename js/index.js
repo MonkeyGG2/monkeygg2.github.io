@@ -769,6 +769,12 @@ if (preferences.cloak && window.location.href == window.top.location.href) {
         });
         currentMenu = $('.cloaklaunch');
         document.addEventListener('click', (event) => {
+            if (event.target.id == 'disableCloak') {
+                $('.cloaklaunch').fadeOut(200);
+                setTimeout(returnHome, 200);
+                return;
+            }
+            if (event.target.className != 'cloaklaunch' && event.target.className != 'cloaker') return;
             event.preventDefault();
             makecloak();
         });
