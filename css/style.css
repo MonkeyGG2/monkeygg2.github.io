@@ -601,7 +601,8 @@ input:checked + .switch__wrapper .switch__toggle {
 }
 
 /* Submit button styles */
-.submit-button {
+.submit-button,
+#disableCloak {
     background-color: var(--button-color);
     color: var(--font-color);
     border: none;
@@ -614,7 +615,8 @@ input:checked + .switch__wrapper .switch__toggle {
 
 /* Hover effect for the button */
 .submit-button:hover,
-.save-button:hover {
+.save-button:hover,
+#disableCloak:hover {
     background-color: var(--hover-color);
 }
 
@@ -779,4 +781,11 @@ button.in-game-button[attr-snapped='true'] img {
     100% {
         opacity: 0.9;
     }
+}
+
+#disableCloak {
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--font-family);
 }
