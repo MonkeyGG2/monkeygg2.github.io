@@ -706,6 +706,11 @@
             "aliases": [],
             "categories": []
         },
+        "Stick RPG Complete": {
+            "path": "flash/?game=achievement-unlocked",
+            "aliases": [],
+            "categories": []
+        },
         "Stick War": {
             "path": "flash/?game=stick-war",
             "aliases": [],
