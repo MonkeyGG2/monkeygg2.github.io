@@ -671,6 +671,11 @@
             "aliases": [],
             "categories": []
         },
+        "Run 3 Beta (may not work)": {
+            "path": "run-3-beta",
+            "aliases": [],
+            "categories": []
+        },
         "Sandspiel": {
             "path": "sandspiel",
             "aliases": [],
