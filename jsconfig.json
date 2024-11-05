@@ -1,5 +1,9 @@
 {
     "typeAcquisition": {
         "include": ["jquery"]
-    }
+    },
+    "exclude": [
+        "games/*",
+        "imgs/*"
+    ]
 }
