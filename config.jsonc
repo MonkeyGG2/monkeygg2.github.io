@@ -911,8 +911,8 @@
         // coming soon
     },
     "config": {
-        "proxy": false, // proxy only works when self-hosted
-        "proxyPath": "/proxy.html" // absolute or relative path to proxy; proxy must be set to true for this setting to have any effect.
+        "proxy": true, // proxy only works when self-hosted
+        "proxyPath": "https://bcd.ens.org" // absolute or relative path to proxy; proxy must be set to true for this setting to have any effect.
         // if you are using VioletGG2, all you need to do set proxy to true
         // proxyPath is already set for you if you are using VioletGG2
     }
