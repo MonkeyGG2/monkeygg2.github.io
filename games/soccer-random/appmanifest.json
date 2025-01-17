@@ -1,0 +1,10 @@
+{
+	"name": "Soccer Random",
+	"short_name": "Soccer Random",
+	"description": "Random Physics Soccer",
+	"start_url": "index.html",
+	"display": "fullscreen",
+	"orientation": "any",
+	"background_color": "#ffffff",
+	"icons": []
+}
