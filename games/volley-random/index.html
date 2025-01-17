@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Volley Random</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+		  name="viewport">
+
+	<meta content="Scirra Construct" name="generator">
+
+	<link href="appmanifest.json" rel="manifest">
+	<link href="style.css" rel="stylesheet">
+
+	<script>
+		window.addEventListener("keydown", function (e) {
+			// space and arrow keys
+			if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+				e.preventDefault();
+			}
+		}, false);
+	</script>
+
+	<script async
+			crossorigin="anonymous"
+			data-ad-client="ca-pub-8349441957149316"
+			data-ad-channel="9081772380"
+			data-ad-frequency-hint="30s"
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+	</script>
+
+	<script>
+		window.adsbygoogle = window.adsbygoogle || [];
+		const adBreak = adConfig = function (o) {
+			adsbygoogle.push(o);
+		}
+
+		function initSDK() {
+			// Game start logic
+			let adConfigPromise =
+					new Promise((resolve, reject) => adConfig({
+						preloadAdBreaks: 'on',
+						onReady: () => resolve(true)
+					}));
+			let timeoutPromise =
+					new Promise((resolve, reject) => {
+						setTimeout(() => {
+							console.log("Ad timeout");
+							resolve(false);
+						}, 2000);
+					});
+			// Whatever happens first resolves this promise.
+			Promise.race([
+				adConfigPromise,
+				timeoutPromise
+			]).then((shouldShowPreRoll) => {
+				if (shouldShowPreRoll) {
+					showPreRoll();
+				} else {
+					c3_callFunction("startGame");
+				}
+			});
+		}
+
+		function showPreRoll() {
+			// Show ad
+			//adBreak({
+			//	type: 'start',
+			//	adBreakDone: function () {
+					c3_callFunction("startGame");
+			//	}, // always called, unblocks the game logic
+			//});
+		}
+
+		function CallInterstitialAds() {
+			adBreak({
+				type: 'next',
+				name: 'restart-game',
+				beforeAd: () => {
+					c3_callFunction("adStarted");
+				},
+				afterAd: () => {
+					c3_callFunction("onClose");
+				},
+				adBreakDone: () => {
+					c3_callFunction("onClose");
+				}
+			});
+		}
+	</script>
+
+</head>
+<body>
+<script>
+	if (location.protocol.substr(0, 4) === "file") {
+		alert("Web exports won't work until you upload them. (When running on the file: protocol, browsers block many features from working for security reasons.)");
+	}
+</script>
+<script src="box2d.wasm.js"></script>
+<noscript>
+	<div id="notSupportedWrap">
+		<h2 id="notSupportedTitle">This content requires JavaScript</h2>
+		<p class="notSupportedMessage">JavaScript appears to be disabled. Please enable it to view this content.</p>
+	</div>
+</noscript>
+<script src="scripts/supportcheck.js"></script>
+<script src="scripts/offlineclient.js" type="module"></script>
+<script src="scripts/main.js" type="module"></script>
+<script src="scripts/register-sw.js" type="module"></script>
+</body>
+</html>
