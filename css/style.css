@@ -5,7 +5,7 @@
     --bg: #202020;
     --block-color: #2b2b2b;
     --button-color: #373737;
-    --games-color: #373737a6;
+    --games-color: #373737;
     --hover-color: #3c3c3c;
     --scrollbar-color: #434343;
     --scroll-track-color: #111;
@@ -281,7 +281,8 @@ img[alt='Proxy Icon'] {
     margin: -1rem 0;
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 700px),
+(max-width: 1000px) {
     .card .img-container {
         margin: 1rem 0;
         max-width: 128px;
@@ -352,7 +353,7 @@ svg {
     text-align: center;
     background-color: var(--button-color);
     border-radius: 50px;
-    font-size: 1.2rem;
+    font-size: 2.2vmin;
     text-decoration: none;
     color: var(--font-color);
     font-family: var(--font-family);
