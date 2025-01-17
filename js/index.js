@@ -707,14 +707,22 @@ function saveColorChanges() {
 
     // Save to local storage
     localStorage.setItem('colorSettings', JSON.stringify(newColorSettings));
-    alert('Colors saved! Changes will take place upon reload');
+
+    // Set CSS variables
+    Object.entries(newColorSettings).forEach(([key, value]) => {
+        document.documentElement.style.setProperty(`--${key}`, value);
+    });
 }
 
 // Restore defaults button event listener
 function restoreColorChanges() {
     // Reset to default values
     localStorage.removeItem('colorSettings');
-    alert('Defaults Restored! Changes will take place upon reload');
+
+    // Set CSS variables
+    Object.entries(colorSettings).forEach(([key, value]) => {
+        document.documentElement.style.setProperty(`--${key}`, value);
+    });
 }
 
 function randomGame() {
