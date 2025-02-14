@@ -1,4 +1,0 @@
-{"frames":{
-  "grass.png":{"frame":{"x":0,"y":0,"w":32,"h":32},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":32,"h":32},"sourceSize":{"w":32,"h":32}},
-  "road.png":{"frame":{"x":0,"y":32,"w":32,"h":32},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":32,"h":32},"sourceSize":{"w":32,"h":32}}},
-  "meta":{"app":"https://github.com/piskelapp/piskel/","version":"1.0","image":"grass2.png","format":"RGBA8888","size":{"w":32,"h":64}}}

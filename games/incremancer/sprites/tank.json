@@ -1,7 +1,0 @@
-{"frames":{
-  "tank0.png":{"frame":{"x":0,"y":0,"w":16,"h":16},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},"sourceSize":{"w":16,"h":16}},
-  "tank1.png":{"frame":{"x":16,"y":0,"w":16,"h":16},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},"sourceSize":{"w":16,"h":16}},
-  "tank2.png":{"frame":{"x":0,"y":16,"w":16,"h":16},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},"sourceSize":{"w":16,"h":16}},
-  "tank3.png":{"frame":{"x":16,"y":16,"w":16,"h":16},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},"sourceSize":{"w":16,"h":16}},
-  "tank4.png":{"frame":{"x":0,"y":32,"w":16,"h":16},"rotated":false,"trimmed":false,"spriteSourceSize":{"x":0,"y":0,"w":16,"h":16},"sourceSize":{"w":16,"h":16}}},
-  "meta":{"app":"https://github.com/piskelapp/piskel/","version":"1.0","image":"tank.png","format":"RGBA8888","size":{"w":32,"h":48}}}

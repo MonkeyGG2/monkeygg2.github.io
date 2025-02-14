@@ -1,2 +1,0 @@
-version="fix-this";
-libs=[];
