@@ -1,0 +1,22 @@
+<svg:svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 60 60" height="60" width="60" id="svg2" version="1.1" sodipodi:docname="circle-mode3.svg" inkscape:version="0.92.2 (5c3e80d, 2017-08-06)" xml:space="preserve">
+  <defs id="defs6">
+    <filter height="1.0298696" y="-0.014934783" width="1.0200584" x="-0.010029197" id="filter820" style="color-interpolation-filters:sRGB">
+      <feGaussianBlur id="feGaussianBlur822" stdDeviation="0.072775424"/>
+    </filter>
+  </defs>
+  <g>
+    <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1300" inkscape:window-height="745" id="namedview10" showgrid="false" inkscape:zoom="5.5625732" inkscape:cx="16.749432" inkscape:cy="21.09332" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="svg2"/>
+    <metadata id="metadata8">
+      <rdf:RDF>
+        <cc:Work rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+          <dc:title/>
+        </cc:Work>
+      </rdf:RDF>
+    </metadata>
+    <rect y="59" x="0" height="1" width="1" id="rect816" style="opacity:1;fill:#ffffff;fill-opacity:0.00784314;stroke:none;stroke-width:0.25389558;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00784314;paint-order:normal"/>
+    <rect y="0" x="59" height="1" width="1" id="rect816-2" style="opacity:1;fill:#ffffff;fill-opacity:0.00784314;stroke:none;stroke-width:0.25389558;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00784314;paint-order:normal"/>
+    <path style="opacity:1;fill:#ff8000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.98312234;paint-order:normal" d="M 45,30 A 15,15 0 0 1 30,45 15,15 0 0 1 15,30 15,15 0 0 1 30,15 15,15 0 0 1 45,30 Z" id="path817" inkscape:connector-curvature="0"/>
+  </g>
+</svg:svg>

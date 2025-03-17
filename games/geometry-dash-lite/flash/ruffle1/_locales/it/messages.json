@@ -1,0 +1,98 @@
+{
+    "settings_ruffle_enable": {
+        "message": "Riproduci contenuti Flash in Ruffle"
+    },
+    "settings_ignore_optout": {
+        "message": "Riproduci contenuti Flash anche su siti che non consentono Ruffle"
+    },
+    "settings_show_swf_download": {
+        "message": "Mostra download SWF nel menu contestuale"
+    },
+    "settings_autostart": {
+        "message": "Riproduci automaticamente senza schermata iniziale (quindi fai clic per disattivare)"
+    },
+    "settings_log_level": {
+        "message": "Livello di registrazione"
+    },
+    "settings_log_level_error": {
+        "message": "Errori"
+    },
+    "settings_log_level_warn": {
+        "message": "Avvisi"
+    },
+    "settings_log_level_info": {
+        "message": "Info"
+    },
+    "settings_max_execution_duration": {
+        "message": "Durata massima consentita di esecuzione ActionScript (in secondi)"
+    },
+    "settings_player_version": {
+        "message": "Numero di versione del Flash Player da emulare (intervallo 1-32)"
+    },
+    "settings_preferred_renderer": {
+        "message": "Renditore preferito"
+    },
+    "settings_preferred_renderer_auto": {
+        "message": "Automatico"
+    },
+    "settings_advanced_options": {
+        "message": "Opzioni avanzate"
+    },
+    "settings_reset": {
+        "message": "Reimposta opzioni"
+    },
+    "settings_reset_confirm": {
+        "message": "Sei sicuro di voler ripristinare le impostazioni di Ruffle ai valori predefiniti originali?"
+    },
+    "status_init": {
+        "message": "Lettura tab corrente…"
+    },
+    "status_no_tabs": {
+        "message": "Non c'é alcuna tab attiva."
+    },
+    "status_tabs_error": {
+        "message": "É occorso un'errore cercando la tab corrente."
+    },
+    "status_message_init": {
+        "message": "Controllo dello stato di Ruffle nella tab corrente…"
+    },
+    "status_result_running": {
+        "message": "Ruffle è caricato e pronto per eseguire il contenuto Flash sulla scheda corrente."
+    },
+    "status_result_running_protected": {
+        "message": "Ruffle è caricato ed in esecuzione il contenuto Flash che hai richiesto."
+    },
+    "status_result_optout": {
+        "message": "Ruffle non é caricato perché la pagina corrente si é dichiarata incompatibile."
+    },
+    "status_result_disabled": {
+        "message": "Ruffle non è caricato perché è disabilitato."
+    },
+    "status_result_error": {
+        "message": "C'é stato un errore leggendo lo stato di Ruffle nella tab corrente."
+    },
+    "status_result_protected": {
+        "message": "Ruffle non puó essere caricato su pagine del browser protette."
+    },
+    "action_reload": {
+        "message": "Aggiorna la tab per applicare i cambiamenti"
+    },
+    "open_player_page": {
+        "message": "Apri Riproduttore SWF"
+    },
+    "open_settings_page": {
+        "message": "Apri la Pagina Impostazioni"
+    },
+    "settings_page": {
+        "message": "Pagina Impostazioni"
+    },
+    "description": {
+        "message": "Rimettere Flash sul web dove appartiene."
+    },
+    "save_settings": {
+        "message": "Salva Impostazioni"
+    },
+    "settings_saved": {
+        "message": "Impostazioni Salvate"
+    }
+}
