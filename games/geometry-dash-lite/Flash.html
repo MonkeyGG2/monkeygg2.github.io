@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flash Dash</title>
+  <!-- Ruffle configuration -->
+  <script>
+  window.RufflePlayer = window.RufflePlayer || {};
+  window.RufflePlayer.config = {
+      playerVersion: "10"
+  };
+  </script>
+  <!-- Include Ruffle JavaScript file -->
+  <script src="/flash/ruffle/ruffle.js"></script>
+</head>
+<body>
+  <!-- Embed your Flash game -->
+  <object class="ruffle" type="application/x-shockwave-flash" data="/flash/griffpatch.swf" width="600" height="400">
+    <param name="movie" value="/flash/griffpatch.swf">
+    <param name="quality" value="high">
+    <param name="wmode" value="transparent">
+    <param name="allowfullscreen" value="true">
+    <!-- Add any other necessary parameters here -->
+    Your browser does not support Flash content.
+  </object>
+
+  <!-- Other content of your webpage -->
+</body>
+</html>

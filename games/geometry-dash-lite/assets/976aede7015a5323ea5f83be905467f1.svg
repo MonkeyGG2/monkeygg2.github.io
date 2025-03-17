@@ -1,0 +1,17 @@
+<svg:svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 15" height="15" width="84" id="svg2" version="1.1" xml:space="preserve">
+  <defs id="defs6"/>
+  <g>
+    <metadata id="metadata8">
+      <rdf:RDF>
+        <cc:Work rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+          <dc:title/>
+        </cc:Work>
+      </rdf:RDF>
+    </metadata>
+    <rect y="4.5" x="42" height="6" width="27" id="rect817" style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00392157;paint-order:normal"/>
+    <rect y="14" x="0" height="1" width="1" id="rect816" style="opacity:1;fill:#ff00ff;fill-opacity:0.00784314;stroke:none;stroke-width:0.22503026;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00784314;paint-order:normal"/>
+    <rect y="0" x="83" height="1" width="1" id="rect816-4" style="opacity:1;fill:#ff00ff;fill-opacity:0.00784314;stroke:none;stroke-width:0.22503026;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00784314;paint-order:normal"/>
+  </g>
+</svg:svg>
