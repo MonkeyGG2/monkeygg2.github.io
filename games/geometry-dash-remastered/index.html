@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='' xml:lang=''>
+<head>
+	<meta charset='utf-8' />
+	<meta name='viewport' content='width=device-width, user-scalable=no' />
+	<link id='-gd-engine-icon' rel='icon' type='image/png' href='favicon.png' />
+	<title>GDR</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<canvas id='canvas'>
+		HTML5 canvas appears to be unsupported in the current browser.<br />
+		Please try updating or use a different browser.
+	</canvas>
+	<div id='status'>
+		<div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id ='status-progress-inner'></div></div>
+		<div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id='status-notice' class='godot' style='display: none;'></div>
+	</div>
+	<script type='text/javascript' src='gd.js'></script>
+	<script type='text/javascript' src='load.js'></script>
+</body>
+</html>
+

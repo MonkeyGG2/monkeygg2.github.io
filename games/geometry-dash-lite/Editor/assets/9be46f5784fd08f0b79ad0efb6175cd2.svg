@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="53.900001525878906" height="28.049999237060547" viewBox="1 0.10000002384185791 53.900001525878906 28.049999237060547">
+  <defs>
+    <linearGradient id="grad_1" x1="32" y1="58" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="0.8367" stop-color="#000000" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="grad_2" x1="32" y1="58" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="0.8367" stop-color="#000000" stop-opacity="0.8"/>
+    </linearGradient>
+  <linearGradient id="grad_1-,0,0,-1,-17,59.15" x1="15" y1="1.15" x2="15" y2="27.15" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="0.8367" stop-color="#000000" stop-opacity="0.8"/>
+    </linearGradient><linearGradient id="grad_2-,0,0,-1,8.899999999999999,59.1" x1="40.9" y1="1.1" x2="40.9" y2="27.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="0.8367" stop-color="#000000" stop-opacity="0.8"/>
+    </linearGradient></defs>
+  <!-- Exported by Scratch - http://scratch.mit.edu/ -->
+  <g id="ID0.8532889229245484">
+    <g id="ID0.2853620764799416">
+      <path id="ID0.8356158137321472" fill="url(#grad_1-,0,0,-1,-17,59.15)" d="M 28 1.15 L 2 1.15 L 15 27.15 L 28 1.15 " stroke-width="1"/>
+      <path id="ID0.975943093188107" fill="none" stroke="#FFFFFF" stroke-width="2" d="M 28 1.15 L 2 1.15 L 15 27.15 L 28 1.15 "/>
+    </g>
+  </g>
+  <g id="ID0.8532889229245484">
+    <g id="ID0.2853620764799416">
+      <path id="ID0.8356158137321472" fill="url(#grad_2-,0,0,-1,8.899999999999999,59.1)" d="M 53.9 1.1 L 27.9 1.1 L 40.9 27.1 L 53.9 1.1 " stroke-width="1"/>
+      <path id="ID0.975943093188107" fill="none" stroke="#FFFFFF" stroke-width="2" d="M 53.9 1.1 L 27.9 1.1 L 40.9 27.1 L 53.9 1.1 "/>
+    </g>
+  </g>
+</svg>

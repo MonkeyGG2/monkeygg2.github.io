@@ -1,0 +1,19 @@
+.logo {
+    max-width: 224px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 24px 32px;
+}
+
+#advanced-options {
+    color: var(--ruffle-orange);
+    font-size: 28px;
+    margin: 8px auto 0;
+}
+
+#reset-settings {
+    margin: 0 auto;
+}

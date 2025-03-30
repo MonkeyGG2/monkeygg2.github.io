@@ -1,0 +1,98 @@
+{
+    "settings_ruffle_enable": {
+        "message": "Kör Flashinnehåll i Ruffle"
+    },
+    "settings_ignore_optout": {
+        "message": "Kör Flashinnehåll även på sidor som inte tillåter Ruffle"
+    },
+    "settings_show_swf_download": {
+        "message": "Visa SWF-nedladdning i snabbmenyn"
+    },
+    "settings_autostart": {
+        "message": "Kör Flashinnehåll automatiskt (klicka sedan för ljud)"
+    },
+    "settings_log_level": {
+        "message": "Loggnivå"
+    },
+    "settings_log_level_error": {
+        "message": "Fel"
+    },
+    "settings_log_level_warn": {
+        "message": "Varningar"
+    },
+    "settings_log_level_info": {
+        "message": "Info"
+    },
+    "settings_max_execution_duration": {
+        "message": "Maximal tillåten exekveringstid för ActionScript (i sekunder)"
+    },
+    "settings_player_version": {
+        "message": "Flashspelarversion att emulera (mellan 1-32)"
+    },
+    "settings_preferred_renderer": {
+        "message": "Föredragen renderare"
+    },
+    "settings_preferred_renderer_auto": {
+        "message": "Automatisk"
+    },
+    "settings_advanced_options": {
+        "message": "Avancerade Inställningar"
+    },
+    "settings_reset": {
+        "message": "Nollställ inställningar"
+    },
+    "settings_reset_confirm": {
+        "message": "Är du säker på att du vill återställa Ruffle-inställningarna till sina ursprungliga värden?"
+    },
+    "status_init": {
+        "message": "Avläser aktuell flik…"
+    },
+    "status_no_tabs": {
+        "message": "Det finns ingen aktiv flik."
+    },
+    "status_tabs_error": {
+        "message": "Ett fel uppstod när den aktuella fliken slogs upp."
+    },
+    "status_message_init": {
+        "message": "Kontrollerar Ruffle-status på aktuell flik…"
+    },
+    "status_result_running": {
+        "message": "Ruffle är redo att köra Flashinnehåll i fliken."
+    },
+    "status_result_running_protected": {
+        "message": "Ruffle är redo att köra Flashinnehållen du begär."
+    },
+    "status_result_optout": {
+        "message": "Ruffle kan ej köras för att den nuvarande hemsidan har markerat sig själv som inkompatibel."
+    },
+    "status_result_disabled": {
+        "message": "Ruffle är inaktiverad."
+    },
+    "status_result_error": {
+        "message": "Ett fel inträffade medan sidans Ruffle-instans efterfrågades."
+    },
+    "status_result_protected": {
+        "message": "Ruffle kan ej köras i skyddade webbläsarsidor."
+    },
+    "action_reload": {
+        "message": "Ladda om Fliken för att Applicera Ändringar"
+    },
+    "open_player_page": {
+        "message": "Öppna SWF-spelare"
+    },
+    "open_settings_page": {
+        "message": "Öppna Inställningar"
+    },
+    "settings_page": {
+        "message": "Inställningar"
+    },
+    "description": {
+        "message": "Återställer Flash på webben där det hör hemma."
+    },
+    "save_settings": {
+        "message": "Spara Inställningar"
+    },
+    "settings_saved": {
+        "message": "Inställningar Sparade"
+    }
+}
