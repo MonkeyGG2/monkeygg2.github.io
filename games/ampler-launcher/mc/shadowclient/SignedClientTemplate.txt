@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="EaglercraftX 1.8 Offline" />
+<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
+<title>EaglercraftX 1.8</title>
+<meta property="og:locale" content="en-US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="EaglercraftX 1.8" />
+<meta property="og:description" content="Play minecraft 1.8 in your browser" />
+<script type="text/javascript">
+"use strict";
+const relayId = Math.floor(Math.random() * 3);
+
+// %%%%%%%%% launch options %%%%%%%%%%%%
+
+window.eaglercraftXOptsHints = {
+	hintsVersion: 1,
+	container: "game_frame",
+	worldsDB: "worlds",
+	relays: [
+		{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId === 0 },
+		{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId === 1 },
+		{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayId === 2 }
+	],
+	checkRelaysForUpdates: true
+};
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+</script>
+<style type="eaglercraft" id="eaglercraftXClientSignature">data:application/octet-stream;base64,${client_signature}</style>
+<style type="eaglercraft" id="eaglercraftXClientBundle">data:application/octet-stream;base64,${client_bundle}</style>
+<script type="text/javascript">
+"use strict";
+(function(){
+	function eaglerBundleUnwrap(tagIn) { const e = document.getElementById(tagIn); const ret = e.innerText; e.remove(); return ret;  }
+	window.eaglercraftXClientSignature = eaglerBundleUnwrap("eaglercraftXClientSignature");
+	window.eaglercraftXClientBundle = eaglerBundleUnwrap("eaglercraftXClientBundle");
+})();
+</script>
+<script type="text/javascript">
+"use strict";
+(function(){
+	var ds = new DecompressionStream("gzip");
+	var result = [];
+	function fetchStream(reader) {
+		reader.read().then(function processData({ done, value }) {
+			if (done) {
+				window.clientScriptSrcURL = URL.createObjectURL(new Blob(result, { type: "text/javascript;charset=utf-8" }));
+				result = [];
+				ds = null;
+				return;
+			}
+			result.push(value);
+			return reader.read().then(processData);
+		});
+	}
+	fetch(window.eaglercraftXClientBundle, { cache: "force-cache" })
+		.then((response) => response.blob())
+		.then((blob) => fetchStream(blob.stream().pipeThrough(ds).getReader()));
+})();
+</script>
+<script type="text/javascript">
+"use strict";
+(function(){
+	var launchInterval = -1;
+	var launchCounter = 1;
+	var launchCountdownNumberElement = null;
+	var launchCountdownProgressElement = null;
+	function launchTick() {
+		if(launchCounter > 100) {
+			if(window.clientScriptSrcURL) {
+				clearInterval(launchInterval);
+				setTimeout(() => {
+					document.getElementById("launch_countdown_screen").remove();
+					const script = document.createElement("script");
+					script.type = "text/javascript";
+					script.src = window.clientScriptSrcURL;
+					window.clientScriptSrcURL = null;
+					document.head.appendChild(script);
+				}, 50);
+			}
+			return;
+		}
+		launchCountdownNumberElement.innerText = "" + Math.floor(6.0 - launchCounter * 0.06);
+		launchCountdownProgressElement.style.width = "" + launchCounter + "%";
+		++launchCounter;
+	}
+	window.addEventListener("load", () => {
+		launchCountdownNumberElement = document.getElementById("launchCountdownNumber");
+		launchCountdownProgressElement = document.getElementById("launchCountdownProgress");
+		launchInterval = setInterval(launchTick, 50);
+	});
+})();
+</script>
+<link type="image/png" rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAR/SURBVEhLtZXZK3ZRFMYPcqXc+gv413DHxVuGIpIhkciQWaRccCNjSCkligwXSOZ5nmfv9zvn2e8+58V753sudmuvvdZ61l5r7XOc8H+GS/D19aUNkPz5+aktQH5/f//4+LBKZKuRkpUtQjCUYG5gD2T38vLy/PwsDfL9/f3Dw8PT05M0b29vnKLhCKCBT4L4gvBLBIei4//4+Hh1dUVEQutUuLu7E83FxQUGnKLBWKfQaA3S+AREVxaEOD8/Pzk50XpzcyMDcH19zdZG3N3d3dzc3Nvb01aX5pQUpQGGQJxcQpfNysoKhUIdHR1o1tbWbInYAgxIPDMzMy8vLzc3FxqOdMoRqwJK8G8ALUYIhHMiSEhIwI6CyIb0qQzC4eGhsXCc1tZWnZIEKzdQJQSXgKxfX18RCM3Z5eWlcfVAxKOjo+Pj49PTU88lTOk2NjbMsePc3t6SAfcgFdszOyMuAdeBg0CQi2lhYUHOeOLDCisN8FzcPFZXV3t7ezHY3t5GQ+6it+2xMASsKhEEWKsmRLRBBUpPvpJ/TpFKFBwKYAiITmicsbYhdHfJAltqhUCVsCQhwslmeXmZxiBQT9c0Ar9E2O3v72sYSE0N1yQArkKy0kBMXLqlZqIZHR3t6empqqqSDcBdhXEJSJ/bUc3q6uq+vj629GB9fR1WsLW1NTs7u7S0RN2locMjIyOEm5ubQ7+4uJienk4/+vv77Y1hwhLBEKhwWHitdVFfX9/Y2Gg2HuLi4owUAysrK8yCG97rh0+ApP5Q2ZycHFlPTExUVFRIBvn5+WhKSkp2dnaMKhptbW2426GgQ/rwuAQCZ1hwFayLiork9hMFBQV1dXVmE0BLS4vqw3QFB8kn4IAxoGPkYpxi4FeDmpqas7Mz4pClAgqGwD48rjY2NmacYqC0tJQ1KSlJWyE5OZkpUKkBAxZVIntAoZh04+Q48fHxPNGBgYHExMT29naj9cBodnZ2mo3jlJWVMeW2OGQck4B1amqqoaGhqamJjx2lGxwcpL0mUgR8fJhsWqJtSkoKU2SbHHUDpkhPBujd8xuQG6PJRM/Pz09PT7O1NNnZ2Tw3fgZkXVhYKCUlUhBATP+hCVyKZGky17RV0g04laayslJ6hlVeFHB4eFhKaogGd0LxtmTgE+hbhKDnPjMzgw8E3qGL2tpaBWpubjYqj2BoaEj6rq4uNATRZ0ZwCbiL6gXEzINk5vCBQJ9rMD4+rkA8QNK036uDg4Py8vLu7m680KjIBNR3zBDoWQM1g98snyB+VSoRW8C/UwR81/SvhgNj9JOTkwwVERUdRBEI0BAdLRVERkhLS8vIyEDQlrsTPTU1lVFhKxARvZgUlFLbegCf4BvIsbi4mIg4E5EogIHhiKCMtU0WUFiVy06j5fAJIDdSBDQw+PegDfBRcbOPwH4F9LuFWIIQdQNKwWqzIE0aoFUaBsw+SQuFw0uNtC9A+F4i3QNrbg3IDn+SAsHh+wYiEpeyBEMLv/cAO6KzAijxxB+Y4wisBhssJUhjEbPJf4Nw+B+JXqLW3bw+wQAAAABJRU5ErkJggg==" />
+</head>
+<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
+<div style="margin:0px;width:100%;height:100%;font-family:sans-serif;display:flex;align-items:center;user-select:none;" id="launch_countdown_screen">
+<div style="margin:auto;text-align:center;">
+<h1>This file is from <span style="color:#AA0000;">${date}</span></h1>
+<h2>Game will launch in <span id="launchCountdownNumber">5</span>...</h2>
+<div style="border:2px solid black;width:100%;height:15px;padding:1px;margin-bottom:20vh;"><div id="launchCountdownProgress" style="background-color:#555555;width:0%;height:100%;"></div></div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+"use strict";
+
+// %%%%%%%%% launch options %%%%%%%%%%%%
+
+if(typeof window !== "undefined") {
+	window.eaglercraftXClientScriptElement = document.currentScript;
+	if(window.eaglercraftXOptsHints && window.eaglercraftXOptsHints.hintsVersion === 1) {
+		window.eaglercraftXOpts = window.eaglercraftXOptsHints;
+	}else {
+		const relayzId = Math.floor(Math.random() * 3);
+		window.eaglercraftXOpts = {
+			container: "game_frame",
+			worldsDB: "worlds",
+			relays: [
+				{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayzId === 0 },
+				{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayzId === 1 },
+				{ addr: "wss://relay.shhnowisnottheti.me/", comment: "ayunami relay #1", primary: relayzId === 2 }
+			],
+			checkRelaysForUpdates: true
+		};
+	}
+	window.addEventListener("load", () => {
+		main();
+	});
+}
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${classes_js}
+
+if(typeof window !== "undefined") { window.eaglercraftXOpts.enableSignatureBadge = true; window.eaglercraftXOpts.assetsURI = ${assets_epk}; }
+
+if(typeof window !== "undefined") setTimeout(() => {
+	main();
+}, 0);
