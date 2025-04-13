@@ -310,13 +310,8 @@
             "aliases": [],
             "categories": []
         },
-        "Eaglercraft 1.5.2": {
-            "path": "eaglercraft",
-            "aliases": [],
-            "categories": []
-        },
-        "Eaglercraft 1.8.8 (Multiplayer Only)": {
-            "path": "eaglercraftx/",
+        "Eaglercraft Ampler Launcher": {
+            "path": "ampler-launcher",
             "aliases": [],
             "categories": []
         },
@@ -563,11 +558,6 @@
         },
         "P.craft": {
             "path": "pcraft",
-            "aliases": [],
-            "categories": []
-        },
-        "Precision Client (Eaglercraft 1.5.2)": {
-            "path": "precision-client/",
             "aliases": [],
             "categories": []
         },
@@ -932,7 +922,7 @@
     },
     "config": {
         "proxy": true, // proxy only works when self-hosted
-        "proxyPath": "https://monkey.spfv.ro" // absolute or relative path to proxy; proxy must be set to true for this setting to have any effect.
+        "proxyPath": "https://monkey.nordparrot.ro" // absolute or relative path to proxy; proxy must be set to true for this setting to have any effect.
         // if you are using VioletGG2, all you need to do set proxy to true
         // proxyPath is already set for you if you are using VioletGG2
     }

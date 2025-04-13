@@ -1,0 +1,8 @@
+
+# examples:
+
+# use-proxy: cors proxy here [$url$]
+# use-gateway: ipfs gateway here [$cid$,$path$]
+# url: url here
+# ipfs: cid here
+# list: url to another list

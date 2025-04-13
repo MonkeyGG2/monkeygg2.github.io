@@ -1,0 +1,76 @@
+.gTabsText {
+    visibility: hidden;
+  }
+  .sidebar {
+    width: 5.5vw;
+  }
+  .launcherVersion {
+    font-size: 1.1vw;
+  }
+  .sidebarOptions {
+    height: 11vw;
+    margin-bottom: 1.3vw;
+    padding-left: 1.3vw;
+  }
+  .sidebarOptions.sidebarBottom {
+    height: 7vw;
+    margin-bottom: 0;
+  }
+  #gtabs2 img, #gtabs3 img, #gtabs4 img { width: 2.8vw; }
+  #gtabs5 { bottom: 10.5vw; }
+  #gtabs5 img, #gtabs6 img { width: 2.2vw; padding-left: 0.4vw; }
+  .username {
+    right: 10vw;
+  }
+  .usernameText {
+    font-size: 1.5vw;
+  }
+  .currentGame {
+    font-size: 1.4vw;
+  }
+  .headerButtons {
+    font-size: 1.2vw;
+  }
+  .headerButtonSelected {
+    font-size: 1.2vw;
+  }
+  .gameHeader {
+    padding: 2vw 2.5vw 1vw;
+  }
+  .gameLogo {
+    top: 35%;
+    left: 26%;
+  }
+  .dropdownSelector {
+    width: 25vw;
+    margin-left: 3vw;
+  }
+  .versionText {
+    font-size: 1.4vw;
+  }
+  .dropdownOptions {
+    font-size: 1.4vw;
+    width: 25.5vw;
+    margin-left: 3vw;
+  }
+  .playButton {
+    width: 24.8vw;
+    height: 5.6vw;
+    left: 36%;
+  }
+
+  #naerror {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  @media only screen and (max-height: 400px) {
+    #screenerror {
+        display: block;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    #screenerror {
+        display: block;
+    }
+  }
