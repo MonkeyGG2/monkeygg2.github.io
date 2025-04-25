@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Drive Mad S</title>
+    <meta name="fancade:guid" content="61520BFE8B79E9D8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="fancade_stripped.css">
+    <!-- <script -->
+    <!--         id="gamebridge-sdk" -->
+    <!--         src="https://sdk.enjoy4fun.com/v1/gamebridge-sdk.js" -->
+    <!--         data-ad-frequency="30s" -->
+    <!--         data-gameid="cfd42dursfek45civn50"></script> -->
+</head>
+<body id="body">
+<div id="canvas_border" class="emscripten_border">
+    <div id="play_content" class="middle center">
+        <div class="edge">
+            <div class="box">
+                <div class="black">
+                    <img src="icon.jpg" class="cover">
+                    <p class="title">Drive Mad S</p>
+                    <p class="author">Codii</p>
+                </div>
+            </div>
+        </div>
+        <div id="progress_or_play">
+            <progress id="progress" class="loading" value="0" max="100"></progress>
+        </div>
+        <p class="description">Just A 'Small' Drive Mad Mod.</p></div>
+    <canvas class="emscripten" id="canvas" tabindex="-1"></canvas>
+    <div id="gradient"></div>
+    <div id="webview_content"></div>
+</div>
+<script>
+    // 公共资源地址
+    var cndHref = './';
+
+    // 当前是否展开全屏
+    var stretchMode = true;
+</script>
+<script type="text/javascript" src="source_min_stripped.js"></script>
+<script type="text/javascript" src="index_stripped.js"></script>
+</body>
+</html>
