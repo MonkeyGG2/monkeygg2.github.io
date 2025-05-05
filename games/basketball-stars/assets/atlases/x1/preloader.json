@@ -1,0 +1,51 @@
+﻿{"frames": {
+
+"bg10000":
+{
+	"frame": {"x":2,"y":2,"w":1398,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1398,"h":480},
+	"sourceSize": {"w":1398,"h":480}
+},
+"bg1red0000":
+{
+	"frame": {"x":2,"y":484,"w":1398,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1398,"h":480},
+	"sourceSize": {"w":1398,"h":480}
+},
+"bg2blue0000":
+{
+	"frame": {"x":2,"y":966,"w":1398,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1398,"h":480},
+	"sourceSize": {"w":1398,"h":480}
+},
+"branding_l20000":
+{
+	"frame": {"x":550,"y":1448,"w":117,"h":157},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":157},
+	"sourceSize": {"w":117,"h":157}
+},
+"logo0000":
+{
+	"frame": {"x":2,"y":1448,"w":546,"h":135},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":546,"h":135},
+	"sourceSize": {"w":546,"h":135}
+}},
+"meta": {
+	"app": "Adobe Flash Professional",
+	"version": "15.0.1.179",
+	"image": "preloader.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1"
+}
+}
