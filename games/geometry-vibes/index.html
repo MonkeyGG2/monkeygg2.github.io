@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ArrowDash</title>
+    <style>
+        html,
+        body {
+            background-image: url("Build/Build.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+
+        div#gameContainer {
+            background: transparent !important;
+            position: absolute;
+            top: 0px !important;
+            width: 100% !important;
+            height: 100% !important;
+            left: 0px !important;
+        }
+
+        div#gameContainer canvas {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        div#gameContainer canvas[data-pixel-art="true"] {
+            position: absolute;
+            image-rendering: optimizeSpeed;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            image-rendering: crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        .loadingOut {
+            width: 250px;
+            position: fixed;
+            left: 50%;
+            top: calc(50% - 8px);
+            transform: translate(-50%);
+            border: 2px solid white;
+            height: 14px;
+            background: transparent;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, white, white 0%, transparent 0%, transparent);
+        }
+
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -250px;
+            width: 500px;
+        }
+
+        #orientation-warning {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+            color: white;
+            padding: 20px;
+            border: 2px solid white;
+            text-align: center;
+            z-index: 1000;
+        }
+
+         #orientation-image {
+            width: 125px;
+            height: 125px;
+            margin-top: 10px;
+            display: none;
+            position: fixed;
+            top: calc(50% - 150px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+	 <img id="orientation-image" src="TemplateData/Orientation/orientation.png" alt="Orientation">
+    <div id="orientation-warning">
+        <div>Please rotate your device to the correct mode.</div>
+       
+    </div>
+    <div id="gameContainer">
+        <img src="TemplateData/logo.png" class="centered">
+        <div class="loadingOut">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <canvas id="unity-canvas" data-pixel-art=""></canvas>
+        <script src="Build/GeometryVibes_V1_39.loader.js"></script>
+        <script>
+            var canvas = document.querySelector("#unity-canvas");
+            var progressBar = document.querySelector("#progress-bar");
+            var gameContainer = document.querySelector("#gameContainer");
+            var orientationWarning = document.querySelector("#orientation-warning");
+            var orientationImage = document.querySelector("#orientation-image");
+            var config = {
+                dataUrl: "Build/GeometryVibes_V1_39.data.unityweb",
+                frameworkUrl: "Build/GeometryVibes_V1_39.framework.js.unityweb",
+                codeUrl: "Build/GeometryVibes_V1_39.wasm.unityweb",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "GameVGames",
+                productName: "ArrowDash",
+                productVersion: "1.0",
+            };
+            var scaleToFit;
+            try {
+                scaleToFit = !!JSON.parse("");
+            } catch (e) {
+                scaleToFit = true;
+            }
+
+            function progressHandler(progress) {
+                var percent = progress * 100 + '%';
+                progressBar.style.background = 'linear-gradient(to right, white, white ' + percent + ', transparent ' + percent + ', transparent)';
+            }
+
+            function onResize() {
+                var container = canvas.parentElement;
+                var w;
+                var h;
+
+                if (scaleToFit) {
+                    w = window.innerWidth;
+                    h = window.innerHeight;
+
+                    var r = 1080 / 1920;
+
+                    if (w * r > window.innerHeight) {
+                        w = Math.min(w, Math.ceil(h / r));
+                    }
+                    h = Math.floor(w * r);
+                } else {
+                    w = 1920;
+                    h = 1080;
+                }
+
+                container.style.width = canvas.style.width = w + "px";
+                container.style.height = canvas.style.height = h + "px";
+                container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
+                container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
+            }
+
+           function checkOrientation(orientation) {
+                if (orientation === "Portrait" && window.innerHeight < window.innerWidth) {
+                    orientationWarning.style.display = 'block';
+                    gameContainer.style.display = 'none';
+                    orientationWarning.innerText = 'Please rotate your device to portrait mode.';
+                    orientationImage.style.display = 'block';  // Ensure the image is visible
+                } else if (orientation === "Landscape" && window.innerHeight > window.innerWidth) {
+                    orientationWarning.style.display = 'block';
+                    gameContainer.style.display = 'none';
+                    orientationWarning.innerText = 'Please rotate your device to landscape mode.';
+                    orientationImage.style.display = 'block';  // Ensure the image is visible
+                } else {
+                    orientationWarning.style.display = 'none';
+                    gameContainer.style.display = 'block';
+                    orientationImage.style.display = 'none';  // Hide the image when not needed
+                }
+            }
+
+            function loadTemplateConfig() {
+                var request = new XMLHttpRequest();
+                request.open('GET', 'TemplateData/Orientation/template.json', true);
+                request.onreadystatechange = function() {
+                    if (request.readyState === 4 && request.status === 200) {
+                        var config = JSON.parse(request.responseText);
+                        var orientation = config.customOptions.find(option => option.name === "orientation").default;
+                        checkOrientation(orientation);
+                    }
+                };
+                request.send();
+            }
+
+            createUnityInstance(canvas, config, progressHandler).then(function(instance) {
+                canvas = instance.Module.canvas;
+                myGameInstance = instance;
+                onResize();
+            });
+
+            window.addEventListener('resize', function() {
+                onResize();
+                loadTemplateConfig();
+            });
+
+            loadTemplateConfig();
+        </script>
+
+        <!--RHM API-->
+		<script type="text/javascript" src="js/rhmApi.js"></script>
+    </div>
+</body>
+
+</html>
