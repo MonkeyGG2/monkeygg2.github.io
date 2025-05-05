@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Movavi Grotesque';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Movavi Grotesque'), url('https://fonts.cdnfonts.com/s/18513/Movavi Grotesque Black Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'Movavi Grotesque';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Movavi Grotesque'), url('https://fonts.cdnfonts.com/s/18513/Movavi Grotesque Black.woff') format('woff');
+}
+
+

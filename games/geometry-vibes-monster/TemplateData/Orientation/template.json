@@ -1,0 +1,20 @@
+{
+    "name": "GvG2020_2+FullResponsive",
+    "description": "Template with orientation selection",
+    "version": "1.0",
+    "category": "Custom",
+    "customOptions": [
+        {
+            "name": "orientation",
+            "label": "Screen Orientation",
+            "tooltip": "Select the desired screen orientation",
+            "type": "enum",
+            "default": "Landscape",
+            "enumValues": [
+                "Portrait",
+                "Landscape",
+                "Both"
+            ]
+        }
+    ]
+}
