@@ -1,0 +1,45 @@
+{
+    "name": "monkeygg2",
+    "version": "1.0.0",
+    "description": "Your Friendly Neighborhood Games Site",
+    "keywords": [
+        "games",
+        "flash",
+        "gaming",
+        "proxy",
+        "html5-games",
+        "gaming-website",
+        "flash-games",
+        "unblocked",
+        "unblocked-games",
+        "school-proxy",
+        "school-hacks",
+        "monkeygg2",
+        "violetgg2"
+    ],
+    "homepage": "https://github.com/MonkeyGG2/monkeygg2.github.io#readme",
+    "bugs": {
+        "url": "https://github.com/MonkeyGG2/monkeygg2.github.io/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MonkeyGG2/monkeygg2.github.io.git"
+    },
+    "license": "WTFPL",
+    "author": "avscs",
+    "files": [
+        "README.md",
+        "404.html",
+        "config.jsonc",
+        "favicon.ico",
+        "index.html",
+        "jsconfig.json",
+        "LICENSE",
+        "package.json",
+        "css",
+        "fonts",
+        "games",
+        "imgs",
+        "js"
+    ]
+}
