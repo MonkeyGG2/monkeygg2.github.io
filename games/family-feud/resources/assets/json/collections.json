@@ -1,0 +1,16 @@
+{
+  "rarity": [
+    {"id": "empty", "value":10},
+    {"id": "rare", "value":10},
+    {"id": "very-rare", "value":5},
+    {"id": "ultra-rare", "value":2}
+  ],
+  "data": [
+    {"id": "new-york", "rarity": "rare"},
+    {"id": "los-angeles", "rarity": "rare"},
+    {"id": "chicago", "rarity": "rare"},
+    {"id": "atlanta", "rarity": "very-rare"},
+    {"id": "seattle", "rarity": "very-rare"},
+    {"id": "houston", "rarity": "ultra-rare"}
+  ]
+}
