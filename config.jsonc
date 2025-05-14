@@ -506,6 +506,11 @@
             "aliases": [],
             "categories": []
         },
+        "Lion Solider's Vengeance": {
+            "path": "lion-soldiers-vengeance",
+            "aliases": [],
+            "cateogires": []
+        },
         "Idle Breakout": {
             "path": "idle-breakout",
             "aliases": [],
@@ -723,6 +728,11 @@
         },
         "Soccer Random": {
             "path": "soccer-random",
+            "aliases": [],
+            "categories": []
+        },
+        "Station Saturn": {
+            "path": "station-saturn",
             "aliases": [],
             "categories": []
         },
