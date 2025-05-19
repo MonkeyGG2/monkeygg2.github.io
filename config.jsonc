@@ -641,6 +641,11 @@
             "aliases": [],
             "categories": []
         },
+        "Rocket League 2D": {
+            "path": "rocket-league-2d",
+            "aliases": [],
+            "categories": []
+        },
         "Rogue Soul": {
             "path": "flash/?game=rogue-soul",
             "aliases": [],
@@ -703,6 +708,11 @@
         },
         "Run 3 Beta (may not work)": {
             "path": "run-3-beta",
+            "aliases": [],
+            "categories": []
+        },
+        "Sabercut": {
+            "path": "sabercut",
             "aliases": [],
             "categories": []
         },
@@ -848,6 +858,11 @@
         },
         "There Is No Game": {
             "path": "there-is-no-game",
+            "aliases": [],
+            "categories": []
+        },
+        "Tic Tac What?": {
+            "path": "tic-tac-what",
             "aliases": [],
             "categories": []
         },
