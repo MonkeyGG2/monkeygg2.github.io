@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<include id="hut/scene.xml" />
+	<include id="hunter/scene.xml" />
+	<include id="intro/intro.xml" />
+</scenes>

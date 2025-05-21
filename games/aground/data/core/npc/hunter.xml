@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<include id="hunter_sheet.xml" includeRoot="true" />
+	<tile id="hunter" sheet="hunter.png" x="0" y="0" />
+	<tile id="hunter.idle" sheet="hunter.png" x="10" y="0">
+		<tile sheet="hunter.png" x="17" y="0" />
+	</tile>
+	<animation id="hunter.idle.top">
+		<frame visible="false" length="4" />
+		<frame x="18" length="2" />
+		<frame visible="false" length="32" />
+		<frame x="19" count="4" />
+		<frame visible="false" length="12" />
+	</animation>
+	<animation id="hunter.idle" tile="hunter.idle" x="0" count="1" length="54">
+		<append tile="hunter" animation="hunter.idle.top" />
+	</animation>
+	<animation id="hunter.talk.top" x="19" count="4">
+		<frame visible="false" />
+		<frame x="23" count="3" />
+	</animation>
+	<animation id="hunter.talk" tile="hunter.idle" x="0" count="1" length="8">
+		<append tile="hunter" animation="hunter.talk.top" />
+	</animation>
+	<animation id="hunter.attack.top">
+		<frame x="11" count="3" />
+		<frame x="14" count="2" length="2" />
+		<frame x="16" count="1" />
+	</animation>
+	<animation id="hunter.attack" tile="hunter" x="10" count="1" length="8">
+		<append tile="hunter" animation="hunter.attack.top" />
+	</animation>
+	<animation id="hunter.walk" count="10" x="0" />
+	
+	<npc id="hunter" tile="hunter" action="talk" talk_sfx="talking4" sleepPos="player.hasQuest('hunt')?null:[100,-7]">
+		<idle class="hunt" maxWeight="5">
+			<attack type="projectile" damage="2" range="7" animation="attack">
+				<projectile tile="hunter_arrow" speed="3" delay="7" offsetY="4" fire_sfx="bow" hit_sfx="arrow_hit" knockback="5" />
+			</attack>
+		</idle>
+		<operate>
+			<choose if="player.hasQuest('hunt')">
+				<choose if="!player.questComplete('hunt')">
+					<section if="player.canCompleteQuest('hunt')">
+						<dialogue section="hunter" id="hunt1" speaker='this' />
+						<dialogue section="hunter" id="hunt2" speaker='this' />
+						<complete quest="hunt" useResources="false" />
+						<item id="backpack" modal="true" /><equip id="backpack" ifEmpty="true" />
+					</section>
+					<group>
+						<dialogue section="hunter" id="tip1" speaker='this' />
+						<dialogue section="hunter" id="tip2" speaker='this' />
+						<dialogue section="hunter" id="tip3" speaker='this' />
+						<dialogue section="hunter" id="tip4" speaker='this' />
+					</group>
+				</choose>
+				<section if="!player.hasSeenItem('backpack')">
+					<quest /><dialogue section="hunter" id="hunt1" speaker='this' />
+					<dialogue section="hunter" id="hunt2" speaker='this' />
+					<item id="backpack" modal="true" /><equip id="backpack" ifEmpty="true" />
+				</section>
+				<section if="player.questComplete('hunt') && player.questComplete('farm') && !player.hasQuest('fence')">
+					<dialogue section="hunter" id="fence1" speaker="this" />
+					<dialogue section="hunter" id="fence2" speaker='this' />
+					<quest id="fence" />
+				</section>
+				<section if="player.hasQuest('fence') && !player.questComplete('fence') && player.canCompleteQuest('fence')">
+					<dialogue section="hunter" id="fence3" speaker='this' />
+					<complete quest="fence" />
+					<section with="fade">
+						<move object="player" x="52" />
+						<move object="this" to="player" />
+						<object id="fence" x="52" />
+						<item id="fence" count="5" hidden="true" />
+					</section>
+					<dialogue section="hunter" id="fence4" speaker='this' />
+				</section>
+				<section if="player.questComplete('fence') && (player.questComplete('dock') || player.questComplete('dock2')) && !player.hasQuest('wolf')">
+					<dialogue section="hunter" id="wolf1" speaker="this" />
+					<dialogue section="hunter" id="wolf2" speaker='player' />
+					<dialogue section="hunter" id="wolf3" speaker='this' />
+					<dialogue section="hunter" id="wolf4" speaker='this' />
+					<quest id="wolf" />
+				</section>
+				<section if="player.hasQuest('wolf') && !player.questComplete('wolf') && player.canCompleteQuest('wolf')">
+					<scene id="hunter" show="fourth" dissolve="true" seconds="0.5" showToAll="true" />
+					<complete quest="wolf" />
+				</section>
+				<group>
+					<dialogue section="hunter" id="tip1" speaker='this' />
+					<dialogue section="hunter" id="tip2" speaker='this' />
+					<dialogue section="hunter" id="tip3" speaker='this' />
+					<dialogue section="hunter" id="tip4" speaker='this' />
+				</group>
+			</choose>
+			<section>
+				<set id="hunter" value="this" />
+				<menu section="common">
+						<dialogue section="hunter" id="reject3" speaker="hunter" />
+						<choice id="yes">
+							<run procedure="hunter.deal" />
+							<lerp object="hunter" alpha="0" seconds="0.25" />
+							<move object="hunter" x="95" y="-1" />
+							<action>hunter.alpha = 1;</action>
+						</choice>
+						<choice id="no" />
+					</menu>
+			</section>
+		</operate>
+	</npc>
+	<object id="hunter_hotspot" width="64">
+		<over>
+			<section if="player.equipment.get('pickaxe').get() != null && !isNight()">
+				<remove object="this" />
+				<object id="hunter" x="98" y="-7" facing="right" />
+				<object id="boar" x="hunter.tile_x+5" y="hunter.tile_y" facing="left" />
+				<action>boar.renderer.run(5*Tile.SIZE)</action>
+				<pan toObject="hunter" seconds="1" />
+				<wait seconds="3">
+					<operate object="hunter" />
+					<operate object="boar" />
+				</wait>
+				<remove object="boar" />
+				<facing object="hunter" dir="left" />
+				<action>hunter.playAnimation("walk")</action>
+				<lerp object="hunter" deltaX="-1" seconds="0.125" />
+				<lerp object="hunter" deltaY="2" seconds="0.25" />
+				<lerp object="hunter" deltaX="-1" seconds="0.125" />
+				<lerp object="hunter" deltaY="2" seconds="0.25" />
+				<lerp object="hunter" deltaX="-1" seconds="0.125" />
+				<lerp object="hunter" deltaY="2" seconds="0.25" />
+				<move object="hunter" to="player" />
+				<move object="hunter" x="hunter.xPos/Tile.SIZE" y="-1" />
+				<pan toObject="player" seconds="1" />
+				<wait seconds="0.25" />
+				<scene id="hunter" show="first" dissolve="true" seconds="0.5" showToAll="true" />
+				<section if="!player.hasQuest('hunt')">
+					<facing object="hunter" dir="right" />
+					<action>hunter.playAnimation("walk")</action>
+					<lerp object="hunter" x="95.5" y="-0.5" seconds="0.25" />
+					<lerp object="hunter" deltaY="-2" seconds="0.25" />
+					<lerp object="hunter" deltaX="1" seconds="0.125" />
+					<lerp object="hunter" deltaY="-2" seconds="0.25" />
+					<lerp object="hunter" deltaX="1" seconds="0.125" />
+					<lerp object="hunter" deltaY="-2" seconds="0.25" />
+					<lerp object="hunter" deltaX="1" seconds="0.125" />
+					<move object="hunter" x="98" y="-7" />
+				</section>
+			</section>
+		</over>
+	</object>
+	<quest id="hunt" giver="hunter" exp="30" achievement="backpack">
+		<kill id="boar" name="quests.boars" count="5" />
+		<item id="bow" count="1" allowEquipped="true" />
+	</quest>
+	<quest id="fence" giver="hunter" exp="40">
+		<item id="fence" count="6" />
+	</quest>
+	<quest id="wolf" giver="hunter" exp="60">
+		<item id="net" count="3" />
+		<item id="trap" count="3" />
+		<item id="meat" count="6" />
+	</quest>
+	<procedure id="hunter.deal">
+		<dialogue section="hunter" id="accept1" speaker='hunter' />
+		<dialogue section="hunter" id="accept2" speaker='hunter' />
+		<item id="workbench" modal="true" />
+		<dialogue section="hunter" id="accept3" speaker='hunter' />
+		<dialogue section="hunter" id="accept4" speaker='hunter' />
+		<dialogue section="hunter" id="accept5" speaker='hunter' />
+		<quest id="hunt" ask="false" />
+	</procedure>
+	
+	<structure id="tent" tile="tent" destroyRemove="true">
+		<operate>
+			<choose>
+				<choose if="!player.hasQuest('hunt')">
+					<dialogue section="hunter" id="tent1" if="area.getNPC('hunter') == null" />
+					<dialogue section="hunter" id="tent2" />
+				</choose>
+				<section>
+					<choose if="!getFlag('final_boss_defeat') && area.getNPC('hunter') != null">
+						<scene id="hunter" show="second" with="fade" if="!getFlag('hunter_tent')" showToAll="true">
+							<action>setFlag('hunter_tent', true);</action>
+						</scene>
+						<scene id="hunter" show="third" with="fade" if="(player.hasQuest('market') || player.hasQuest('dock2')) && !getFlag('hunter_tent2')" showToAll="true">
+							<action>setFlag('hunter_tent2', true);</action>
+						</scene>
+					</choose>
+					<action>player.restoreStamina();</action><save sleep="true" />
+				</section>
+			</choose>
+		</operate>
+	</structure>
+</npcs>

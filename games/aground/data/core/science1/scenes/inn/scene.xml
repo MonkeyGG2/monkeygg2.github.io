@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<quest id="mirrows" giver="innkeeper" exp="500" achievement="mirrows">
+		<flag id="mirrow.defeat" name="common.complete" />
+	</quest>
+	<tile id="innkeeper" sheet="{core}/science1/npc/npcs.png" x="39" y="0" />
+	<npc id="innkeeper" tile="innkeeper" animation="single" talk_sfx="talking7" action="talk" />
+	<scene id="inn">
+		<include id="innkeeper.xml" includeRoot="true" />
+		<tile id="innkeeper" sheet="innkeeper.png" x="0" y="0" />
+		<animation id="innkeeper.idle" x="0">
+			<frame x="0" y="0" count="10" repeat="3" />
+			<frame x="10" y="0" />
+		</animation>
+		<animation id="innkeeper.talk" x="11" count="12" />
+		<layer id="bg" image="bg.png" />
+		<layer id="innkeeper" tile="innkeeper" animation="innkeeper.idle" talk="innkeeper.talk" x="0" y="0" />
+        <layer id="innkeeper2" tile="innkeeper" animation="innkeeper.idle" talk="innkeeper.talk" x="30" y="10" />
+		<layer id="fisherman" tile="scene.fisherman.fisherman" animation="scene.fisherman.fisherman.idle" talk="scene.fisherman.fisherman.talk" x="-60" y="0" flip="true" />
+		<show id="first">
+			<layer id="bg" />
+			<layer id="innkeeper" />
+			<wait seconds="1" />
+			<choose>
+				<section if="area.getStructureById('inn').isPowered()">
+					<dialogue section="innkeeper" id="power1" speaker='innkeeper' />
+					<dialogue section="innkeeper" id="power2" speaker='innkeeper' />
+					<dialogue section="innkeeper" id="power3" speaker='innkeeper' />
+					<dialogue section="innkeeper" id="power4" speaker='player' />
+					<dialogue section="innkeeper" id="power5" speaker='innkeeper' />
+					<quest id="mirrows"><structure id="crashed_ship.door" x="44.8125" y="4.625" forceSpawn="true" /></quest>
+				</section>
+				<section>
+					<dialogue section="innkeeper" id="intro1" speaker='innkeeper' />
+					<dialogue section="innkeeper" id="intro2" speaker='player' />
+					<dialogue section="innkeeper" id="intro3" speaker='innkeeper' />
+					<dialogue section="innkeeper" id="intro4" speaker='innkeeper' />
+				</section>
+			</choose>
+			<action>setFlag('inn.first', true);</action>
+			<wait seconds="1" />
+		</show>
+		<show id="inn">
+			<layer id="bg" />
+			<layer id="innkeeper" />
+			<wait seconds="1" />
+			<choose>
+				<choose if="area.getStructureById('inn').isPowered()">
+					<section if="player.questComplete('pirates')">
+						<dialogue section="pirates" id="stay_free" speaker="innkeeper" />
+						<action>player.fullRestore(); setFlag('inn_free', true);</action>
+					</section>
+					<menu section="common" showCoins="true">
+						<dialogue section="innkeeper" id="visit" />
+						<choice id="yes">
+							<choose>
+								<dialogue section="innkeeper" id="no_money" speaker='innkeeper' if="player.getCoins() < 50" />
+								<section>
+									<section if="getFlag('fisherman_intro') && !getFlag('innkeeper_scene')" with="fade">
+										<action>setFlag('innkeeper_scene', true);</action>
+										<dialogue section="innkeeper" id="scene1" speaker='player' />
+										<dialogue section="innkeeper" id="scene2" speaker='innkeeper' />
+										<dialogue section="innkeeper" id="scene3" speaker='innkeeper' />
+										<dialogue section="innkeeper" id="scene4" speaker='innkeeper' />
+										<dialogue section="innkeeper" id="scene5" speaker='innkeeper' />
+									</section>
+									<action>player.addCoins(-50); player.fullRestore();</action>
+								</section>
+							</choose>
+						</choice>
+						<choice id="no" />
+					</menu>
+				</choose>
+				<dialogue section="innkeeper" id="no_power" speaker='innkeeper' />
+			</choose>
+			<wait seconds="1" />
+		</show>
+		<show id="mirrows">
+			<layer id="bg" />
+			<layer id="innkeeper" />
+			<wait seconds="1" />
+			<dialogue section="innkeeper" id="mirrows1" speaker='player' />
+			<dialogue section="innkeeper" id="mirrows2" speaker='innkeeper' />
+			<dialogue section="innkeeper" id="mirrows3" speaker='innkeeper' />
+			<item id="coal" count="10" modal="true" /><complete quest="mirrows" />
+			<dialogue section="innkeeper" id="mirrows4" speaker='player' />
+			<dialogue section="innkeeper" id="mirrows5" speaker='innkeeper' />
+			<wait seconds="1" />
+		</show>
+		<show id="pirates">
+			<layer id="bg" />
+            <layer id="fisherman" />
+			<layer id="innkeeper2" />
+			<wait seconds="1" />
+			<dialogue section="pirates" id="complete2" speaker='fisherman' />
+			<dialogue section="pirates" id="complete3" speaker='innkeeper2' />
+			<dialogue section="pirates" id="complete4" speaker='fisherman' />
+			<dialogue section="pirates" id="complete5" speaker='innkeeper2' />
+			<wait seconds="1" />
+		</show>
+	</scene>
+</scenes>

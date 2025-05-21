@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<include id="fisherman/scene.xml" />
+	<include id="inn/scene.xml" />
+	<include id="mirrows/scene.xml" />
+	<include id="mirrows/bridge.xml" />
+	<include id="mechanic/scene.xml" />
+</scenes>

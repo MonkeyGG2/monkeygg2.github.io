@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<tile id="trader" sheet="npc.png" x="71" />
+	
+	<quest id="market" giver="trader" exp="60" achievement="market">
+		<item id="gold_bar" count="5" />
+	</quest>
+	<object id="market2_placeholder" tile="market_placeholder" alpha="0.5" action="build" layer="item" width="137" height="35" tileOffsetX="-45" structure_overlap="common.dismantle_tip">
+		<operate>
+			<stop if="!Action.canPlaceStructure(player, getStructure('market_placeholder'), this.info.xml, this.xPos, this.yTile)" />
+			<window type="build" structure="market_placeholder" includeStorehouse="true" requirementsXml="getQuest('market2').xml">
+				<dialogue section="player" id="market2" />
+				<complete quest="market2" useResources="false" /><sound id="build" />
+				<structure id="market_placeholder" x="this.xPos/Tile.SIZE" var="object" /><action>object.renderer.alpha=0;</action><lerp object="object" alpha="1" seconds="0.25" />
+				<remove object="this" /><remove structure="object" /><structure id="market" x="this.xPos/Tile.SIZE" />
+				<dialogue section="player" id="market3" />
+				<item id="coin_purse" value="0" modal="true" />
+				<dialogue section="player" id="market4" />
+			</window>
+		</operate>
+	</object>
+	<quest id="market2" exp="60" achievement="market">
+		<item id="gold_bar" count="5" />
+	</quest>
+	<quest id="dock" giver="trader" coins="500" exp="80" achievement="dock">
+		<item id="wood" count="20" />
+		<item id="cloth" count="5" />
+		<item id="net" count="5" />
+	</quest>
+	<object id="dock2_placeholder" tile="dockhouse" alpha="0.5" action="build" layer="item" structure_overlap="common.dismantle_tip">
+		<operate>
+			<stop if="!Action.canPlaceStructure(player, getStructure('dockhouse'), this.info.xml, this.xPos, this.yTile)" />
+			<window type="build" structure="dockhouse" includeStorehouse="true" requirementsXml="getQuest('dock2').xml">
+				<dialogue section="player" id="dock3" />
+				<complete quest="dock2" useResources="false" /><sound id="build" />
+				<structure id="dockhouse" x="this.xPos/Tile.SIZE" var="object" /><action>object.renderer.alpha=0;</action><lerp object="object" alpha="1" seconds="0.25" /><remove object="this" />
+				<structure id="dock" x="-4" />
+				<item id="dock_blueprint" hidden="true" />
+				<object id="market2_placeholder" x="7" /><pan toObject="market2_placeholder" seconds="0.25" />
+				<dialogue section="player" id="market1" />
+				<quest id="market2" ask="false" />
+				<pan toObject="player" seconds="0.25" />
+			</window>
+		</operate>
+	</object>
+	<quest id="dock2" exp="80" achievement="dock">
+		<item id="wood" count="20" />
+		<item id="steel_bar" count="10" />
+	</quest>
+	<quest id="boat" recipe="boat" exp="100" achievement="boat" />
+	
+	<npc id="trader" tile="trader" action="talk" talk_sfx="talking6">
+		<idle class="wander" toX="15" />
+		<operate>
+			<choose if="!player.questComplete('market')">
+				<section if="player.canCompleteQuest('market')">
+					<dialogue section="trader" id="market1" speaker='this' />
+					<complete quest="market" reserve="prepare" />
+					<structure id="market_placeholder" x="7" place="true" rangeX="0" rangeY="0" sfx="build" seconds="0.25" structure_overlap="common.dismantle_tip">
+						<onPlace>
+							<complete quest="market" reserve="finish" />
+							<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+							<remove structure="object" /><structure id="market" x="object.xPos/Tile.SIZE" />
+							<item id="coin_purse" value="0" modal="true" />
+							<dialogue section="trader" id="market2" speaker='this' />
+						</onPlace>
+						<onCancel><complete quest="market" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+					</structure>
+				</section>
+				<dialogue section="trader" id="market5" speaker='this' />
+			</choose>
+			<section if="!player.hasSeenItem('coin_purse')">
+				<quest /><dialogue section="trader" id="market2" speaker='this' />
+				<item id="coin_purse" value="0" />
+			</section>
+			<choose if="player.questComplete('pen')">
+				<section if="!player.hasQuest('dock')">
+					<dialogue section="trader" id="dock1" speaker='this' />
+					<dialogue section="trader" id="dock2" speaker='this' />
+					<quest id="dock" />
+				</section>
+				<choose if="!player.questComplete('dock')">
+					<section if="player.canCompleteQuest('dock')">
+						<dialogue section="trader" id="dock3" speaker='this' />
+						<complete quest="dock" reserve="prepare" />
+						<structure id="dockhouse" x="0" place="true" rangeX="0" rangeY="0" sfx="build" seconds="0.25" structure_overlap="common.dismantle_tip">
+							<onPlace>
+								<complete quest="dock" reserve="finish" />
+								<lerp object="object" alpha="1" seconds="0.25" />
+								<structure id="dock" x="-4" var="dock" /><pan toObject="player" seconds="0.25" />
+								<item id="dock_blueprint" hidden="true" />
+								<dialogue section="trader" id="dock4" speaker='this' />
+							</onPlace>
+							<onCancel><complete quest="dock" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+						</structure>
+					</section>
+					<dialogue section="trader" id="dock5" speaker='this' />
+				</choose>
+				<section if="player.questComplete('boat')">
+					<action>areas = []; for(a in player.areas){var e = Area.getXML(a.id); if(e != null &amp;&amp; e.get("planet") == "start" &amp;&amp; !a.isOrbit() &amp;&amp; a.getMainStorehouse(true) != null) areas.push(a);}</action>
+					<section if="areas.length >= 2">
+						<section if="!getFlag('trader_shipping')">
+							<quest /><action>setFlag('trader_shipping', true)</action>
+							<dialogue section="trader" id="shipping1" speaker='this' />
+						</section>
+						<menu width="150" closeable="true" yalign="0.75">
+							<dialogue section="trader" id="shipping2" />
+							<choice id="value.getDisplay().get()" values="areas.iterator()">
+								<action>areas.remove(value); this.inventory.clear(); from = value.getMainStorehouse(true).accessInventory();</action>
+								<dialogue eval="'trader.shipping3{area:'+value.getDisplay().get()+'}'" speaker='this' />
+								<window type="storehouse" from="from" inventory="this.inventory" titleMutable="this.info.getDisplayName(null)" max_weight="player.getCoins()*5">
+									<weight id="to" title="common.coins" div="5" />
+								</window>
+								<stop if="!this.inventory.hasItem()" /><action>coins = Math.round(this.inventory.weight/5)</action>
+								<menu width="150" closeable="true" yalign="0.75" allowSingle="true">
+									<dialogue eval="'trader.shipping4{coins:'+coins+'}'" />
+									<choice id="value.getDisplay().get()" values="areas.iterator()">
+										<section if="player.getCoins() >= coins">
+											<action>player.addCoins(-coins); value.getMainStorehouse(true).accessInventory().addAll(this.inventory); this.inventory.clear();</action>
+											<sound id="buy" /><dialogue section="trader" id="shipping5" speaker='this' />
+										</section>
+									</choice>
+								</menu>
+								<action>from.addAll(this.inventory); this.inventory.clear();</action>
+							</choice>
+						</menu>
+						<stop />
+					</section>
+					<section if="!getFlag('trader_shipping') && player.areas.exists('science1')">
+						<quest /><action>setFlag('trader_shipping', true)</action>
+						<dialogue section="trader" id="shipping1" speaker='this' /><stop />
+					</section>
+					<dialogue section="trader" id="sail" speaker='this' />
+				</section>
+				<dialogue section="trader" id="dock4" speaker='this' />
+			</choose>
+			<section>
+				<dialogue section="trader" id="market3" speaker='this' />
+				<dialogue section="trader" id="market4" speaker='this' />
+			</section>
+		</operate>
+	</npc>
+</npcs>

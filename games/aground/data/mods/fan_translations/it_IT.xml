@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lang id="it_IT" name="Italiano">
+  <section id="common">
+    <text id="blocked">Bloccato!</text>
+    <text id="miss">Mancato!</text>
+    <text id="critical_hit">Colpo critico!</text>
+    <text id="weight">Peso:</text>
+    <text id="save">Partita salvata</text>
+    <text id="del_save">Salvataggio eliminato</text>
+    <text id="save_corrupt">Salvataggio corrotto. Inizia una nuova partita</text>
+    <text id="fuel">Carburante</text>
+    <text id="add_fuel">Aggiungi carburante</text>
+    <text id="all">Tutto</text>
+    <text id="equipment">Equipaggiamento</text>
+    <text id="attack">Attacco:</text>
+    <text id="range">Portata:</text>
+    <text id="defense">Difesa:</text>
+    <text id="cut">Taglio:</text>
+    <text id="mine">Scavo:</text>
+    <text id="capacity">Peso trasportabile:</text>
+    <text id="health">Salute:</text>
+    <text id="stamina">Stamina:</text>
+    <text id="ok">Ok</text>
+    <text id="cancel">Cancella</text>
+    <text id="yes">Si</text>
+    <text id="no">No</text>
+    <text id="accept">Accetta</text>
+    <text id="reject">Rifiuta</text>
+    <text id="sell">Vendi</text>
+    <text id="buy">Compra</text>
+    <text id="drop_item">Quanti ne vuoi eliminare?</text>
+    <text id="eat_item">Quanti ne vuoi mangiare?</text>
+    <text id="store_item">Quanti ne vuoi stoccare?</text>
+    <text id="retrieve_item">Quanti ne vuoi prendere?</text>
+    <text id="sell_item">Quanti ne vuoi vendere?</text>
+    <text id="buy_item">Quanti ne vuoi comprare?</text>
+    <text id="requires">-- Ingredienti --</text>
+    <text id="inventory">Inventario</text>
+    <text id="quests">Quest Log</text>
+    <text id="smelter">Fonderia</text>
+    <text id="kitchen">Cucina</text>
+    <text id="workshop">Officina</text>
+    <text id="storehouse">Magazzino</text>
+    <text id="dockhouse">Porto</text>
+    <text id="harvest">Mieti</text>
+    <text id="harvest_all">Mieti tutto</text>
+    <text id="manage">Gestisci</text>
+    <text id="feed">Alimenta</text>
+    <text id="lab">Laboratorio</text>
+    <text id="coins">Monete</text>
+    <text id="per_hit">per Colpo:</text>
+    <text id="move">Muovi</text>
+    <text id="newgame">Nuovo gioco</text>
+    <text id="continue">Continua</text>
+    <text id="options">Opzioni</text>
+    <text id="exit">Esci</text>
+    <text id="forums">Community</text>
+    <text id="empty">Vuoto</text>
+    <text id="empty_slot">&lt; Slot Vuoto &gt;</text>
+    <text id="corrupt_slot">Slot corrotto</text>
+    <text id="overwrite">Sei sicuro di sovrascrivere questo slot?</text>
+    <text id="none">Nessuno</text>
+    <text id="addition_slots">Slot aggiuntivi:</text>
+    <text id="trap_overlap">[color=770000]Non puoi posizionare una trappola sopra un'altra![/color]</text>
+    <text id="placed">{item} posizionato.</text>
+    <text id="level_up">Level Up!</text>
+    <text id="level">Livello:</text>
+    <text id="experience">Esperienza</text>
+    <text id="hotkey">Seleziona oggetto</text>
+    <text id="set_hotkey">Imposta Hotkey:</text>
+    <text id="retry">Indietro</text>
+    <text id="title">Titolo</text>
+    <text id="move_all">Muovi tutto</text>
+    <text id="melee_equip">Attacca con {item}</text>
+    <text id="nonweap_equip">Usa {item}</text>
+    <text id="ranged_equip">Scaglia {item}</text>
+    <text id="add_animal">Aggiungi animale</text>
+    <text id="select_feed">Scegli alimentazione</text>
+    <text id="use_count">Quante volte vuoi usarlo?</text>
+    <text id="select_fertilizer">Seleziona fertilizzante</text>
+    <text id="muted">Gioco senza sonoro</text>
+    <text id="unmuted">Gioco con sonoro</text>
+    <text id="storehouse_add">{npc} aggiunto {count} {item} al [color=ff2222]Magazzino[/color]</text>
+    <text id="auto_eat">Mangia {count} {item} per recuperare salute</text>
+    <text id="drop_all">Sei sicuro di buttare via tutti {item}? Potrebbero tornare utili.</text>
+    <text id="sign_message">Scrivi [item=sign] Messaggio:</text>
+    <text id="transform">Quanti vuoi farli diventare in {into}?</text>
+    <text id="collect_complete">Raccogli completati</text>
+    <text id="set_sticky">Togli oggetto applicato</text>
+    <text id="fishing">Pesca:</text>
+    <text id="fishing_line">Ha abboccato qualcosa!</text>
+    <text id="fishing_fail">E' sfuggito!</text>
+    <text id="fishing_hooked">Aspetta...</text>
+    <text id="fishing_pull">Tira!</text>
+  </section>
+  <section id="actions">
+    <text id="drop">Scarta</text>
+    <text id="place">Posiziona</text>
+    <text id="use">Usa</text>
+    <text id="craft">Crea</text>
+    <text id="equip">Equipaggia</text>
+    <text id="unequip">Disequipaggia</text>
+    <text id="fire">Spara</text>
+    <text id="eat">Mangia</text>
+    <text id="loot">Raccogli dal corpo</text>
+    <text id="feed">Alimenta</text>
+    <text id="collect">Colleziona</text>
+    <text id="open">Apri</text>
+    <text id="carve">Intaglia</text>
+  </section>
+  <section id="item.names">
+    <text id="wood">Legno</text>
+    <text id="coal">Carbone</text>
+    <text id="iron">Pepita di ferro</text>
+    <text id="quartz">Quarzo</text>
+    <text id="gold">Pepita di oro</text>
+    <text id="diamond">Diamante</text>
+    <text id="sulfur">Zolfo</text>
+    <text id="oil">Greggio</text>
+    <text id="titanium">Titanio</text>
+    <text id="uranium">Uranio</text>
+    <text id="iron_bar">Barra di ferro</text>
+    <text id="steel_bar">Barra di acciaio</text>
+    <text id="gold_bar">Barra d'oro</text>
+    <text id="meat">Carne</text>
+    <text id="fruit">Mele</text>
+    <text id="wheat">Grano</text>
+    <text id="eggs">Uova</text>
+    <text id="milk">Latte</text>
+    <text id="sugar">Zucchero</text>
+    <text id="steak">Bistecca</text>
+    <text id="bread">Pane</text>
+    <text id="pie">Torta</text>
+    <text id="pancakes">Pancakes</text>
+    <text id="hamburger">Hamburger</text>
+    <text id="cheese">Formaggio</text>
+    <text id="pizza">Pizza</text>
+    <text id="omelette">Omelette</text>
+    <text id="cheeseburger">Cheeseburger</text>
+    <text id="cake">Torta</text>
+    <text id="candy_apple">Mela caramellata</text>
+    <text id="dragonblood">Sangue di drago</text>
+    <text id="stone_axe">Ascia di pietra</text>
+    <text id="stone_pickaxe">Piccone di pietra</text>
+    <text id="coin_purse">Borsello</text>
+    <text id="iron_pickaxe">Piccone di ferro</text>
+    <text id="iron_sword">Spada di ferro</text>
+    <text id="iron_armor">Armatura di ferro</text>
+    <text id="steel_pickaxe">Piccone di acciaio</text>
+    <text id="steel_sword">Spada di acciaio</text>
+    <text id="steel_armor">Armatura di acciaio</text>
+    <text id="bow">Arco</text>
+    <text id="arrow">Freccia</text>
+    <text id="backpack">Zaino</text>
+    <text id="mega_backpack">Zaino grande</text>
+    <text id="ultra_backpack">Zaino enorme</text>
+    <text id="magic_backpack">Zaino magico</text>
+    <text id="magic_box">Scatola magica</text>
+    <text id="cloth">Stoffa</text>
+    <text id="net">Rete</text>
+    <text id="berries">Bacche</text>
+    <text id="red_berries">Bacche rosse</text>
+    <text id="health_potion">Pozione salute</text>
+    <text id="stamina_potion">Pozione stamina</text>
+    <text id="attack_potion">Pozione attacco</text>
+    <text id="defense_potion">Pozione difesa</text>
+    <text id="speed_potion">Pozione velocità</text>
+    <text id="endurance_potion">Pozione resistenza</text>
+    <text id="pig">Maiale</text>
+    <text id="wyrm">Drago</text>
+    <text id="cocoon">Bozzolo</text>
+    <text id="dragon">Baby dragone</text>
+    <text id="boat">Barca</text>
+    <text id="fence">Staccionata</text>
+    <text id="torch">Torcia</text>
+    <text id="trap">Trappola</text>
+    <text id="workbench">Tavolo di lavoro</text>
+    <text id="chest">Baule</text>
+    <text id="jakolantern">J O' Lantern</text>
+    <text id="sign">Firma</text>
+    <text id="rusty_axe">Ascia arrugginita</text>
+    <text id="cotton">Cotone</text>
+    <text id="pumpkin">Zucca</text>
+    <text id="chicken">Gallina</text>
+    <text id="cow">Mucca</text>
+    <text id="fishing_rod">Canna da pesca</text>
+    <text id="toothfish">Merluzzo</text>
+    <text id="rockfish">Scorfano</text>
+    <text id="coral_cod">Pesce corallo</text>
+    <text id="fertilizer">Fertilizzante</text>
+  </section>
+  <section id="item.descriptions">
+    <text id="boat">Naviga nel mondo.</text>
+    <text id="fence">Tiene i nemici all'esterno</text>
+    <text id="torch">+1 slot illuminato ogni 20 slot scavati.</text>
+    <text id="trap">Trappola: danno 4.</text>
+    <text id="red_berries">+1 atk prossimo colpo.</text>
+    <text id="magic_box">Capienza illimitata</text>
+    <text id="health_potion">+10 salute massima.</text>
+    <text id="stamina_potion">+20 stamina massima.</text>
+    <text id="attack_potion">+1 atk prossimi 2 colpi.</text>
+    <text id="defense_potion">+1 def prossimi 2 colpi.</text>
+    <text id="speed_potion">Aumenta velocità.</text>
+    <text id="endurance_potion">Aumenta resistenza.</text>
+    <text id="workbench">Crea oggetti.</text>
+    <text id="chest">Immagazzina oggetti.</text>
+    <text id="sign">Mostra messaggio.</text>
+  </section>
+  <section id="achievement.names">
+    <text id="hut">Capanno</text>
+    <text id="boar">Carne istantanea</text>
+    <text id="storehouse">Spazio infinito</text>
+    <text id="farm">Contadino</text>
+    <text id="orchard">Mele</text>
+    <text id="smelter">Metallurgia</text>
+    <text id="kitchen">Buon appetito!</text>
+    <text id="backpack">Capiente</text>
+    <text id="workshop">Tempo di creazione</text>
+    <text id="wyrm">Wyrmslayer</text>
+    <text id="golem">Rockslayer</text>
+    <text id="diamond">Brillante</text>
+    <text id="market">Un buon commerciante</text>
+    <text id="bigpack">Più capiente</text>
+    <text id="capture_wyrm">Cattura drago</text>
+    <text id="pen">Mungi il maiale</text>
+    <text id="pizza">Mmm, Formaggio</text>
+    <text id="dock">Lidi lontani</text>
+    <text id="boat">Naviga</text>
+    <text id="lab">Esperimenti</text>
+    <text id="wyrm_pen">sangue infinito</text>
+    <text id="dragon">Cattura</text>
+  </section>
+  <section id="achievement.descriptions">
+    <text id="hut">Costruisci [color=ff2222]Capanno[/color].</text>
+    <text id="boar">Uccidi un [color=ff2222]Cinghiale[/color].</text>
+    <text id="storehouse">Costruisci un [color=ff2222]Magazzino[/color].</text>
+    <text id="farm">Costruisci una [color=ff2222]Fattoria[/color].</text>
+    <text id="orchard">Aggiungi un [color=ff2222]Frutteto[/color] alla [color=ff2222]Fattoria[/color].</text>
+    <text id="smelter">Costruisci una [color=ff2222]Fucina[/color].</text>
+    <text id="kitchen">Costruisci una [color=ff2222]Cucina[/color].</text>
+    <text id="backpack">Prendi lo [color=ff2222]Zaino[/color].</text>
+    <text id="workshop">Costruisci l' [color=ff2222]Officina[/color].</text>
+    <text id="wyrm">Sconfiggi un [color=ff2222]drago[/color].</text>
+    <text id="golem">Sconfiggi un [color=ff2222]Golem[/color].</text>
+    <text id="diamond">Raccogli un [color=ff2222]Diamante[/color].</text>
+    <text id="market">Costruisci un [color=ff2222]Mercato[/color].</text>
+    <text id="bigpack">Compra uno [color=ff2222]Zaino grande[/color].</text>
+    <text id="capture_wyrm">Cosa devo fare con questo?</text>
+    <text id="pen">Aggiungi una [color=ff2222]Stalla[/color] alla [color=ff2222]Fattoria[/color].</text>
+    <text id="pizza">Cucina una [color=ff2222]Pizza[/color].</text>
+    <text id="dock">Costruisci il [color=ff2222]Porto[/color].</text>
+    <text id="boat">Costruisci una [color=ff2222]Barca[/color].</text>
+    <text id="lab">Costruisci il [color=ff2222]Laboratorio[/color].</text>
+    <text id="wyrm_pen">Costruisci una [color=ff2222]Penna di drago[/color].</text>
+    <text id="dragon">Fai nascere un [color=ff2222]Drago[/color] da un [color=ff2222]Bozzolo[/color].</text>
+  </section>
+  <section id="structure">
+    <text id="wheat">Campo di grano</text>
+    <text id="orchard">Frutteto</text>
+    <text id="sugar">Campo di barbabietole da zucchero</text>
+    <text id="cotton">Campo di cotone</text>
+    <text id="pumpkin">Campo di zucche</text>
+    <text id="add_field">Allarga fattoria</text>
+    <text id="add_stall">Costruisci una stalla</text>
+    <text id="pen">Stalla</text>
+    <text id="produces">-- Produci --</text>
+    <text id="slots">-- Slots --</text>
+    <text id="plant">Cambia semenza</text>
+    <text id="fertilizer">Fertilizzante</text>
+  </section>
+  <section id="structure.tooltip">
+    <text id="hut">Riposa nel capanno</text>
+    <text id="storehouse">Entra nel magazzino</text>
+    <text id="workshop">Crea in officina</text>
+    <text id="smelter">Fondi pepite</text>
+    <text id="kitchen">Cucina</text>
+    <text id="farm">Entra nella fattoria</text>
+    <text id="food_market">Commercia con il fruttivendolo</text>
+    <text id="weaps_market">Commercia con il venditore di armi</text>
+    <text id="mineral_market">Commercia con il venditore di pepite</text>
+    <text id="dockhouse">Entra nel porto</text>
+    <text id="boat">Barca a vela</text>
+    <text id="lab">Combina pozioni</text>
+    <text id="pen">Gestisci la stalla</text>
+    <text id="wyrm_pen">Gestisci la stalla dei draghi</text>
+  </section>
+  <section id="object.tooltip">
+    <text id="bush">Raccogli bacche</text>
+    <text id="tree">Abbatti albero</text>
+    <text id="enemy">Attacca</text>
+    <text id="collect">Colleziona {item}</text>
+    <text id="open">Apri {item}</text>
+    <text id="harvest">Raccogli {item}</text>
+  </section>
+  <section id="warning">
+    <text id="weight">Trasporti troppo peso!</text>
+    <text id="stamina">Stamina esaurita, perdi salute!</text>
+    <text id="growing">Stà crescendo! Passa dopo.</text>
+    <text id="additions">Non restano slot aggiuntuivi</text>
+    <text id="focus">Click per Focus</text>
+    <text id="ingredients">Non hai abbastanza ingredienti.</text>
+    <text id="place_surface">Non puoi posizionare oggetti sotto terra.</text>
+    <text id="place_overlap">Non puoi posizionare oggetti su altri oggetti.</text>
+    <text id="no_effect">Non avrà alcun effetto.</text>
+    <text id="drop_instead">Vuoi buttarli via?</text>
+    <text id="cannot_fire">Non puoi sparare {projectile} senza {weapon}.</text>
+    <text id="equip">Equipaggiando l'arma [key=select] attaccherai sempre con quella, quindi non potrai interagire con niente altro finchè non la togli (nell'inventario). Ciò significa che combatterai più facilmente, ma automaticamente attaccherai con l'arma migliore presente nell'inventario anche se non hai equipaggiato nesesun arma [key=select].</text>
+    <text id="max_items">Non puoi aggiungere altri oggetti.</text>
+    <text id="max_fuel">Non puoi aggiungere altro carburante!</text>
+  </section>
+  <section id="market">
+    <text id="restock">Avremo nuovi stock presto!</text>
+  </section>
+  <section id="quests">
+    <text id="new">Nuova Quest!</text>
+    <text id="none">Non hai Quest attive al momento!</text>
+    <text id="requires">-- Necessario --</text>
+    <text id="complete">-- Completa --</text>
+    <text id="hut">Costruisci capanno</text>
+    <text id="storehouse">Costruisci Porto</text>
+    <text id="storehouse2">Costruisci Magazzino</text>
+    <text id="smelter">Costruisci Fonderia</text>
+    <text id="backpack">Zaino</text>
+    <text id="workshop">Costruisci Officina</text>
+    <text id="kitchen">Costruisci Cucina</text>
+    <text id="kitchen2">Migliora Cucina</text>
+    <text id="farm">Costruisci Fattoria</text>
+    <text id="orchard">Semi di mela</text>
+    <text id="market">Costruisci Mercato</text>
+    <text id="market2">Costruisci Mercato</text>
+    <text id="dock">Costruisci Molo</text>
+    <text id="dock2">Costruisci Molo</text>
+    <text id="pen">Costruisci porcile</text>
+    <text id="boat">Costruisci barca</text>
+    <text id="lab">Materie magiche</text>
+    <text id="wyrm_pen">Penna di drago</text>
+  </section>
+  <section id="quest.description">
+    <text id="hut">Devi costruire un [color=550000]Capanno[/color] capace di resistere alla tempesta.</text>
+    <text id="storehouse">Necessita un [color=550000]Magazzino[/color].</text>
+    <text id="storehouse2">Costruisci un [color=550000]Magazzino[/color] per immagazzinare tutti gli oggetti.</text>
+    <text id="smelter">Necessita una [color=550000]Fonderia[/color] per lavorare le pepite.</text>
+    <text id="backpack">Ti darà lo zaino per qualche [item=meat].</text>
+    <text id="workshop">necessita di un [color=550000]Officina[/color] per creare attrezzi in metallo.</text>
+    <text id="kitchen">necessita di una [color=550000]Cucina[/color] per cucinare.</text>
+    <text id="kitchen2">necessita una [color=550000]Cucina[/color] per fare del [item=cheese].</text>
+    <text id="farm">necessita di una [color=550000]Fattoria[/color] per coltivare.</text>
+    <text id="orchard">necessita di [item=fruit] per coltivare un [color=550000]Frutteto[/color].</text>
+    <text id="market">necessita di un [color=550000]Mercato[/color] per commerciare.</text>
+    <text id="market2">Costruisci un [color=550000]Mercato[/color] per attirare commercianti al [color=550000]Porto[/color].</text>
+    <text id="dock">necessita di un [color=550000]Porto[/color] per viaggiare nel mondo.</text>
+    <text id="dock2">Costruisci un [color=550000]Porto[/color] per trovare altri sopravvissuti.</text>
+    <text id="pen">necessita di una [color=550000]Stalla[/color] per allevare animali.</text>
+    <text id="boat">è ora di viaggiare nel mondo! Costruisci una [item=boat] al [color=550000]Molo[/color].</text>
+    <text id="lab">vuole sperimentare con [item=dragonblood].</text>
+    <text id="wyrm_pen">vuole sperimentare con [item=wyrm].</text>
+  </section>
+  <section id="npc">
+    <text id="talk">Parla</text>
+    <text id="builder">Costruttore</text>
+    <text id="miner">Minatore</text>
+    <text id="farmer">Contadino</text>
+    <text id="trader">Commercainte</text>
+    <text id="alchemist">Alchemista</text>
+  </section>
+  <section id="builder">
+    <text id="intro">Davvero si aspetta di essere in grado di sopravvivere qui? È disperato, amico.</text>
+    <text id="introduce1">Sei bravo a costruire, giusto? E se costruissimo un magazzino per conservare tutto ciò che raccogliamo?</text>
+    <text id="introduce2">Hmph. Credo che con [var=quest.storehouse.wood] [item=wood] e [var=quest.storehouse.berries] [item=berries] Potrei costruire un buon [color=770000]Magazzino[/color].</text>
+    <text id="accept1">OK! Lo troverò senza problemi!</text>
+    <text id="accept2">Prendi questa [item=stone_axe], se sei così spavaldo.</text>
+    <text id="stamina">Sono esausto. Anche tu sembri stanco. Dovremmo riposare al [color=770000]Capanno[/color] per salvare il gioco e recuperare [tile=stamina] [color=006600]Stamina[/color].</text>
+    <text id="wood">Com'è la mia vecchia [item=stone_axe]? Scommetto che puoi abbattere un albero premendo [key=select] quando sei a fianco.</text>
+    <text id="meat">Prova a uccidere qualche [color=770000][tile=boar] Cinghiale[/color] premendo [key=select] quando ci sei in fianco.</text>
+    <text id="hint1">Tutti gli oggetti che raccogli finiscono nel tuo inventario. Puoi controllarlo premendo [key=inventory].</text>
+    <text id="hint2">Se la tua [tile=stamina] [color=006600]Stamina[/color] finisce, inizierai a perdere [tile=health] [color=770000]Salute[/color], e se esaurisci anche la [tile=health] [color=770000]Salute[/color], morirai.</text>
+    <text id="hint3">Ecco perchè devi mangiare[item=berries], [item=fruit] and [item=meat]. Puoi mangiare selezionando il cibo dal tuo inventario.</text>
+    <text id="storehouse1">Hai già raccolto tutto? Sono stupito.</text>
+    <text id="storehouse2">Costruiamo questo [color=770000]Magazzino[/color]!</text>
+    <text id="storehouse3">Guardalo! Non sei fiero?</text>
+    <text id="storehouse4">Si… adesso, sarà utile. Ora potrò evitare di stancarmi troppo trasportando troppo peso.</text>
+    <text id="farmer">Dovremmo fare un patto con il [color=770000][tile=farmer] Contadino[/color], scommetto che può aiutarci a far crescere dei buoni ingredienti.</text>
+    <text id="miner">Hai visto la [color=770000][tile=miner] Minatrice[/color] spuntare da sotto terra? Dovresti vedere cosa vuole.</text>
+    <text id="kitchen1">Che ne dici di costruire una [color=770000]Cucina[/color]? [item=meat] la carne è buona, ma cotta è meglio!but it’s even better cooked.</text>
+    <text id="kitchen2">Abbiamo bisogno di [var=quest.kitchen.wood] [item=wood] e [var=quest.kitchen.coal] [item=coal] per costruire una [color=770000]Cucina[/color].</text>
+    <text id="kitchen3">Sembra che tu abbia tutto ciò che ho bisogno. Costruiamo questa [color=770000]Cucina[/color] !</text>
+    <text id="kitchen4">Puoi cucinare in [color=770000]Cucina[/color] finchè avrai [item=wood] o [item=coal] per alimentare il fuoco.</text>
+    <text id="kitchen5">Sai che cosa vorrei? [item=cheese]. Niente è così delizioso.</text>
+    <text id="kitchen6">Potrei migliorare la [color=770000]Cucina[/color] per fare del [item=cheese] e preparare nuove ricette, mi serve [var=quest.kitchen2.wood] [item=wood] e [var=quest.kitchen2.steel_bar] [item=steel_bar].</text>
+    <text id="kitchen7">Sembra che tu abbia tutto ciò che ho bisogno. Miglioriamo questa [color=770000]Cucina[/color] !</text>
+    <text id="kitchen8">Prova le nuove ricette! Ci stiamo civilizzando!</text>
+    <text id="farm">Signore, ho fame. Spero finisca presto di costruire la [color=770000]Fattoria[/color] !</text>
+    <text id="backpack1">Hey, sembra faticoso trasportare tutto quel [item=coal] per la [color=770000]Fonderia[/color]? Ti potrei dare il mio [item=backpack] se mi porti della [var=quest.backpack.meat] [item=meat].</text>
+    <text id="backpack2">Potrei ucciderli da solo per aver della [item=meat], ma ti ho già dato la mia[item=stone_axe]!</text>
+    <text id="backpack3">Ottimo! Grazie per la [item=meat]! Come promesso, ecco il mio [item=backpack].</text>
+  </section>
+  <section id="farmer">
+    <text id="introduce1">Hey son contento di vederti!. Stavo pensando, ero solo un uomo, un vecchio uomo solo in  un mondo vuoto.</text>
+    <text id="introduce3">Perchè non costruiamo un fienile per la [color=770000]Fattoria[/color]?</text>
+    <text id="introduce2">Ho ancora vitalità in queste vecchie ossa e posso aiutarti! La fattoria è il mio pane quotidiano, e a noi serve del buon cibo per andare avanti.</text>
+    <text id="farm1">Ottimo! Li metterò nel fienile e pianterò dei semi!</text>
+    <text id="farm2">Ora abbiamo una [color=770000]Fattoria[/color]! Fermati ogni tanto per raccogliere il grano, ti aiuteranno  a recuperare [tile=stamina] [color=006600]Stamina[/color]. Ecco, prendi del [item=bread] per farti star meglio intanto che crescono.</text>
+    <text id="farm3">Puoi raccogliere [item=wood] abbattendo alberi.</text>
+    <text id="farm4">Se vuoi coltivare di più, possiamo aggiungere quattro campi di grano oppure un frutteto. Potrai metterli nel fienile.</text>
+    <text id="farm5">Guarda che fantastica [color=770000]Fattoria[/color]! E' ottima come tutto quello che ho usato per costruirla!</text>
+    <text id="kitchen">Il [item=wheat] non è molto gustoso, ma credo che se tu e il [color=770000][tile=builder] Muratore[/color] costruiste una [color=770000]Cucina[/color], cambierebbe sapore.</text>
+    <text id="pen1">Sai cosa servirebbe per la [color=770000]Fattoria[/color] ? Del bestiame! Puoi catturarmi dei [color=770000][tile=boar] Cinghiali[/color] con una [item=net] ? Puoi comprarla al [color=770000]Mercato[/color]?</text>
+    <text id="pen2">Aggiuungerò un [color=770000]Recinto[/color] per [var=quest.pen.pig] [item=pig]e [var=quest.pen.wood] [item=wood].</text>
+    <text id="pen3">Non sono i maiali più grassi [item=pig]che tu abbia mai visto?</text>
+    <text id="pen4">Con un recinto possiamo raccogliere [item=meat] e [item=milk]!</text>
+    <text id="pig">Come catturare un [item=pig]? Stendi una [item=net] per terra e attira un [color=770000][tile=boar] Cinghiale[/color] dentro, e oppalà! Sarà catturato e addomesticato!</text>
+    <text id="kitchen2">Mungere un [item=pig]? Perchè no? E' un mondo strano. Ma potremmo usarlo per fare del [item=cheese] - parla con il [color=770000][tile=builder] Muratore[/color] per migliorare la [color=770000]Cucina[/color].</text>
+    <text id="halloween">Spero non ti dispiaccia, ma ho fatto delle piccole decorazioni per la Festa del Raccolto! Potremmo istituirla  come celebrazione. Ho preparato anche delle [item=jakolantern]e le ho messe nel [color=770000]Magazzino[/color].</text>
+    <text id="add_sugar">La fattoria stà diventando grande! Per celebrare ho trovato dei semi di [item=sugar] e li ho messi nel fienile! Prova a piantare un campo di [item=sugar]!</text>
+    <text id="add_cotton">Ho incontrato dei commercianti al [color=770000]Porto[/color] e mi hanno dato dei semi di [item=cotton] ! Ora puoi piantare del [item=cotton].</text>
+    <text id="orchard1">Ci sono un sacco di [item=fruit] quà intorno. Con tanti semi posso coltivare un bel [color=770000]Frutteto[/color]!</text>
+    <text id="orchard2">Grande, è pieno! Ho aggiunto dei semi nel fienile, ora puoi trasformare un campo in un frutteto!</text>
+    <text id="orchard3">Fammi sapere quando avrai dei semi di [item=fruit] per il [color=770000]Frutteto[/color]!</text>
+  </section>
+  <section id="miner">
+    <text id="introduce1">Hey. Non credevo che ci fossero altri sopravvissuti!</text>
+    <text id="introduce2">Ero sottoterra - c'è molto di più di quanto si pensi.</text>
+    <text id="introduce3">Ho un piccone extra, prendilo!</text>
+    <text id="smelter">Come vanno gli scavi? Magari potremmo costruire una [color=770000]Fonderia[/color] per fondere le pepite in barre.</text>
+    <text id="accept1">Bene! Fammi sapere quando ne hai abbastanza [item=coal]!</text>
+    <text id="smelter1">Questo è quanto. Posso costruire una [color=770000]Fonderia[/color] in un batter d'occhio!</text>
+    <text id="smelter2">La [color=770000]Fonderia[/color] può trasformare le pepite in barre. Richiede carburante per fonderle, ma fortunatamente è pieno di [item=coal] qua intorno.</text>
+    <text id="hint1">Bene , cosa stai aspettando? Premi [key=down] per iniziare a scavare e trovare pepite!</text>
+    <text id="hint2">Le pepite son pesanti - assicurati di stoccarle nel [color=770000]Magazzino[/color] tra gli spostamenti.</text>
+    <text id="hint3">E' facile iniziare a scavare, ma assicurati di aver abbastanza [tile=stamina] [color=006600]Stamina[/color] per il ritorno.</text>
+    <text id="hint4">Più scavi in profondità, più pepite rare puoi trovare!</text>
+    <text id="workshop1">Che ne pensi di un' [color=770000]Officina[/color] per trasformare queste barre in attrezzi? Posso costruirla con [var=quest.workshop.iron_bar] [item=iron_bar] e [var=quest.workshop.wood] [item=wood].</text>
+    <text id="workshop2">Ok, costruiamo questa [color=770000]Officina[/color] !</text>
+    <text id="workshop3">All' [color=770000]Officina[/color],puoi creare istantaneamente ogni attrezzo o oggetto che vuoi se hai gli oggetti necessari.</text>
+    <text id="workshop4">Devi trovarmi delle [item=iron]per fonderle in [item=iron_bar] alla [color=770000]Fonderia[/color].</text>
+    <text id="smelter3">Quando avrai abbastanza [item=iron], seleziona [item=iron_bar] dal menù della [color=770000]Fonderia[/color], automaticamente continuerà a fondere finchè ci sarà carburante.</text>
+    <text id="smelter4">Potrai mettere in coda per la [color=770000]Fonderia[/color] tutti gli oggetti che potrai fondere, e continuerà finchè ci sarà carburante anche se non ci sei.</text>
+    <text id="pick">Se vuoi scavare nella [color=770000][tile=stone] Roccia[/color] per trovare delle [item=gold], dovrai creare un [item=iron_pickaxe] o [item=steel_pickaxe] all' [color=770000]Officina[/color].</text>
+    <text id="equip">Equipaggiamento rimarra equipaggiato finchè resterà nell'inventario. Potrà incrementare il tuo attacco, la difesa o la velocità di scavo, ma attenzione, ogni equipaggiamento ho un peso!</text>
+    <text id="hotkey">Puoi usare [color=770000]Hotkeys[/color] . Premi [key=hotkey1], [key=hotkey2], [key=hotkey3] o [key=hotkey4] nell'inventario per settarli.</text>
+  </section>
+  <section id="trader">
+    <text id="steal">[item={item}] è stato rubato dal [color=770000]Magazzino[/color]!</text>
+    <text id="caught">Il ladro è stato colto con le mani nel sacco!</text>
+    <text id="introduce1">E' già abbastanza difficile sopravvivere senza che qualcuno ci rubi le nsotre scorte!</text>
+    <text id="introduce2">Potrei aver preso in prestito alcune cose. Ma, ascolta. Ti rimborserò offrendoti i miei servizi. Ho contatti con i commercianti su altre isole.</text>
+    <text id="introduce3">Commercianti? Ci sono altri sopravvissuti là fuori?</text>
+    <text id="introduce4">Yup. Ma ho bisogno di [var=quest.market.gold_bar] [item=gold_bar]per convincerli a venire qua.</text>
+    <text id="introduce5">Ci vuoi far pagare dopo che ti abbiamo sorpreso a rubare?!</text>
+    <text id="introduce6">Si certo. Questo è buisness. La mia richiesta è di [var=quest.market.gold_bar] [item=gold_bar]per aggiungere questa isola alla rotta dei commercianti.</text>
+    <text id="introduce7">Bene. Se ci sono altri sopravvissuti là fuori, il commercio con loro potrebbe portarci via da quest'isola.</text>
+    <text id="introduce8">Mi dispiace, non posso fidarmi di un ladro. Lascia quest'isola e non tornare mai più!</text>
+    <text id="introduce9">Ci sono isole migliori da svaligiare. Non sai cosa ti stai perdendo.</text>
+    <text id="market1">Perfetto! Sento che questo è l'inizio di molti scambi redditizi tra di noi.</text>
+    <text id="market2">Prendi questa [item=coin_purse]. Ne avrai bisogno per conservare le monete per comprare e vendere. Ti consiglio di acquistare un [item=mega_backpack] al più presto, they are a real life-saver!</text>
+    <text id="market3">Al [color=770000]Mercato[/color], puoi vendere oggetti e guadagnare monete, potrai usarle per comprare altri oggetti.</text>
+    <text id="market4">Ogni tanto al [color=770000]Mercato[/color] arrivano nuovi rifornimenti, quindi se non riesci a comprare ciò che vuoi o non ve ne sono abbastanza, ricontrolla più tardi.</text>
+    <text id="market5">Per fare un [item=gold_bar], dovrai fondere [item=gold], lo puoi trovare in profondità sotto terra. Il [color=770000][tile=miner] Minatore[/color] può darti dei consigli per come scavare così in profondità.</text>
+    <text id="dock1">Ti interessa vedere il resto del mondo? Che ne dici di costruire un [color=770000]Porto[/color]?</text>
+    <text id="dock2">Lo costruirò se mi darai [var=quest.dock.coins] [color=770000][tile=coin_purse.ico] Monete[/color], [var=quest.dock.wood] [item=wood], [var=quest.dock.cloth] [item=cloth] e [var=quest.dock.net] [item=net].</text>
+    <text id="dock3">Eccellente, costruiamo questo [color=770000]Porto[/color] !</text>
+    <text id="dock4">Quando avrai costruito una [item=boat] al [color=770000]Porto[/color], sarai in grado di navigare in mare!</text>
+    <text id="dock5">Il [color=770000]Porto[/color] costa [var=quest.dock.coins] [color=770000][tile=coin_purse.ico] Monete[/color], [var=quest.dock.wood] [item=wood], [var=quest.dock.cloth] [item=cloth] e [var=quest.dock.net] [item=net].</text>
+    <text id="accept">Accetta offerta</text>
+    <text id="reject">Rifiuta offerta</text>
+  </section>
+  <section id="alchemist">
+    <text id="introduce1">C'è molto di più su questo pianeta di quanto non sembri. Ho fatto esperimenti e credo di aver scoperto la magia!</text>
+    <text id="introduce2">Ho bisogno di materiali. Se trovi [item=dragonblood], Dammelo e farò in modo che tu sia ricompensato.</text>
+    <text id="lab1">Lo sapevo! Questo è il segreto! Devo creare un laboratorio immediatamente!</text>
+    <text id="lab2">Il tuo premio? Porta materiali al mio laboratorio e io preparerò una pozione magica per te.</text>
+    <text id="lab3">Sbrigati! La mia ricerca è ferma finché non ne avrò un po di [item=dragonblood]!</text>
+    <text id="pen1">Ho bisogno di altro [item=dragonblood]! Portami un [var=quest.wyrm_pen.wyrm] vivo [item=wyrm] e avremo una fornitura illimitata di [item=dragonblood] con cui sperimentare!</text>
+    <text id="pen2">Eccellente! Stai indietro mentre lavoro alla mia magia!</text>
+    <text id="pen3">Ecco la mia geniale invenzione - la [color=770000]Penna di drago[color]! È più di una semplice penna, è una scorta infinita di [item=dragonblood]!</text>
+    <text id="wyrm">Scommetto che puoi catturare un [item=wyrm] con una [item=net]. Ma devono essere vivi e illesi!</text>
+  </section>
+  <section id="player">
+    <text id="storm1">La tempesta stà diventando più forte. Ho bisogno di un capanno, ma qui non c'è niente, solo rami caduti!</text>
+    <text id="storm2">Devo provare a costruire un [color=770000]Capanno[/color]. [var=quest.hut.wood] [item=wood] dovrebbero essere sufficienti.</text>
+    <text id="storm3">Sono stanco... Riesco a malapena a portare questo [item=wood]. Ancora un poco e potrò riposare nel [color=770000]Capanno[/color].</text>
+    <text id="storehouse1">Questa ascia può tornare utile. Con questa potrei costruire un [color=770000]Magazzino[/color] per tenere gli oggetti che raccolgo.</text>
+    <text id="storehouse2">Scommetto che potrei costruire un  magazzino con [var=quest.storehouse.wood] [item=wood] e [var=quest.storehouse.berries] [item=berries].</text>
+    <text id="storehouse3">Avanti! Costruiamo questo Magazzino.</text>
+    <text id="storehouse4">Perfetto. Ora posso evitare di portarmi dietro tutto quanto raccolgo.</text>
+    <text id="dock1">Mi chiedo se il ladro stava dicendo la verità riguardo ad altri sopravvissuti?</text>
+    <text id="dock2">Forse dovrei costruire un [color=770000]Porto[/color]. Prenderò del [var=quest.dock2.wood] [item=wood] e [var=quest.dock2.steel_bar] [item=steel_bar].</text>
+    <text id="dock3">Perfetto, costruiamo questo [color=770000]Porto[/color] !</text>
+    <text id="market1">Se costruissi un [color=770000]Mercato[/color], potrei attrarre commercianti. Posso costruirlo con  [var=quest.market2.gold_bar] [item=gold_bar].</text>
+    <text id="market2">Ho tutto quanto serve per il [color=770000]Mercato[/color]!</text>
+    <text id="market3">Sembra che ci siano davvero dei commercianti là fuori! Mi hanno dato anche un [item=coin_purse] per tenere monete.</text>
+    <text id="market4">Ora manca solo una [item=boat] al [color=770000]Porto[/color]!</text>
+  </section>
+  <section id="scene.hut">
+    <text id="first1">Non male come primo capanno.</text>
+    <text id="first2">Aiuto…[pause=4] per favore…[pause=4] un riparo…</text>
+    <text id="first3">C'è qualcuno fuori! Devo fidarmi?</text>
+    <text id="first4">Grazie. Ti devo la vita. Ma cosa facciamo ora?</text>
+    <text id="first5">Per il momento stiamo al caldo e all'asciutto.</text>
+    <text id="first6">E dopo? Come sopravviveremo su questa isola deserta?</text>
+    <text id="first7">Siamo bloccati qui, non si può tornare indietro.</text>
+    <text id="first8">Possiamo provarci. Magari la vita non sarà così difficile come credi.</text>
+    <text id="first9">Per favore…[pause=4] aiuto…</text>
+    <text id="second1">...quando sono arrivata qui ho iniziato a scavare, non sapevo che ci fosse stata una tempesta</text>
+    <text id="second2">Ma son contenta che siate qui. Ero stanca di mangiar polvere, e non c'è niente di meglio di un fuoco caldo dopo un giorno passato sotto terra.</text>
+    <text id="second3">Credi che ci siano altri sopravvissuti?</text>
+    <text id="second4">Onestamente, sono sorpreso che ci siano dei sopravvissuti dopo quel botto. Ma siamo qua, ci saranno altri sopravvissuti?</text>
+    <text id="third1">Scommetto che voi giovani pensate che sia la fine del mondo, ma credevo lo stesso alla fine della 3 guerra mondiale, ma siamo ancora qua.</text>
+    <text id="third2">Per come la vedo, dobbiamo ricavare il meglio da questa situazione, e sarei contento  se ci fosse del cibo e della compagnia.</text>
+    <text id="third3">Ma quanto dovremo vivere su quest'isola dimenticata da Dio?</text>
+    <text id="third4">Chi lo sà? Ma finchè c'è vita, c'è speranza. Forse nel tempo questa isola sarà una buona casa.</text>
+    <text id="fourth1">Allora dicci se sai se ci sono altri sopravvissuti!</text>
+    <text id="fourth2">Molti di noi sono sparpagliati in altre isole, ma alcune isole hanno molti sopravvissuti e tecnologie migliori.</text>
+    <text id="fourth3">Ho sentito dire di un isola con una navicella quasi utilizzabile.</text>
+    <text id="fourth4">Può ancora volare?</text>
+    <text id="fourth5">Come ho detto, ho solo sentito dire. Ma se fosse vero, sarà sicuramente inutilizzabile. E' meglio stare su questo pianeta.</text>
+  </section>
+  <section id="options">
+    <text id="options">Opzioni</text>
+    <text id="paused">In pausa</text>
+    <text id="music">Volume musica:</text>
+    <text id="sfx">Volume SFX:</text>
+    <text id="fullscreen">Schermo intero:</text>
+    <text id="textspeed">Velocità testi:</text>
+    <text id="language">Lingua:</text>
+    <text id="controls">Controlli</text>
+    <text id="achievements">Achievements</text>
+    <text id="title">Torna alla pagina iniziale</text>
+    <text id="back">Indietro</text>
+    <text id="quitgame">Vuoi tornare alla pagina iniziale? Ogni progresso non sarà salvato.</text>
+    <text id="keyboard">Tastiera</text>
+    <text id="controller">Controller</text>
+    <text id="import">Importa salvataggi</text>
+    <text id="export">Esporta salvataggi</text>
+  </section>
+  <section id="controls">
+    <text id="left">Sinistra:</text>
+    <text id="right">Destra:</text>
+    <text id="up">Su:</text>
+    <text id="down">Giu:</text>
+    <text id="select">Azione:</text>
+    <text id="cancel">Cancella:</text>
+    <text id="inventory">Inventario:</text>
+    <text id="quest">Quests:</text>
+    <text id="device">Oggetto:</text>
+    <text id="hotkey1">Hotkey 1:</text>
+    <text id="hotkey2">Hotkey 2:</text>
+    <text id="hotkey3">Hotkey 3:</text>
+    <text id="hotkey4">Hotkey 4:</text>
+    <text id="mute">Togli suono:</text>
+  </section>
+  <section id="world">
+    <text id="start">Inizio</text>
+  </section>
+</lang>

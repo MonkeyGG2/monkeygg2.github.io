@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<tile id="farmer" sheet="npc.png" x="47" />
+	<animation id="farmer.hoe" count="5" x="19" />
+	
+	<quest id="farm" giver="farmer" exp="10" achievement="farm">
+		<item id="wood" count="15" />
+	</quest>
+	<quest id="orchard" giver="farmer" exp="10">
+		<item id="fruit" count="4" />
+	</quest>
+	<quest id="pen" giver="farmer" exp="60" achievement="pen">
+		<item id="pig" count="2" />
+		<item id="wood" count="8" />
+	</quest>
+	
+	<recipe id="make_wheat_seed" creates="wheat_seed" type="seed">
+		<item id="wheat" count="8" />
+	</recipe>
+	<recipe id="make_apple_seed" creates="orchard_seed" type="seed">
+		<item id="wood" count="4" />
+		<item id="fruit" count="4" />
+	</recipe>
+	
+	<procedure id="farmer.seeds">
+		<choose>
+			<dialogue section="farmer" id="farm4" speaker='this' if="var s = player.area.getStructureById('farm'); return s != null && s.getCropCount() < 4" />
+			<dialogue section="farmer" id="farm5" speaker='this' />
+		</choose>
+		<window type="craft" includeStorehouse="true"><recipe type="seed" /></window>
+	</procedure>
+	
+	<npc id="farmer" tile="farmer" action="talk" talk_sfx="talking2" idle="tendFarm" farm="farm">
+		<farm id="hydroponics" />
+		<operate>
+			<section if="!player.hasQuest('farm')">
+				<dialogue section="farmer" id="introduce1" speaker='this' />
+				<dialogue section="farmer" id="introduce2" speaker='this' />
+				<dialogue section="farmer" id="introduce3" speaker="this" />
+				<quest id="farm" />
+			</section>
+			<choose if="!player.questComplete('farm')">
+				<section if="player.canCompleteQuest('farm')">
+					<dialogue section="farmer" id="farm1" speaker='this' />
+					<complete quest="farm" reserve="prepare" />
+					<structure id="farm" x="46" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+						<onPlace>
+							<complete quest="farm" reserve="finish" />
+							<lerp object="object" alpha="1" seconds="0.25" />
+							<structure id="wheat" x="object.tile_x+11" place="true" rangeX="64" rangeY="0" sfx="plant_seed" seconds="0.25">
+								<onCancel><action>player.addItem("wheat_seed")</action></onCancel>
+							</structure>
+							<pan toObject="player" seconds="0.25" animate="object" />
+							<item id="farm_blueprint" hidden="true" />
+							<dialogue section="farmer" id="farm2" speaker='this' />
+							<item id="bread" count="2" modal="true" />
+							<section if="isDate(10,31,3) && !getFlag('halloween17')">
+								<action>player.setFlag('halloween17', true); var s = area.getStructureById('storehouse'); if(s != null){s.inventory.addItems(Item.get('jakolantern'), 2); s.inventory.addItems(Item.get('pumpkin_seed'), 1);}</action>
+								<dialogue section="farmer" id="halloween" speaker="area.getNPC('farmer')" />
+							</section>
+						</onPlace>
+						<onCancel><complete quest="farm" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+					</structure>
+				</section>
+				<dialogue section="farmer" id="farm3" speaker='this' />
+			</choose>
+			<section if="isDate(10,31,3) && !getFlag('halloween17')">
+				<quest /><action>player.setFlag('halloween17', true); var s = area.getStructureById('storehouse'); if(s != null){s.inventory.addItems(Item.get('jakolantern'), 2); s.inventory.addItems(Item.get('pumpkin_seed'), 1);}</action>
+				<dialogue section="farmer" id="halloween" speaker="this" />
+			</section>
+			<section if="isDate(12,27,7) && !getFlag('snowman')">
+				<quest /><action>player.setFlag('snowman', true);</action>
+				<object id="snowman" x="45" />
+				<dialogue section="farmer" id="snowman" speaker="this" />
+			</section>
+			<section if="!player.hasQuest('orchard')">
+				<dialogue section="farmer" id="orchard1" speaker='this' />
+				<quest id="orchard" />
+			</section>
+			<section if="(player.questComplete('dock') || player.questComplete('dock2')) && !getFlag('cotton_seed')">
+				<quest /><action>setFlag('cotton_seed', true)</action>
+				<dialogue section="farmer" id="add_cotton" speaker="this" /><item id="cotton_seed" />
+			</section>
+			<choose if="!player.questComplete('orchard')">
+				<section if="player.canCompleteQuest('orchard')">
+					<dialogue section="farmer" id="orchard2" speaker='this' /><complete quest="orchard" />
+					<dialogue section="farmer" id="orchard4" speaker='this' />
+					<structure id="orchard" y="-1" place="true" rangeX="64" rangeY="0" sfx="plant_seed" seconds="0.25">
+						<onCancel><action>player.addItem("orchard_seed")</action></onCancel>
+					</structure>
+					<pan toObject="player" seconds="0.25" animate="object" />
+					<dialogue section="farmer" id="orchard5" speaker='this' />
+				</section>
+				<dialogue section="farmer" id="orchard3" speaker='this' />
+			</choose>
+			<group if="!player.hasQuest('kitchen') && player.hasQuest('storehouse')">
+				<dialogue section="farmer" id="kitchen" speaker='this' />
+				<run procedure="farmer.seeds" />
+			</group>
+			<choose if="player.questComplete('market') || player.questComplete('dock2')">
+				<section if="!player.hasQuest('pen')">
+					<dialogue section="farmer" id="pen1" speaker='this' />
+					<dialogue section="farmer" id="pen2" speaker='this' />
+					<quest id="pen" />
+				</section>
+				<choose if="!player.questComplete('pen')">
+					<section if="player.canCompleteQuest('pen')">
+						<dialogue section="farmer" id="pen3" speaker='this' />
+						<complete quest="pen" reserve="prepare" />
+						<set id="farm" value="area.getStructureById('farm')" />
+						<structure id="pen_placeholder" x="farm == null?53:farm.tile_x+7" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+							<onPlace>
+								<complete quest="pen" reserve="finish" />
+								<remove structure="object" />
+								<structure id="stall" x="object.xPos/Tile.SIZE" var="p1"><addAnimal id="pig" /></structure>
+								<structure id="stall" x="object.xPos/Tile.SIZE+2" var="p2"><addAnimal id="pig" /></structure>
+								<action>p1.renderer.alpha = 0;</action><lerp object="p1" alpha="1" seconds="0.25" modal="false" />
+								<action>p2.renderer.alpha = 0;</action><lerp object="p2" alpha="1" seconds="0.25" animate="p1" />
+								<pan toObject="player" seconds="0.25" />
+								<item id="pen_blueprint" hidden="true" />
+								<dialogue section="farmer" id="pen5" speaker="this" />
+							</onPlace>
+							<onCancel><complete quest="pen" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+						</structure>
+					</section>
+					<group>
+						<dialogue section="farmer" id="pig" speaker='this' />
+						<run procedure="farmer.seeds" />
+					</group>
+				</choose>
+				<section if="!getFlag('area_name_sign')">
+					<action>setFlag('area_name_sign', true)</action>
+					<dialogue section="farmer" id="sign1" speaker='this' />
+					<object id="area_name_sign" x="player.tile_x" />
+					<action>area_name_sign.alpha = 0;</action><lerp object="area_name_sign" alpha="1" seconds="0.25" />
+					<dialogue section="farmer" id="sign2" speaker='this' />
+				</section>
+				<group>
+					<choose>
+						<dialogue section="farmer" id="kitchen2" if="player.questComplete('storehouse') && !player.questComplete('kitchen2')" speaker='this' />
+						<dialogue section="farmer" id="pen4" speaker='this' />
+					</choose>
+					<run procedure="farmer.seeds" />
+				</group>
+			</choose>
+			<run procedure="farmer.seeds" />
+		</operate>
+	</npc>
+</npcs>

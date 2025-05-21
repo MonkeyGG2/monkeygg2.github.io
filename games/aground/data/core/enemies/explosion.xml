@@ -1,0 +1,7 @@
+<tilesheet id='explosion.png' width='64' height='64' offsetX="-8" offsetY="-24">
+	<image frame='0' x='0' y='0' width='37' height='27' offsetX='19' offsetY='36' />
+	<image frame='1' x='0' y='27' width='48' height='34' offsetX='10' offsetY='30' />
+	<image frame='2' x='0' y='61' width='41' height='33' offsetX='14' offsetY='30' />
+	<image frame='3' x='41' y='61' width='45' height='34' offsetX='11' offsetY='29' />
+	<image frame='4' x='37' y='0' width='30' height='26' offsetX='20' offsetY='35' />
+</tilesheet>

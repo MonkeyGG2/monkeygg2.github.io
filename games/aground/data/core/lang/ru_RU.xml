@@ -1,0 +1,1644 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lang id="ru_RU" name="Русский" font="fonts/uni.fnt" version="2.0.6">
+    <section id="common">
+        <text id="blocked">Блок!</text>
+        <text id="resist">Отражено!</text>
+        <text id="effective">Сработало!</text>
+        <text id="miss">Промах!</text>
+        <text id="dodged">Уклон!</text>
+        <text id="critical_hit">Крит. удар!</text>
+        <text id="no_effect">Нет эффекта</text>
+        <text id="save">Игра сохранена</text>
+        <text id="del_save">Сохранение удалено</text>
+        <text id="save_corrupt">Сохранение повреждено! Возможно, вы находитесь в локации, которая отсутствует в данной версии игры.</text>
+        <text id="save_incomplete">Сохранение неполное – отсутствуют некоторые объекты, предметы или локации. Обычно это происходит, когда отсутствует мод, либо если сохранение из другой версии игры.</text>
+        <text id="fuel">Горючее</text>
+        <text id="add_fuel">Добавить горючее</text>
+        <text id="add_rations">Добавить продовольствие</text>
+        <text id="add_feed">Добавить корм</text>
+        <text id="all">Всё</text>
+        <text id="equipment">Снаряжение</text>
+        <text id="capacity">Вес:</text>
+        <text id="health">Здоровье:</text>
+        <text id="stamina">Запас сил:</text>
+        <text id="health_short">Здор.</text>
+        <text id="defense_short">Защ.</text>
+        <text id="power">Энергия</text>
+        <text id="oxygen">Кислород</text>
+        <text id="ok">Ок</text>
+        <text id="cancel">Отмена</text>
+        <text id="yes">Да</text>
+        <text id="no">Нет</text>
+        <text id="accept">Принять</text>
+        <text id="reject">Отказать</text>
+        <text id="sell">Продать</text>
+        <text id="buy">Купить</text>
+        <text id="drop_item">Сколько выбросить?</text>
+        <text id="eat_item">Сколько съесть?</text>
+        <text id="drink_item">Сколько выпить?</text>
+        <text id="store_item">Сколько выложить?</text>
+        <text id="retrieve_item">Сколько взять?</text>
+        <text id="cancel_item">Сколько отменить?</text>
+        <text id="sell_item">Сколько продать?</text>
+        <text id="buy_item">Сколько купить?</text>
+        <text id="requires">-- Ингредиенты --</text>
+        <text id="repair_cost">-- Стоимость ремонта --</text>
+        <text id="creates">-- Итог --</text>
+        <text id="repaired">Отремонтировано: {item}</text>
+        <text id="inventory">Инвентарь</text>
+        <text id="quests">Журнал заданий</text>
+        <text id="hut">Хижина</text>
+        <text id="smelter">Плавильня</text>
+        <text id="kitchen">Кухня</text>
+        <text id="workshop">Мастерская</text>
+        <text id="storehouse">Склад</text>
+        <text id="dockhouse">Верфь</text>
+        <text id="market_placeholder">Рынок</text>
+        <text id="powerline1">Линия электропередачи</text>
+        <text id="power_plant">Энергостанция</text>
+        <text id="warehouse">Прибрежный склад</text>
+        <text id="farm">Амбар</text>
+        <text id="stall">Загон для животных</text>
+        <text id="harvest">Собрать</text>
+        <text id="harvest_all">Собрать всё</text>
+        <text id="manage">Управление</text>
+        <text id="feed">Сытость/заряд</text>
+        <text id="lab">Лаборатория</text>
+        <text id="wyrm_pen">Питомник для личинок</text>
+        <text id="factory">Завод</text>
+        <text id="synthesizer">Синтезатор</text>
+        <text id="power_per_hit">Энергии за Удар:</text>
+        <text id="stamina_per_hit">Зап. сил за Удар:</text>
+        <text id="stamina_per_use">Зап. сил за Исп.</text>
+        <text id="move">Передвижение</text>
+        <text id="newgame">Новая игра</text>
+        <text id="continue">Продолжить</text>
+        <text id="options">Настройки</text>
+        <text id="exit">Выход</text>
+        <text id="forums">Сообщество</text>
+        <text id="mods">Моды</text>
+        <text id="empty">Пусто</text>
+        <text id="empty_slot">&lt; Пустой слот &gt;</text>
+        <text id="corrupt_slot">Повреждённый слот</text>
+        <text id="overwrite">Перезаписать слот?</text>
+        <text id="none">Нет</text>
+        <text id="addition_slots">Поля:</text>
+        <text id="placed">Размещено: {item}.</text>
+        <text id="level_up">Новый уровень!</text>
+        <text id="level">Уровень:</text>
+        <text id="experience">Опыт:</text>
+        <text id="hotkey">Выбрать предмет</text>
+        <text id="set_hotkey">Назначить гор. клав.</text>
+        <text id="retry">Ещё раз</text>
+        <text id="title">Главное меню</text>
+        <text id="move_all">Перемес- тить всё</text>
+        <text id="add_animal">Добавить животное</text>
+        <text id="select_feed">Выбрать корм</text>
+        <text id="use_count">Сколько использовать?</text>
+        <text id="select_fertilizer">Выбрать удобрение</text>
+        <text id="muted">Звук отключён</text>
+        <text id="unmuted">Звук включён</text>
+        <text id="storehouse_add">{npc} добавил(а) на {storehouse}: {count} {item}</text>
+        <text id="auto_eat">Для восстановления здоровья использовано: {count} {item}</text>
+        <text id="auto_eat_stamina">Для восстановления запаса сил использовано: {count} {item}</text>
+        <text id="auto_eat_oxygen">Для восстановления кислорода использовано: {count} {item}</text>
+        <text id="drop_all">{item} – выбросить всё? Вернуть предметы будет невозможно.</text>
+        <text id="sign_message">Установить [item=sign] Сообщение:</text>
+        <text id="transform">Сколько превратить в: {into}?</text>
+        <text id="collect_complete">Собрать готовое</text>
+        <text id="set_sticky">[tile=sticky] Закрепить предмет</text>
+        <text id="set_first">Установить как первый предмет</text>
+        <text id="fishing_line">Клюёт!</text>
+        <text id="fishing_fail">Сорвалось!</text>
+        <text id="fishing_hooked">Жди...</text>
+        <text id="fishing_pull">Тащи!</text>
+        <text id="craft">Сколько скрафтить?</text>
+        <text id="uncraft">Сколько раскрафтить?</text>
+        <text id="coins">Монеты</text>
+        <text id="broken">Сломалось: {item}</text>
+        <text id="damaged">Скоро сломается: {item}</text>
+        <text id="rem_storehouse_items">Только инвентарь</text>
+        <text id="add_storehouse_items">Включая склад</text>
+        <text id="hungry">Голоден: {item}</text>
+        <text id="not_hungry">Не голоден: {item}</text>
+        <text id="rename">Переименовать {item}:</text>
+        <text id="recharge">Зарядка</text>
+        <text id="recharge_batteries">Зарядить батареи</text>
+        <text id="restore_power">Все батареи заряжены!</text>
+        <text id="restore_power_partial">Заряжено максимальное количество батарей.</text>
+        <text id="rations">Продовольствие</text>
+        <text id="time">Время</text>
+        <text id="auto_feed">{item} – накормить/зарядить с помощью:{list}</text>
+        <text id="auto_fuel">{item} – заправить с помощью:{list}</text>
+        <text id="auto_repair">{item} – починить с помощью:{list}</text>
+        <text id="retransform">Скоро сломается: {item}. Починить с помощью:</text>
+        <text id="uses">Использований</text>
+        <text id="enchantment">Зачарование</text>
+        <text id="cooldown">Откат</text>
+        <text id="durability">Прочность</text>
+        <text id="damage">Урон</text>
+        <text id="capture">Захват</text>
+        <text id="capture_type">Способ захвата</text>
+        <text id="spirits">Духи</text>
+        <text id="flight">Высота полёта:</text>
+        <text id="depth">Глубина:</text>
+        <text id="knockback">Отброс:</text>
+        <text id="fight">Сражаться</text>
+        <text id="run_away">Сбежать</text>
+        <text id="complete">Завершено</text>
+        <text id="remove">Удалить</text>
+        <text id="time_manipulator">Манипулятор времени</text>
+        <text id="set_time">Какое время установить (24-часовой формат)?</text>
+        <text id="save_prompt_magic">Конец демо-версии для Пути магии. Сохранить игру?</text>
+        <text id="save_prompt_science">Конец демо-версии для Пути науки. Сохранить игру?</text>
+        <text id="credits">Титры</text>
+        <text id="order">Купить игру!</text>
+        <text id="reset">Сброс</text>
+        <text id="exit_water">Сойти на берег</text>
+        <text id="no_ask">Больше не спрашивать</text>
+        <text id="out_of_date">[color=ff2222]Внимание![/color] Доступно обновление: {version}!</text>
+        <text id="select_dir">Выбрать направление:\n\n[key=left][key=up][key=down][key=right]</text>
+        <text id="random">Случайно</text>
+        <text id="efficiency">Эффективность</text>
+        <text id="victory">Победа!</text>
+        <text id="item_found">Найден новый предмет!</text>
+        <text id="more">+{count} More...</text>
+        <text id="dismantle_tip">Чтобы построить это сооружение, нужно переместить или снести существующие. Это можно сделать с помощью [item=dismantle] в инвентаре.</text>
+        <text id="delete_save">Удалить слот?</text>
+        <text id="full">Нельзя употребить, пока [tile=stat.full] не истечёт!</text>
+    </section>
+    <section id="stats">
+        <text id="view">Характеристики</text>
+        <text id="health">Макс. здор.</text>
+        <text id="stamina">Макс. зап. сил</text>
+        <text id="speed">Скорость</text>
+        <text id="endurance">Выносливость</text>
+        <text id="attack">Атака</text>
+        <text id="range">Дистанция</text>
+        <text id="defense">Защита</text>
+        <text id="elementDefense">Защита от элементов</text>
+        <text id="cut">Рубка</text>
+        <text id="spirit">Дух</text>
+        <text id="mine">Добыча</text>
+        <text id="weight">Вес</text>
+        <text id="evasion">Уклонение</text>
+        <text id="critical">Крит. удар</text>
+        <text id="fishing">Рыбалка</text>
+        <text id="mine_speed">Скор. добычи</text>
+        <text id="sight">Видимость</text>
+        <text id="bargaining">Торговля</text>
+        <text id="trap">Ловушки</text>
+        <text id="oxygen">Кислород</text>
+        <text id="time">{mod} на {time}с</text>
+        <text id="max">{mod} ({current}/{max})</text>
+    </section>
+    <section id="stat.descriptions">
+        <text id="health">Сколько ударов вы можете выдержать.</text>
+        <text id="stamina">Сколько действий вы можете сделать до потери здоровья.</text>
+        <text id="speed">Насколько быстро вы двигаетесь.</text>
+        <text id="endurance">Чем выше выносливость, тем меньше расходуется запас сил.</text>
+        <text id="attack">Повышает урон от атак в ближнем бою.</text>
+        <text id="range">Повышает дистанцию стрельбы.</text>
+        <text id="defense">Снижает урон от ударов.</text>
+        <text id="cut">Повышает урон во время рубки деревьев.</text>
+        <text id="mine">Позволяет копать сквозь более прочные блоки.</text>
+        <text id="weight">Повышает базовую вместимость.</text>
+        <text id="evasion">Повышает вероятность того, что противник промахнётся.</text>
+        <text id="critical">Повышает шанс критического удара в ближнем бою.</text>
+        <text id="fishing">Облегчает ловлю рыбы.</text>
+        <text id="mine_speed">Позволяет копать быстрее.</text>
+        <text id="sight">Позволяет видеть больше блоков при передвижении и добыче ресурсов.</text>
+        <text id="bargaining">Повышает цену продажи предметов.</text>
+        <text id="trap">Повышает улов с сетей.</text>
+        <text id="oxygen">Как долго вы можете провести без воздуха.</text>
+    </section>
+    <section id="skill">
+        <text id="allocate">Очки навыков</text>
+        <text id="points">Очки навыков</text>
+        <text id="max">[color=770000]Навык развит до конца</text>
+    </section>
+    <section id="actions">
+        <text id="drop">Выбросить</text>
+        <text id="place">Разместить</text>
+        <text id="use">Использовать</text>
+        <text id="craft">Скрафтить</text>
+        <text id="equip">Экипировать</text>
+        <text id="unequip">Снять</text>
+        <text id="fire">Огонь</text>
+        <text id="eat">Съесть</text>
+        <text id="loot">Обыскать труп</text>
+        <text id="feed">Корм/заряд</text>
+        <text id="feed_all">Корм/заряд все</text>
+        <text id="fuel_all">Заправить всё</text>
+        <text id="repair_all">Починить всё</text>
+        <text id="collect">Собрать</text>
+        <text id="open">Открыть</text>
+        <text id="carve">Вырезать</text>
+        <text id="switch">Переключиться</text>
+        <text id="transform">Превратить</text>
+        <text id="repair">Починить</text>
+        <text id="rename">Переименовать</text>
+        <text id="fill">Заполнить</text>
+        <text id="synthesize">Синтезировать</text>
+        <text id="enchant">Зачаровать</text>
+        <text id="setProjectile">Установить снаряд</text>
+        <text id="enrage">Разозлить</text>
+        <text id="enrage_prompt">[item=adult_dragon] – хотите разозлить? Существо навсегда станет к вам враждебным.</text>
+        <text id="enable_attack">Разрешить атаку</text>
+        <text id="disable_attack">Запретить атаку</text>
+        <text id="enable_flight">Разрешить полёт</text>
+        <text id="disable_flight">Запретить полёт</text>
+        <text id="summon">Призвать</text>
+        <text id="uncraft">Раскрафтить</text>
+        <text id="set_time">Установить время</text>
+        <text id="reset_skills">Сбросить навыки</text>
+        <text id="build">Строить</text>
+        <text id="upgrade">Улучшить</text>
+        <text id="plant">Посадить</text>
+        <text id="merge_coins">Объединить монеты</text>
+    </section>
+    <section id="item.names">
+        <text id="wood">Древесина</text>
+        <text id="coal">Уголь</text>
+        <text id="iron">Железная руда</text>
+        <text id="quartz">Кварц</text>
+        <text id="gold">Золотая руда</text>
+        <text id="diamond">Алмазы</text>
+        <text id="sulfur">Сера</text>
+        <text id="oil">Сырая нефть</text>
+        <text id="titanium">Титан</text>
+        <text id="uranium">Уран</text>
+        <text id="iron_bar">Железный слиток</text>
+        <text id="steel_bar">Стальной слиток</text>
+        <text id="gold_bar">Золотой слиток</text>
+        <text id="meat">Мясо</text>
+        <text id="fruit">Яблоки</text>
+        <text id="wheat">Пшеница</text>
+        <text id="eggs">Яйца</text>
+        <text id="milk">Молоко</text>
+        <text id="sugar">Сахар</text>
+        <text id="steak">Стейк</text>
+        <text id="bread">Хлеб</text>
+        <text id="pie">Пирог</text>
+        <text id="pancakes">Оладьи</text>
+        <text id="hamburger">Гамбургер</text>
+        <text id="cheese">Сыр</text>
+        <text id="pizza">Пицца</text>
+        <text id="omelette">Омлет</text>
+        <text id="cheeseburger">Чизбургер</text>
+        <text id="cake">Торт</text>
+        <text id="candy_apple">Яблоко в карамели</text>
+        <text id="dragonblood">Драконья кровь</text>
+        <text id="stone_axe">Каменный топор</text>
+        <text id="stone_pickaxe">Каменная кирка</text>
+        <text id="broken_pickaxe">Сломанная кирка</text>
+        <text id="coin_purse">Кошель</text>
+        <text id="iron_pickaxe">Железная кирка</text>
+        <text id="iron_sword">Железный меч</text>
+        <text id="iron_armor">Железная броня</text>
+        <text id="steel_pickaxe">Стальная кирка</text>
+        <text id="steel_sword">Стальной меч</text>
+        <text id="steel_armor">Стальная броня</text>
+        <text id="titanium_armor">Великая броня</text>
+        <text id="bow">Лук</text>
+        <text id="recurve_bow">Изогнутый лук</text>
+        <text id="arrow">Стрела</text>
+        <text id="ice_arrow">Ледяная стрела</text>
+        <text id="fire_arrow">Огненная стрела</text>
+        <text id="water_arrow">Водная стрела</text>
+        <text id="drain_arrow">Истощающая стрела</text>
+        <text id="backpack">Рюкзак</text>
+        <text id="mega_backpack">Мегарюкзак</text>
+        <text id="ultra_backpack">Ультрарюкзак</text>
+        <text id="magic_pickaxe">Магическая кирка</text>
+        <text id="magic_sword">Магический меч</text>
+        <text id="magic_backpack">Магический рюкзак</text>
+        <text id="magic_box">Магический ящик</text>
+        <text id="cloth">Ткань</text>
+        <text id="net">Сеть</text>
+        <text id="berries">Ягоды</text>
+        <text id="red_berries">Красные ягоды</text>
+        <text id="ice_berries">Ледяные ягоды</text>
+        <text id="health_potion">Зелье здоровья</text>
+        <text id="stamina_potion">Зелье сил</text>
+        <text id="attack_potion">Зелье атаки</text>
+        <text id="defense_potion">Зелье защиты</text>
+        <text id="speed_potion">Зелье скорости</text>
+        <text id="endurance_potion">Зелье выносливости</text>
+        <text id="rat">Крыса</text>
+        <text id="pig">Свинья</text>
+        <text id="wyrm">Личинка</text>
+        <text id="cocoon">Кокон</text>
+        <text id="dragon">Дракон-детёныш</text>
+        <text id="young_dragon">Молодой дракон</text>
+        <text id="adult_dragon">Взрослый дракон</text>
+        <text id="cockatiel">Корелла</text>
+        <text id="wolf">Ручной волк</text>
+        <text id="cat">Кошка</text>
+        <text id="boat">Лодка</text>
+        <text id="fence">Забор</text>
+        <text id="torch">Факел</text>
+        <text id="trap">Ловушка</text>
+        <text id="workbench">Верстак</text>
+        <text id="steel_workbench">Стальной верстак</text>
+        <text id="anvil">Наковальня</text>
+        <text id="chest">Сундук</text>
+        <text id="jakolantern">Тыква-светильник</text>
+        <text id="sign">Знак</text>
+        <text id="area_name_sign">Табличка с названием</text>
+        <text id="rusty_axe">Ржавый топор</text>
+        <text id="cotton">Хлопок</text>
+        <text id="pumpkin">Тыква</text>
+        <text id="chicken">Курица</text>
+        <text id="cow">Корова</text>
+        <text id="fishing_rod">Удочка</text>
+        <text id="toothfish">Клыкач</text>
+        <text id="rockfish">Клювач</text>
+        <text id="coral_cod">Групер</text>
+        <text id="fertilizer">Удобрение</text>
+        <text id="yeti_fur">Ледяной мех</text>
+        <text id="dark_fur">Мех теней</text>
+        <text id="fire_gem">Камень огня</text>
+        <text id="water_gem">Камень воды</text>
+        <text id="earth_gem">Камень земли</text>
+        <text id="ice_gem">Камень льда</text>
+        <text id="plant_gem">Камень растений</text>
+        <text id="buckler">Баклер</text>
+        <text id="kite_shield">Каплевидный щит</text>
+        <text id="ice_shield">Зачарованный щит</text>
+        <text id="snowman">Снеговик</text>
+        <text id="thunder_axe">Древний топор</text>
+        <text id="fire_tusk">Огненный бивень</text>
+        <text id="silicon">Кремний</text>
+        <text id="refined_oil">Очищенная нефть</text>
+        <text id="battery">Батарея</text>
+        <text id="drill">Бур</text>
+        <text id="revolver">Револьвер</text>
+        <text id="shotgun">Ружьё</text>
+        <text id="bullet">Пуля</text>
+        <text id="ice_bullet">Ледяная пуля</text>
+        <text id="fire_bullet">Огненная пуля</text>
+        <text id="water_bullet">Водная пуля</text>
+        <text id="drain_bullet">Истощающая пуля</text>
+        <text id="shell">Заряд</text>
+        <text id="tank_shell">Танковый заряд</text>
+        <text id="ice_shell">Ледяной заряд</text>
+        <text id="fire_shell">Огненный заряд</text>
+        <text id="water_shell">Водный заряд</text>
+        <text id="drain_shell">Истощающий заряд</text>
+        <text id="chainsaw">Цепная пила</text>
+        <text id="fire_chainsaw">Огненная цепная пила</text>
+        <text id="ice_chainsaw">Ледяная цепная пила</text>
+        <text id="water_chainsaw">Водная цепная пила</text>
+        <text id="plant_chainsaw">Раст. цепная пила</text>
+        <text id="drain_chainsaw">Истощ. цепная пила</text>
+        <text id="minecart">Вагонетка</text>
+        <text id="rail">Рельсы</text>
+        <text id="map">Карта</text>
+        <text id="shovel">Лопата</text>
+        <text id="crowbar">Лом</text>
+        <text id="landmine">Наземная мина</text>
+        <text id="alter_gem">Камень изменения</text>
+        <text id="focus_gem">Камень фокусировки</text>
+        <text id="spirit_gem">Камень духов</text>
+        <text id="blood_gem">Камень крови</text>
+        <text id="baby_cannon">Пушка-детёныш</text>
+        <text id="dragonflame">Драконье пламя</text>
+        <text id="wyrm_drill">Бур-личинка</text>
+        <text id="dragon_armor">Драконья броня</text>
+        <text id="ice_sword">Ледяной меч</text>
+        <text id="fire_sword">Огненный меч</text>
+        <text id="water_sword">Водный меч</text>
+        <text id="plant_sword">Растительный меч</text>
+        <text id="drain_sword">Истощающий меч</text>
+        <text id="ice_axe">Ледяной топор</text>
+        <text id="fire_axe">Огненный топор</text>
+        <text id="water_axe">Водный топор</text>
+        <text id="plant_axe">Растительный топор</text>
+        <text id="drain_axe">Истощающий топор</text>
+        <text id="goggles">Очки духов</text>
+        <text id="furnace">Печь</text>
+        <text id="campfire">Костёр</text>
+        <text id="bandage">Бинт</text>
+        <text id="tent">Палатка</text>
+        <text id="dragonsword">Драконий меч</text>
+        <text id="silk">Шёлк</text>
+        <text id="lantern">Фонарь</text>
+        <text id="headlamp">Налобный фонарь</text>
+        <text id="plant_eye">Растительный глаз</text>
+        <text id="plant_bag">Растительная сумка</text>
+        <text id="jetpack">Реактивный ранец</text>
+        <text id="shadow_cape">Теневой плащ</text>
+        <text id="golem">Голем</text>
+        <text id="gold_golem">Золотой голем</text>
+        <text id="purple_golem">Аметистовый голем</text>
+        <text id="earth_armor">Земляная броня</text>
+        <text id="earth_helm">Земляной шлем</text>
+        <text id="earth_hammer">Земляной молот</text>
+        <text id="diode_wolf">Диодный волк</text>
+        <text id="steel_wyrm">Механическая личинка</text>
+        <text id="cyborg_body">Тело киборга</text>
+        <text id="cyborg_back">Спина киборга</text>
+        <text id="cyborg_eye">Глаз киборга</text>
+        <text id="machine_gun_arm">Рука-пулемёт</text>
+        <text id="electric_eel">Электрический угорь</text>
+        <text id="horn">Рог</text>
+        <text id="frost_shield">Ледяной щит</text>
+        <text id="ice_heart">Ледяное сердце</text>
+        <text id="owl">Сова</text>
+        <text id="dismantle">Демонтировать</text>
+        <text id="hut_blueprint">Чертёж хижины</text>
+        <text id="storehouse_blueprint">Чертёж склада</text>
+        <text id="kitchen_blueprint">Чертёж кухни</text>
+        <text id="kitchen_upgrade">Улучшение кухни</text>
+        <text id="smelter_blueprint">Чертёж плавильни</text>
+        <text id="workshop_blueprint">Чертёж мастерской</text>
+        <text id="farm_blueprint">Чертёж амбара</text>
+        <text id="pen_blueprint">Чертёж загона</text>
+        <text id="lab_blueprint">Чертёж лаборатории</text>
+        <text id="wyrm_pen_blueprint">Чертёж питомника личинок</text>
+        <text id="dock_blueprint">Чертёж пристани</text>
+        <text id="warehouse_blueprint">Чертёж прибрежного склада</text>
+        <text id="wheat_seed">Семена пшеницы</text>
+        <text id="orchard_seed">Семена яблок</text>
+        <text id="sugar_seed">Семена сахара</text>
+        <text id="cotton_seed">Семена хлопчатника</text>
+        <text id="pumpkin_seed">Семена тыквы</text>
+        <text id="tree_seed">Семя дерева</text>
+        <text id="conifer_seed">Семя хвойного дерева</text>
+        <text id="bush_seed">Семя куста</text>
+        <text id="red_bush_seed">Семя красного куста</text>
+        <text id="ice_bush_seed">Семя ледового куста</text>
+        <text id="helium_sac">Гелиевый пузырь</text>
+        <text id="steel_axe">Стальной топор</text>
+        <text id="steel_hammer">Стальной молот</text>
+        <text id="spider">Паук</text>
+        <text id="hide_slot">Скрыть слот</text>
+        <text id="spirit_detector">Детектор духов</text>
+		<text id="power_plant_blueprint">Чертёж энергостанции</text>
+        <text id="workshop_upgrade">Чертёж завода</text>
+        <text id="elevator_blueprint">Чертёж лифта</text>
+        <text id="powerline_blueprint">Чертёж энерголинии</text>
+        <text id="purple_tree_seed">Семя фиолет. дерева</text>
+    </section>
+    <section id="item.descriptions">
+        <text id="boat">Вокруг света.</text>
+        <text id="fence">Не даёт врагам пройти внутрь.</text>
+        <text id="furnace">Плавит руду.</text>
+        <text id="campfire">Для приготовления [item=steak default=Стейков].</text>
+        <text id="magic_box">Здесь всё помещается.</text>
+        <text id="craft">Крафтит предметы.</text>
+        <text id="repair">Чинит предметы.</text>
+        <text id="freeze">Замораживает врагов.</text>
+        <text id="burn">Огонь</text>
+        <text id="drain">Истощение</text>
+        <text id="undrain">Иссушение</text>
+        <text id="transform_other">Преобразует предметы.</text>
+        <text id="fill">Заполняет пустоты.</text>
+        <text id="collect_rail">Собирает рельсы, кабели и лестницы.</text>
+        <text id="storehouse">Для хранения предметов.</text>
+        <text id="sign">Показывает сообщение.</text>
+        <text id="view_hidden">Позволяет видеть духов.</text>
+        <text id="tent">Для отдыха и восстановления [tile=stamina] [color=006600]Запаса сил[/color].</text>
+        <text id="spawn">Производит: {item}.</text>
+        <text id="light">Освещает окружение, когда экипировано.</text>
+        <text id="cost_per_s">{value}/с.</text>
+        <text id="cost_per_s_daylight">{value}/с. при дн. свете.</text>
+        <text id="cost_per_s_darkness">{value}/с. в темноте.</text>
+        <text id="cost_per_s_day">{value}/с. в дн. время.</text>
+        <text id="cost_per_s_night">{value}/с. ночью.</text>
+        <text id="cost_per_s_injured">{value}/с., когда ранен.</text>
+        <text id="cost_per_s_damaged">{value}/с, если не сыт/заряж.</text>
+        <text id="cost_per_s_undamaged">{value}/с, если сыт/заряж.</text>
+        <text id="hide">Скрывает носителя.</text>
+        <text id="critical">Все удары становятся критическими.</text>
+        <text id="max_weight">Макс. вес</text>
+        <text id="reflect">Отражение урона</text>
+        <text id="fires">Выпускает: {projectile}</text>
+        <text id="cocoon">Вылупляется в [color=770000]Питомнике для личинок[/color].</text>
+        <text id="builds">Строит</text>
+        <text id="upgrades">Улучшает</text>
+        <text id="dismantle">Разрушает сооружения, для которых есть [tile=blueprint.ico] [color=770000]Чертёж[/color].</text>
+        <text id="collect">Собирает ближайшие предметы.</text>
+        <text id="plants">Высаживает</text>
+        <text id="plant_cost">Стоимость высадки</text>
+        <text id="place_cost">Стоимость размещения</text>
+        <text id="area_name_sign">Разместите, чтобы переименовать остров.</text>
+        <text id="equipOn">Экипировать</text>
+        <text id="underwater">Можно использовать под водой.</text>
+        <text id="passTile">Проходит сквозь блоки.</text>
+        <text id="leftRight">Стреляет вперёд и назад.</text>
+        <text id="element.resist">Отражает элементальные атаки.</text>
+        <text id="pierce">Пронзает врагов.</text>
+        <text id="no_kill">Не убивает (остаётся 1 ед. здор.).</text>
+        <text id="spirit_detector">Распознаёт источники жизни поблизости.</text>
+        <text id="flying">Летает.</text>
+        <text id="swimming">Плавает.</text>
+        <text id="hammer">Строит по чертежам.</text>
+    </section>
+    <section id="achievement.names">
+        <text id="hut">Укрытие</text>
+        <text id="boar">Ходячий обед</text>
+        <text id="storehouse">Много места</text>
+        <text id="farm">Издольщина</text>
+        <text id="orchard">Яблоки</text>
+        <text id="smelter">Металлургия</text>
+        <text id="kitchen">Бон аппетит</text>
+        <text id="backpack">Тяжёлые веса</text>
+        <text id="workshop">Пора крафтить</text>
+        <text id="wyrm">Гроза личинок</text>
+        <text id="golem">Гроза големов</text>
+        <text id="diamond">Блестяшка</text>
+        <text id="market">Выгодная сделка</text>
+        <text id="bigpack">Веса потяжелее</text>
+        <text id="capture_wyrm">Изловить личинку</text>
+        <text id="pen">Свиное молоко</text>
+        <text id="pizza">М-м-м, сырок</text>
+        <text id="dock">К далёким берегам</text>
+        <text id="boat">Поднять паруса</text>
+        <text id="lab">Эксперименты</text>
+        <text id="wyrm_pen">Бесконечная кровь</text>
+        <text id="dragon">Детёныш</text>
+        <text id="powerplant">Усиление</text>
+        <text id="factory">Индустриализация</text>
+        <text id="elevator">Вам наверх?</text>
+        <text id="bandits">Справедливость</text>
+        <text id="diode_wolf">Напряжение</text>
+        <text id="mirrows">Опыты на людях</text>
+        <text id="medicom">Узнать всё</text>
+        <text id="electric_eel">Подзарядка</text>
+        <text id="full_cyborg">Механизация</text>
+        <text id="labyrinth">Минотавр</text>
+        <text id="dragon_flight">Укротитель</text>
+        <text id="wyrm_queen">Гроза королев</text>
+        <text id="synthesizer">Псевдостейк</text>
+        <text id="forge">Ударные темпы</text>
+        <text id="enchanted_chainsaw">Техномаг</text>
+        <text id="elemental">Элементарно</text>
+        <text id="purple_tree">Чпок</text>
+        <text id="full_dragon">Владыка драконов</text>
+        <text id="time_manipulator">Перемотка</text>
+        <text id="oldone">Лицом к лицу</text>
+        <text id="blueprints">Построй свой путь</text>
+        <text id="skills">Усиление</text>
+        <text id="golemech">Сокрушитель</text>
+    </section>
+    <section id="achievement.descriptions">
+        <text id="hut">Отремонтируйте  [color=ff2222]Хижину[/color].</text>
+        <text id="boar">Одолейте [color=ff2222]Кабана[/color].</text>
+        <text id="storehouse">Постройте  [color=ff2222]Склад[/color].</text>
+        <text id="farm">Постройте  [color=ff2222]Ферму[/color].</text>
+        <text id="orchard">Разбейте [color=ff2222]Фруктовый сад[/color] на [color=ff2222]ферме[/color].</text>
+        <text id="smelter">Постройте [color=ff2222]Плавильню[/color].</text>
+        <text id="kitchen">Постройте [color=ff2222]Кухню[/color].</text>
+        <text id="backpack">Обзаведитесь [color=ff2222]Рюкзаком[/color].</text>
+        <text id="workshop">Постройте [color=ff2222]Мастерскую[/color].</text>
+        <text id="wyrm">Одолейте [color=ff2222]Личинку[/color].</text>
+        <text id="golem">Одолейте [color=ff2222]Голема[/color].</text>
+        <text id="diamond">Добудьте [color=ff2222]Алмаз[/color].</text>
+        <text id="market">Постройте [color=ff2222]Рынок[/color].</text>
+        <text id="bigpack">Приобретите [color=ff2222]Мегарюкзак[/color].</text>
+        <text id="capture_wyrm">И что теперь с ней делать?</text>
+        <text id="pen">Добавьте [color=ff2222]Загон[/color] на [color=ff2222]Ферму[/color].</text>
+        <text id="pizza">Приготовьте [color=ff2222]Пиццу[/color].</text>
+        <text id="dock">Постройте [color=ff2222]Пристань[/color].</text>
+        <text id="boat">Постройте [color=ff2222]Лодку[/color].</text>
+        <text id="lab">Постройте [color=ff2222]Лабораторию[/color].</text>
+        <text id="wyrm_pen">Постройте [color=ff2222]Питомник для личинок[/color].</text>
+        <text id="dragon">Выведите [color=ff2222]Дракона[/color] из [color=ff2222]Кокона[/color].</text>
+        <text id="powerplant">Постройте [color=ff2222]Энергостанцию[/color].</text>
+        <text id="factory">Постройте [color=ff2222]Завод[/color].</text>
+        <text id="elevator">Постройте [color=ff2222]Лифт[/color].</text>
+        <text id="bandits">Разберитесь с [color=ff2222]Разбойниками[/color].</text>
+        <text id="diode_wolf">Одолейте [color=ff2222]Диодного волка[/color].</text>
+        <text id="mirrows">Выстоять против Миррозов.</text>
+        <text id="medicom">Прочтите все записи.</text>
+        <text id="electric_eel">Поймайте [color=ff2222]Электрического угря[/color].</text>
+        <text id="full_cyborg">Установите полный комплект снаряжения Киборга.</text>
+        <text id="labyrinth">Пройдите лабиринт Минотавра.</text>
+        <text id="dragon_flight">Полетайте на [color=ff2222]Драконе[/color].</text>
+        <text id="wyrm_queen">Одолейте [color=ff2222]Королеву личинок[/color].</text>
+        <text id="synthesizer">Запустите [color=ff2222]Синтезатор[/color].</text>
+        <text id="forge">Активируйте [color=ff2222]Кузницу[/color].</text>
+        <text id="enchanted_chainsaw">Зачаруйте [color=ff2222]Цепную пилу[/color].</text>
+        <text id="elemental">Поймайте духа каждого элемента.</text>
+        <text id="purple_tree">Срубите [color=ff2222]Фиолетовое дерево[/color].</text>
+        <text id="full_dragon">Соберите полный комплект драконьего снаряжения.</text>
+        <text id="time_manipulator">Активируйте [color=ff2222]Манипулятор времени[/color].</text>
+        <text id="oldone">Одолейте [color=ff2222]Древнюю[/color].</text>
+        <text id="blueprints">Постройте здание с помощью [color=ff2222]Чертежа[/color].</text>
+        <text id="skills">Потратьте не менее пятисот [color=ff2222]Очков навыков[/color] на развитие персонажа.</text>
+        <text id="golemech">Одолейте [color=ff2222]Робоголема[/color].</text>
+    </section>
+    <section id="structure">
+        <text id="wheat">Пшеничное поле</text>
+        <text id="orchard">Фруктовый сад</text>
+        <text id="sugar">Сахарное поле</text>
+        <text id="cotton">Хлопковое поле</text>
+        <text id="pumpkin">Тыквенное поле</text>
+        <text id="add_field">Расширить ферму</text>
+        <text id="add_stall">Построить загон</text>
+        <text id="pen">Загон</text>
+        <text id="produces">-- Производит --</text>
+        <text id="slots">-- Слоты --</text>
+        <text id="plant">Заменить культуру</text>
+        <text id="fertilizer">Удобрение</text>
+        <text id="activate_fail">Для активации чего-то не хватает.</text>
+        <text id="search_fail">Хм, ничего интересного.</text>
+        <text id="get_pumpkin_seeds">Нашёл [item=pumpkin_seed]!</text>
+        <text id="sail_boat">Путешествовать на лодке</text>
+        <text id="manage_storage">Управление складом</text>
+        <text id="elevator">Лифт</text>
+        <text id="overweight">[tile=boat.ico] Лодка перегружена!</text>
+        <text id="rest_boat">Отдохнуть в лодке</text>
+        <text id="activate">{item} – использовать для активации сооружения?</text>
+        <text id="enchant_recipe">Колонна открывает следующее зачарование:\n{enchant} + {items} = {creates}.</text>
+        <text id="enchant_added">Рецепт зачарования добавлен в [color=770000]Кузницу[/color].</text>
+        <text id="place_in_lair">В логове должно быть: {item}.</text>
+        <text id="golem_factory">Энергия со всего сооружения устремляется в статую...</text>
+        <text id="golemech">Построить Робоголема</text>
+        <text id="build">{structure} – построить за следующее количество ресурсов?</text>
+        <text id="dismantle">{structure} – демонтировать за следующее количество ресурсов?</text>
+        <text id="plant_cost">{structure} – посадить за следующее оличество ресурсов?</text>
+        <text id="place_cost">{structure} – разместить за следующее количество ресурсов?</text>
+        <text id="dragon_lair">Дракон в логове:</text>
+        <text id="change_appearance">Изменить облик</text>
+        <text id="forge">Активировать кузницу.</text>
+        <text id="synthesizer">Активировать синтезатор.</text>
+    </section>
+    <section id="structure.tooltip">
+        <text id="hut">Отдохнуть в хижине</text>
+        <text id="storehouse">Войти на склад</text>
+        <text id="workshop">Работать в мастерской</text>
+        <text id="smelter">Плавить руду</text>
+        <text id="kitchen">Готовить на кухне</text>
+        <text id="farm">Войти на ферму</text>
+        <text id="food_market">Сделка с Торговцем едой</text>
+        <text id="weaps_market">Сделка с Оружейником</text>
+        <text id="mineral_market">Сделка с Торговцем рудой</text>
+        <text id="dockhouse">Войти на Верфь</text>
+        <text id="boat">Сесть в лодку</text>
+        <text id="lab">Смешивать зелья</text>
+        <text id="pen">Управление загоном</text>
+        <text id="cage">Управление клеткой</text>
+        <text id="summon_alchemist">Призвать Алхимика</text>
+        <text id="dragon_lair2">Выращивать драконов</text>
+        <text id="raise_into">Вырастить в: {into}</text>
+        <text id="fly_dragon">Летать на драконе</text>
+        <text id="activate">Активировать</text>
+        <text id="enter">Войти</text>
+        <text id="tent">Отдохнуть в Палатке</text>
+        <text id="search">Искать</text>
+        <text id="power_plant">Управление энергостанцией</text>
+        <text id="inn">Войти в гостиницу</text>
+        <text id="elevator">Вызвать лифт</text>
+        <text id="warehouse">Войти на прибрежный склад</text>
+        <text id="factory">Управление заводом</text>
+        <text id="golemech">Отключает Завод големов</text>
+        <text id="golemech2">Тревога: неуправляемый.</text>
+        <text id="read">Читать</text>
+        <text id="operate">Управление</text>
+        <text id="operate_self">Операция на себе</text>
+        <text id="operate_other">Операция на животном</text>
+        <text id="crop">Уход за посевами</text>
+        <text id="stall">Управление загоном</text>
+        <text id="summon_boat">Призвать лодку</text>
+		<text id="summon_dragon">Призвать дракона</text>
+    </section>
+    <section id="object.tooltip">
+        <text id="bush">Собрать ягоды</text>
+        <text id="tree">Срубить дерево</text>
+        <text id="enemy">Напасть</text>
+        <text id="collect">{item} – взять</text>
+        <text id="open">{item} – открыть</text>
+        <text id="harvest">{item} – собрать</text>
+        <text id="use">{item} – использовать</text>
+    </section>
+    <section id="equipment">
+        <text id="weapon">Ведущая рука:</text>
+        <text id="shield">Неведущая рука:</text>
+        <text id="pickaxe">Добыча:</text>
+        <text id="armor">Броня:</text>
+        <text id="head">Шлем:</text>
+        <text id="back">Рюкзак:</text>
+        <text id="familiar">Слуга:</text>
+        <text id="attack">Оружие:</text>
+        <text id="engine">Двигатель:</text>
+        <text id="vanity">Выберите декоративный предмет, чтобы изменить внешний вид без смены снаряжения.</text>
+        <text id="vanity_fail">Для этого слота нельзя выбрать декоративный предмет.</text>
+    </section>
+    <section id="capture">
+        <text id="caught">Поймано!</text>
+        <text id="fail">Сломано!</text>
+        <text id="almost">Почти!</text>
+    </section>
+    <section id="warning">
+        <text id="weight">Превышен максимальный вес!</text>
+        <text id="stamina">Запас сил на исходе, вы теряете здоровье!</text>
+        <text id="oxygen">Кислород на исходе, вы теряете здоровье!</text>
+        <text id="crush">Слишком глубоко, вы теряете здоровье!</text>
+        <text id="growing">Ещё не готово! Приходите позже.</text>
+        <text id="additions">Дополнительных слотов не осталось!</text>
+        <text id="durability">Слишком повреждено, чтобы использовать!</text>
+        <text id="focus">Окно игры неактивно</text>
+        <text id="ingredients">Не хватает ингредиентов.</text>
+        <text id="place_surface">Нельзя разместить объект под землёй.</text>
+        <text id="place_overlap">Нельзя разместить объект поверх других объектов.</text>
+        <text id="place_no_room">Чтобы разместить объект, необходимо расширить область.</text>
+        <text id="no_place">Нельзя разместить это здесь!</text>
+        <text id="no_use">Нельзя использовать это здесь!</text>
+        <text id="place_height">Нельзя разместить объект так высоко.</text>
+        <text id="structure_surface">Это сооружение нельзя построить под землёй.</text>
+        <text id="structure_underwater">Это сооружение нельзя построить под водой.</text>
+        <text id="structure_water">Это сооружение должно быть построено на воде.</text>
+        <text id="structure_tile">Чтобы построить сооружение, необходимо расширить область.</text>
+        <text id="structure_overlap">Нельзя строить поверх сооружений или посевов.</text>
+        <text id="structure_adjacent">Это сооружение может быть построено только рядом с: {structure}.</text>
+        <text id="structure_adjacent_left">Это сооружение может быть построено только слева от: {structure}.</text>
+        <text id="structure_adjacent_right">Это сооружение может быть построено только справа от: {structure}.</text>
+        <text id="structure_coast">Это сооружение может быть построено только на пустом берегу.</text>
+        <text id="structure_vehicle">Нельзя построить это внутри техники.</text>
+        <text id="plant_structure">Нельзя высаживать поверх сооружений или посевов.</text>
+        <text id="plant_grass">Высаживать можно только на плодородных травяных блоках.</text>
+        <text id="place_rooms">Можно разместить только целиком в одной комнате.</text>
+        <text id="no_effect">Не сработает.</text>
+        <text id="drop_instead">Выбросить вместо этого?</text>
+        <text id="cannot_fire">{projectile} – нельзя использовать без: {weapon}.</text>
+        <text id="no_projectiles">{weapon} – нельзя использовать. Не хватает: {projectile}.</text>
+        <text id="max_items">Нельзя добавить больше предметов!</text>
+        <text id="max_fuel">Нельзя добавить больше горючего!</text>
+        <text id="max_repair">Уже отремонтировано!</text>
+        <text id="max_rations">Нельзя добавить больше продовольствия!</text>
+        <text id="max_feed">Нельзя добавить больше корма!</text>
+        <text id="max_coins">Нельзя хранить больше монет!</text>
+        <text id="send_bug_report">Что-то пошло не так! Отправить отчёт об ошибке?</text>
+        <text id="not_powered">Нет энергии!</text>
+        <text id="power">Не хватает мощности батарей!</text>
+        <text id="rations">Не хватает продовольствия!</text>
+        <text id="fuel">Не хватает горючего!</text>
+        <text id="no_item">{item} – отсутствует.</text>
+        <text id="item_hungry">{item} – слишком голоден, чтобы отправиться в путь!</text>
+        <text id="no_fill">Нельзя заполнить этот блок!</text>
+        <text id="load_fail">Невозможно загрузить основную игру. Скорее всего, у вас отсутствует часть файлов. Перекачайте zip-архив и извлеките содержимое в папку с игрой.</text>
+        <text id="load_fail_js">Невозможно загрузить основную игру. Скорее всего, у вас отсутствует часть файлов. Нажмите Shift+Обновить, чтобы полностью перезагрузить страницу.</text>
+        <text id="incomplete">Не завершено. Дождитесь следующего обновления.</text>
+        <text id="no_flying">Невозможно во время полёта!</text>
+        <text id="sleep_underwater">Нельзя спать под водой!</text>
+        <text id="sleep_vehicle">Нельзя спать во время поездки!</text>
+        <text id="flight_weight">Вы слишком перегружены, чтобы лететь с: {item}!</text>
+        <text id="overweight">Вы слишком перегружены, чтобы двигаться!</text>
+        <text id="no_equip">Нельзя экипировать: {item}.</text>
+        <text id="no_structure">Здесь нечего демонтировать.</text>
+        <text id="no_upgrade">Здесь нечего улучшать.</text>
+        <text id="no_blueprint">Нет чертежа.</text>
+        <text id="one_structure">На острове можно построить только одно такое сооружение.</text>
+        <text id="no_use_vehicle">Невозможно во время поездки.</text>
+        <text id="no_use_underwater">Невозможно во время плавания.</text>
+        <text id="remove_cyborg">{item} – демонтировать? Объект пропадёт навсегда. Если вы захотите его вернуть, придётся устанавливать заново в хирургической лаборатории. </text>
+        <text id="not_enough">Не хватает: {item}!</text>
+        <text id="skill_points">Не хватает очков для повышения навыка!</text>
+        <text id="have_blueprint">Этот чертёж уже есть!</text>
+        <text id="collect_progress">Уничтожить предмет? Весь прогресс будет утерян.</text>
+		<text id="inventory_full">Нельзя добавить больше предметов!</text>
+		<text id="cooldown">Подождите, пока атака перезарядится.</text>
+    </section>
+    <section id="market">
+        <text id="closed">Закрыто на ночь.</text>
+        <text id="restock">Скоро новое поступление!</text>
+        <text id="no_power">Не могу поверить, что  [color=770000]Энергостанция[/color] не работает! Как мне теперь вести дела?</text>
+    </section>
+    <section id="quests">
+        <text id="new">Новое задание!</text>
+        <text id="none">Заданий нет.</text>
+        <text id="unknown_reqs">???</text>
+        <text id="requires">-- Требования --</text>
+        <text id="complete">-- Выполнено --</text>
+        <text id="hut">Ремонт хижины</text>
+        <text id="storehouse">Построить склад</text>
+        <text id="storehouse2">Построить склад</text>
+        <text id="smelter">Крафт плавильни</text>
+        <text id="workshop">Мастерская</text>
+        <text id="kitchen">Построить кухню</text>
+        <text id="kitchen2">Улучшить кухню</text>
+        <text id="farm">Построить ферму</text>
+        <text id="orchard">Семена яблони</text>
+        <text id="market">Построить рынок</text>
+        <text id="market2">Построить рынок</text>
+        <text id="dock">Пристань</text>
+        <text id="dock2">Построить пристань</text>
+        <text id="pen">Загон для свиней</text>
+        <text id="boat">Построить лодку</text>
+        <text id="lab">Магическая кровь</text>
+        <text id="wyrm_pen">Питомник</text>
+        <text id="hatch_dragons">Вывести дракона</text>
+        <text id="thunder_axe">Магический топор</text>
+        <text id="hunt">Охота на кабанов</text>
+        <text id="fence">Периметр</text>
+        <text id="wolf">Волчонок</text>
+        <text id="powerplant">Энергостанция</text>
+        <text id="factory">Построить завод</text>
+        <text id="elevator">Построить лифт</text>
+        <text id="mirrows">Против Миррозов</text>
+        <text id="mirrows2">Переубедить Миррозов</text>
+        <text id="fisherman_cat">Найти Пэри</text>
+        <text id="bandits">Разбойники</text>
+        <text id="boars">Одолеть кабанов</text>
+        <text id="wyrm_hive">Гнездо личинок</text>
+        <text id="find_wyrm_hive">Найти Гнездо личинок</text>
+        <text id="spirit_gem">Сила духов</text>
+        <text id="alter_gem">Изучение личинок</text>
+        <text id="oldone">Скачки энергии</text>
+        <text id="minecart">Проложить рельсы</text>
+    </section>
+    <section id="quest.description">
+        <text id="hut">Отремонтируйте [color=550000]Хижину[/color], чтобы укрыться от шторма.</text>
+        <text id="storehouse">хочет построить [color=550000]Склад[/color].</text>
+        <text id="storehouse2">Постройте [color=550000]Склад[/color], чтобы хранить все свои предметы.</text>
+        <text id="smelter">хочет [color=550000]Плавильню[/color], чтобы плавить руду.</text>
+        <text id="workshop">хочет [color=550000]Мас- терскую[/color], чтобы делать метал. инструменты.</text>
+        <text id="kitchen">хочет построить [color=550000]Кухню[/color], чтобы готовить еду.</text>
+        <text id="kitchen2">хочет готовить [item=cheese] на [color=550000]Кухне[/color].</text>
+        <text id="farm">хочет [color=550000]Ферму[/color], чтобы выращи- вать с.-х. культуры.</text>
+        <text id="orchard">хочет вы- садить [color=550000]Фруктовый сад[/color] с помощью [item=fruit default=Яблок].</text>
+        <text id="market">хочет построить [color=550000]Рынок[/color], чтобы торговать.</text>
+        <text id="market2">Постройте [color=550000]Рынок[/color], чтобы привлечь торговцев к вашей [color=550000]Пристани[/color].</text>
+        <text id="dock">хочет [color=550000]Пристань[/color], чтобы от- правиться в плавание.</text>
+        <text id="dock2">Постройте [color=550000]Пристань[/color], чтобы отыскать других выживших.</text>
+        <text id="pen">хочет добавить [color=550000]Загон[/color], чтобы поселить туда скот.</text>
+        <text id="boat">Пора отправиться в плавание! Постройте [tile=boat.ico] лодку на [color=550000]Верфи[/color].</text>
+        <text id="lab">просит убить [item=wyrm default=Личинку] и добыть [item=dragonblood default=Драконью кровь].</text>
+        <text id="wyrm_pen">хочет поэкспериментировать на [item=wyrm default=Личинках].</text>
+        <text id="hatch_dragons">Чтобы [item=adult_dragon] согласилась помочь, выведите [item=dragon default=Дракона-детёныша].</text>
+        <text id="thunder_axe">хочет починить [item=rusty_axe].</text>
+        <text id="hunt">предлагает потрениро- ваться с оружием.</text>
+        <text id="fence">хочет поставить [item=fence] вокруг поселения.</text>
+        <text id="wolf">хочет приручить волчонка.</text>
+        <text id="powerplant">чинит [color=550000]Энергостанцию[/color], и ей нужен [item=titanium].</text>
+        <text id="factory">хочет возиться с механиз- мами на [color=550000]Заводе[/color].</text>
+        <text id="elevator">хочет построить [color=550000]Лифт[/color], чтобы поднимать руду.</text>
+        <text id="mirrows">хочет, чтобы вы пого- ворили с Миррозами.</text>
+        <text id="mirrows2">хочет, чтобы вы нашли для Миррозов что-то необычное.</text>
+        <text id="fisherman_cat">просит найти [item=cat default=Кошку]. Она любит [item=toothfish]ей.</text>
+        <text id="bandits">Торговцы просят разо- браться с разбойника- ми, ворующими товары.</text>
+        <text id="wyrm_hive">просит раскрыть тайны [item=wyrm default=Личинок].</text>
+        <text id="spirit_gem">просит поймать духов при по- мощи [item=spirit_gem default=Камней духов].</text>
+        <text id="alter_gem">заканчи- вает изучать [item=wyrm default=Ли- чинок]. Надо помочь!</text>
+        <text id="oldone">хочет найти источник скач- ков магич. энергии.</text>
+        <text id="minecart">хочет сделать [item=minecart default=Вагонетку], чтобы облегчить процесс добычи. </text>
+    </section>
+    <section id="vehicle">
+        <text id="dismount">Спешиться</text>
+        <text id="vehicle">Техника</text>
+        <text id="fly">Нажмите «вверх», чтобы лететь.</text>
+        <text id="overweight">Техника слишком перегружена, чтобы двигаться!</text>
+        <text id="manage_items">Управление предметами</text>
+        <text id="manage_player">Персонаж</text>
+        <text id="battery">Зарядиться от батарей</text>
+        <text id="explain">[color=770000]Подсказка:[/color] нажмите [key=equipment] во время поездки, чтобы посмотреть характеристики ездового животного (техники), а также чтобы произвести кормление или заправку.</text>
+        <text id="flight_height">Нельзя подняться выше!</text>
+        <text id="deploy">Развернуть</text>
+        <text id="pack_up">Свернуть</text>
+        <text id="boat_pack_up">Если свернёте лодку, будете плавать вместе с рыбами!</text>
+		<text id="in_use">Нельзя управлять техникой: занято другим игроком!</text>
+    </section>
+    <section id="npc">
+        <text id="talk">Говорить</text>
+        <text id="grab">Взять</text>
+        <text id="builder">Строитель</text>
+        <text id="miner">Шахтёр</text>
+        <text id="farmer">Фермер</text>
+        <text id="trader">Торговец</text>
+        <text id="alchemist">Алхимик</text>
+        <text id="hunter">Охотник</text>
+        <text id="mechanic">Механик</text>
+        <text id="innkeeper">Хозяин гостиницы</text>
+        <text id="fisherman">Рыбак</text>
+    </section>
+    <section id="builder">
+        <text id="intro">Ты правда думаешь, что здесь можно выжить? Это невозможно, дружище.</text>
+        <text id="introduce1">У тебя вроде неплохо получается строить? Может, построим что-нибудь для хранения ресурсов и провизии?</text>
+        <text id="introduce2">Хм. Если у меня будет [var=quest.storehouse.wood] [item=wood default=Древесины] и [var=quest.storehouse.berries] [item=berries default=Ягод], может, и получится построить хороший [color=770000]Склад[/color].</text>
+        <text id="accept1">По рукам! Я легко найду всё что нужно.</text>
+        <text id="accept2">Возьми [item=stone_axe], раз такой бойкий.</text>
+        <text id="stamina">Я устал. Да и ты вроде тоже из сил выбился. Давай отдохнём в [color=770000]Хижине[/color], сохраним игру и восстановим [tile=stamina] [color=006600]Запас сил[/color].</text>
+        <text id="wood">Как тебе мой старый [item=stone_axe]? Подойди к дереву и нажми [key=attack], чтобы его срубить. Должно получиться!</text>
+        <text id="hint1">Когда ты собираешь предметы, они попадают в инвентарь. Чтобы посмотреть, нажми [key=inventory].</text>
+        <text id="hint2">Если твой [tile=stamina] [color=006600]Запас сил[/color] истечёт, ты начнёшь терять [tile=health] [color=770000]Здоровье[/color], а если истечёт твоё [tile=health] [color=770000]Здоровье[/color], ты умрёшь.</text>
+        <text id="hint3">Поэтому-то и надо есть [item=berries], [item=fruit] и [item=meat]. Чтобы поесть, выбери их в инвентаре.</text>
+        <text id="storehouse1">Уже всё собрал? Ничего себе.</text>
+        <text id="storehouse2">Самое время построить [color=770000]Склад[/color]!</text>
+        <text id="storehouse3">Да ты только посмотри! Есть чем гордиться.</text>
+        <text id="storehouse4">Да... это нам точно пригодится. Теперь хотя бы не будем так уставать от переноски тяжестей.</text>
+        <text id="storehouse5">С помощью кнопки «Переместить всё» можно быстро избавиться от лишней тяжести. Чтобы отметить то, что ты хочешь оставить в инвентаре, используй [key=quest].</text>
+        <text id="farmer">Стоит заключить сделку с [object=farmer]ом. Наверняка он сможет помочь нам вырастить вкусную еду.</text>
+        <text id="miner">Видел, как из-под земли появился [object=miner]? Попробуй узнать, что ему нужно.</text>
+        <text id="kitchen1">Может, построим [color=770000]Кухню[/color]? [item=meat] это хорошо, но если его приготовить, станет ещё лучше.</text>
+        <text id="kitchen2">Чтобы построить [color=770000]Кухню[/color], мне нужно [var=quest.kitchen.wood] [item=wood default=Древесины] и [var=quest.kitchen.coal] [item=coal default=Угля].</text>
+        <text id="kitchen3">Похоже, ты принёс всё что нужно. Пора строить [color=770000]Кухню[/color]!</text>
+        <text id="kitchen4">Ты можешь готовить на [color=770000]Кухне[/color] сколько угодно, пока у тебя есть [item=wood] или [item=coal] для поддержания огня.</text>
+        <text id="kitchen5">Знаешь, чего бы я съел? [item=cheese]а. На свете нет ничего вкуснее.</text>
+        <text id="kitchen6">Чтобы на [color=770000]Кухне[/color] можно было готовить [item=cheese] и другие новые блюда, её нужно улучшить. Для этого потребуется [var=quest.kitchen2.wood] [item=wood default=Древесины] и [var=quest.kitchen2.steel_bar] [item=steel_bar default=Стальных слитков].</text>
+        <text id="no_kitchen">Что случилось с моей прекрасной [color=770000]Кухней[/color]? Ты должен построить новую как можно скорее! Используй для этого [item=kitchen_blueprint].</text>
+        <text id="kitchen7">Похоже, ты принёс всё что нужно. Самое время улучшить [color=770000]Кухню[/color]! </text>
+        <text id="kitchen8">Попробуй новые рецепты!  Мы уже почти как при цивилизации!</text>
+        <text id="farm">Как же есть хочется... Надеюсь, ты скоро достроишь [color=770000]Ферму[/color]!</text>
+    </section>
+    <section id="farmer">
+        <text id="introduce1">Как же я рад тебя видеть, парень. А я-то, старый, уж думал, что один во всём мире остался.</text>
+        <text id="introduce2">Я могу тебе помочь, есть ещё порох в пороховницах. Хорошая еда нам всем не помешает, а я на сельском хозяйстве собаку съел.</text>
+        <text id="introduce3">Может, построим амбар и организуем [color=770000]Ферму[/color]?</text>
+        <text id="farm1">Отлично! Я построю амбар и посажу [item=wheat_seed]!</text>
+        <text id="farm2">Теперь у нас есть [color=770000]Ферма[/color]! Заходь иногда, чтоб собирать урожай, это поможет тебе восполнить [tile=stamina] [color=006600]Запас сил[/color]. А пока урожай не поспел, возьми [item=bread].</text>
+        <text id="farm3">Сруби дерево, чтобы получить [item=wood default=Древесину].</text>
+        <text id="farm4">Если хош растить больше, сади больше семян! Управлять посевами и убирать ненужные можно в амбаре!</text>
+        <text id="farm5">Только глянь, какая классная у нас [color=770000]Ферма[/color]! Всё растёт не хуже, чем дома! Но если хочешь выращивать больше, я всегда могу достать семян.</text>
+        <text id="kitchen">Сама по себе [item=wheat] на вкус не очень, но мы сможем сообразить что-нибудь получше, если ты и [object=builder] организуете [color=770000]Кухню[/color].</text>
+        <text id="pen1">Знаешь, чего нам на [color=770000]Ферме[/color] не хватает? Скотины! Может, возьмёшь [item=net] и поймаешь парочку [color=770000][tile=boar]Кабанов[/color]?</text>
+        <text id="pen2">Я добавлю [color=770000]Загон[/color]. От тебя мне нужны [var=quest.pen.pig] [item=pig default=Свиньи] и [var=quest.pen.wood] [item=wood default=Древесины].</text>
+        <text id="pen3">Ну разве это не самые жирные и сочные [item=pig default=Свиньи], что ты видел? Ещё и не одна!</text>
+        <text id="pen4">Загон позволит нам производить [item=meat] и [item=milk]!</text>
+        <text id="pen5">Если захочешь построить больше [color=770000]Загонов[/color], используй [item=pen_blueprint].</text>
+        <text id="pig">Как поймать [item=pig default=Свинью]? Положи [item=net] на землю и замани на неё раненого [color=770000][tile=boar]Кабана[/color]. Если повезёт, он попадёт в ловушку и станет ручным!</text>
+        <text id="kitchen2">[item=pig] даёт молоко? Почему бы и нет? Это странные земли. Но  [item=cheese] нам точно не помешает. Попроси [object=builder default=Строителя] улучшить [color=770000]Кухню[/color].</text>
+        <text id="halloween">Я тут малость всё украсил к Празднику урожая! Ты ж не против, да? Праздничное настроение будет весьма кстати. Ещё я положил на [color=770000]Склад[/color] [item=jakolantern default=Тыквы-светильники].</text>
+        <text id="add_sugar">А ферма-то растёт! В честь этого я приготовил для тебя [item=sugar_seed]! Попробуй высадить [item=sugar]ное поле!</text>
+        <text id="add_cotton">Я тут встретил торговцев на [color=770000]пристани[/color] и взял у них [item=cotton_seed]!</text>
+        <text id="orchard1">[item=fruit] здесь на каждом шагу. Если раздобыть семян, можно будет высадить хороший [color=770000]Фруктовый сад[/color]!</text>
+        <text id="orchard2">Отлично, теперь у нас есть [item=orchard_seed]. Самое время высадить [color=770000]Фруктовый сад[/color]!</text>
+        <text id="orchard3">Дай знать, как соберёшь всё для [color=770000]Фруктового сада[/color]. Помни, нам нужны [item=fruit]!</text>
+        <text id="orchard4">Семена можно садить на травяных блоках. Главное, чтобы хватило места. Покажи мне, где посадить [item=orchard_seed]!</text>
+        <text id="orchard5">Используй семена, чтобы менять посевы в [color=770000]Амбаре[/color]. Если понадобятся новые семена, дай мне знать!</text>
+        <text id="snowman">Первый снег! Самое время для праздника! Я даже слепил магического [item=snowman]а из [item=ice_berries default=Ледяных ягод]! Надеюсь, тебе понравится!</text>
+        <text id="sign1">Я уже чувствую себя почти как дома. Может, дадим этому месту название?</text>
+        <text id="sign2">Используй [item=area_name_sign default=Табличку с названием], чтобы переименовать остров!</text>
+    </section>
+    <section id="miner">
+        <text id="introduce1">О, привет. Не знала, что кто-то ещё уцелел.</text>
+        <text id="introduce2">Я была под землёй. Оказывается, здесь столько интересного.</text>
+        <text id="introduce3">Если тоже хочешь посмотреть, у меня есть лишняя кирка.</text>
+        <text id="smelter">Как копается? Наверное, стоит построить [color=770000]Плавильню[/color], чтобы выплавлять из руды слитки.</text>
+        <text id="accept1">Отлично! Дай мне знать, когда найдёшь достаточно [item=coal default=Угля]!</text>
+        <text id="smelter1">То что надо. Мигом поставим [color=770000]Плавильню[/color]!</text>
+        <text id="smelter2">В [color=770000]Плавильне[/color] можно превращать руду в слитки. Для выплавки нужно горючее, но, к счастью, [item=coal] здесь на каждом шагу.</text>
+        <text id="hint1">Чего же ты ждёшь? Чтобы начать копать и искать руду, жми [key=down]!</text>
+        <text id="hint2">Руда тяжёлая. Не забывай сбрасывать лишнее на [color=770000]Склад[/color] между ходками.</text>
+        <text id="hint3">В шахте легко позабыть о времени. Следи за тем, чтобы тебе хватило [tile=stamina] [color=006600]Запаса сил[/color] на обратную дорогу.</text>
+        <text id="hint4">Чем глубже ты забираешься, тем лучше будет руда.</text>
+        <text id="hint5">Если решил закопаться глубоко под землю, не забудь взять [item=torch]ы. Они светят, будучи экипированными, но рано или поздно тоже выгорают.</text>
+        <text id="hint6">Я могу сделать [item=torch]ы, если надо.</text>
+        <text id="workshop1">Может, построим [color=770000]Мастерскую[/color], чтобы изготавливать из слитков инструменты? Я могу это сделать, но мне нужно [var=quest.workshop.iron_bar] [item=iron_bar default=Железных слитков] и [var=quest.workshop.wood] [item=wood default=Древесины].</text>
+        <text id="workshop2">Отлично, самое время построить [color=770000]Мастерскую[/color]!</text>
+        <text id="workshop3">В [color=770000]Мастерской[/color] можно мгновенно создавать инструменты или предметы, если есть нужные материалы.</text>
+        <text id="workshop4">Чтобы получить [item=iron_bar], найди [item=iron] и расплавь её в [color=770000]Плавильне[/color].</text>
+        <text id="torch">[item=iron] залегает довольно глубоко, поэтому возьми с собой [item=torch], чтобы освещать путь. Если выгорит, возвращайся ко мне – я сделаю ещё.</text>
+        <text id="smelter3">Когда у тебя будет достаточно [item=iron default=Железа], выбери в [color=770000]Плавильне[/color] [item=iron_bar], и она будет работать, пока хватает горючего.</text>
+        <text id="smelter4">В [color=770000]Плавильне[/color] можно делать столько заказов, на сколько хватит материалов, и она будет их выплавлять, даже когда тебя нет рядом. Главное, чтобы горючего хватило.</text>
+        <text id="pick">Чтобы прокопаться сквозь [color=770000][tile=stone]Камень[/color] и добыть [item=gold default=Золотую руду], необходима [item=iron_pickaxe] или [item=steel_pickaxe]. Их можно скрафтить в [color=770000]Мастерской[/color].</text>
+        <text id="equip1">Чтобы прокопаться сквозь [color=770000][tile=stone]Камень[/color] и добыть [item=gold default=Золотую руду], должна быть экипирована [item=iron_pickaxe] или [item=steel_pickaxe]. Нажми [key=equipment], чтобы открыть окно снаряжения.</text>
+        <text id="equip2">Нажми [key=equipment], чтобы открыть окно снаряжения и экипировать кирку.</text>
+        <text id="hotkey">Теперь ты можешь использовать [color=770000]Горячие клавиши[/color].\nЧтобы их назначить, нажми [key=hotkey1], [key=hotkey2], [key=hotkey3] или [key=hotkey4] в инвентаре.</text>
+        <text id="minecart1">Что нужно каждому шахтёру, так это [item=minecart] и [item=rail]! Руда тяжёлая, и если мы сможем быстро и легко доставлять её на [color=770000]Склад[/color], это будет очень удобно.</text>
+        <text id="minecart2">Принёс [item=minecart default=Вагонетку] и [item=rail]? Отлично, самое время их установить!</text>
+        <text id="minecart3">[item=minecart] и [item=rail] установлены! Путей пока мало, но ты можешь их расширить! А чтобы снять и переместить [item=rail], используй [item=crowbar]!</text>
+    </section>
+    <section id="trader">
+        <text id="steal">Со [color=770000]Склада[/color] украдено: [item={item}]!</text>
+        <text id="caught">Вор пойман с поличным!</text>
+        <text id="introduce1">Нам и так тяжко приходится, только воров не хватало!</text>
+        <text id="introduce2">Да, я одолжила пару вещичек, но послушайте. Взамен могу кое-что предложить. У меня есть связи с торговцами на других островах.</text>
+        <text id="introduce3">С торговцами? Есть и другие выжившие?</text>
+        <text id="introduce4">Ага. Но чтобы убедить их приехать сюда, мне потребуется [var=quest.market.gold_bar] [item=gold_bar default=Золотых слитков].</text>
+        <text id="introduce5">Мы поймали тебя на краже, а ты ещё требуешь платы?</text>
+        <text id="introduce6">Кража кражей, а это сделка. Я предлагаю добавить ваш остров к торговому пути за [var=quest.market.gold_bar] [item=gold_bar default=Золотых слитков].</text>
+        <text id="introduce7">Ладно. Если мы наладим торговлю с другими выжившими, сможем выбраться с этого острова.</text>
+        <text id="introduce8">Извини, конечно, но я не могу довериться вору. Покинь наш остров и больше не возвращайся.</text>
+        <text id="introduce9">Я-то не пропаду, воровать ведь можно не только у вас. А вот вы сами не знаете, от чего отказываетесь.</text>
+        <text id="market1">Отлично! Чувствую, впереди нас ждёт много выгодных сделок.</text>
+        <text id="market2">Возьми [item=coin_purse]. Пригодится, чтобы складывать монеты для купли-продажи. Ещё советую купить [item=mega_backpack] как можно скорее, жить сразу легче станет!</text>
+        <text id="market3">На [color=770000]Рынке[/color] можно продавать товары и получать за это монеты, которые используются для оплаты других товаров.</text>
+        <text id="market4">На [color=770000]Рынке[/color] иногда бывают новые поступления. Если не можешь найти то, что тебе нужно, или у них закончилось место в инвентаре, загляни позже.</text>
+        <text id="market5">Чтобы получить [item=gold_bar], нужно расплавить [item=gold]. Оно находится глубоко под землёй. [object=miner] наверняка может дать пару советов по добыче руды на такой глубине.</text>
+        <text id="dock1">Хочешь посмотреть мир? Может, построим [color=770000]Пристань[/color]?</text>
+        <text id="dock2">Я могу её построить, но мне понадобится [var=quest.dock.coins] [color=770000][tile=coin_purse.ico]Монет[/color], [var=quest.dock.wood] [item=wood default=Древесины], [var=quest.dock.cloth] [item=cloth default=Ткани] и [var=quest.dock.net] [item=net default=Сетей].</text>
+        <text id="dock3">Прекрасно, пора строить [color=770000]Пристань[/color]!</text>
+        <text id="dock4">Если построить [tile=boat.ico] лодку на [color=770000]Верфи[/color], можно будет путешествовать по морю!</text>
+        <text id="dock5">Материалы для [color=770000]Пристани[/color]: [var=quest.dock.coins] [color=770000][tile=coin_purse.ico]Монет[/color], [var=quest.dock.wood default=Древесины] [item=wood], [var=quest.dock.cloth] [item=cloth default=Ткани], [var=quest.dock.net] [item=net default=Сетей].</text>
+        <text id="accept">Согласиться</text>
+        <text id="reject">Отказаться</text>
+        <text id="sail">Разве сегодня не прекрасный день для плавания?</text>
+        <text id="pirate">У меня украли всё! Все мои труды насмарку! Кто это сделал?</text>
+        <text id="shipping1">Твои вещи теперь хранятся на разных островах. Согласись, было бы неплохо иметь возможность перемещать их со склада на склад. Моя служба доставки может с этим помочь – за небольшую плату!</text>
+        <text id="shipping2">С какого острова доставить вещи?</text>
+        <text id="shipping3">Я могу доставить вещи из [color=770000]{area}[/color] за 0.2 [color=770000][tile=coin_purse.ico]Монеты[/color] за ед. веса. Укажи, что нужно доставить:</text>
+        <text id="shipping4">На какой остров доставить выбранные предметы за {coins} [color=770000][tile=coin_purse.ico]Монет[/color]?</text>
+        <text id="shipping5">Груз в пути. Будешь на месте в следующий раз – проверь склад. Дай мне знать, если нужно будет доставить что-нибудь ещё. С тобой приятно иметь дело!</text>
+    </section>
+    <section id="alchemist">
+        <text id="introduce1">Эта планета полна загадок! Я проводил эксперименты и, кажется, открыл магию!</text>
+        <text id="introduce2">Мне нужны материалы для исследований. Если тебе попадётся [item=wyrm], убей её и принеси мне [item=dragonblood default=Драконью кровь]. Я тебя награжу.</text>
+        <text id="lab1">Я так и знал! Вот в чём секрет! Я должен немедленно организовать лабораторию!</text>
+        <text id="lab2">Награда? Принеси мне в лабораторию материалы, и я сварю тебе волшебное зелье.</text>
+        <text id="lab3">Скорее! Я не могу продолжать исследования без [item=dragonblood default=Драконьей крови]!</text>
+        <text id="pen1">[item=dragonblood] кончилась! Мне нужны [var=quest.wyrm_pen.wyrm] живых [item=wyrm default=Личинки]! Тогда у нас будет бесконечный источник [item=dragonblood default=Драконьей крови] для экспериментов!</text>
+        <text id="pen2">Прекрасно! Отойди в сторонку, пока я колдую!</text>
+        <text id="pen3">Узри моё великолепное изобретение – [color=770000]Питомник для личинок[/color]! Это не просто питомник, это бесконечный источник [item=dragonblood default=Драконьей крови]!</text>
+        <text id="wyrm">[item=wyrm default=Личинку] можно поймать в [item=net], если тяжело её ранить. Но аккуратнее, она нужна мне живой!</text>
+        <text id="dragon1">Мы должны продолжать эксперименты над [item=wyrm default=Личинками]! Чем они питаются? Почему выделяют [item=dragonblood default=Драконью кровь]? Не забывай кормить [item=wyrm default=Личинок] в [color=770000]Питомнике для личинок[/color], чтобы больше узнать об их эволюции!</text>
+        <text id="dragon2">Я так и знал! [item=wyrm default=Личинки] могут превращаться в [item=dragon default=Драконов-детёнышей]! Но почему тогда [item=adult_dragon] такая редкость в этих землях?</text>
+        <text id="dragon3">Я уверен, что где-то в горах есть драгонье логово. Если сможешь его найти, вызови меня... возможно, там мы найдём ответы на свои вопросы.</text>
+        <text id="dragon4">Ох, [item=adult_dragon]! Давай послушаем, что она скажет. Я знаю простое заклинание для перевода.</text>
+        <text id="dragon5">Кто посмел нарушить мой сон?</text>
+        <text id="dragon6">Я искатель истины и волшебства. Поведай мне, почему в мире осталось так мало драконов?</text>
+        <text id="dragon7">Потому что древние покинули нас. Они тоже были искателями истины и волшебства. Они предали нас.</text>
+        <text id="dragon8">Мы готовы помочь! Взамен мы просим только знания.</text>
+        <text id="dragon9">Думаешь, вам по силам помочь? Докажите свои слова. Поговорим, если сумеете вывести и привести ко мне [var=quest.hatch_dragons.dragon] [item=dragon default=Драконов-детёнышей]. А пока вон с глаз моих!</text>
+        <text id="dragon10">Так я и знала, что вы тоже предатели! Узрите мой гнев!</text>
+        <text id="dragon11">Не думаю, что стоит будить её, пока у нас нет [item=dragon default=Дракона-детёныша].</text>
+        <text id="dragon12">Вы сделали, что я просила? Быть может, у моего племени ещё есть надежда.</text>
+        <text id="dragon12_a">Прекрасно! Значит, ты раскроешь нам тайны магии?</text>
+        <text id="dragon13">К сожалению, у меня нет этих знаний. Нас создали древние. Они же построили это логово, чтобы нас выращивать.</text>
+        <text id="dragon14">Ответы могут скрываться на островах к востоку отсюда. Возвращайтесь, когда будете готовы, и я отнесу вас туда.</text>
+        <text id="dragon15">Ещё одно логово! Только представь, сколько драконов выращивали в таких местах с помощью магии! Так почему же... ну ладно, давай я активирую это логово.</text>
+        <text id="dragon16">Ещё я построил здесь [color=770000]Питомник для личинок[/color] на случай, если нам понадобится вырастить ещё драконов! Но я не смогу собирать здесь [item=dragonblood default=Драконью кровь], мне нужно заниматься исследованиями.</text>
+        <text id="call_dragon">Где ты оставил дракона? Я его позову – постарайся больше не выпускать его из виду.</text>
+        <text id="lair1">Так я и знал! Это искусственное логово, его создали с помощью магии! И, кажется, с целью выращивания драконов!</text>
+        <text id="lair2">Думаю, я смогу его активировать...</text>
+        <text id="lair3">Ага! Готово! В этом логове мы сможем выращивать драконов. Оно указывает на восток. Возможно, если слетать туда на драконе, найдём что-нибудь ещё...</text>
+        <text id="axe1">Позволь осмотреть этот [item=rusty_axe]... Из-за ржавчины плохо видно, но я узнаю эти символы!</text>
+        <text id="axe2">Здесь заложена древняя магия, но она уже истощилась. Думаю, я смогу её восстановить, если ты принесёшь нужный магический компонент...</text>
+        <text id="axe3">[item=fire_tusk]... от какого существа ты его получил? Кажется, [item=rusty_axe] с ним резонирует. Возможно, это и есть нужный магический компонент!</text>
+        <text id="axe4">Получилось! Интересно, кто сделал этот [item=thunder_axe]? Сколько ему лет? Если тебя понадобятся ещё такие, я добавил рецепт в лабораторию.</text>
+        <text id="shadow_cape1">Дай взглянуть на [item=dark_fur]! Похоже, он существует между миром живых и миром духов...</text>
+        <text id="shadow_cape2">Мне нужно изучить его получше, но из него легко можно сделать [item=shadow_cape], чтобы скрываться от обыкновенных глаз. Я добавил рецепт в лабораторию.</text>
+        <text id="magic_intro1">Этот остров наполнен магией. Мы на месте!</text>
+        <text id="magic_intro2">Я уже видел такую магию. Эти сооружения частично биологического происхождения и сейчас находятся в спячке. Нужно их пробудить.</text>
+        <text id="magic_intro3">Я разобрался, как активировать фиолетовую комнату, но остальные сооружения ещё нужно исследовать.</text>
+        <text id="magic_intro4">Здесь получится хорошая оперативная база. Я позабочусь обо всём необходимом.</text>
+        <text id="wyrm1">Возможно, [item=wyrm default=Личинки] помогут нам активировать остальные объекты.</text>
+        <text id="wyrm2">Попробуй проследить за какой-нибудь личинкой, а я пока переведу эти письмена.</text>
+        <text id="wyrm3">Не бойся, ты ведь уже имел с [item=wyrm default=Личинками] дело. Проследить за одной из них и найти их логово будет несложно!</text>
+        <text id="wyrm4">Что? Королева личинок...? Это сейчас неважно, взгляни лучше на [item=spirit_gem], который ты принёс! Уверен, теперь нас ждёт прорыв!</text>
+        <text id="wyrm5">Вот, примерь [item=goggles]. Я изобрёл их, когда прочёл письмена. И хоть это и не помогло мне раскрыть тайну этих сооружений, возможно, они помогут тебе понять, что мы упустили из виду.</text>
+        <text id="wyrm6">За [item=wyrm default=Личинкой] нужно проследить на острове к востоку, а не здесь! Здесь я их уже изучил!</text>
+        <text id="sleep">Мне нужно время, чтобы это изучить. Отдохни пока в фиолетовой комнате.</text>
+        <text id="forest">Лес к востоку выглядит опасно. Я поставил [item=fence] и не советую за него заходить.</text>
+        <text id="elementals1">Я установил, что если поймать [item=spirit_gem] духов огня или воды, можно получить [item=fire_gem] или [item=water_gem]. Заряженные камни позволят нам активировать сооружения.</text>
+        <text id="elementals2">Не можешь отыскать духов элементов? Невооружённым взглядом их не увидеть, попробуй мои [item=goggles]!</text>
+        <text id="elementals3">[item=spirit_gem] можно размещать как ловушку, а затем заманивать туда духов!</text>
+        <text id="spirit_gem">Все сооружения активированы! Думаю, мы заслужили небольшой отдых в фиолетовой комнате. Но после – продолжим исследования!</text>
+        <text id="magic_farm1">Чего же ты ждёшь? Используй [item=water_gem], чтобы активировать синее сооружение!</text>
+        <text id="magic_farm2">Синее сооружение – это магический синтезатор! Он создаёт предметы при помощи магии!</text>
+        <text id="magic_farm3">Используй [item=focus_gem], чтобы запитать синтезатор.</text>
+        <text id="magic_farm4">Нам всё ещё нужен [item=water_gem], чтобы активировать синее сооружение! Возьми [item=spirit_gem] и поймай духа воды!</text>
+        <text id="magic_forge1">Чего же ты ждёшь? Используй [item=fire_gem], чтобы активировать красное сооружение!</text>
+        <text id="magic_forge2">Красное сооружение – это что-то вроде магической кузницы. Здесь можно зачаровывать предметы!</text>
+        <text id="magic_forge3">Поэкспериментируй с разными сочетаниями предметов и магических компонентов. Вдруг получится что-то невероятное!</text>
+        <text id="magic_forge4">Нам всё ещё нужен [item=fire_gem], чтобы активировать красное сооружение! Возьми [item=spirit_gem] и поймай духа огня!</text>
+        <text id="alter_gem1">Я всё размышляю над тем, какие ещё тайны скрывает в себе [item=wyrm].</text>
+        <text id="alter_gem2">Чтобы я мог закончить исследование, принеси мне [var=quest.alter_gem.wyrm] [item=wyrm default=Личинку], [var=quest.alter_gem.fire_tusk] [item=fire_tusk] и [var=quest.alter_gem.yeti_fur] [item=yeti_fur].</text>
+        <text id="alter_gem3">Получилось! Я создал [item=alter_gem]! С его помощью можно превращать [item=wyrm default=Личинок] – и, наверное, не только их – в полезное снаряжение!</text>
+        <text id="alter_gem4">Нужно продолжать изучать эту магическую отрасль! Возьми [item=alter_gem] и попробуй использовать его на [item=wyrm default=Личинке]! Если тебе понадобятся ещё [item=alter_gem default=Камни изменения], то я добавил рецепт в синтезатор.</text>
+        <text id="alter_gem5">Чтобы использовать [item=alter_gem], открой его в инвентаре, нажми Превратить, а затем выбери существо.</text>
+        <text id="alter_gem6">Не стесняйся использовать [item=alter_gem] на других существах... например, на [item=dragon default=Дракон-детёныше]. Или даже... на [item=adult_dragon default=Взрослом драконе]?!</text>
+        <text id="alter_gem7">Не хватает [item=alter_gem default=Камней изменения]? Их можно отыскать глубоко под землёй или создать в синтезаторе.</text>
+        <text id="alter_gem8">Не забывай кормить существ, прежде чем использовать [item=alter_gem default=Камни изменения]. Голодные существа быстро вернутся в норму!</text>
+        <text id="first1">Ты не потерпел крушение вместе с нами?</text>
+        <text id="first2">Нет, я состоял в разведотряде. Мы искали планеты для колонизации.</text>
+        <text id="first3">Нас было четверо, но остальные погибли. А когда пришли они, я понял, что эта планета проклята.</text>
+        <text id="first4">Мне удалось выжить только благодаря тому, что я успел хоть немного изучить их магию. Будь у меня тогда ваши [item=goggles], может, всё сложилось бы иначе.</text>
+        <text id="first5">Они были здесь? Охотились за тобой?</text>
+        <text id="first6">Да. Думаю, они завидовали моей магии. Или же боялись её? Сложно сказать наверняка...</text>
+        <text id="second1">Ты встретил их на этой планете десять лет назад? Это ещё до того, как они попытались истребить человечество и уничтожить Землю!</text>
+        <text id="second2">Верно. Я был первым, кто их встретил, и первым, кого они попытались убить.</text>
+        <text id="second3">Не знаю, как я должен был поступить, чтобы предотвратить войну. Они объявились внезапно и молча атаковали биологическим оружием.</text>
+        <text id="second4">Если бы мы только знали, как выйти с ними на контакт.</text>
+        <text id="second5">Возможно, сейчас у нас это получится. Я знаю заклинание для перевода.</text>
+        <text id="second6">Но они вроде бы решили нас игнорировать. Надеюсь, мы больше никогда их не встретим.</text>
+        <text id="oldone1">В последнее время я наблюдаю скачки в магической энергии. Есть вероятность, что это ложная тревога, но это может быть и один из них.</text>
+        <text id="oldone2">Если что-нибудь найдёшь, призови меня немедленно. Если это правда один из них, мы все в большой опасности.</text>
+        <text id="oldone3">Отлично, сейчас проверим, смогу ли я перевести!</text>
+        <text id="oldone4">Кто ты такая и что здесь делаешь?</text>
+        <text id="oldone5">По какому праву вы это спрашиваете? Это моя планета, мой дом! Вы здесь посторонние!</text>
+        <text id="oldone6">Этот магический экзоскелет выглядит знакомо... ты одна из них?</text>
+        <text id="oldone7">Те, кого вы называете «они»‎, это мои глупые собратья. Давным-давно они решили покинуть свой родной мир. Я же осталась здесь, избрав путь уединения и бессмертия.</text>
+        <text id="oldone8">Можешь рассказать нам о вашей магии? Почему происходят скачки энергии? Зачем вы создали драконов?</text>
+        <text id="oldone9">Молчать! Кто вы такие, чтобы я с вами это обсуждала? Если бы не моё терпение, вы давным-давно были бы мертвы.</text>
+        <text id="oldone10">Но теперь я вижу, что в одном они были правы. Вселенной будет лучше без вас и вам подобных!</text>
+        <text id="oldone11">Вы пожалеете, что потревожили меня!</text>
+        <text id="oldone12">Нет!</text>
+        <text id="oldone13">Что такое, разве мы не победили?</text>
+        <text id="oldone14">Мы не успели! Она отправила сигнал. Теперь они знают, что мы на этой планете!</text>
+        <text id="oldone15">Мы должны изучить как можно больше магии, чтобы сразиться с ними их же оружием, когда они придут! Иначе мы обречены.</text>
+        <text id="oldone16">Вы искуснее, чем я думала! Это недопустимо, магией владеть должны только мы.</text>
+        <text id="oldone17">Она отправляет сигнал! Если они его примут, то придут за нами! Я должен успеть!</text>
+        <text id="oldone18">Что случилось? Ты в порядке?</text>
+        <text id="oldone19">Нет... [pause=4] Сигнал отправлен…[pause=4] А моя жизненная сила полностью истощена…</text>
+        <text id="oldone20">Теперь дело за тобой…[pause=4] Поспеши!…[pause=4] Отыщи ответы… Воспользуйся их магией…</text>
+        <text id="oldone_tips1">[tile=alchemist anim=alchemist.idle] Я возьму на себя защитный барьер и магию лечения. Держись позади, пока она атакует, и нападай сам, пока она перегружена.</text>
+        <text id="oldone_attack">[tile=alchemist anim=alchemist.idle] Нападай!</text>
+        <text id="oldone_beam">[tile=alchemist anim=alchemist.idle] Чувствую скачок магической энергии! Вряд ли мой барьер выдержит эту атаку!</text>
+        <text id="return1">Что ты здесь делаешь?</text>
+        <text id="return2">Работаю в лаборатории, анализирую образцы с восточного острова.</text>
+        <text id="return3">Я имел в виду, как ты так быстро вернулся?</text>
+        <text id="return4">Так же, как и всегда! Телепортировался, очевидно. А теперь не мешай, мне нужно закончить анализ.</text>
+        <text id="muttering">Синтез самоцветов… встроенный панцирь… бесконечная эволюция… [font=drachenklaue]mumbo jumbo[/font]...</text>
+        <text id="oldone_choice">Тебе с ним не справиться. Если мы хотим выжить, нам нужен план!</text>
+        <text id="work_together">Сражаться вместе</text>
+        <text id="alchemist_fight">Позволить сражаться Алхимику</text>
+        <text id="battle">Назад! Ты слишком неопытен!</text>
+    </section>
+    <section id="player">
+        <text id="storm1">Как холодно…[pause=1] Я так устал…[pause=1] Мне нужно укрытие, но вокруг только валежник!</text>
+        <text id="storm3">[item=wood]... я едва могу её удержать! Понадобится больше [tile=stamina] [color=006600]Запаса сил[/color], чтобы двигаться, но останавливаться нельзя. Нужно найти укрытие!</text>
+        <text id="hut1">Что это? Выглядит так, будто кто-то бросил строить укрытие на полпути. Будь у меня [var=quest.hut.wood] [item=wood default=Древесины], я бы мог закончить работу.</text>
+        <text id="hut2">У меня есть {count} [var=quest.hut.wood] [item=wood default=Древесины]. Чтобы достроить [color=770000]Хижину[/color], нужно собрать ещё валежника.</text>
+        <text id="hut3">Я оставил в [color=770000]Хижине[/color] {added} [item=wood default=Древесины]. Чтобы законить работу, мне нужно ещё {remaining}!</text>
+        <text id="storehouse1">Этот топор мне пригодится. С его помощью я смогу построить [color=770000]Склад[/color], где буду хранить свои ресурсы.</text>
+        <text id="storehouse2">Можно построить склад с помощью [var=quest.storehouse.wood] [item=wood default=Древесины] и [var=quest.storehouse.berries] [item=berries default=Ягод].</text>
+        <text id="storehouse3">Отлично! Пора строить склад!</text>
+        <text id="storehouse4">То что надо. Теперь я не буду так уставать из-за того, что ношу всё с собой.</text>
+        <text id="dock1">Интересно, правду ли говорила воровка о других выживших?</text>
+        <text id="dock2">Может, стоит построить [color=770000]Пристань[/color], чтобы отправиться в плавание и отыскать их. Мне понадобится [var=quest.dock2.wood] [item=wood default=Древесины] и [var=quest.dock2.steel_bar] [item=steel_bar default=Стальных слитков].</text>
+        <text id="dock3">Отлично, пора строить [color=770000]Пристань[/color]!</text>
+        <text id="market1">Возможно, я смогу привлечь торговцев к нашей пристани, если построю [color=770000]Рынок[/color]. Для этого потребуется [var=quest.market2.gold_bar] [item=gold_bar default=Золотых слитков].</text>
+        <text id="market2">Я собрал все материалы для постройки [color=770000]Рынка[/color]!</text>
+        <text id="market3">Я и правда нашёл торговцев! Они даже выдали мне [item=coin_purse], чтобы хранить монеты.</text>
+        <text id="market4">Осталось только построить [tile=boat.ico] лодку на [color=770000]Верфи[/color]!</text>
+        <text id="farewell1">Не знаю, что меня ждёт, но с пустыми руками я не вернусь.</text>
+        <text id="farewell2">Привези что-нибудь вкусненькое!</text>
+        <text id="farewell3">Не забудь исследовать под землёй тоже. Никогда не знаешь, на что можно наткнуться.</text>
+        <text id="farewell4">Не оставляй нас надолго – возвращайся поскорее.</text>
+        <text id="farewell5">Держись подальше от опасностей.</text>
+        <text id="farewell6">Тебя ждёт неведомый мир.</text>
+        <text id="farewell7">Ты плывёшь не туда, все тайны на востоке!</text>
+        <text id="bandits1">Наконец-то мы снова в деле! Ещё бы избавиться от этих разбойников!</text>
+        <text id="bandits2">А ты силён на вид. Сможешь их отпугнуть?</text>
+        <text id="bandits3">Ты и правда одолел разбойников! Прошу, прими это в знак благодарности.</text>
+        <text id="bandits4">Сегодня нам везёт – добыча сама идёт в руки! Стоило нам сбежать от Миррозов с их грязными экспериментами, как дела пошли в гору!</text>
+        <text id="ore_cave">Странное место. Я будто оказался в другом измерении. Мне кажется, обстановка будет меняться всякий раз, когда я вхожу.</text>
+        <text id="no_coin_purse">Чтобы торговать с нами, тебе нужен [item=coin_purse]. Мы можем тебе его дать за [var=recipe.sci1_coin_purse.sulfur] [item=sulfur default=Серу].</text>
+        <text id="make_coin_purse">Обменять [var=recipe.sci1_coin_purse.sulfur] [item=sulfur default=Серу] на [item=coin_purse].</text>
+        <text id="lurker">Эй, парниша, хочешь взглянуть на мои редкие товары? Такого больше нигде не купишь!</text>
+        <text id="lurker_empty">С тобой приятно иметь дело. Прости, но деньги не возвращаем.</text>
+    </section>
+    <section id="hunter">
+        <text id="tent1">Не стоит отдыхать в чужой палатке!</text>
+        <text id="tent2">Это, должно быть, палатка [object=hunter]а. Лучше её не трогать.</text>
+        <text id="intro1">Эй! Видел, как я завалил того кабана?</text>
+        <text id="intro2">Да... как тебе это удалось?</text>
+        <text id="intro3">Легко! Главное – сноровка.</text>
+        <text id="intro4">Я тут местность зачищаю. Если поможешь, научу тебя охотиться.</text>
+        <text id="accept1">Учись использовать элемент внезапности. Атакуй врагов со спины, чтобы нанести критический удар.</text>
+        <text id="accept2">Вот, держи [item=workbench]. Открой его в инвентаре, чтобы мастерить оружие!</text>
+        <text id="accept3">Я предпочитаю [item=bow]и, чтобы не надо было подходить к противникам близко. Но если ты хочешь сражаться врукопашную, [item=buckler] поможет тебе блокировать атаки!</text>
+        <text id="accept4">Жми [key=equipment], чтобы экипировать оружие, [key=attack], чтобы атаковать, и [key=defend], чтобы прикрыться щитом.</text>
+        <text id="accept5">Попробуй сделать [item=bow] и убить парочку [color=770000][tile=boar]Кабанов[/color]. Если понадобится совет, дай мне знать!</text>
+        <text id="reject1">Ты опасен. Держись подальше отсюда!</text>
+        <text id="reject2">Ладно! Тогда я просто вернусь в горы!</text>
+        <text id="reject3">Готов учиться охотничьим приёмам?</text>
+        <text id="hunt1">Мы мигом очистим эту местность от опасных созданий!</text>
+        <text id="hunt2">Дарю тебе свой старый [item=backpack] в награду за хорошую работу. Он не раз пригодится тебе в походе.</text>
+        <text id="tip1">Можешь прокопать туннель, чтобы напасть сзади и застать кабанов врасплох.</text>
+        <text id="tip2">[item=red_berries] временно повышают силу атаки. Но будь осторожен – они не слишком полезны для здоровья.</text>
+        <text id="tip3">Если твои удары постоянно блокируют, значит, противник слишком силён. Найди оружие получше или используй удар посильнее.</text>
+        <text id="tip4">Попробуй назначить горячую клавишу для [item=arrow default=Стрел]. Тогда ты сможешь стрелять, даже если [item=bow] не экипирован. Главное, чтобы он был в инвентаре!</text>
+        <text id="tent3">Сидел я, значит, один-одинёшенек на склоне горы, как вдруг вижу костёр! И слышу смех! Он звучал так дружелюбно...</text>
+        <text id="tent4">И ты решил спуститься, чтобы с нами подружиться?</text>
+        <text id="tent5">Конечно нет. И на кабанов я охотился не для того, чтобы оказать на вас впечатление. Нет-нет.</text>
+        <text id="tent6">Я просто хотел расширить свои охотничьи угодья.</text>
+        <text id="tent7">Хочется узнать побольше об этом месте. Есть ли что-нибудь за пределами острова...</text>
+        <text id="tent8">На востоке есть другие острова. Я видел их с вершины горы.</text>
+        <text id="tent9">Думаешь, мы сможем туда добраться?</text>
+        <text id="tent10">Не знаю. Берег с той стороны не самый надёжный. К тому же те острова показались мне странными. Там может быть опасно.</text>
+        <text id="tent11">Хочешь сказать, мы должны просто смириться?</text>
+        <text id="tent12">Я хочу сказать, что незачем искать неприятностей на свою голову, когда положение и так тяжёлое.</text>
+        <text id="fence1">Нужно что-то делать с дикими животными.</text>
+        <text id="fence2">Сделаешь [var=quest.fence.fence] [item=fence default=Забора] на [item=workbench]е? Так мы сможем огородить периметр.</text>
+        <text id="fence3">Отлично. [color=770000][tile=boar]Кабанам[/color] не прорваться сквозь [item=fence], поэтому мы сможем защитить наше поселение.</text>
+        <text id="fence4">Я поставлю одну секцию [item=fence]а здесь. Огради остальную часть базы, чтобы обеспечить безопасность!</text>
+        <text id="wolf1">Я видел волчонка неподалёку от поселения. Кажется, ему одиноко.</text>
+        <text id="wolf2">Где его стая?</text>
+        <text id="wolf3">Наверное, отбился.</text>
+        <text id="wolf4">Мы можем приручить его с помощью [var=quest.wolf.net] [item=net default=Сетей], [var=quest.wolf.trap] [item=trap default=Ловушек] и [var=quest.wolf.meat] [item=meat default=Мяса].</text>
+        <text id="wolf5">Посмотрим, что можно сделать с этим волчонком.</text>
+        <text id="wolf6">Хорошо. Похоже, он тебе полностью доверяет. Теперь у тебя есть верный друг.</text>
+        <text id="wolf7">Ты можешь отдать приказ с помощью слота [color=770000]Cлуги[/color] в окне [color=770000]Cнаряжения[/color], и [item=wolf] будет следовать за тобой </text>
+    </section>
+    <section id="mechanic">
+        <text id="introduce1">Всё сгорело! Какой ужас!</text>
+        <text id="introduce2">Что случилось?</text>
+        <text id="introduce3">Миррозы пытались перенаправить энергию и чуть здесь всё не взорвали!</text>
+        <text id="introduce4">Провалили свои эксперименты, а мы теперь должны наводить за них порядок... Пф!</text>
+        <text id="introduce5">Я не смогу ничего починить, у меня ведь совсем не осталось [item=titanium]а...</text>
+        <text id="powerplant1">Ух ты. Не думала, что ты и правда раздобудешь [item=titanium].</text>
+        <text id="powerplant2">Спасибо, теперь я мигом всё починю.</text>
+        <text id="powerplant3">Готово! Чтобы запитать станцию, понадобится [item=coal] или [item=refined_oil]. Ещё здесь можно изготовить [item=battery default=Батарею].</text>
+        <text id="powerplant4">О, у меня тут после ремонта остался металлолом, возьми его в награду за [item=titanium]!</text>
+        <text id="powerplant5">Где мне взять ещё [item=titanium]а? Я никогда это не починю!</text>
+        <text id="battery">Дай мне знать, когда [item=battery] будет готова. Мы сможем сделать много классных штук, если у нас будет мобильный источник энергии!</text>
+        <text id="tip1">На [color=770000]Энергостанции[/color] можно изготовить [item=battery default=Батарею]. Для этого тебе потребуется [item=sulfur] и [item=steel_bar]. Там же ты сможешь её перезарядить.</text>
+        <text id="tip2">Пока [item=battery] находится в инвентаре, твоё снаряжение будет обеспечено энергией.</text>
+        <text id="tip3">Общее количество твоей [tile=power] [color=444400]Энергии[/color] будет отображаться под [tile=health] [color=770000]Здоровьем[/color] и [tile=stamina] [color=006600]Запасом сил[/color].</text>
+        <text id="factory1">Наконец-то у нас снова появилась энергия. Эх, было бы ещё с чем повозиться из техники...</text>
+        <text id="factory2">Если поможешь мне построить [color=770000]Завод[/color], будем производить всякое!</text>
+        <text id="factory3">Отлично. Наконец-то будет с чем поиграться!</text>
+        <text id="factory4">Теперь мы можем улучшать материалы и производить много крутых штуковин. Например, [item=drill default=Буры], [item=chainsaw default=Цепные пилы] и [item=shotgun default=Ружья].</text>
+        <text id="elevator1">Я заметила, ты много копаешь.</text>
+        <text id="elevator2">Согласись, будь у нас механизм для того, чтобы поднимать всё наверх, было бы куда удобнее!</text>
+        <text id="elevator3">Идёт! За работу!</text>
+        <text id="elevator4">Тебе наверх? Или же вниз?!</text>
+        <text id="repair">Надо что-то починить? Ты по адресу!</text>
+        <text id="dragon">Что за огнедышащее чудовище питает нашу станцию? Надеюсь, оно ничего не повредит!</text>
+        <text id="intro1">Кто бы мог подумать, что выживших так много!</text>
+        <text id="intro2">Да, но этого всё равно недостаточно. Чтобы спасти человечество, мы должны объединиться с другими колониями.</text>
+        <text id="intro3">Думаешь, есть другие?</text>
+        <text id="intro4">Наверняка есть. Нужно просто их найти способ выйти с ними на контакт.</text>
+        <text id="intro5">А если в пути на нас нападут?</text>
+        <text id="intro6">Хотя бы будем знать, что сдёлали всё что могли!  Я не собираюсь отсиживаться на этой планете только потому, что сейчас всё спокойно.</text>
+        <text id="mirrows1">Что случилось? Выглядишь неважно.</text>
+        <text id="mirrows2">Я просила Миррозов перестать досаждать людям, но они отказываются слушать, а я не хочу с ними драться.</text>
+        <text id="mirrows3">Молодец, что попыталась. Но они упрямые, как ослы, и понимают только язык силы.</text>
+        <text id="mirrows4">Сдаваться ещё рано. Они злоупотребляют своей силой, и это неправильно.</text>
+        <text id="mirrows5">Попробуй разузнать о Миррозах побольше. Ты уже всю местность  проверил вокруг их лаборатории?</text>
+        <text id="mirrows6">«К» в записях Миррозов это ты? Ты работала с них?</text>
+        <text id="mirrows7">Нет... не совсем. Они [pause=4] мои родители.</text>
+        <text id="mirrows8">Родители?! Может, они послушают собственную дочь. Попробуешь с ними поговорить?</text>
+        <text id="mirrows9">Поверь, я пыталась. Они не слушают. Сосредоточились на  своих «усовершенствованиях» и не хотят даже думать о других решениях.</text>
+        <text id="mirrows10">Нам потребуется что-то очень убедительное, чтобы до них достучаться. Такое, что нельзя объяснить с научной точки зрения.</text>
+        <text id="mirrows11">[item=dragon_armor] подойдёт? По силе как [item=adult_dragon], но может использоваться в качестве доспеха!</text>
+        <text id="mirrows12">Странная штука, но попробовать точно стоит. Давай покажем это моим родителям.</text>
+        <text id="mirrows13">Опять ты? На сей раз мы из тебя точно киборга сделаем!</text>
+        <text id="mirrows14">Стойте! Не нападайте, это я.</text>
+        <text id="mirrows15">Кэсс? Что ты здесь делаешь?</text>
+        <text id="mirrows16">Хотела кое-что показать. Может, всё же не потребуется превращать людей в киборгов.</text>
+        <text id="mirrows17">Как же так? Сделано не человеком, но показатели силы зашкаливают!</text>
+        <text id="mirrows18">Если я расскажу, вы согласитесь прекратить эксперименты над людьми и перестать разбойничать?</text>
+        <text id="mirrows19">Конечно, ведь это может открыть нам целую область для исследований!</text>
+        <text id="mirrows20">По-видимому, коренные жители этой планеты создали драконов и магическое снаряжение. Возможно, это даже были они.</text>
+        <text id="mirrows21">Мы используем их творения против них самих! Какая ирония!</text>
+        <text id="sleep">Ты вообще видел, сколько времени? Не знаю, что там у тебя, но это подождёт до утра...</text>
+    </section>
+    <section id="innkeeper">
+        <text id="intro1">Добро пожаловать в Золотой ключик! Лучшее (и единственное) место по эту сторону пустыни, где можно получить пищу и кров!</text>
+        <text id="intro2">То есть это гостиница? Много людей у вас останавливается?</text>
+        <text id="intro3">Через Закатный приют прибывает много народа – кто торгует, кто местность изучает, ну а кто просто ищет своё место в мире.</text>
+        <text id="intro4">Но если мы не восстановим питание, вряд ли кто-то будет останавливаться. Я даже не знаю, сколько раз мне хотелось пойти к Миррозам и высказать всё, что думаю!</text>
+        <text id="power1">Прекрасно! Питание восстановлено!</text>
+        <text id="power2">Правда, Миррозы тут ни при чём. Не могу поверить, что мы до сих пор платим им за техническую поддержку!</text>
+        <text id="power3">Спалили энергостанцию и даже не удосужились её починить!</text>
+        <text id="power4">Нельзя просто перестать платить?</text>
+        <text id="power5">Я не могу оставить гостиницу без присмотра. Но если кто-нибудь сходит и поставит вопрос ребром, может, и получится отменить это нечестное соглашение.</text>
+        <text id="no_power">Боюсь, мы не сможем вас поселить, пока не восстановим питание.</text>
+        <text id="visit">Желаете остановиться на ночь? Всего 50 [color=770000][tile=coin_purse.ico]Монет[/color]. В стоимость входит горячий ужин!</text>
+        <text id="no_money">Не хватает денег? Боюсь, мы не сможем вас поселить. Мы же не благотворительностью занимаемся!</text>
+        <text id="scene1">Я слышал, главный корабль упал где-то здесь? Как вам удалось выжить без спасательных капсул?</text>
+        <text id="scene2">В этом-то и проблема. Всё благодаря Миррозам. Они чудом усовершенствовали что-то в последний момент и спасли весь наш сектор. Выходит, мы у них в долгу.</text>
+        <text id="scene3">Но теперь мы лишились из-за них энергии. К тому же они стали выпускать бесчинствовать непонятных тварей.</text>
+        <text id="scene4">Я даже слышал, что кто-то пропал без вести в пустыне, а неподалёку видели Миррозов.</text>
+        <text id="scene5">И они думают, мы оставим всё как есть? Хотят, чтобы мы ещё и платили? Наше терпение на исходе. </text>
+        <text id="mirrows1">Миррозы сказали, что перестанут требовать с вас деньги и экспериментировать на людях!</text>
+        <text id="mirrows2">Отлично! Наконец-то хоть какое-то спокойствие будет.</text>
+        <text id="mirrows3">Вот, возьми в качестве благодарности.</text>
+        <text id="mirrows4">... [item=coal]?</text>
+        <text id="mirrows5">Что? Я же не благотворительностью занимаюсь.</text>
+    </section>
+    <section id="fisherman">
+        <text id="intro1">Наконец-то земля под ногами! Ты тоже только что прибыл?</text>
+        <text id="intro1_alt">Эй там! Приятно видеть, что другие выжившие тоже пускаются в плавание!</text>
+        <text id="intro2">Не обращай внимания, Полли просто так здоровается. Недеюсь, ничего страшного, что теперь у тебя ботинки в водорослях!</text>
+        <text id="intro3">Ты уже был на этом острове?</text>
+        <text id="intro3_alt">Ты знаешь, что за остров впереди?</text>
+        <text id="intro4">Был, конечно. Он называется Закатный приют, там живёт больше выживших, чем на любом другом острове.</text>
+        <text id="intro4_alt">Знаю, конечно. Он называется Закатный приют, там живёт больше выживших, чем на любом другом острове.</text>
+        <text id="intro5">Оно и понятно – там же главный корабль упал.</text>
+        <text id="intro6">Будь осторожен. В последнее время про Закатный приют ходят недобрые слухи...</text>
+        <text id="cat1">Слушай, моя [item=cat] Пэри снова убежала! Поможешь мне её найти?</text>
+        <text id="cat2">Думаю, она просто не хочет снова выходить в море. Не любит воду.</text>
+        <text id="cat3">Если поможешь, я научу тебя рыбачить.</text>
+        <text id="cat4">Класс, спасибо! У меня есть лишняя [item=fishing_rod], держи. Нужна будет помощь в рыбалке, обращайся!</text>
+        <text id="cat5">Пэри очень любит [item=toothfish]ей. Может, получится подманить её таким образом?</text>
+        <text id="cat6">О, а вот и моя [item=cat]! Спасибо, дружище.</text>
+        <text id="cat7">Похоже, она теперь от тебя без ума. Наверное, с тобой ей будет лучше. Оставишь себе?</text>
+        <text id="cat8">Кошка слишком быстрая, не поймать!</text>
+        <text id="cat9">Она выхватила [item=toothfish]а у меня из рук, но я не успел её схватить. Слишком быстрая.</text>
+        <text id="cat11">Дать Пэри [item=toothfish]а?</text>
+        <text id="cat12">На этот раз она не так сильно шарахается.</text>
+        <text id="cat13">Иди ко мне, Пэри... хорошая девочка...</text>
+        <text id="cat15">Кошка поймана!</text>
+        <text id="tip1">В рыбалке главное – подгадать момент. Встань на краю пристани и воспользуйся удочкой. Затем жми [key=select], как только что-то попадётся на крючок. Поспешишь или промедлишь – ничего не поймаешь!</text>
+        <text id="tip2">Если пишет «Жди...», значит нужно дать рыбе зацепиться покрепче. Дождись команды «Тащи!» и жми на [key=select] снова!</text>
+        <text id="tip3">Некоторую рыбу поймать тяжелее, чем другую. Будь внимателен и жми на кнопку, когда появляются подсказки!</text>
+        <text id="scene1">Крыша над головой, солнышко и огромный океан, где можно вволю рыбачить. Вот и всё что мне нужно.</text>
+        <text id="scene2">А у тебя какая мечта?</text>
+        <text id="scene3">Хочу выбраться с этой планеты.</text>
+        <text id="scene4">Что? Зачем? Жить надоело? Они не знают пощады.</text>
+        <text id="scene5">Я хочу узнать о них побольше... Разобраться, почему всё сложилось именно так...</text>
+        <text id="scene6">Послушай, дружище. Я видел одного из них вблизи, когда мы улетали с Земли. Держись от них подальше – вот и всё, что тебе нужно знать.</text>
+    </section>
+    <section id="mirrows">
+        <text id="intro1">Вы и есть Миррозы? Зачем вы досаждаете Закатному приюту и создаёте своих мутантов?</text>
+        <text id="intro2">Тебе не понять! Это ради всеобщего блага! Нам не выжить без новейшего оружия!</text>
+        <text id="intro3">Мы должны быть готовы, когда они придут завершить начатое! Все жертвы были необходимы.</text>
+        <text id="intro4">Нельзя приносить людей в жертву ради того, чего может и не случиться! Спасти человечество можно и другими способами!</text>
+        <text id="intro5">Если ты будешь нам противостоять, мы будем вынуждены с тобой сразиться.</text>
+        <text id="intro6">Что-то мне подсказывает, твоё тело идеально подойдёт для создания нового киборга!</text>
+        <text id="defeat0">Не могу поверить! Как ты можешь быть сильнее моего кибернетического тела?</text>
+        <text id="defeat1">Ты должен открыть нам секрет своей силы – это может стать ключом к спасению человечества!</text>
+        <text id="defeat2">Если я расскажу, вы согласны перестать досаждать людям и требовать с них деньги?</text>
+        <text id="defeat3">Конечно. Зачем нам эти скучные образцы, когда есть ты?!</text>
+        <text id="defeat4">Это же абсолютно новое направление в исследованиях!</text>
+        <text id="defeat5">Не стесняйся пользоваться нашей хирургической лабораторией. Нам не терпится увидеть, насколько сильнее ты станешь после наших киберусовершенствований!</text>
+        <text id="tip1">Ты можешь удалить киберусовершенствование в любое время: выбери его в окне снаряжения и нажми «Удалить». Впоследствии его можно будет переустановить в хирургической лаборатории, но это потребует больше ресурсов.</text>
+        <text id="nav1">Похоже, экран навигации ещё работает. Судя по всему, мы на планете Юнокс-428-С. </text>
+        <text id="nav2">Миррозы добавили эту заметку?! Нужно у них уточнить...</text>
+        <text id="nav3">Мы на родной планете врага? Откуда вы знаете?</text>
+        <text id="nav4">Точно сказать нельзя... но мы взяли образцы руин по всей планете. Мало того, что они соответствуют их технологиям, так ещё и возрастом более миллиона лет!</text>
+        <text id="nav5">Но теперь их нет?</text>
+        <text id="nav6">Мы не обнаружили их на этой планете, но даже если они её покинули, рано или поздно вернутся.</text>
+        <text id="nav7">Вот почему мы готовы были пожертвовать всем ради силы... Как только мы приземлились на этой планете, сражение стало вопросом времени.</text>
+    </section>
+    <section id="scene.hut">
+        <text id="first1">Неплохо... Интересно, кто это строил... и почему бросил. Кажется, это было недавно...</text>
+        <text id="first2">Помогите…[pause=4] пожалуйста…[pause=4] спасите…</text>
+        <text id="first3">Снаружи кто-то есть! Можно ли ему доверять?</text>
+        <text id="first4">Спасибо. Ты спас мне жизнь. Я уже почти утратил надежду. Я слишком проголодался и устал, чтобы закончить укрытие. Но что мы будем делать дальше?</text>
+        <text id="first5">Пока что – отдыхать в тепле и сухости.</text>
+        <text id="first6">А потом? Как мы будем выживать на этом пустынном острове?</text>
+        <text id="first7">Есть ли вообще смысл? Назад дороги нет, мы здесь застряли.</text>
+        <text id="first8">Попытка не пытка. Может, жить здесь будет не так уж и плохо.</text>
+        <text id="first9">Пожалуйста…[pause=4] помогите…</text>
+        <text id="second1">...и когда я прибыла сюда, сразу же начала копать, поэтому даже не заметила шторм.</text>
+        <text id="second2">Но я рада, что встретила вас. Устала землю есть. Нет ничего лучше, чем отдохнуть в тепле после долгого дня в шахте.</text>
+        <text id="second3">Как думаешь, есть ли другие выжившие?</text>
+        <text id="second4">Честно говоря, я удивлена, что кто-то вообще пережил крушение. Но вот мы здесь, а значит наверняка есть и другие.</text>
+        <text id="third1">Вы, молодёжь, наверняка думаете, шо настал конец света. Я тож самое думал во время Третьей мировой, и ничего, сижу тут с вами живой и здоровый.</text>
+        <text id="third2">Я так скажу, над делать всё, шо в наших силах, да радоваться еде на столе и ладной компании. </text>
+        <text id="third3">Но сколько нам придётся жить на этом богом забытом острове?</text>
+        <text id="third4">Кто знает? Но надежда умирает последней. Возможно, со временем здесь станет не хуже, чем дома.</text>
+        <text id="fourth1">Расскажешь, что ты знаешь о других выживших?</text>
+        <text id="fourth2">Большинство людей разбросало по разным островам. Где-то народу больше, где-то меньше, а на некоторых островах даже кое-какие технологии в ходу.</text>
+        <text id="fourth3">Я даже слышала, что на каком-то из островов есть почти не повреждённый корабль.</text>
+        <text id="fourth4">А летать может?</text>
+        <text id="fourth5">Не знаю, это ведь только слухи. Но даже если может, это верная смерть. Лучше оставаться на этой планете. Пока мы здесь, им до нас вроде бы дела нет.</text>
+        <text id="hunter1">У тебя так хорошо получается. Ты был охотником до крушения?</text>
+        <text id="hunter2">Хе-хе. Никогда в жизни не убивал животных. Я учёный. Работал в лаборатории. Молекулы и всё такое.</text>
+        <text id="hunter3">Ух ты. Как ты тогда всему научился?</text>
+        <text id="hunter4">Чему только не научишься, чтобы выжить.</text>
+        <text id="hunter5">В таких условиях человек меняется. Настолько, что прежний ты едва бы себя узнал.</text>
+        <text id="mirrows1">Они даже восстанавливают технологии?</text>
+        <text id="mirrows2">Да, на Закатном приюте есть электричество и промышленность.</text>
+        <text id="mirrows3">Но люди не очень-то довольны Миррозами, которые всё это и организовали.</text>
+        <text id="mirrows4">Миррозы выжили?!</text>
+        <text id="mirrows5">Ты их знаешь?</text>
+        <text id="mirrows6">К сожалению, да. Мы раньше работали в одной лаборатории, изучали генетику.</text>
+        <text id="mirrows7">А когда на нас напали, они начали проводить ужасные эксперименты и даже ставить опыты над людьми. Я не смог больше с ними работать.</text>
+        <text id="mirrows8">Слушайте, нам тоже надо восстановить технологии! Раз они смогли, сможем и мы!</text>
+        <text id="mirrows9">Вот это настрой! Совсем скоро будем чувствовать себя как дома.</text>
+    </section>
+    <section id="medicom">
+        <text id="panel1">15.03 – Мы вынуждены покинуть Землю. Наше оружие бессильно, и они упорно продолжают нас преследовать. Возможно, нам удастся избежать их гнева на другой планете.</text>
+        <text id="panel13">01.05 – Корабль сильно пострадал во время побега, но активация пространственного прыжка прошла успешно. Можно считать, что нам удалось оторваться. Если корабль выдержит путешествие, разумеется.</text>
+        <text id="panel2">30.06 – Разработали новый план по усилению человеческого тела и повышения живучести. Определили количество образцов, необходимых для достижения цели. Х. покинул научную группу.</text>
+        <text id="panel3">05.08 – Достигли планеты назначения. Войти в атмосферу невозможно, а спасательных капсул недостаточно. Вероятность выжить низкая даже для усиленных образцов. Враг не обнаружен.</text>
+        <text id="panel4">02.09 – Укрепляем обшивку корабля, но для выживания необходимо усиление. Диссиденты отказываются от операции несмотря на то, что от этого зависит их жизнь.</text>
+        <text id="panel5">26.09 – Оставаться на орбите больше невозможно. Многие согласились на усиление, а отказавшихся отправили в спасательных капсулах. Надеемся, укрепление обшивки спасёт остальных.</text>
+        <text id="panel6">04.10 – Экстренное укрепление обшивки сработало. Однако количество выживших намного ниже, чем ожидалось, даже с учётом спасательных капсул, о которых у нас нет данных.</text>
+        <text id="panel7">05.10 – Жизнеспособность вида стала главной проблемой. Нескольких сотен человек недостаточно для выживания. Требуется срочное вмешательство. Начали новое исследование.</text>
+        <text id="panel8">20.11 – Обеспечили базовую инфраструктуру к востоку от места крушения. Собираем образцы для экспериментов.</text>
+        <text id="panel14">14.12 – Исследования по жизнеспособности зашли в тупик, но военные технологии выглядят многообещающе. С помощью киберусовершенствований из обычного человека можно сделать машину смерти.</text>
+        <text id="panel9">24.12 – К. высказывается против военных исследований. Вместо того, чтобы подготовиться к их возвращению и повысить жизнеспособность вида, К. хочет вернуться к звёздам и отыскать других выживших.</text>
+        <text id="panel10">06.01 – К. покинула лабораторию, дав понять, что в городе нам больше не рады. Перенесли исследования в старую лабораторию в руинах сектора 22.</text>
+        <text id="panel15">31.01 – В силу отсутствия образцов проводим кибернетические опыты на себе. Враг по-прежнему не обнаружен. Возможно, на этот раз мы сможем дать отпор.</text>
+        <text id="panel11">09.02 – Убедили жителей города спонсировать исследования. Нашли новые образцы (бродяги и изгои). Возобновили работу.</text>
+        <text id="panel12">27.02 – Бродяги закончились, пришлось набирать образцы среди жителей. Если исследования по жизнеспособности скоро не завершатся, у нас снова кончатся образцы.</text>
+        <text id="broken">Панель сломана...</text>
+    </section>
+    <section id="system">
+        <text id="start">Юнокс-428</text>
+    </section>
+    <section id="system.desc">
+        <text id="start">Звезда класса G на расстоянии 42-х световых лет от Земли. \nОбнаружено 3 экзопланеты.</text>
+    </section>
+    <section id="system.planet">
+        <text id="start">Юнокс-428{char}</text>
+    </section>
+    <section id="system.planet.desc">
+        <text id="start">Обитаемая планета земного типа. Зона для колонизации #21.\n\nПредположительно [color=ff2222]родная планета врага[/color].</text>
+        <text id="start.dwarf">Небольшая твёрдая планета земного типа. Расположена близко к звезде. Не имеет атмосферы. Вероятно, содержит ценные ископаемые и [item=exotic_matter default=Экзотическую материю].</text>
+        <text id="start.gas">Ледяной гигант. Обладает сильным гравитационным полем. В атмосфере преобладают бури.</text>
+    </section>
+    <section id="options">
+        <text id="options">Настройки</text>
+        <text id="paused">Пауза</text>
+        <text id="music">Громк. музыки:</text>
+        <text id="sfx">Громк. звуков:</text>
+        <text id="fullscreen">Полный экран:</text>
+        <text id="textspeed">Скорость текста:</text>
+        <text id="language">Язык:</text>
+        <text id="gameplay">Игровой процесс</text>
+        <text id="ui">Интерфейс</text>
+        <text id="controls">Управление</text>
+        <text id="achievements">Достижения</text>
+        <text id="title">Главное меню</text>
+        <text id="back">Назад</text>
+        <text id="quitgame">Вернуться в главное меню? Несохранённый прогресс будет утерян.</text>
+        <text id="keyboard">Клавиатура</text>
+        <text id="controller">Контроллер</text>
+        <text id="import">Импорт сохранения</text>
+        <text id="export">Экспорт сохранения</text>
+        <text id="import_save">Импортировать можно только в главном меню.</text>
+        <text id="import_html5">Чтобы импортировать сохранение, перетащите файл .asav в окно игры и выберите слот.</text>
+        <text id="file_import">Выберите слот для импорта сохранения.</text>
+        <text id="file_export">Куда экспортировать сохранение?</text>
+        <text id="import_fail">Нельзя импортировать: сохранение повреждено.</text>
+        <text id="export_fail">Нельзя экспортировать: сохранение повреждено.</text>
+        <text id="auto_heal">Восстанавливать здоровье едой?</text>
+        <text id="auto_stamina">Восстанавливать запас сил едой?</text>
+        <text id="max_overweight">Макс. перегруз:</text>
+        <text id="notifications">Оповещения:</text>
+        <text id="show_all">Показать всё</text>
+        <text id="hide_queue">Скрыть внизу</text>
+        <text id="hide_element">Скрыть элементы</text>
+        <text id="hide_queue_element">Скрыть внизу, элементы</text>
+        <text id="hide_critical">Скрыть крит.</text>
+        <text id="hide_queue_critical">Скрыть внизу, крит.</text>
+        <text id="hide_element_critical">Скрыть элементы, крит.</text>
+        <text id="hide_queue_element_critical">Скрыть всё</text>
+        <text id="move_all">Кнопки «Переместить всё»</text>
+        <text id="move_all_confirm">Переместить все предметы из одного инвентаря в другой?</text>
+        <text id="fade_ui">Прозр. интерф.:</text>
+        <text id="prompt_count">Спрашивать, сколько скрафтить</text>
+        <text id="allow_flash">Включить вспышки</text>
+        <text id="notify_away">Оповещения от NPC на расстоянии</text>
+        <text id="blueprint_all">Чертежи во вкладке «Всё»</text>
+        <text id="mine_walkways">Копать дорожки?</text>
+        <text id="warn_toss">Спрашивать перед «Выбросить всё»</text>
+        <text id="item_discover">Показывать сообщения о находке</text>
+        <text id="blueprint_place">Ресурсы при размещении чертежей</text>
+        <text id="talk_quest">Приоритет NPC без заданий</text>
+        <text id="auto_collect">Автосбор предметов</text>
+        <text id="hotkey_switch">Переключать гор. клав. для снаряж.</text>
+        <text id="storehouse_priority">Приоритет складу</text>
+        <text id="difficulty">Сложность:</text>
+    </section>
+    <section id="option.descriptions">
+        <text id="auto_heal">Когда у персонажа закончится здоровье, он не умрёт, а автоматически съест еду для восстановления здоровья (при наличии) из инвентаря.</text>
+        <text id="auto_stamina">Когда у персонажа закончится запас сил, он не будет терять здоровье, а автоматически съест еду для восстановления запаса сил (при наличии) из инвентаря.</text>
+        <text id="max_overweight">Устанавливает лимит веса, при котором персонаж перестанет двигаться (чтобы не умереть от передвижения с перегрузом). Переместите ползунок в крайнее левое положение, чтобы снять ограничение.</text>
+        <text id="notifications">Какие оповещения отображать.\n«Внизу» – оповещения в нижней части экрана (например, о том, что NPC положил предметы на склад).\n«Элементы» – оповещения о срабатывании или отражении элементальных атак.\n«Крит.» – оповещения о критическом ударе, промахе, уклоне и блоке.</text>
+        <text id="move_all">Включает кнопки «Переместить всё» "&lt;" "&gt;" в окне обмена предметами.</text>
+        <text id="fade_ui">Устанавливает прозрачность интерфейса (полоса здоровья, кнопки и т.д.).</text>
+        <text id="prompt_count">Вам будет предложено выбрать, сколько предметов скрафтить или расплавить за раз. В противном случае всегда будет крафтиться только один предмет.</text>
+        <text id="allow_flash">Отключите это, если вы чувствительны к вспышкам. Функция отключит наиболее ярко мерцающие изображения в игре. Может не поддерживаться в модах.</text>
+        <text id="notify_away">NPC будут оповещать вас о том, что добавили предмет на склад какого-либо строва. В противном случае оповещения будут касаться только предметов на данном острове.</text>
+        <text id="mine_walkways">При отключении этой функции вы не сможете копать сквозь дорожки (что не даст вам их случайно собрать). Включите функцию, чтобы собрать и переставить дорожки.</text>
+        <text id="blueprint_place">Отключите, если хотите размещать чертежи сразу, а ресурсы для строительства добавлять позже.</text>
+        <text id="talk_quest">Отключите, чтобы NPC не закрывали доступ к сооружениям или предметам, когда у них нет заданий.</text>
+        <text id="auto_collect">Во время добычи ресурсов, сбора ягод или сражения с врагом предметы будут подбираться автоматически.</text>
+        <text id="hotkey_switch">При использовании горячей клавиши для экипировки предмета, клавиша переназначится на тот предмет, который был экипирован ранее.</text>
+        <text id="storehouse_priority">По умолчанию добавлять предметы на склад (или брать со склада), а не инвентаря игрока.</text>
+    </section>
+    <section id="controls">
+        <text id="left">Влево:</text>
+        <text id="right">Вправо:</text>
+        <text id="up">Вверх:</text>
+        <text id="down">Вниз:</text>
+        <text id="select">Действие:</text>
+        <text id="cancel">Отмена:</text>
+        <text id="inventory">Предметы:</text>
+        <text id="quest">Задания:</text>
+        <text id="equipment">Снаряжение:</text>
+        <text id="attack">Атака:</text>
+        <text id="defend">Защита:</text>
+        <text id="device">Устройство:</text>
+        <text id="hotkey1">Гор. клав. 1:</text>
+        <text id="hotkey2">Гор. клав. 2:</text>
+        <text id="hotkey3">Гор. клав. 3:</text>
+        <text id="hotkey4">Гор. клав. 4:</text>
+        <text id="hotkey5">Гор. клав. 5:</text>
+        <text id="hotkey6">Гор. клав. 6:</text>
+        <text id="hotkey7">Гор. клав. 7:</text>
+        <text id="hotkey8">Гор. клав. 8:</text>
+        <text id="mute">Без звука:</text>
+		<text id="chat">Чат:</text>
+		<text id="walk">Ходить:</text>
+    </section>
+    <section id="cloud">
+        <text id="login">Войти в Облако Aground\nОблако Aground – это дополнительный сервис, который синхронизирует сохранения из всех версий игры.</text>
+        <text id="logging_in">Осуществляется вход... Пожалуйста, подождите...</text>
+        <text id="login_fail">Неправильный логин или пароль.</text>
+        <text id="connect_fail">Не удалось установить соединение.</text>
+        <text id="sync_fail">Синхронизация не удалась!</text>
+        <text id="button_login">Войти в Облако Aground</text>
+        <text id="button_logout">Выйти из Облака Aground</text>
+        <text id="not_logged_in">Вход в Облако Aground не осуществлён</text>
+        <text id="logged_in">Вы вошли как: {username}</text>
+        <text id="username">Логин:</text>
+        <text id="password">Пароль:</text>
+        <text id="remember">Запомнить?</text>
+        <text id="create">Создать аккаунт</text>
+        <text id="user_error">Логин должен состоять из 3-24 символов.</text>
+        <text id="pass_error">Пароль должен состоять из 3-40 символов.</text>
+        <text id="sync_slots">Синхронизация слотов</text>
+        <text id="all_synced">Все сохранения синхронизированы!</text>
+        <text id="unsynced">У вас есть несинхронизированные сохранения!</text>
+        <text id="sync_now">Синхронизировать</text>
+        <text id="overwrite">В этом слоте два сохранения!\nКакое оставить?</text>
+        <text id="close_syncing">Сохранения синхронизируются. Хотите выйти до окончания синхронизации?</text>
+		<text id="confirm_logout">Отключиться?</text>
+    </section>
+    <section id="modio">
+        <text id="login">Мы используем Mod.io для установки и управления модами. Введите адрес вашей эл. почты, чтобы начать!</text>
+        <text id="email">E-Mail:</text>
+        <text id="email_error">Адрес эл. почты недействителен!</text>
+        <text id="enter_code">Введите 5-значный код, который был отправлен на ваш адрес эл. почты:</text>
+        <text id="bad_email_error">Не удалось найти адрес вашей эл. почты на mod.io!</text>
+        <text id="code_error">Неверный код!</text>
+        <text id="logged_in">Вы вошли на Mod.io! Моды, на которые вы подписаны, загрузятся автоматически!</text>
+        <text id="version">Версия</text>
+        <text id="enable">Включить мод</text>
+        <text id="disable">Отключить мод</text>
+        <text id="upload">Загрузить на Mod.io</text>
+        <text id="upload_fail">Не удалось загрузить</text>
+        <text id="upload_success">Загрузка прошла успешно!</text>
+        <text id="button_login">Войти в Mod.io</text>
+        <text id="button_browse">Смотреть моды</text>
+        <text id="button_logout">Выйти с Mod.io</text>
+        <text id="not_logged_in">Вход на Mod.io не осуществлён</text>
+        <text id="preview">Перед загрузкой вы должны добавить картинку для превью (preview.png) в папку с модом!</text>
+        <text id="visit_website">Посетить сайт</text>
+        <text id="disable_warning">Хотите отключить {mod}?</text>
+        <text id="bad_mod">Некорректный мод, либо в zip-архиве отсутствует xml-файл.</text>
+        <text id="import_mod">Мод {modname} успешно установлен!</text>
+        <text id="replace_mod">Вы уже установили мод с таким именем. Хотите заменить? Если изображения из мода редактировались после замены, вам может потребоваться перезагрузить игру.</text>
+    </section>
+    <section id="steam">
+        <text id="upload">Загрузить в Steam</text>
+        <text id="upload_title">Загрузить {name} в Мастерскую Steam:</text>
+        <text id="notes">Заметки:</text>
+        <text id="id">ID:</text>
+        <text id="agreement">Согласиться с условиями пользования Мастерской.</text>
+        <text id="new_id">Создать</text>
+    </section>
+    <section id="world">
+        <text id="rename">Как назвать эту местность?</text>
+        <text id="start">Начальный остров</text>
+        <text id="science1">Закатный приют</text>
+        <text id="magic1">Восточный остров</text>
+        <text id="water_cave">Пещера воды</text>
+        <text id="colony_ship">Корабль-колония</text>
+    </section>
+    <section id="create.character">
+        <text id="title">Создать персонажа</text>
+        <text id="skin">Цвет кожи:</text>
+        <text id="hair">Цвет волос:</text>
+        <text id="eyes">Цвет глаз:</text>
+        <text id="shirt">Цвет рубашки:</text>
+        <text id="pants">Цвет штанов:</text>
+        <text id="hair_style">Причёска:</text>
+        <text id="shirt_style">Рубашка:</text>
+        <text id="beard_style">Волосы на лице:</text>
+        <text id="fur">Цвет меха:</text>
+    </section>
+    <section id="colors">
+        <text id="black">Чёрный</text>
+        <text id="brown">Коричневый</text>
+        <text id="dbrown">Тёмно-коричневый</text>
+        <text id="lbrown">Светло-коричневый</text>
+        <text id="blue">Синий</text>
+        <text id="dblue">Тёмно-синий</text>
+        <text id="lblue">Голубой</text>
+        <text id="green">Зелёный</text>
+        <text id="lgreen">Светло-зелёный</text>
+        <text id="red">Красный</text>
+        <text id="yellow">Жёлтый</text>
+        <text id="orange">Оранжевый</text>
+        <text id="pink">Розовый</text>
+        <text id="purple">Фиолетовый</text>
+        <text id="white">Белый</text>
+        <text id="gray">Серый</text>
+        <text id="teal">Бирюзовый</text>
+        <text id="blond">Блонд</text>
+        <text id="dblond">Тёмный блонд</text>
+        <text id="custom">Свой</text>
+    </section>
+    <section id="offsets">
+        <text id="open">Расстёгнута</text>
+        <text id="closed">Застёгнута</text>
+    </section>
+    <section id="difficulty">
+        <text id="easiest">Очень легко</text>
+        <text id="easier">Лёгко</text>
+        <text id="default">Средне</text>
+        <text id="harder">Сложно</text>
+        <text id="hardest">Тяжело</text>
+        <text id="permadeath">Самоубийство</text>
+        <text id="creative">Креатив</text>
+		<text id="1hko">Смерть от 1-го удара</text>
+    </section>
+    <section id="entry">
+        <text id="title">Выбрать кампанию</text>
+        <text id="default">По умолчанию</text>
+        <text id="default_desc">Стандартная версия Aground.</text>
+    </section>
+</lang>

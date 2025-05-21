@@ -1,0 +1,13 @@
+<tilesheet id='bridge.png' width='256' height='144'>
+	<image frame='0' x='0' y='0' width='255' height='142' offsetX='0' offsetY='1' />
+	<image frame='1' x='255' y='0' width='1' height='1' offsetX='92' offsetY='73' />
+	<image frame='5' x='255' y='1' width='5' height='5' offsetX='93' offsetY='68' />
+	<image frame='6' x='255' y='6' width='7' height='6' offsetX='93' offsetY='68' />
+	<image frame='7' x='255' y='12' width='20' height='19' offsetX='94' offsetY='58' />
+	<image frame='8' x='260' y='1' width='6' height='5' offsetX='95' offsetY='69' />
+	<image frame='9' x='255' y='31' width='15' height='20' offsetX='98' offsetY='58' />
+	<image frame='10' x='266' y='1' width='2' height='2' offsetX='92' offsetY='72' />
+	<image frame='2' equals='1' offsetX='92' offsetY='73' />
+	<image frame='3' equals='1' offsetX='92' offsetY='73' />
+	<image frame='4' equals='1' offsetX='92' offsetY='73' />
+</tilesheet>

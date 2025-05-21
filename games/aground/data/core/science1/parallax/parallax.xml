@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<include id="bg320.xml" includeRoot="true" />
+	<include id="bg640.xml" includeRoot="true" />
+	<tilesheet id="town.png" width="256" height="80" />
+	<tilesheet id="desert.png" width="320" height="106" />
+	<procedure id="science1.doodad">
+		<layer p="0.75" py="1">
+            <tile sheet="town.png" x="0" y="0" offsetX="1740" loop="false" />
+            <tile sheet="town.png" x="0" y="1" offsetX="2032" loop="false" />
+			<tile sheet="desert.png" x="0" y="0" offsetX="64" loop="false" offsetY="-26" />
+			<tile sheet="desert.png" x="0" y="2" offsetX="448" loop="false" offsetY="-26" />
+			<tile sheet="desert.png" x="0" y="1" offsetX="800" loop="false" offsetY="-26" />
+        </layer>
+	</procedure>
+	<parallax id="science1" mapBG="1b6a9d" mapBGHeight="80" waterLevel="0">
+		<layer p="0" day="true">
+			<tile sheet="{core}/start/parallax/bg.png" x="0" y="0" />
+			<rect color="438a9e" x="0" y="80" width="256" height="64" />
+		</layer>
+		<run procedure="start.bg" />
+		<layer p="0.046875" py="0.1875" scroll="0.0625"><tile sheet="{core}/start/parallax/tiles256.png" x="0" /></layer>
+		<layer p="0.0625" py="0.25"><tile sheet="bg320.png" x="0" y="0" loop="false" dy="-6"  /></layer>
+		<layer p="0.09375" py="0.375" scroll="0.125"><tile sheet="{core}/start/parallax/tiles256.png" x="1" dy="8" /></layer>
+		<layer p="0.125" py="0.5"><tile sheet="bg640.png" x="0" y="0" loop="false" dy="40" /></layer>
+		<layer p="0.25" py="0.75"><tile sheet="bg640.png" x="1" y="0" offsetX="320" dy="40" loop="false"  /></layer>
+		<layer p="0.5" minLoop="2" maxLoop="4" py="1">
+			<tile sheet="bg320.png" x="1" dy="54" cap="left" />
+			<tile sheet="bg320.png" x="3" dy="54" cap="right" />
+			<tile sheet="bg320.png" x="2" dy="54" />
+		</layer>
+		<run procedure="science1.doodad" />
+		<layer type="back" /><run procedure="start.water" />
+	</parallax>
+	
+	<parallax id="underwater" mapBG="1b6a9d" mapBGHeight="80" waterLevel="0">
+		<layer type="back" /><run procedure="start.water" />
+	</parallax>
+</data>

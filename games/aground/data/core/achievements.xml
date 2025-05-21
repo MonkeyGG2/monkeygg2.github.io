@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<tilesheet id="achievements.png" width="32" height="32" />
+    <tile id="achievement.hidden" sheet="achievements.png" x="22" />
+	<achievement id="hut" sheet="achievements.png" locked="17" unlocked="+23" />
+	<achievement id="boar" sheet="achievements.png" locked="10" unlocked="+23" />
+	<achievement id="storehouse" sheet="achievements.png" locked="2" unlocked="+23" />
+	<achievement id="farm" sheet="achievements.png" locked="13" unlocked="+23" />
+	<achievement id="orchard" sheet="achievements.png" locked="5" unlocked="+23" />
+	<achievement id="smelter" sheet="achievements.png" locked="16" unlocked="+23" />
+	<achievement id="kitchen" sheet="achievements.png" locked="14" unlocked="+23" />
+	<achievement id="backpack" sheet="achievements.png" locked="15" unlocked="+23" />
+	<achievement id="workshop" sheet="achievements.png" locked="18" unlocked="+23" />
+	<achievement id="wyrm" sheet="achievements.png" locked="9" unlocked="+23" />
+	<achievement id="golem" sheet="achievements.png" locked="8" unlocked="+23" />
+	<achievement id="lab" sheet="achievements.png" locked="19" unlocked="+23" />
+	<achievement id="diamond" sheet="achievements.png" locked="3" unlocked="+23" />
+	<achievement id="market" sheet="achievements.png" locked="12" unlocked="+23" />
+	<achievement id="bigpack" sheet="achievements.png" locked="6" unlocked="+23" />
+	<achievement id="capture_wyrm" sheet="achievements.png" locked="4" unlocked="+23" />
+	<achievement id="pen" sheet="achievements.png" locked="0" unlocked="+23" />
+	<achievement id="pizza" sheet="achievements.png" locked="7" unlocked="+23" />
+	<achievement id="blueprints" sheet="achievements.png" locked="88" unlocked="-5" />
+	<achievement id="skills" sheet="achievements.png" locked="89" unlocked="-5" />
+	<achievement id="dock" sheet="achievements.png" locked="11" unlocked="+23" />
+	<achievement id="boat" sheet="achievements.png" locked="1" unlocked="+23" />
+	<achievement id="wyrm_pen" sheet="achievements.png" locked="20" unlocked="+23" />
+	<achievement id="dragon" sheet="achievements.png" locked="21" unlocked="+23" />
+    <achievement id="powerplant" sheet="achievements.png" locked="50" unlocked="-5" />
+    <achievement id="factory" sheet="achievements.png" locked="51" unlocked="-5" />
+    <achievement id="elevator" sheet="achievements.png" locked="52" unlocked="-5" />
+    <achievement id="bandits" sheet="achievements.png" locked="53" unlocked="-5" />
+    <achievement id="diode_wolf" sheet="achievements.png" locked="54" unlocked="-5" />
+	<achievement id="mirrows" sheet="achievements.png" locked="72" unlocked="-1" />
+	<achievement id="medicom" sheet="achievements.png" locked="77" unlocked="-4" />
+	<achievement id="electric_eel" sheet="achievements.png" locked="78" unlocked="-4" />
+	<achievement id="full_cyborg" sheet="achievements.png" locked="79" unlocked="-4" />
+	<achievement id="labyrinth" sheet="achievements.png" locked="80" unlocked="-4" hidden="true" />
+	<achievement id="dragon_flight" sheet="achievements.png" locked="55" unlocked="+8" />
+	<achievement id="wyrm_queen" sheet="achievements.png" locked="56" unlocked="+8" />
+	<achievement id="synthesizer" sheet="achievements.png" locked="57" unlocked="+8" />
+	<achievement id="forge" sheet="achievements.png" locked="58" unlocked="+8" />
+	<achievement id="enchanted_chainsaw" sheet="achievements.png" locked="59" unlocked="+8" hidden="true" />
+	<achievement id="elemental" sheet="achievements.png" locked="60" unlocked="+8" />
+	<achievement id="purple_tree" sheet="achievements.png" locked="61" unlocked="+8" />
+	<achievement id="full_dragon" sheet="achievements.png" locked="62" unlocked="+8" />
+	<achievement id="time_manipulator" sheet="achievements.png" locked="86" unlocked="-5" hidden="true" />
+	<achievement id="oldone" sheet="achievements.png" locked="87" unlocked="-5" />
+	<achievement id="golemech" sheet="achievements.png" locked="90" unlocked="-5" />
+</data>

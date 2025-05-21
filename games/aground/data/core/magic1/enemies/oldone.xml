@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<tile id="alien" sheet="alien.png" x="0" y="0" />
+	<animation id="alien.idle">
+		<frame x="0" />
+		<frame x="1" offsetY="-1" />
+		<frame x="2" offsetY="-2" />
+		<frame x="3" offsetY="-1" />
+		<frame x="4" />
+		<frame x="5" offsetY="1" />
+		<frame x="6" offsetY="2" />
+		<frame x="7" offsetY="1" />
+	</animation>
+	<animation id="alien.open" x="8" count="8">
+		<frame x="16" count="6" repeat="3" /><frame x="8" count="8" reverse="true" />
+	</animation>
+	<animation id="alien.hit" x="22" count="4" />
+	<animation id="alien.talk" equals="alien.idle" />
+	<include id="alien_fx.xml" includeRoot="true" />
+	<tile id="magic_shield" sheet="alien_fx.png" x="0" /><animation id="magic_shield" count="8" />
+	<tile id="magic_blast" sheet="alien_fx.png" x="8" /><animation id="magic_blast" count="5" />
+	<tile id="magic_orb" sheet="alien_fx.png" x="13" /><animation id="magic_orb.idle" x="4" count="8" /><animation id="magic_orb.loop" x="4" count="8" repeat="10" /><animation id="magic_orb.impact" x="0" count="4" />
+	<tilesheet id="magic_beam.png" width="128" height="26" />
+	<tile id="magic_beam" sheet="magic_beam.png" /><animation id="magic_beam" count="4" offsetY="6"><frame x="4" offsetY="7" /><frame x="5" offsetY="6" /></animation>
+	<animation id="alien.blast" x="3" count="5">
+		<append tile="magic_blast" x="8" y="8" offsetX="-0.5" offsetY="-0.5" animation="magic_blast" behind="true" />
+	</animation>
+	<animation id="alien.charge" x="2" count="6">
+		<append tile="beam_charge" x="8" y="8" offsetX="-1" offsetY="-0.5" animation="beam_charge" />
+	</animation>
+	<animation id="alien.beam" x="2" count="6">
+		<append tile="magic_beam" x="2" offsetX="-1" offsetY="-0.5" animation="magic_beam" />
+	</animation>
+	<object id="magic_orb" tile="magic_orb" animation="magic_orb.loop" layer="player" save="false" width="16" height="16" overlapVehicle="true" removeOnComplete="true" attack_sfx="orb_impact">
+		<over>
+			<hitEffect object="this" tile="magic_orb" animation="magic_orb.impact" />
+			<damage object="player" attacker="this" damage="25" directional="false" /><remove object="this" />
+		</over>
+		<overlap object="alchemist_magic"><section if="isPaused() || object.renderer.animation == 'alchemist.cast'">
+			<hitEffect object="this" tile="magic_orb" animation="magic_orb.impact" /><action>this.alpha = 0;</action><remove object="this" />
+			<sound id="orb_impact" object="this" /><hitEffect object="object" tile="magic_shield" animation="magic_shield" />
+		</section></overlap>
+	</object>
+	<tilesheet id="magic_fx.png" width="32" height="32" />
+	<tile id="heal_circle" sheet="magic_fx.png" /><animation id="heal_circle" count="6" />
+	<tile id="beam_charge" sheet="magic_fx.png" x="6" /><animation id="beam_charge" count="6" />
+	<object id="heal_circle" tile="heal_circle" animation="heal_circle" behind="true" renderer="static">
+		<overSecond><action>player.heal(5)</action></overSecond>
+	</object>
+	<procedure id="alien.orbs"><section if="this.area != null">
+		<sound id="orb_spawn" object="this" />
+        <set id="orbs" value="[]" if="!exists('orbs')" />
+        <action>var p = area.getClosestPlayer(this.getCenterX(), this.getCenterY()); while(orbs.length > 0) if(p == null) orbs.pop(); else Movement.seek(orbs.pop(), p, 4);</action>
+		<action>
+			function addOrb(dx, dy){
+				var o = getObject("magic_orb").create(this.xPos+dx, this.yTile+dy);
+				area.addObject(o); Movement.circle(o, this, 1.25, 4); orbs.push(o);
+			} addOrb(-24, 0); addOrb(24, 0); addOrb(0, -24); addOrb(0, 24);
+			if(this.getHealthPercent() &lt;= 0.5){
+				addOrb(-24, -24); addOrb(24, -24); addOrb(-24, 24); addOrb(24, 24);
+			}
+		</action>
+	</section></procedure>
+	<procedure id="alchemist.heal">
+        <remove object="area.getObject('heal_circle')" if="area.getObject('heal_circle') != null" />
+		<object id="heal_circle" x="alchemist.tile_x-0.5" y="alchemist.tile_y+0.5">this.alpha = 0;</object><sound id="summon" />
+        <lerp object="area.getObject('heal_circle')" alpha="1" seconds="0.25" modal="false" /><play object="alchemist" animation="cast" loop="true" />
+	</procedure>
+    <animation id="alchemist.hidden15"><frame visible="false" length="15" /></animation>
+    <procedure id="alchemist.teleport">
+        <set id="alchemist" value="area.getNPC('alchemist_magic')" />
+        <remove object="area.getObject('heal_circle')" /><play object="alchemist" animation="teleport_out" />
+        <move object="alchemist" x="area.getNPC('alien').tile_x > 18?21:16" y="11" /><facing object="alchemist" dir="alchemist.tile_x == 16?'right':'left'" />
+        <play object="alchemist" animation="hidden15" /><play object="alchemist" animation="teleport_in" /><run procedure="alchemist.heal" />
+    </procedure>
+	<procedure id="magic1.alien_setup">
+		<action>setFlag("oldone.hostile", true)</action><move object="area.getObject('alien')" x="16" y="11" /><facing object="area.getObject('alien')" dir="right" />
+		<set id="alchemist" value="area.getNPC('alchemist_magic')" /><move object="alchemist" x="21" y="11" /><facing object="alchemist" dir="left" />
+	</procedure>
+	<procedure id="magic1.alien_battle">
+		<run procedure="magic1.alien_setup" /><run procedure="alchemist.heal" />
+		<invokeLater if="getLocalPlayer().getCurrentArea().id == 'magic1'">
+			<show tooltip="popup" text="alchemist.oldone_tips1" x="0.5" y="0.0625" hold="200" />
+			<invokeLater seconds="3"><displayAction>setControl(true); setFlag('oldone.begin', true)</displayAction></invokeLater>
+		</invokeLater>
+	</procedure>
+	<procedure id="magic1.alien_defeated">
+		<set id="alchemist" value="area.getNPC('alchemist_magic')" />
+		<section if="alchemist != null">
+            <scene id="alien" show="signal" with="fade" showToAll="true" /><action>setFlag("oldone.hostile", false); setFlag("oldone.beam", false);</action>
+			<remove object="area.getObject('heal_circle')" /><play object="alchemist" animation="teleport_out" /><move object="alchemist" x="9" />
+		</section><action if="alchemist == null">setFlag("oldone.hostile", false); setFlag("oldone.beam", false);</action>
+	</procedure>
+	<enemy id="alien" tile="alien" health="45" defense="50" hostileFlag="oldone.hostile" facing="right" bgm="boss" kill_achievement="oldone" death_sfx="alien_death" passFence="true" soundScale="2">
+		<tooltip section="structure.tooltip" id="summon_alchemist" if="player.hasQuest('oldone') && !getFlag('oldone.hostile')" />
+		<tooltip section="npc" id="talk" if="!getFlag('oldone.hostile')" />
+		<tooltip section="object.tooltip" id="enemy" />
+		<blocked><hitEffect object="this" tile="magic_shield" animation="magic_shield" if="this.renderer.animation != 'alien.open'" /></blocked>
+		<onHit><stop if="attacker != null && attacker.info.id == 'alchemist_magic'" /><action>setFlag("oldone.hostile", true)</action>
+			<attack type="omni" damage="10" range="2" animation="blast" knockback="32" sfx="fireball" if="area.isActivePlayer()">
+			<post><action if="old_health <= 0.65*this.getMaxHealth()">this.renderer.scaleX = -this.renderer.scaleX; this.knockback(sign(this.renderer.scaleX)*128, true);</action><run procedure="alien.orbs" /></post>
+		</attack></onHit>
+		<onDeath><action if="exists('orbs')">while(orbs.length > 0) area.removeObject(orbs.pop());</action><run procedure="magic1.alien_defeated" if="!getFlag('final_boss_defeat') && area.getNPC('alchemist_magic') != null" /></onDeath>
+		<cooldown seconds="1.5"><set id="orbs" value="orbs.filter(function(o){return o.area != null;})" if="orbs.length > 0" />
+			<choose if="this.isHostile() && getFlag('oldone.begin')">
+			<choose if="orbs.length == 0">
+				<section if="this.getHealthPercent() <= 0.65">
+					<action>
+						var dx = sign(this.xPos-player.xPos); if(dx == 0) dx = sign(this.renderer.scaleX); else this.renderer.scaleX = dx; this.knockback(dx*128, true);
+					</action>
+					<section if="!getFlag('oldone.beam')">
+						<show tooltip="popup" text="alchemist.oldone_beam" x="0.5" y="0.0625" hold="200" /><action>setFlag("oldone.beam", true)</action>
+						<repeat count="4"><play object="this" animation="charge" /></repeat>
+					</section>
+					<invokeLater><run procedure="alchemist.teleport" if="area.getNPC('alchemist_magic') != null" /></invokeLater>
+					<attack type="beam" damage="100" range="8" animation="beam" knockback="32" top="10" bottom="5" critical="false" sfx="oldone_beam">
+						<pre><play object="this" animation="charge" /></pre>
+						<post>
+							<sound id="oldone_open" object="this" /><action>this.setVulnerable(3,20);</action><play object="this" animation="open" /><action>this.endVulnerable();</action>
+							<play object="this" animation="idle" loop="true" /><action>this.renderer.scaleX = -this.renderer.scaleX; this.knockback(sign(this.renderer.scaleX)*128, true);</action>
+							<run procedure="alien.orbs" /><stop />
+						</post>
+					</attack>
+				</section>
+				<section>
+					<run procedure="alien.orbs" />
+					<set id="alchemist" value="area.getNPC('alchemist_magic')" /><section if="alchemist != null">
+						<show tooltip="popup" text="alchemist.oldone_attack" x="0.5" y="0.0625" hold="40" />
+						<play object="alchemist" animation="cast" loop="true" />
+					</section>
+					<attack type="omni" damage="10" range="2" animation="blast" knockback="32" sfx="fireball">
+						<post>
+							<sound id="oldone_open" object="this" /><action>this.setVulnerable(3,20);</action><play object="this" animation="open" />
+							<action>this.endVulnerable();</action><play object="this" animation="idle" loop="true" />
+							<run procedure="alien.orbs" /><stop />
+						</post>
+					</attack>
+				</section>
+			</choose>
+			<action if="orbs.length > 0">var p = area.getClosestPlayer(this.getCenterX(), this.getCenterY()); if(p != null){Movement.seek(orbs.pop(), p, 4); if(orbs.length > 0 &amp;&amp; this.getHealthPercent() &lt;= 0.5) Movement.seek(orbs.pop(), p, 4);}</action>
+			<run procedure="alien.orbs" />
+		</choose></cooldown>
+		<operate><section if="!getFlag('oldone.hostile')">
+			<choose>
+				<section if="player.hasQuest('oldone')">
+					<save /><action>setFlag('oldone.begin', false)</action><scene id="alien" show="first" with="fade" showToAll="true" />
+				</section>
+				<section><action>this.moveTalk(player, 0.75)</action><set id="alien" value="this" /><run procedure="alien_talk" /></section>
+			</choose><stop />
+		</section></operate>
+	</enemy>
+</data>

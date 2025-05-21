@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<structures>
+	<animation id="hut.idle" count="1" x="3" y="0" />
+	<animation id="hut.closing" count="4" />
+	<animation id="hut.opening" count="4" reverse="true" />
+	<animation id="hut.fire" count="3" y="1" />
+	<animation id="hut.night.idle" equals="hut.fire" />
+	<animation id="hut.night.fire" equals="hut.fire" />
+	<animation id="hut.night.closing" equals="hut.fire" />
+	<structure id="hut" width="60" height="55" image="hut.png" sleep="true" nightAnimation="hut.night">
+		<operate>
+			<action>this.loopAnimation("fire"); this.playSFX("fire");</action>
+			<choose if="area.id == 'start' && !getFlag('bombardment') && !getFlag('final_boss_defeat')">
+				<scene id="hut" show="second" with="fade" if="getFlag('pickaxe') && !getFlag('miner_hut')" showToAll="true">
+					<action>setFlag('miner_hut', true);</action>
+				</scene>
+				<scene id="hut" show="third" with="fade" if="player.hasQuest('farm') && !getFlag('farmer_hut')" showToAll="true">
+					<action>setFlag('farmer_hut', true);</action>
+				</scene>
+				<scene id="hut" show="fourth" with="fade" if="getVar('trader_steal') == 5" showToAll="true">
+					<action>setVar('trader_steal', 6);</action>
+				</scene>
+				<scene id="hut" show="hunter" with="fade" if="player.hasQuest('hunt') && !getFlag('hunter_hut') && area.getNPC('hunter') != null" showToAll="true">
+					<action>setFlag('hunter_hut', true);</action>
+				</scene>
+				<scene id="hut" show="mirrows" with="fade" if="player.hasQuest('mirrows') && !getFlag('mirrows_hut')" showToAll="true">
+					<action>setFlag('mirrows_hut', true);</action>
+				</scene>
+			</choose>
+			<action>player.restoreStamina();</action><save sleep="true" />
+		</operate>
+		<exit><action>this.stopSFX()</action></exit>
+		<light tile="light.large" color="fae1b5" flicker="true" offsetX="30" offsetY="45" ifAnim="fire" />
+	</structure>
+	
+	<animation id="hut.incomplete.idle" count="1" x="7" />
+	<procedure id="complete.hut">
+		<complete quest="hut" />
+		<action>player.inventory.addAll(this.inventory);</action>
+		<sound id="build" />
+		<scene id="hut" show="first" with="fade" showToAll="true" />
+	</procedure>
+	<structure id="hut.incomplete" width="60" height="55" image="hut.png" type="storehouse" main="true">
+		<tooltip section="actions" id="repair" />
+		<operate>
+			<choose><section if="!player.hasQuest('hut')">
+				<dialogue section="player" id="hut1" />
+				<quest id="hut">
+					<section if="player.getItemCount('wood') > 0">
+						<action>var wood = getItem("wood"); ct = player.inventory.getItemCount(wood); if(ct > 8) ct = 8; player.inventory.addItems(wood, -ct); this.inventory.addItems(wood, ct);</action>
+						<dialogue eval="'player.hut3{added:'+ct+'}{remaining:'+Utils.max(0, getQuest('hut').getRequirementById('wood').count-player.getItemCountStorehouse('wood'))+'}'" />
+					</section>
+				</quest>
+				<run procedure="complete.hut" if="player.canCompleteQuest('hut')" />
+			</section>
+			<run procedure="complete.hut" if="player.canCompleteQuest('hut')" />
+			<section if="player.getItemCount('wood') > 0">
+				<action>var wood = getItem("wood"); ct = player.inventory.getItemCount(wood); player.inventory.addItems(wood, -ct); this.inventory.addItems(wood, ct);</action>
+				<dialogue eval="'player.hut3{added:'+ct+'}{remaining:'+(getQuest('hut').getRequirementById('wood').count-player.getItemCountStorehouse('wood'))+'}'" />
+			</section>
+			<dialogue eval="'player.hut2{count:'+player.getItemCountStorehouse('wood')+'}'" />
+			</choose><stop />
+		</operate>
+	</structure>
+	
+	<animation id="storehouse.idle" equals="single" />
+	<animation id="storehouse.closing" count="9" reverse="true" />
+	<animation id="storehouse.opening" count="9" />
+	<structure id="storehouse" width="66" height="70" image="storehouse.png" type="storehouse" main="true">
+		<operate>
+			<action if="!player.hasItemStorehouse('stone_pickaxe') && player.getFlag('pickaxe')">this.inventory.addItems(Item.get("stone_pickaxe"), 1)</action>
+			<action if="!player.hasItemStorehouse('stone_axe')">this.inventory.addItems(Item.get("stone_axe"), 1)</action>
+			<choose>
+				<section if="getVar('trader_steal') > 1 && getVar('trader_steal') < 4 && player.questComplete('workshop') && !player.hasQuest('market')">
+					<action>setVar('trader_steal', 4);</action>
+					<dialogue section="trader" id="caught" />
+					<section with="fade">
+						<facing object="player" dir="right" />
+						<!-- NOTE: this line is to remove a duplicate trader for old saves that placed the trader before this event. -->
+						<action>var trader = player.area.getNPC('trader'); if(trader != null) player.area.removeObject(trader);</action>
+						<object id="trader" x="player.tile_x+1" />
+					</section>
+					<dialogue section="trader" id="introduce1" speaker="player" />
+					<dialogue section="trader" id="introduce2" speaker="trader" />
+					<dialogue section="trader" id="introduce3" speaker="player" />
+					<dialogue section="trader" id="introduce4" speaker="trader" />
+					<dialogue section="trader" id="introduce5" speaker="player" />
+					<menu section="trader" yalign="0.75">
+						<dialogue section="trader" id="introduce6" speaker="trader" />
+						<choice id="accept">
+							<action>setVar('trader_steal', 5);</action>
+							<quest id="market" ask="false" />
+							<dialogue section="trader" id="introduce7" speaker="player" />
+						</choice>
+						<choice id="reject">
+							<dialogue section="trader" id="introduce8" speaker="player" />
+							<dialogue section="trader" id="introduce9" speaker="trader" />
+							<lerp object="trader" alpha="0" seconds="0.25" />
+							<remove object="trader" />
+							<dialogue section="player" id="dock1" />
+							<object id="dock2_placeholder" x="0" /><pan toObject="dock2_placeholder" seconds="0.25" />
+							<dialogue section="player" id="dock2" />
+							<quest id="dock2" ask="false" /><pan toObject="player" seconds="0.25" />
+						</choice>
+					</menu>
+					<stop/>
+				</section>
+				<function object="this" run="stealItem" if="getVar('trader_steal') < 3 && player.questComplete('smelter') && random() < 0.75 && !player.hasQuest('market')">
+					<action>setVar('trader_steal', getVar('trader_steal')+1);</action>
+				</function>
+			</choose>
+		</operate>
+		<over><action>this.playSFX("rock_door", false);</action></over>
+		<out><action>this.playSFX("rock_door", false);</action></out>
+	</structure>
+	
+	<animation id="workshop.idle" equals="single" />
+	<animation id="workshop.on" count="8" x="1" y="0" />
+	<structure id="workshop" width="65" height="35" image="workshop.png" type="crafting">
+		<recipe type="workshop" />
+		<recipe type="workbench" />
+		<over><action>this.loopAnimation("on")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<craft><action>this.playSFX("workshop", false);</action></craft>
+	</structure>
+	
+	<animation id="smelter.off" equals="single" />
+	<animation id="smelter.on" count="4" x="1" y="0" />
+	<animation id="smelter.smelt" count="12" x="2" y="1" />
+	<structure id="smelter" width="68" height="50" image="smelter.png" type="smelter" loop="smelter_loop">
+		<recipe type="fuel" />
+		<recipe type="smelter" />
+		<light tile="light.default" color="fae1b5" flicker="true" offsetX="53" offsetY="42" ifAnim="!off" />
+	</structure>
+	
+	<animation id="kitchen.close.off" equals="single" />
+	<animation id="kitchen.open.off" count="1" x="1" y="0" />
+	<animation id="kitchen.close.on" count="4" x="2" y="0" />
+	<animation id="kitchen.open.on" count="4" x="1" y="1" />
+	<structure id="kitchen" width="73" height="72" image="kitchen.png" type="kitchen" animation="kitchen" openable="true">
+		<recipe type="fuel" />
+		<recipe type="kitchen" />
+		<light tile="light.small" color="ffbf00" flicker="true" offsetX="54" offsetY="68" ifAnim="*.on" />
+	</structure>
+	
+	<animation id="kitchen2.off" equals="single" />
+	<animation id="kitchen2.on" count="8" x="1" y="0" />
+	<structure id="kitchen2" name="kitchen" width="73" height="80" image="kitchen2.png" type="kitchen" animation="kitchen2" display="item.names.kitchen_upgrade">
+		<recipe type="fuel" />
+		<recipe type="kitchen2" />
+		<recipe type="kitchen" />
+		<light tile="light.small" color="ffbf00" flicker="true" offsetX="2" offsetY="77" ifAnim="*.on" />
+		<light tile="light.small" color="ffbf00" flicker="true" offsetX="32" offsetY="76" ifAnim="*.on" />
+		<light tile="light.small" color="ffbf00" flicker="true" offsetX="48" offsetY="76" ifAnim="*.on" />
+		<light tile="light.small" color="ffbf00" flicker="true" offsetX="64" offsetY="76" ifAnim="*.on" />
+	</structure>
+	
+	<animation id="farm.idle" count="1" x="5" y="0" />
+	<animation id="farm.closing" count="6" />
+	<animation id="farm.opening" count="6" reverse="true" />
+	<tilesheet id="wreath.png" width="19" height="20" />
+	<tile id="wreath" sheet="wreath.png" x="0" y="0" />
+	<structure id="farm" width="104" height="75" image="isDate(10,31,3)?'farm_halloween.png':'farm.png'" type="farm">
+		<over><action>this.playSFX("rock_door", false);</action></over>
+		<out><action>this.playSFX("rock_door", false);</action></out>
+		<operate>
+			<choose if="area.getNPC('farmer') != null && !isNight()">
+				<section if="this.getCropCount() >= 4 && !getFlag('sugar_seed')">
+					<move object="area.getNPC('farmer')" to="player" /><action>setFlag('sugar_seed', true)</action>
+					<dialogue section="farmer" id="add_sugar" speaker="area.getNPC('farmer')" />
+					<item id="sugar_seed" />
+				</section>
+				<section if="(player.questComplete('dock') || player.questComplete('dock2')) && !getFlag('cotton_seed')">
+					<move object="area.getNPC('farmer')" to="player" /><action>setFlag('cotton_seed', true)</action>
+					<dialogue section="farmer" id="add_cotton" speaker="area.getNPC('farmer')" />
+					<item id="cotton_seed" />
+				</section>
+			</choose>
+		</operate>
+		<tile id="wreath" x="43/Tile.SIZE" y="31/Tile.SIZE" if="isDate(12,27,7)" />
+	</structure>
+	<structure id="stall" name="pen" width="42" height="25" image="pen.png" tileWidth="2" animals="1" type="pen" attachFarm="farm" destroyRemove="true">
+		<sprite>
+			<tile x="1" y="0" />
+			<animal i="0" offsetX="21" offsetY="23" />
+			<tile x="0" y="0" />
+		</sprite>
+		<animal id="pig" />
+		<animal id="cow" />
+		<animal id="chicken" />
+		<animal id="spider" />
+	</structure>
+	<compound id="pen">
+		<structure id="stall" x="2" /><structure id="stall" x="0" />
+	</compound>
+	<tile id="pen_placeholder" sheet="pen.png" x="1"><tile sheet="pen.png" x="1" offsetX="32" /><tile sheet="pen.png" x="0" /><tile sheet="pen.png" x="0" offsetX="32" /></tile>
+	<structure id="pen_placeholder" tile="pen_placeholder" width="64" height="25" offsetX="-16" />
+	
+	<animation id="market.idle">
+		<frame x="0" y="0" length="16" />
+		<frame x="1" y="0" length="2" />
+		<frame x="2" y="0" length="16" />
+		<frame x="3" y="0" length="2" />
+	</animation>
+	<animation id="market.night.idle" count="1" x="12" />
+	<animation id="market.talk" count="8" x="4" />
+	<procedure id="market">
+		<section if="isNight()"><dialogue section="market" id="closed" /><stop /></section>
+		<section if="player.questComplete('market2') && !player.hasSeenItem('coin_purse')">
+			<dialogue section="player" id="market3" />
+			<item id="coin_purse" value="0" modal="true" />
+		</section>
+	</procedure>
+	<structure id="food_market" width="41" height="35" image="food_market.png" type="market" animation="market" restock="5000" show_offers="!isNight()" nightAnimation="market.night">
+		<item id="berries" min="5" max="20" />
+		<item id="red_berries" min="5" max="20" />
+		<item id="ice_berries" min="5" max="20" />
+		<item id="meat" min="5" max="20" />
+		<item id="fruit" min="5" max="20" />
+		<item id="wheat" min="5" max="20" />
+		<item id="sugar" min="5" max="10" />
+		<item id="eggs" min="5" max="10" />
+		<item id="milk" min="5" max="10" />
+		<item id="pig" min="0" max="1" />
+		<item id="chicken" min="0" max="2" />
+		<item id="cow" min="0" max="1" />
+		<item id="wheat_seed" min="2" max="4" />
+		<item id="orchard_seed" min="2" max="4" />
+		<item id="cotton_seed" min="1" max="1" />
+		<item id="bush_seed" min="0" max="1" />
+		<item id="red_bush_seed" min="0" max="1" />
+		<select count="3">
+			<item id="steak" min="5" max="10" />
+			<item id="bread" min="5" max="10" />
+			<item id="pancakes" min="5" max="10" />
+			<item id="hamburger" min="5" max="10" />
+			<item id="pie" min="5" max="10" />
+		</select>
+		<buy type="food" /><buy type="animal" />
+		<over><action>this.loopAnimation("talk")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><run procedure="market" /></operate>
+	</structure>
+	<tilesheet id="markets.png" width="46" height="35" />
+	<tile id="weaps_market" sheet="markets.png" />
+	<structure id="weaps_market" tile="weaps_market" type="market" animation="market" restock="5000" show_offers="!isNight()" nightAnimation="market.night">
+		<item id="mega_backpack" min="1" max="1" achievement="bigpack" if="true" />
+		<item id="ultra_backpack" min="1" max="1" if="player.questComplete('boat') || player.hasQuest('wyrm_hive')" />
+		<item id="net" min="10" max="15" />
+		<item id="torch" min="5" max="10" />
+		<item id="trap" min="5" max="10" />
+		<item id="arrow" min="20" max="40" />
+		<item id="fence" min="5" max="10" />
+		<select count="6">
+			<item id="bow" min="1" max="1" />
+			<item id="iron_pickaxe" min="1" max="1" />
+			<item id="iron_sword" min="1" max="1" />
+			<item id="iron_armor" min="1" max="1" />
+			<item id="steel_pickaxe" min="1" max="1" />
+			<item id="steel_sword" min="1" max="1" />
+			<item id="steel_axe" min="1" max="1" />
+			<item id="steel_hammer" min="1" max="1"/>
+			<item id="steel_armor" min="1" max="1" />
+			<item id="buckler" min="1" max="1" />
+			<item id="kite_shield" min="1" max="1" />
+		</select>
+		<buy type="equipment" /><buy type="tool" /><buy type="object" />
+		<over><action>this.loopAnimation("talk")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><run procedure="market" /></operate>
+	</structure>
+	<tile id="mineral_market" sheet="markets.png" x="13" />
+	<structure id="mineral_market" tile="mineral_market" type="market" animation="market" restock="5000" show_offers="!isNight()" nightAnimation="market.night">
+		<item id="wood" min="10" max="30" />
+		<item id="coal" min="10" max="20" />
+		<item id="iron" min="5" max="20" />
+		<item id="cloth" min="10" max="20" />
+		<select count="3">
+			<item id="quartz" min="5" max="5" />
+			<item id="gold" min="5" max="5" />
+			<item id="diamond" min="5" max="5" />
+			<item id="iron_bar" min="5" max="5" />
+			<item id="steel_bar" min="5" max="5" />
+		</select>
+		<buy type="resource" />
+		<over><action>this.loopAnimation("talk")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><run procedure="market" /></operate>
+	</structure>
+	<compound id="market">
+		<structure id="mineral_market" x="0" />
+		<structure id="weaps_market" x="3" />
+		<structure id="food_market" x="6" />
+	</compound>
+	<tile id="market_placeholder" sheet="markets.png" x="13"><tile sheet="markets.png" x="0" offsetX="48" /><tile sheet="food_market.png" x="0" offsetX="96" /></tile>
+	<structure id="market_placeholder" tile="market_placeholder" width="137" height="35" offsetX="-46" />
+	
+	<animation id="dockhouse.idle" equals="single" />
+	<animation id="dockhouse.closing" count="9" reverse="true" />
+	<animation id="dockhouse.opening" count="9" />
+	<structure id="dockhouse" width="100" height="55" image="dockhouse.png" type="crafting" spawnX="area.isWater(this.tile_x-5, this.tile_y+1)?this.tile_x-4:this.tile_x+8">
+		<recipe id="boat" /><recipe type="dock" />
+		<operate><quest id="boat" ask="false" if="(player.questComplete('market') || player.questComplete('market2')) && !player.questComplete('boat')" /></operate>
+	</structure>
+	<tile id="dockhouse" sheet="dockhouse.png" />
+	<tilesheet id="dock.png" width="64" height="80" />
+	<tile id="dock" sheet="dock.png" x="0" y="0" />
+	<tile id="dock_empty" sheet="dock.png" x="0" y="1" />
+	<tilesheet id="dock_front.png" width="60" height="16" />
+	<tile id="dock_front" sheet="dock_front.png" x="0" y="0" />
+	<action>
+		function isBoat(o){return o.info.xml.get("type") == "boat" &amp;&amp; o.player == null;}
+		function getDock(area, right){
+			for(s in area.getStructures()) if(s.info.xml.get("type") == "dock" &amp;&amp; right == (s.info.xml.get('flip') == 'true')) return s;
+			return null;
+		}
+		function getBoatForDock(dock, right, player){
+			if(dock == null) return null;
+			var rect = null; var ret = null; var area = null;
+			if(right &amp;&amp; dock.area.right != null){
+				var r = (dock.area.right.fromX+20)*Tile.SIZE; var f = dock.xPos; if(player != null &amp;&amp; dock.info.xml.get("emptyDock") != "true") f += dock.info.width;
+				rect = makeRect(f, dock.yPos-Tile.SIZE, r-f, Tile.SIZE); area = dock.area.right.area;
+			} else if(dock.area.left != null){
+				var l = (dock.area.left.fromX-20)*Tile.SIZE; var f = dock.xPos; if(player == null || dock.info.xml.get("emptyDock") == "true") f += dock.info.width;
+				rect = makeRect(l, dock.yPos-Tile.SIZE, f-l, Tile.SIZE); area = dock.area.left.area;
+			} if(rect != null) dock.area.getObjects(rect, function(o, r){if(isBoat(o)) ret = o; return false;});
+			if(ret != null) return ret;
+			if(player != null &amp;&amp; area != null){
+				var a = player.areas.map.get(area);
+				if(a != null &amp;&amp; a != dock.area){var b = getBoatForDock(getDock(a, !right), !right, null); if(b != null) return b;}
+			} return null;
+		}
+	</action>
+	<structure id="dock_base" type="dock" playerY="-5">
+		<tooltip id="summon_boat" if="getBoatForDock(this, this.info.xml.get('flip') == 'true', player) != null" />
+		<operate>
+			<action with="fade" if="this.area != null">
+				var flip = this.info.xml.get("flip") == "true"; var b = getBoatForDock(this, flip, player);
+				if(b != null){
+					b.setPosition(this.xPos+(flip?Tile.SIZE:this.info.width-Tile.SIZE-b._width), this.yPos);
+					if(b.area != this.area){b.area.removeObject(b); this.area.addObject(b);} player.clearOverlap(); player.overlapChanged();
+				}
+			</action>
+		</operate>
+	</structure>
+	<structure id="dock" extends="dock_base" tile="dock" offsetY="64" dockWidth="4" dockHeight="4">
+		<tile id="dock_front" top="true" x="4/Tile.SIZE" y="4/Tile.SIZE" />
+	</structure>
+	<structure id="dock_flip" extends="dock" flip="true" />
+	<structure id="dock_empty" tile="dock_empty" extends="dock_base" playerY="" offsetY="80" dockWidth="4" dockTopWidth="1" dockHeight="4" emptyDock="true" />
+	<structure id="dock_empty_flip" tile="dock_empty" extends="dock_base" playerY="" offsetY="80" flip="true" dockWidth="4" dockTopWidth="1" dockHeight="4" emptyDock="true" />
+	
+	<animation id="boat.empty" equals="single" />
+	<animation id="boat.sail" count="10" x="2" />
+	<tilesheet id="boat_rail.png" width="9" height="3" />
+	<tile id="boat_rail" sheet="boat_rail.png" offsetX="26" offsetY="26" />
+	<tilesheet id="boat.png" width="40" height="40" />
+	<tile id="boat" sheet="boat.png" />
+	<animation id="boat.move" equals="boat.sail" />
+	<vehicle id="boat" stamina="true" efficiency="0.5" health="500" tile="boat" speed="2" type="boat" waterLine="35" max_weight="1250" title="item.names.boat" icon="boat.ico" tooltip="structure.tooltip.boat" element="plant" bgm="voyage" begin_walk_sfx="sail_open" walk_sfx="sailing" item="boat">
+		<player x="30" y="20" />
+		<repair id="wood" value="25" />
+		<tile id="boat_rail" />
+		<listItem title="vehicle.pack_up">
+			<section if="!player.vehicle.canDismount()"><action>player.showWarning(getText("vehicle.boat_pack_up"))</action><stop /></section>
+			<closeWindows /><action>player.vehicle.dismount();</action>
+			<invokeLater><section if="player.vehicle == null">
+				<action>player.inventory.addAll(this.inventory);</action><remove object="this" /><item id="boat" value="this.health" />
+			</section></invokeLater>
+		</listItem>
+	</vehicle>
+	<item id="boat" type="object" cost="0" weight="50" icon="boat.ico" durability="500" durabilityName="common.health" durabilityIcon="vehicle_health">
+		<action id="plant" name="vehicle.deploy" object="boat" onGrass="false" onWater="true" overlapBlueprints="true" overlapStructures="true" removeBushes="false">
+			<action>object.setHealth(this.getFeed());</action>
+		</action>
+		<action id="feed" alt="feed_all" alt_name="repair_all" name="repair" full="warning.max_repair" auto="common.auto_repair" select="actions.repair" sfx="workshop" />
+		<food id="wood" value="25" />
+	</item>
+	<structure id="boat" tile="boat" type="fuelable" fuelName="rations" maxFuel="1000" renderer="floating" waterLine="35" back="true" includeInventory="true" playerY="-5" title="item.names.boat" priority="1" behind="true" remove="false" only_select="true">
+		<tooltip if="getFlag('boat.structure')" />
+		<tooltip id="boat" />
+		<operate>
+			<stop if="getFlag('boat.structure')" /><action>setFlag('boat.structure', true)</action><setTime sleep="true" />
+			<section if="!player.areas.exists('science1') && !getFlag('boat.farewell')">
+				<set id="builder" value="area.getNPC('builder')" />
+				<set id="miner" value="area.getNPC('miner')" />
+				<set id="farmer" value="area.getNPC('farmer')" />
+				<set id="hunter" value="(player.hasQuest('hunt'))?area.getNPC('hunter'):null" />
+				<set id="trader" value="area.getNPC('trader')" />
+				<set id="alchemist" value="(player.hasQuest('lab'))?area.getNPC('alchemist'):null" />
+				<section with="fade">
+					<action>if(builder != null) builder.alpha = 1; if(miner != null) miner.alpha = 1; if(farmer != null) farmer.alpha = 1;
+						if(hunter != null) hunter.alpha = 1; if(trader != null) trader.alpha = 1; if(alchemist != null) alchemist.alpha = 1;</action>
+					<move object="player" x="-4" /><facing object="player" dir="right" /><set id="x" value="-2" />
+					<section if="builder != null">
+						<set id="builder_x" value="builder.tile_x" /><set id="builder_y" value="builder.tile_y" />
+						<move object="builder" x="x" /><facing object="builder" dir="left" /><set id="x" value="x+1" />
+					</section>
+					<section if="miner != null">
+						<set id="miner_x" value="miner.tile_x" /><set id="miner_y" value="miner.tile_y" />
+						<move object="miner" x="x" /><facing object="miner" dir="left" /><set id="x" value="x+1" />
+					</section>
+					<section if="farmer != null">
+						<set id="farmer_x" value="farmer.tile_x" /><set id="farmer_y" value="farmer.tile_y" />
+						<move object="farmer" x="x" /><facing object="farmer" dir="left" /><set id="x" value="x+1" />
+					</section>
+					<section if="hunter != null">
+						<set id="hunter_x" value="hunter.tile_x" /><set id="hunter_y" value="hunter.tile_y" />
+						<move object="hunter" x="x" /><facing object="hunter" dir="left" /><set id="x" value="x+1" />
+					</section>
+					<section if="trader != null">
+						<set id="trader_x" value="trader.tile_x" /><set id="trader_y" value="trader.tile_y" />
+						<move object="trader" x="x" /><facing object="trader" dir="left" /><set id="x" value="x+1" />
+					</section>
+					<section if="alchemist != null">
+						<set id="alchemist_x" value="alchemist.tile_x" /><set id="alchemist_y" value="alchemist.tile_y" />
+						<move object="alchemist" x="x" /><facing object="alchemist" dir="left" /><set id="x" value="x+1" />
+					</section>
+				</section>
+				<dialogue section="player" id="farewell1" speaker="player" />
+				<select count="3">
+					<dialogue section="player" id="farewell2" speaker="builder" if="builder != null" />
+					<dialogue section="player" id="farewell3" speaker="miner" if="miner != null" />
+					<dialogue section="player" id="farewell4" speaker="farmer" if="farmer != null" />
+					<dialogue section="player" id="farewell5" speaker="hunter" if="hunter != null" />
+					<dialogue section="player" id="farewell6" speaker="trader" if="trader != null" />
+					<dialogue section="player" id="farewell7" speaker="alchemist" if="alchemist != null" />
+				</select>
+				<section with="fade">
+					<move object="builder" x="builder_x" y="builder_y" if="builder != null" />
+					<move object="miner" x="miner_x" y="miner_y" if="miner != null" />
+					<move object="farmer" x="farmer_x" y="farmer_y" if="farmer != null" />
+					<move object="hunter" x="hunter_x" y="hunter_y" if="hunter != null" />
+					<move object="trader" x="trader_x" y="trader_y" if="trader != null" />
+					<move object="alchemist" x="alchemist_x" y="alchemist_y" if="alchemist != null" />
+				</section>
+			</section>
+			<remove structure="this" /><object id="boat" x="this.xPos/Tile.SIZE" y="this.tile_y" />
+			<action>onSailBoat(); boat.inventory.addAll(this.inventory); boat.setFuel(this.fuel);</action>
+			<save /><action>boat.onOperate(player)</action><stop />
+		</operate>
+	</structure>
+	
+	<animation id="lab.idle" count="11" />
+	<structure id="lab" width="64" height="64" image="lab.png" type="crafting">
+		<recipe type="lab" />
+		<craft>
+			<action if="area.getNPC('alchemist') != null">area.getNPC("alchemist").playAnimation("craft")</action>	
+		</craft>
+		<light tile="light.medium" color="ffbf00" flicker="true" offsetX="3" offsetY="47" />
+		<light tile="light.medium" color="ffbf00" flicker="true" offsetX="60" offsetY="47" />
+		<light tile="light.small" color="ffbf00" flicker="true" offsetX="54" offsetY="62" />
+	</structure>
+	<tilesheet id="cage.png" width="42" height="26" /><tile id="cage" sheet="cage.png" />
+	<structure id="wyrm_pen" tile="cage" animals="2" type="pen" name="cage">
+		<sprite>
+			<animal i="0" offsetX="12" offsetY="21" />
+			<animal i="1" offsetX="30" offsetY="21" />
+			<tile x="0" y="0" />
+		</sprite>
+		<animal id="wyrm" />
+		<animal id="cocoon" />
+		<animal id="dragon" />
+		<animal id="diode_wolf" />
+		<animal id="steel_wyrm" />
+		<animal id="golem" />
+		<animal id="gold_golem" />
+		<animal id="purple_golem" />
+		<animal id="pig" />
+		<animal id="cow" />
+		<animal id="chicken" />
+		<animal id="spider" />
+	</structure>
+	
+	<include id="dragon_lair_fx.xml" includeRoot="true" />
+	<tile id="dragon_lair_fx_bg" sheet="dragon_lair_fx.png" x="0" y="0" />
+	<tile id="dragon_lair_fx_fg" sheet="dragon_lair_fx.png" x="6" y="0" />
+	<animation id="dragon_lair_fx" count="6" glow="true" />
+	<structure id="dragon_lair" width="192" height="112" image="dragon_lair.png" allowFlying="true">
+		<tooltip id="summon_alchemist" if="var drag = area.getObject('adult_dragon'); return getFlag('summon_alchemist') && area.canGetNPC('alchemist') && (drag == null || !drag.isHostile())" />
+		<operate>
+			<set id="alchemist" value="area.getNPC('alchemist')" />
+			<move object="alchemist" to="player" />
+			<play object="alchemist" animation="teleport_in" modal="true" />
+			<set id="drag" value="area.getObject('adult_dragon')" />
+			<choose>
+				<section if="drag != null">
+					<section if="player.tile_x > drag.tile_x-1" with="fade">
+						<move object="player" x="drag.tile_x-3" y="drag.tile_y-1" />
+						<move object="alchemist" to="player" />
+					</section>
+					<facing object="alchemist" dir="right" />
+					<choose>
+						<section if="!player.hasQuest('hatch_dragons')">
+							<dialogue section="alchemist" id="dragon4" speaker="alchemist" />
+							<light x="player.tile_x" y="player.tile_y" size="10" />
+							<dialogue section="alchemist" id="dragon5" speaker="drag" />
+							<dialogue section="alchemist" id="dragon6" speaker="alchemist" />
+							<dialogue section="alchemist" id="dragon7" speaker="drag" />
+							<dialogue section="alchemist" id="dragon8" speaker="alchemist" />
+							<dialogue section="alchemist" id="dragon9" speaker="drag" />
+							<quest id="hatch_dragons" />
+							<section if="!player.hasQuest('hatch_dragons')">
+								<dialogue section="alchemist" id="dragon10" speaker="drag" />
+								<action>drag.awaken()</action>
+							</section>
+						</section>
+						<choose if="!player.questComplete('hatch_dragons')">
+							<section if="player.canCompleteQuest('hatch_dragons')">
+								<dialogue section="alchemist" id="dragon12" speaker="drag" />
+								<dialogue section="alchemist" id="dragon12_a" speaker="alchemist" />
+								<dialogue section="alchemist" id="dragon13" speaker="drag" />
+								<dialogue section="alchemist" id="dragon14" speaker="drag" />
+								<complete quest="hatch_dragons" />
+								<structure id="dragon_lair2" x="this.tile_x" y="this.tile_y" />
+								<action>var d = area.getStructureById('dragon_lair2'); d.setAnimal("adult_dragon", 8000); drag.remove();</action>
+								<action>player.overlapChanged()</action>
+							</section>
+							<dialogue section="alchemist" id="dragon11" speaker='alchemist' />
+						</choose>
+					</choose>
+				</section>
+				<section>
+					<remove quest="hatch_dragons" />
+					<dialogue section="alchemist" id="lair1" speaker="alchemist" />
+					<dialogue section="alchemist" id="lair2" speaker="alchemist" />
+					<dialogue section="alchemist" id="lair3" speaker="alchemist" />
+					<structure id="dragon_lair2" x="this.tile_x" y="this.tile_y" />
+					<action>player.overlapChanged()</action>
+				</section>
+			</choose>
+			<play object="alchemist" animation="teleport_out" modal="true" />
+			<move object="alchemist" structure="area.getStructureById('lab')" />
+		</operate>
+	</structure>
+	<procedure id="dragon_lair.raise_dragon">
+		<closeWindows /><set id="from" value="this.animal.info.getFamiliar()" /><sound id="dragon_transform" />
+		<set id="to" value="getItem(into).getFamiliar()" />
+		<action>this.setAnimal(into, getItem(into).getDurability(), this.animal.getNameStr()); this.animalVisible(false);</action>
+		<addAnimation to="this">
+			<add id="bg" tile="dragon_lair_fx_bg" animation="dragon_lair_fx" alpha="0" />
+			<add id="first" tile="from.get('tile')" animation="from.get('animation')+'.idle'" offsetX="-0.5" offsetY="-1" x="80" y="96" />
+			<add id="second" tile="to.get('tile')" animation="to.get('animation')+'.idle'" offsetX="-0.5" offsetY="-1" x="80" y="96" alpha="0" />
+			<add id="fg" tile="dragon_lair_fx_fg" animation="dragon_lair_fx" alpha="0" />
+			<lerp id="bg" alpha="1" seconds="0.25" />
+			<lerp id="fg" alpha="1" seconds="0.25" modal="true" />
+			<lerp id="first" alpha="0" seconds="0.5" />
+			<lerp id="second" alpha="1" seconds="0.5" modal="true" />
+			<lerp id="bg" alpha="0" seconds="0.25" />
+			<lerp id="fg" alpha="0" seconds="0.25" modal="true" />
+			<action>this.animalVisible(true)</action>
+		</addAnimation>
+	</procedure>
+	<action>
+		function summonDragonForLair(player, lair, summon){
+			if(lair.area == null || player == null) return false; var areas = [lair.area, (lair.area.id == "magic1")?player.areas.map.get("start"):player.areas.map.get("magic1")];
+			for(area in areas){
+				if(area == null) continue; for(o in area.getObjectsById("fly_adult_dragon")) if(o.player == null){
+					if(summon){
+						lair.setAnimal("adult_dragon", o.fuel, o.name); lair.inventory.copyFrom(o.inventory); o.inventory.clear(); o.area.removeObject(o);
+					} return true;
+				} for(s in area.getStructuresById("dragon_lair2")) if(s != lair &amp;&amp; s.animal != null &amp;&amp; s.animal.info.id == 'adult_dragon'){
+					if(summon){
+						lair.setAnimal("adult_dragon", s.animal.getFeed(), s.animal.getNameStr()); lair.inventory.copyFrom(s.inventory); s.inventory.clear(); s.setAnimal(null);
+					} return true;
+				}
+			} return false;
+		}
+	</action>
+	<structure id="dragon_lair2" width="192" height="112" image="dragon_lair.png" type="lair" title="structure.tooltip.dragon_lair2" animalX="80" animalY="96" slot="structure.dragon_lair" allowFlying="true" includeInventory="57">
+		<tooltip id="dragon_lair2" if="area.getObject('adult_dragon') == null" />
+		<animal id="dragon" />
+		<animal id="adult_dragon" />
+		<recipe type="dragon_feed" />
+		<animal id="young_dragon" />
+		<familiar option="actions.enrage" if="area.id == 'start' && this.animal.info.id == 'adult_dragon' && area.getObject('adult_dragon') == null">
+			<window type="prompt" message="actions.enrage_prompt">
+				<object id="adult_dragon" x="this.tile_x+2.5" y="this.tile_y-1" /><action>area.getObject('adult_dragon').awaken(); this.setAnimal(null);</action><closeWindows />
+			</window>
+		</familiar>
+		<listItem icon="adult_dragon.ico" title="structure.tooltip.summon_dragon" enabled="this.animal == null && summonDragonForLair(player, this, false)">
+			<action>if(this.animal == null) summonDragonForLair(player, this, true);</action>
+		</listItem>
+		<listItem icon="adult_dragon.ico" title="structure.tooltip.fly_dragon" fail="'warning.no_item{item:[item=adult_dragon]}'">
+			<tooltip type="requires" requires="quests.requires">
+				<option>
+					<value icon="adult_dragon.ico" title="item.names.adult_dragon" if="this.animal != null && this.animal.info.id == 'adult_dragon'" />
+					<value icon="adult_dragon.ico" title="structure.place_in_lair{item:[item=adult_dragon]}" error="true" />
+				</option>
+			</tooltip>
+			<closeWindows /><set id="_name" value="this.animal.getNameStr()" />
+			<object id="fly_adult_dragon" x="this.tile_x+2.5" y="this.tile_y-1" pre="true">this.name = _name;</object>
+			<action>setFlag('jump_water', true); fly_adult_dragon.setFuel(this.animal.getFeed()); fly_adult_dragon.inventory.copyFrom(this.inventory); this.inventory.clear(); this.setAnimal(null); fly_adult_dragon.mount(player);
+			</action><achievement id="dragon_flight" />
+		</listItem>
+		<listItem icon="young_dragon.ico" title="structure.tooltip.raise_into{into:[item=adult_dragon]}" fail="(this.animal != null && this.animal.info.id == 'young_dragon')?'warning.ingredients':'warning.no_item{item:[item=young_dragon]}'">
+			<tooltip type="requires" requires="quests.requires">
+				<option>
+					<value icon="young_dragon.ico" title="item.names.young_dragon" if="this.animal != null && this.animal.info.id == 'young_dragon'" />
+					<value icon="young_dragon.ico" title="structure.place_in_lair{item:[item=young_dragon]}" error="true" />
+				</option>
+				<requirement icon="fire_gem.ico" title="item.names.fire_gem" count="player.getItemCountStorehouse('fire_gem')" of="1" />
+			</tooltip>
+			<set id="into" value="'adult_dragon'" /><item id="fire_gem" count="-1" storehouse="true" /><run procedure="dragon_lair.raise_dragon" />
+		</listItem>
+		<listItem icon="baby_dragon.ico" title="structure.tooltip.raise_into{into:[item=young_dragon]}" fail="(this.animal != null && this.animal.info.id == 'dragon')?'warning.ingredients':'warning.no_item{item:[item=dragon]}'">
+			<tooltip type="requires" requires="quests.requires">
+				<option>
+					<value icon="baby_dragon.ico" title="item.names.dragon" if="this.animal != null && this.animal.info.id == 'dragon'" />
+					<value icon="baby_dragon.ico" title="structure.place_in_lair{item:[item=dragon]}" error="true" />
+				</option>
+				<requirement icon="dragonblood.ico" title="item.names.dragonblood" count="player.getItemCountStorehouse('dragonblood')" of="5" />
+			</tooltip>
+			<set id="into" value="'young_dragon'" /><item id="dragonblood" count="-5" storehouse="true" /><run procedure="dragon_lair.raise_dragon" />
+		</listItem>
+	</structure>
+	
+	<tilesheet id="tent.png" width="60" height="32" />
+	<tile id="tent" sheet="tent.png" x="0" y="0" />
+	
+	<animation id="door.idle" count="6" />
+	<structure id="cave" width="32" height="32" image="cave.png" name="enter" type="door" animation="door">
+		<afterTeleport><dig x="player.tile_x" y="player.tile_y" speed="2" /></afterTeleport>
+	</structure>
+	<tilesheet id="doorway.png" width="32" height="32" /><tile id="doorway" sheet="doorway.png" />
+	<structure id="doorway" tile="doorway" name="enter" type="door" animation="door">
+		<afterTeleport><dig x="player.tile_x" y="player.tile_y" speed="2" /></afterTeleport>
+	</structure>
+	
+	<tilesheet id="golem.png" width="64" height="64" />
+	<tile id="golem.statue" sheet="golem.png" x="0" y="0" />
+	<animation id="golem.statue.idle" count="6" offsetY="32" />
+	<procedure id="activate.gem_structure">
+		<choose>
+			<window type="prompt" message="structure.activate" item="gem" if="player.getItemCount(gem) > 0">
+				<choose>
+					<section if="into != null" >
+						<item eval="gem" count="-1" /><sound eval="sfx" structure="this" if="sfx != null" />
+						<play object="this" animation="activate" modal="true" />
+						<structure eval="into" x="this.xPos/Tile.SIZE" y="this.yPos/Tile.SIZE" />
+						<achievement eval="achievement" if="achievement != null" />
+					</section>
+					<dialogue section="warning" id="incomplete" />
+				</choose>
+			</window>
+			<dialogue section="structure" id="activate_fail" />
+		</choose>
+	</procedure>
+	<structure id="golem" width="128" height="64" tile="doorway" name="activate" animation="golem.statue">
+		<tile id="golem.statue" x="-3" y="0" />
+		<tile id="golem.statue" x="1" y="0" />
+		<operate><set id="gem" value="'earth_gem'" /><set id="into" value="'golem.active'" /><set id="achievement" value="null" /><set id="sfx" value="null" /><run procedure="activate.gem_structure" /></operate>
+	</structure>
+	<structure id="golem.active" width="128" height="64" tile="doorway" name="enter" animation="golem.statue">
+		<tile id="golem.statue" name="left" lerp="true" x="-3" y="0" />
+		<tile id="golem.statue" name="right" lerp="true" x="1" y="0" />
+		<over>
+			<lerp object="this.getTileById('left')" modal="false" x="-1" seconds="1" />
+			<lerp object="this.getTileById('right')" modal="false" x="1" seconds="1" />
+			<action>this.playSFX("rock_door", false);</action>
+		</over>
+		<out>
+			<lerp object="this.getTileById('left')" modal="false" x="0" seconds="1" />
+			<lerp object="this.getTileById('right')" modal="false" x="0" seconds="1" />
+			<action>this.playSFX("rock_door", false);</action>
+		</out>
+		<operate><teleport area="golem_factory" x="2" y="6" with="ellipse" /></operate>
+	</structure>
+	<animation id="golem_factory.idle" count="1" />
+	<animation id="golem_factory.active" count="6" x="1" glow="true" />
+	<structure id="golem_factory" width="128" height="112" image="golemfactory.png" name="activate" type="crafting" title="actions.craft">
+		<recipe type="golem_factory" />
+		<listItem icon="golem.ico" title="structure.golemech" fail="warning.ingredients">
+			<tooltip type="requires" requires="common.requires">
+				<requirement icon="earth_gem.ico" title="item.names.earth_gem" count="player.getItemCount('earth_gem')" of="1" />
+				<option info="true"><value title="structure.tooltip.golemech2" red="true" /></option>
+				<option info="true"><value title="structure.tooltip.golemech" /></option>
+			</tooltip>
+			<item id="earth_gem" count="-1" hidden="true" /><object id="golemech" x="10" y="6" /><closeWindows />
+		</listItem>
+		<over><action if="area.getObject('golemech') == null">this.loopAnimation("active")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><section if="area.getObject('golemech') != null" ><dialogue section="structure" id="golem_factory" /><stop /></section></operate>
+	</structure>
+	<include id="crafting.xml" />
+</structures>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<tilesheet id="items.png" width="16" height="10" />
+	<tile id="wood.ico" sheet="items.png" x="19" />
+	<tile id="meat.ico" sheet="items.png" x="13" />
+	<tile id="stone_axe.ico" sheet="items.png" x="48" />
+	<tile id="cloth.ico" sheet="items.png" x="28" />
+	
+	<tile id="coins" sheet="items.png" x="25" />
+	
+	<itemtype id="food" icon="meat" action="eat" />
+	<itemtype id="resource" icon="wood" />
+	<itemtype id="equipment" icon="stone_axe" />
+	<itemtype id="animal" icon="pig" />
+	<itemtype id="tool" icon="backpack" />
+	<itemtype id="potion" icon="attack_potion" />
+	<itemtype id="object" icon="fence" default="true" />
+	<itemtype id="blueprint" icon="blueprint.ico" canStore="false" showCount="false" syncPlayers="true" />
+	
+	<tilesheet id="icons.png" width="16" height="10" />
+	<tile id="stat.full" sheet="items.png" x="318" />
+	<tile id="stat.health" sheet="icons.png" x="33" />
+	<tile id="stat.stamina" sheet="icons.png" x="34" />
+	<tile id="stat.regen_health" equals="stat.health" />
+	<tile id="stat.regen_stamina" equals="stat.stamina" />
+	<tile id="stat.weight" sheet="icons.png" x="35" />
+	<tile id="stat.critical" sheet="icons.png" x="36" />
+	<tile id="stat.evasion" sheet="icons.png" x="37" />
+	<tile id="stat.mine_speed" sheet="icons.png" x="38" />
+	<tile id="stat.sight" sheet="icons.png" x="39" />
+	<tile id="stat.attack" sheet="icons.png" x="40" />
+	<tile id="stat.defense" sheet="icons.png" x="41" />
+	<tile id="stat.cut" sheet="icons.png" x="42" />
+	<tile id="stat.range" sheet="icons.png" x="43" />
+	<tile id="stat.fishing" sheet="icons.png" x="44" />
+	<tile id="stat.speed" sheet="icons.png" x="45" />
+	<tile id="stat.endurance" sheet="icons.png" x="46" />
+	<tile id="stat.bargaining" sheet="icons.png" x="47" />
+	<tile id="stat.mine" sheet="icons.png" x="48" />
+	<tile id="stat.trap" sheet="icons.png" x="49" />
+	<tile id="stat.reset" sheet="icons.png" x="8" />
+	<tile id="reset_skills.ico" sheet="icons.png" x="0" />
+	<animation id="reset_skills.ico" count="8"><frame x="8" length="12" /></animation>
+	<tile id="set_time.ico" sheet="icons.png" x="9" />
+	<tile id="stat.timer" sheet="icons.png" x="10" />
+	<animation id="set_time.ico" count="12" />
+	<tile id="uncraft.ico" sheet="icons.png" x="21" />
+	<animation id="uncraft.ico" count="12" />
+</data>

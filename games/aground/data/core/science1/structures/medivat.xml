@@ -1,0 +1,18 @@
+<tilesheet id='medivat.png' width='32' height='32'>
+	<image frame='0' x='0' y='0' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='1' x='0' y='28' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='2' x='0' y='56' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='3' x='17' y='0' width='27' height='6' offsetX='0' offsetY='26' />
+	<image frame='4' x='17' y='6' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='5' x='17' y='34' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='6' x='34' y='6' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='7' x='51' y='6' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='8' x='68' y='6' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='9' x='34' y='34' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='10' x='51' y='34' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='11' x='68' y='34' width='17' height='28' offsetX='0' offsetY='4' />
+	<image frame='12' x='17' y='62' width='11' height='17' offsetX='2' offsetY='13' />
+	<image frame='13' x='34' y='62' width='14' height='15' offsetX='1' offsetY='14' />
+	<image frame='14' x='51' y='62' width='15' height='19' offsetX='0' offsetY='12' />
+	<image frame='15' x='66' y='62' width='13' height='16' offsetX='1' offsetY='13' />
+</tilesheet>

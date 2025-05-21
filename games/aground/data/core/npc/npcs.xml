@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<tilesheet id="expressions.png" width="22" height="18" />
+	<tile id="expressions.scared" sheet="expressions.png" x="0" /><animation id="expressions.scared" count="4" />
+	
+	<animation id="npc.idle">
+		<frame x="1" length="4" />
+		<frame x="0" length="2" />
+		<frame x="1" length="32" />
+		<frame x="1" count="4" />
+		<frame x="1" length="12" />
+	</animation>
+	<animation id="npc.talk" count="4" x="5">
+		<frame x="1" length="4" />
+		<frame x="0" length="2" />
+		<frame x="1" length="4" />
+		<frame x="1" count="4" />
+	</animation>
+	<animation id="npc.walk" count="9" x="10"/>
+	
+	<include id="builder.xml" />
+	<include id="farmer.xml" />
+	<include id="miner.xml" />
+	<include id="trader.xml" />
+	<include id="alchemist.xml" />
+	<include id="hunter.xml" />
+    
+    <include id="devs.xml" includeRoot="true" />
+    <tile id="dev.david" sheet="devs.png" x="52" y="0" />
+    <tile id="dev.aaron" sheet="devs.png" x="0" y="0" />
+    <tile id="dev.chase" sheet="devs.png" x="24" y="0" />
+	<tile id="dev.natalie" sheet="devs.png" x="66" y="0" />
+    <animation id="dev.david" count="14" reverse="true" />
+    <animation id="dev.aaron" count="24" reverse="true" />
+    <animation id="dev.chase" count="28" reverse="true" />
+	<animation id="dev.natalie" count="8" reverse="true" />
+	
+	<credits time="20" title="Beta Testers">
+		Adam "Unowninator" Lapidus, Airom, Cirem52, craigpent, Etrotta, Geronimo216, Isobel A Wright, Lauren X. Pham, Luna Reweti, Mateusz Bruzda, Matt P, Preston Mott, Ramsis, ShilohAK, Thelelanator
+	</credits>
+	
+	<credits time="60" title="Backers">
+Andrew Dunne, Caleb Smith
+
+Dash Buck, Dicewolf, Donald Reynolds III, Juraj Kirchheim
+
+Solar Rifle, Matthew Decker
+
+Fractured Empiricist, Ian Glidewell, lev, NateIsAte, valkarii
+
+Annalisia, Filip M. Lindeberg, Fredrick Atchison
+
+Aaron Gipe, Alyssa Schreiber, Amemir, Austin Cottle, Bill Maletz, Bobby Loggains, Cristan Silan, Dana "Biddu" Fleming, Ebony riddle, Elis Hussey, Eoin Sheehan, Excelsior!, Guy28, Hannes Påfvelsson, Illusion-XIII, Jacky Faber, James Pacheco, Joe Sunter, Jonas D., Kenneth Montoya, Lance Kross, Laurence Goldinger, Michael Krepelka, Naïve Sprites, purpleyukari, Ratzlak, SENHOR SUPREMO DO UNIVERSO, Shawn "AstroCreep95" Matthews, sillyna, Stina Schwebke, Taylor Breckon, Troy Lowe, Tump (No, not Trump ffs.), vladspellbinder, Yitzchak Markovitz
+
+ABlackfyre, aimir, Alan Lewis, Alex Pugmire, Alexander, All Hail David &amp; Crew, Allen Beck, Andrew Resnick, Andrew Topperwien, Andrzej Sylla, Brandon "Grim" Moss, Cameron "Pengo" Genard, Cody Gronseth, Colrick, craigpent, Damon Zarro, Darioon Cloudgazer, David Wildasin, Dennis Poulsen, Deonna Coakley, Elder, Enzo Petit, Eric Stevens, Essayjinx, Fairyvamp AES, Filipe JFA Almeida, Flo Fou, Frank Milliren, gASK, George Noe, House K, IA Blythe, JasonDuiuc, Joebob the VeryPeeeved, Jonatan Tagle, Jonathan Beck, Josh (Jek) Wren, Kimi Funakoshi, kpottyman, KSWu&amp;KLY&amp;CaitlynWu, Kulvar, Mahkii900, Makiah Woo, Mama Heyou, Marc G. Dennis, Michael Merz, Mike Sutton, MiwAuturu, Mudkrab, Nathanael Ray Durbin, Nic Jackson, Nick Mooney, Norberto Abanes, Oscar Cunningham, Per Kristian Brastad, perry charles, R3FRSH, Ray Gibbs, Rebecca Blatt, sbiron119, Sean Burnett, Silvara DeWinter, Sir Fat Pikachu of youtube land, @sj_stock, Snowydragon, Taylor Luke, TDrev, this is not a name, ThriceElite, Travis Schneider, Tri Kiet Ho, Undercover_Llama, Unowninator, Wingzerogundam00, Zuiter
+
+animagus_kitty, Denis Reshetniak, Jordan Hart aka Infinilude, Julia Stein, Lucas R. Brunelle, Lurofen (Jasmin K.), Mario Illinger, Mark Smallwood, Parsnipnose, Private Loli., Thibaud Galloy
+
+A. Maxim, Alex Friele, Alex Laitinen, Alkira Taylor, ANNA MUNAKATA, Arion Sprague, Brian Wildrick, Corentin DERVOUT, Finn Spencer, Fletcher St-Germain, Guillaume Wigno, James J Tree, Leo Zacharias Jansson, Levent B. Güngen, Malcolm Gussick, Noah Wright, RelatedGuy, Richard M. Hopple, Jr., Tapsa, Taylor C. Berrier a.k.a. thegalaxy89, Tyler Daniel
+	</credits>
+</data>

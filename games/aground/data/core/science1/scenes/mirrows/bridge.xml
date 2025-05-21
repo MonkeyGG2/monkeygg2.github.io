@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<procedure id="science_end">
+		<menu section="common">
+			<dialogue section="common" id="save_prompt_science" />
+			<choice id="yes"><save fakeDismount="true" /></choice>
+			<choice id="no" />
+		</menu>
+		<credits /><title with="fade" />
+	</procedure>
+	<procedure id="science1_end"><run procedure="science_end" /></procedure>
+	<procedure id="science1.bridge">
+		<layer id="bg" />
+		<layer id="planets" />
+		<layer id="info" />
+		<layer id="info2" />
+		<text text="system.start" align="center" color="ffffff" scale="0.5" width="49" height="8" x="12" y="3" />
+		<text text="system.desc.start" reveal="true" color="ffffff" scale="0.5" width="86" x="7" y="125" />
+		<wait seconds="2" />
+		<dialogue section="mirrows" id="nav1" />
+		<layer id="location" /><hide id="location" /><lerp object="location" alpha="1" seconds="0.25" />
+		<text text="system.planet.start{char:c}" align="center" color="ffffff" scale="0.5" width="69" height="8" x="183" y="97" />
+		<text text="system.planet.desc.start" reveal="true" color="ffffff" scale="0.5" width="67" x="184" y="107" />
+		<wait seconds="4" />
+	</procedure>
+	<scene id="science1.bridge">
+		<animation id="planets" count="1">
+			<append tile="orbit2" animation="single" /><append tile="orbit4" animation="single" />
+			<append tile="planet2" animation="planet.start.dwarf" x="-54" y="-15" />
+			<append tile="planet7" animation="planet.start" x="-23" y="-4" />
+			<append tile="planet8" animation="planet.start.gas" x="53" y="38" />
+		</animation>
+		<layer id="bg" tile="nav.bg.planet" x="0" y="0" />
+		<layer id="info" tile="nav.bg.top" animation="nav.bg.top" x="0" y="0" />
+		<layer id="info2" tile="star.select" animation="star.select" x="0" y="0" />
+		<layer id="planets" tile="orbit1" animation="planets" x="0" y="0" />
+		<layer id="location" tile="nav.select" animation="nav.select" x="71" y="57" />
+		<layer id="bg_mirrows" image="{core}/science1/scenes/mirrows/bg.png" />
+		<layer id="mr" tile="scene.mirrows.mr" animation="scene.mirrows.mr.idle" talk="scene.mirrows.mr.talk" sfx="talking4" x="0" y="0" />
+		<layer id="mrs" tile="scene.mirrows.mrs" animation="scene.mirrows.mrs.idle" talk="scene.mirrows.mrs.talk" sfx="talking6" x="0" y="0" />
+		
+		<show id="screen">
+			<run procedure="science1.bridge" />
+		</show>
+		<show id="end">
+			<run procedure="science1.bridge" />
+			<action>setFlag('seen_nav', true)</action>
+			<dialogue section="mirrows" id="nav2" />
+			<wait seconds="1" />
+			<section with="fade">
+				<removeAll /><layer id="bg_mirrows" />
+				<layer id="mr" /><layer id="mrs" />
+			</section>
+			<dialogue section="mirrows" id="nav3" speaker="player" />
+			<dialogue section="mirrows" id="nav4" speaker="mr" />
+			<dialogue section="mirrows" id="nav5" speaker="player" />
+			<dialogue section="mirrows" id="nav6" speaker="mrs" />
+			<dialogue section="mirrows" id="nav7" speaker="mr" />
+			<wait seconds="1" />
+			<run procedure="science1_end" />
+		</show>
+	</scene>
+</data>

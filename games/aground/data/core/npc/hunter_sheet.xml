@@ -1,0 +1,28 @@
+<tilesheet id='hunter.png' width='16' height='16'>
+	<image frame='0' x='0' y='0' width='13' height='11' offsetX='3' offsetY='5' />
+	<image frame='1' x='13' y='0' width='13' height='11' offsetX='3' offsetY='5' />
+	<image frame='2' x='26' y='0' width='13' height='11' offsetX='3' offsetY='5' />
+	<image frame='3' x='0' y='11' width='11' height='11' offsetX='4' offsetY='5' />
+	<image frame='4' x='0' y='22' width='11' height='11' offsetX='4' offsetY='5' />
+	<image frame='5' x='0' y='33' width='11' height='11' offsetX='4' offsetY='5' />
+	<image frame='6' x='11' y='11' width='11' height='11' offsetX='4' offsetY='5' />
+	<image frame='7' x='22' y='11' width='11' height='11' offsetX='4' offsetY='5' />
+	<image frame='8' x='33' y='11' width='11' height='11' offsetX='4' offsetY='5' />
+	<image frame='9' x='11' y='22' width='13' height='11' offsetX='3' offsetY='5' />
+	<image frame='10' x='39' y='0' width='10' height='11' offsetX='5' offsetY='5' />
+	<image frame='11' x='11' y='33' width='13' height='7' offsetX='3' offsetY='8' />
+	<image frame='12' x='11' y='40' width='13' height='9' offsetX='3' offsetY='6' />
+	<image frame='13' x='24' y='22' width='16' height='7' offsetX='0' offsetY='8' />
+	<image frame='14' x='24' y='29' width='15' height='7' offsetX='1' offsetY='8' />
+	<image frame='16' x='24' y='36' width='13' height='7' offsetX='3' offsetY='8' />
+	<image frame='17' x='24' y='43' width='13' height='6' offsetX='3' offsetY='9' />
+	<image frame='18' x='0' y='44' width='5' height='1' offsetX='6' offsetY='9' />
+	<image frame='19' x='0' y='45' width='2' height='1' offsetX='7' offsetY='11' />
+	<image frame='20' x='2' y='45' width='2' height='1' offsetX='7' offsetY='11' />
+	<image frame='22' x='4' y='45' width='1' height='1' offsetX='7' offsetY='11' />
+	<image frame='15' equals='14' offsetX='1' offsetY='8' />
+	<image frame='21' equals='20' offsetX='7' offsetY='11' />
+	<image frame='23' equals='19' offsetX='7' offsetY='11' />
+	<image frame='24' equals='22' offsetX='7' offsetY='11' />
+	<image frame='25' equals='22' offsetX='7' offsetY='11' />
+</tilesheet>

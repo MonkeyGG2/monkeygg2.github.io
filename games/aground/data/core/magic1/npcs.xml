@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<quest id="wyrm_hive" giver="alchemist" exp="250">
+		<area id="wyrm_hive" name="quests.find_wyrm_hive" count="1" />
+		<item id="spirit_gem" count="1" hidden="true" />
+	</quest>
+	<quest id="spirit_gem" giver="alchemist" exp="250">
+		<flag id="activate_forge" name="structure.forge" tile="fire_gem.ico" />
+		<flag id="activate_synthesizer" name="structure.synthesizer" tile="water_gem.ico" />
+	</quest>
+	<quest id="alter_gem" giver="alchemist" exp="250">
+		<item id="wyrm" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</quest>
+	<quest id="oldone" giver="alchemist" exp="500">
+		<kill id="alien" name="common.complete" count="1" hidden="true" />
+	</quest>
+	<object id="alchemist_magic_hotspot" width="1024" height="4096" overlapVehicle="true">
+		<over>
+			<stop if="player.vehicle != null && player.vehicle.info.xml.get('drone') == 'true'" />
+			<section if="player.areas.get('start').getStructureById('dragon_lair2') != null">
+				<section with="fade">
+					<object id="alchemist_magic" x="0" />
+					<remove object="this" />
+					<action if="player.vehicle != null">
+						player.vehicle.setPosition(0, -16); player.vehicle.doDismount(true);
+					</action>
+					<move object="player" x="7" />
+					<move object="alchemist_magic" to="player" />
+				</section>
+				<play object="alchemist_magic" animation="teleport_in" modal="true" />
+				<dialogue section="alchemist" id="magic_intro1" speaker='alchemist_magic' />
+				<facing object="alchemist_magic" dir="right" />
+				<dialogue section="alchemist" id="magic_intro2" speaker='alchemist_magic' />
+				<lerp object="alchemist_magic" x="9" seconds="0.125" />
+				<move object="alchemist_magic" x="9" />
+				<dialogue section="alchemist" id="magic_intro3" speaker='alchemist_magic' />
+				<dig x="10" y="0" speed="2" /><dig x="11" y="0" speed="2" /><dig x="12" y="0" speed="2" /><dig x="13" y="0" speed="2" />
+				<dig x="10" y="1" speed="2" /><dig x="11" y="1" speed="2" /><dig x="12" y="1" speed="2" /><dig x="13" y="1" speed="2" />
+				<dialogue section="alchemist" id="magic_intro4" speaker='alchemist_magic' />
+				<lerp object="alchemist_magic" x="13" seconds="0.25" />
+				<move object="alchemist_magic" x="13" />
+				<object id="chest" x="14" y="-1">
+					this.inventory.addItems(Item.get("coal"), 8);
+					this.inventory.addItems(Item.get("steak"), 5);
+					this.inventory.addItems(Item.get("bread"), 5);
+					this.inventory.addItems(Item.get("net"), 2);
+					this.inventory.addItems(Item.get("quartz"), 5);
+					this.inventory.addItems(Item.get("anvil"), 1);
+					this.inventory.addItems(Item.get("steel_workbench"), 1);
+					this.inventory.addItems(Item.get("furnace"), 1);
+					this.inventory.addItems(Item.get("campfire"), 1);
+					this.inventory.addItems(Item.get("stone_pickaxe"), 1);
+					this.inventory.addItems(Item.get("fishing_rod"), 1);
+				</object>
+				<action>chest.alpha = 0;</action><lerp object="chest" alpha="1" seconds="0.25" />
+				<object id="fence" x="30" />
+			</section>
+		</over>
+	</object>
+	<animation id="alchemist.repair" equals="alchemist.idle" />
+	<npc id="alchemist_magic" tile="alchemist" action="talk" animation="alchemist" talk_sfx="talking2" speed="2" night="true" mine="2" title="npc.alchemist" pauseIdle="oldone.hostile">
+		<idle class="repair">
+			<repair structure="magic_house" /><repair structure="magic_forge" />
+			<repair structure="magic_forge_off" /><repair structure="magic_farm_off" />
+			<repair structure="magic_farm">
+				<addItem id="focus_gem" if="player.questComplete('alter_gem') && random() < 0.3" />
+			</repair>
+		</idle>
+		<tooltip if="getFlag('oldone.hostile') && area.getObject('alien') != null" />
+		<operate>
+			<section if="!getFlag('final_boss_defeat') && getFlag('oldone.hostile') && area.getObject('alien') == null"><quest /><run procedure="magic1.alien_defeated" /></section>
+			<section if="(o = area.getObject('fly_adult_dragon')) != null && o.tile_y != -1 && o.player == null">
+				<dialogue section="alchemist" id="call_dragon" speaker='this' />
+				<move object="o" x="this.tile_x" with="fade" />
+			</section>
+			<section if="getFlag('oldone.hostile') || area.getObject('alchemist_magic_hotspot') != null" />
+			<section if="player.hasItemStorehouse('dark_fur') && !getFlag('alchemist.shadow_cape')">
+				<quest />
+				<dialogue section="alchemist" id="shadow_cape1" speaker='this' />
+				<dialogue section="alchemist" id="shadow_cape2" speaker='this' />
+				<action>setFlag('alchemist.shadow_cape', true)</action>
+			</section>
+			<section if="player.hasItemStorehouse('rusty_axe') && !player.hasQuest('thunder_axe')">
+				<dialogue section="alchemist" id="axe1" speaker='this' />
+				<dialogue section="alchemist" id="axe2" speaker='this' />
+				<quest id="thunder_axe" ask="false" />
+			</section>
+			<section if="!player.questComplete('thunder_axe') && player.canCompleteQuest('thunder_axe')">
+				<dialogue section="alchemist" id="axe3" speaker='this' />
+				<complete quest="thunder_axe" />
+				<item id="thunder_axe" modal="true" />
+				<dialogue section="alchemist" id="axe4" speaker='this' />
+			</section>
+			<section if="!player.hasQuest('wyrm_hive')">
+				<dialogue section="alchemist" id="wyrm1" speaker='this' />
+				<dialogue section="alchemist" id="wyrm2" speaker='this' />
+				<quest id="wyrm_hive" />
+				<action>this.playAnimation("quest")</action>
+			</section>
+			<choose if="!player.questComplete('wyrm_hive')">
+				<section if="player.canCompleteQuest('wyrm_hive')">
+					<dialogue section="alchemist" id="wyrm4" speaker='this' />
+                    <complete quest="wyrm_hive" useResources="false" />
+                    <dialogue section="alchemist" id="wyrm5" speaker='this' />
+                    <item id="goggles" modal="true" />
+				</section>
+				<dialogue section="alchemist" id="wyrm3" speaker='this' />
+			</choose>
+			<section if="!player.hasSeenItem('goggles')">
+				<quest /><dialogue section="alchemist" id="wyrm5" speaker='this' />
+				<item id="goggles" modal="true" />
+			</section>
+			<choose if="getFlag('alchemist_first')">
+				<section if="!player.hasQuest('spirit_gem')">
+					<dialogue section="alchemist" id="elementals1" speaker='this' />
+					<quest id="spirit_gem" /><action>this.playAnimation("quest")</action>
+				</section>
+				<section if="player.canCompleteQuest('spirit_gem') && !player.questComplete('spirit_gem')">
+					<dialogue section="alchemist" id="spirit_gem" speaker='this' /><complete quest="spirit_gem" />
+				</section>
+				<dialogue section="alchemist" id="magic_farm1" speaker="this" if="!player.getFlag('activate_synthesizer') && player.hasItem('water_gem')" />
+				<dialogue section="alchemist" id="magic_forge1" speaker="this" if="!player.getFlag('activate_forge') && player.hasItem('fire_gem')" />
+				<choose if="getFlag('alchemist_second') && player.questComplete('spirit_gem')">
+					<section if="!player.hasQuest('alter_gem')">
+						<dialogue section="alchemist" id="alter_gem1" speaker='this' />
+						<dialogue section="alchemist" id="alter_gem2" speaker='this' />
+						<quest id="alter_gem" />
+						<action>this.playAnimation("quest")</action>
+					</section>
+					<choose if="!player.questComplete('alter_gem')">
+						<section if="player.canCompleteQuest('alter_gem')">
+							<dialogue section="alchemist" id="alter_gem3" speaker='this' />
+							<complete quest="alter_gem" useResources="false" />
+							<item id="fire_tusk" count="-1" storehouse="true" />
+							<item id="yeti_fur" count="-1" storehouse="true" />
+							<item id="alter_gem" count="1" modal="true" />
+							<action>var i = player.inventory.selectItem(Item.get("wyrm"), 0, null); if(i != null) i.increaseValue(player.inventory, -i.value);</action>
+							<dialogue section="alchemist" id="alter_gem4" speaker='this' />
+							<dialogue section="alchemist" id="alter_gem8" speaker='this' />
+						</section>
+						<group>
+							<dialogue section="alchemist" id="magic_farm2" speaker='this' />
+							<dialogue section="alchemist" id="magic_forge2" speaker='this' />
+							<dialogue section="alchemist" id="magic_farm3" speaker='this' />
+							<dialogue section="alchemist" id="magic_forge3" speaker='this' />
+						</group>
+					</choose>
+					<section if="player.getDigCount('magic1.stone') > 0 && !player.hasQuest('oldone')">
+						<dialogue section="alchemist" id="oldone1" speaker='this' />
+						<dialogue section="alchemist" id="oldone2" speaker='this' />
+						<quest id="oldone" />
+						<action>this.playAnimation("quest")</action>
+					</section>
+					<group>
+						<dialogue section="alchemist" id="alter_gem5" speaker='this' />
+						<dialogue section="alchemist" id="alter_gem6" speaker='this' />
+						<dialogue section="alchemist" id="alter_gem7" speaker='this' />
+						<dialogue section="alchemist" id="alter_gem8" speaker='this' />
+					</group>
+				</choose>
+				<group if="player.getFlag('activate_synthesizer') || player.getFlag('activate_forge')">
+					<dialogue section="alchemist" id="magic_farm2" speaker='this' if="player.getFlag('activate_synthesizer')" />
+					<dialogue section="alchemist" id="magic_forge2" speaker='this' if="player.getFlag('activate_forge')" />
+					<dialogue section="alchemist" id="magic_farm3" speaker='this' if="player.getFlag('activate_synthesizer')" />
+					<dialogue section="alchemist" id="magic_forge3" speaker='this' if="player.getFlag('activate_forge')" />
+					<dialogue section="alchemist" id="magic_farm4" speaker='this' if="!player.getFlag('activate_synthesizer')" />
+					<dialogue section="alchemist" id="magic_forge4" speaker='this' if="!player.getFlag('activate_forge')" />
+					<dialogue section="alchemist" id="elementals2" speaker='this' />
+					<dialogue section="alchemist" id="elementals3" speaker='this' />
+				</group>
+				<group>
+					<dialogue section="alchemist" id="elementals2" speaker='this' />
+					<dialogue section="alchemist" id="elementals3" speaker='this' />
+				</group>
+			</choose>
+            <group>
+                <dialogue section="alchemist" id="forest" speaker='this' />
+                <dialogue section="alchemist" id="sleep" speaker='this' />
+            </group>
+		</operate>
+		<onIdle><section if="getFlag('oldone.hostile')"><play object="this" animation="cast" loop="true" /><stop /></section></onIdle>
+	</npc>
+</npcs>

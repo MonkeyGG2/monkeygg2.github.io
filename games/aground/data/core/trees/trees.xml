@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<trees>
+	<include id="tree.xml" includeRoot="true" />
+	<tile id="conifer" sheet="tree.png" x="0" y="0" />
+	<tile id="tree" sheet="tree.png" x="24" y="0" />
+	<animation id="tree.hit" x="0" count="8" />
+	<animation id="tree.grow" x="8" count="4" />
+	<item id="tree_seed" type="animal" cost="50" weight="1" icon="seed.ico"><action id="plant" sfx="plant_seed" object="tree" /></item>
+	<tree id="tree" health="5" loot="wood" min="3" max="5" collect="2" grown="3" speed="0.002" tile="tree" generateO2="0.125">
+		<loot id="tree_seed" p="4" />
+		<loot id="eggs" p="1" />
+		<loot id="fruit" p="16" />
+	</tree>
+	
+	<animation id="conifer.grow" x="20" count="4" />
+	<animation id="conifer.hit" x="8" count="8" />
+	<item id="conifer_seed" type="animal" cost="80" weight="1" icon="seed.ico"><action id="plant" sfx="plant_seed" object="conifer" /></item>
+	<tree id="conifer" health="9" loot="wood" min="4" max="6" collect="2" grown="3" speed="0.002" tile="conifer" generateO2="0.125">
+		<loot id="conifer_seed" p="4" />
+		<loot id="eggs" p="1" />
+		<loot id="fruit" p="16" />
+	</tree>
+	<animation id="conifer_snow.grow" x="16" count="4" />
+	<animation id="conifer_snow.hit" x="0" count="8" />
+	<tree id="conifer_snow" health="9" loot="wood" min="5" max="8" collect="2" grown="3" speed="0.002" hitType="conifer" tile="conifer" generateO2="0.125">
+		<loot id="conifer_seed" p="4" />
+		<loot id="ice_berries" p="16" />
+	</tree>
+	
+	<tile id="bush" sheet="bush.png" x="0" y="0" />
+	<animation id="bush.grow" count="4" reverse="true" />
+	<bush id="bush" loot="berries" min="1" max="2" grown="3" speed="0.01" tile="bush" />
+	<animation id="bush_snow.grow" count="4" x="4" />
+	<animation id="bush_snow.harvest" x="8" count="6">
+		<frame x="13" length="8" />
+	</animation>
+	<bush id="bush_snow" loot="berries" min="1" max="2" grown="3" speed="0.02" tile="bush" />
+	
+	<item id="bush_seed" type="animal" cost="50" weight="1" icon="seed.ico"><action id="plant" sfx="plant_seed" object="bush" /></item>
+	
+	<animation id="red_bush.grow" count="5" reverse="true" />
+	<tilesheet id="red_bush.png" width="8" height="8" />
+	<tile id="red_bush" sheet="red_bush.png" x="0" y="0" />
+	<bush id="red_bush" loot="red_berries" min="1" max="2" grown="4" speed="0.008" tile="red_bush" />
+	<animation id="red_bush_snow.harvest" x="10" count="5">
+		<frame x="14" length="8" />
+	</animation>
+	<animation id="red_bush_snow.grow" count="5" x="5" />
+	<bush id="red_bush_snow" animation="red_bush" loot="red_berries" min="1" max="2" grown="4" speed="0.016" tile="red_bush" />
+	
+	<item id="red_bush_seed" type="animal" cost="50" weight="1" icon="seed.ico"><action id="plant" sfx="plant_seed" object="red_bush" /></item>
+	
+	<tile id="ice_bush" sheet="ice_bush.png" x="0" y="0" />
+	<bush id="ice_bush" loot="ice_berries" min="1" max="2" grown="3" speed="0.01" tile="ice_bush" />
+	
+	<item id="ice_bush_seed" type="animal" cost="250" weight="1" icon="seed.ico"><action id="plant" sfx="plant_seed" object="ice_bush" /></item>
+</trees>

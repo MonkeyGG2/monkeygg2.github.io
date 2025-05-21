@@ -1,0 +1,27 @@
+<tilesheet id='alien_fx.png' width='64' height='64'>
+	<image frame='0' x='0' y='0' width='28' height='28' offsetX='18' offsetY='18' />
+	<image frame='1' x='28' y='0' width='28' height='28' offsetX='18' offsetY='18' />
+	<image frame='2' x='56' y='0' width='28' height='28' offsetX='18' offsetY='18' />
+	<image frame='3' x='84' y='0' width='28' height='28' offsetX='18' offsetY='18' />
+	<image frame='4' x='0' y='28' width='28' height='28' offsetX='18' offsetY='18' />
+	<image frame='5' x='28' y='28' width='28' height='27' offsetX='18' offsetY='19' />
+	<image frame='6' x='56' y='28' width='28' height='27' offsetX='18' offsetY='19' />
+	<image frame='7' x='84' y='28' width='28' height='27' offsetX='18' offsetY='19' />
+	<image frame='8' x='0' y='56' width='32' height='30' offsetX='16' offsetY='17' />
+	<image frame='9' x='0' y='86' width='38' height='36' offsetX='13' offsetY='14' />
+	<image frame='10' x='0' y='122' width='63' height='63' offsetX='1' offsetY='1' />
+	<image frame='11' x='63' y='122' width='64' height='63' offsetX='0' offsetY='1' />
+	<image frame='12' x='63' y='185' width='64' height='63' offsetX='0' offsetY='1' />
+	<image frame='13' x='32' y='56' width='26' height='26' offsetX='19' offsetY='18' />
+	<image frame='14' x='58' y='56' width='29' height='28' offsetX='17' offsetY='16' />
+	<image frame='15' x='38' y='86' width='34' height='33' offsetX='14' offsetY='13' />
+	<image frame='16' x='0' y='185' width='40' height='39' offsetX='11' offsetY='10' />
+	<image frame='17' x='112' y='0' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='18' x='112' y='28' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='19' x='87' y='56' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='20' x='87' y='71' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='21' x='102' y='56' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='22' x='102' y='71' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='23' x='72' y='86' width='15' height='15' offsetX='24' offsetY='24' />
+	<image frame='24' x='72' y='101' width='15' height='15' offsetX='24' offsetY='24' />
+</tilesheet>

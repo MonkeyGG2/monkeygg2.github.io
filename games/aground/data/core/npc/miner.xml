@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<tile id="miner" sheet="npc.png" x="27" />
+	<animation id="miner.mine" count="1" length="10" x="19">
+		<append tile="stone_pickaxe" animation="equipment.stone_pickaxe" offsetX="-0.25" offsetY="-0.25" behind="true" />
+	</animation>
+	
+	<quest id="smelter" giver="miner" exp="20" achievement="smelter">
+		<item id="coal" count="15" />
+	</quest>
+	<quest id="workshop" giver="miner" exp="40" achievement="workshop">
+		<item id="wood" count="5" />
+		<item id="iron_bar" count="5" />
+	</quest>
+	
+	<quest id="minecart" giver="miner" exp="80">
+		<item id="minecart" count="1" />
+		<item id="rail" count="12" />
+	</quest>
+	
+	<procedure id="miner_hints">
+		<group>
+			<dialogue section="miner" id="hotkey" speaker='this' />
+			<dialogue section="miner" id="hint1" speaker='this' />
+			<dialogue section="miner" id="hint4" speaker='this' />
+			<dialogue section="miner" id="hint5" speaker='this' />
+			<section if="!player.questComplete('workshop')">
+				<dialogue section="miner" id="hint6" speaker='this' />
+				<window type="craft" includeStorehouse="true"><recipe id="craft_torch" /></window>
+			</section>
+			<dialogue section="miner" id="hint2" speaker='this' />
+			<dialogue section="miner" id="hint3" speaker='this' />
+		</group>
+	</procedure>
+	
+	<npc id="miner" tile="miner" action="talk" talk_sfx="talking7">
+		<idle class="mineOre"><loot id="coal" /></idle>
+		<operate>
+			<section if="!player.hasSeenItem('stone_pickaxe') && !player.hasQuest('smelter')">
+				<quest />
+				<action>setFlag('pickaxe', true); setFlag('allow_hotkeys', true);</action>
+				<dialogue section="miner" id="introduce1" speaker='this' />
+				<dialogue section="miner" id="introduce2" speaker='this' />
+				<dialogue section="miner" id="introduce3" speaker='this' />
+				<item id="stone_pickaxe" modal="true" /><equip id="stone_pickaxe" ifEmpty="true" />
+				<dialogue section="miner" id="hint1" speaker='this' />
+			</section>
+			<run procedure="miner_hints" if="!getFlag('miner_hut')" />
+			<section if="!player.hasQuest('smelter')">
+				<dialogue section="miner" id="smelter" speaker='this' />
+				<quest id="smelter">
+					<dialogue section="miner" id="accept1" speaker='this' />
+				</quest>
+			</section>
+			<choose if="!player.questComplete('smelter')">
+				<section if="player.canCompleteQuest('smelter')">
+					<dialogue section="miner" id="smelter1" speaker='this' />
+					<complete quest="smelter" reserve="prepare" />
+					<structure id="smelter" x="23" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+						<onPlace>
+							<complete quest="smelter" reserve="finish" /><lerp object="object" alpha="1" seconds="0.25" />
+							<object id="farmer" x="46" /><pan toObject="player" seconds="0.25" />
+							<item id="smelter_blueprint" hidden="true" />
+							<dialogue section="miner" id="smelter2" speaker='this' />
+						</onPlace>
+						<onCancel><complete quest="smelter" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+					</structure>
+				</section>
+				<run procedure="miner_hints" />
+			</choose>
+			<run procedure="miner_hints" if="!player.questComplete('farm')" />
+			<section if="!player.hasQuest('workshop')">
+				<dialogue section="miner" id="workshop1" speaker='this' />
+				<quest id="workshop">
+					<dialogue section="miner" id="torch" speaker='this' />
+					<item id="torch" /><equip id="torch" ifEmpty="true" />
+				</quest>
+			</section>
+			<section if="!player.hasSeenItem('torch')">
+				<dialogue section="miner" id="torch" speaker='this' />
+				<item id="torch" /><equip id="torch" ifEmpty="true" />
+			</section>
+			<choose if="!player.questComplete('workshop')">
+				<section if="player.canCompleteQuest('workshop')">
+					<dialogue section="miner" id="workshop2" speaker='this' />
+					<complete quest="workshop" reserve="prepare" />
+					<structure id="workshop" x="17" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+						<onPlace>
+							<complete quest="workshop" reserve="finish" />
+							<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+							<item id="workshop_blueprint" hidden="true" />
+							<dialogue section="miner" id="workshop3" speaker='this' />
+						</onPlace>
+						<onCancel><complete quest="workshop" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+					</structure>
+				</section>
+				<group>
+					<section if="!player.questComplete('workshop')">
+						<dialogue section="miner" id="hint6" speaker='this' />
+						<window type="craft" includeStorehouse="true"><recipe id="craft_torch" /></window>
+					</section>
+					<dialogue section="miner" id="workshop4" speaker='this' />
+					<dialogue section="miner" id="smelter3" speaker='this' />
+					<dialogue section="miner" id="smelter4" speaker='this' />
+					<dialogue section="miner" id="hint5" speaker='this' />
+				</group>
+			</choose>
+			<choose if="(!player.hasQuest('minecart') || player.canCompleteQuest('minecart')) && (player.questComplete('market') || player.questComplete('dock2'))">
+				<section if="!player.hasQuest('minecart')">
+					<dialogue section="miner" id="minecart1" speaker='this' />
+					<quest id="minecart" />
+				</section>
+				<section if="player.canCompleteQuest('minecart')">
+					<dialogue section="miner" id="minecart2" speaker='this' />
+					<complete quest="minecart" />
+					<section with="fade">
+						<move object="player" x="30" />
+						<move object="this" to="player" />
+						<object id="minecart" x="30" y="0" />
+					</section>
+					<set id="_y" value="-1" /><repeat count="7">
+						<dig x="30" y="_y" speed="2" /><action>setOre(30, _y, "rail"); _y++;</action>
+					</repeat>
+					<set id="_x" value="28" /><repeat count="5">
+						<dig x="_x" y="_y" speed="2" /><action>setOre(_x, _y, "rail"); _x++;</action>
+					</repeat>
+					<dialogue section="miner" id="minecart3" speaker='this' />
+				</section>
+			</choose>
+			<group>
+				<dialogue section="miner" id="pick" if="!player.hasItem('iron_pickaxe') && !player.hasItem('steel_pickaxe') && player.getMine() < 2" speaker='this' />
+				<choose>
+					<dialogue section="miner" id="equip1" if="(player.hasItem('iron_pickaxe') || player.hasItem('steel_pickaxe')) && player.getMine() < 2" speaker='this' />
+					<dialogue section="miner" id="equip2" speaker='this' />
+				</choose>
+				<dialogue section="miner" id="hint4" speaker='this' />
+				<dialogue section="miner" id="hint5" speaker='this' />
+				<dialogue section="miner" id="hint2" speaker='this' />
+				<dialogue section="miner" id="hint3" speaker='this' />
+			</group>
+		</operate>
+	</npc>
+</npcs>

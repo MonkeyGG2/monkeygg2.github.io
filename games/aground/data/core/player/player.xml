@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<include id="layers.xml" includeRoot="true" />
+	<tile id="player.layers" sheet="layers.png" />
+	<layers id="player" width="16" height="16" cols="11" rows="6">
+		<layer tile="player.layers" color="skin"><!-- body -->
+			<frame x="257" length="8" />
+			<frame x="20" count="10" />
+			<frame x="46" count="6" />
+			<frame x="112" count="41" />
+		</layer>
+		<layer tile="player.layers" color="eyes"><!-- eyes -->
+			<frame x="256" /><frame visible="false" /><frame x="256" length="6" />
+			<frame x="10" count="10" />
+			<frame visible="false" length="10" />
+			<frame x="108" count="2" />
+		</layer>
+		<layer tile="player.layers"><!-- mouth -->
+			<frame visible="false" length="18" />
+			<frame x="58" count="6" />
+			<frame x="194" count="41" />
+		</layer>
+		<layer tile="player.layers" color="hair" offset="hair"><!-- hair -->
+			<frame x="57" length="8" />
+			<frame x="47" count="10" />
+			<frame x="41" count="6" />
+			<frame x="0" count="41" />
+		</layer>
+		<layer tile="player.layers" color="shirt" offset="shirt"><!-- shirt -->
+			<frame x="47" length="8" />
+			<frame x="48" count="10" />
+			<frame x="41" count="6" />
+			<frame x="0" count="41" />
+		</layer>
+		<layer tile="player.layers" color="pants" offset="pants"><!-- pants -->
+			<frame x="47" length="8" />
+			<frame x="48" count="10" />
+			<frame x="41" count="6" />
+			<frame x="0" count="41" />
+		</layer>
+		<layer tile="player.layers" color="skin"><!-- arms -->
+			<frame x="259" length="3" /><frame visible="false" length="5" />
+			<frame x="0" count="10" />
+			<frame x="40" count="6" />
+			<frame x="67" count="41" />
+		</layer>
+		<layer tile="player.layers" color="skin"><!-- legs -->
+			<frame x="258" length="2" /><frame x="260" /><frame x="271" count="4" /><frame visible="false" />
+			<frame x="30" count="10" />
+			<frame x="52" count="6" />
+			<frame x="153" count="41" />
+		</layer>
+		<layer tile="player.layers"><!-- uncolored -->
+			<frame visible="false" length="18" />
+			<frame x="64" count="2" /><frame visible="false" /><frame x="66" /><!-- hit stars -->
+			<frame visible="false" length="8" />
+			<frame x="110" count="2" /><!-- dead eyes -->
+		</layer>
+		<layer tile="player.layers"><!-- uncolored -->
+			<frame visible="false" length="24" />
+			<frame x="235" count="6" /><frame visible="false" />
+			<frame x="241" count="11" /><frame visible="false" length="4" />
+			<frame x="252" count="2" /><frame visible="false" length="4" />
+			<frame x="254" count="2" />
+		</layer>
+	</layers>
+	<animation id="player.idle">
+		<frame x="0" length="4" />
+		<frame x="1" length="2" />
+		<frame x="0" length="32" />
+	</animation>
+	<animation id="player.sleep" x="1" count="1" />
+	<animation id="player.walk" count="10" x="8" />
+	<animation id="player.walk.sweat"><frame visible="false" length="2" /><frame count="8" x="449" /></animation>
+	<animation id="player.walk.heavy" count="10" x="8">
+		<append tile="player.layers" animation="player.walk.sweat" />
+	</animation>
+	<animation id="player.swim" count="5" x="3" length="2" />
+	<animation id="player.swim.arms" tile="player.layers" count="5" x="261" length="2" />
+	<animation id="player.swim.top" tile="player.layers" count="5" x="266" length="2" />
+	<animation id="player.mine" count="1" length="10" x="0" />
+	<animation id="player.mine2" count="1" length="10" x="0" />
+	<animation id="player.mine3" count="1" length="10" x="0">
+		<append tile="player.layers" animation="player.walk.sweat" />
+	</animation>
+	<animation id="player.hit" count="6" x="18" />
+	<animation id="player.death" count="41" x="24" />
+	<animation id="player.ride" x="2" count="1" />
+	<tile id="backpack" sheet="layers.png" x="467" />
+	
+	<tile id="death" sheet="death.png" x="0" y="0" />
+	<animation id="death" count="10">
+		<frame visible="false" />
+	</animation>
+	
+	<skill id="health" name="stats.health" start_cost="6" cost_per_level="2">
+		<stat id="health" value="10" />
+	</skill>
+	<skill id="stamina" name="stats.stamina" start_cost="6" cost_per_level="2">
+		<stat id="stamina" value="50" />
+	</skill>
+	<skill id="weight" name="stats.weight" start_cost="8" cost_per_level="2">
+		<stat id="weight" value="5" />
+	</skill>
+	<skill id="mine_speed" name="stats.mine_speed" start_cost="20" cost_per_level="10" flag="allow_hotkeys" >
+		<stat id="mine_speed" value="1" />
+	</skill>
+	<skill id="sight" name="stats.sight" start_cost="30" cost_per_level="15" flag="allow_hotkeys" >
+		<stat id="sight" value="1" />
+	</skill>
+	<skill id="evasion" name="stats.evasion" start_cost="6" cost_per_level="2">
+		<stat id="evasion" value="3" />
+	</skill>
+	<skill id="critical" name="stats.critical" start_cost="6" cost_per_level="2">
+		<stat id="critical" value="5" />
+	</skill>
+	<skill id="attack" name="stats.attack" start_cost="50" cost_per_level="25">
+		<stat id="attack" value="1" />
+	</skill>
+	<skill id="cut" name="stats.cut" start_cost="50" cost_per_level="25">
+		<stat id="cut" value="1" />
+	</skill>
+	<skill id="defense" name="stats.defense" start_cost="50" cost_per_level="25">
+		<stat id="defense" value="1" />
+	</skill>
+	<skill id="range" name="stats.range" start_cost="20" cost_per_level="10">
+		<stat id="range" value="1" />
+	</skill>
+	<skill id="fishing" name="stats.fishing" start_cost="50" cost_per_level="25" flag="fisherman_intro">
+		<stat id="fishing" value="1" />
+	</skill>
+	<skill id="trap" name="stats.trap" start_cost="50" cost_per_level="25" flag="hunter_hut">
+		<stat id="trap" value="1" />
+	</skill>
+	<skill id="bargaining" name="stats.bargaining" start_cost="20" cost_per_level="0" flag="allow_hotkeys">
+		<stat id="bargaining" value="1" />
+	</skill>
+	<skill id="spellcast" name="stats.spellcast" start_cost="20" cost_per_level="10" flag="spellcast">
+		<stat id="spellcast" value="1" />
+	</skill>
+	<skill id="oxygen" name="stats.oxygen" start_cost="10" cost_per_level="5" flag="show_oxygen">
+		<stat id="oxygen" value="5" />
+	</skill>
+	<procedure id="player.addItem">
+		<achievement id="full_dragon" if="player.hasSeenItem('dragon_armor') && player.hasSeenItem('dragonflame') && player.hasSeenItem('baby_cannon') && player.hasSeenItem('dragonsword')" />
+		<item id="dismantle" hidden="true" if="player.hasItemType('blueprint') && !player.hasItem('dismantle')" />
+	</procedure>
+	<procedure id="player.changeEquip">
+		<achievement id="full_cyborg" if="player.hasItem('machine_gun_arm') && player.hasItem('cyborg_body') && player.hasItem('cyborg_eye') && player.hasItem('cyborg_back')" />
+	</procedure>
+	<procedure id="player.handleSecond"><action>
+		var h = player.stats.getInt("regen_health"); if(h > 0) player.addHealth(h); else if(h &lt; 0) player.loseHealth(-h);
+		var s = player.stats.getInt("regen_stamina"); if(s > 0) player.addStamina(s); else if(s &lt; 0) player.loseStamina(-s);
+		var p = player.stats.getInt("regen_power"); if(p > 0) player.addStorage("power", p); else if(p &lt; 0) player.losePower(-p);
+	</action></procedure>
+	<procedure id="player.init">
+		<action if="player.getItemCount('hide_slot') == 0">player.inventory.addItems(getItem("hide_slot"), 20);</action>
+		<item id="storehouse_blueprint" hidden="true" if="!player.hasItem('storehouse_blueprint') && (player.questComplete('storehouse') || player.questComplete('storehouse2'))" />
+		<item id="kitchen_blueprint" hidden="true" if="!player.hasItem('kitchen_blueprint') && player.questComplete('kitchen')" />
+		<item id="kitchen_upgrade" hidden="true" if="!player.hasItem('kitchen_upgrade') && player.questComplete('kitchen2')" />
+		<item id="smelter_blueprint" hidden="true" if="!player.hasItem('smelter_blueprint') && player.questComplete('smelter')" />
+		<item id="workshop_blueprint" hidden="true" if="!player.hasItem('workshop_blueprint') && player.questComplete('workshop')" />
+		<item id="farm_blueprint" hidden="true" if="!player.hasItem('farm_blueprint') && player.questComplete('farm')" />
+		<item id="pen_blueprint" hidden="true" if="!player.hasItem('pen_blueprint') && player.questComplete('pen')" />
+		<item id="dock_blueprint" hidden="true" if="!player.hasItem('dock_blueprint') && (player.questComplete('dock') || player.questComplete('dock2'))" />
+		<item id="power_plant_blueprint" hidden="true" if="!player.hasItem('power_plant_blueprint') && player.questComplete('powerplant')" />
+		<item id="workshop_upgrade" hidden="true" if="!player.hasItem('workshop_upgrade') && player.questComplete('factory')" />
+		<item id="elevator_blueprint" hidden="true" if="!player.hasItem('elevator_blueprint') && player.questComplete('elevator')" />
+	</procedure>
+	<onLoad><action if="player.areas.exists('science1') || player.areas.exists('magic1')">setFlag('jump_water', true)</action></onLoad>
+	<player id="player.ancient" layers="player" health="50" stamina="200" maxLevel="30" speed="15" talk_sfx="talking5" foundItemPopup="true" beardLayer="armor">
+		<skill id="health" maxLevel="20" /><skill id="stamina" maxLevel="20" /><skill id="weight" maxLevel="20" />
+		<skill id="critical" maxLevel="10" /><skill id="evasion" maxLevel="10" />
+		<skill id="mine_speed" maxLevel="5" /><skill id="sight" maxLevel="3" />
+		<skill id="attack" maxLevel="3" /><skill id="defense" maxLevel="3" /><skill id="cut" maxLevel="3" />
+		<skill id="range" maxLevel="5" /><skill id="trap" maxLevel="3" /><skill id="bargaining" maxLevel="5" />
+		<skill id="fishing" maxLevel="3" /><skill id="oxygen" maxLevel="8" /><skill id="spellcast" maxLevel="5" />
+		<stat id="health" /><stat id="stamina" /><stat id="regen_health" flag="never_set" /><stat id="regen_stamina" flag="never_set" />
+		<stat id="weight" /><stat id="critical" /><stat id="evasion" />
+		<stat id="speed" /><stat id="endurance" /><stat id="mine_speed" flag="allow_hotkeys" /><stat id="sight" flag="allow_hotkeys" />
+		<stat id="attack" /><stat id="defense" /><stat id="cut" /><stat id="mine" flag="allow_hotkeys" />
+		<stat id="range" /><stat id="trap" flag="hunter_hut" /><stat id="fishing" flag="fisherman_intro" />
+		<stat id="oxygen" flag="show_oxygen" /><stat id="bargaining" flag="allow_hotkeys" />
+		<stat id="spellcast" flag="spellcast" /><stat id="reset" flag="never_set" /><stat id="timer" flag="never_set" />
+		<stat id="regen_power" flag="never_set" /><stat id="light" flag="never_set" />
+		<slot id="weapon" /><slot id="shield" renderPriority="4" /><slot id="pickaxe" flag="allow_hotkeys" /><slot id="armor" vanity="true" renderPriority="1" />
+		<slot id="head" vanity="true" renderPriority="3" /><slot id="back" vanity="true" renderPriority="2" /><slot id="familiar" /><light tile="light.small" color="888888" />
+		<color id="skin" /><color id="hair" /><offset id="hair" /><offset id="beard" /><color id="eyes" />
+		<color id="shirt" /><offset id="shirt" /><color id="pants" /><offset id="pants" value="275" />
+		<addItem><run procedure="player.addItem" /></addItem>
+		<changeEquip><run procedure="player.changeEquip" /></changeEquip>
+		<adjustSkills><achievement id="skills" if="player.getUsedSkillPoints() >= 500" /></adjustSkills>
+		<init><run procedure="player.init" /></init>
+		<handleSecond><run procedure="player.handleSecond" /></handleSecond>
+	</player>
+	
+	<tilesheet id="light32.png" width="32" height="32" />
+	<tile id="light.small" sheet="light32.png" />
+	<tilesheet id="light64.png" width="64" height="64" />
+	<tile id="light.medium" sheet="light64.png" />
+	<tilesheet id="light128.png" width="128" height="128" />
+	<tile id="light.default" sheet="light128.png" />
+	<tilesheet id="light192.png" width="192" height="192" />
+	<tile id="light.large" sheet="light192.png" />
+	<tile id="light.strong" x="1" sheet="light192.png" />
+	<tilesheet id="light256.png" width="256" height="256" />
+	<tile id="light.largest" sheet="light256.png" />
+	
+	<colors type="skin">
+		<color value="dfcbb3" />
+		<color value="dbba94" />
+		<color value="bd9568" />
+		<color value="9c7140" />
+		<color value="81592c" />
+		<color value="4d3315" />
+		<color value="2f1e0b" />
+		<color value="1a1004" />
+	</colors>
+	<colors type="hair">
+		<color value="130e01" id="black" />
+		<color value="2d2105" id="dbrown" />
+		<color value="4b390d" id="lbrown" />
+		<color value="9fc1bb" id="gray" />
+		<color value="bfa861" id="blond" />
+		<color value="b49025" id="dblond" />
+		<color value="5e310d" id="brown" />
+		<color value="a75719" id="red" />
+	</colors>
+	<colors type="eyes">
+		<color value="130e01" id="black" />
+		<color value="2a3f47" id="dblue" />
+		<color value="5ab1ea" id="lblue" />
+		<color value="82ea5a" id="lgreen" />
+		<color value="2f1b04" id="dbrown" />
+		<color value="265cc5" id="blue" />
+		<color value="0a7817" id="green"/>
+		<color value="f6c757" id="yellow" />
+		<color value="4d2a02" id="brown" />
+		<color value="3d2242" id="purple" />
+		<color value="d02f2f" id="red" />
+	</colors>
+	<colors type="shirt">
+		<color value="0099cc" id="blue" />
+		<color value="cf2b2b" id="red" />
+		<color value="d6639d" id="pink" />
+		<color value="fff3dd" id="white" />
+		<color value="719510" id="green" />
+		<color value="916fb5" id="purple" />
+		<color value="88eeff" id="lblue" />
+		<color value="8e6548" id="brown" />
+		<color value="e79339" id="orange" />
+		<color value="42c697" id="teal" />
+		<color value="f7db63" id="yellow" />
+		<color value="898989" id="gray" />
+	</colors>
+	<colors type="pants" equals="shirt" />
+	<offsets type="hair" addHidden="true">
+		<offset start="477" count="16" stride="58" />
+	</offsets>
+	<offsets type="shirt"><offset value="333" id="open" /><offset value="391" id="closed" /></offsets>
+		
+	<animation id="player.beard.idle" x="47" count="1" />
+	<animation id="player.beard.walk" x="48" count="10" />
+	<animation id="player.beard.hit" x="41" count="6" />
+	<animation id="player.beard.death" x="0" count="41" />
+	<offsets type="beard" addHidden="true">
+		<offset tile="player.layers" start="1405" count="2" stride="58" />
+		<offset tile="player.layers" value="1521" overBack="true" />
+		<offset tile="player.layers" value="1579" />
+	</offsets>
+</data>

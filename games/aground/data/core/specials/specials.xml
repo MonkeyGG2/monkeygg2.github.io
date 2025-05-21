@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<lang id="en_US">
+		<section id="item.names">
+			<text id="golden_sword">Golden Sword</text>
+			<text id="golden_shield">Golden Shield</text>
+			<text id="ant">Antpanion</text>
+			<text id="tank">Tank</text>
+			<text id="tank_gun">Tank Gun</text>
+		</section>
+	</lang>
+	<include id="weps.xml" />
+	<tile id="golden_sword.ico" sheet="weps.2" x="1" />
+	<item id="golden_sword" type="equipment" slot="weapon" cost="0" weight="10" melee_range="0.5" durability="4000" icon="golden_sword.ico" attack="6" stamina="3" action="equip" movement_walk="walk_rswing" arms="dragonsword.arms" hitEffect="bullet" repair="gold_bar" knockback="15" sfx="goldensword" />
+	<tile id="golden_sword" sheet="weps.1" x="0" />
+	<animation id="equipment.golden_sword" equals="equipment.dragonsword" />
+	<animation id="equipment.golden_sword.idle" equals="equipment.dragonsword.idle" />
+	
+	<tile id="golden_shield.ico" sheet="weps.2" x="9" />
+	<item id="golden_shield" type="equipment" slot="shield" use="block" cost="0" weight="10" defense="4" durability="4000" icon="golden_shield.ico" animation="shield" movement_walk="walk_lswing" action="equip" repair="gold_bar" />
+	
+	<tile id="ant.ico" sheet="weps.2" x="8" />
+	<include id="ant.xml" includeRoot="true" />
+	<tile id="ant" sheet="ant.png" x="0" y="0" />
+	<animation id="ant.idle" count="6" x="15" />
+	<animation id="ant.walk" count="6" x="9" />
+	<animation id="ant.dig" count="8" x="0"><frame x="15" count="3" /></animation>
+	<animation id="ant.attack" equals="ant.dig" />
+	<animation id="ant.hit" count="1" length="3" x="8" />
+	<familiar id="ant" type="ground">
+		<breakPower amount="1" />
+		<attack type="melee" damage="3" />
+	</familiar>
+	<item id="ant" type="animal" cost="0" weight="2" icon="ant.ico" slot="familiar">
+		<action id="equip" /><action id="rename" />
+		<familiar id="ant" tile="ant" animation="ant" fps="15" />
+	</item>
+	<enemy id="ant" tile="ant" health="8" defense="2" damage="6" speed="2" type="wyrm" eatTile="sci1.dirt" trapped="ant" capture="6" death_sfx="spider_death" />
+	
+	<tile id="tank_shell.ico" sheet="weps.2" x="2" />
+	<tile id="tank_shell" equals="tank_shell.ico" />
+	<item id="tank_shell" type="equipment" cost="300" weight="2" icon="tank_shell.ico" attack="6" animation="item6">
+		<projectile tile="tank_shell" animation="item6" speed="5" delay="3" offsetX="-20" offsetY="-12" hit_sfx="arrow_hit" hitEffect="explosion_dmg" knockback="10" breakTile="3" breakPower="100" />
+	</item>
+	<recipe id="craft_tank_shell" creates="tank_shell" type="factory" available="getFlag('ng_tank')">
+		<item id="sulfur" count="3" />
+		<item id="steel_bar" count="1" />
+		<item id="silicon" count="1" />
+	</recipe>
+	<tile id="tank.ico" sheet="weps.2" x="0" />
+	<item id="tank_gun" type="none" slot="attack" equipOn="tank" cost="0" weight="30" range="10" icon="tank.ico" unequip="false" projectile="tank_shell">
+		<action id="setProjectile" />
+	</item>
+	
+	<include id="tank.xml" includeRoot="true" />
+	<tile id="tank" sheet="tank.png" x="0" y="0" />
+	<animation id="tank.empty" equals="single" />
+	<animation id="tank.idle" equals="single" />
+	<animation id="tank.smoke"><frame visible="false" /><frame x="25" count="7" /></animation>
+	<animation id="tank.move" count="8"><append tile="tank" animation="tank.smoke" /></animation>
+	<tile id="tank_gun" sheet="tank.png" x="8" />
+	<tile id="tank_man" sheet="tank.png" x="17" />
+	<animation id="tank_man" x="0" count="8" />
+	<animation id="tank_man.ride" x="7" count="1" />
+	<animation id="equipment.tank_gun.idle" x="8" count="1"><append tile="tank_man" animation="tank_man.ride" behind="true" /></animation>
+	<animation id="equipment.tank_gun" x="0" count="8"><append tile="tank_man" animation="tank_man" behind="true" /></animation>
+	<vehicle id="tank" tile="tank" health="2000" defense="6" speed="3" title="item.names.tank" fuel="5000" max_weight="5000" death_sfx="rock_door" hitDamage="4">
+		<repair id="steel_bar" value="100" /><slot id="attack" /><fuel id="refined_oil" fuel="500" />
+		<light tile="light.headlamp" offsetX="-61" />
+	</vehicle>
+</data>

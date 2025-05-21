@@ -1,0 +1,9 @@
+<tilesheet id='backpacks.png' width='32' height='16'>
+	<image frame='0' x='0' y='0' width='9' height='14' offsetX='10' offsetY='1' />
+	<image frame='1' x='0' y='14' width='9' height='13' offsetX='10' offsetY='2' />
+	<image frame='2' x='9' y='0' width='9' height='14' offsetX='10' offsetY='2' />
+	<image frame='3' x='9' y='14' width='9' height='13' offsetX='10' offsetY='2' />
+	<image frame='4' x='18' y='0' width='9' height='14' offsetX='10' offsetY='2' />
+	<image frame='5' x='27' y='0' width='9' height='14' offsetX='10' offsetY='2' />
+	<image frame='6' x='18' y='14' width='9' height='9' offsetX='10' offsetY='6' />
+</tilesheet>

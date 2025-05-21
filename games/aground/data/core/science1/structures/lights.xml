@@ -1,0 +1,5 @@
+<tilesheet id='lights.png' width='32' height='32'>
+	<image frame='0' x='0' y='0' width='24' height='14' offsetX='3' offsetY='0' />
+	<image frame='1' x='0' y='14' width='26' height='7' offsetX='3' offsetY='0' />
+	<image frame='2' x='0' y='21' width='32' height='14' offsetX='0' offsetY='0' />
+</tilesheet>
