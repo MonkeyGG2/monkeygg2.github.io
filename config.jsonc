@@ -171,7 +171,7 @@
             "categories": []
         },
         "Cat Ninja": {
-            "path": "w-flash/?game=cat-ninja",
+            "path": "flash/?game=cat-ninja",
             "aliases": [],
             "categories": []
         },
@@ -572,7 +572,7 @@
             "categories": []
         },
         "Papas Freezeria": {
-            "path": "w-flash/?game=papas-freezeria",
+            "path": "flash/?game=papas-freezeria",
             "aliases": [],
             "categories": []
         },
@@ -842,7 +842,7 @@
             "categories": ["escape"]
         },
         "Sugar Sugar": {
-            "path": "w-flash/?game=sugar-sugar",
+            "path": "flash/?game=sugar-sugar",
             "aliases": [],
             "categories": []
         },
