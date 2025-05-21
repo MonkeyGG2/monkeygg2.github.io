@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<include id="nav.xml" includeRoot="true" />
+	<include id="nav_planet.xml" includeRoot="true" />
+	<tilesheet id="nav_bg.png" width="256" height="144" />
+	<tile id="nav.bg.planet" sheet="nav_bg.png"><tile sheet="nav.png" x="5" /></tile>
+	<tile id="nav.bg.star" sheet="nav_bg.png" />
+	<tile id="nav.bg.top" sheet="nav_bg.png" x="1" />
+	<tile id="nav.left" sheet="nav.png" x="10" />
+	<tile id="star.select" sheet="nav.png" x="20" />
+	<animation id="nav10" count="10" /><animation id="star.select" equals="nav10" />
+	<animation id="nav.bg.top" count="1" length="10"><append tile="nav.left" animation="nav10" /></animation>
+	<tile id="nav.star" sheet="nav.png" x="6" offsetX="-236" offsetY="-18" />
+	<animation id="nav.star.select" x="1" count="2" length="3" />
+	<animation id="nav.star.current" equals="single" />
+	<tile id="star" sheet="nav.png" x="9" offsetX="-236" offsetY="-18" />
+	
+	<tile id="orbit1" sheet="nav.png" x="4" />
+	<tile id="orbit2" sheet="nav.png" x="3" />
+	<tile id="orbit3" sheet="nav.png" x="2" />
+	<tile id="orbit4" sheet="nav.png" x="1" />
+	<tile id="orbit5" sheet="nav.png" x="0" />
+	
+	<tile id="planet1" sheet="nav_planet.png" x="30" />
+	<tile id="planet2" sheet="nav_planet.png" x="29" />
+	<tile id="planet3" sheet="nav_planet.png" x="28" />
+	<tile id="planet4" sheet="nav_planet.png" x="27" />
+	<tile id="planet4.land1" sheet="nav_planet.png" x="26" />
+	<tile id="planet4.land2" sheet="nav_planet.png" x="25" />
+	<tile id="planet4.clouds" sheet="nav_planet.png" x="24" />
+	<tile id="planet5" sheet="nav_planet.png" x="23" />
+	<tile id="planet5.land1" sheet="nav_planet.png" x="22" />
+	<tile id="planet5.land2" sheet="nav_planet.png" x="21" />
+	<tile id="planet5.clouds" sheet="nav_planet.png" x="20" />
+	<tile id="planet6" sheet="nav_planet.png" x="19" />
+	<tile id="planet6.land1" sheet="nav_planet.png" x="18" />
+	<tile id="planet6.land2" sheet="nav_planet.png" x="17" />
+	<tile id="planet6.clouds" sheet="nav_planet.png" x="16" />
+	<tile id="planet7" sheet="nav_planet.png" x="15" />
+	<tile id="planet7.land1" sheet="nav_planet.png" x="14" />
+	<tile id="planet7.land2" sheet="nav_planet.png" x="13" />
+	<tile id="planet7.clouds" sheet="nav_planet.png" x="12" />
+	<tile id="planet8" sheet="nav_planet.png" x="11" />
+	<tile id="planet8.gas1" sheet="nav_planet.png" x="10" />
+	<tile id="planet8.gas2" sheet="nav_planet.png" x="9" />
+	<tile id="planet9" sheet="nav_planet.png" x="8" />
+	<tile id="planet9.gas1" sheet="nav_planet.png" x="7" />
+	<tile id="planet9.gas2" sheet="nav_planet.png" x="6" />
+	<tile id="planet10" sheet="nav_planet.png" x="5" />
+	<tile id="planet10.gas1" sheet="nav_planet.png" x="4" />
+	<tile id="planet10.gas2" sheet="nav_planet.png" x="3" />
+	<tile id="planet.rings_lg" sheet="nav_planet.png" x="2" />
+	<tile id="planet.rings_med" sheet="nav_planet.png" x="1" />
+	<tile id="planet.rings_sm" sheet="nav_planet.png" x="0" />
+	
+	
+	<tile id="planet1.shadow" sheet="nav_planet.png" x="40" />
+	<tile id="planet2.shadow" sheet="nav_planet.png" x="39" />
+	<tile id="planet3.shadow" sheet="nav_planet.png" x="38" />
+	<tile id="planet4.shadow" sheet="nav_planet.png" x="37" />
+	<tile id="planet5.shadow" sheet="nav_planet.png" x="36" />
+	<tile id="planet6.shadow" sheet="nav_planet.png" x="35" />
+	<tile id="planet7.shadow" sheet="nav_planet.png" x="34" />
+	<tile id="planet8.shadow" sheet="nav_planet.png" x="33" />
+	<tile id="planet9.shadow" sheet="nav_planet.png" x="32" />
+	<tile id="planet10.shadow" sheet="nav_planet.png" x="31" />
+	
+	<tile id="nav.select" sheet="nav_planet.png" x="41" offsetX="-98" offsetY="-47" />
+	<animation id="nav.select" count="10" />
+	
+	<animation id="planet.start">
+		<append tile="planet7" animation="single" color="5380a5" colorScale="2" />
+		<append tile="planet7.land1" animation="single" color="0b461f" colorScale="2" />
+		<append tile="planet7.clouds" animation="single" color="ffec8e" />
+		<append tile="planet7.shadow" animation="single" /><frame visible="false" />
+	</animation>
+	
+	<animation id="planet.start.dwarf">
+		<append tile="planet2" animation="single" color="d9c9b6" colorScale="2" />
+		<append tile="planet2.shadow" animation="single" /><frame visible="false" />
+	</animation>
+	
+	<animation id="planet.start.gas">
+		<append tile="planet8" animation="single" color="8fa9a9" colorScale="2" />
+		<append tile="planet8.gas1" animation="single" color="6a8163" colorScale="2" />
+		<append tile="planet8.shadow" animation="single" /><frame visible="false" />
+	</animation>
+</data>

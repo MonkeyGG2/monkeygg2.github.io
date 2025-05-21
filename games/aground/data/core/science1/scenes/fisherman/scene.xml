@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<include id="sheet.xml" includeRoot="true" />
+	<tile id="scene.fisherman.fisherman" sheet="sheet.png" x="0" y="0" />
+	<animation id="scene.fisherman.fisherman.idle">
+		<frame x="24" count="12" />
+		<frame x="12" count="12" />
+		<frame x="0" count="12" />
+		<frame x="24" count="12" />
+	</animation>
+	<animation id="scene.fisherman.fisherman.talk" x="36" count="12" />
+	<scene id="fisherman">
+		<tile id="steam" sheet="sheet.png" x="48" y="0" />
+		<tile id="pelican" sheet="sheet.png" x="60" y="0" />
+		<animation id="steam.idle" count="12" />
+		<animation id="pelican.idle" count="12" x="12" />
+		<animation id="pelican.deliver">
+			<frame x="24" count="12" />
+			<frame x="36" count="12" />
+			<frame x="0" count="12" />
+		</animation>
+		<animation id="pelican.leave" count="10" x="48" />
+		<layer id="bg" image="bg.png" />
+		<layer id="fisherman" tile="fisherman" animation="fisherman.idle" talk="fisherman.talk" x="0" y="0" />
+		<layer id="steam" tile="steam" animation="steam.idle" x="0" y="0" />
+		<layer id="pelican" tile="pelican" animation="pelican.idle" x="0" y="0" />
+		
+		<show id="intro">
+			<layer id="bg" />
+			<layer id="fisherman" />
+			<layer id="steam" />
+			<layer id="pelican" />
+            <hide id="pelican" />
+			<wait seconds="1" />
+			<dialogue section="fisherman" id="intro1" speaker='fisherman' />
+            <show id="pelican" /><play object="pelican" animation="pelican.deliver" />
+			<item id="coral_cod" modal="true" />
+			<dialogue section="fisherman" id="intro2" speaker='fisherman' />
+			<dialogue section="fisherman" id="intro3" speaker='player' />
+			<dialogue section="fisherman" id="intro4" speaker='fisherman' />
+			<dialogue section="fisherman" id="intro5" speaker='fisherman' />
+			<dialogue section="fisherman" id="intro6" speaker='fisherman' />
+			<play object="pelican" animation="pelican.leave" /><hide id="pelican" />
+			<wait seconds="1" />
+		</show>
+		<show id="intro_water">
+			<layer id="bg" />
+			<layer id="fisherman" />
+			<layer id="steam" />
+			<layer id="pelican" />
+            <hide id="pelican" />
+			<wait seconds="1" />
+			<dialogue section="fisherman" id="intro1_alt" speaker='fisherman' />
+            <show id="pelican" /><play object="pelican" animation="pelican.deliver" />
+			<item id="coral_cod" modal="true" />
+			<dialogue section="fisherman" id="intro2" speaker='fisherman' />
+			<dialogue section="fisherman" id="intro3_alt" speaker='player' />
+			<dialogue section="fisherman" id="intro4_alt" speaker='fisherman' />
+			<dialogue section="fisherman" id="intro5" speaker='fisherman' />
+			<dialogue section="fisherman" id="intro6" speaker='fisherman' />
+			<play object="pelican" animation="pelican.leave" /><hide id="pelican" />
+			<wait seconds="1" />
+		</show>
+		<show id="scene">
+			<layer id="bg" />
+			<layer id="fisherman" />
+			<layer id="steam" />
+			<layer id="pelican" />
+			<wait seconds="1" />
+			<dialogue section="fisherman" id="scene1" speaker='fisherman' />
+			<dialogue section="fisherman" id="scene2" speaker='fisherman' />
+			<dialogue section="fisherman" id="scene3" speaker='player' />
+			<dialogue section="fisherman" id="scene4" speaker='fisherman' />
+			<dialogue section="fisherman" id="scene5" speaker='player' />
+			<dialogue section="fisherman" id="scene6" speaker='fisherman' />
+			<wait seconds="1" />
+		</show>
+	</scene>
+</scenes>

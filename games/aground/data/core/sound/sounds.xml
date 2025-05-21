@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<volume name="rain" value="50" />
+	<volume name="low_hp" value="50" />
+	<volume name="tree_felled" value="200" />
+	<volume name="purr" value="200" />
+	<volume name="revolver" value="200" />
+	<volume name="machine_gun" value="200" />
+	<volume name="elevator" value="75" />
+	<volume name="bullet" value="200" />
+	<volume name="shell" value="200" />
+	<volume name="ancient_axe" value="120" />
+    <volume name="shotgun" value="130" />
+	<volume name="yeti_breath" value="70" />
+	<volume name="shadowcat_attack" value="120" />
+	<volume name="shadowcat_death" value="120" />
+	<volume name="wyrmqueen_spawn" value="130" />
+	<volume name="orb_impact" value="90" />
+    <volume name="orb_spawn" value="105" />
+    <volume name="oldone_open" value="125" />
+    <volume name="alien_death" value="120" />
+	<volume name="bandit_ranged_attack" value="115" />
+    <volume name="bandit_ranged_death" value="130" />
+    <volume name="bandit_ranged_hit" value="120" />
+    <volume name="bandit_knives_slash" value="120" />
+    <volume name="stinger_attack" value="130" />
+    <volume name="mecha_wyrm_attack" value="135" />
+	<volume name="fishingrod" value="180"/>
+	
+	<sound id="achievement" />
+	<sound id="axe" />
+	<sound id="axe_tree" />
+	<sound id="blocked" />
+	<sound id="player_death" />
+	<sound id="bow" />
+	<sound id="build" />
+	<sound id="buy" />
+	<sound id="cancel" />
+	<sound id="chainsaw" />
+	<sound id="death" />
+	<sound id="dragon_atk" />
+	<sound id="dragon_death" />
+	<sound id="dragon_hit" />
+	<sound id="drill" />
+	<sound id="drop" />
+	<sound id="eat" />
+	<sound id="elevator" />
+	<sound id="attack" />
+	<sound id="fire" />
+	<sound id="fireball" />
+	<sound id="flamethrower" />
+	<sound id="arrow_hit" />
+	<sound id="item" />
+	<sound id="levelup" />
+	<sound id="low_hp" />
+	<sound id="machine_gun" />
+	<sound id="meow" />
+	<sound id="miss" />
+	<sound id="move" />
+	<sound id="pick" />
+	<sound id="purr" />
+	<sound id="rain" />
+	<sound id="boar_death" />
+	<sound id="rat_death" />
+	<sound id="fire_boar_death" />
+	<sound id="golem_death" />
+	<sound id="fire_bird_death" />
+	<sound id="ggolem_death" />
+	<sound id="revolver" />
+	<sound id="rock_door" />
+	<sound id="select" />
+	<sound id="smelter" />
+	<sound id="sword" />
+	<sound id="sword_swing" />
+	<sound id="talking1" />
+	<sound id="talking2" />
+	<sound id="talking4" />
+	<sound id="talking5" />
+	<sound id="talking6" />
+	<sound id="talking7" />
+	<sound id="thunder" />
+	<sound id="tree_felled" />
+	<sound id="workshop" />
+	<sound id="wyrm_death" />
+	<sound id="yeti_death" />
+	<sound id="spider_death" />
+	<sound id="shadowcat_death" />
+	<sound id="crawler_death" />
+	<sound id="wyrm_queen_death" />
+	<sound id="leech_death" />
+	<sound id="magic_wyrm_death" />
+	<sound id="purple_golem_death" />
+	<sound id="golemech_death" />
+	<sound id="skyfish_death" />
+	<sound id="alien_death" />
+	<sound id="bandit_heavy_death" />
+	<sound id="bandit_combo_death" />
+	<sound id="bandit_ranged_death" />
+	<sound id="bandit_knives_death" />
+	<sound id="diode_wolf_death" />
+	<sound id="cyborg_death" />
+	<sound id="stinger_death" />
+	<sound id="mech_wyrm_death" />
+	<sound id="minotaur_death" />
+	<sound id="mirrow_n_death" />
+	<sound id="mirrow_d_death" />
+	<sound id="icer_death" />
+	<sound id="item_found" />
+	
+	<sound id="ancient_axe" />
+	<sound id="shotgun" />
+	<sound id="shell" />
+	<sound id="bullet" />
+	<sound id="wyrm_drill" />
+	<sound id="earthhammer" />
+	<sound id="dragonsword" />
+	<sound id="recurvebow" />
+	<sound id="steel_axe" />
+	<sound id="goldensword" />
+	<sound id="bolt_hit" />
+	
+	<sound id="boar_attack" />
+	<sound id="wyrm_attack" />
+	<sound id="yeti_breath" />
+	<sound id="yeti_snowball" />
+	<sound id="shadowcat_attack" />
+	<sound id="spider_attack" />
+	<sound id="magicwyrm_attack" />
+	<sound id="wyrmqueen_spawn" />
+	<sound id="bandit_knives_hit" />
+	<sound id="bandit_knives_slash" />
+	<sound id="bandit_knives_throw" />
+	<sound id="bandit_ranged_attack" />
+	<sound id="bandit_ranged_hit" />
+	<sound id="crawler_attack" />
+	<sound id="earth_spirit_attack" />
+	<sound id="golemech_laser" />
+	<sound id="golem_attack" />
+	<sound id="leech_attack" />
+	<sound id="mecha_wyrm_attack" />
+	<sound id="oldone_beam" />
+	<sound id="oldone_open" />
+	<sound id="orb_impact" />
+	<sound id="orb_spawn" />
+	<sound id="plant_spirit_attack" />
+	<sound id="radioactive_bolt" />
+	<sound id="skyfish_fire" />
+	<sound id="skyfish_impact" />
+	<sound id="stinger_attack" />
+	<sound id="mirrow_lightning" />
+	<sound id="mirrow_energyball" />
+	<sound id="mirrow_tentacle" />
+	<sound id="minotaur_charge" />
+	<sound id="minotaur_impale" />
+	
+	<sound id="magic" />
+	<sound id="summon" />
+	<sound id="warning" />
+	<sound id="kitchen" />
+	<sound id="smelter_loop" />
+	<sound id="game_saved" />
+	<sound id="fishingrod" />
+	<sound id="fishing" />
+	
+	<sound id="chest_open" />
+	<sound id="dragon_transform" />
+	<sound id="drinking" />
+	<sound id="equip" />
+	<sound id="fuel" />
+	<sound id="goggles" />
+	<sound id="hide" />
+	<sound id="map" />
+	<sound id="ocean_enter" />
+	<sound id="ocean_exit" />
+	<sound id="place" />
+	<sound id="plant_seed" />
+	<sound id="sailing" />
+	<sound id="whirlpool" />
+	<sound id="whirlpool_portal" />
+	<sound id="dragon_wings" />
+	<sound id="sail_open" />
+    
+    <sound id="bark" />
+    <sound id="diode_wolf_attack" />
+    <sound id="diode_wolf_howl" />
+    <sound id="familiar_collect" />
+    <sound id="golem" />
+    <sound id="owl" />
+</data>

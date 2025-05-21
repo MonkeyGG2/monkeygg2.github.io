@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<include id="fisherman.xml" includeRoot="true" />
+	<tile id="fisherman" sheet="fisherman.png" x="0" y="0" />
+	<animation id="fisherman.idle">
+		<frame x="0" y="0" length="4" />
+		<frame x="1" y="0" length="2" />
+		<frame x="0" y="0" length="32" />
+	</animation>
+	<animation id="fisherman.walk" count="10" x="30" />
+	<animation id="fisherman.talk" count="8" x="22" />
+	<animation id="fisherman.cast" count="4" x="2" />
+	<animation id="fisherman.fishing" count="6" x="16" />
+	<animation id="fisherman.catch" count="10" x="6" />
+	
+	<tilesheet id="fisherman_boat.png" width="80" height="64" />
+	<tile id="fisherman.boat" sheet="fisherman_boat.png" x="0" y="0" />
+	<animation id="fisherman.boat.idle" equals="single" />
+	<animation id="fisherman.boat.sail" x="1" count="8" />
+	<object id="fisherman.boat" tile="fisherman.boat" animation="fisherman.boat.idle" layer="back" renderer="floating" waterLine="57">
+		<tooltip section="npc" id="talk" if="!getFlag('fisherman_intro') && this.tile_x > 200" />
+		<operate>
+			<scene id="fisherman" show="intro_water" with="fade" if="!getFlag('fisherman_intro') && this.tile_x > 200" showToAll="true">
+				<action>setFlag('fisherman_intro', true);</action>
+			</scene>
+		</operate>
+	</object>
+	
+	<procedure id="fisherman.disembark">
+		<action>area.getObject('fisherman.boat').updatePosition()</action><object id="fisherman" x="198" />
+	</procedure>
+	
+	<quest id="fisherman_cat" giver="fisherman" exp="150">
+		<item id="cat" count="1" />
+	</quest>
+	
+	<procedure id="fisherman.tips">
+		<group>
+			<section>
+				<show id="fishing_tooltip" tooltip="key" key="select" text="common.fishing_line" seconds="0.16" x="0.5" y="0.75" />
+				<dialogue section="fisherman" id="tip1" speaker='this' />
+				<hide id="fishing_tooltip" seconds="0.16" />
+			</section>
+			<section>
+				<show id="fishing_tooltip" tooltip="key" key="select" text="common.fishing_pull" seconds="0.16" x="0.5" y="0.75" />
+				<dialogue section="fisherman" id="tip2" speaker='this' />
+				<hide id="fishing_tooltip" seconds="0.16" />
+			</section>
+			<section>
+				<show id="fishing_tooltip" tooltip="key" key="left" text="common.fishing_pull" seconds="0.16" x="0.5" y="0.75" />
+				<dialogue section="fisherman" id="tip3" speaker='this' />
+				<hide id="fishing_tooltip" seconds="0.16" />
+			</section>
+		</group>
+	</procedure>
+	
+	<npc id="fisherman" tile="fisherman" action="talk" talk_sfx="talking1" sleepPos="[199,-1]">
+		<idle class="fishing" max_difficulty="2" storeIf="player.questComplete('fisherman_cat')" />
+		<operate>
+			<scene id="fisherman" show="intro" with="fade" if="!getFlag('fisherman_intro')" showToAll="true">
+				<action>setFlag('fisherman_intro', true);</action>
+				<object id="fisherman.cat" x="this.tile_x" name="cat" /><action>unlockNPC(cat);</action>
+			</scene>
+			<scene id="fisherman" show="scene" with="fade" if="getFlag('innkeeper_scene') && player.questComplete('elevator') && !getFlag('fisherman_scene')" showToAll="true">
+				<action>setFlag('fisherman_scene', true);</action>
+			</scene>
+			<section if="!player.hasQuest('fisherman_cat')">
+				<section if="area.getObject('fisherman.cat') == null">
+					<object id="fisherman.cat" x="this.tile_x" name="cat" /><action>unlockNPC(cat);</action><wait seconds="1"><operate object="area.getObject('fisherman.cat')" /></wait>
+				</section>
+				<dialogue section="fisherman" id="cat1" speaker='this' />
+				<dialogue section="fisherman" id="cat2" speaker='this' />
+				<dialogue section="fisherman" id="cat3" speaker='this' />
+				<quest id="fisherman_cat">
+					<dialogue section="fisherman" id="cat4" speaker='this' />
+					<item id="fishing_rod" modal="true" />
+					<dialogue section="fisherman" id="cat5" speaker='this' />
+				</quest>
+			</section>
+			<choose if="!player.questComplete('fisherman_cat')">
+				<section if="getVar('fisherman_cat') >= 3 && player.canCompleteQuest('fisherman_cat')">
+					<dialogue section="fisherman" id="cat6" speaker='this' />
+					<complete quest="fisherman_cat" useResources="false" />
+					<dialogue section="fisherman" id="cat7" speaker='this' />
+					<equip id="cat" ifEmpty="true" />
+				</section>
+				<run procedure="fisherman.tips" />
+			</choose>
+			<run procedure="fisherman.tips" />
+		</operate>
+	</npc>
+	
+	<npc id="fisherman.cat" tile="cat" animation="cat" action="grab" stopForPlayer="getVar('fisherman_cat') > 0 && player.hasItem('toothfish')" speed="1">
+		<idle class="wander" fromX="110" toX="192" />
+		<tooltip section="actions" id="feed" if="player.hasItem('toothfish')" />
+		<operate>
+			<choose if="player.hasItem('toothfish')">
+				<section if="getVar('fisherman_cat') == 0">
+					<action>setVar('fisherman_cat', 1); this.idle.runFrom(player)</action>
+					<item id="toothfish" count="-1" />
+					<wait seconds="0.25"><operate object="this" /></wait>
+					<dialogue section="fisherman" id="cat9" />
+				</section>
+				<section if="getVar('fisherman_cat') == 1">
+					<sound id="meow" /><wait seconds="0.5" />
+					<menu section="common" showCoins="true">
+						<dialogue section="fisherman" id="cat11" />
+						<choice id="yes">
+							<item id="toothfish" count="-1" modal="true" />
+							<action>setVar('fisherman_cat', 2); this.idle.runFrom(player)</action>
+							<wait seconds="0.25"><operate object="this" /></wait>
+							<dialogue section="fisherman" id="cat12" />
+						</choice>
+						<choice id="no">
+							<action>this.idle.runFrom(player)</action>
+							<wait seconds="0.25"><operate object="this" /></wait>
+						</choice>
+					</menu>
+				</section>
+				<section>
+					<quest />
+					<dialogue section="fisherman" id="cat13" speaker="player" />
+					<item id="toothfish" count="-1" modal="true" />
+					<sound id="purr" /><wait seconds="2" />
+					<lerp object="this" alpha="0" seconds="0.25" />
+					<item id="cat" name="Peri" />
+					<remove object="this" />
+					<dialogue section="fisherman" id="cat15" />
+					<action>setVar('fisherman_cat', 3)</action>
+				</section>
+			</choose>
+			<section>
+				<action>this.idle.runFrom(player)</action>
+				<wait seconds="0.25"><operate object="this" /></wait>
+				<dialogue section="fisherman" id="cat8" />
+			</section>
+		</operate>
+	</npc>
+</npcs>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<procedure id="mirrows.npc"><choose>
+		<group if="getFlag('mirrow.defeat')">
+			<dialogue section="mirrows" id="defeat5" speaker="this" />
+			<dialogue section="mirrows" id="tip1" speaker="this" />
+		</group>
+		<section if="area.getObject('mirrow_n') == null && area.getObject('mirrow_d') == null">
+			<run procedure="mirrow.lab.music" /><scene id="mirrows" show="defeat" with="fade" showToAll="true" />
+		</section>
+		<dialogue section="mirrows" id="defeat0" speaker="this" />
+	</choose></procedure>
+	<npc id="mirrow_n.npc" tile="mirrow_n" action="talk" talk_sfx="talking6" animation="mirrow_n" researcher="true">
+		<operate><section><action>lockNPC(area.getNPC('mirrow_d.npc'));</action><run procedure="mirrows.npc" /></section></operate>
+	</npc>
+	<npc id="mirrow_d.npc" tile="mirrow_d" action="talk" talk_sfx="talking4" animation="mirrow_d" researcher="true">
+		<operate><section><action>lockNPC(area.getNPC('mirrow_n.npc'));</action><run procedure="mirrows.npc" /></section></operate>
+	</npc>
+</data>

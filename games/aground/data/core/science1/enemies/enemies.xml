@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<!-- BANDITS -->
+	<procedure id="bandit.meet">
+		<action>setFlag('bandit_fight', true);</action><dialogue section="player" id="bandits4" if="player==getLocalPlayer()" />
+	</procedure>
+	
+	<tile id="bandit_heavy" sheet="bandit_heavy.png" x="0" y="0" />
+	<animation id="bandit_heavy.idle">
+		<frame x="0" y="0" length="4" />
+		<frame x="1" y="0" length="2" />
+		<frame x="0" y="0" length="16" />
+	</animation>
+	<animation id="bandit_heavy.walk" count="10" x="2" />
+	<animation id="bandit_heavy.attack" count="5" x="15">
+		<frame x="12" count="3" /><frame x="0" length="3" />
+	</animation>
+	<animation id="bandit_heavy.hit" count="1" x="20" length="3">
+		<frame x="0" y="0" length="4" />
+	</animation>
+	<enemy id="bandit_heavy" tile="bandit_heavy" health="16" damage="7" defense="1" front_defense="7" range="9" type="surface" hostileFlag="bandit_fight" death_sfx="bandit_heavy_death" attack_sfx="steel_axe">
+		<loot id="kite_shield" /><inRange range="3"><run procedure="bandit.meet" if="!getFlag('bandit_fight')" /></inRange>
+	</enemy>
+	
+	<tile id="bandit_ranged" sheet="bandit_ranged.png" x="0" y="0" />
+	<animation id="bandit_ranged.idle">
+		<frame x="0" y="0" length="4" />
+		<frame x="1" y="0" length="2" />
+		<frame x="0" y="0" length="16" />
+	</animation>
+	<animation id="bandit_ranged.walk" count="10" x="2" />
+	<animation id="bandit_ranged.attack" count="16" x="12" />
+	<animation id="bandit_ranged.hit" count="1" x="28" length="3">
+		<frame x="0" y="0" length="4" />
+	</animation>
+	
+	<enemy id="bandit_ranged" tile="bandit_ranged" health="16" defense="2" range="3" speed="1.5" type="surface" friendlyFire="false" passEnemies="true" hostileFlag="bandit_fight" death_sfx="bandit_ranged_death">
+		<flee id="player" /><loot id="gold_bar" count="2" /><inRange range="3"><run procedure="bandit.meet" if="!getFlag('bandit_fight')" /></inRange>
+		<attack type="projectile" damage="10" range="8" animation="attack">
+			<projectile tile="crossbow_bolt" delay="14" speed="3" offsetY="4" fire_sfx="bandit_ranged_attack" hit_sfx="bandit_ranged_hit" knockback="5" />
+		</attack>
+	</enemy>
+	
+	<include id="bandit_combo.xml" includeRoot="true" />
+	<tile id="bandit_combo" sheet="bandit_combo.png" x="0" y="0" />
+	<animation id="bandit_combo.idle">
+		<frame x="17" y="0" length="4" />
+		<frame x="16" y="0" length="2" />
+		<frame x="17" y="0" length="16" />
+	</animation>
+	<animation id="bandit_combo.walk" count="10" x="18" />
+	<animation id="bandit_combo.attack1" count="8" x="0" />
+	<animation id="bandit_combo.attack2" count="7" x="8">
+		<frame x="28" count="10" />
+	</animation>
+	<animation id="bandit_combo.hit" count="1" x="15" length="3">
+		<frame x="17" y="0" length="2" />
+	</animation>
+	<enemy id="bandit_combo" tile="bandit_combo" health="25" defense="2" range="9" type="surface" hostileFlag="bandit_fight" death_sfx="bandit_combo_death" attack_sfx="sword">
+		<loot id="steel_sword" /><inRange range="3"><run procedure="bandit.meet" if="!getFlag('bandit_fight')" /></inRange>
+		<attack type="melee" damage="5" hits="2" animation="attack1">
+			<cont damage="7" animation="attack2" slide="11" knockback="5" />
+		</attack>
+	</enemy>
+	
+	<tile id="bandit_knives" sheet="bandit_knives.png" x="0" y="0" />
+	<animation id="bandit_knives.idle">
+		<frame x="0" y="0" length="4" />
+		<frame x="1" y="0" length="2" />
+		<frame x="0" y="0" length="16" />
+	</animation>
+	<animation id="bandit_knives.walk" count="10" x="2" />
+	<animation id="bandit_knives.prepare_atk" x="0" count="1" length="4" />
+	<animation id="bandit_knives.attack" count="4" x="12" />
+	<animation id="bandit_knives.throw" count="4" x="16" />
+	<animation id="bandit_knives.throw1" count="7" x="20" />
+	<animation id="bandit_knives.throw2" count="9" x="27" />
+	<animation id="bandit_knives.hit" count="1" x="36" length="3">
+		<frame x="0" y="0" length="4" />
+	</animation>
+	
+	<tilesheet id="throwing_knife.png" width="8" height="8" />
+	<tile id="throwing_knife" sheet="throwing_knife.png" x="0" y="0" />
+	<animation id="throwing_knife" count="4" x="0" />
+	<enemy id="bandit_knives" tile="bandit_knives" health="10" defense="2" range="3" speed="3" fps="20" type="surface" friendlyFire="false" passEnemies="true" hostileFlag="bandit_fight" death_sfx="bandit_knives_death" attack_sfx="bandit_knives_slash">
+		<loot id="diamond" /><inRange range="3"><run procedure="bandit.meet" if="!getFlag('bandit_fight')" /></inRange>
+		<attack type="melee" damage="7" range="1" slide="true" hitAndRun="4.5">
+			<pre><play object="this" animation="prepare_atk" /></pre>
+		</attack>
+		<attack type="projectile" damage="7" range="6" hits="2" animation="throw1" sfx="bandit_knives_throw">
+			<pre><play object="this" animation="throw" /></pre>
+			<projectile tile="throwing_knife" animation="throwing_knife" hit_sfx="bandit_knives_hit" delay="5" speed="2" offsetY="4" knockback="5" />
+			<cont animation="throw2" />
+		</attack>
+	</enemy>
+	<!-- MUTANTS -->
+	<tile id="diode_wolf" sheet="diode_wolf.png" x="0" y="0" />
+	<animation id="diode_wolf.idle" count="6" />
+	<animation id="diode_wolf.roar" x="6" count="8" />
+	<animation id="diode_wolf.walk" x="14" count="6" />
+	<animation id="diode_wolf.attack" count="6" x="20" />
+	<animation id="diode_wolf.hit" count="1" length="3" x="26" />
+	<enemy id="diode_wolf" tile="diode_wolf" health="30" defense="3" range="7" speed="2" type="surface" kill_achievement="diode_wolf" trapped="wolf" capture="8" attack_sfx="none" death_sfx="diode_wolf_death">
+		<capture trapped="diode_wolf" minCapture="3" />
+		<attack type="melee" damage="8" hitEffect="fire_lg_dot" knockback="5" sfx="diode_wolf_attack" />
+		<lootSet><loot id="battery" /></lootSet>
+		<lootSet><loot id="meat" /></lootSet>
+		<run><play object="this" animation="roar" /></run>
+	</enemy>
+	
+	<include id="cyborg_heavy_gun.xml" includeRoot="true" />
+	<tile id="cyborg_heavy_gun" sheet="cyborg_heavy_gun.png" x="0" y="0" />
+	<animation id="cyborg_heavy_gun.idle" x="8" count="1" length="4" />
+	<animation id="cyborg_heavy_gun.walk" x="9" count="10" />
+	<animation id="cyborg_heavy_gun.attack1" count="2" />
+	<animation id="cyborg_heavy_gun.attack2" count="2" x="2" />
+	<animation id="cyborg_heavy_gun.attack3" count="2" x="4">
+		<frame x="6" length="6" />
+	</animation>
+	<animation id="cyborg_heavy_gun.hit" count="1" length="3" x="7" />
+	<enemy id="cyborg_heavy_gun" tile="cyborg_heavy_gun" health="30" defense="3" range="3" type="surface" death_sfx="cyborg_death">
+		<flee id="player" /><loot id="bullet" count="3" />
+		<attack type="projectile" damage="7" range="9" hits="3" animation="attack1" sfx="machine_gun">
+			<projectile tile="bullet" animation="bullet.idle" speed="5" offsetY="2" hit_sfx="bullet">
+				<hitEffect tile="bullet" animation="bullet.impact" color="ffdd99" />
+			</projectile>
+			<cont animation="attack2" />
+			<cont animation="attack3" />
+		</attack>
+	</enemy>
+	
+	<tile id="stinger" sheet="stinger.png" x="0" y="0" />
+	<animation id="stinger.idle" x="0" count="8" />
+	<animation id="stinger.walk" x="8" count="4" />
+	<animation id="stinger.attack" x="12" count="8">
+		<frame x="0" length="7" />
+	</animation>
+	<animation id="stinger.hit" x="20" count="1" length="8" />
+	<enemy id="stinger" tile="stinger" health="10" defense="3" damage="10" type="golem" speed="3" fps="20" death_sfx="stinger_death" attack_sfx="stinger_attack">
+		<loot p="4" />
+		<loot id="battery" p="4" />
+		<loot id="refined_oil" p="16" />
+		<loot id="titanium" p="1" />
+		<loot id="uranium" p="1" />
+		<attack type="projectile" damage="8" range="8" animation="attack" sfx="radioactive_bolt">
+			<projectile tile="fireball_small" animation="fireball_small.acid" delay="6" speed="3" offsetY="1" glow="true" hit_sfx="bolt_hit" knockback="5" underwater="true">
+				<light tile="light.small" color="00cc00" />
+			</projectile>
+		</attack>
+	</enemy>
+	
+	<!-- OTHER -->
+	<tile id="steel_wyrm" sheet="steel_wyrm.png" x="0" y="0" />
+	<animation id="steel_wyrm.idle" equals="single" />
+	<animation id="steel_wyrm.walk" count="6" x="0" />
+	<animation id="steel_wyrm.dig" count="6" x="6" />
+	<animation id="steel_wyrm.attack" count="6" x="6"><frame count="1" length="10" x="0" y="0" /></animation>
+	<animation id="steel_wyrm.hit" count="1" length="3" x="12">
+		<frame x="0" y="0" length="2" />
+	</animation>
+	<animation id="fireball_small.acid" count="6" color="44ffff" />
+	<enemy id="steel_wyrm" tile="steel_wyrm" health="20" defense="4" damage="18" type="wyrm" eatTile="desert.dirt" capture="16" death_sfx="mech_wyrm_death" attack_sfx="mecha_wyrm_attack">
+		<capture trapped="steel_wyrm" minCapture="3" />
+		<loot id="uranium" />
+		<attack type="projectile" damage="8" range="8" animation="attack" sfx="radioactive_bolt">
+			<projectile tile="fireball_small" animation="fireball_small.acid" speed="3" offsetY="4" glow="true" hit_sfx="bolt_hit" knockback="5" underwater="true">
+				<light tile="light.small" color="00cc00" />
+			</projectile>
+		</attack>
+	</enemy>
+	
+	<!-- MIRROWS -->
+	<include id="mirrows.xml" includeRoot="true" />
+	<include id="lightning.xml" includeRoot="true" />
+	<tile id="mirrow_d" x="9" sheet="mirrows.png" />
+	<tile id="mirrow_d.legs" x="42" sheet="mirrows.png" />
+	<tile id="lightning_ball" x="0" sheet="mirrows.png" />
+	<animation id="lightning_ball.hit" x="0" count="3" />
+	<animation id="lightning_ball.idle" x="3" count="6" />
+	<tile id="lightning_ball.form" x="0" sheet="lightning.png" />
+	<tile id="lightning" x="11" sheet="lightning.png" />
+	<animation id="lightning_ball.form" count="11" glow="true" />
+	<animation id="lightning">
+		<frame x="0" glow="true" /><frame visible="false" /><frame x="1" glow="true" /><frame visible="false" />
+		<frame x="2" glow="true" /><frame visible="false" /><frame x="3" glow="true" /><frame visible="false" />
+		<frame x="4" glow="true" /><frame visible="false" /><frame x="5" glow="true" />
+	</animation>
+	<animation id="mirrow_d.attack" count="11"><append tile="mirrow_d.legs" /></animation>
+	<animation id="mirrow_d.idle" x="11" count="10"><append tile="mirrow_d.legs" /></animation>
+	<animation id="mirrow_d.hit" x="67" count="1" length="3"><append tile="mirrow_d.legs" /></animation>
+	<animation id="mirrow_d.talk" x="21" count="12" />
+	<animation id="mirrow_d.legs.walk" x="1" count="10" />
+	<animation id="mirrow_d.walk" x="11" count="10">
+		<append tile="mirrow_d.legs" animation="mirrow_d.legs.walk" />
+	</animation>
+	<enemy id="mirrow_d" tile="mirrow_d" health="30" defense="4" type="surface" range="8" friendlyFire="false" passEnemies="true" vertical="true" facing="right" death_sfx="mirrow_d_death" attack_sfx="none" passFence="true">
+		<attack type="melee" damage="20" range="1" sfx="mirrow_lightning">
+			<effect id="lightning" offsetX="-28" offsetY="-25" />
+		</attack>
+		<attack type="breath" damage="20" range="13" repeat="10" animation="attack" cooldown="50" sfx="mirrow_energyball" available="this.getHealthPercent()<0.75">
+			<projectile tile="lightning_ball" animation="lightning_ball.idle" speed="2" offsetX="-16" offsetY="2" glow="true">
+				<hitEffect tile="lightning_ball" animation="lightning_ball.hit" color="ffdd99" />
+			</projectile>
+			<effect id="lightning_ball.form" offsetX="-28" offsetY="-25" />
+		</attack>
+		<onDeath><object id="mirrow_d.npc" x="this.xPos/Tile.SIZE" y="this.yTile/Tile.SIZE" /><run procedure="mirrow.lab.music" /></onDeath>
+	</enemy>
+	
+	<tile id="mirrow_n" x="77" sheet="mirrows.png" />
+	<tile id="mirrow_n.legs" x="65" sheet="mirrows.png" />
+	<animation id="mirrow_n.hit" count="1" length="3"><append tile="mirrow_n.legs" /></animation>
+	<animation id="mirrow_n.tentacles" x="4" count="8" repeat="3" />
+	<animation id="mirrow_n.tentacles.attack" x="12" count="6" />
+	<animation id="mirrow_n.tentacles.attack2" x="18" count="3" />
+	<animation id="mirrow_n.idle">
+		<append tile="mirrow_n.legs" />
+		<frame x="3" y="0" length="6" />
+		<frame x="1" y="0" length="2" />
+		<frame x="3" y="0" length="7" />
+		<frame x="2" y="0" length="2" />
+		<frame x="3" y="0" length="7" />
+	</animation>
+	<animation id="mirrow_n.talk" x="-24" count="12" />
+	<animation id="mirrow_n.attack" x="2" count="1" length="8"><append tile="mirrow_n.legs" /></animation>
+	<animation id="mirrow_n.legs.walk" x="1" count="10" />
+	<animation id="mirrow_n.walk" x="3" count="1" length="10">
+		<append tile="mirrow_n.legs" animation="mirrow_n.legs.walk" />
+	</animation>
+	<enemy id="mirrow_n" tile="mirrow_n" health="30" defense="4" type="surface" range="8" speed="2" passEnemies="true" vertical="true" facing="right" death_sfx="mirrow_n_death" attack_sfx="none" passFence="true">
+		<object tile="mirrow_n" animation="mirrow_n.tentacles" layer="player" offsetX="-11" fps="20" name="forward" />
+		<object tile="mirrow_n" animation="mirrow_n.tentacles" layer="player" offsetX="-15" flip="true" fps="20">
+			<over>
+				<sound id="mirrow_tentacle" object="this" />
+				<damage object="player" attacker="this" damage="15" /><play object="this" animation="mirrow_n.tentacles.attack" />
+				<play object="this" animation="mirrow_n.tentacles" loop="true" />
+			</over>
+		</object>
+		<attack type="melee" damage="15" range="0.5" knockback="5" sfx="mirrow_tentacle">
+			<pre><play object="this.getObjectByName('forward')" animation="mirrow_n.tentacles.attack2" loop="true" /></pre>
+			<post><play object="this.getObjectByName('forward')" animation="mirrow_n.tentacles" loop="true" /></post>
+		</attack>
+		<onDeath><object id="mirrow_n.npc" x="this.xPos/Tile.SIZE" y="this.yTile/Tile.SIZE" /><run procedure="mirrow.lab.music" /></onDeath>
+	</enemy>
+	
+	<tilesheet id="minotaur.png" width="32" height="32" />
+	<tile id="minotaur" sheet="minotaur.png" x="0" y="0" />
+	<animation id="minotaur.idle" x="0" count="3"><frame x="3" length="6" /></animation>
+	<animation id="minotaur.walk" x="4" count="5" />
+	<animation id="minotaur.attack" x="4" count="5"><frame x="0" count="3" /></animation>
+	<animation id="minotaur.hit" x="9" count="1" length="3" />
+	<enemy id="minotaur" tile="minotaur" health="50" defense="2" type="surface" range="16" speed="2" trapped="cow" capture="8" death_sfx="minotaur_death" walk_sfx="minotaur_charge" attack_sfx="minotaur_impale">
+		<lootSet><loot id="meat" count="3" /></lootSet>
+		<lootSet><loot id="horn" count="2" /></lootSet>
+		<attack type="melee" damage="15" knockback="10" />
+		<idle><action>this.run();</action><stop /></idle>
+		<hitWall><action>this.flip(); this.run();</action><stop /></hitWall>
+	</enemy>
+</data>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<tile id="alchemist" sheet="alchemist.png" x="0" y="0" />
+	<animation id="alchemist.idle">
+		<frame count="8" repeat="2" />
+	</animation>
+	<animation id="alchemist.hoe" equals="alchemist.idle" />
+	<animation id="alchemist.talk" count="4" x="8" />
+	<animation id="alchemist.quest" count="15" x="12" />
+	<animation id="alchemist.craft" count="53" x="27" />
+	<animation id="alchemist.walk" count="10" x="80" />
+	<animation id="alchemist.cast" count="8" x="90" />
+	<animation id="alchemist.teleport" count="8" x="111"><frame count="8" x="111" reverse="true" /></animation>
+	<animation id="alchemist.teleport_cycle" count="8" x="119" />
+	<animation id="alchemist.teleport_out" count="13" x="98">
+		<append tile="alchemist" animation="alchemist.teleport" behind="true" />
+		<frame visible="false" length="3" />
+	</animation>
+	<animation id="alchemist.teleport_in">
+		<append tile="alchemist" animation="alchemist.teleport" behind="true" />
+		<frame visible="false" length="3" /><frame count="13" x="98" reverse="true" />
+	</animation>
+	
+	<quest id="lab" giver="alchemist" exp="60" achievement="lab">
+		<item id="dragonblood" count="1" />
+	</quest>
+	<quest id="wyrm_pen" giver="alchemist" exp="250" achievement="wyrm_pen">
+		<item id="wyrm" count="2" />
+	</quest>
+	<quest id="hatch_dragons" exp="80">
+		<item id="dragon" count="5" />
+	</quest>
+	<quest id="thunder_axe" giver="alchemist" exp="80">
+		<item id="rusty_axe" count="1" />
+		<item id="fire_tusk" count="1" hidden="true" />
+	</quest>
+	
+	<procedure id="alchemist.idle"><dialogue section="alchemist" id="muttering" speaker="this" /></procedure>
+	<npc id="alchemist" tile="alchemist" action="talk" animation="alchemist" talk_sfx="talking2" idle="tendFarm" farm="wyrm_pen" speed="2" operate="lab" disableAway="magic1" night="true">
+		<operate>
+			<section if="!player.hasQuest('lab')">
+				<dialogue section="alchemist" id="introduce1" speaker='this' />
+				<dialogue section="alchemist" id="introduce2" speaker='this' />
+				<quest id="lab" />
+				<action>this.playAnimation("quest")</action>
+			</section>
+			<choose if="!player.questComplete('lab')">
+				<section if="player.canCompleteQuest('lab')">
+					<dialogue section="alchemist" id="lab1" speaker='this' />
+					<complete quest="lab" />
+					<sound id="build" />
+					<structure id="lab" x="90" y="this.tile_y" with="fade" />
+					<dialogue section="alchemist" id="lab2" speaker='this' />
+				</section>
+				<dialogue section="alchemist" id="lab3" speaker='this' />
+			</choose>
+			<section if="player.hasItemStorehouse('dark_fur') && !getFlag('alchemist.shadow_cape')">
+				<quest />
+				<dialogue section="alchemist" id="shadow_cape1" speaker='this' />
+				<dialogue section="alchemist" id="shadow_cape2" speaker='this' />
+				<action>setFlag('alchemist.shadow_cape', true)</action>
+			</section>
+			<section if="player.hasItemStorehouse('rusty_axe') && !player.hasQuest('thunder_axe')">
+				<dialogue section="alchemist" id="axe1" speaker='this' />
+				<dialogue section="alchemist" id="axe2" speaker='this' />
+				<quest id="thunder_axe" ask="false" />
+			</section>
+			<section if="!player.questComplete('thunder_axe') && player.canCompleteQuest('thunder_axe')">
+				<dialogue section="alchemist" id="axe3" speaker='this' />
+				<complete quest="thunder_axe" />
+				<item id="thunder_axe" modal="true" />
+				<dialogue section="alchemist" id="axe4" speaker='this' />
+			</section>
+			<choose if="player.questComplete('market') || player.questComplete('dock2')">
+				<section if="!player.hasQuest('wyrm_pen')">
+					<dialogue section="alchemist" id="pen1" speaker='this' />
+					<quest id="wyrm_pen" />
+				</section>
+				<choose if="!player.questComplete('wyrm_pen')">
+					<section if="player.canCompleteQuest('wyrm_pen')">
+						<dialogue section="alchemist" id="pen2" speaker='this' />
+						<complete quest="wyrm_pen" />
+						<sound id="build" />
+						<structure id="wyrm_pen" x="86" y="this.tile_y" with="fade">
+							<addAnimal id="wyrm" count="2" />
+						</structure>
+						<dialogue section="alchemist" id="pen3" speaker='this' />
+					</section>
+					<dialogue section="alchemist" id="wyrm" speaker='this' />
+				</choose>
+				<choose if="(area.getStructureById('wyrm_pen') != null && area.getStructureById('wyrm_pen').hasAnimal('dragon')) || player.hasItemStorehouse('dragon') || getFlag('summon_alchemist')">
+					<section if="player.areas.get('start').getStructureById('dragon_lair2') == null && !player.hasQuest('hatch_dragons')">
+						<quest if="!getFlag('summon_alchemist')" />
+						<action>setFlag('summon_alchemist', true)</action>
+						<dialogue section="alchemist" id="dragon2" speaker='this' />
+						<dialogue section="alchemist" id="dragon3" speaker='this' />
+					</section>
+					<choose if="player.hasQuest('wyrm_hive') || (player.areas.exists('magic1') && player.areas.get('magic1').getObject('alchemist_magic') != null)">
+						<section if="!getFlag('alchemist_return')">
+							<dialogue section="alchemist" id="return1" speaker="player" />
+							<dialogue section="alchemist" id="return2" speaker="this" />
+							<dialogue section="alchemist" id="return3" speaker="player" />
+							<dialogue section="alchemist" id="return4" speaker="this" />
+							<action>setFlag('alchemist_return', true)</action>
+						</section>
+						<dialogue section="alchemist" id="wyrm6" speaker="this" if="player.hasQuest('wyrm_hive') && !player.questComplete('wyrm_hive')" />
+						<run procedure="alchemist.idle" />
+					</choose>
+					<dialogue section="alchemist" id="pen3" speaker='this' />
+				</choose>
+				<dialogue section="alchemist" id="dragon1" speaker='this' />
+			</choose>
+			<dialogue section="alchemist" id="lab2" speaker='this' />
+		</operate>
+	</npc>
+</npcs>

@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<areas>
+	<include id="parallax/parallax.xml" />
+	<entry id="default" name="entry.default" description="entry.default_desc" player="player.ancient" area="start" x="-1" y="-1">
+		<addItem id="meat" count="2" />
+	</entry>
+	<include id="mountain.xml" />
+	<procedure id="alchemist_cave">
+		<set id="light" value="2" if="!exists('light')" />
+		<action>
+		function setAlchemistCave(x, y){setTile(x, y, "bedrock"); if(random() &lt; 0.25) setOre(x, y, "quartz");}
+		for(x in 90...94) setAlchemistCave(x, 1, "bedrock");
+		for(x in 86...90) setAlchemistCave(x, 2, "bedrock"); for(x in 90...94) mine(x, 2, light, "bedrock"); setAlchemistCave(94, 2, "bedrock");
+		for(y in 3...6){
+			setAlchemistCave(85, y, "bedrock"); for(x in 86...94) mine(x, y, light, "bedrock"); setAlchemistCave(94, y, "bedrock");
+		} for(x in 86...94) setAlchemistCave(x, 6, "bedrock"); mine(92, 1); setAlchemistCave(92, 0, "bedrock");
+		</action>
+	</procedure>
+	<defaultFishing>
+		<loot id="toothfish" p="16" difficulty="1" />
+		<loot id="rockfish" p="4" difficulty="2" />
+		<loot id="coral_cod" p="1" difficulty="3" />
+	</defaultFishing>
+	<area id="sea_floor_bottom" width="_width" height="_height">
+		<tiles id="sand" start="0.5" end="1" /><tiles id="sand" y="_height-1" />
+		<tiles id="sand_top" top="0" includeShape="false" />
+		<ore id="oil" start="0.5" end="1" percent="0.0125" tile="sand" />
+		<objects id="coral1" count="2" fromX="0" toX="_width" fromY="-2" toY="_height-2" width="2" height="2" underwater="true" bottom="true" />
+		<objects id="coral2" count="2" fromX="0" toX="_width" fromY="-2" toY="_height-2" width="2" height="2" underwater="true" bottom="true" />
+		<objects id="coral3" count="2" fromX="0" toX="_width" fromY="-2" toY="_height-2" width="2" height="2" underwater="true" bottom="true" />
+		<objects id="coral4" count="2" fromX="0" toX="_width" fromY="-2" toY="_height-2" width="2" height="2" underwater="true" bottom="true" />
+		<objects id="coral5" count="2" fromX="0" toX="_width" fromY="-2" toY="_height-2" width="2" height="2" underwater="true" bottom="true" />
+		<objects id="seaweed" count="10" fromX="0" toX="_width" fromY="-2" toY="_height-2" width="2" height="2" underwater="true" bottom="true" />
+		<objects id="treasure_chest" count="2" fromX="0" toX="_width" fromY="-2" toY="_height-2" underwater="true" bottom="true">
+			if(exists('underwater_chest_items')) underwater_chest_items(this); else {
+				var r = random(); if(r &lt; 0.2) this.inventory.addItems(Item.get("rusty_axe"), 1);
+				else if(r &lt; 0.4) this.inventory.addItems(Item.get("gold_bar"), 2);
+				else if(r &lt; 0.5) this.inventory.addItems(Item.get("sugar_seed"), 3);
+				else if(r &lt; 0.6) this.inventory.addItems(Item.get("water_shell"), 5);
+				else if(r &lt; 0.7) this.inventory.addItems(Item.get("water_bullet"), 10);
+				else if(r &lt; 0.8) this.inventory.addItems(Item.get("water_sword"), 1);
+				else if(r &lt; 0.9) this.inventory.addItems(Item.get("diamond"), 2);
+				else if(r &lt; 0.95) this.inventory.addItems(Item.get("blood_gem"), 2);
+				else this.inventory.addItems(Item.get("electric_eel"), 1);
+			}
+		</objects>
+	</area>
+	<area id="sea_floor">
+		<set id="_width" value="-area_left-32" /><set id="_height" value="16" /><appendArea id="sea_floor_bottom" offsetX="area_left+16" offsetY="64" />
+		<set id="_width" value="area_right-32-area_width" /><set id="_height" value="16" /><appendArea id="sea_floor_bottom" offsetX="area_width+16" offsetY="64" />
+		<action>for(y in 80...90){for(x in area_left-9...-16) setTile(x, y, "blackstone"); for(x in area_width+16...area_right+48) setTile(x, y, "blackstone");}</action>
+		<action>for(y in 86...area_height){setTile(-16, y, "blackstone"); setTile(area_width+15, y, "blackstone");}</action>
+		<action>for(x in -16...area_width+15) setTile(x, area_height-1, "blackstone");</action>
+	</area>
+	<area id="start" width="96" height="96" background="start" planet="start" runInit="!player.questComplete('hut')">
+		<tiles id="dirt" start="0" end="0.5" />
+		<tiles id="stone" start="0.5" end="1" />
+		<tiles id="grass" y="0" />
+		<tiles id="bedrock" y="95" />
+		<shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
+		<appendArea id="mountain" offsetX="96" offsetY="-16" />
+		<appendArea id="sea_floor"><params area_left="-240" area_right="280" area_width="128" area_height="96" /></appendArea>
+		<run procedure="alchemist_cave" />
+		<ore id="quartz" start="0.4" end="0.5" percent="0.0025" tile="dirt" />
+		<ore id="iron" start="0.2" end="0.5" percent="0.0125" tile="dirt" />
+		<ore id="iron" start="0.1" end="0.2" percent="0.000625" tile="dirt" />
+		<ore id="coal" start="0.0" end="0.4" percent="0.0375" tile="dirt" />
+		<ore id="gold" start="0.4" end="0.5" percent="0.000625" tile="dirt" />
+		<ore id="diamond" start="0.9" end="1.0" percent="0.0025" tile="stone" />
+		<ore id="gold" start="0.5" end="1.0" percent="0.0125" tile="stone" />
+		<ore id="iron" start="0.5" end="0.9" percent="0.0375" tile="stone" />
+		<ore id="lava" start="0.7" end="0.8" percent="1" tile="stone" />
+		<object id="alchemist" x="90" y="5" />
+		<objects id="tree" y="-1" startX="35" endX="92" minDist="6" maxDist="9" array="right" />
+		<objects id="tree" y="-1" startX="32" endX="4" minDist="-6" maxDist="-9" array="left" />
+		<objects id="wyrm" start="0.1" end="0.4" percent="0.0002" tile="dirt" />
+		<objects id="golem" start="0.5" end="1.0" percent="0.0075" tile="stone" />
+		<object id="treasure_chest" x="35" y="5">
+			this.inventory.addItems(Item.get("rusty_axe"), 1);
+		</object>
+		<objects id="treasure_chest" start="0.1" end="0.2" count="1" tile="dirt">
+			this.inventory.addItems(Item.get("iron_sword"), 1);
+			this.inventory.addItems(Item.get("iron_armor"), 1);
+		</objects>
+		<objects id="treasure_chest" start="0.3" end="0.4" count="1" tile="dirt">
+			this.inventory.addItems(Item.get("gold_bar"), 2);
+			this.inventory.addItems(Item.get("diamond"), 1);
+		</objects>
+		<object id="bush" x="39" y="-1" />
+		<object id="red_bush" x="30" y="-1" />
+		<objects id="bush" y="-1" between="left" pos="0.25" altPos="0.75" percent="0.5" />
+		<objects id="bush" y="-1" between="right" pos="0.25" altPos="0.75" percent="0.5" />
+		<objects id="red_bush" y="-1" between="left" pos="0.25" altPos="0.75" percent="0.5" />
+		<objects id="red_bush" y="-1" between="right" pos="0.25" altPos="0.75" percent="0.5" />
+		<objects id="wood" y="-1" fromX="1" toX="36" count="7" /><object id="wood" x="37" />
+		<objects id="wood" y="-1" between="right" pos="0.5" percent="0.5" />
+		<objects id="rat" startX="0" endX="95" minDist="15" maxDist="25" />
+		<spawner id="rat" time="1000" count="6" fromX="3" toX="95" fromY="-1" toY="-1" />
+		<spawner id="boar" time="2000" count="5" fromX="3" toX="95" fromY="-1" toY="-1" enabled="player.hasQuest('storehouse') || player.hasQuest('storehouse2')" />
+		<spawner id="shadow_cat" time="2000" count="2" fromX="3" toX="95" fromY="-1" toY="-1" enabled="player.questComplete('workshop') && isNight()" />
+		<spawner id="spider" time="1000" count="5" fromX="3" toX="95" fromY="-1" toY="-1" enabled="player.questComplete('workshop') && isNight()" />
+		<spawner id="wyrm" time="4000" count="3" fromX="1" toX="94" fromY="3" toY="32" tile="dirt" />
+		<spawner id="earth_elemental" time="5000" count="1" fromX="3" toX="95" fromY="-1" toY="-1" />
+		<spawner id="wood_crate" time="4000" count="3" fromX="-200" toX="-120" fromY="-1" toY="-1" ground="false" enabled="!player.questComplete('pirates')" />
+		<spawner id="wood_debris1" time="4000" count="3" fromX="-200" toX="-120" fromY="-1" toY="-1" ground="false" enabled="!player.questComplete('pirates')" />
+		<spawner id="wood_debris2" time="3000" count="3" fromX="-200" toX="-120" fromY="-1" toY="-1" ground="false" enabled="!player.questComplete('pirates')" />
+		<spawner id="wood" time="1000" count="10" fromX="1" toX="80" fromY="-1" toY="-1" enabled="hasStorm()" />
+		<structure id="hut.incomplete" x="34" />
+		<run procedure="start.caves" />
+		<fishing>
+			<loot id="rusty_axe" p="6" />
+			<loot id="toothfish" p="16" difficulty="1" />
+			<loot id="rockfish" p="4" difficulty="2" />
+			<loot id="coral_cod" p="1" difficulty="3" />
+		</fishing>
+		<init>
+			<scene id="intro" show="intro" endWith="fade" />
+			<weather type="storm" start="0" power="6" />
+			<action>player.renderer.x -= Tile.SIZE; player.renderer.y += Tile.SIZE; player.renderer.scaleX = -1;</action>
+			<lerp object="player" deltaX="1" deltaY="-1" seconds="1" modal="true" /><wait seconds="0.5" />
+			<dialogue section="player" id="storm1" />
+			<event overweight="true" once="true">
+				<dialogue section="player" id="storm3" if="!player.questComplete('hut')" />
+			</event>
+		</init>
+		<onLoad>
+			<tile id="seagull" animation="seagull.walk" x="random()*5" />
+			<tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />
+			<tile id="seagull" animation="seagull.fly" x="-random()*5-1" y="-4" />
+			<tile id="seagull" animation="seagull.fly" x="128+random()*5" y="-2" />
+			<tile id="seagull" animation="seagull.fly" x="129+random()*5" y="-4" />
+			<tile id="redbreast" type="bird" x="random()*23" fromX="0" toX="93" />
+			<tile id="redbreast" type="bird" x="23+random()*23" fromX="0" toX="93" />
+			<tile id="redbreast" type="bird" x="46+random()*23" fromX="0" toX="93" />
+			<tile id="redbreast" type="bird" x="69+random()*23" fromX="0" toX="93" />
+			<weather type="snow" fromY="-50" toY="isDate(12,27,7)?-1:-10" />
+			<set id="smelter" value="area.getStructureById('smelter')" />
+			<structure id="smelter" x="23" if="smelter != null && smelter.tile_x == 22" />
+			<music id="start" seconds="1" />
+			<appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-240" area_right="280" area_width="128" area_height="96" /></appendArea>
+			<choose>
+				<remove object="area.getObject('ghost')" if="!isDate(10,31,3)" />
+				<object id="ghost" x="45+random()*50" if="area.getObject('ghost') == null" />
+			</choose>
+			<set id="w" value="area.getStructureById('whirlpool')" /><remove structure="w" if="w != null && w.x == -197*Tile.SIZE" />
+			<structure id="whirlpool" x="-200" if="(player.hasQuest('powerplant') || player.areas.exists('snow_island')) && area.getStructureById('whirlpool') == null"><teleport area="snow_island" x="-204" y="-1" /></structure>
+			<action if="version < 56">area.spawner.spawnAll('wood_crate');area.spawner.spawnAll('wood_debris1');area.spawner.spawnAll('wood_debris2');</action>
+			<action if="area.getObject('area_name_sign') != null">setFlag('area_name_sign', true)</action>
+			<action if="getFlag('halloween17') && version < 52">var s = area.getStructureById('storehouse'); if(s != null) s.inventory.addItems(Item.get('pumpkin_seed'), 1);</action>
+			<action if="player.questComplete('orchard') && version < 52">var s = area.getStructureById('storehouse'); if(s != null) s.inventory.addItems(Item.get('orchard_seed'), 1);</action>
+			<section if="player.questComplete('dock2') && !player.hasQuest('market2') && !getFlag('bombardment')">
+				<dialogue section="player" id="market1" /><quest id="market2" ask="false" />
+			</section>
+			<section if="player.hasQuest('dock2') && !player.questComplete('dock2') && area.getObject('dock2_placeholder') == null"><object id="dock2_placeholder" x="0" /></section>
+			<section if="player.hasQuest('market2') && !player.questComplete('market2') && area.getObject('market2_placeholder') == null"><object id="market2_placeholder" x="7" /></section>
+			<section if="version < 24">
+				<remove structure="area.getStructureById('dock_empty_flip')" />
+				<appendArea id="mountain" offsetX="96" offsetY="-16" />
+				<run procedure="alchemist_cave" />
+				<mine x="92" y="0" />
+			</section>
+			<run procedure="start.caves" if="area.getStructureById('golem') == null && area.getStructureById('golem.active') == null" />
+			<remove structure="player.areas.get('science1').getStructureById('boat')" if="area.getStructureById('boat') != null && player.areas.exists('science1')" />
+		</onLoad>
+		<connection area="science1" fromX="-240" toX="330" />
+		<connection area="magic1" fromX="280" toX="-250" />
+	</area>
+	<onLoad><action if="player.hasItem('stone_pickaxe') || player.equipment.get('pickaxe').get() != null">player.setFlag('pickaxe', true); player.setFlag('allow_hotkeys', true);</action></onLoad>
+	<procedure id="start.caves">
+		<structure id="golem" x="112" y="94" />
+		<set id="cave_x" value="randInt(2, 94)" />
+		<structure id="cave" x="cave_x" y="52">
+			<teleport area="pumpkin_cave" x="16" y="6" allowReturn="true" />
+		</structure>
+		<spreadTiles x="cave_x" y="52" eval="'markings'+randInt(1,9)" layer="back" on="stone" count="50" />
+		<spreadTiles x="116" y="92" eval="'markings'+randInt(1,9)" layer="back" on="stone" count="200" />
+		<set id="cave_x" value="randInt(2, 94)" />
+		<structure id="cave" x="cave_x" y="62">
+			<teleport area="ore_cave" x="32" y="32" allowReturn="true" />
+		</structure>
+		<spreadTiles x="cave_x" y="62" eval="'markings'+randInt(1,9)" layer="back" on="stone" count="50" />
+		<set id="cave_x" value="randInt(2, 94)" />
+		<structure id="cave" x="cave_x" y="82">
+			<teleport area="ice_cave" x="16" y="4" allowReturn="true" />
+		</structure>
+		<spreadTiles x="cave_x" y="82" eval="'markings'+randInt(1,9)" layer="back" on="stone" count="50" />
+		<set id="cave_x" value="randInt(2, 94)" />
+		<structure id="doorway" x="cave_x" y="92">
+			<teleport area="fire_cave" x="4" y="7" allowReturn="true" />
+		</structure>
+		<spreadTiles x="cave_x" y="92" eval="'markings'+randInt(1,9)" layer="back" on="stone" count="50" />
+	</procedure>
+	<structure id="pumpkin_field_dead" width="112" tile="pumpkin_field" name="search" allowSpawn="true">
+		<operate>
+			<choose>
+				<section if="!player.hasItem('pumpkin_seed')">
+					<dialogue section="structure" id="get_pumpkin_seeds" />
+					<item id="pumpkin_seed" />
+				</section>
+				<dialogue section="structure" id="search_fail" />
+			</choose>
+		</operate>
+	</structure>
+	<area id="pumpkin_cave" width="32" height="8" background="black" canFly="false">
+		<tiles id="dirt" start="0" end="0.5" />
+		<tiles id="stone" start="0.5" end="1" />
+		<tiles id="dirt" y="1" /><tiles id="stone" y="6" />
+		<tiles id="dirt_sand1" y="0" />
+		<tiles id="bedrock" x="0" />
+		<tiles id="bedrock" x="31" />
+		<tiles id="bedrock" y="7" />
+		<structure id="cave" x="16" y="6" />
+		<object id="fire_boar" x="16" y="-1" />
+		<spawner id="fire_boar" time="10000" count="1" fromX="1" toX="30" fromY="-1" toY="-1" />
+		<spawner id="ghost" time="5000" count="1" fromX="1" toX="30" fromY="-1" toY="-1" />
+		<mine x="16" y="6" light="3" /><mine x="17" y="6" light="3" /><mine x="16" y="5" light="3" /><mine x="17" y="5" light="3" />
+		<structure id="pumpkin_field_dead" x="2" y="-1" />
+		<structure id="pumpkin_field_dead" x="9" y="-1" />
+		<structure id="pumpkin_field_dead" x="16" y="-1" />
+		<structure id="pumpkin_field_dead" x="23" y="-1" />
+		<objects id="jakolantern" y="-1" fromX="0" toX="31" percent="0.125" />
+		<init><runAreaLoad /><action>area.spawner.spawnAll('ghost', true)</action></init>
+		<onLoad>
+			<weather type="fog" /><music id="magic1" seconds="1" />
+			<section if="area.getStructureById('recipe_pillar') == null">
+				<structure id="recipe_pillar" x="16" y="4" recipe="make_blood_gem" />
+			</section>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 0...7){setTile(0, y, "blackstone"); setTile(31, y, "blackstone");} for(x in 0...32) setTile(x, 7, "blackstone");</action>
+			<remove object="area.getObject('miner')" if="area.getLiveCount('miner') > 1" />
+		</onLoad>
+	</area>
+	<area id="ore_cave" width="64" height="64" background="black" temporary="true">
+		<tiles id="stone" start="0" end="1" />
+		<tiles id="dirt" start="0.1" end="0.3" />
+		<mine start="0.45" end="0.55" />
+		<tiles id="blackstone" y="0" />
+		<tiles id="blackstone" y="63" />
+		<tiles id="blackstone" x="0" />
+		<tiles id="blackstone" x="63" />
+		<ore id="quartz" start="0.1" end="0.3" percent="0.00125" tile="dirt" />
+		<ore id="coal" start="0.1" end="0.3" percent="0.01875" tile="dirt" />
+		<ore id="diamond" start="0.9" end="1.0" percent="0.00125" tile="stone" />
+		<ore id="gold" start="0.75" end="1.0" percent="0.00625" tile="stone" />
+		<ore id="iron" start="0" end="0.9" percent="0.01875" tile="stone" />
+		<ore id="lava" start="0.7" end="0.8" percent="1" tile="stone" />
+		<objects id="golem" start="0.0" end="1.0" percent="0.00375" tile="stone" />
+		<objects id="gold_golem" start="0.45" end="0.55" percent="0.00375" />
+		<structure id="cave" x="32" y="32" />
+		<mine x="32" y="32" light="3" /><mine x="33" y="32" light="3" /><mine x="32" y="31" light="3" /><mine x="33" y="31" light="3" />
+		<set id="chest_x" value="randInt(2, 62)" />
+		<object id="treasure_chest" x="chest_x" y="60">
+			this.inventory.addItems(Item.get("titanium"), 2);
+		</object>
+		<setTile tile="lava" x="chest_x-1" y="60" layer="ore" />
+		<setTile tile="lava" x="chest_x+1" y="60" layer="ore" />
+		<setTile tile="lava" x="chest_x" y="59" layer="ore" />
+		<setTile tile="lava" x="chest_x" y="61" layer="ore" />
+		<set id="pillar_x" value="randInt(4, 59)" />
+		<set id="pillar_y" value="randInt(6, 57)" />
+		<spreadTiles x="pillar_x" y="pillar_y" tile="invisible_block" count="100" />
+		<structure id="recipe_pillar" x="pillar_x" y="pillar_y" recipe="transmute_gold" />
+		<init><section if="!getFlag('ore_cave')"><action>player.setFlag('ore_cave', true);</action><dialogue section="player" id="ore_cave" /></section></init>
+	</area>
+	<area id="ice_cave" width="32" height="8" background="black" canFly="false">
+		<tiles id="stone" start="0" end="1" />
+		<tiles id="snow" top="0" />
+		<tiles id="snow_stone" top="1" />
+		<tiles id="bedrock" x="0" />
+		<tiles id="bedrock" x="31" />
+		<tiles id="bedrock" y="7" />
+		<ore id="iron" start="0" end="0.9" percent="0.01875" tile="stone" />
+		<object id="treasure_chest" x="randInt(4, 28)" y="-1">
+			this.inventory.addItems(Item.get("ice_arrow"), 3);
+		</object>
+		<object id="treasure_chest" x="randInt(4, 28)" y="-1">
+			this.inventory.addItems(Item.get("ice_shield"), 1);
+		</object>
+		<objects id="ice_bush" y="-1" fromX="0" toX="31" percent="0.25" />
+		<objects id="yeti" startX="0" endX="31" minDist="6" maxDist="9" y="-1" />
+		<spawner id="yeti" time="4000" count="4" fromX="0" toX="31" fromY="-1" toY="-1" />
+		<structure id="cave" x="16" y="4" />
+		<mine x="16" y="4" light="3" /><mine x="17" y="4" light="3" /><mine x="16" y="3" light="3" /><mine x="17" y="3" light="3" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<weather type="snow" fromY="-50" toY="0" />
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 0...7){setTile(0, y, "blackstone"); setTile(31, y, "blackstone");} for(x in 0...32) setTile(x, 7, "blackstone");</action>
+		</onLoad>
+	</area>
+	<area id="fire_cave" width="64" height="9" background="black">
+		<tiles id="stone" start="0" end="1" />
+		<mine y="2" />
+		<mine y="6" />
+		<tiles id="bedrock" y="0" />
+		<tiles id="bedrock" y="4" />
+		<tiles id="bedrock" y="8" />
+		<tiles id="bedrock" x="0" />
+		<tiles id="bedrock" x="63" />
+		<mine x="59" y="5" /><mine x="59" y="4" tile="stone" /><mine x="59" y="3" />
+		<ore id="lava" start="0" end="1" percent="1" tile="stone" />
+		<structure id="doorway" x="4" y="7" />
+		<mine x="4" y="7" light="5" /><mine x="5" y="7" light="5" /><mine x="4" y="6" light="5" /><mine x="5" y="6" light="5" />
+		<object id="treasure_chest" x="4" y="2">
+			this.inventory.addItems(Item.get("fire_gem"), 1);
+			this.inventory.addItems(Item.get("kitchen_blueprint"), 1);
+			this.inventory.addItems(Item.get("diamond"), 3);
+		</object>
+		<object id="fire_elemental" x="8" y="2" />
+		<spawner id="fire_elemental" time="5000" count="1" fromX="1" toX="62" fromY="2" toY="2" />
+		<objects id="fire_bird" startX="2" endX="61" minDist="6" maxDist="9" y="6" />
+		<object id="fire_bird" x="1" y="6" />
+		<object id="fire_bird" x="62" y="6" />
+		<spawner id="fire_bird" time="4000" count="8" fromX="1" toX="62" fromY="6" toY="6" />
+		<objects id="fire_boar" startX="2" endX="60" minDist="6" maxDist="9" y="2" />
+		<object id="fire_boar" x="1" y="2" />
+		<object id="fire_boar" x="61" y="2" />
+		<spawner id="fire_boar" time="4000" count="8" fromX="1" toX="61" fromY="2" toY="2" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 1...8){setTile(0, y, "blackstone"); setTile(63, y, "blackstone");} for(x in 0...64){setTile(x, 0, "blackstone"); setTile(x, 8, "blackstone");}</action>
+		</onLoad>
+	</area>
+	<area id="golem_factory" width="16" height="8" background="black" external="start">
+		<tiles id="stone" start="0" end="1" />
+		<mine y="6" /><mine y="5" /><mine x="9" /><mine x="10" /><mine x="11" /><mine x="12" />
+		<tiles id="bedrock" x="0" />
+		<tiles id="bedrock" x="15" />
+		<tiles id="bedrock" y="0" />
+		<tiles id="bedrock" y="7" />
+		<ore id="lava" start="0" end="1" percent="1" tile="stone" />
+		<ore id="lava" start="0" end="1" percent="1" tile="bedrock" />
+		<object id="golemech" x="5" y="6" />
+		<structure id="golem_factory" x="7" y="6" />
+		<structure id="doorway" x="1" y="6">
+			<teleport area="start" x="115" y="94" />
+		</structure>
+		<spawner id="golem" time="0" count="3" fromX="1" toX="14" fromY="1" toY="6" />
+		<light x="2" y="5" size="4" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 1...7){setTile(0, y, "blackstone"); setTile(15, y, "blackstone");} for(x in 0...16){setTile(x, 0, "blackstone"); setTile(x, 7, "blackstone");}</action>
+		</onLoad>
+	</area>
+		
+	<area id="farming" width="128" height="96" background="start" planet="start">
+		<tiles id="dirt" start="0" end="0.5" />
+		<tiles id="stone" start="0.5" end="1" />
+		<tiles id="grass" y="0" />
+		<tiles id="bedrock" y="95" />
+		<shore x="-1" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand2" flip="true" dock="dock_empty" />
+		<shore x="128" top="sand_top" bottom="sand" trans1="dirt_sand1" trans2="dirt_sand3" dock="dock_empty_flip" />
+		<appendArea id="sea_floor"><params area_left="-240" area_right="280" area_width="128" area_height="96" /></appendArea>
+		<ore id="quartz" start="0.4" end="0.5" percent="0.0025" tile="dirt" />
+		<ore id="iron" start="0.2" end="0.5" percent="0.0125" tile="dirt" />
+		<ore id="iron" start="0.1" end="0.2" percent="0.000625" tile="dirt" />
+		<ore id="coal" start="0.0" end="0.4" percent="0.0375" tile="dirt" />
+		<ore id="gold" start="0.4" end="0.5" percent="0.000625" tile="dirt" />
+		<ore id="diamond" start="0.9" end="1.0" percent="0.0025" tile="stone" />
+		<ore id="gold" start="0.5" end="1.0" percent="0.0125" tile="stone" />
+		<ore id="iron" start="0.5" end="0.9" percent="0.0375" tile="stone" />
+		<ore id="lava" start="0.7" end="0.8" percent="1" tile="stone" />
+		<objects id="tree" y="-1" startX="4" endX="124" minDist="6" maxDist="9" array="trees" />
+		<objects id="wyrm" start="0.1" end="0.4" percent="0.0002" tile="dirt" />
+		<objects id="golem" start="0.5" end="1.0" percent="0.0075" tile="stone" />
+		<objects id="bush" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.5" />
+		<objects id="red_bush" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.5" />
+		<objects id="rat" startX="0" endX="127" minDist="15" maxDist="25" />
+		<spawner id="rat" time="1000" count="6" fromX="3" toX="127" fromY="-1" toY="-1" />
+		<spawner id="boar" time="3000" count="5" fromX="3" toX="127" fromY="-1" toY="-1" enabled="!isNight()" />
+		<spawner id="shadow_cat" time="2000" count="2" fromX="3" toX="127" fromY="-1" toY="-1" enabled="isNight()" />
+		<spawner id="spider" time="1000" count="5" fromX="3" toX="127" fromY="-1" toY="-1" enabled="isNight()" />
+		<spawner id="wyrm" time="4000" count="3" fromX="1" toX="126" fromY="3" toY="32" tile="dirt" />
+		<objects id="treasure_chest" start="0.05" end="0.15" count="3" tile="dirt">
+			this.inventory.addItems(Item.get("wheat_seed"), 2);
+		</objects>
+		<objects id="treasure_chest" start="0.05" end="0.15" count="3" tile="dirt">
+			this.inventory.addItems(Item.get("orchard_seed"), 1);
+		</objects>
+		<objects id="treasure_chest" start="0.05" end="0.15" count="2" tile="dirt">
+			this.inventory.addItems(Item.get("sugar_seed"), 1);
+		</objects>
+		<objects id="treasure_chest" start="0.05" end="0.15" count="1" tile="dirt">
+			this.inventory.addItems(Item.get("cotton_seed"), 1);
+		</objects>
+		<objects id="treasure_chest" start="0.05" end="0.15" count="1" tile="dirt">
+			this.inventory.addItems(Item.get("rice_seed"), 1);
+		</objects>
+		<fishing>
+			<loot id="rusty_axe" p="6" />
+			<loot id="toothfish" p="16" difficulty="1" />
+			<loot id="rockfish" p="4" difficulty="2" />
+			<loot id="coral_cod" p="1" difficulty="3" />
+		</fishing>
+		<spawner id="earth_elemental" time="5000" count="1" fromX="1" toX="126" fromY="-1" toY="-1" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<tile id="seagull" animation="seagull.walk" x="random()*5" />
+			<tile id="seagull" animation="seagull.fly" x="-random()*5" y="-2" />
+			<tile id="seagull" animation="seagull.fly" x="-random()*5-1" y="-4" />
+			<tile id="seagull" animation="seagull.walk" x="127-random()*5" />
+			<tile id="seagull" animation="seagull.fly" x="128+random()*5" y="-2" />
+			<tile id="seagull" animation="seagull.fly" x="129+random()*5" y="-4" />
+			<tile id="redbreast" type="bird" x="random()*31" fromX="0" toX="125" />
+			<tile id="redbreast" type="bird" x="31+random()*31" fromX="0" toX="125" />
+			<tile id="redbreast" type="bird" x="62+random()*31" fromX="0" toX="125" />
+			<tile id="redbreast" type="bird" x="93+random()*31" fromX="0" toX="125" />
+			<music id="start" seconds="1" />
+			<appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-240" area_right="280" area_width="128" area_height="96" /></appendArea>
+		</onLoad>
+		<connection area="labyrinth_end" fromX="-240" toX="160" />
+		<connection area="labyrinth_end" fromX="280" toX="-130" />
+	</area>
+	<area id="snow_island" width="128" height="96" background="sky" planet="start">
+		<tiles id="stone" start="0" end="1" />
+		<tiles id="ice" start="0.2" end="0.25" />
+		<tiles id="snow" y="0" />
+		<tiles id="snow_stone" y="1" />
+		<tiles id="bedrock" y="95" />
+		<shore x="-1" top="sand_top" bottom="sand" flip="true" dock="dock_empty" />
+		<shore x="128" top="sand_top" bottom="sand" dock="dock_empty_flip" />
+		<mine start="0.2" end="0.25" />
+		<appendArea id="sea_floor"><params area_left="-240" area_right="340" area_width="128" area_height="96" /></appendArea>
+		
+		<ore id="diamond" start="0.8" end="1.0" percent="0.0025" tile="stone" />
+		<ore id="sulfur" start="0.3" end="1.0" percent="0.0125" tile="stone" />
+		<ore id="iron" start="0.0" end="0.8" percent="0.0125" tile="stone" />
+		<ore id="coal" start="0.0" end="0.8" percent="0.0125" tile="stone" />
+		<ore id="lava" start="0.65" end="0.75" percent="1" tile="stone" />
+		
+		<objects id="conifer_snow" y="-1" startX="4" endX="124" minDist="6" maxDist="9" array="trees" />
+		<objects id="icer" start="0.2" end="0.25" count="8" />
+		<objects id="gold_golem" start="0.5" end="1.0" percent="0.0075" tile="stone" />
+		<objects id="red_bush_snow" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.34" />
+		<objects id="bush_snow" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.67" />
+		<objects id="ice_chest" start="0.2" end="0.25" count="5">
+			this.inventory.addItems(Item.get("steel_bar"), 10); setBack(this.tile_x, this.tile_y, "snow");
+		</objects>
+		<objects id="ice_chest" start="0.2" end="0.25" count="3">
+			this.inventory.addItems(Item.get("ice_arrow"), 6); setBack(this.tile_x, this.tile_y, "snow");
+		</objects>
+		<objects id="ice_chest" start="0.2" end="0.25" count="1">
+			this.inventory.addItems(Item.get("ice_sword"), 1); setBack(this.tile_x, this.tile_y, "snow");
+		</objects>
+		<objects id="ice_chest" start="0.2" end="0.25" count="1">
+			this.inventory.addItems(Item.get("hut_blueprint"), 1); setBack(this.tile_x-offsetX, this.tile_y-offsetY, "snow");
+		</objects>
+		<action>
+			for(i in 0...128){setOre(i, 71, "lava"); setOre(i, 73, "lava"); mine(i, 72);}
+		</action>
+		<objects id="yeti" startX="3" endX="125" minDist="15" maxDist="25" />
+		<spawner id="yeti" time="4000" count="6" fromX="3" toX="125" fromY="-1" toY="-1" />
+		<objects id="fire_bird" startX="1" endX="126" minDist="12" maxDist="15" y="72" />
+		<spawner id="fire_bird" time="4000" count="8" fromX="1" toX="126" fromY="72" toY="72" />
+		<object id="treasure_chest" x="32" y="72">this.inventory.addItems(Item.get("fire_arrow"), 10);</object>
+		<object id="treasure_chest" x="95" y="72">this.inventory.addItems(Item.get("fire_sword"), 1);</object>
+		<object id="ice_elemental" x="91" y="-1" />
+		<spawner id="ice_elemental" time="5000" count="1" fromX="3" toX="124" fromY="-1" toY="-1" />
+		<set id="w" value="area.getStructureById('whirlpool')" /><remove structure="w" if="w != null && w.x == -197*Tile.SIZE" />
+		<structure id="whirlpool" x="-200"><teleport area="start" x="-204" y="-1" /></structure>
+		<structure id="recipe_pillar" x="7" recipe="make_ice_arrow" />
+		<structure id="recipe_pillar" x="117" recipe="make_ice_sword" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<music id="nightly" seconds="1" />
+			<weather type="snow" fromY="-50" toY="0" />
+			<repeat count="10">
+				<tile id="mountain_snow" tile_x="random()*8" x="offsetX+2+random()*125" y="offsetY-2" back="true" />
+			</repeat><appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-240" area_right="340" area_width="128" area_height="96" /></appendArea>
+		</onLoad>
+		<fishing>
+			<loot id="rusty_axe" p="6" />
+			<loot id="toothfish" p="16" difficulty="1" />
+			<loot id="rockfish" p="4" difficulty="2" />
+			<loot id="coral_cod" p="1" difficulty="3" />
+		</fishing>
+		<connection area="snow_island" fromX="-240" toX="-230" />
+		<connection area="labyrinth_end" fromX="340" toX="-130" />
+	</area>
+	
+	<include id="ocean.xml" includeRoot="true" />
+	<tile id="coral1" sheet="ocean.png" />
+	<tile id="coral2" x="1" sheet="ocean.png" />
+	<tile id="coral3" x="2" sheet="ocean.png" />
+	<tile id="coral4" x="3" sheet="ocean.png" />
+	<tile id="coral5" x="25" sheet="ocean.png" />
+	<animation id="coral" count="22"><frame x="21" length="12" /></animation>
+	<tile id="seaweed" x="47" sheet="ocean.png" />
+	<animation id="seaweed" count="4" />
+	<object id="seaweed" tile="seaweed" animation="seaweed" fps="5" layer="top" blocking="true" />
+	<object id="coral1" tile="coral1" layer="bush" />
+	<object id="coral2" tile="coral2" layer="bush" />
+	<object id="coral3" tile="coral3" layer="bush" />
+	<object id="coral4" tile="coral4" animation="coral" fps="10" layer="bush">
+		<overSecond><action>player.addOxygen(5)</action></overSecond>
+	</object>
+	<object id="coral5" tile="coral5" animation="coral" fps="10" layer="bush" />
+</areas>

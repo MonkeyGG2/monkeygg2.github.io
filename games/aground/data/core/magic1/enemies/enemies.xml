@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<animation id="player.ride.adult_dragon.idle" count="1" offsetX="31" offsetY="22" />
+	<animation id="player.ride.adult_dragon.hover">
+		<frame offsetX="44" offsetY="8" />
+        <frame offsetX="44" offsetY="9" />
+        <frame offsetX="44" offsetY="10" />
+        <frame offsetX="44" offsetY="11" />
+        <frame offsetX="44" offsetY="8" />
+        <frame offsetX="44" offsetY="7" />
+        <frame offsetX="44" offsetY="6" />
+	</animation>
+	<animation id="player.ride.adult_dragon.hover_fire" equals="player.ride.adult_dragon.hover" />
+	<animation id="player.ride.adult_dragon.fly">
+		<frame offsetX="28" offsetY="14" length="4" />
+		<frame offsetX="28" offsetY="12" />
+		<frame offsetX="28" offsetY="11" length="4" />
+		<frame offsetX="28" offsetY="12" length="7" />
+	</animation>
+	<recipe id="feed_pig" fuel="300" type="dragon_feed"><item id="pig" /></recipe>
+	<recipe id="feed_chicken" fuel="500" type="dragon_feed"><item id="chicken" /></recipe>
+	<recipe id="feed_cow" fuel="1000" type="dragon_feed"><item id="cow" /></recipe>
+	<recipe id="feed_steak" fuel="125" type="dragon_feed"><item id="steak" /></recipe>
+	<recipe id="feed_coal" fuel="125" type="dragon_feed"><item id="coal" /></recipe>
+	<vehicle id="fly_adult_dragon" type="flying" efficiency="0.5" underground="false" fps="10" fuel="8000" title="itemName('adult_dragon', this.name)" includeName="true" fuelName="rations" fuel_sfx="eat" health="500" defense="3" tile="adult_dragon" speed="3" flight_height="10" max_weight="750" tooltip="structure.tooltip.fly_dragon" element="fire" icon="adult_dragon.ico" bgm="voyage" death_sfx="dragon_death" walk_sfx="dragon_wings" hoverWalk="true" landOnWater="true" explodeCliff="false" waterLine="38">
+    	<listItem title="vehicle.pack_up">
+			<closeWindows /><action>this.vars.set("pack_up", true); this.dismount();</action>
+			<invokeLater><section if="player.vehicle == null">
+				<action>player.inventory.addAll(this.inventory);</action><remove object="this" />
+				<item id="adult_dragon" value="this.fuel" name="this.name"><parameter id="f" value="Std.string(this.health)" /></item>
+			</section></invokeLater>
+		</listItem>
+		<player x="0" y="0" animation="ride" movement="player.ride.adult_dragon" /><collectBounds x="2" y="-9" width="52" height="32" />
+		<repair id="blood_gem" value="250" /><recipe type="dragon_feed" />
+		<dismount><section if="!exists('pack_up')">
+			<set id="lair" value="area.getStructure(this.getBounds())" />
+			<section if="lair != null && lair.info.id == 'dragon_lair2' && this.health > 0 && lair.animal == null">
+				<remove object="this" /><action>lair.collectAnimal(player); lair.setAnimal("adult_dragon", this.fuel, this.name); lair.fadeAnimalIn(); lair.inventory.copyFrom(this.inventory); this.inventory.clear();</action>
+			</section>
+		</section></dismount>
+		<attack type="breath" damage="4" range="13" repeat="2" animation="fire" state="standing" sfx="dragon_atk" cost="5">
+			<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-40" offsetY="8" hitEffect="fire_med" hitTrees="true" color="f9be0b" colorScale="2">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+		<attack type="breath" damage="4" range="13" repeat="2" animation="hover_fire" sfx="dragon_atk" cost="5">
+			<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-33" offsetY="-5" hitEffect="fire_med" hitTrees="true" color="f9be0b" colorScale="2">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+	</vehicle>
+	
+	<include id="tree.xml" includeRoot="true" />
+	<tile id="purple_tree" sheet="tree.png" x="0" y="0" />
+	<animation id="purple_tree_vine.idle"><frame visible="false" /></animation>
+	<animation id="purple_tree_vine.attack" x="0" count="7">
+		<frame visible="false" length="15" />
+	</animation>
+	<animation id="purple_tree.hit" x="7" count="8" />
+	<animation id="purple_tree.grow" x="15" count="4" />
+	<item id="purple_tree_seed" type="animal" cost="50" weight="1" icon="seed.ico"><action id="plant" sfx="plant_seed" object="purple_tree" /></item>
+	<tree id="purple_tree" width="32" height="24" defense="2" health="30" loot="wood" min="5" max="8" collect="2" grown="3" speed="0.002" tile="purple_tree" kill_achievement="purple_tree" generateO2="0.125">
+		<attacks tile="purple_tree" animation="purple_tree_vine" behind="true">
+			<attack type="melee" damage="15" range="2" knockback="5" />
+		</attacks>
+		<collect loot="wood" min="3" max="5" />
+		<loot id="purple_tree_seed" p="4" />
+		<loot id="dragonblood" p="1" />
+		<loot id="focus_gem" p="16" />
+	</tree>
+	<animation id="purple_golem" color="ff66ff" colorScale="1.6">
+		<frame x="0" y="1" length="4" />
+		<frame x="1" y="1" length="2" />
+		<frame x="0" y="1" length="8" />
+	</animation>
+	<enemy id="purple_golem" extends="golem" defense="3" damage="12" speed="2" color="ff66ff" colorScale="1.6" kill_achievement="" death_sfx="purple_golem_death">
+		<capture trapped="purple_golem" minCapture="3" />
+		<loot id="blood_gem" p="4" />
+		<loot id="alter_gem" p="4" />
+		<loot id="focus_gem" p="16" />
+		<loot id="spirit_gem" p="1" stop="true" />
+	</enemy>
+	
+	<tile id="magic_wyrm" sheet="magic_wyrm.png" x="0" y="0" />
+	<animation id="magic_wyrm.idle" equals="single" />
+	<animation id="magic_wyrm.walk" count="8" x="0" />
+	<animation id="magic_wyrm.dig" count="4" x="8" />
+	<animation id="magic_wyrm.attack" count="4" x="8" repeat="3" />
+	<animation id="magic_wyrm.hit" count="1" length="3" x="12">
+		<frame x="0" y="0" length="5" />
+	</animation>
+	<enemy id="magic_wyrm" tile="magic_wyrm" health="40" defense="2" damage="20" type="wyrm" eatTile="magic1.stone" speed="2" attack_sfx="magicwyrm_attack">
+		<loot id="alter_gem" /><sound id="death" value="magic_wyrm_death" />
+	</enemy>
+	
+	<include id="wyrm_queen.xml" includeRoot="true" />
+	<animation id="wyrm_queen.idle" x="1" count="1" />
+	<animation id="wyrm_queen.walk" x="1" count="8" />
+	<animation id="wyrm_queen.spawn_begin" x="9" count="6" />
+	<animation id="wyrm_queen.spawn_pre" x="15" count="11" />
+	<animation id="wyrm_queen.spawn_post" x="26" count="11" />
+	<animation id="wyrm_queen.hit" x="0" count="1" length="3"><frame x="1" length="2" /></animation>
+	<tile id="wyrm_queen" sheet="wyrm_queen.png" x="0" y="0" />
+	<enemy id="wyrm_queen" tile="wyrm_queen" health="12" range="5" defense="9" type="surface" hitColor="ff6666" speed="0.25" passPlayer="true" passEnemies="true" bgm="boss" kill_achievement="wyrm_queen" death_sfx="wyrm_queen_death" passFence="true">
+		<lootSet><loot id="spirit_gem" /></lootSet>
+		<lootSet><loot id="dragonblood" count="2" /></lootSet>
+		<idle>
+			<section if="area.getLiveCount('wyrm')<7">
+				<sound id="wyrmqueen_spawn" /><play object="this" animation="spawn_begin" /><action>this.setVulnerable(2,9);</action>
+				<play object="this" animation="spawn_pre" /><set id="dx" value="this.getDX()" />
+				<object id="wyrm" x="dx == -1?this.tile_x+1:this.tile_right-1" y="this.tile_y">
+					this.renderer.setTile(this.tile_x+dx, this.tile_y, this.renderer.speed);
+				</object>
+				<play object="this" animation="spawn_post" /><action>this.endVulnerable();</action>
+			</section>
+			<action>this.run();</action><stop />
+		</idle>
+		<hitWall><action>this.flip(); this.run();</action><stop /></hitWall>
+		<onDeath><structure id="wyrm_tunnel" x="1" y="1" if="area.getStructureById('wyrm_tunnel') == null"><teleport area="wyrm_tunnels" x="48" y="48" /></structure></onDeath>
+	</enemy>
+	
+	<include id="elementals.xml" includeRoot="true" />
+	<procedure id="spirit.capture">
+		<achievement id="elemental" if="getFlag('capture.water_elemental') && getFlag('capture.fire_elemental') && getFlag('capture.earth_elemental') && getFlag('capture.ice_elemental') && getFlag('capture.plant_elemental')" />
+	</procedure>
+	<procedure id="spirit.death" />
+	
+	<enemy id="generic.spirit" spirit="true" passEnemies="true" glow="true" death_sfx="spirit_death" ignoreHit="true" capture="0">
+		<onCapture><run procedure="spirit.capture" /></onCapture>
+		<onDeath><run procedure="spirit.death" /></onDeath>
+	</enemy>
+	<enemy id="ghost" extends="generic.spirit" tile="ghost" health="6" speed="0.5" range="32" type="surface" trapped="spirit_detector" spirit_power="5" capture="4" hidden="false" passPlayer="true" glow="false">
+		<init><lerp object="this" seconds="0.75"><from alpha="0.5" /><to alpha="0.75" /></lerp></init>
+	</enemy>
+	
+	<tile id="earth_elemental" sheet="elementals.png" x="0" y="0" />
+	<animation id="earth_elemental.idle" count="1" x="0" length="5" />
+	<animation id="earth_elemental.walk" count="6" x="16" y="0" />
+	<animation id="earth_elemental.pre_attack" count="9" x="0" y="0" />
+	<animation id="earth_elemental.attack" count="7" x="9" y="0" />
+	<enemy id="earth_elemental" extends="generic.spirit" tile="earth_elemental" health="12" speed="0.5" range="7" element="earth" type="surface" trapped="earth_gem">
+		<attack type="melee" damage="15" range="0.5" ignoreArmor="true">
+			<pre><sound id="earth_spirit_attack" object="this" /><play object="this" animation="pre_attack" /></pre>
+		</attack>
+	</enemy>
+	
+	<tile id="ice_elemental" sheet="elementals.png" x="22" y="0" />
+	<animation id="ice_elemental.idle" count="1" x="10" length="5" />
+	<animation id="ice_elemental.walk" count="8" x="11" y="0" />
+	<animation id="ice_elemental.attack" count="10" x="0" y="0" />
+	<enemy id="ice_elemental" extends="generic.spirit" tile="ice_elemental" health="12" range="7" element="ice" type="surface" trapped="ice_gem">
+		<attack type="melee" damage="10" range="0.5" knockback="5" ignoreArmor="true" />
+	</enemy>
+	
+	<tile id="water_elemental" sheet="elementals.png" x="41" y="0" />
+	<animation id="water_elemental.idle" count="5" x="20" />
+	<animation id="water_elemental.walk" count="10" x="25" y="0" />
+	<animation id="water_elemental.pre_attack" count="9" x="0" y="0" />
+	<animation id="water_elemental.attack" count="11" x="9" y="0" />
+	<enemy id="water_elemental" extends="generic.spirit" tile="water_elemental" health="12" speed="0.5" range="7" element="water" type="surface" trapped="water_gem" night="false" underwater="true">
+		<attack type="melee" damage="18" range="0.5" ignoreArmor="true">
+			<pre><play object="this" animation="pre_attack" /></pre>
+		</attack>
+	</enemy>
+	<animation id="splash" count="5" x="9" y="0" offsetX="16" />
+	<animation id="splash_break" count="6" x="14" y="0" offsetX="16" />
+	<hitEffect id="splash" tile="water_elemental" animation="splash" completeAnimation="splash_break" color="7777ff" colorScale="2" freeze="0.5" sfx="water_effect" />
+	
+	<tile id="fire_elemental" sheet="fire_elemental.png" x="0" y="0" />
+	<animation id="fire_elemental.idle" count="7" />
+	<animation id="fire_elemental.walk" count="7" x="7" />
+	<enemy id="fire_elemental" extends="generic.spirit" tile="fire_elemental" speed="3" health="12" range="7" element="fire" type="surface" trapped="fire_gem" passPlayer="true">
+		<inRange range="5"><action>this.run();</action></inRange>
+		<over><damage object="player" attacker="this" damage="10" ignoreArmor="true" element="fire" hitEffect="fire_lg_dot" if="this.renderer.visible" /></over>
+	</enemy>
+	
+	<tile id="plant_elemental" sheet="elementals.png" x="76" y="0" />
+	<animation id="plant_elemental.idle" count="1" x="24" length="5" />
+	<animation id="plant_elemental.walk" count="12" x="24" y="0" />
+	<animation id="plant_elemental.pre_attack" count="12" x="12" y="0" />
+	<animation id="plant_elemental.attack" count="12" x="0" y="0" />
+	<enemy id="plant_elemental" extends="generic.spirit" tile="plant_elemental" health="12" speed="0.5" range="7" element="plant" type="surface" trapped="plant_gem" night="true">
+		<attack type="melee" damage="15" range="0.5" ignoreArmor="true" continuous="true">
+			<pre><sound id="plant_spirit_attack" object="this" /><play object="this" animation="pre_attack" /></pre>
+		</attack>
+	</enemy>
+	
+	<include id="oldone.xml" />
+
+	<tile id="crawler" sheet="crawler.png" x="0" y="0" />
+	<animation id="crawler.idle" count="1" />
+	<animation id="crawler.walk" count="4" x="1" />
+	<animation id="crawler.attack" count="8" x="5"><frame x="0" length="4" /></animation>
+	<animation id="crawler.hit" count="1" length="3" x="13" />
+	<enemy id="crawler" tile="crawler" health="40" defense="2" damage="7" range="2" type="surface" element="plant" night="true" death_sfx="crawler_death" attack_sfx="crawler_attack">
+		<light tile="light.medium" color="bafa66" />
+		<loot p="1" /><loot id="plant_eye" p="2" />
+	</enemy>
+	
+	<include id="leech.xml" includeRoot="true" />
+	<tile id="leech" sheet="leech.png" />
+	<animation id="leech.idle" count="6" x="25" repeat="2" />
+	<animation id="leech.walk" count="5" x="31" />
+	<animation id="leech.attack" count="4" />
+	<animation id="leech.attack1" count="7" x="4" />
+	<animation id="leech.attack2" count="7" x="11" />
+	<animation id="leech.endAttack" count="6" x="18" />
+	<animation id="leech.hit" count="1" length="6" x="24" />
+	<enemy id="leech" tile="leech" health="25" type="golem" fps="20" death_sfx="leech_death">
+		<attack type="melee" damage="7" hpSteal="1" overEnemy="true" overFlip="-1" hits="2" animation="attack1" offsetX="16" afterAnimation="endAttack">
+			<pre><sound id="leech_attack" object="this" /><play object="this" animation="attack" /></pre>
+			<cont animation="attack2" />
+		</attack>
+		<loot id="dragonblood" count="3" />
+	</enemy>
+	
+	<include id="golemech.xml" includeRoot="true" />
+	<tile id="golemech" sheet="golemech.png" />
+	<animation id="golemech.idle" count="1" x="8" length="8" />
+	<animation id="golemech.walk" count="19" x="55" />
+	<animation id="golemech.sleep" count="1" x="7" />
+	<animation id="golemech.attack" count="5" x="9" />
+	<animation id="golemech.attack1" count="7" x="14" />
+	<animation id="golemech.attack2" count="10" x="21" />
+	<animation id="golemech.powerup" count="6" x="0" glow="true" />
+	<animation id="golemech.heatray1" count="3" x="31" glow="true" />
+	<animation id="golemech.heatray2" count="3" x="34" glow="true" />
+	<animation id="golemech.heatray3" count="3" x="37" glow="true" />
+	<animation id="golemech.heatray4" count="3" x="40" glow="true" />
+	<animation id="golemech.fire1" count="3" x="43" glow="true">
+		<append tile="golemech" animation="golemech.heatray1" offsetX="-1.5" />
+	</animation>
+	<animation id="golemech.fire2" count="3" x="46" glow="true">
+		<append tile="golemech" animation="golemech.heatray2" offsetX="-1.5" />
+	</animation>
+	<animation id="golemech.fire3" count="3" x="49" glow="true">
+		<append tile="golemech" animation="golemech.heatray3" offsetX="-1.5" />
+	</animation>
+	<animation id="golemech.fire4" count="3" x="52" glow="true">
+		<append tile="golemech" animation="golemech.heatray4" offsetX="-1.5" />
+	</animation>
+	<animation id="golemech.hit" count="1" length="6" x="6" />
+	<enemy id="golemech" tile="golemech" health="60" speed="0.25" defense="5" range="5" type="surface" fps="20" element="earth" sleep="sleep" knockback="false" kill_achievement="golemech" death_sfx="golemech_death" passFence="true" attack_sfx="none">
+		<lootSet><loot id="earth_gem" /></lootSet>
+		<lootSet><loot id="blood_gem" count="3" /></lootSet>
+		<attack type="melee" damage="20" hits="2" animation="attack1" sfx="golem_attack">
+			<pre><play object="this" animation="attack" /></pre>
+			<cont animation="attack2" />
+		</attack>
+		<attack type="beam" range="2" damage="20" animation="fire1" element="fire" hitEffect="fire_lg_dot" hits="4" cooldown="600">
+			<pre sfx="golemech_laser"><play object="this" animation="powerup" /></pre>
+			<cont animation="fire2" /><cont animation="fire3" /><cont animation="fire4" />
+		</attack>
+		<idle><action>area.spawner.spawn("golem", 1)</action></idle>
+		<awaken><action>area.spawner.spawnAll("golem")</action></awaken>
+	</enemy>
+	<tile id="icer" sheet="icer.png" x="0" y="0" />
+	<animation id="icer.idle" count="4" />
+	<animation id="icer.walk" x="4" count="12" />
+	<animation id="icer.attack" count="8" x="16">
+		<frame x="0" count="4" repeat="2" />
+	</animation>
+	<animation id="icer.hit" count="6" x="24" />
+	<enemy id="icer" tile="icer" health="30" defense="2" speed="3" type="golem" element="ice" death_sfx="icer_death">
+		<loot id="ice_heart" />
+		<attack type="melee" damage="12" hitEffect="freeze" />
+	</enemy>
+	
+	<include id="skyfish.xml" includeRoot="true" />
+	<tile id="skyfish" sheet="skyfish.png" />
+	<animation id="skyfish.idle" x="12" count="6" />
+	<animation id="skyfish.attack" x="0" count="7" />
+	<animation id="skyfish.hit" count="1" length="4" x="11" />
+	<animation id="skyfish.explode" x="7" count="4" />
+	<animation id="skyfish.spit" x="23" count="7" />
+	<animation id="skyfish.spit_hit" x="18" count="5" />
+	
+	<enemy id="skyfish" tile="skyfish" health="40" speed="0" type="surface" element="water" fps="10" overlapVehicle="true" death_sfx="skyfish_death" attack_sfx="skyfish_death">
+		<loot p="1" /><loot id="helium_sac" p="1" />
+		<attack type="projectile" damage="15" range="8" animation="attack" sfx="skyfish_fire">
+			<projectile tile="skyfish" animation="skyfish.spit" delay="4" speed="3" knockback="5" underwater="true" hit_sfx="skyfish_impact">
+				<hitEffect tile="skyfish" animation="skyfish.spit_hit" color="1a0802" />
+			</projectile>
+		</attack>
+		<over>
+			<hitEffect object="this" tile="skyfish" animation="skyfish.explode" />
+			<damage object="player.vehicle == null?player:player.vehicle" attacker="this" damage="40" directional="false" critical="false" /><remove object="this" />
+		</over>
+	</enemy>
+</data>

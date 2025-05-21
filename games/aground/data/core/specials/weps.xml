@@ -1,0 +1,32 @@
+<sheets>
+<tilesheet id='weps.1' sheet='weps.png' width='32' height='32' offsetX="-8" offsetY="-8">
+	<image frame='0' x='0' y='0' width='19' height='16' offsetX='4' offsetY='15' />
+	<image frame='1' x='0' y='16' width='19' height='16' offsetX='4' offsetY='15' />
+	<image frame='2' x='0' y='32' width='19' height='11' offsetX='4' offsetY='20' />
+	<image frame='3' x='0' y='43' width='19' height='5' offsetX='4' offsetY='26' />
+	<image frame='4' x='0' y='48' width='19' height='5' offsetX='4' offsetY='26' />
+	<image frame='5' x='19' y='0' width='14' height='14' offsetX='18' offsetY='13' />
+	<image frame='10' x='0' y='53' width='5' height='19' offsetX='5' offsetY='9' />
+	<image frame='6' equals='5' offsetX='18' offsetY='13' />
+	<image frame='7' equals='5' offsetX='19' offsetY='13' />
+	<image frame='8' equals='5' offsetX='19' offsetY='13' />
+	<image frame='9' equals='5' offsetX='18' offsetY='13' />
+</tilesheet>
+<tilesheet id='weps.2' sheet='weps.png' width='16' height='10'>
+	<image frame='0' x='19' y='16' width='16' height='9' offsetX='0' offsetY='1' />
+	<image frame='1' x='19' y='25' width='16' height='5' offsetX='0' offsetY='2' />
+	<image frame='2' x='19' y='32' width='8' height='5' offsetX='4' offsetY='2' />
+	<image frame='3' x='19' y='37' width='8' height='5' offsetX='4' offsetY='2' />
+	<image frame='4' x='27' y='32' width='8' height='5' offsetX='4' offsetY='2' />
+	<image frame='5' x='27' y='37' width='8' height='5' offsetX='4' offsetY='2' />
+	<image frame='6' x='19' y='43' width='8' height='5' offsetX='4' offsetY='2' />
+	<image frame='7' x='27' y='43' width='8' height='5' offsetX='4' offsetY='2' />
+	<image frame='8' x='5' y='53' width='16' height='9' offsetX='0' offsetY='1' />
+	<image frame='9' x='5' y='62' width='7' height='10' offsetX='4' offsetY='0' />
+	<image frame='10' x='12' y='62' width='7' height='10' offsetX='4' offsetY='0' />
+	<image frame='11' x='21' y='53' width='7' height='10' offsetX='4' offsetY='0' />
+	<image frame='12' x='28' y='53' width='7' height='10' offsetX='4' offsetY='0' />
+	<image frame='13' x='21' y='63' width='7' height='10' offsetX='4' offsetY='0' />
+	<image frame='14' x='28' y='63' width='7' height='10' offsetX='4' offsetY='0' />
+</tilesheet>
+</sheets>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<hitEffect id="fire_sm" tile="flame3" animation="flame_smoke1" color="ff9911" sfx="fire_effect"><light tile="light.medium" color="fae1b5" flicker="true" /></hitEffect>
+	<hitEffect id="fire_med" tile="flame2" animation="flame_smoke2" color="ff9911" sfx="fire_effect"><light tile="light.medium" color="fae1b5" flicker="true" /></hitEffect>
+	<hitEffect id="fire_lg" tile="flame1" animation="flame_smoke2" color="ff9911" sfx="fire_effect"><light tile="light.medium" color="fae1b5" flicker="true" /></hitEffect>
+	<hitEffect id="fire_sm_dot" extends="fire_sm" damage="1" element="fire" />
+	<hitEffect id="fire_med_dot" extends="fire_med" damage="1" min="2" max="3" element="fire" />
+	<hitEffect id="fire_lg_dot" extends="fire_lg" damage="1" min="3" max="5" element="fire" />
+	<hitEffect id="freeze" tile="freeze" animation="freeze" completeAnimation="freeze_break" fps="30" color="1199ff" colorScale="2" freeze="1" sfx="ice_effect"/>
+	
+	<soundSet id="sword">
+		<sound id="swing" value="sword_swing" />
+		<sound id="hit" value="sword" />
+	</soundSet>
+	<soundSet id="axe">
+		<sound id="swing" value="axe" />
+		<sound id="hit_tree" value="axe_tree" />
+		<sound id="hit" value="sword" />
+	</soundSet>
+	
+	<animation id="equipment.walk">
+		<frame x="0" />
+		<frame x="0" offsetX="-1" length="3" />
+		<frame x="0" length="2" />
+		<frame x="0" offsetX="-1" length="3" />
+		<frame x="0" />
+	</animation>
+	
+	<animation id="equipment.hit">
+		<frame x="0" offsetX="-4" />
+		<frame x="0" offsetX="-1" />
+		<frame x="0" length="4" />
+	</animation>
+	<animation id="equipment.walk_rswing">
+		<frame x="0" /><frame x="0" offsetX="1" length="3" /><frame x="0" /><frame x="0" offsetX="-1" />
+		<frame x="0" offsetX="-2" length="3" /><frame x="0" offsetX="-1" />
+	</animation>
+	<animation id="equipment.walk_lswing">
+		<frame x="0" offsetX="-1" /><frame x="0" offsetX="-2" length="3" /><frame x="0" offsetX="-1" /><frame x="0" offsetX="0" />
+		<frame x="0" offsetX="-1" length="3" /><frame x="0" offsetX="0" />
+	</animation>
+
+	<tile id="stone_pickaxe.ico" sheet="items.png" x="49" />
+	<tile id="broken_pickaxe.ico" sheet="items.png" x="149" />
+	<tile id="coin_purse.ico" sheet="items.png" x="25" />
+	<tile id="iron_pickaxe.ico" sheet="items.png" x="41" />
+	<tile id="iron_sword.ico" sheet="items.png" x="33" />
+	<tile id="iron_armor.ico" sheet="items.png" x="31" />
+	<tile id="buckler.ico" sheet="items.png" x="136" />
+	<tile id="rusty_axe.ico" sheet="items.png" x="110" />
+	<item id="stone_axe" type="equipment" slot="weapon" cost="0" weight="0" cut="1" attack="1" stamina="3" icon="stone_axe.ico" action="equip" knockback="5" movement_walk="walk_rswing" arms="equipment.arms" sounds="axe" />
+	<item id="stone_pickaxe" type="equipment" slot="pickaxe" cost="0" weight="0" mine="1" stamina="3" icon="stone_pickaxe.ico" action="equip" movement_walk="walk_rswing" arms="equipment.arms" sfx="pick" />
+	<item id="broken_pickaxe" type="equipment" slot="pickaxe" cost="10" weight="5" mine="1" stamina="3" icon="broken_pickaxe.ico" action="equip" movement_walk="walk_rswing" arms="equipment.arms" sfx="pick" />
+	<item id="coin_purse" type="tool" durability="10000" storage="coins" cost="0" weight="1" icon="coin_purse.ico" breakable="false">
+		<action id="use" name="actions.merge_coins">
+			<action>
+				var coins = player.getCoins(); var d = durability; if(coins > 10000) coins = 10000;
+				setDurability(0); player.addCoins(d-coins); setDurability(coins);
+			</action>
+		</action>
+	</item>
+	<item id="iron_pickaxe" type="equipment" slot="pickaxe" cost="110" durability="500" broken="broken_pickaxe" weight="10" mine="2" stamina="3" icon="iron_pickaxe.ico" action="equip" repair="iron_bar" movement_walk="walk_rswing" arms="equipment.arms" sfx="pick" />
+	<item id="iron_sword" type="equipment" slot="weapon" cost="55" durability="200" weight="8" attack="2" stamina="2" icon="iron_sword.ico" action="equip" knockback="5" repair="iron_bar" movement_walk="walk_rswing" arms="equipment.arms" sounds="sword" />
+	<item id="iron_armor" type="equipment" slot="armor" cost="165" durability="200" weight="15" defense="1" icon="iron_armor.ico" action="equip" repair="iron_bar" equip_anim="equipment.steel_armor" />
+	<animation id="equipment.buckler.idle" count="1" offsetX="0" offsetY="4" />
+	<item id="buckler" type="equipment" slot="shield" use="block" cost="35" weight="6" defense="0" durability="300" icon="buckler.ico" action="equip" movement_walk="walk_lswing" repair="wood" />
+	<item id="rusty_axe" type="equipment" slot="weapon" durability="30" cost="25" weight="10" attack="1" cut="3" stamina="2" icon="rusty_axe.ico" action="equip" knockback="5" repair="iron" movement_walk="walk_rswing" arms="equipment.arms" sounds="axe" />
+	
+	<include id="weps.xml" includeRoot="true" />
+	<tile id="equipment.arms" sheet="weps.png" />
+	<animation id="equipment.arms" count="5">
+		<frame visible="false" length="4" /><frame x="5" count="1" /><frame visible="false" />
+	</animation>
+	<tile id="stone_axe" sheet="weps.png" x="122" />
+	<tile id="stone_pickaxe" sheet="weps.png" x="174" />
+	<animation id="equipment.stone_axe.idle" x="10" count="1" />
+	<animation id="equipment.stone_axe" count="10" shift="2" />
+	<animation id="equipment.stone_pickaxe.idle" equals="equipment.stone_axe.idle" />
+	<animation id="equipment.stone_pickaxe" equals="equipment.stone_axe" />
+	
+	<tile id="iron_pickaxe" sheet="weps.png" x="152" />
+	<tile id="iron_sword" sheet="weps.png" x="80" />
+	<tile id="broken_pickaxe" equals="iron_pickaxe" />
+	<animation id="equipment.iron_pickaxe.idle" equals="equipment.stone_axe.idle" />
+	<animation id="equipment.iron_pickaxe" equals="equipment.stone_axe" />
+	<animation id="equipment.iron_sword.idle" equals="equipment.stone_axe.idle" />
+	<animation id="equipment.iron_sword" equals="equipment.stone_axe" />
+	<animation id="equipment.broken_pickaxe.idle" x="10" count="1" color="ff6666" />
+	<animation id="equipment.broken_pickaxe" count="10" shift="2" color="ff6666" />
+
+	<tile id="steel_pickaxe" sheet="weps.png" x="163" />
+	<tile id="steel_sword" sheet="weps.png" x="111" />
+	<tile id="rusty_axe" sheet="weps.png" x="100" />
+	<animation id="equipment.steel_sword.idle" equals="equipment.stone_axe.idle" />
+	<animation id="equipment.steel_sword" equals="equipment.stone_axe" />
+	<animation id="equipment.rusty_axe.idle" equals="equipment.stone_axe.idle" />
+	<animation id="equipment.rusty_axe" equals="equipment.stone_axe" />
+
+	<tile id="thunder_axe" sheet="weps.png" x="55" />
+	<animation id="equipment.thunder_axe.idle" count="4" />
+	<animation id="equipment.thunder_axe" x="4" count="10" shift="2" />
+	<tile id="thunder_axe.arms" equals="equipment.arms" />
+	<animation id="thunder_axe.arms">
+		<frame visible="false" length="4" /><frame x="0" count="5" /><frame visible="false" length="4" /><frame x="5" count="1" />
+	</animation>
+	<tile id="thunder_axe.ico" sheet="items.png" x="158" />
+	<animation id="thunder_axe" x="0" count="3" />
+	<item id="thunder_axe" type="equipment" slot="weapon" durability="600" durabilityName="common.enchantment" cost="500" weight="10" attack="4" cut="6" stamina="1" knockback="5" icon="thunder_axe.ico" animation="thunder_axe" action="equip" broken="rusty_axe" brokenValue="0" hitEffect="bullet" movement_walk="walk_rswing" arms="thunder_axe.arms" sfx="ancient_axe" critical="true" underwater="true" />
+	
+	<tile id="steel_pickaxe.ico" sheet="items.png" x="47" />
+	<tile id="steel_sword.ico" sheet="items.png" x="39" />
+	<tile id="steel_armor.ico" sheet="items.png" x="37" />
+	<tile id="kite_shield.ico" sheet="items.png" x="137" />
+	<animation id="shield" count="6">
+		<frame x="5" length="20" />
+	</animation>
+	<animation id="equipment.shield.idle" count="6" offsetX="0" offsetY="4">
+		<frame x="5" length="20" offsetX="0" offsetY="4" />
+	</animation>
+	<animation id="equipment.shield.carry.idle" equals="hidden" />
+	<item id="steel_pickaxe" extends="iron_pickaxe" cost="250" durability="2000" weight="5" mine="2" stamina="1" icon="steel_pickaxe.ico" repair="steel_bar" />
+	<item id="steel_sword" type="equipment" slot="weapon" cost="165" weight="6" attack="3" stamina="2" durability="500" icon="steel_sword.ico" action="equip" knockback="5" repair="steel_bar" movement_walk="walk_rswing" arms="equipment.arms" sounds="sword" />
+	<item id="steel_armor" type="equipment" slot="armor" cost="330" durability="500" weight="12" defense="2" icon="steel_armor.ico" action="equip" repair="steel_bar" />
+	<item id="kite_shield" type="equipment" slot="shield" use="block" cost="165" weight="6" defense="1" durability="700" icon="kite_shield.ico" animation="shield" action="equip" movement_walk="walk_lswing" repair="steel_bar" />
+	
+	<include id="armors.xml" includeRoot="true" />
+	<tile id="steel_armor" sheet="armors.png" x="116" />
+	<animation id="equipment.steel_armor.idle" x="47" count="1" />
+	<animation id="equipment.steel_armor.walk" x="48" count="10" />
+	<animation id="equipment.steel_armor.hit" x="41" count="6" />
+	<animation id="equipment.steel_armor.death" x="0" count="41" />
+	<tile id="iron_armor" sheet="armors.png" x="58" />
+	<tile id="titanium_armor" sheet="armors.png" x="0" />
+	
+	<tile id="backpack.ico" sheet="items.png" x="51" />
+	<item id="backpack" type="tool" slot="back" action="equip" cost="50" weight="0" capacity="50" icon="backpack.ico" />
+	<item id="mega_backpack" extends="backpack" cost="250" capacity="100" />
+	<item id="ultra_backpack" extends="backpack" cost="2500" capacity="150" />
+	
+	<animation id="equipment.backpack.idle" x="0" count="1" offsetX="1" />
+	<animation id="equipment.backpack.walk" x="0" count="10" />
+	<animation id="equipment.backpack.walk.heavy" x="-10" count="10" offsetX="1" />
+	
+	<item id="magic_pickaxe" extends="steel_pickaxe" durability="" cost="0" weight="0" mine="9" />
+	<item id="magic_sword" extends="steel_sword" cost="0" weight="0" attack="9" />
+	<item id="magic_backpack" extends="backpack" cost="0" capacity="950" canJump="true">
+		<flight height="999" cost="0" speed="5" maxWeight="1000" />
+	</item>
+	
+	<tile id="bow.ico" sheet="items.png" x="88" />
+	<tile id="arrow.ico" sheet="items.png" x="89" />
+	<tile id="ice_arrow.ico" sheet="items.png" x="135" />
+	<item id="bow" type="equipment" slot="weapon" cost="75" weight="4" stamina="3" range="7" icon="bow.ico" behindPlayer="false" projectile="arrow" fire_sfx="bow" delay="8" drawAnim="bow.drawArrow" arms="bow.arms" hideArms="true">
+		<action id="equip" /><action id="setProjectile" /><use slot="shield" />
+	</item>
+	<item id="arrow" type="equipment" cost="3" weight="0.25" icon="arrow.ico" attack="3" action="fire" with="bow">
+		<projectile tile="arrow" speed="3" offsetY="4" hit_sfx="arrow_hit" knockback="5">
+			<removed><choose if="this.hit == null && !area.isEmptyTile(this.tile_x, this.tile_y+1)"><object id="arrow" x="this.tile_x-Utils.sign(this.dx)" y="this.tile_y" if="area.hasTile(this.tile_x, this.tile_y)" /><object id="arrow" x="this.tile_x" y="this.tile_y" /></choose></removed>
+		</projectile>
+	</item>
+	<item id="ice_arrow" type="equipment" cost="3" weight="1" icon="ice_arrow.ico" attack="6" action="fire" with="bow" element="ice">
+		<projectile tile="ice_arrow" speed="3" offsetY="4" hit_sfx="arrow_hit" hitEffect="freeze" knockback="5" />
+	</item>
+	<tile id="recurve_bow.ico" sheet="items.png" x="251" />
+	<item id="recurve_bow" type="equipment" slot="weapon" cost="275" weight="6" stamina="1" attack="1" range="9" icon="recurve_bow.ico" behindPlayer="false" projectile="arrow" fire_sfx="recurvebow" delay="4" drawAnim="recurve_bow.drawArrow" group="bow" arms="bow.arms" hideArms="true">
+		<action id="equip" /><action id="setProjectile" /><use slot="shield" />
+	</item>
+	
+	<tile id="bow.arms" sheet="weps.png" x="211" />
+	<animation id="bow.arms" count="7" />
+	<tile id="bow" sheet="weps.png" x="218" />
+	<tile id="recurve_bow" sheet="weps.png" x="225" />
+	<tilesheet id="arrows.png" width="8" height="3" />
+	<tile id="arrow" sheet="arrows.png" x="0" y="0" />
+	<tile id="ice_arrow" sheet="arrows.png" x="0" y="1" />
+	<tile id="hunter_arrow" sheet="arrows.png" x="0" y="2" />
+	<tile id="crossbow_bolt" sheet="arrows.png" x="0" y="3" />
+	<animation id="equipment.bow.idle" x="0" count="1" />
+	<animation id="equipment.bow">
+		<frame x="5" count="2" />
+		<frame x="1" count="2" length="3" />
+		<frame x="3" count="2" />
+	</animation>
+	<animation id="equipment.recurve_bow.idle" x="0" count="1" />
+	<animation id="equipment.recurve_bow" x="1" count="6" shift="2" />
+	<animation id="bow.drawArrow">
+		<frame visible="false" length="2" />
+		<frame x="0" offsetX="-9" offsetY="2" length="3" />
+		<frame x="0" offsetX="-7" offsetY="2" length="3" />
+	</animation>
+	<animation id="recurve_bow.drawArrow">
+		<frame visible="false" length="2" />
+		<frame x="0" offsetX="-9" offsetY="2" />
+		<frame x="0" offsetX="-7" offsetY="2" />
+	</animation>
+	
+	<tile id="ice_shield.ico" sheet="items.png" x="143" />
+	<item id="ice_shield" type="equipment" slot="shield" use="block" cost="450" weight="6" defense="3" durability="1200" icon="ice_shield.ico" animation="shield" movement_walk="walk_lswing" broken="kite_shield" brokenValue="0" action="equip" durabilityName="common.enchantment" />
+	
+	<tile id="fishing_rod.ico" sheet="items.png" x="115" />
+	<item id="fishing_rod" type="tool" slot="weapon" cost="20" weight="3" fishing="1" durability="200" stamina="3" icon="fishing_rod.ico" action="equip" repair="wood" movement_walk="walk_rswing" arms="fishing.arms" sfx="miss" cast_sfx="fishingrod" />
+	<include id="fishing.xml" includeRoot="true" />
+	<tile id="fishing_line" sheet="fishing.png" x="30" offsetX="-16" />
+	<tile id="fishing_rod" sheet="fishing.png" x="0" />
+	<tile id="fishing.arms" sheet="fishing.png" x="50" />
+	<animation id="fishing.arms">
+		<frame visible="false" /><frame x="6" count="4" /><frame visible="false" length="8" /><frame x="10" count="1" />
+		<frame x="11" count="3" /><frame visible="false" length="6" /><frame x="14" count="1" /><frame x="0" count="6" />
+	</animation>
+	
+	<animation id="equipment.fishing_rod" x="5" count="5" />
+	<animation id="equipment.fishing_rod.idle" count="1" x="0" offsetX="-2" />
+	<animation id="equipment.fishing_rod.cast" x="1" count="4" />
+	<animation id="equipment.fishing_rod.fishing" x="24" count="6" length="3" />
+	<animation id="equipment.fishing_rod.catch">
+		<frame x="14" parentX="-3" />
+		<frame x="15" parentX="-2" />
+		<frame x="16" parentX="-1" />
+		<frame x="17" count="6" />
+		<frame x="23" parentX="-2" />
+	</animation>
+	<animation id="equipment.fishing_rod.caught" x="13" count="1" length="10" />
+		
+	<animation id="fishing_line.cast" count="4" />
+	<animation id="fishing_line.fishing" x="14" count="6" length="3" />
+	<animation id="fishing_line.catch" x="4" count="10" />
+	
+	<include id="backpacks.xml" includeRoot="true" />
+	<tile id="plant_bag.ico" sheet="items.png" x="249" />
+	<item id="plant_bag" type="tool" slot="back" action="equip" cost="0" weight="0" capacity="200" icon="plant_bag.ico" element="plant">
+		<equipCost stamina="-4" daylight="true" /><light tile="light.large" color="bafa66" offsetX="16" />
+	</item>
+	<tile id="plant_bag" sheet="backpacks.png" x="0" y="0" />
+	<animation id="equipment.plant_bag.idle" offsetX="8" count="1" />
+	
+	<tile id="jetpack.ico" sheet="items.png" x="250" />
+	<item id="jetpack" type="tool" slot="back" action="equip" cost="3200" weight="0" capacity="200" icon="jetpack.ico">
+		<flight height="6" cost="0" speed="3" maxWeight="300"><equipCost storage="power" cost="10" /></flight>
+	</item>
+	<tile id="jetpack" sheet="backpacks.png" x="1" y="0" />
+	<animation id="equipment.jetpack.idle" offsetX="8" x="5" count="1" />
+	<animation id="equipment.jetpack.fly.self" offsetX="8" offsetY="4" x="0" count="5" />
+	<animation id="equipment.jetpack.hover.self" equals="equipment.jetpack.fly.self" />
+	
+	<tile id="shadow_cape.ico" sheet="items.png" x="252" />
+	<item id="shadow_cape" type="tool" slot="back" action="equip" cost="300" weight="1" icon="shadow_cape.ico" durability="5" durabilityName="common.cooldown" hide="true">
+		<equipCost durability="-1" />
+	</item>
+	<tilesheet id="shadow_cape.png" width="6" height="6" />
+	<tile id="shadow_cape" sheet="shadow_cape.png" offsetX="5" offsetY="5" />
+	
+	<include id="earth_armor.xml" includeRoot="true" />
+	<tile id="earth_armor" sheet="earth_armor.png" x="0" y="0" />
+	<tile id="earth_armor.ico" sheet="items.png" x="254" />
+	<item id="earth_armor" type="equipment" slot="armor" cost="0" durability="1000" weight="20" defense="5" icon="earth_armor.ico" action="equip" element="earth" reflect="1" repair="earth_gem" durabilityName="common.enchantment" />
+	<animation id="equipment.earth_armor.idle" x="58" count="1" />
+	<animation id="equipment.earth_armor.walk" x="48" count="10" />
+	<animation id="equipment.earth_armor.hit" x="42" count="6" />
+	<animation id="equipment.earth_armor.death" x="0" count="41" />
+	
+	<tile id="earth_helm.ico" sheet="items.png" x="255" />
+	<item id="earth_helm" type="equipment" slot="head" cost="0" durability="500" weight="5" defense="2" icon="earth_helm.ico" action="equip" hair="false" element="earth" durabilityName="common.enchantment" />
+	<tile id="earth_helm" sheet="earth_armor.png" x="41" y="0" />
+	<animation id="equipment.earth_helm.idle" count="1" />
+	
+	<tile id="earth_hammer.ico" sheet="items.png" x="256" />
+	<item id="earth_hammer" type="equipment" slot="weapon" cost="0" durability="500" weight="10" attack="6" stamina="3" icon="earth_hammer.ico" action="equip" movement_walk="walk_rswing" arms="equipment.arms" element="earth" melee_range="0.75" knockback="10" critical="true" durabilityName="common.enchantment" sfx="earthhammer" />
+	<tile id="earth_hammer" sheet="weps.png" x="232" />
+	<animation id="equipment.earth_hammer.idle" equals="equipment.stone_axe.idle" />
+	<animation id="equipment.earth_hammer" equals="equipment.stone_axe" />
+	
+	<tile id="frost_shield.ico" sheet="items.png" x="279" />
+	<item id="frost_shield" type="equipment" slot="shield" use="block" cost="0" weight="6" defense="4" durability="1200" icon="frost_shield.ico" animation="shield" action="equip" movement_walk="walk_lswing" element="ice" reflect="1" broken="ice_shield" brokenValue="0" repair="ice_gem" durabilityName="common.enchantment">
+		<hitEffect id="freeze" />
+	</item>
+	
+	<tile id="steel_axe.ico" sheet="items.png" x="302" />
+	<item id="steel_axe" type="equipment" slot="weapon" cost="165" weight="10" attack="2" cut="4" stamina="2" durability="500" icon="steel_axe.ico" animation="shield" action="equip" knockback="5" repair="steel_bar" movement_walk="walk_rswing" arms="equipment.arms" sounds="axe" sfx="steel_axe" />
+	<tile id="steel_axe" sheet="weps.png" x="243" />
+	<animation id="equipment.steel_axe.idle" x="10" count="6" />
+	<animation id="equipment.steel_axe" count="5" offsetY="1" shift="2"><frame x="5" count="5" /></animation>
+	
+	<tile id="steel_hammer.ico" sheet="items.png" x="317" />
+	<item id="steel_hammer" type="equipment" slot="weapon" cost="165" weight="15" attack="2" stamina="3" build="100" durability="500" desc="item.descriptions.hammer" icon="steel_hammer.ico" action="equip" knockback="10" repair="steel_bar" movement_walk="walk_rswing" sounds="axe" sfx="steel_axe" />
+	<tile id="steel_hammer" sheet="weps.png" x="259" />
+	<animation id="equipment.steel_hammer.idle" x="8" count="1" />
+	<animation id="equipment.steel_hammer" count="9" shift="2" />
+</data>

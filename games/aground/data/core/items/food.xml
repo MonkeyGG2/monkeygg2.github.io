@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<item id="meat" type="food" cost="10" weight="1" health="10" icon="meat.ico" />
+	<tile id="fruit.ico" sheet="items.png" x="29" />
+	<item id="fruit" type="food" cost="10" weight="1" stamina="40" icon="fruit.ico" />
+	<tile id="wheat.ico" sheet="items.png" x="40" />
+	<item id="wheat" type="food" cost="5" weight="1" stamina="12" icon="wheat.ico" />
+	<tile id="eggs.ico" sheet="items.png" x="26" />
+	<item id="eggs" type="food" cost="10" weight="1" health="10" icon="eggs.ico" />
+	<tile id="milk.ico" sheet="items.png" x="42" />
+	<item id="milk" type="food" cost="12" weight="1" health="6" stamina="12" icon="milk.ico" eat="common.drink_item" eat_sfx="drinking" />
+	<tile id="sugar.ico" sheet="items.png" x="50" />
+	<item id="sugar" type="food" cost="40" weight="1" stamina="30" icon="sugar.ico" />
+	<tile id="steak.ico" sheet="items.png" x="46" />
+	<item id="steak" type="food" cost="20" weight="1" health="20" icon="steak.ico" />
+	<tile id="bread.ico" sheet="items.png" x="20" />
+	<item id="bread" type="food" cost="15" weight="1" stamina="40" icon="bread.ico" />
+	<tile id="pancakes.ico" sheet="items.png" x="44" />
+	<item id="pancakes" type="food" cost="50" weight="1" stamina="120" health="30" icon="pancakes.ico" />
+	<tile id="hamburger.ico" sheet="items.png" x="27" />
+	<item id="hamburger" type="food" cost="50" weight="1" health="60" icon="hamburger.ico" />
+	<tile id="pie.ico" sheet="items.png" x="64" />
+	<item id="pie" type="food" cost="30" weight="1" stamina="80" icon="pie.ico" />
+	<tile id="berries.ico" sheet="items.png" x="52" />
+	<item id="berries" type="food" cost="4" weight="1" stamina="20" icon="berries.ico" />
+	<tile id="red_berries.ico" sheet="items.png" x="81" />
+	<item id="red_berries" type="food" cost="8" weight="1" health="-5" icon="red_berries.ico">
+		<stat id="attack" value="1" time="15" />
+	</item>
+	<tile id="ice_berries.ico" sheet="items.png" x="128" />
+	<item id="ice_berries" type="food" cost="20" weight="1" health="-5" icon="ice_berries.ico">
+		<action id="transform" into="snowman" /><stat id="defense" value="1" time="15" />
+	</item>
+	<tile id="cheese.ico" sheet="items.png" x="23" />
+	<item id="cheese" type="food" cost="30" weight="1" stamina="40" health="20" icon="cheese.ico" />
+	<tile id="pizza.ico" sheet="items.png" x="45" />
+	<item id="pizza" type="food" cost="50" weight="1" stamina="140" health="50" icon="pizza.ico" />
+	<tile id="omelette.ico" sheet="items.png" x="43" />
+	<item id="omelette" type="food" cost="75" weight="1" health="100" icon="omelette.ico" />
+	<tile id="cheeseburger.ico" sheet="items.png" x="24" />
+	<item id="cheeseburger" type="food" cost="90" weight="1" stamina="100" health="70" icon="cheeseburger.ico" />
+	<tile id="cake.ico" sheet="items.png" x="21" />
+	<item id="cake" type="food" cost="100" weight="1" stamina="300" icon="cake.ico" />
+	<tile id="candy_apple.ico" sheet="items.png" x="22" />
+	<item id="candy_apple" type="food" cost="75" weight="1" stamina="140" icon="candy_apple.ico" />
+	<tile id="dragonblood.ico" sheet="items.png" x="63" />
+	<item id="dragonblood" type="potion" cost="250" weight="2" health="100" stamina="100" action="eat" icon="dragonblood.ico" eat="common.drink_item" eat_sfx="drinking" />
+	
+	<tile id="toothfish.ico" sheet="items.png" x="116" />
+	<tile id="rockfish.ico" sheet="items.png" x="117" />
+	<tile id="coral_cod.ico" sheet="items.png" x="118" />
+	<item id="toothfish" type="food" cost="25" weight="1" stamina="40" health="20" icon="toothfish.ico" />
+	<item id="rockfish" type="food" cost="60" weight="1" health="60" icon="rockfish.ico" />
+	<item id="coral_cod" type="food" cost="150" weight="1" health="150" icon="coral_cod.ico" />
+	
+	<tile id="health_potion.ico" sheet="items.png" x="85" />
+	<tile id="stamina_potion.ico" sheet="items.png" x="84" />
+	<tile id="attack_potion.ico" sheet="items.png" x="82" />
+	<tile id="defense_potion.ico" sheet="items.png" x="86" />
+	<tile id="speed_potion.ico" sheet="items.png" x="83" />
+	<tile id="endurance_potion.ico" sheet="items.png" x="87" />
+	<item id="health_potion" type="potion" action="eat" cost="300" weight="1" icon="health_potion.ico" eat="common.drink_item" eat_sfx="drinking">
+		<stat id="health" value="10" max="50" />
+	</item>
+	<item id="stamina_potion" type="potion" action="eat" cost="300" weight="1" icon="stamina_potion.ico" eat="common.drink_item" eat_sfx="drinking">
+		<stat id="stamina" value="50" max="200" />
+	</item>
+	<item id="attack_potion" type="potion" action="eat" cost="50" weight="1" icon="attack_potion.ico" eat="common.drink_item" eat_sfx="drinking">
+		<stat id="attack" value="1" time="30" />
+	</item>
+	<item id="defense_potion" type="potion" action="eat" cost="50" weight="1" icon="defense_potion.ico" eat="common.drink_item" eat_sfx="drinking">
+		<stat id="defense" value="1" time="30" />
+	</item>
+	<item id="speed_potion" type="potion" action="eat" cost="300" weight="1" speed="1" icon="speed_potion.ico" eat="common.drink_item" eat_sfx="drinking">
+		<stat id="speed" value="1" max="4" />
+	</item>
+	<item id="endurance_potion" type="potion" action="eat" cost="300" weight="1" icon="endurance_potion.ico" eat="common.drink_item" eat_sfx="drinking" desc="stat.descriptions.endurance">
+		<stat id="endurance" value="1" max="4" />
+	</item>
+	
+	<tile id="pumpkin.ico" sheet="items.png" x="112" />
+	<item id="pumpkin" type="food" cost="10" weight="2" stamina="40" icon="pumpkin.ico">
+		<action id="transform" into="jakolantern" extra="pumpkin_seed" name="carve" />
+	</item>
+</data>

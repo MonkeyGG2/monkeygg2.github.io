@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mod>
+    <name>Fan Translations</name>
+    <description>Includes spanish, french, german, italian, russian, and portuguese.</description>
+    <author>Various</author>
+    <version>1.0.0</version>
+    <init multiplayerSync="false">
+        <include id="es.xml" includeRoot="true" />
+        <include id="fr.xml" includeRoot="true" />
+        <include id="de_DE.xml" includeRoot="true" />
+        <include id="it_IT.xml" includeRoot="true" />
+    </init>
+</mod>
+

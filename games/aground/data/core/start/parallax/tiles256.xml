@@ -1,0 +1,10 @@
+<tilesheet id='tiles256.png' width='256' height='144'>
+	<image frame='0' x='0' y='0' width='256' height='33' offsetX='0' offsetY='111' />
+	<image frame='1' x='256' y='0' width='256' height='33' offsetX='0' offsetY='111' />
+	<image frame='2' x='0' y='33' width='256' height='59' offsetX='0' offsetY='84' />
+	<image frame='3' x='0' y='92' width='256' height='59' offsetX='0' offsetY='84' />
+	<image frame='4' x='0' y='151' width='256' height='109' offsetX='0' offsetY='34' />
+	<image frame='5' x='0' y='260' width='256' height='59' offsetX='0' offsetY='85' />
+	<image frame='6' x='256' y='33' width='256' height='142' offsetX='0' offsetY='2' />
+	<image frame='7' x='256' y='175' width='256' height='133' offsetX='0' offsetY='11' />
+</tilesheet>

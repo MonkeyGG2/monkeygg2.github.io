@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<include id="parallax/parallax.xml" />
+	<include id="items/items.xml" />
+	<include id="enemies/enemies.xml" />
+	<include id="npc/npcs.xml" />
+	<include id="structures/structures.xml" />
+	<include id="scenes/scenes.xml" />
+	<tile id="sci1.grass" sheet="{core}/tiles/tiles.png" x="127" />
+	<tile id="sci1.dirt" sheet="{core}/tiles/tiles.png" x="128" />
+	<tile id="sci1.stone" sheet="{core}/tiles/tiles.png" x="129" />
+	<tile id="desert.dirt" sheet="{core}/tiles/tiles.png" x="130" />
+	<tile id="desert.dirt_top" sheet="{core}/tiles/tiles.png" x="130"><tile sheet="{core}/tiles/tiles.png" x="131" /></tile>
+	<tile id="desert.scorched" sheet="{core}/tiles/tiles.png" x="137" />
+	<tile id="basalt" sheet="{core}/tiles/tiles.png" x="132" />
+	<tile id="scorched.dirt" sheet="{core}/tiles/tiles.png" x="133" autotile="basic9" />
+	<dig id="sci1.dirt" cost="0" />
+	<dig id="sci1.grass" cost="0" grass="true" />
+	<dig id="sci1.stone" cost="2" />
+	<dig id="desert.dirt" cost="1" />
+	<dig id="desert.dirt_top" cost="1" />
+	<dig id="desert.scorched" cost="1" />
+	<dig id="scorched.dirt" cost="1" />
+	<dig id="basalt" cost="3" />
+	
+	<tile id="sci1.dirt_sand1" sheet="{core}/tiles/tiles.png" x="128"><tile sheet="{core}/tiles/tiles.png" x="85" /></tile>
+	<tile id="sci1.dirt_sand2" sheet="{core}/tiles/tiles.png" x="128"><tile sheet="{core}/tiles/tiles.png" x="84" /></tile>
+	<tile id="sci1.dirt_sand3" sheet="{core}/tiles/tiles.png" x="128"><tile sheet="{core}/tiles/tiles.png" x="88" /></tile>
+	<dig id="sci1.dirt_sand1" cost="1" />
+	<dig id="sci1.dirt_sand2" cost="1" />
+	<dig id="sci1.dirt_sand3" cost="1" />
+	
+	<tile id="desert.dirt_sand1" sheet="{core}/tiles/tiles.png" x="130"><tile sheet="{core}/tiles/tiles.png" x="85" /></tile>
+	<tile id="desert.dirt_sand2" sheet="{core}/tiles/tiles.png" x="130"><tile sheet="{core}/tiles/tiles.png" x="84" /></tile>
+	<tile id="desert.dirt_sand3" sheet="{core}/tiles/tiles.png" x="130"><tile sheet="{core}/tiles/tiles.png" x="88" /></tile>
+	<dig id="desert.dirt_sand1" cost="1" />
+	<dig id="desert.dirt_sand2" cost="1" />
+	<dig id="desert.dirt_sand3" cost="1" />
+	
+	<tile id="ship" stride="2">
+		<tile sheet="ship.png" p="40" x="0" y="0" />
+		<tile sheet="ship.png" p="1" x="2" y="0" />
+		<tile sheet="ship.png" p="1" x="4" y="0" />
+		<tile sheet="ship.png" p="1" x="0" y="2" />
+		<tile sheet="ship.png" p="1" x="2" y="2" />
+		<tile sheet="ship.png" p="1" x="4" y="2" />
+		<tile sheet="ship.png" p="1" x="0" y="4" />
+		<tile sheet="ship.png" p="1" x="2" y="4" />
+		<tile sheet="ship.png" p="1" x="4" y="4" />
+	</tile>
+	
+	<procedure id="minodoor">
+		<set id="cave_x" value="randInt(98, 188)" /><set id="cave_y" value="randInt(60, 92)" />
+		<structure id="minodoor" x="cave_x" y="cave_y"><teleport area="labyrinth" x="32" y="33" allowReturn="true" /></structure>
+		<spreadTiles x="cave_x" y="cave_y" eval="'markings'+randInt(1,9)" layer="back" on="sci1.stone" count="50" />
+	</procedure>
+	<procedure id="science1.onLoad">
+		<section if="!modEnabled('newgrounds') && !getFlag('ng_tank')">
+			<set id="tank" value="area.getObject('tank')" />
+			<remove object="tank" if="tank != null" />
+		</section>
+		<structure id="cave" x="20" y="33" if="area.getStructureById('cave') == null"><teleport area="water_cave" x="28" y="33" /></structure>
+		<run procedure="minodoor" if="area.getStructureById('minodoor') == null" />
+		<object id="water_cave_entrance" x="-5" y="40" if="area.getObject('water_cave_entrance') == null" />
+		<remove structure="player.areas.get('start').getStructureById('boat')" if="area.getStructureById('boat') != null" />
+		<remove quest="mirrows2" if="getFlag('mirrow.defeat') && !player.questComplete('mirrows2')" />
+		<action if="!area.isWater(-2, 34)">
+			for(y in 34...41) for(x in -10...-2){mine(x, y); area.setWater(x, y);}
+		</action>
+		<action if="!area.isLit(-3, 38)">for(y in 34...41) for(x in -10...-2) area.setLit(x, y);</action>
+		<appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-250" area_right="330" area_width="192" area_height="96" /></appendArea>
+		<action if="area.getTileString(-5, 33, BASE_LAYER) != 'blackstone'">for(x in -5...0) setTile(x, 33, "blackstone")</action>
+		<action if="area.getTileString(-5, 41, BASE_LAYER) != 'blackstone'">for(x in -5...0) setTile(x, 41, 'blackstone'); for(y in 33...41) setTile(-2, y, 'blackstone');</action>
+		<weather type="fog" image="sand.png" alpha="0.3" color="ffdd99" x="0" y="-10" width="80" height="12" dx="4" dy="0.05" if="area.getStructureById('terraformer') == null" />
+	</procedure>
+	<area id="science1" background="science1" planet="start" external="crashed_ship.cave1">
+		<appendArea id="science1.mountain" offsetX="96" offsetY="0" />
+		<appendArea id="science1.desert" offsetX="0" offsetY="0" />
+		<appendArea id="science1.forest" offsetX="96" offsetY="0" />
+		<appendArea id="sea_floor"><params area_left="-250" area_right="330" area_width="192" area_height="96" /></appendArea>
+		<structure id="cave" x="20" y="33"><teleport area="water_cave" x="28" y="33" /></structure>
+		<run procedure="minodoor" />
+		<spawner id="metal_debris1" time="5000" count="15" fromX="-240" toX="-10" fromY="3" toY="62" underwater="true" />
+		<spawner id="bandit_heavy" time="5000" count="1" fromX="100" toX="136" fromY="-1" toY="-1" enabled="player.hasQuest('bandits') && !player.questComplete('bandits') && player.getKillCount('bandit_heavy') == 0" />
+		<spawner id="bandit_ranged" time="5000" count="1" fromX="100" toX="136" fromY="-1" toY="-1" enabled="player.hasQuest('bandits') && !player.questComplete('bandits') && player.getKillCount('bandit_ranged') == 0" />
+		<spawner id="bandit_combo" time="5000" count="1" fromX="100" toX="136" fromY="-1" toY="-1" enabled="player.hasQuest('bandits') && !player.questComplete('bandits') && player.getKillCount('bandit_combo') == 0" />
+		<spawner id="bandit_knives" time="5000" count="1" fromX="100" toX="136" fromY="-1" toY="-1" enabled="player.hasQuest('bandits') && !player.questComplete('bandits') && player.getKillCount('bandit_knives') == 0" />
+		<spawner id="wood_crate" time="4000" count="3" fromX="220" toX="300" fromY="-1" toY="-1" ground="false" enabled="!player.questComplete('pirates')" />
+		<spawner id="wood_debris1" time="4000" count="3" fromX="220" toX="300" fromY="-1" toY="-1" ground="false" enabled="!player.questComplete('pirates')" />
+		<spawner id="wood_debris2" time="3000" count="3" fromX="220" toX="300" fromY="-1" toY="-1" ground="false" enabled="!player.questComplete('pirates')" />
+		<fishing>
+			<loot id="toothfish" p="16" difficulty="1" />
+			<loot id="rockfish" p="4" difficulty="2" />
+			<loot id="coral_cod" p="1" difficulty="3" />
+		</fishing>
+		<init><runAreaLoad /><action>setFlag('jump_water', true);</action></init>
+		<onLoad>
+			<tile id="seagull" animation="seagull.walk" x="191-random()*5" />
+			<tile id="seagull" animation="seagull.fly" x="190+random()*5" y="-4" />
+			<tile id="seagull" animation="seagull.fly" x="195+random()*5" y="-5" />
+			<tile id="seagull" animation="seagull.fly" x="196+random()*5" y="-3" />
+			<tile id="redbreast" type="bird" x="102+random()*23" fromX="102" toX="189" />
+			<tile id="redbreast" type="bird" x="102+23+random()*23" fromX="102" toX="189" />
+			<tile id="redbreast" type="bird" x="102+46+random()*23" fromX="102" toX="189" />
+			<tile id="redbreast" type="bird" x="102+69+random()*17" fromX="102" toX="189" />
+			<music id="science1" seconds="1" /><run procedure="science1.onLoad" />
+			<objects id="science1.townfolk" startX="124" endX="190" minDist="10" maxDist="15" if="area.getObject('science1.townfolk') == null && player.getString('homeworld') == null" />
+			<object id="lurker" x="166" if="area.getNPC('lurker') == null && player.getString('homeworld') == null" />
+		</onLoad>
+		<connection area="start" fromX="330" toX="-240" />
+		<connection area="science1" fromX="-250" toX="330" />
+	</area>
+	<area id="science1.mountain">
+		<shape type="trapezoid" bottom="64">
+			<top y="-10" fromX="0" toX="1" />
+			<bottom y="32" fromX="-16" toX="17" />
+		</shape>
+		<tiles id="sci1.stone" start="0" end="1" />
+		<ore id="diamond" start="0.9" end="1.0" percent="0.0025" tile="sci1.stone" />
+		<ore id="iron" start="0.0" end="1.0" percent="0.0125" tile="sci1.stone" />
+		<ore id="sulfur" start="0.2" end="0.9" percent="0.0125" tile="sci1.stone" />
+		<ore id="gold" start="0.3" end="0.6" percent="0.0125" tile="sci1.stone" />
+	</area>
+	<area id="science1.desert" width="96" height="96">
+		<tiles id="desert.dirt_top" y="0" empty="true" />
+		<tiles id="bedrock" y="95" empty="true" />
+		<tiles id="desert.dirt" start="0" end="0.5" empty="true" />
+		<tiles id="basalt" start="0.5" end="1" empty="true" />
+		<appendArea id="science1.crater" offsetX="24" offsetY="0" />
+		<shore x="-1" top="sand_top" bottom="sand" flip="true" dock="dock_empty" trans1="desert.dirt_sand1" trans2="desert.dirt_sand2" />
+		<ore id="oil" start="0.0" end="0.5" percent="0.0375" tile="desert.dirt" />
+		<ore id="iron" start="0.2" end="0.5" percent="0.0125" tile="desert.dirt" />
+		<ore id="sulfur" start="0.4" end="0.5" percent="0.0025" tile="desert.dirt" />
+		<ore id="uranium" start="0.9" end="1.0" percent="0.000625" tile="basalt" />
+		<ore id="diamond" start="0.8" end="1.0" percent="0.0125" tile="basalt" />
+		<ore id="gold" start="0.5" end="1.0" percent="0.0125" tile="basalt" />
+		<ore id="oil" start="0.5" end="0.8" percent="0.0375" tile="basalt" />
+		<objects id="treasure_chest" start="0.1" end="0.3" count="4" tile="desert.dirt">
+			this.inventory.addItems(Item.get("battery"), 1);
+		</objects>
+		<objects id="treasure_chest" start="0.3" end="0.5" count="3" tile="desert.dirt">
+			this.inventory.addItems(Item.get("bullet"), 15);
+		</objects>
+		<objects id="treasure_chest" start="0.5" end="1.0" count="3" tile="desert.dirt">
+			this.inventory.addItems(Item.get("shell"), 15);
+		</objects>
+		<objects id="steel_wyrm" start="0.1" end="0.4" percent="0.0005" tile="desert.dirt" />
+		<spawner id="steel_wyrm" time="4000" count="5" fromX="1" toX="94" fromY="3" toY="32" tile="desert.dirt" />
+		<objects id="cyborg_heavy_gun" fromX="3" toX="85" count="3" />
+		<spawner id="cyborg_heavy_gun" time="4000" count="3" fromX="3" toX="85" fromY="-1" toY="-1" />
+		<objects id="diode_wolf" fromX="3" toX="85" count="5" />
+		<spawner id="diode_wolf" time="2000" count="5" fromX="3" toX="85" fromY="-1" toY="-1" />
+		<objects id="stinger" start="0.1" end="0.4" count="5" tile="desert.dirt" />
+		<spawner id="stinger" time="4000" count="5" fromX="1" toX="94" fromY="3" toY="92" />
+	</area>
+	<area id="science1.crater">
+		<shape type="trapezoid">
+			<top y="0" fromX="0" toX="48" />
+			<bottom y="22" fromX="16" toX="32" />
+		</shape>
+		<tiles id="scorched.dirt" start="0" end="1" />
+		<appendArea id="science1.crater.mined" offsetX="0" offsetY="0" />
+		<ore id="titanium" start="0.5" end="1.0" percent="0.0125" tile="scorched.dirt" />
+	</area>
+	<area id="science1.crater.mined">
+		<shape type="trapezoid">
+			<top y="0" fromX="10" toX="45" />
+			<bottom y="6" fromX="19" toX="29" />
+		</shape>
+		<mine start="0" end="1" light="3" />
+		<structure id="crashed_ship" x="11" y="20" />
+		<structure id="crashed_ship.door.locked" x="20.8125" y="4.625" />
+		<structure id="crashed_ship.crack1" x="28.8125" y="14.375" />
+		<structure id="crashed_ship.crack2" x="18.125" y="17.0625" />
+	</area>
+	<area id="science1.forest" width="96" height="96">
+		<tiles id="sci1.grass" y="0" empty="true" />
+		<tiles id="bedrock" y="95" empty="true" />
+		<tiles id="sci1.dirt" start="0" end="0.5" empty="true" />
+		<tiles id="sci1.stone" start="0.5" end="1" empty="true" />
+		<shore x="96" top="sand_top" bottom="sand" dock="sci1.dock_flip" trans1="sci1.dirt_sand1" trans2="sci1.dirt_sand3" />
+		<object id="fisherman.boat" x="200" />
+		<ore id="quartz" start="0.4" end="0.5" percent="0.0025" tile="sci1.dirt" />
+		<ore id="sulfur" start="0.2" end="0.5" percent="0.0125" tile="sci1.dirt" />
+		<ore id="sulfur" start="0.1" end="0.2" percent="0.000625" tile="sci1.dirt" />
+		<ore id="coal" start="0.0" end="0.4" percent="0.0375" tile="sci1.dirt" />
+		<ore id="gold" start="0.4" end="0.5" percent="0.000625" tile="sci1.dirt" />
+		<ore id="diamond" start="0.9" end="1.0" percent="0.0025" tile="sci1.stone" />
+		<ore id="sulfur" start="0.5" end="0.9" percent="0.0125" tile="sci1.stone" />
+		<ore id="iron" start="0.5" end="1.0" percent="0.0375" tile="sci1.stone" />
+		<ore id="lava" start="0.7" end="0.8" percent="1" tile="sci1.stone" />
+		<objects id="conifer" y="-1" startX="55" endX="6" minDist="-6" maxDist="-9" array="trees" />
+		<objects id="red_bush" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.34" />
+		<objects id="bush" y="-1" between="trees" pos="0.25" altPos="0.75" percent="0.67" />
+		<structure id="inn" x="67" />
+		<structure id="sci1.food_market" x="61" />
+		<structure id="sci1.weaps_market" x="58" />
+		<structure id="sci1.mineral_market" x="55" />
+		<structure id="powerline1" x="75" />
+		<structure id="powerline2" x="64" />
+		<structure id="powerline2" x="53" />
+		<structure id="powerline2" x="42" />
+		<structure id="damaged_power_plant" x="77" />
+		<object id="mechanic" x="78" />
+		<structure id="warehouse" x="88" />
+		<objects id="treasure_chest" start="0.1" end="0.3" count="8" tile="sci1.dirt">
+			this.inventory.addItems(Item.get("titanium"), 2);
+		</objects>
+		<objects id="treasure_chest" start="0.3" end="0.5" count="3" tile="sci1.dirt">
+			this.inventory.addItems(Item.get("steel_bar"), 3);
+		</objects>
+		<onLoad>
+			<set id="fisherman_boat" value="area.getObject('fisherman.boat')" />
+			<action if="fisherman_boat.tile_x > 96+101 && area.getNPC('fisherman') == null">
+				fisherman_boat.setTile(96+101, -1, 1, getProcedure("fisherman.disembark")); fisherman_boat.playAnimation("fisherman.boat.sail");
+			</action>
+		</onLoad>
+		
+	</area>
+	<area id="crashed_ship.cave1" name="colony_ship" width="64" height="32" external="science1">
+		<tiles id="ship" start="0" end="1" />
+		<action>for(y in 10...24) for(x in 10...56) mine(x, y)</action>
+		<tiles id="desert.scorched" start="0.5" end="1" empty="true" />
+		<action>for(y in 0...2) for(x in 0...6){setTile(12+x*8, 12+y*8, "ship"); setTile(13+x*8, 12+y*8, "ship"); setTile(12+x*8, 13+y*8, "ship"); setTile(13+x*8, 13+y*8, "ship");}</action>
+		<ore id="titanium" start="0.5" end="1.0" percent="0.0125" tile="desert.scorched" />
+		<structure id="crashed_ship.crack1.ret" x="31" y="22" />
+		<objects id="stinger" start="0" end="1" count="20" />
+		<spawner id="stinger" time="4000" count="10" fromX="1" toX="62" fromY="1" toY="31" enabled="!getFlag('bombardment')" />
+		<objects id="ship_chest" start="0" end="1" count="3">
+			this.inventory.addItems(Item.get("battery"), 1);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="2">
+			this.inventory.addItems(Item.get("refined_oil"), 3);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="2">
+			this.inventory.addItems(Item.get("silicon"), 3);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="4">
+			this.inventory.addItems(Item.get("bandage"), 3);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="2">
+			this.inventory.addItems(Item.get("bullet"), 15);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="2">
+			this.inventory.addItems(Item.get("landmine"), 3);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="2">
+			this.inventory.addItems(Item.get("shell"), 15);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="2">
+			this.inventory.addItems(Item.get("uranium"), 1);
+		</objects>
+		<objects id="ship_chest" start="0" end="1" count="1">
+			this.inventory.addItems(Item.get("jetpack"), 1);
+		</objects>
+		<mine x="33" y="21" light="4" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<music id="science1" seconds="1" /><action>player.prevLocation = null;</action>
+		</onLoad>
+	</area>
+	<area id="crashed_ship.cave2" name="colony_ship" width="64" height="32">
+		<tiles id="ship" start="0" end="1" />
+		<action>for(x in 2...56){mine(x, 18); mine(x, 21);} mine(55, 20); mine(55, 19);</action>
+		<action>for(y in 22...25) for(x in 2...6) mine(x, y); mine(2, 16); mine(2, 17); for(y in 14...16) for(x in 2...56) mine(x, y);</action>
+		<structure id="crashed_ship.crack2.ret" x="2" y="24" /><light x="4" y="23" size="4" />
+		<objects id="cyborg_heavy_gun" startX="3" endX="54" minDist="6" maxDist="9" y="18" />
+		<object id="cyborg_heavy_gun" x="2" y="18" />
+		<object id="cyborg_heavy_gun" x="55" y="18" />
+		<spawner id="cyborg_heavy_gun" time="4000" count="8" fromX="2" toX="55" fromY="18" toY="18" />
+		<objects id="diode_wolf" startX="3" endX="53" minDist="6" maxDist="9" y="21" />
+		<object id="diode_wolf" x="2" y="21" />
+		<object id="diode_wolf" x="54" y="21" />
+		<spawner id="diode_wolf" time="4000" count="8" fromX="2" toX="54" fromY="21" toY="21" />
+		<set id="ar" value="[5,9,13,17,21,25,29,33,37,41,45,49]" /><action>shuffle(ar);</action>
+		<structure id="medivat1" x="ar[0]" y="15" />
+		<structure id="medivat2" x="ar[1]" y="15" />
+		<structure id="medivat3" x="ar[2]" y="15" />
+		<structure id="medivat4" x="ar[3]" y="15" />
+		<structure id="medivat.full1" x="ar[4]" y="15" />
+		<structure id="medivat.full2" x="ar[5]" y="15" />
+		<structure id="medivat.full3" x="ar[6]" y="15" />
+		<structure id="medivat.full4" x="ar[7]" y="15" />
+		<structure id="medivat1" x="ar[8]" y="15" />
+		<structure id="medivat2" x="ar[9]" y="15" />
+		<structure id="medivat3" x="ar[10]" y="15" />
+		<structure id="medivat4" x="ar[11]" y="15" />
+		<structure id="sci1.light.off" x="ar[0]-1" y="15" />
+		<structure id="sci1.light.broken" x="ar[1]-1" y="15" />
+		<structure id="sci1.light.broken" x="ar[2]-1" y="15" />
+		<structure id="sci1.light.broken" x="ar[3]-1" y="15" />
+		<structure id="sci1.light" x="ar[4]-1" y="15" />
+		<structure id="sci1.light" x="ar[5]-1" y="15" />
+		<structure id="sci1.light" x="ar[6]-1" y="15" />
+		<structure id="sci1.light" x="ar[7]-1" y="15" />
+		<structure id="sci1.light.off" x="ar[8]-1" y="15" />
+		<structure id="sci1.light.broken" x="ar[9]-1" y="15" />
+		<structure id="sci1.light.broken" x="ar[10]-1" y="15" />
+		<structure id="sci1.light.broken" x="ar[11]-1" y="15" />
+		<structure id="medicom" x="4" y="15" dialogue="medicom.panel1" />
+		<structure id="medicom" x="8" y="15" dialogue="medicom.panel2" />
+		<structure id="medicom" x="12" y="15" dialogue="medicom.panel3" />
+		<structure id="medicom" x="16" y="15" dialogue="medicom.panel4" />
+		<structure id="medicom" x="20" y="15" dialogue="medicom.panel5" />
+		<structure id="medicom" x="24" y="15" dialogue="medicom.panel6" />
+		<structure id="medicom" x="28" y="15" dialogue="medicom.panel7" />
+		<structure id="medicom" x="32" y="15" dialogue="medicom.panel8" />
+		<structure id="medicom" x="36" y="15" dialogue="medicom.panel9" />
+		<structure id="medicom" x="40" y="15" dialogue="medicom.panel10" />
+		<structure id="medicom" x="44" y="15" dialogue="medicom.panel11" />
+		<structure id="medicom" x="48" y="15" dialogue="medicom.panel12" />
+		
+		<structure id="diode_wolf_pen" x="53" y="15"><addAnimal id="diode_wolf" value="2000" /></structure>
+	</area>
+	
+	<procedure id="mirrow.lab.music">
+		<choose><music id="boss" seconds="1" if="area.getObject('mirrow_n') != null || area.getObject('mirrow_d') != null" /><music id="science1" seconds="1" /></choose>
+	</procedure>
+	<area id="mirrows_lab" name="colony_ship" width="32" height="16" external="science1">
+		<tiles id="ship" start="0" end="1" />
+		<action>for(y in 7...10) for(x in 8...24) mine(x, y);</action>
+		<structure id="crashed_ship.door.exit" x="20" y="9.1" />
+		<light x="20" y="8" size="3" /><light x="21" y="8" size="3" /><light x="20" y="9" size="3" /><light x="21" y="9" size="3" />
+		<structure id="medicom" x="10" y="9" dialogue="medicom.panel13" />
+		<structure id="operation_table" x="12" y="9" />
+		<structure id="medicom" x="15" y="9" dialogue="medicom.panel14" />
+		<structure id="medivat.full1" x="16" y="9" />
+		<structure id="medicom" x="23" y="9" dialogue="medicom.panel15" />
+		<structure id="sci1.light" x="10" y="9" />
+		<structure id="sci1.light" x="14" y="9" />
+		<structure id="sci1.light" x="18" y="9" />
+		<structure id="sci1.light" x="22" y="9" />
+		<object id="mirrow_n" x="13" y="8" />
+		<object id="mirrow_d" x="13" y="9" />
+		<structure id="science1.bridge.entrance" x="8" y="9.1" />
+		<onLoad>
+			<run procedure="mirrow.lab.music" />
+			<section if="area.getStructureById('science1.bridge.entrance') == null">
+				<structure id="science1.bridge.entrance" x="8" y="9.1" />
+			</section>
+		</onLoad>
+	</area>
+	
+	<include id="water_cave.xml" includeRoot="true" />
+	<tile id="water_cave" sheet="water_cave.png" offsetX="-64" />
+	<animation id="water_cave.bubbles" count="12" />
+	<animation id="water_cave" x="12" count="1" length="12"><append tile="water_cave" animation="water_cave.bubbles" /></animation>
+	<tile id="water_cave_exit" sheet="water_cave.png" />
+	<tile id="water_cave_block1" sheet="water_cave.png" x="13" />
+	<tile id="water_cave_block2" sheet="water_cave.png" x="14" />
+	<animation id="water_cave_exit" x="12" count="1" length="12"><append tile="water_cave_exit" animation="water_cave.bubbles" /></animation>
+	<object id="water_cave_exit" tile="water_cave_exit" animation="water_cave_exit" overlapVehicle="true" waterTint="false" layer="item" behind="true">
+		<tile id="water_cave_block2" x="-2" y="-3.5" top="true" />
+		<over><invokeLater if="player._getFacing() == 1 && player._getWidth() <= 4*Tile.SIZE"><teleport area="science1" x="player._getTileX()-9.125" y="player._getTileY()" /></invokeLater></over>
+		<out><invokeLater if="player._getFacing() == 1 && player.vehicle != null"><teleport area="science1" x="player._getTileX()-9.125" y="player._getTileY()" /></invokeLater></out>
+	</object>
+	<object id="water_cave_entrance" tile="water_cave" animation="water_cave" overlapVehicle="true" waterTint="false" layer="item" behind="true">
+		<tile id="water_cave_block1" x="-6" y="-3.5" top="true" />
+		<over><invokeLater if="player._getFacing() == -1"><teleport area="water_cave" x="player._getTileX()+9.125" y="player._getTileY()" /></invokeLater></over>
+		<out><run object="water_cave_entrance" event="over" if="player.vehicle != null" /></out>
+	</object>
+	<area id="water_cave" y="26" width="32" height="20" background="underwater" external="science1">
+		<tiles id="desert.dirt" start="0.0" end="1" />
+		<tiles id="blackstone" y="45" /><tiles id="blackstone" y="26" /><tiles id="blackstone" x="31" />
+		<action>
+			for(y in 1...8) for(x in 1...31) mine(x, 26+y);
+			for(y in 0...19) for(x in 0...8) setTile(x, 26+y, "sand");
+            for(y in 4...12) for(x in 8...24) setTile(x, 30+y, "sand");
+            for(y in 4...11) for(x in 0...23){mine(x, 30+y); area.setWater(x, 30+y);}
+		</action>
+		<ore id="oil" start="0.5" end="1" percent="0.0375" tile="desert.dirt" />
+		<ore id="iron" start="0.7" end="1" percent="0.0125" tile="desert.dirt" />
+		<ore id="sulfur" start="0.9" end="1" percent="0.0025" tile="desert.dirt" />
+        <structure id="cave" x="28" y="33"><teleport area="science1" x="20" y="33" /></structure>
+        <light x="28" y="33" size="3" /><light x="29" y="33" size="3" /><light x="28" y="32" size="3" /><light x="29" y="32" size="3" />
+		<fishing>
+			<loot id="rockfish" p="12" difficulty="2" />
+			<loot id="coral_cod" p="1" difficulty="3" />
+			<loot id="electric_eel" p="4" difficulty="4" achievement="electric_eel" />
+		</fishing>
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<action if="area.isWater(-1, 44)">for(y in 6...16){setTile(-1, 30+y, y == 6?"sand_top":"sand"); area.setLit(-1, 30+y); area.setUnlit(0, 30+y);} for(y in 6...11){mine(-1, 30+y); area.setWater(-1, 30+y);}</action>
+			<action if="!area.isLit(1, 38)">for(y in 4...11) for(x in 0...7) area.setLit(x, 30+y);</action>
+			<music id="science1" seconds="1" /><object id="water_cave_exit" x="0" y="40" if="area.getObject('water_cave_exit') == null" />
+			<action if="area.getTileString(7, 32, BASE_LAYER) != 'blackstone'">for(y in 27...34) setTile(7, y, 'blackstone'); for(y in 41...45) setTile(7, y, 'blackstone'); for(x in 4...7) setTile(x, 33, 'blackstone');</action>
+			<action if="area.getTileString(7, 26, BASE_LAYER) != 'blackstone'">for(x in 0...32){setTile(x, 26, 'blackstone'); setTile(x, 45, 'blackstone');} for(y in 0...20) setTile(31, y+26, 'blackstone');</action>
+			<action if="area.getTileString(4, 41, BASE_LAYER) != 'blackstone'">for(x in 4...7) setTile(x, 41, 'blackstone');</action>
+		</onLoad>
+	</area>
+		
+	<area id="labyrinth" temporary="true">
+		<setTile x="32" y="32" layer="back" tile="markings1" /><structure id="minodoor" x="32" y="33" />
+		<set id="ar" value="[2,2,60,2,2,60,60,60]" /><action>shuffleN(ar, 2);</action>
+		<setTile x="2" y="2" layer="back" tile="markings1" /><structure id="minodoor" x="ar[0]" y="ar[1]+1">
+			<teleport area="labyrinth_end" x="16" y="6" />
+		</structure>
+		<setTile x="60" y="2" layer="back" tile="markings2" /><object id="treasure_chest" x="ar[2]" y="ar[3]">
+			this.inventory.addItems(Item.get("sulfur"), 20);
+		</object>
+		<setTile x="2" y="60" layer="back" tile="markings3" /><object id="treasure_chest" x="ar[4]" y="ar[5]">
+			this.inventory.addItems(Item.get("refined_oil"), 10);
+		</object>
+		<setTile x="60" y="60" layer="back" tile="markings4" /><object id="treasure_chest" x="ar[6]" y="ar[7]">
+			this.inventory.addItems(Item.get("cloth"), 10); this.inventory.addItems(Item.get("silk"), 5);
+		</object>
+		<maze floor="'markings'+randInt(1,9)" wall="bedrock" width="32" height="32" tilesPerCell="2" />
+		<objects id="wall_trap" place="wall" length="8" fromX="0" toX="64" fromY="0" toY="64" count="64" />
+		<light x="32" y="33" size="3" /><light x="33" y="33" size="3" /><light x="32" y="32" size="3" /><light x="33" y="32" size="3" />
+		<spawner id="minotaur" time="5000" count="8" fromX="1" toX="62" fromY="1" toY="62" spawnWidth="128" />
+		<init><action>area.spawner.spawnAll("minotaur")</action><runAreaLoad /></init>
+		<onLoad>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 1...63){setTile(0, y, "blackstone"); setTile(63, y, "blackstone");} for(x in 0...64){setTile(x, 0, "blackstone"); setTile(x, 63, "blackstone");}</action>
+		</onLoad>
+	</area>
+		
+	<area id="sea_floor_full">
+		<set id="_width" value="area_right-area_left-64" /><set id="_height" value="16" /><appendArea id="sea_floor_bottom" offsetX="area_left+16" offsetY="64" />
+		<action>for(y in 80...90) for(x in area_left-9...area_right+9) setTile(x, y, "blackstone");</action>
+	</area>
+	<area id="labyrinth_end" width="32" height="16" background="sky" planet="start">
+		<tiles id="sci1.dirt" start="0" end="1" />
+		<tiles id="sci1.grass" y="0" />
+		<action>for(y in 7...16) for(x in 0...32) setTile(x, y, "bedrock");</action>
+		<shore x="-1" top="sand_top" bottom="sand" trans1="sci1.dirt_sand1" trans2="sci1.dirt_sand2" flip="true" dock="dock_empty" />
+		<shore x="32" top="sand_top" bottom="sand" trans1="sci1.dirt_sand1" trans2="sci1.dirt_sand3" dock="dock_empty_flip" />
+		<appendArea id="sea_floor_full"><params area_left="-130" area_right="160" /></appendArea>
+		<ore id="quartz" start="0.4" end="0.5" percent="0.0025" tile="sci1.dirt" />
+		<ore id="sulfur" start="0.2" end="0.5" percent="0.0125" tile="sci1.dirt" />
+		<ore id="sulfur" start="0.1" end="0.2" percent="0.000625" tile="sci1.dirt" />
+		<ore id="coal" start="0.0" end="0.4" percent="0.0375" tile="sci1.dirt" />
+		<ore id="gold" start="0.4" end="0.5" percent="0.000625" tile="sci1.dirt" />
+		<structure id="minodoor_exit" x="16" y="6" />
+		<structure id="recipe_pillar" x="16" recipe="make_dragonsword" />
+		<object id="minotaur" x="16" y="-1" />
+		<spawner id="minotaur" time="10000" count="1" fromX="1" toX="30" fromY="-1" toY="-1" />
+		<mine x="16" y="6" light="3" /><mine x="17" y="6" light="3" /><mine x="16" y="5" light="3" /><mine x="17" y="5" light="3" />
+		<object id="treasure_chest" x="3">this.inventory.addItems(Item.get("cow"), 2);</object>
+		<object id="treasure_chest" x="15">this.inventory.addItems(Item.get("kitchen_upgrade"), 1);</object>
+		<object id="treasure_chest" x="28">
+			this.inventory.addItems(Item.get("fire_tusk"), 4); this.inventory.addItems(Item.get("horn"), 4);
+		</object>
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<action>player.prevLocation = null;</action>
+			<weather type="fog" x="-100" y="-64" width="232" height="84" /><music id="nightly" seconds="1" />
+			<structure id="minodoor_exit" x="16" y="6" if="area.getStructureById('minodoor_exit') == null" />
+			<object id="treasure_chest" x="15" if="version < 50">this.inventory.addItems(Item.get("kitchen_upgrade"), 1);</object>
+			<appendArea id="sea_floor_full" if="area.getObject('seaweed') == null"><params area_left="-130" area_right="160" /></appendArea>
+		</onLoad>
+		<fishing>
+			<loot id="toothfish" p="16" difficulty="1" />
+			<loot id="rockfish" p="4" difficulty="2" />
+			<loot id="coral_cod" p="1" difficulty="3" />
+		</fishing>
+		<connection area="farming" fromX="160" toX="-240" />
+		<connection area="snow_island" fromX="-130" toX="340" />
+	</area>
+	<object id="science1.bridge.exit" layer="npc" action="structure.tooltip.enter" width="16" height="32">
+		<operate><choose>
+			<teleport area="mirrows_lab" x="8.5" y="9" with="ellipse" if="player.areas.exists('mirrows_lab')" />
+			<return with="ellipse" />
+		</choose></operate>
+	</object>
+	<object id="science1.bridge.nav" layer="npc" action="structure.tooltip.operate" width="16" height="16">
+		<operate><choose>
+			<scene id="science1.bridge" show="end" with="fade" showToAll="true" if="!getFlag('seen_nav')" />
+			<scene id="science1.bridge" show="screen" with="fade" />
+		</choose></operate>
+	</object>
+	<object id="science1.bridge.nav.broken" layer="npc" action="structure.tooltip.operate" width="16" height="16">
+		<operate><dialogue section="medicom" id="broken" /></operate>
+	</object>
+	<area id="science1.bridge" name="colony_ship" x="-8" y="-8" width="32" height="25">
+		<tiles id="desert.scorched" start="0" end="1" />
+		<mine start="0" end="1" /><tiles id="empty" start="0" end="1" />
+		<action>
+			for(x in 10...14) mine(x, 1); mine(13,2); for(y in 2...4) for(x in 7...13) mine(x, y);
+			mine(6, 3); for(x in 6...11) mine(x, 4); for(x in 8...11) mine(x, 5); for(x in 8...10) mine(x, 6);
+		</action>
+		<structure id="science1.bridge" x="0" y="8" />
+		<object id="science1.bridge.exit" x="7" y="6" />
+		<object id="science1.bridge.nav" x="5" y="4" />
+		<object id="science1.bridge.nav.broken" x="6" y="2" />
+		<object id="science1.bridge.nav.broken" x="11" y="4" />
+		<object id="science1.bridge.nav.broken" x="14" y="1" />
+		<light x="7" y="5" size="3" /><light x="7" y="6" size="3" />
+	</area>
+</data>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<volume name="game_over" value="50" />
+	
+	<music id="title" />
+	<music id="intro" />
+	<music id="boss" />
+	<music id="game_over" />
+	<music id="nightly"><track id="nightly" /></music>
+	<music id="Cutscene9" allowOverride="false" />
+	<music id="start">
+		<track id="underground" y="4" fade_tiles="3" />
+		<track id="nightly" if="isNight()" />
+		<track id="no_boundaries" />
+	</music>
+	<music id="science1">
+		<track id="underground" y="4" fade_tiles="3" />
+		<track id="nightly" if="isNight()" />
+		<track id="science1" />
+	</music>
+	<music id="magic1">
+		<track id="nightly" if="isNight()" />
+		<track id="magic1" />
+	</music>
+</data>

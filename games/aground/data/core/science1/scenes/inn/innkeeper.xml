@@ -1,0 +1,25 @@
+<tilesheet id='innkeeper.png' width='256' height='144'>
+	<image frame='0' x='0' y='0' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='1' x='256' y='0' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='2' x='512' y='0' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='3' x='0' y='112' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='4' x='256' y='112' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='5' x='512' y='112' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='6' x='0' y='224' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='7' x='0' y='336' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='8' x='0' y='448' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='9' x='0' y='560' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='10' x='0' y='672' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='11' x='256' y='224' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='12' x='512' y='224' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='13' x='0' y='784' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='14' x='256' y='342' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='15' x='256' y='454' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='16' x='256' y='572' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='17' x='512' y='342' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='18' x='256' y='690' width='256' height='112' offsetX='0' offsetY='32' />
+	<image frame='19' x='512' y='454' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='20' x='512' y='572' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='21' x='512' y='690' width='256' height='118' offsetX='0' offsetY='26' />
+	<image frame='22' equals='12' offsetX='0' offsetY='26' />
+</tilesheet>

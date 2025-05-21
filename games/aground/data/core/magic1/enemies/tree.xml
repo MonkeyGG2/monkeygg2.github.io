@@ -1,0 +1,21 @@
+<tilesheet id='tree.png' width='100' height='80'>
+	<image frame='0' x='0' y='0' width='24' height='26' offsetX='26' offsetY='38' />
+	<image frame='1' x='24' y='0' width='48' height='36' offsetX='1' offsetY='44' />
+	<image frame='2' x='24' y='36' width='47' height='35' offsetX='2' offsetY='45' />
+	<image frame='3' x='24' y='71' width='48' height='33' offsetX='2' offsetY='47' />
+	<image frame='4' x='24' y='104' width='39' height='32' offsetX='13' offsetY='47' />
+	<image frame='5' x='24' y='136' width='29' height='24' offsetX='22' offsetY='46' />
+	<image frame='6' x='0' y='26' width='13' height='5' offsetX='33' offsetY='47' />
+	<image frame='7' x='72' y='0' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='8' x='72' y='75' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='9' x='72' y='150' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='10' x='166' y='0' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='11' x='260' y='0' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='12' x='166' y='75' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='13' x='260' y='75' width='96' height='76' offsetX='2' offsetY='4' />
+	<image frame='14' x='166' y='150' width='94' height='75' offsetX='3' offsetY='5' />
+	<image frame='15' x='24' y='160' width='30' height='2' offsetX='38' offsetY='78' />
+	<image frame='16' x='24' y='162' width='30' height='23' offsetX='38' offsetY='57' />
+	<image frame='17' x='24' y='185' width='38' height='52' offsetX='30' offsetY='28' />
+	<image frame='18' x='260' y='151' width='94' height='75' offsetX='3' offsetY='5' />
+</tilesheet>

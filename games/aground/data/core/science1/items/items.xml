@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<item id="silicon" type="resource" cost="50" weight="2" icon="silicon.ico" />
+	<item id="refined_oil" type="resource" cost="200" weight="2" icon="refined_oil.ico" />
+	
+	<include id="drill.xml" includeRoot="true" />
+	<tile id="drill" sheet="drill.png" x="0" y="0" />
+	<animation id="equipment.drill" x="1" count="5" />
+	<animation id="equipment.drill.idle" count="1" />
+	<tile id="drill.arms" equals="drill" />
+	<animation id="drill.arms"><frame x="7" /><frame x="6" count="5" /></animation>
+	<item id="drill" type="equipment" slot="pickaxe" cost="300" power="3" weight="10" mine="4" breakPower="2" icon="drill.ico" behindPlayer="false" animation="item4" fps="24" action="equip" loop="drill" movement_walk="walk_lswing" arms="drill.arms" hideOffhand="true" />
+	<item id="battery" type="tool" durability="500" storage="power" cost="100" weight="2" icon="battery.ico" animation="item4" />
+	
+	<tile id="revolver.arms" equals="equipment.arms" />
+	<animation id="revolver.arms" x="25" count="8"><frame visible="false" /></animation>
+	<item id="revolver" type="equipment" slot="weapon" cost="170" weight="4" stamina="1" range="10" icon="revolver.ico" projectile="bullet" sfx="revolver" movement_walk="walk_rswing" arms="revolver.arms">
+		<action id="equip" /><action id="setProjectile" />
+	</item>
+	<item id="shotgun" type="equipment" slot="weapon" cost="250" weight="10" stamina="3" range="6" icon="shotgun.ico" projectile="shell" sfx="shotgun" movement_walk="walk_rswing">
+		<action id="equip" /><action id="setProjectile" /><use slot="shield" />
+	</item>
+	<tile id="revolver" sheet="{core}/items/weps.png" x="91" />
+	<animation id="equipment.revolver.idle" x="8" count="1" />
+	<animation id="equipment.revolver" count="9" shift="1" />
+	<tile id="shotgun" sheet="{core}/items/weps.png" x="133" />
+	<animation id="equipment.shotgun.idle" x="18" count="1" />
+	<animation id="equipment.shotgun" count="19" shift="1" />
+	
+	<item id="titanium_armor" type="equipment" slot="armor" cost="700" durability="750" weight="12" defense="4" icon="titanium_armor.ico" action="equip" repair="titanium" equip_anim="equipment.steel_armor" />
+	
+	<tilesheet id="bullets.png" width="8" height="8" />
+	<tile id="bullet" sheet="bullets.png" x="0" y="0" />
+	<tile id="shell" sheet="bullets.png" x="6" y="0" />
+	<animation id="bullet.idle" count="4" />
+	<animation id="bullet.impact" x="4" count="2" />
+	<animation id="shell.idle" count="3" />
+	<animation id="shell.impact" x="3" count="4" />
+	<hitEffect id="bullet" tile="bullet" animation="bullet.impact" color="ffdd99" />
+	<item id="bullet" type="equipment" cost="18" weight="0.25" icon="bullet.ico" attack="6" action="fire" with="revolver">
+		<projectile tile="bullet" animation="bullet.idle" speed="5" delay="2" offsetY="4" hit_sfx="bullet" hitEffect="bullet" />
+	</item>
+	<item id="shell" type="equipment" cost="45" weight="0.5" icon="shell.ico" attack="8" action="fire" with="shotgun">
+		<projectile tile="shell" animation="shell.idle" speed="3" delay="5" offsetY="4" hit_sfx="shell" knockback="5">
+			<hitEffect tile="shell" animation="shell.impact" color="ffdd99" />
+		</projectile>
+	</item>
+	
+	<tile id="chainsaw.arms" equals="equipment.arms" />
+	<animation id="chainsaw.arms" x="6" count="12" />
+	
+	<item id="chainsaw" type="equipment" slot="weapon" cost="850" weight="10" attack="6" cut="8" power="6" melee_range="0.25" knockback="5" stamina="1" icon="chainsaw.ico" animation="item2" action="equip" sfx="chainsaw" movement_walk="walk_rswing" arms="chainsaw.arms">
+		<onHit type="tree" tile="chainsaw" animation="chainsaw.wood" />
+		<onHit type="enemy" tile="chainsaw" animation="chainsaw.blood" />
+	</item>
+	
+	<tile id="chainsaw" sheet="{core}/items/weps.png" x="185" />
+	<animation id="equipment.chainsaw.idle" offsetX="-3" offsetY="3" x="9" count="1" />
+	<animation id="equipment.chainsaw" count="12" shift="2" />
+	<animation id="chainsaw.blood" x="12" count="7" />
+	<animation id="chainsaw.wood" x="19" count="7" />
+	
+	<animation id="landmine.spring">
+		<frame visible="false" length="7" />
+		<append tile="mine.explosion" animation="mine.explosion" />
+	</animation>
+	
+	<item id="landmine" type="object" cost="300" weight="2" icon="landmine.ico" action="place" element="fire" object="trap" damage="8" hitEffect="fire_lg_dot" />
+	
+	<item id="bandage" type="tool" cost="40" weight="1" health="60" icon="bandage.ico" action="eat" eat="common.use_count" />
+	
+	<item id="tent" type="tool" cost="500" weight="15" durability="5" durabilityName="common.uses" icon="tent.ico">
+		<action id="use" cost="(player.isFlying() || player.isUnderwater() || player.vehicle != null)?0:1" name="structure.tooltip.tent">
+			<choose>
+				<dialogue section="warning" id="no_flying" if="player.isFlying()" />
+				<dialogue section="warning" id="sleep_underwater" if="player.isUnderwater()" />
+				<dialogue section="warning" id="sleep_vehicle" if="player.vehicle != null" />
+				<section><action>player.restoreStamina();</action><save sleep="true" /></section>
+			</choose>
+		</action>
+	</item>
+	
+	<tilesheet id="headlamp_light.png" width="192" height="141" />
+	<tile id="light.headlamp" sheet="headlamp_light.png" />
+	<item id="headlamp" type="tool" cost="150" slot="head" block="false" action="equip" weight="1" icon="headlamp.ico">
+		<light tile="light.headlamp" offsetX="-61" /><equipCost storage="power" cost="1" />
+	</item>
+	
+	<tilesheet id="headlamp.png" width="9" height="4" />
+	<tile id="headlamp" sheet="headlamp.png" x="0" y="0" />
+	<animation id="equipment.headlamp.idle" count="1" offsetX="0.5" offsetY="0" />
+	<animation id="equipment.headlamp.off" x="1" count="1" offsetX="0.5" offsetY="0" />
+	
+	<procedure id="remove_cyborg">
+		<window type="prompt" eval="'warning.remove_cyborg{item:[item='+this.id+']}'"><action>player.equipment.forceEquip(this.xml.get("slot"), player)</action></window>
+	</procedure>
+	
+	<include id="cyborg.xml" includeRoot="true" />
+	<tile id="cyborg_body" sheet="cyborg.png" x="22" />
+	<animation id="equipment.cyborg_body.idle" x="57" count="3" />
+	<animation id="equipment.cyborg_body.walk" x="47" count="10" />
+	<animation id="equipment.cyborg_body.hit" x="41" count="6" />
+	<animation id="equipment.cyborg_body.death" x="0" count="41" />
+	<item id="cyborg_body" type="none" slot="armor" cost="0" weight="0" defense="4" icon="cyborg_body.ico" unequip="false">
+		<action id="use" name="common.remove" closeWindow="false"><run procedure="remove_cyborg" /></action>
+		<equipCost health="-5" storage="power" cost="10" injured="true" />
+	</item>
+	
+	<tile id="cyborg_eye" sheet="cyborg.png" x="17" />
+	<tile id="cyborg.identify" sheet="cyborg.png" x="0" />
+	<animation id="cyborg.acquire" x="0" count="12" color="f62d2d" />
+	<animation id="cyborg.identify" x="12" count="5" color="f62d2d" />
+	<animation id="equipment.cyborg_eye.idle" x="0" count="5" />
+	<item id="cyborg_eye" type="none" slot="head" cost="0" weight="0" icon="cyborg_eye.ico" unequip="false" animation="item6">
+		<action id="use" name="common.remove" closeWindow="false"><run procedure="remove_cyborg" /></action>
+		<equipCost storage="power" cost="1" />
+		<light tile="light.strong" color="ff9898" flicker="true" /><identify tile="cyborg.identify" acquire="cyborg.acquire" animation="cyborg.identify" color="f61414" />
+	</item>
+	
+	<include id="cyborg_pack.xml" includeRoot="true" />
+	<tile id="cyborg_back" x="7" sheet="cyborg_pack.png" />
+	<animation id="equipment.cyborg_back.idle" offsetX="8" x="5" count="8" />
+	<animation id="equipment.cyborg_back.fly.self" offsetX="8" offsetY="4" x="0" count="5" />
+	<animation id="equipment.cyborg_back.hover.self" equals="equipment.cyborg_back.fly.self" />
+	<item id="cyborg_back" type="none" slot="back" cost="0" weight="0" capacity="200" icon="cyborg_back.ico" unequip="false" animation="item4">
+		<action id="use" name="common.remove" closeWindow="false"><run procedure="remove_cyborg" /></action>
+		<flight height="10" cost="0" speed="4" maxWeight="500"><equipCost storage="power" cost="10" /></flight>
+		<equipCost storage="power" cost="-5" />
+	</item>
+	
+	<tile id="machine_gun_arm" x="0" sheet="cyborg_pack.png" />
+	<animation id="equipment.machine_gun_arm" x="1" count="6" offsetX="-5" offsetY="1" />
+	<animation id="equipment.machine_gun_arm.idle" x="0" count="1" offsetX="-5" offsetY="1" />
+	<item id="machine_gun_arm" type="none" slot="shield" use="attack" cost="0" weight="0" delay="-2" movement_walk="walk_lswing" range="10" sfx="machine_gun" repeat="8" icon="machine_gun_arm.ico" unequip="false" action="setProjectile" projectile="bullet" group="revolver">
+		<action id="use" name="common.remove" closeWindow="false"><run procedure="remove_cyborg" /></action>
+	</item>
+</data>

@@ -1,0 +1,4 @@
+<tilesheet id='bg640.png' width='640' height='144'>
+	<image frame='0' x='0' y='0' width='640' height='142' offsetX='0' offsetY='2' />
+	<image frame='1' x='0' y='142' width='638' height='141' offsetX='2' offsetY='3' />
+</tilesheet>

@@ -1,0 +1,5 @@
+<tilesheet id='tiles512.png' width='512' height='144'>
+	<image frame='0' x='0' y='0' width='512' height='141' offsetX='0' offsetY='3' />
+	<image frame='1' x='0' y='141' width='339' height='101' offsetX='0' offsetY='43' />
+	<image frame='2' x='0' y='242' width='391' height='105' offsetX='121' offsetY='39' />
+</tilesheet>

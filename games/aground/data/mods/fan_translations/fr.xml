@@ -1,0 +1,1380 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<lang id="fr" name="Français" version="1.3.1">
+<!-- Translated by Monthy
+<!-- Adapted for 1.3.1 -->-->
+	<section id="common">
+		<text id="accept">Accepter</text>
+		<text id="add_animal">Ajouter Animal</text>
+		<text id="add_feed">Ajouter nourriture</text>
+		<text id="add_fuel">Ajouter carburant</text>
+		<text id="add_rations">Ajouter Rations</text>
+		<text id="add_storehouse_items">Inclure l'Entrepôt</text>
+		<text id="addition_slots">Champs:</text>
+		<text id="all">Tous</text>
+		<text id="auto_eat">Vous avez manger {count} {item} pour regagner de la vie</text>
+		<text id="auto_eat_stamina">Utilisé {count} {item} pour restaurer de l'énergie</text>
+		<text id="auto_feed">Nourrir automatiquement {item} à celui-ci?{list}</text>
+		<text id="auto_fuel">Alimenter {item} avec les éléments suivants? {list}</text>
+		<text id="blocked">Bloqué!</text>
+		<text id="broken">{item} est cassé!</text>
+		<text id="buy">Acheter</text>
+		<text id="buy_item">Combien en voudriez-vous acheter?</text>
+		<text id="cancel">Annuler</text>
+		<text id="capacity">Porter:</text>
+		<text id="capture">Capture</text>
+		<text id="coins">Pièce</text>
+		<text id="collect_complete">Récolte Complété</text>
+		<text id="complete">Complété</text>
+		<text id="continue">Continuer</text>
+		<text id="cooldown">Recharge</text>
+		<text id="corrupt_slot">Sauvegarde Corrompu</text>
+		<text id="craft">Combien voulez-vous fabriquer?</text>
+		<text id="creates">-- Créer --</text>
+		<text id="critical_hit">Coup Critique!</text>
+		<text id="cut">Couper:</text>
+		<text id="damage">Dégâts</text>
+		<text id="damaged">{item} va bientôt se briser!</text>
+		<text id="defense_short">DEF</text>
+		<text id="del_save">Sauvegarde supprimée</text>
+		<text id="dockhouse">Port</text>
+		<text id="dodged">Esquivé!</text>
+		<text id="drink_item">Combien voulez-vous boire?</text>
+		<text id="drop_all">Êtes-vous sûr de vouloir jeter tous vos {item}? Ils seront partis pour de bon.</text>
+		<text id="drop_item">Combien aimeriez-vous jeter?</text>
+		<text id="durability">Durabilité</text>
+		<text id="eat_item">Combien voulez-vous manger?</text>
+		<text id="effective">{element} Critique!</text>
+		<text id="empty">Libre</text>
+		<text id="empty_slot">&lt; Emplacement Libre &gt;</text>
+		<text id="enchantment">Enchantement</text>
+		<text id="equipment">Équipement</text>
+		<text id="exit">Quitter</text>
+		<text id="experience">Exp:</text>
+		<text id="factory">Usine</text>
+		<text id="feed">Nourrir</text>
+		<text id="fight">Combattre</text>
+		<text id="fishing">Pêcher:</text>
+		<text id="fishing_fail">Il est parti!</text>
+		<text id="fishing_hooked">Attendez ...</text>
+		<text id="fishing_line">Quelque chose tire sur la ligne!</text>
+		<text id="fishing_pull">Tirer maintenant!</text>
+		<text id="flight">Hauteur de vol:</text>
+		<text id="forums">Communauté</text>
+		<text id="fuel">Carburant</text>
+		<text id="harvest">Récolte</text>
+		<text id="harvest_all">Tout Récolter</text>
+		<text id="health">Vie:</text>
+		<text id="health_short">Vie</text>
+		<text id="hotkey">Sélectionner l'Objet</text>
+		<text id="hungry">{item} est affamé!</text>
+		<text id="inventory">Inventaire</text>
+		<text id="kitchen">Cuisine</text>
+		<text id="knockback">Recul:</text>
+		<text id="lab">Laboratoire</text>
+		<text id="level">Niveau:</text>
+		<text id="level_up">Niveau Gagné!</text>
+		<text id="manage">Gérer</text>
+		<text id="miss">Raté!</text>
+		<text id="move">Mouvement</text>
+		<text id="move_all">Bougé Tout</text>
+		<text id="muted">Jeu en Sourdine</text>
+		<text id="newgame">Nouvelle Partie</text>
+		<text id="no">Non</text>
+		<text id="none">Aucun(e)</text>
+		<text id="not_hungry">{item} n'est pas affamé.</text>
+		<text id="ok">Ok</text>
+		<text id="options">Options</text>
+		<text id="order">Pré-Commander</text>
+		<text id="overwrite">Êtes-vous sûr de vouloir supprimer l'emplacement?</text>
+		<text id="placed">{item} placé.</text>
+		<text id="power">Puissance</text>
+		<text id="power_plant">Centrale Électrique</text>
+		<text id="quests">Quêtes</text>
+		<text id="range">Portée:</text>
+		<text id="rations">Rations</text>
+		<text id="recharge_batteries">Recharger Batteries</text>
+		<text id="reject">Refuser</text>
+		<text id="rem_storehouse_items">Inventaire seulement</text>
+		<text id="remove">Retirer</text>
+		<text id="rename">Définir le nom de l'élément {item} :</text>
+		<text id="repair_cost">-- Coût de réparation --</text>
+		<text id="repaired">{item} Réparer.</text>
+		<text id="requires">-- Ingrédients --</text>
+		<text id="reset">Réinitialiser</text>
+		<text id="resist">Résistance {element}!</text>
+		<text id="restore_power">Toutes les batteries sont rechargés!</text>
+		<text id="retransform">{item} va bientôt se détruire! Utiliser ceci pour le fixer?{list}</text>
+		<text id="retrieve_item">Combien voulez-vous en retirer?</text>
+		<text id="retry">Recommencer</text>
+		<text id="run_away">S'enfuir</text>
+		<text id="save">Partie Sauvegardé</text>
+		<text id="save_corrupt">Sauvegarde corrompue! Commencer une nouvelle partie.</text>
+		<text id="save_prompt_magic">Ceci est la fin de la démo pour le chemin de Magie. Voudriez-vous sauvegarder?</text>
+		<text id="save_prompt_science">Ceci est la fin de la démo pour le chemin de Science. Voudriez-vous sauvegarder?</text>
+		<text id="select_feed">Sélectionner la nourriture</text>
+		<text id="select_fertilizer">Sélectionner l'engrais</text>
+		<text id="sell">Vendre</text>
+		<text id="sell_item">Combien voulez-vous en vendre?</text>
+		<text id="set_hotkey">Sélectionner le raccourci</text>
+		<text id="set_sticky">Associer [tile=sticky] l'item à une touche</text>
+		<text id="set_time">Quelle heure voudrais-tu te rendre(Format 24 heures)?</text>
+		<text id="sign_message">Définir le message du [item=sign]:</text>
+		<text id="smelter">Forge</text>
+		<text id="speed">Vitesse:</text>
+		<text id="spirits">Esprits</text>
+		<text id="stamina">Énergie:</text>
+		<text id="stamina_per_hit">Énergie par coup:</text>
+		<text id="store_item">Combien voulez-vous en stocker?</text>
+		<text id="storehouse">Entrepôt</text>
+		<text id="storehouse_add">{npc} a ajouter {count} {item} à l' [color=ff2222]entrepôt [/color]</text>
+		<text id="synthesizer">Synthétiseur</text>
+		<text id="time_manipulator">Manipulateur de temps</text>
+		<text id="title">Menu Principal</text>
+		<text id="transform">Combien veux-tu transformer en {into}?</text>
+		<text id="uncraft">Combien veux-tu dé-transformer?</text>
+		<text id="unmuted">Jeu bruyant</text>
+		<text id="use_count">Combien voulez-vous en utiliser?</text>
+		<text id="uses">Utilise</text>
+		<text id="warehouse">Entrepôt</text>
+		<text id="workshop">Établi</text>
+		<text id="wyrm_pen">Enclos à Wyrms Pen</text>
+		<text id="yes">Oui</text>
+	</section>
+	<section id="stats">
+		<text id="attack">Attaque</text>
+		<text id="bargaining">Négocier</text>
+		<text id="critical">Critique</text>
+		<text id="cut">Couper</text>
+		<text id="defense">Défense</text>
+		<text id="endurance">Endurance</text>
+		<text id="evasion">Évasion</text>
+		<text id="fishing">Pêche</text>
+		<text id="health">Max Santé</text>
+		<text id="max">{mod} ({current}/{max})</text>
+		<text id="mine">Minage</text>
+		<text id="mine_speed">Vitesse Minage</text>
+		<text id="range">Portée</text>
+		<text id="sight">Vue</text>
+		<text id="speed">Vitesse</text>
+		<text id="stamina">Max énergie</text>
+		<text id="time">{mod} pour {time}s</text>
+		<text id="view">Voir Statisques</text>
+		<text id="weight">Poids</text>
+	</section>
+	<section id="stat.descriptions">
+		<text id="attack">Augmente les dégâts pour chaque attaque de mêlée.</text>
+		<text id="bargaining">Augmente le coût de vente des articles.</text>
+		<text id="critical">Augmente les chances de coup critique de mêlée.</text>
+		<text id="cut">Augmente les dégâts lorsque vous coupez des arbres.</text>
+		<text id="defense">Diminue les dégâts en cas de coup.</text>
+		<text id="endurance">Diminue le coût d'endurance pour les mouvements.</text>
+		<text id="evasion">Augmente les chances d'échec de l'ennemi.</text>
+		<text id="fishing">Rend les poissons difficiles à attraper plus facile.</text>
+		<text id="health">Combien de coups vous pouvez prendre avant de mourir.</text>
+		<text id="mine">Vous permet d'extraire des dalles plus dures.</text>
+		<text id="mine_speed">Vous permet d'extraire les dalles plus rapidement.</text>
+		<text id="range">Augmente la portée pour toutes les armes à distance.</text>
+		<text id="sight">Révèle plus de carreaux lors du déplacement et de l'extraction.</text>
+		<text id="speed">À quelle vitesse vous pouvez vous déplacer.</text>
+		<text id="stamina">Combien d'actions pouvez-vous entreprendre avant de perdre la santé.</text>
+		<text id="weight">Augmente la capacité de charge de base.</text>
+	</section>
+	<section id="skill">
+		<text id="allocate">Attribuer les points de compétence</text>
+		<text id="max">[color=770000]Compétence Perfectionnée</text>
+		<text id="points">Poinds de compétence</text>
+	</section>
+	<section id="actions">
+		<text id="build">Construire</text>
+		<text id="carve">Graver</text>
+		<text id="collect">Collecter</text>
+		<text id="craft">Créer</text>
+		<text id="disable_attack">Désactiver Attaque</text>
+		<text id="drop">Jeter</text>
+		<text id="eat">Manger</text>
+		<text id="enable_attack">Activer Attaque</text>
+		<text id="enchant">Enchanter</text>
+		<text id="enrage">Enrager</text>
+		<text id="equip">Équiper</text>
+		<text id="feed">Nourrir</text>
+		<text id="fill">Remplir</text>
+		<text id="fire">Feu</text>
+		<text id="loot">Butin</text>
+		<text id="open">ouvrir</text>
+		<text id="place">Placer</text>
+		<text id="plant">Plante</text>
+		<text id="rename">Renommer</text>
+		<text id="repair">Réparer</text>
+		<text id="reset_skills">Réinitialiser les compétences</text>
+		<text id="setProjectile">Sélectionner Projectile</text>
+		<text id="set_time">Régler le temps</text>
+		<text id="summon">Invoquer</text>
+		<text id="switch">échanger</text>
+		<text id="synthesize">Synthétiseur</text>
+		<text id="transform">Transformer</text>
+		<text id="uncraft">Dé-créer</text>
+		<text id="unequip">Déséquiper</text>
+		<text id="upgrade">Améliorer</text>
+		<text id="use">Utiliser</text>
+	</section>
+	<section id="item.names">
+		<text id="adult_dragon">Dragon Adulte</text>
+		<text id="alter_gem">Gemme Alter</text>
+		<text id="anvil">Enclume</text>
+		<text id="area_name_sign">Plaque d'identification</text>
+		<text id="arrow">Flèche</text>
+		<text id="attack_potion">Potion d'Attaque</text>
+		<text id="baby_cannon">Bébé Cannon</text>
+		<text id="backpack">Sac à Dos</text>
+		<text id="bandage">Bandage</text>
+		<text id="battery">Batterie</text>
+		<text id="berries">Baies</text>
+		<text id="blood_gem">Gemme de Sang</text>
+		<text id="boat">Bateau</text>
+		<text id="bow">Arc</text>
+		<text id="bread">Pain</text>
+		<text id="broken_pickaxe">Pioche cassé</text>
+		<text id="buckler">Bouclier</text>
+		<text id="bullet">Balles</text>
+		<text id="bush_seed">Semence de buisson</text>
+		<text id="cake">Gâteau</text>
+		<text id="campfire">Feu de camp</text>
+		<text id="candy_apple">Pomme bonbon</text>
+		<text id="cat">Chat</text>
+		<text id="chainsaw">Scie à chaine</text>
+		<text id="cheese">Fromage</text>
+		<text id="cheeseburger">Cheeseburger</text>
+		<text id="chest">Coffre</text>
+		<text id="chicken">Poule</text>
+		<text id="cloth">Tissu</text>
+		<text id="coal">Charbon</text>
+		<text id="cockatiel">Cockatiel</text>
+		<text id="cocoon">Cocon</text>
+		<text id="coin_purse">Porte-Monnaie</text>
+		<text id="coral_cod">Morue de corail</text>
+		<text id="cotton">Cotton</text>
+		<text id="cotton_seed">Graine de cotton</text>
+		<text id="cow">Vache</text>
+		<text id="crowbar">Dos de Cyborg</text>
+		<text id="cyborg_back">Dos de Cyborg</text>
+		<text id="cyborg_body">Corps de Cyborg</text>
+		<text id="cyborg_eye">œil de Cyborg</text>
+		<text id="dark_fur">Fourrure de l'ombre</text>
+		<text id="defense_potion">Potion de Défense</text>
+		<text id="diamond">Diamant</text>
+		<text id="diode_wolf">Diode loup</text>
+		<text id="dismantle">Démanteler</text>
+		<text id="dragon">Bébé Dragon</text>
+		<text id="dragon_armor">Armure de Dragon</text>
+		<text id="dragonblood">Sang de Dragon</text>
+		<text id="dragonflame">Flamme de Dragon</text>
+		<text id="dragonsword">Épée Dragon</text>
+		<text id="drain_arrow">Flèche Sangsue</text>
+		<text id="drain_bullet">Balle Sangsue</text>
+		<text id="drain_chainsaw">Scie à chaine Sangsue</text>
+		<text id="drain_shell">Obus Sangsue</text>
+		<text id="drain_sword">Épée Sangsue</text>
+		<text id="drill">Perceuse</text>
+		<text id="earth_armor">Armure de Terre</text>
+		<text id="earth_gem">Gemme de Terre</text>
+		<text id="earth_hammer">Marteau de Terre</text>
+		<text id="earth_helm">Casque de Terre</text>
+		<text id="eggs">Œufs</text>
+		<text id="electric_eel">Anguille Électrique</text>
+		<text id="endurance_potion">Potion d'Endurance</text>
+		<text id="farm_blueprint">Plan de garage</text>
+		<text id="fence">Barrière</text>
+		<text id="fertilizer">Engrais</text>
+		<text id="fire_arrow">Flèche de Feu</text>
+		<text id="fire_bullet">Balle de Feu</text>
+		<text id="fire_chainsaw">Scie à chaine de Feu</text>
+		<text id="fire_gem">Gemme de Feu</text>
+		<text id="fire_shell">Obus de Feu</text>
+		<text id="fire_sword">Épée de Feu</text>
+		<text id="fire_tusk">Défense de Feu</text>
+		<text id="fishing_rod">Canne pêche</text>
+		<text id="focus_gem">Gemme concentré</text>
+		<text id="frost_shield">Bouclier de glace</text>
+		<text id="fruit">Pommes</text>
+		<text id="furnace">Fournaise</text>
+		<text id="goggles">Lunette d'Esprit</text>
+		<text id="gold">Minerais d'Or</text>
+		<text id="gold_bar">Lingot d'Or</text>
+		<text id="golem">Golem</text>
+		<text id="hamburger">Hamburger</text>
+		<text id="headlamp">Lampe Frontale</text>
+		<text id="health_potion">Potion de Vie</text>
+		<text id="horn">Corne</text>
+		<text id="ice_arrow">Flèche de Glace</text>
+		<text id="ice_berries">Baie Givrée</text>
+		<text id="ice_bullet">Balle de Glace</text>
+		<text id="ice_chainsaw">Scie à chaine de Glace</text>
+		<text id="ice_gem">Gemme de Glace</text>
+		<text id="ice_heart">Cœur de glace</text>
+		<text id="ice_shell">Obus de Glace</text>
+		<text id="ice_shield">Bouclier Enchanté</text>
+		<text id="ice_sword">Épée de Glace</text>
+		<text id="iron">Minerais de Fer</text>
+		<text id="iron_armor">Armure en Fer</text>
+		<text id="iron_bar">LIngot de Fer</text>
+		<text id="iron_pickaxe">Pioche en Fer</text>
+		<text id="iron_sword">Épée en Fer</text>
+		<text id="jakolantern">lanterne de citrouille</text>
+		<text id="jetpack">Jetpack</text>
+		<text id="kitchen_blueprint">Plan de Cuisine</text>
+		<text id="kitchen_upgrade">Amélioration de Cuisine</text>
+		<text id="kite_shield">Bouclier +</text>
+		<text id="lab_blueprint">Plan de Laboratoire</text>
+		<text id="landmine">Mine souterraine</text>
+		<text id="lantern">Lanterne</text>
+		<text id="machine_gun_arm">Bras mitraillette</text>
+		<text id="magic_backpack">Sac Magique</text>
+		<text id="magic_box">Boîte Magique</text>
+		<text id="magic_pickaxe">Pioche magique</text>
+		<text id="magic_sword">Épée magique</text>
+		<text id="map">Carte</text>
+		<text id="meat">Viande</text>
+		<text id="mega_backpack">Méga Sac</text>
+		<text id="milk">Lait</text>
+		<text id="minecart">Chariot</text>
+		<text id="net">Filet</text>
+		<text id="oil">Huile Brut</text>
+		<text id="omelette">Omelette</text>
+		<text id="orchard_seed">Semence de Pomme</text>
+		<text id="owl">Hibou</text>
+		<text id="pancakes">Crêpes</text>
+		<text id="pen_blueprint">Plan d'enclos</text>
+		<text id="pie">Tarte</text>
+		<text id="pig">Cochon</text>
+		<text id="pizza">Pizza</text>
+		<text id="plant_bag">Sac Plante </text>
+		<text id="plant_chainsaw">Scie à chaine de Plante</text>												 
+		<text id="plant_eye">œil de Plante</text>
+		<text id="plant_gem">Gemme de plante</text>
+		<text id="plant_sword">Épée de Plante</text>
+		<text id="pumpkin">Citrouille</text>
+		<text id="pumpkin_seed">Semence de Citrouille</text>
+		<text id="quartz">Quartz</text>
+		<text id="rail">Raille</text>
+		<text id="rat">Rat</text>
+		<text id="recurve_bow">Arc Recourbé</text>
+		<text id="red_berries">Baie Rouge</text>
+		<text id="red_bush_seed">Graine de buisson rouge</text>
+		<text id="refined_oil">Huile Raffinée</text>
+		<text id="revolver">Revolver</text>
+		<text id="rockfish">Sébaste</text>
+		<text id="rusty_axe">Hache rouillé</text>
+		<text id="shadow_cape">Cape de l'Ombre</text>
+		<text id="shell">Obus</text>
+		<text id="shotgun">Fusil a pompe</text>
+		<text id="shovel">Pelle</text>
+		<text id="sign">Panneau</text>
+		<text id="silicon">Silicone</text>
+		<text id="silk">Soie</text>
+		<text id="smelter_blueprint">Plan de fonderie</text>
+		<text id="snowman">Bonhomme de neige</text>
+		<text id="speed_potion">Potion de Vitesse</text>
+		<text id="spirit_gem">Gemme d'Esprit</text>
+		<text id="stamina_potion">Potion d'Énergie</text>
+		<text id="steak">Steak</text>
+		<text id="steel_armor">Armure d'Acier</text>
+		<text id="steel_bar">Lingot d'Acier</text>
+		<text id="steel_pickaxe">Pioche d'Acier</text>
+		<text id="steel_sword">Épée d'Acier</text>
+		<text id="steel_workbench">Établi en acier</text>
+		<text id="stone_axe">Hache en Pierre</text>
+		<text id="stone_pickaxe">Pioche en Pierre</text>
+		<text id="storehouse_blueprint">Plan d'entrepôt</text>
+		<text id="sugar">Sucre</text>
+		<text id="sugar_seed">Semence de canne à sucre</text>
+		<text id="sulfur">Souffre</text>
+		<text id="tent">Tente</text>
+		<text id="thunder_axe">Ancienne Hache</text>
+		<text id="titanium">Titane</text>
+		<text id="titanium_armor">Super Armure</text>
+		<text id="toothfish">Légine</text>
+		<text id="torch">Torche</text>
+		<text id="trap">Piège</text>
+		<text id="tree_seed">Graine d'arbre</text>
+		<text id="ultra_backpack">Ultra Sac</text>
+		<text id="uranium">Uranium</text>
+		<text id="water_arrow">Flèche d'eau</text>
+		<text id="water_bullet">Balle d'eau</text>
+		<text id="water_chainsaw">Scie à chaine d'Eau</text>
+		<text id="water_gem">Gemme d'Eau</text>
+		<text id="water_shell">Obus d'Eau</text>
+		<text id="water_sword">Épée d'Eau</text>
+		<text id="wheat">Blé</text>
+		<text id="wheat_seed">Semence de Blé</text>
+		<text id="wolf">Chien</text>
+		<text id="wood">Bois</text>
+		<text id="workbench">Établi</text>
+		<text id="workshop_blueprint">Plan d'atelier</text>
+		<text id="wyrm">Wyrm</text>
+		<text id="wyrm_drill">Foreuse Wyrm</text>
+		<text id="wyrm_pen_blueprint">Plan d'enclos à Wyrm</text>
+		<text id="yeti_fur">Fourrure de Yéti</text>
+		<text id="young_dragon">Jeune Dragon</text>
+	</section>
+	<section id="item.descriptions">
+		<text id="area_name_sign">Peut renommer les îles lorsqu'elles sont placées.</text>
+		<text id="boat">Explorer le Monde.</text>
+		<text id="builds">Construire</text>
+		<text id="burn">Brûlure</text>
+		<text id="campfire">Cuit [item=steak].</text>
+		<text id="cocoon">Éclots dans l'[color=770000]enclos à Wyrms[/color].</text>
+		<text id="collect">Collecte des objets sur le sol.</text>
+		<text id="collect_rail">Décrocher les rails.</text>
+		<text id="cost_per_s">{value} par seconde.</text>
+		<text id="cost_per_s_day">{value} par seconde jour.</text>
+		<text id="cost_per_s_daylight">{value} par seconde au soleil.</text>
+		<text id="cost_per_s_injured">{value} par sec blessé.</text>
+		<text id="cost_per_s_night">{value} par seconde nuit.</text>
+		<text id="craft">Fabrique des objets.</text>
+		<text id="critical">Obtient toujours un coup critique.</text>
+		<text id="dismantle">Décompose les structures pour lesquelles vous avez un .[tile=blueprint.ico] [color=770000]plan[/color] .</text>
+		<text id="drain">Absorbe la vie</text>
+		<text id="fence">Garde les ennemies éloignés.</text>
+		<text id="fill">Remplis des trous.</text>
+		<text id="fires">Tirer {projectile}s</text>
+		<text id="freeze">Gèles des enemies.</text>
+		<text id="furnace">Fond du minerai.</text>
+		<text id="goggles">Révèle des esprits.</text>
+		<text id="hide">Cache le porteur.</text>
+		<text id="light">Éclaire l'environnement lorsqu'elle est équipées.</text>
+		<text id="magic_box">Contient Tout.</text>
+		<text id="max_weight">Poids Maximal</text>
+		<text id="mine_speed">vitesse d'extraction</text>
+		<text id="reflect">Reflète les dégâts</text>
+		<text id="repair">Répares des objets.</text>
+		<text id="sign">Afficher un texte.</text>
+		<text id="spawn">Faire apparaître {item}.</text>
+		<text id="storehouse">Range des objets.</text>
+		<text id="tent">Pour se reposer et redonner de l'[tile=stamina] [color=006600]Stamina[/color].</text>
+		<text id="transform_other">Transforme des objets.</text>
+		<text id="upgrades">Améliorer</text>
+		</section>
+	<section id="achievement.names">
+		<text id="backpack">Poids Lourd</text>
+		<text id="bandits">Justice</text>
+		<text id="bigpack">Gros poids lourd</text>
+		<text id="blueprints">Construire ma façon</text>
+		<text id="boar">Viande Fraîche</text>
+		<text id="boat">Prendre la Voile</text>
+		<text id="capture_wyrm">Capture un Wyrm</text>
+		<text id="diamond">Expérience</text>
+		<text id="diode_wolf">Choquant</text>
+		<text id="dock">La Rive Approche</text>
+		<text id="dragon">Éclosion</text>
+		<text id="dragon_flight">Dompteur de dragon</text>
+		<text id="electric_eel">Charger</text>
+		<text id="elemental">Elementaire</text>
+		<text id="elevator">On monte??</text>
+		<text id="enchanted_chainsaw">Techno Mage</text>
+		<text id="factory">Industrialise</text>
+		<text id="farm">Plantations</text>
+		<text id="forge">Forger  de l'avant</text>
+		<text id="full_cyborg">Cyborgification</text>
+		<text id="full_dragon">Maître Dragon</text>
+		<text id="golem">Tueur de Pierre</text>
+		<text id="golemech">Destructeur de Statue</text>
+		<text id="hut">Abri</text>
+		<text id="kitchen">Bon Appétit</text>
+		<text id="lab">Expériences</text>
+		<text id="labyrinth">Taurus</text>
+		<text id="market">Un Bon Marché</text>
+		<text id="medicom">L'histoire Complète</text>
+		<text id="mirrows">Tests humain</text>
+		<text id="oldone">Face à l'ennemi</text>
+		<text id="orchard">Pommes</text>
+		<text id="pen">Lait de Cochon</text>
+		<text id="pizza">Mmm, Fromage</text>
+		<text id="powerplant">Mise sous tension</text>
+		<text id="purple_tree">Whomp</text>
+		<text id="skills">Mise sous TensionUp</text>
+		<text id="smelter">Métallurgie</text>
+		<text id="storehouse">Stockage Infinie</text>
+		<text id="synthesizer">Steak Synthétique</text>
+		<text id="time_manipulator">Retour en arrière</text>
+		<text id="workshop">Créons!</text>
+		<text id="wyrm">Tueur de Wyrm</text>
+		<text id="wyrm_pen">Sang Infini</text>
+		<text id="wyrm_queen">Tueur de Reine</text>
+	</section>
+	<section id="achievement.descriptions">
+		<text id="backpack">Obtiens le [color=ff2222]Sac à Dos[/color].</text>
+		<text id="bandits">Résous le problème de[color=ff2222]Bandit[/color].</text>
+		<text id="bigpack">Obtiens le [color=ff2222]Super Sac[/color].</text>
+		<text id="blueprints">Construits un batîment avec un[color=ff2222]Plan[/color].</text>
+		<text id="boar">Tue un [color=ff2222]Sanglier[/color].</text>
+		<text id="boat">Construis le [color=ff2222]Bateau[/color].</text>
+		<text id="capture_wyrm">Et maintenant je fais quoi avec?</text>
+		<text id="diamond">Mine un [color=ff2222]Diamant[/color].</text>
+		<text id="diode_wolf">Tue un [diode] Wolf [diode = ff2222][/color].</text>
+		<text id="dock">Construis le [color=ff2222]Port[/color].</text>
+		<text id="dragon">Éclos un [color=ff2222]Dragon[/color] avec un [color=ff2222]Cocon[/color].</text>
+		<text id="dragon_flight">Vole sur un [color=ff2222] Dragon [/color].</text>
+		<text id="electric_eel">attrape une [color=ff2222]Anguille Électrique[/color].</text>
+		<text id="elemental">Capture un esprit de chaque élément.</text>
+		<text id="elevator">Construis l'ascenseur [color=ff2222] [/color].</text>
+		<text id="enchanted_chainsaw">Enchante une [color=ff2222] tronçonneuse [/color].</text>
+		<text id="factory">Construis l'usine [color=ff2222] [/color].</text>
+		<text id="farm">Construis la [color=ff2222]Ferme[/color].</text>
+		<text id="forge">Active la [color=ff2222] Forge [/color].</text>
+		<text id="full_dragon">Procurez-vous un équipement complet de dragon.</text>
+		<text id="full_cyborg">Procurez-vous un équipement complet de Cyborg .</text>
+		<text id="golem">Tue un [color=ff2222]Golem[/color].</text>
+		<text id="golemech">Tue le [color=ff2222]Golemech[/color].</text>
+		<text id="hut">Construis l'[color=ff2222]Abri[/color].</text>
+		<text id="kitchen">Construis la [color=ff2222]Cuisine[/color].</text>
+		<text id="lab">Construis le [color=ff2222]Laboratoire[/color].</text>
+		<text id="labyrinth">Complète le labyrinthe du Minotaure.</text>
+		<text id="market">Construis le [color=ff2222]Marché[/color].</text>
+		<text id="medicom">Lire tous les journaux.</text>
+		<text id="mirrows">Confronter avec succès les mirrows.</text>
+		<text id="oldone">Tue l'[color=ff2222]Ancien[/color].</text>
+		<text id="orchard">Ajoute un [color=ff2222]Verger[/color] à la [color=ff2222]Ferme[/color].</text>
+		<text id="pen">Ajoute un [color=ff2222]Enclos[/color] à la [color=ff2222]Ferme[/color].</text>
+		<text id="pizza">Cuisine une [color=ff2222]Pizza[/color].</text>
+		<text id="powerplant">Construis la [color=ff2222]Centrale Électrique[/color].</text>
+		<text id="purple_tree">Abats un[color=ff2222]Arbre Mauve[/color].</text>
+		<text id="skills">Améliorez votre personnage avec 500 points de compétence [color=ff2222]ou plus[/color].</text>
+		<text id="smelter">Construis la [color=ff2222]Forge[/color].</text>
+		<text id="storehouse">Construis l'[color=ff2222]Entrepôt[/color].</text>
+		<text id="synthesizer">Active le [color=ff2222]Synthétiseur[/color].</text>
+		<text id="time_manipulator">Active le [color=ff2222]Manipulateur de temps[/color].</text>
+		<text id="workshop">Construis l'[color=ff2222]Établi[/color].</text>
+		<text id="wyrm">Tue un [color=ff2222]Wyrm[/color].</text>
+		<text id="wyrm_pen">Construis l'[color=ff2222]Enclos à Wyrm[/color].</text>
+		<text id="wyrm_queen">Tue la [color=ff2222]Reine Wyrm[/color].</text>
+	</section>
+	<section id="structure">
+		<text id="activate">Voudrais-tu utiliser un(e) {item} pour activer cette structure?</text>
+		<text id="activate_fail">Il manque quelque chose qui est nécessaire pour activer ça.</text>
+		<text id="add_field">Agrandir la Ferme</text>
+		<text id="add_stall">Construire un Enclos</text>
+		<text id="build">Voulez-vous construire un {structure} pour les ressources suivantes?</text>
+		<text id="cotton">Champ de Coton</text>
+		<text id="dismantle">Voulez-vous démonter le/la {structure} pour les ressources suivantes?</text>
+		<text id="dragon_lair">Dragon dans le repaire:</text>
+		<text id="elevator">Ascenseur</text>
+		<text id="enchant_added">La recette d'enchantement à été ajoutée à la [color=770000]Forge[/color].</text>
+		<text id="enchant_recipe">Ce pilier révèle cet enchantement:\n{enchant}+{items}={creates}.</text>
+		<text id="fertilizer">Engrais</text>
+		<text id="get_pumpkin_seeds">Trouvé des graines de [item=pumpkin] et ont été ajoutés à la ferme!</text>
+		<text id="golem_factory">Le pouvoir de la structure est tout en train d'être attiré dans cette statue...</text>
+		<text id="golemech">Construire Golemech</text>
+		<text id="manage_storage">Arranger le stockage</text>
+		<text id="orchard">Verger</text>
+		<text id="overweight">Le [item=boat] est trop lourd pour mettre les voiles!</text>
+		<text id="pen">Enclos</text>
+		<text id="place_in_lair">Nécessite {item} dans ce repaire.</text>
+		<text id="plant">Changer la plantation</text>
+		<text id="produces">-- Produit --</text>
+		<text id="pumpkin">Champ de Citrouille</text>
+		<text id="rest_boat">Se Reposer dans le Bateau</text>
+		<text id="sail_boat">Mettre les voiles</text>
+		<text id="search_fail">Hmm, rien d'intéressant ici.</text>
+		<text id="slots">-- Emplacement --</text>
+		<text id="sugar">Champ de Canne à Sucre</text>
+		<text id="wheat">Champ de Blé</text>
+	</section>
+	<section id="structure.tooltip">
+		<text id="activate">Activer</text>
+		<text id="boat">Prendre la voile</text>
+		<text id="cage">Gérer Cage</text>
+		<text id="dockhouse">Entrer au port</text>
+		<text id="dragon_lair2">Élever les Dragons</text>
+		<text id="elevator">Appeler Ascenseur</text>
+		<text id="enter">Entrer</text>
+		<text id="factory">Opérer Usine</text>
+		<text id="farm">Entrer dans la Ferme</text>
+		<text id="fly_dragon">S'envoler sur le Dragon</text>
+		<text id="food_market">Marchander avec le Marchand de nourriture</text>
+		<text id="golemech">Désactiver l'Usine de Golem</text>
+		<text id="golemech2">Alert: Incontrollable.</text>
+		<text id="hut">Se Reposer dans l'Abri</text>
+		<text id="inn">Entrer dans l'Auberge</text>
+		<text id="kitchen">Cuisiner dans la Cuisine</text>
+		<text id="lab">Fabriquer des Potions</text>
+		<text id="mineral_market">Marchander avec le Marchand de Minerais</text>
+		<text id="operate">opérer</text>
+		<text id="pen">Gérer l'Enclos</text>
+		<text id="power_plant">Opérer la Centrale Électrique</text>
+		<text id="raise_into">Élever en {into}</text>
+		<text id="read">Lire</text>
+		<text id="search">Chercher</text>
+		<text id="smelter">Fondre les Minerais</text>
+		<text id="storehouse">Entrer dans l'Entrepôt</text>
+		<text id="summon_alchemist">Invoquer l'Alchemiste</text>
+		<text id="tent">Se Reposer dans la Tente</text>
+		<text id="warehouse">Entrer dans l'Entrepôt</text>
+		<text id="weaps_market">Marchander avec le Marchand d'Armes</text>
+		<text id="workshop">Fabriquer avec l'Établi</text>
+	</section>
+	<section id="object.tooltip">
+		<text id="bush">Récolter les Baies</text>
+		<text id="collect">Collecter {item}</text>
+		<text id="enemy">Attaquer</text>
+		<text id="harvest">récolter {item}</text>
+		<text id="open">ouvrir {item}</text>
+		<text id="tree">Couper l'Arbres</text>
+		<text id="use">Utiliser {item}</text>
+	</section>
+	<section id="equipment">
+		<text id="armor">Armure:</text>
+		<text id="back">Sac à Dos:</text>
+		<text id="engine">Machine:</text>
+		<text id="familiar">Familier:</text>
+		<text id="head">Couvre-chef:</text>
+		<text id="pickaxe">Pioche:</text>
+		<text id="shield">Bouclier:</text>
+		<text id="weapon">Armes:</text>
+	</section>
+	<section id="capture">
+		<text id="almost">Presque!</text>
+		<text id="caught">Pris!</text>
+		<text id="fail">Brisé!</text>
+	</section>
+	<section id="warning">
+		<text id="additions">Aucune place restante dans la Ferme!</text>
+		<text id="cannot_fire">Impossible de tirer {projectile} sans {weapon}.</text>
+		<text id="drop_instead">Voulez vous le jeter au sol?</text>
+		<text id="flight_weight">Tu es trop lourd pour voler avec{item}!</text>
+		<text id="focus">Cliquer pour se concentrer</text>
+		<text id="fuel">Pas assez de carburant!</text>
+		<text id="growing">Ça pousse! Reviens plus tard.</text>
+		<text id="incomplete">C'est incomplet. Tu devras attendre pour une mise-à-jour dans le futur.</text>
+		<text id="ingredients">Vous n'avez pas assez d'ingrédients.</text>
+		<text id="item_hungry">Le {item} est trop affamé pour faire le voyage!</text>
+		<text id="load_fail">Le jeu principal n'a pas pu être chargé. Cela signifie généralement qu'il vous manque des fichiers, re-téléchargez et extrayez tout le contenu de l'archive zip dans un dossier.</text>
+		<text id="load_fail_js">Le jeu principal n'a pas pu être chargé. Cela signifie généralement qu'il vous manque des fichiers, essayez Shift + F5 pour recharger durement la page.</text>
+		<text id="max_coins">Votre portefeuille ne peut contenir plus d'argents!</text>
+		<text id="max_feed">Tu ne peux pas le nourrir plus!</text>
+		<text id="max_fuel">Vous ne pouvez pas ajouter plus de carburants!</text>
+		<text id="max_items">Vous ne pouvez pas ajouter plus d'objets!</text>
+		<text id="max_rations">Tu ne peux pas ajouter plus de rations!</text>
+		<text id="no_blueprint">Vous n'avez pas de plan pour cette structure.</text>
+		<text id="no_effect">Cela n'aura aucun effets.</text>
+		<text id="no_equip">Tu ne peux pas équiper {item}.</text>
+		<text id="no_fill">Tu ne peux pas remplir cette tuile!</text>
+		<text id="no_item">Il n'y a pas de {item} .</text>
+		<text id="no_pickaxe">la camera s'est déplacé vers le haut car tu n'a plus de pioche équipé. Tu peux équiper une pioche en gérant ton équipement avec la touche [key=equipment].</text>
+		<text id="no_place">Tu ne peux pas placer cela ici!</text>
+		<text id="no_projectiles">Impossible de tirer {weapon}: aucun(e) {projectile}s.</text>
+		<text id="no_structure">Il n'y a pas de structure ici pour démanteler.</text>
+		<text id="no_upgrade">Il n'y a pas de structure ici pour améliorer.</text>
+		<text id="no_use_vehicle">Vous ne pouvez pas faire cela en roulant dans un véhicule.</text>
+		<text id="not_powered">Il n'y a pas de puissance!</text>
+		<text id="one_structure">Vous pouvez seulement construire une de cette structure par île.</text>
+		<text id="overweight">Vous êtes trop en surpoids pour bouger!</text>
+		<text id="place_overlap">Vous ne pouvez pas placer un objet sur un objet.</text>
+		<text id="place_surface">Vous ne pouvez pas placer d'objet hors de la surface.</text>
+		<text id="plant_barn">Vous ne pouvez pas planter des cultures sans une grange.</text>
+		<text id="plant_grass">Vous ne pouvez planter que sur des tuiles d'herbe fertiles.</text>
+		<text id="plant_structure">Vous ne pouvez pas planter sur des structures ou des cultures.</text>
+		<text id="power">Pas assez de puissance de la batterie!</text>
+		<text id="rations">Pas assez de rations pour le périple!</text>
+		<text id="send_bug_report">Quelque chose s'est mal passé! Souhaitez-vous envoyer un rapport de bug??</text>
+		<text id="sleep_flying">Vous ne pouvez pas dormir en volant!</text>
+		<text id="stamina">Aucune Énergie, Perte de Vie!</text>
+		<text id="structure_barn">Vous ne pouvez pas construire cette structure sans une grange.</text>
+		<text id="structure_overlap">Vous ne pouvez pas construire de structures sur des structures ou des cultures.</text>
+		<text id="structure_surface">Cette structure ne peut pas être construite sous la surface.</text>
+		<text id="structure_tile">Vous devez creuser une plus grande surface pour construire cette structure.</text>
+		<text id="weight">Capacité Max Atteinte!</text>
+	</section>
+	<section id="market">
+		<text id="closed">Fermé pour la nuit.</text>
+		<text id="no_power">Je n'arrive pas à croire que la [color=770000]Centrale Électrique[/color] ne fonctionne pas! Comment est-ce que je peux faire affaire comme ça?</text>
+		<text id="restock">Nous aurons bientôt de nouvelles marchandises!</text>
+	</section>
+	<section id="quests">
+		<text id="alter_gem">Recherche de Wyrm</text>
+		<text id="bandits">Vaincre les Bandits</text>
+		<text id="boars">Vaincre les sangliers</text>
+		<text id="boat">Créer le bateau</text>
+		<text id="complete">-- Complété --</text>
+		<text id="dock">Créer un Port</text>
+		<text id="dock2">Créer un Port</text>
+		<text id="elevator">Construire l'ascenseur</text>
+		<text id="factory">Construire une usine</text>
+		<text id="farm">Créer une Ferme</text>
+		<text id="fence">Périmètre</text>
+		<text id="fisherman_cat">Trouver Peri</text>
+		<text id="hatch_dragons">Éclore un dragon</text>
+		<text id="hunt">Sangliers de chasse</text>
+		<text id="hut">Construire un Abri</text>
+		<text id="kitchen">Créer une Cuisine</text>
+		<text id="kitchen2">Améliorer Cuisine</text>
+		<text id="lab">Matériaux Magiques</text>
+		<text id="market">Créer un Marché</text>
+		<text id="market2">Créer un Marché</text>
+		<text id="mirrows">Confronte Mirrows</text>
+		<text id="mirrows2">Convaincre Mirrows</text>
+		<text id="new">Nouvelle Quête!</text>
+		<text id="none">Vous n'avez actuellement aucunes quêtes.</text>
+		<text id="oldone">Énergie Magique</text>
+		<text id="orchard">Graine de Pommes</text>
+		<text id="pen">Ajouter Porcherie</text>
+		<text id="powerplant">Fixer une centrale électrique</text>
+		<text id="requires">-- Nécessite --</text>
+		<text id="smelter">Créer une Forge</text>
+		<text id="storehouse">Créer l'Entrepôt</text>
+		<text id="storehouse2">Créer l'Entrepôt</text>
+		<text id="thunder_axe">Hache magique</text>
+		<text id="unknown_reqs">???</text>
+		<text id="wolf">Loup Chiot</text>
+		<text id="workshop">Créer un Établi</text>
+		<text id="wyrm_hive">Ruche de Wyrms</text>
+		<text id="wyrm_pen">Enclos à Wyrms</text>
+	</section>
+	<section id="quest.description">
+		<text id="alter_gem">a besoin de plus d'aide pour terminer sa recherche sur le [item=wyrm]!</text>
+		<text id="bandits">Les marchands veulent que vous battez les bandits qui volent leurs marchandises.</text>
+		<text id="boat">Il est temps d'explorer le monde! Construis un [item=boat] au [color=550000]Port[/color].</text>
+		<text id="dock">nécessite un [color=550000]Port[/color] pour naviguer à travers le monde.</text>
+		<text id="dock2">Construire un [color=550000]Port[/color] pour trouver d'autres survivants.</text>
+		<text id="elevator">Veut construire un ascenseur [color=550000] [/color] pour transporter le minerai.</text>
+		<text id="factory">Veut construire une [color=550000] Usine [/color] pour bricoler avec des machines.</text>
+		<text id="farm">nécessite une [color=550000]Ferme[/color] pour cultiver les graines.</text>
+		<text id="fence">Veut ajouter des [item=fence]s à la colonie.</text>
+		<text id="fisherman_cat">veut que vous trouviez son [item=cat] qui aime [item=toothfish].</text>
+		<text id="hatch_dragons">Fait éclore le [item=dragon]s pour gagner le [item=adult_dragon] à vos côtés.</text>
+		<text id="hunt">veut que vous vous pratiquiez avec des armes.</text>
+		<text id="hut">Vous devez construire un [color=550000]Abri[/color] pour vous abriter de la tempête.</text>
+		<text id="kitchen">nécessite une [color=550000]Cuisine[/color] pour cuisiner de la nourriture</text>
+		<text id="kitchen2">nécessite une [color=550000]Cuisine[/color] pour faire [item=cheese].</text>
+		<text id="lab">veux que vous tuez un [item=wyrm] pour gagner du [item=dragonblood] ?.</text>
+		<text id="market">nécessite un [color=550000]Marché[/color] pour Marchander.</text>
+		<text id="market2">Construis un [color=550000]Marché[/color] pour attirer les vendeurs au [color=550000]Port[/color].</text>
+		<text id="mirrows">veut que tu négocies avec les Mirrows pour lui.</text>
+		<text id="mirrows2">veut que vous trouviez quelque chose de spécial pour influencer les Mirrows.</text>
+		<text id="oldone">veut trouver la source des pointes d'énergie magiques.</text>
+		<text id="orchard">veut utiliser [item=fruit] pour planter un [color=550000][item=Orchard][/color].</text>
+		<text id="pen">nécessite un[color=550000]Enclos[/color] pour abriter le bétail.</text>
+		<text id="powerplant">besoin [article=titanium] pour fixer le [color=550000]Centrale Électrique[/color].</text>
+		<text id="smelter">nécessite une [color=550000]Forge[/color] pour raffiner les minerais.</text>
+		<text id="storehouse">nécessite un [color=550000]Entrepôt[/color].</text>
+		<text id="storehouse2">Construire un [color=550000]Entrepôt[/color] pour ranger toutes vos affaires.</text>
+		<text id="thunder_axe">veut réparer la [item=rusty_axe].</text>
+		<text id="wolf">veut apprivoiser le chiot loup.</text>
+		<text id="workshop">nécessite un [color=550000]Établi[/color] pour Créer des outils de métal.</text>
+		<text id="wyrm_hive">veut que vous trouviez les secrets des [item=wyrm]s.</text>
+		<text id="wyrm_pen">nécessite d'expérimenter avec un[item=wyrm].</text>
+	</section>
+	<section id="vehicle">
+		<text id="battery">Charger à partir des batteries</text>
+		<text id="dismount">Descendre</text>
+		<text id="fly">Déplacez-vous pour voler.</text>
+		<text id="manage_items">Gérer les objets</text>
+		<text id="manage_player">Gérer soi-même</text>
+		<text id="overweight">Le véhicule est trop lourd pour se déplacer!</text>
+		<text id="vehicle">Véhicule</text>
+	</section>
+	<section id="npc">
+		<text id="alchemist">Alchimiste</text>
+		<text id="builder">Maçon</text>
+		<text id="farmer">Fermier</text>
+		<text id="fisherman">Pêcheur</text>
+		<text id="grab">Prendre</text>
+		<text id="hunter">Chasseur</text>
+		<text id="innkeeper">Aubergiste</text>
+		<text id="mechanic">Mécanicien</text>
+		<text id="miner">Mineur</text>
+		<text id="talk">Parler</text>
+		<text id="trader">Commerçant</text>
+	</section>
+	<section id="builder">
+		<text id="accept1">Super! Je peux trouver ça, sans problèmes.</text>
+		<text id="accept2">Prends cette [item=stone_axe], si t'es si gung-ho.</text>
+		<text id="farm">Mec, j'ai faim. J'espère que cette [color=770000]Ferme[/color]sera bientôt finie!</text>
+		<text id="farmer">On devrait faire un marché avec le [color=770000][tile=farmer] Fermier[/color], je parie qu'il peut nous aider à faire pousser de la bonne nourriture.</text>
+		<text id="hint1">Tous tes objets vont dans ton inventaire quand tu les collectes. Tu peux les voir en cliquant sur [key=inventory].</text>
+		<text id="hint2">Si ton [tile=stamina] [color=006600]Énergie[/color] viens à manquer, tu perdras de la [tile=health] [color=770000]Vie[/color], et si ta [tile=health] [color=770000]Vie[/color] arrive à zéros, tu mourras.</text>
+		<text id="hint3">C'est pourquoi tu as besoin de manger beaucoup de [item=berries], [item=fruit]s et de [item=meat]s. Tu peux le faire en les sélectionnant depuis ton inventaire.</text>
+		<text id="intro">Tu crois pouvoir être capable de survivre ici? C'est sans espoir, mec.</text>
+		<text id="introduce1">T'es bon en construction, pas vrai? Et si nous construisions quelque chose pour stocker la nourritures et les équipements?</text>
+		<text id="introduce2">Mouais. Je pense qu'avec [var=quest.storehouse.wood] [item=wood] et [var=quest.storehouse.berries] [item=berries]s je devrais être capable de faire un [color=770000]Entrepôt[/color].</text>
+		<text id="kitchen1">Qu'est-ce que tu dirais de construire une [color=770000]Cuisine[/color]? La [item=meat] crue est bonne, mais c'est encore meilleur cuisiné.</text>
+		<text id="kitchen2">J'aurais besoin de [var=quest.kitchen.wood] [item=wood] et de [var=quest.kitchen.coal] [item=coal]s pour faire la [color=770000]Cuisine[/color].</text>
+		<text id="kitchen3">On dirait que tu as tout ce que je veux. Allons faire cette [color=770000]Cuisine[/color]!</text>
+		<text id="kitchen4">Tu peux faire de la nourriture à la [color=770000]Cuisine[/color] tant que tu as du [item=wood] ou du [item=coal] pour l'alimenter.</text>
+		<text id="kitchen5">Tu sais de quoi j'ai envie? Quelques [item=cheese]s. Rien n'est plus délicieux.</text>
+		<text id="kitchen6">Je pourrais améliorer la [color=770000]Cuisine[/color] pour faire du [item=cheese] et cuisiner de nouvelles recettes pour [var=quest.kitchen2.wood] [item=wood] et [var=quest.kitchen2.steel_bar] [item=steel_bar]s.</text>
+		<text id="kitchen7">On dirait que tu as tout ce que je veux. Allons améliorer cette [color=770000]Cuisine[/color]!</text>
+		<text id="kitchen8">Essaye de nouvelles recettes! On se sent plus civilisé!</text>
+		<text id="miner">Tu as vu ce [color=770000][tile=miner] Mineur[/color] qui émerge du sol? Tu devrais voir ce qu'elle veut.</text>
+		<text id="stamina">Je suis épuisé. T'as l'air fatigué aussi. On devrait se reposer dans l'[color=770000]Abri[/color] pour sauvegarder et restaurer notre [tile=stamina][color=006600]Énergie[/color].</text>
+		<text id="storehouse1">Tu as déjà tout? Je suis impressionné.</text>
+		<text id="storehouse2">Allons faire cet [color=770000]Entrepôt[/color]!</text>
+		<text id="storehouse3">Regarde ça! Tu ne te sens pas fier?</text>
+		<text id="storehouse4">Ouais… en fait, ça sera utile. Maintenant, on peut éviter de s'épuiser trop à la tâche.</text>
+		<text id="wood">Comment va ma vieille [item=stone_axe]? Je parie qu'elle peut couper un arbre en cliquant sur [key=select] à proximité .</text>
+	</section>
+	<section id="farmer">
+		<text id="add_cotton">J'ai rencontré quelque commerçants au [color=770000]Marché[/color] et j'ai eu plusieurs graines de[item=cotton] ! Tu peut maintenant planter du [item=cotton] à partir de la grange.</text>
+		<text id="add_sugar">Cette ferme devient vraiment grande! pour fêter cela j'ai trouver des graines de [item=sugar] et je les ai ajoutés à la grange! Essayons de planter un champ de [item=sugar]!</text>
+		<text id="farm1">Cool! Je fais la Grange et je plante quelques graines!</text>
+		<text id="farm2">Maintenant nous avons une [color=770000]Ferme[/color]! Viens ramasser les cultures - Elles restaureront ton [tile=stamina] [color=006600]Énergie[/color]. Tiens - prends quelques [item=bread]s pour te tenir en forme le temps de la pousse.</text>
+		<text id="farm3">Tu peux avoir du [item=wood] en coupant les arbres.</text>
+		<text id="farm4">Si tu veux plus de plantes, nous pouvons avoir jusqu’à quatre champs de blés ou vergers. Tu peux les ajouter depuis la grange.</text>
+		<text id="farm5">Regarde notre incroyable [color=770000]Ferme[/color]! C'est aussi beau que tout ce que je cultivais à la maison!</text>
+		<text id="halloween">J'espère que cela ne te dérange pas, mais j'ai fait une petite décoration pour le festival des récoltes! Nous pouvons utiliser une petite célébration près d'ici. J'ai aussi mis plusieurs [item=jakolantern]s dans l'[color=770000]Entrepôt[/color].</text>
+		<text id="introduce1">Garçon je suis heureux de te voir. Ici, je pensais que j'étais seul, juste un vielle homme dans un monde vide.</text>
+		<text id="introduce2">J'ai encore de la force à revendre dans ces vieux os et je pense que je pourrais t'aider. Cultiver est mon domaine, et nous avons tous besoin de bonne nourriture pour continuer de vivre.</text>
+		<text id="introduce3">Qu'est-ce que tu dirais de faire une grange et de rentabiliser la [color=770000]Ferme[/color]?</text>
+		<text id="kitchen">Le [item=wheat] n'est pas très bon, mais je parie qu'on peut avoir de meilleur choses si le [color=770000][tile=builder] Maçon[/color] fait une [color=770000]Cuisine[/color].</text>
+		<text id="kitchen2">Traire un [item=pig]? Pourquoi pas? C'est un monde étrange. Mais ce que nous pourrions vraiment utiliser un peu de [item=cheese] - parle au [color=770000][tile=builder] Maçon[/color] pour améliorer la [color=770000]Cuisine[/color].</text>
+		<text id="orchard1">Il y a beaucoup de [item=fruit]s près d'ici. Avec assez de graines, je peux probablement planter un bon [color=770000]verger[/color]!</text>
+		<text id="orchard2">Bien, c'est beaucoup! J'ai ajouter les graines à la grange, comme ca tu pourras changer les cultures.</text>
+		<text id="orchard3">Fait moi savoir quand tu auras assez de [item=fruit]s pour le [color=770000]verger[/color]!</text>
+		<text id="orchard4">Les graines peuvent être plantées sur des tuiles d'herbe tant qu'il y a assez d'espace vide pour les placer. Ici, il semble bon de planter la [item=orchard_seed]!</text>
+		<text id="orchard5">Tu peux également utiliser des graines pour changer de culture dans la [color=770000]Grange[/color]. Si tu veux faire de nouvelles graines, fait-le moi savoir!</text>
+		<text id="pen1">Tu sais de quoi à besoin cette [color=770000]Ferme[/color]? Du bétail! Qu'est-ce que tu dirais d'attraper quelques [color=770000][tile=boar]Sangliers[/color] avec un [item=net] depuis le [color=770000]Marché[/color]?</text>
+		<text id="pen2">Je vais ajouter un [color=770000]Enclos[/color] pour [var=quest.pen.pig] [item=pig]s et pour [var=quest.pen.wood] [item=wood].</text>
+		<text id="pen3">Maintenant, ne sont t-il pas les plus gros et les plus juteux [item=pig]s que tu n'as jamais vu?</text>
+		<text id="pen4">Avec l'Enclos, on peut maintenant produire de la [item=meat], et du [item=milk]!</text>
+		<text id="pen5">Voici un [item=pen_blueprint] pour que vous puissiez construire plus d'enclos!</text>
+		<text id="pig">Comment tu as un [item=pig]? Pose un [item=net]sur le sol, attire un [color=770000][tile=boar]Sanglier[/color] blessé dedans, et si tu as de la chance il sera attrapé et domestiqué!</text>
+		<text id="sign1">Cette place commence à ressembler à un chez-soi, n'est-ce pas? Que dit-tu de donner un nom à cet endroit?</text>
+		<text id="sign2">Utilise ce [item=sign] ici pour changer le nom de cette île!</text>
+		<text id="snowman">La premiere tombée de neige! Cela fait une aussi belle fête à célébrer que les autres! J'ai même fait un [item=snowman] magique grâces aux [item=ice_berries], j'espère que tu l'aime!</text>
+	</section>
+	<section id="miner">
+		<text id="accept1">Génial! Fais moi savoir quand tu as assez de [item=coal]!</text>
+		<text id="equip1">Si vous voulez extraire [color=770000] [tile=stone]stone [/color] pour atteindre [item=gold], vous devrez équiper un [item=iron_pickaxe] ou un [item=steel_pickaxe]. Appuyez sur [key=equipment] pour gérer votre équipement.</text>
+		<text id="equip2">Vous pouvez gérer votre équipement et vos pioches en appuyant sur [key=equipment] pour ouvrir la fenêtre Equipment.</text>
+		<text id="hint1">Bon, qu'est-ce que t'attends? Clique juste sur [key=down] pour creuser et trouver des minerais!</text>
+		<text id="hint2">Les minerais sont lourds - sois sûr de les poser dans l'[color=770000]Entrepôt[/color] entre chaque voyage.</text>
+		<text id="hint3">C'est facile de se perdre, donc sois sûr d'avoir assez d'[tile=stamina] [color=006600]Énergie[/color] pour le retour.</text>
+		<text id="hint4">Plus profond tu iras, meilleur le minerais sera.</text>
+		<text id="hint5">Si tu prévois exploiter des mines souterraines, assure-toi d'apporter des [item=torch]es avec toi. Ils fourniront de la lumière lorsqu'ils seront équipés, mais finiront par s'éteindre.</text>
+		<text id="hint6">Je peux faire des [item=torch]es si tu en as besoin.</text>
+		<text id="hotkey">Tu peux aussi utiliser les [color=770000]Raccourcis[/color] maintenant.\nClique sur [key=hotkey1] ou sur [key=hotkey2] ou sur [key=hotkey3] ou sur [key=hotkey4] dans la fenêtre de l'inventaire pour les attribuer.</text>
+		<text id="introduce1">Oh, salut. Je n'avais pas réalisée qu'il y avait d'autres survivants.</text>
+		<text id="introduce2">J'étais sous terre - il y a beaucoup plus à cet endroit que ce que l'on croit.</text>
+		<text id="introduce3">J'ai une pioche en trop si tu veux aller jeter un coup d'œil.</text>
+		<text id="pick">Si tu veux miner à travers la [color=770000][tile=stone]Pierre[/color] pour trouver de l'[item=gold], tu devra créer une [item=iron_pickaxe] ou une [item=steel_pickaxe] à l'[color=770000]Établi[/color].</text>
+		<text id="smelter">Comment va le minage? On devrait peut-être faire une [color=770000]Forge[/color] pour transformer du minerais en lingot.</text>
+		<text id="smelter1">C'est bon. Je devrais pouvoir faire une [color=770000]Forge[/color] dans pas longtemps!</text>
+		<text id="smelter2">La [color=770000]Forge[/color] peut faire des lingots à partir de minerais. Cela nécessite du carburant, mais heureusement il y a beaucoup de [item=coal] pas loin pour la faire tourner.</text>
+		<text id="smelter3">Quand tu en auras assez de [item=iron], sélectionne [item=iron_bar] depuis le menu de la [color=770000]Forge[/color], et il sera automatiquement fondu tant qu'il y aura du carburant.</text>
+		<text id="smelter4">Tu peux faire plusieurs choses à la fois dans la [color=770000]Forge[/color] tant que tu as assez de ressources pour cela, ils seront fondu un par un pendant que tu es absent tant qu'il y a du carburant.</text>
+		<text id="workshop1">Qu'est-ce que tu dirais d'un [color=770000]Établi[/color] pour faire de ces lingots des outils? Je peux en faire un pour [var=quest.workshop.iron_bar] [item=iron_bar]s et [var=quest.workshop.wood] [item=wood].</text>
+		<text id="workshop2">Tout est ok, allons faire cet [color=770000]Établi[/color]!</text>
+		<text id="workshop3">À l'[color=770000]Établi[/color], tu peux faire instantanément tout type d'outils si tu as les ressources nécessaires.</text>
+		<text id="workshop4">Tu dois trouver [item=iron] pour faire des [item=iron_bar]s à la [color=770000]Forge[/color].</text>
+	</section>
+	<section id="trader">
+		<text id="accept">Accepter l'offre</text>
+		<text id="caught">Le voleur a été attrapé la main dans le sac!</text>
+		<text id="dock1">Es-tu intéressé de découvrir le reste du monde? Qu'est-ce que tu dirais de construire un [color=770000]Port[/color]?</text>
+		<text id="dock2">Je vais le faire si tu me donnes [var=quest.dock.coins] [color=770000][tile=coin_purse.ico]d'Argent[/color], [var=quest.dock.wood] [item=wood], [var=quest.dock.cloth] [item=cloth]s et [var=quest.dock.net] [item=net]s.</text>
+		<text id="dock3">Excellent, allons construire ce [color=770000]Port[/color]!</text>
+		<text id="dock4">Quand tu auras construit un [item=boat] au [color=770000]Port[/color], tu seras prêt à traverser les mers!</text>
+		<text id="dock5">Le [color=770000]Port[/color] coûte [var=quest.dock.coins] [color=770000][tile=coin_purse.ico] d'Argent[/color], [var=quest.dock.wood] [item=wood], [var=quest.dock.cloth] [item=cloth]s et [var=quest.dock.net] [item=net]s.</text>
+		<text id="introduce1">C'est assez dur de survivre ici sans que quelqu'un vole nos affaires!</text>
+		<text id="introduce2">J'ai peut-être emprunter quelques trucs. Mais, écoute. Je vais me racheter en offrant mes services. J'ai des relations avec beaucoup de marchands sur d'autres îles.</text>
+		<text id="introduce3">Marchands? Il y a d'autres survivants à l'extérieur?</text>
+		<text id="introduce4">Ouaip. Mais j'aurai besoin de [var=quest.market.gold_bar] [item=gold_bar]s pour les convaincre de venir ici.</text>
+		<text id="introduce5">Tu veux marchander avec nous alors que tu essayais de nous voler?!</text>
+		<text id="introduce6">C'est ça. C'est le business. Mon offre est [var=quest.market.gold_bar] [item=gold_bar]s pour ajouter cette île sur les routes commerciales.</text>
+		<text id="introduce7">Bien. S'il y a d'autres survivants là dehors, marchander avec eux pourrait nous sortir de l'île.</text>
+		<text id="introduce8">Je suis désolé, je ne peux pas croire un voleur. Quitte cette île, et ne reviens jamais.</text>
+		<text id="introduce9">Il y a d'autres îles à voler de toute façon. Tu ne sais pas ce que tu rates.</text>
+		<text id="market1">Parfait! Je sens qu'on va faire de bonnes affaires nous deux.</text>
+		<text id="market2">Prends ce [item=coin_purse]. Tu as besoin de stocker ton argent quand tu achètes ou tu vends. Je te recommande d'acheter un [item=mega_backpack] dès que tu pourras, il te sauvera la vie!</text>
+		<text id="market3">Au [color=770000]Marché[/color], tu peux vendre des biens pour de l'argent, et ainsi en acheter d'autre.</text>
+		<text id="market4">Le [color=770000]Marché[/color] a de nouveaux étalages parfois, donc si tu n'as pas ce que tu cherches ou que leur produits sont épuisés, reviens plus tard.</text>
+		<text id="market5">Pour faire des [item=gold_bar]s, il faut faire fondre de l'[item=gold], qui se trouve enfouis profondément dans le sol. Le [color=770000][tile=miner]Mineur[/color] peut avoir quelques astuces pour l'exploitation minière aussi profonde.</text>
+		<text id="reject">Refuser l'offre</text>
+		<text id="sail">N'est-ce pas là un jour magnifique pour naviguer?</text>
+		<text id="steal">[item={item}] a été volé dans l'[color=770000]Entrepôt[/color]!</text>
+	</section>
+	<section id="alchemist">
+		<text id="alchemist_fight">Laisser l'alchimiste se battre</text>
+		<text id="alter_gem1">J'ai été dans une profonde contemplation, essayant de décoder les secrets des [item=wyrm]s.</text>
+		<text id="alter_gem2">Si vous m'apportez [var=quest.alter_gem.wyrm] [item=wyrm], [var=quest.alter_gem.fire_tusk] [item=fire_tusk] et [var=quest.alter_gem.yeti_fur ] [item=yeti_fur], je serai capable de finir mes recherches.</text>
+		<text id="alter_gem3">Je l'ai fait! J'ai créé une [item=alter_gem]! Cela nous permettra de transformer [item=wyrm]s - et probablement d'autres créatures - en équipement utilisable!</text>
+		<text id="alter_gem4">Nous devons continuer à explorer cette branche de la magie! Prenez cette [item=alter_gem] et utilisez-le sur un [item=wyrm]! Si vous avez besoin de plus de [item=alter_gem]s, j'ai ajouté la recette au synthétiseur.</text>
+		<text id="alter_gem5">Pour utiliser la [item=alter_gem], sélectionnez-la dans votre inventaire, choisissez Transformer, et choisissez une créature à transformer.</text>
+		<text id="alter_gem6">N'ayez pas peur d'essayer la [item=alter_gem] avec d'autres créatures ... comme un [item=dragon]. Ou, oserais-je le suggérer - un [item=adult_dragon]?!</text>
+		<text id="alter_gem7">À court de [item=alter_gem]s? Vous pouvez les trouver en profondeur ou les créer au synthétiseur.</text>
+		<text id="alter_gem8">Assurez-vous d'utiliser des [item=alter_gem]s sur des créatures bien nourries. Les créatures affamées ne resteront pas longtemps transformées!</text>
+		<text id="axe1">Laissez-moi voir cette [item=rusty_axe] ... C'est difficile à repérer avec toute la rouille, mais je reconnais ces symboles!</text>
+		<text id="axe2">Il y a de la magie ancienne ici, mais elle est usée. Si vous m'apportez le bon ingrédient magique, peut-être que je peux le réparer ...</text>
+		<text id="axe3">Cette [item=fire_tusk] ... de quel genre de créature l'avez vous eu? Il semble résonner avec la [item=rusty_axe], peut-être que c'est l'ingrédient magique que nous cherchions!</text>
+		<text id="axe4">Je l'ai fait! Je me demande qui a fait cette [item=thunder_axe], et quel âge il a? Si vous voulez en faire plus, j'ai ajouté la recette au laboratoire.</text>
+		<text id="battle">Reculez! Ce combat n'est pas pour les inexpérimentés!</text>
+		<text id="dragon1">Nous devons expérimenter plus sur les [item=wyrm]s! Qu'est-ce qu'il mange ? Pourquoi donne t-il du [item=dragonblood]?</text>
+		<text id="dragon10">Je savais que vous me trahiriez! Goutez ma colère!</text>
+		<text id="dragon11">Je ne pense pas que nous devrions le réveiller avant d'avoir les [item=dragon]s.</text>
+		<text id="dragon12">Vous l'avez fait? Peut-être qu'il y a une lueur d'espoir pour mon espèce.</text>
+		<text id="dragon12_a">Excellent! Donc, allez-vous nous dire le secret de la magie?</text>
+		<text id="dragon13">Par malchance, je ne connais pas le secret que vous recherchez. L'ancien nous a créer, et a construit cette caverne pour nous améliorer.</text>
+		<text id="dragon14">Cependant, les réponses peuvent se trouver dans les îles à l'est. Revenez dans cette caverne lorsque vous serez prêt, et je vous emmènerais là-bas.</text>
+		<text id="dragon2">Je le savais! Les [item=wyrm]s se métamorphosent en [item=dragon]! Mais alors pourquoi y aurait-il si peut de [item=adult_dragon] dans les plaines ?</text>
+		<text id="dragon3">je crois qu'il y a un repaire de dragon quelque part dans la montagne. SI tu le trouve, appelle moi... peut-être certains de ces secrets peuvent être découvert ici.</text>
+		<text id="dragon4">Ah! Un [item=adult_dragon]! Écoutons ce qu'il pourrait nous dire - À l'aide d'un simple sort je pourrait le traduire pour toi.</text>
+		<text id="dragon5">Qui est tu, et comment ose-tu me réveiller?</text>
+		<text id="dragon6">Je suis à la recherche de vérité et de magie. Dis mois - pourquoi y a t-il si peu de dragons dans le monde?</text>
+		<text id="dragon7">Car les anciens sont partis. Ils étaient chercheur de vérité et de magie eux aussi. Et ils m'ont trahis.</text>
+		<text id="dragon8">Alors peut-être que nous pouvons vous aider! Tout ce que nous demandons en échanges c'est du savoir.</text>
+		<text id="dragon9">Vous pensez que vous pouvez m'aider? alors prouvez-le. Si vous êtes capable de faire naître et m'apporter [var=quest.hatch_dragons.dragon] [item=dragon]s, alors nous pourront parler. Autrement, hors de ma vue!</text>
+		<text id="elementals1">J'ai déterminé qu'une [item=spirit_gem] peut capturer un esprit de feu ou d'eau, résultant en [item=fire_gem] ou [item=water_gem]. Les gemmes infusées devraient nous permettre d'activer les structures.</text>
+		<text id="elementals2">Vous n'arrivez pas à trouver des esprits élémentaires? Ils sont invisibles à l'œil nu, mais ma [item=goggles] devrait les révéler!</text>
+		<text id="elementals3">Vous pouvez placer une [item=spirit_gem] comme des pièges, puis capturer les esprits en les attirant sur eux!</text>
+		<text id="first1">Vous ne vous êtes pas écrasés avec nous?</text>
+		<text id="first2">Non, je faisais partie d'une mission de reconnaissance pour le programme de colonisation.</text>
+		<text id="first3">Nous étions quatre. Mais, les trois autres sont morts, et quand ils sont venus peu après, je savais que cette planète était maudite.</text>
+		<text id="first4">J'ai survécu à peine, en utilisant ce que j'avais appris de la magie. Peut-être que si j'avais eu ces [item=goggles] à l'époque, les choses auraient été différentes.</text>
+		<text id="first5">Ils étaient là ?! Après vous?</text>
+		<text id="first6">Oui. Je crois qu'ils étaient jaloux de ma magie. Ou effrayé? C'est dur à dire à coup sûr ...</text>
+		<text id="forest">Cette forêt à l'est est dangereuse. J'ai mis en place une [item=fence], et je vous recommande de ne pas aller au-delà.</text>
+		<text id="introduce1">Il y a plus que ce que l'on peut voir sur cette planète. J'ai fais quelques expérimentations, et je crois avoir découvert la magie!</text>
+		<text id="introduce2">J'ai besoin de matériaux. Si tu rencontre un [item=wyrm], tue-le et rapporte moi du [item=dragonblood] et je ferais en sorte que tu sois récompensé pour cela!</text>
+		<text id="lab1">Je le savais! C'est un secret! Je dois faire un laboratoire immédiatement!</text>
+		<text id="lab2">Ta récompense? Apporte moi les matériaux à mon lab et je ferais des potions magiques rien que pour toi.</text>
+		<text id="lab3">Plus vite! Ma recherche est à l'arrêt jusqu'à ce que je récupère du [item=dragonblood]!</text>
+		<text id="lair1">je le savais! Cette caverne est artificielle, crée avec de la magie! Il semble que son but soit d'améliorer les dragons!</text>
+		<text id="lair2">Je pense que je peut l'activer...</text>
+		<text id="lair3">Aha! Fini! Avec cette caverne, nous pouvons améliorer nos propre dragons. La caverne semble pointé vers l'est.Peut-être pouvons-nous voler sur un dragons et en savoir plus...</text>
+		<text id="magic_farm1">Qu'attendez-vous? Utilisez la [item=water_gem] à la structure bleue pour l'activer!</text>
+		<text id="magic_farm2">La structure bleue est un synthétiseur magique! Il peut créer des objets de la magie!</text>
+		<text id="magic_farm3">Utilisez des [item=focus_gem]s pour alimenter le synthétiseur.</text>
+		<text id="magic_farm4">Nous avons toujours besoin d'un [item=water_gem] pour alimenter la structure bleue! Utilisez une [item=spirit_gem] pour capturer un élémentaire d'eau!</text>
+		<text id="magic_forge1">Qu'attendez-vous? Utilisez la [item=fire_gem] à la structure rouge pour l'activer!</text>
+		<text id="magic_forge2">La structure rouge est une sorte d'ancienne forge magique. Elle peut enchanter les objets!</text>
+		<text id="magic_forge3">Essayez d'expérimenter avec différentes combinaisons d'objets et d'ingrédients magiques à la Forge - vous tomberez peut-être sur quelque chose de génial!</text>
+		<text id="magic_forge4">Nous avons toujours besoin d'une [item=fire_gem] pour alimenter la structure rouge! Utilisez une [item=spirit_gem] pour capturer un élémentaire de feu!</text>
+		<text id="magic_intro1">Cette île déborde de magie - nous sommes définitivement au bon endroit!</text>
+		<text id="magic_intro2">J'ai déjà vu ce genre de magie. Ces structures sont partiellement organiques et sont toutes en hibernation. Ils auront besoin d'être réveillés.</text>
+		<text id="magic_intro3">Je sais déjà comment activer cette chambre pourpre, mais les autres structures nécessiteront plus d'études.</text>
+		<text id="magic_intro4">Cela devrait être une bonne base d'opérations. Je vais mettre en place des fournitures.</text>
+		<text id="muttering">Synthèse de gemmes… carapace imbriquée… évolution indéfini… [font=drachenklaue]n'importe quoi[/font]...</text>
+		<text id="oldone1">J'ai remarqué des pointes très étranges dans l'énergie magique ces derniers temps. Ça pourrait ne rien être, mais ça pourrait être l'un d'entre eux.</text>
+		<text id="oldone10">Mais maintenant je vois qu'ils avaient raison à propos d'une chose. L'univers serait mieux sans toi et ton genre!</text>
+		<text id="oldone11">Vous allez regrettez de choisir de me déranger!</text>
+		<text id="oldone12">Non!</text>
+		<text id="oldone13">Quel est le problème, n'avons-nous pas gagné?</text>
+		<text id="oldone14">Nous étions trop lents! Il a envoyé un signal. Ils sauront que nous sommes sur cette planète!</text>
+		<text id="oldone15">Nous devons apprendre toute la magie que nous pouvons - et utiliser leur pouvoir contre eux quand ils viennent! Sinon, nous sommes tous condamnés.</text>
+		<text id="oldone16">Vous êtes plus adepte de la magie que ce à quoi je m'attendais! Cela ne peut pas être autorisé, seulement nous devrions utiliser la magie.</text>
+		<text id="oldone17">Il envoie un signal! S'ils l'entendent, ils viendront! Je dois finir ça rapidement!</text>
+		<text id="oldone18">Qu'est-il arrivé? Ça va?</text>
+		<text id="oldone19">Non… [pause=4]Le signal a été envoyé… [pause=4]Et ma force de vie a été complètement drainée ...</text>
+		<text id="oldone2">Si vous le trouvez, invoquez-moi immédiatement. Si c'est vraiment l'un d'entre eux, nous sommes tous en grave danger.</text>
+		<text id="oldone20">C'est à vous maintenant… [pause=4] Dépêchez-vous!… [pause=4] Trouvez les réponses… Utilisez leurs magie…</text>
+		<text id="oldone3">Bon, voyons si ma traduction fonctionne!</text>
+		<text id="oldone4">Qui êtes-vous et que faites-vous ici?</text>
+		<text id="oldone5">Quel droit avez-vous de me demander cela? C'est ma maison, ma planète! Vous êtes les intrus ici!</text>
+		<text id="oldone6">Cet exosquelette magique a l'air vaguement familier ... en êtes-vous un?</text>
+		<text id="oldone7">Ceux que vous appelez "eux" sont mes frères fous. Il y a longtemps, ils ont choisi d'abandonner leur monde natal, pendant que je restais et prenais un chemin d'isolement et d'immortalité.</text>
+		<text id="oldone8">Pouvez-vous nous parler de votre magie? Quelles sont ces pointes d'énergie magiques? Pourquoi avez-vous créé et élevé les dragons?</text>
+		<text id="oldone9">Silence! Nous ne parlons pas de ces choses avec des gens comme vous! J'ai été très tolérant. Sinon, vous auriez été mort il y a longtemps.</text>
+		<text id="oldone_attack">Attaquer-le maintenant!</text>
+		<text id="oldone_beam">Je détecte un pic d'énergie magique! Je ne pense pas que ma barrière sera capable de bloquer cette attaque!</text>
+		<text id="oldone_choice">Vous n'êtes pas de taille pour cette créature. Nous aurons besoin d'un plan si nous voulons survivre!</text>
+		<text id="oldone_tips1">Je vais mettre en place une barrière défensive et une magie de guérison. Restez derrière moi pendant qu'il attaque, puis frappez-le quand il est surchargé.</text>
+		<text id="pen1">J'ai besoin de plus de [item=dragonblood]! Apportes moi [var=quest.wyrm_pen.wyrm] [item=wyrm]s vivants et on aura une source infinie de [item=dragonblood] pour expérimenter avec!</text>
+		<text id="pen2">Excellent! Recules pendant que je travaille ma magie!</text>
+		<text id="pen3">Voici ma brillante invention - l'[color=770000]Enclos à Wyrm[/color]! C'est plus qu'un simple Enclos, c'est une source infinis de [item=dragonblood]!</text>
+		<text id="return1">Que faites-vous ici?!</text>
+		<text id="return2">J'utilise le laboratoire pour analyser des échantillons de l'est de l'île.</text>
+		<text id="return3">Je veux dire, comment êtes-vous revenu ici si vite?</text>
+		<text id="return4">De la même façon que je me déplace partout! En me téléportant. Évidemment. Maintenant arrête de me déranger, je dois finir mon analyse.</text>
+		<text id="second1">Vous les avez rencontrés sur cette planète il y a dix ans? C'est avant qu'ils aient essayé d'éliminer l'humanité et de détruire la Terre!</text>
+		<text id="second2">Correct. J'ai été le premier à les rencontrer, et le premier qu'ils ont essayés de tuer.</text>
+		<text id="second3">Je ne sais pas ce que j'aurais pu faire différemment pour arrêter la guerre. Ils sont arrivés soudainement avec leurs armes biologiques et ont attaqué sans un mot.</text>
+		<text id="second4">Si seulement il y avait un moyen de communiquer avec eux ...</text>
+		<text id="second5">Nous pourrions probablement communiquer avec eux maintenant, en utilisant ma traduction magique.</text>
+		<text id="second6">Mais, espérons que nous ne les rencontrerons plus jamais, maintenant qu'ils semblent contents de nous ignorer.</text>
+		<text id="shadow_cape1">Laisse moi voir cette [item=dark_fur]! Il semble exister entre le monde des esprits et le monde des vivants...</text>
+		<text id="shadow_cape2">Je vais devoir chercher plus loin, mais je peux facilement le transformer en un [item=shadow_cape] qui te cachera des yeux normaux.</text>
+		<text id="sleep">J'ai besoin de plus de temps pour étudier ça. Pourquoi ne te repose-tu pas dans la chambre pourpre?</text>
+		<text id="work_together">Travailler ensemble</text>
+		<text id="wyrm">Je parie que tu peux capturer un [item=wyrm] avec un [item=net]si elle était lourdement blessé. Mais vous devez l'attraper vivant!</text>
+		<text id="wyrm1">Les indices permettant d'activer les autres structures peuvent se trouver dans [item=wyrm]s.</text>
+		<text id="wyrm2">Vous devriez en suivre un sur cette île et apprendre leurs secrets, pendant que je traduis certaines de ces marques.</text>
+		<text id="wyrm3">Ne vous inquiétez pas - vous vous êtes déjà occupez d'un [item=wyrm] auparavant. Le suivre à son repaire ne devrait pas poser de problème!</text>
+		<text id="wyrm4">Qu'est-ce que c'est? Il y avait une Reine Wyrm? C'est hors de propos, regardez la [item=spirit_gem] que vous avez trouvé! Je suis certain que c'est ce dont nous avons besoin pour faire une percée!</text>
+		<text id="wyrm5">Essayez ces[item=goggles]. Les marques m'ont aidé à les inventer, et bien qu'elles ne m'aident pas à voir le secret derrière ces structures, elles peuvent vous aider à voir ce qui nous manque.</text>
+	</section>
+	<section id="player">
+		<text id="bandits1">C'est génial de revenir en affaires! Maintenant, si seulement nous pouvions nous débarrasser de ces bandits voleurs!</text>
+		<text id="bandits2">Vous semblez fort. Vous pensez pouvoir les effrayer pour nous?</text>
+		<text id="bandits3">Vous avez battu les bandits! S'il vous plaît, prenez ces cadeaux comme des marques de reconnaissance.</text>
+		<text id="bandits4">C'est notre jour de chance - notre proie est venue nous rejoindre! Les choses se passent bien depuis que nous avons fui ces Mirrows et leurs mauvaises expériences!</text>
+		<text id="dock1">Je me demande si le voleur disait la vérité sur les autres survivants?</text>
+		<text id="dock2">Peut-être que je devrais construire un [color=770000]Port[/color] pour les retrouver. Il me faudra [var=quest.dock2.wood] [item=wood], [var=quest.dock2.steel_bar] [item=steel_bar]s et [var=quest.dock2.gold_bar] [item=gold_bar]s.</text>
+		<text id="dock3">Bien, allons faire ce [color=770000]Port[/color]!</text>
+		<text id="farewell1">Je ne sais pas ce qui existe là-bas, mais je veux le savoir avant de revenir.</text>
+		<text id="farewell2">Rapportez de bonnes choses à manger!</text>
+		<text id="farewell3">N'oubliez pas d'explorer sous la surface, vous ne savez jamais ce que vous pourriez découvrir.</text>
+		<text id="farewell4">Ne nous laissez pas traîner - revenez bientôt.</text>
+		<text id="farewell5">Ne vous mêlez pas de quelque chose de trop dangereux.</text>
+		<text id="farewell6">C'est un monde incertain.</text>
+		<text id="farewell7">Vous allez dans le mauvais sens, les secrets sont tous à l'est!</text>
+		<text id="lurker">Hey gamin, Tu veux des produits rares? Tu ne peux pas les acheter ailleurs!</text>
+		<text id="lurker_empty">Merci pour les affaires. Désolé, aucun remboursement.</text>
+		<text id="make_coin_purse">Échanger[var=recipe.sci1_coin_purse.sulfur] [item=sulfur] pour une [item=coin_purse]?</text>
+		<text id="market1">Peut être que si je crée un [color=770000]Marché[/color], Cela attirera les marchands vers mon port. Je peut en construire un pour [var=quest.market2.gold_bar] [item=gold_bar]s.</text>
+		<text id="market2">C'est tout ce que j'avais besoins pour le [color=770000]Marché[/color]!</text>
+		<text id="market3">Il semblerais qu'il y ait vraiment des marchands ici! Ils m'ont même donné un [item=coin_purse] pour stocker l'argent quand je vend et achète.</text>
+		<text id="market4">Maintenant nous avons juste besoin de construire un [item=boat] au [color=770000]Port[/color]!</text>
+		<text id="no_coin_purse">Vous aurez besoin d'une [item=coin_purse] si vous voulez échanger avec nous. Nous pouvons vous en donner un pour [var=recipe.sci1_coin_purse.sulfur] [item=sulfur].</text>
+		<text id="ore_cave">Cet endroit est bizarre, comme si je suis entré dans une autre dimension. J'ai le sentiment que ce sera différent chaque fois que j'entre.</text>
+		<text id="storehouse1">Cette hache pourrait être utile. Avec ça je pourrais construire un [color=770000]Entrepôt[/color] pour stocker ce que je récupère.</text>
+		<text id="storehouse2">Je parie que je peux faire un Entrepôt avec [var=quest.storehouse.wood] [item=wood] et [var=quest.storehouse.berries] [item=berries]s.</text>
+		<text id="storehouse3">Super! Allons faire cet Entrepôt!</text>
+		<text id="storehouse4">Parfait. Maintenant, je peux éviter de me fatiguer à porter trop de choses.</text>
+		<text id="storm1">La tempête grossit. J'ai besoin d'un Abri, mais il n'y a rien autour d'ici si ce n'est que des branches tombées!</text>
+		<text id="storm2">Je devrais essayer de construire un [color=770000]Abri[/color]. [var=quest.hut.wood] [item=wood] devrait suffire.</text>
+		<text id="storm3">Tellement fatigué... Je peine à tenir tout ce [item=wood]. Juste un peu plus et je pourrait me reposer dans l'[color=770000]Abri[/color].</text>
+	</section>
+	<section id="hunter">
+		<text id="accept1">Vous devez utiliser l'élément de surprise. Frappez des ennemis par derrière et vous obtiendrez un coup critique.</text>
+		<text id="accept2">L'[item=bow] est mon arme de prédilection. Tenez, essayez mon [item=workbench] - vous pouvez faire un [item=bow] et quelques [item=arrow]s par vous-même.</text>
+		<text id="accept3">Utilisez [key=equipment] pour équiper une arme, et [key=attack] pour attaquer avec l'arme équipée.</text>
+		<text id="accept4">Pourquoi ne pas créer un [item=bow] et tuer des [color=770000] [tile=boar]s [/color]. Et laissez-moi savoir si vous avez besoin de conseils de chasse!</text>
+		<text id="fence1">Je voudrais garder la faune en contrôle ici.</text>
+		<text id="fence2">Pourriez-vous utiliser le [item=workbench] que je vous ai donné pour faire [var=quest.fence.fence] [item=fence]s? Ensuite, nous pourrions commencer à mettre en place un périmètre.</text>
+		<text id="fence3">Parfait. Le [color=770000] [tile=boar]sanglier [/color]s ne peut pas traverser les [item=fence]s, donc nous pouvons les utiliser pour protéger notre périmètre.</text>
+		<text id="fence4">J'en placerai un ici, placez l'autre [item=fence] autour de notre base pour le protéger!</text>
+		<text id="hunt1">Nous ferons disparaître cette zone de créatures dangereuses en un rien de temps!</text>
+		<text id="hunt2">Pour un travail bien fait, laissez-moi vous donner mon ancien [item=backpack] - il pourrait être utile lorsque vous êtes sur le terrain.</text>
+		<text id="intro1">Hé, vous! M'avez-vous vu abattre ce sanglier?</text>
+		<text id="intro2">Ouais, comment ... comment avez-vous fait ça?</text>
+		<text id="intro3">Simple! Un peu de technique appropriée est tout ce dont vous avez besoin.</text>
+		<text id="intro4">J'essaie de nettoyer cette zone. Si vous m'aidez, je pourrais vous apprendre à chasser.</text>
+		<text id="reject1">Vous semblez dangereux. Restez en dehors de notre région!</text>
+		<text id="reject2">Bien, bien! Je vais juste retourner dans les montagnes alors!</text>
+		<text id="reject3">Prêt à apprendre des techniques de chasse?</text>
+		<text id="tent1">Je ne devrais pas me reposer dans la tente d'une personne au hasard!</text>
+		<text id="tent10">Pas sûr. La côte sur cette fin est perfide. De plus, ces îles me semblaient étranges. Peut être dangereuses.</text>
+		<text id="tent11">Donc, vous dites que nous devrions simplement nous contenter de la façon dont les choses sont?</text>
+		<text id="tent12">Je dis que nous n'avons pas besoin d'emprunter des problèmes quand la vie est déjà difficile.</text>
+		<text id="tent2">Ce doit être la tente du [color=770000] [tile=hunter] Chasseur [/color]. Je devrais le laisser tranquille.</text>
+		<text id="tent3">Alors j'étais là, frissonnant et seul sur la montagne sombre, quand j'ai vu la lumière du feu! Et entendu rire! Cela semblait tellement agréable ...</text>
+		<text id="tent4">Alors vous êtes venus pour devenir amis avec nous?</text>
+		<text id="tent5">Bien sûr que non. Et je ne chassais certainement pas des sangliers pour vous impressionner. Pas du tout.</text>
+		<text id="tent6">Je voulais simplement élargir mon champ de chasse.</text>
+		<text id="tent7">J'aimerais en savoir plus sur cet endroit et savoir s'il y a quoi que ce soit au-delà de cette île ...</text>
+		<text id="tent8">Il y a d'autres îles à l'est. Je les ai vus, du haut des montagnes.</text>
+		<text id="tent9">Pensez-vous que nous pourrions y arriver?</text>
+		<text id="tip1">Vous pourriez creuser un tunnel pour vous faufiler des sangliers et les frapper par derrière.</text>
+		<text id="tip2">Les [item=red_berries]s peut être utilisés pour augmenter temporairement votre puissance d'attaque - mais attention, ils ne sont pas bons pour votre santé.</text>
+		<text id="tip3">Si vous continuez à être "bloqué", cet ennemi est trop fort pour vous. Vous aurez besoin d'une meilleure arme ou d'une attaque plus forte.</text>
+		<text id="wolf1">J'ai remarqué qu'un chiot loup traînait autour de notre territoire. Il semble seul.</text>
+		<text id="wolf2">N'a-t-il pas de troupeau?</text>
+		<text id="wolf3">Ils doivent l'avoir laissé derrière.</text>
+		<text id="wolf4">Avec un [var=quest.wolf.net] [item=net]s, [var=quest.wolf.trap] [item=trap]s et [var=quest.wolf.meat] [item=meat], nous pourrions être en mesure de l'apprivoiser.</text>
+		<text id="wolf5">Bon, voyons ce que nous pouvons faire avec ce chiot.</text>
+		<text id="wolf6">Bien joué, il semble avoir entièrement confiance en vous. Vous avez un compagnon fidèle maintenant.</text>
+		<text id="wolf7">Vous pouvez faire en sorte que [item=wolf] vous suive en utilisant le menu [color=770000] Familier [/color] dans votre fenêtre [color=770000] Équipement [/color].</text>
+	</section>
+	<section id="mechanic">
+		<text id="battery">Dites-moi quand vous avez créé une [item=battery], car nous serons en mesure de faire des choses sympas une fois que nous aurons une source d'alimentation mobile!</text>
+		<text id="dragon">Qu'est-ce que cette créature cracheuse de feu qui nourrit la centrale? Il vaut mieux ne pas le casser!</text>
+		<text id="elevator1">J'ai remarqué que vous avez fait beaucoup de minage.</text>
+		<text id="elevator2">Ne serait-il pas commode d'avoir un engin pour vous aider à remonter à la surface?!</text>
+		<text id="elevator3">Sympa! Faisons-le!</text>
+		<text id="elevator4">Ça avance? Ou devrais-je dire ça descend!</text>
+		<text id="factory1">Maintenant que nous avons de nouveau de l'énergie, j'espère que nous aurons de nouvelles machines avec lesquelles jouer.</text>
+		<text id="factory2">Si vous m'aidez à créer un [color=770000] Factory [/color], nous pourrions fabriquer toutes sortes de choses!</text>
+		<text id="factory3">Ce sera génial. Enfin un nouveau projet pour bricoler.</text>
+		<text id="factory4">Maintenant nous pouvons affiner les matériaux et construire des [item=drill]s, [item=chainsaw]s, [item=shotgun]s, et d'autres trucs sympas.</text>
+		<text id="intro1">Il y a plus de survivants ici que ce à quoi je m'attendais!</text>
+		<text id="intro2">Oui? Mais ce n'est pas suffisant. Si nous voulons survivre en tant qu'espèce, nous devrons rejoindre d'autres colonies.</text>
+		<text id="intro3">Vous pensez qu'ils l'ont fait?</text>
+		<text id="intro4">Je suis sûr qu'ils sont là-bas. Nous avons juste besoin d'un moyen de les trouver et de les atteindre.</text>
+		<text id="intro5">Et si on nous attaque en chemin?</text>
+		<text id="intro6">Alors au moins on a essayé! Je ne vais pas m'asseoir ici sur cette planète juste parce que je me sens en sécurité pour le moment.</text>
+		<text id="introduce1">C'est complètement frit! C'est affreux!</text>
+		<text id="introduction2">Que s'est-il passé?</text>
+		<text id="introduction3">Les Mirrows ont essayé de rediriger le pouvoir et ont presque tout chamboulé!</text>
+		<text id="introduction4">On s'attend à ce que nous nettoyons après leurs expériences ratées ... gah!</text>
+		<text id="introduction5">Je n'ai même plus de [item=titanium], donc il n'y a pas moyen de le réparer ...</text>
+		<text id="mirrows1">Hé, qu'est-ce qui ne va pas? Vous regardez vers le bas.</text>
+		<text id="mirrows10">Nous aurions besoin de quelque chose de vraiment spécial pour les amener à changer de direction.</text>
+		<text id="mirrows11">Que pensez-vous de ce [item=dragon_armor]? Il a la puissance d'un [item=adult_dragon], mais peut être porté comme une armure!</text>
+		<text id="mirrows12">C'est tellement bizarre, mais je pense vraiment que ça vaut le coup. Montrons-le à mes parents.</text>
+		<text id="mirrows13">Retour à nouveau? Cette fois, nous allons vous transformer en cyborg!</text>
+		<text id="mirrows14">Attendez! N'attaque pas, c'est moi.</text>
+		<text id="mirrows15">Cass? Que fais-tu ici?</text>
+		<text id="mirrows16">Je veux que vous jetiez un coup d'œil à ceci. Peut-être que vous n'avez pas à transformer les gens en cyborgs après tout.</text>
+		<text id="mirrows17">Quelle est cette chose? Ses lectures de puissance sont hors des charts, mais ça ne semble pas du tout fait par l'homme!</text>
+		<text id="mirrows18">Si je vous dis, acceptez-vous d'arrêter votre expérimentation humaine et votre extorsion?</text>
+		<text id="mirrows19">Bien sûr, cela pourrait être une toute nouvelle ligne de recherche pour nous!</text>
+		<text id="mirrows2">J'ai essayé de demander aux Mirrows d'arrêter de harceler tout le monde, mais ils n'écoutent pas et je ne veux pas les combattre.</text>
+		<text id="mirrows20">Il s'avère que les espèces qui habitaient à l'origine cette planète ont créé les dragons et l'équipement magique. Et, cette espèce peut avoir été - eux.</text>
+		<text id="mirrows21">Nous utiliserons leurs propres créations contre eux! Quelle délicieuse ironie!</text>
+		<text id="mirrows3">Bon à essayer. Mais ils sont têtus comme des mulets, et n'écoutent rien sauf la force.</text>
+		<text id="mirrows4">Je n'abandonne pas encore. Ce n'est pas juste qu'ils puissent abuser de leur pouvoir comme ça.</text>
+		<text id="mirrows5">Essayez peut-être d'en apprendre le plus possible sur les Mirrows. Avez-vous vérifié toutes les zones autour de leur laboratoire?</text>
+		<text id="mirrows6">Êtes-vous le "C" dans les notes de laboratoire des Mirrows? Travaillez-vous avec eux?</text>
+		<text id="mirrows7">Non ... pas exactement. Ils sont - [pause = 4] Ils sont mes parents.</text>
+		<text id="mirrows8">Vos parents !? Si vous êtes leur fille, peut-être qu'ils vous écouteraient. Voulez-vous essayer de négocier avec eux?</text>
+		<text id="mirrows9">Croyez-moi, j'ai essayé. Ils n'écouteront pas la raison. Ils sont trop concentrés sur leurs "améliorations" et ne considèrent même pas d'autres solutions à nos problèmes.</text>
+		<text id="powerplant1">Wow, je ne m'attendais pas à ce que tu reviennes vraiment avec du [item=titanium].</text>
+		<text id="powerplant2">Merci, maintenant je peux le faire réparer en un rien de temps.</text>
+		<text id="powerplant3">Retour en affaires! Nous pouvons utiliser [item=coal] ou [item=refined_oil] pour alimenter la plante. Vous pouvez également faire un [item=battery] ici.</text>
+		<text id="powerplant4">Oh, et prenez cette ferraille de la réparation en remerciement pour le [item=titanium]!</text>
+		<text id="powerplant5">Je ne trouverai plus jamais de [item=titanium], c'est sans espoir!</text>
+		<text id="repair">Besoin de quelque chose de réparé? Je suis votre fille!</text>
+		<text id="tip1">Utilisez du [item=sulfur] et un [item=steel_bar] pour faire une [item=battery] à la [color=770000] Centrale Électrique [/color]. Vous pouvez les recharger là aussi.</text>
+		<text id="tip2">Ajoutez simplement les [item=battery]s à votre inventaire pour alimenter votre équipement.</text>
+		<text id="tip3">Votre [tile=power] [color=444400] Énergie [/color] total sera affiché sous votre [tile=health] [color=770000]santé [/color] et [tile=stamina ] [color=006600] Endurance [/color].</text>
+	</section>
+	<section id="innkeeper">
+		<text id="intro1">Bienvenue chez Golden Key! La plus belle (et la seule) chambre de ce côté du désert!</text>
+		<text id="intro2">Donc c'est une auberge? Avez-vous beaucoup de gens à travers ici?</text>
+		<text id="intro3">Quelques-uns passent par Sunset Haven - explorant, échangeant, cherchant un endroit où se loger.</text>
+		<text id="intro4">Mais si nous ne retrouvons pas l'électricité bientôt, qui sait si quelqu'un restera? Je ne peux pas vous dire combien de fois j'ai été tenté d'aller donner à ces Mirrows ce que je pensais!</text>
+		<text id="mirrows1">Les Mirrows ont accepté d'arrêter de vous demander de l'argent et d'expérimenter sur les gens!</text>
+		<text id="mirrows2">Excellent! Peut-être que nous pouvons enfin avoir un peu de paix ici maintenant.</text>
+		<text id="mirrows3">Prends ceci comme un gage de mon appréciation.</text>
+		<text id="mirrows4">... [item=coal]?</text>
+		<text id="mirrows5">Quoi? Je ne suis pas un organisme de bienfaisance, vous savez.</text>
+		<text id="no_money">Pas assez d'argent? Alors j'ai peur que tu ne puisses pas rester ici. Ce n'est pas une charité, vous savez!</text>
+		<text id="no_power">Je crains que nous ne puissions pas vous gardez ici jusqu'à ce que le courant revienne.</text>
+		<text id="power1">Merveilleux! Le pouvoir est de retour!</text>
+		<text id="power2">Non merci à ces sacrés Mirrows. Je ne peux pas croire que nous payons tous leurs cotisations pour que la technologie continue de fonctionner ici!</text>
+		<text id="power3">Et non seulement ils font frire la centrale électrique, ils ne peuvent pas prendre la peine de la contourner et de la réparer?!</text>
+		<text id="power4">Tu ne peux pas arrêter de les payer?</text>
+		<text id="power5">Je ne peux pas quitter l'auberge, mais si quelqu'un allait dans le désert et y faisait face, nous pourrions peut-être renoncer à cet arrangement injuste.</text>
+		<text id="scene1">J'entends le vaisseau principal s'écraser quelque part ici? Comment avez-vous survécu sans pods de vie?</text>
+		<text id="scene2">C'est exactement notre problème. Les Mirrows nous ont sauvés. Ils ont fait des améliorations de dernière minute incroyables et protégé un secteur entier de l'oblitération. Nous sommes donc endettés.</text>
+		<text id="scene3">Mais maintenant, ils ont détruit notre pouvoir, et ils laissent les étranges créatures libres pour faire des ravages.</text>
+		<text id="scene4">J'ai même entendu dire que des gens ont disparu dans le désert, où les Mirrows ont été vus pour la dernière fois.</text>
+		<text id="scene5">Et ils s'attendent à ce que nous supportions tout cela? Et même payer des cotisations à eux? C'est devenu trop.</text>
+		<text id="visit">Voulez-vous passer la nuit? Seulement 50 [color=770000] [tile=coin_purse.ico] Pièces de monnaie [/color], et je vais inclure un repas chaud!</text>
+	</section>
+	<section id="fisherman">
+		<text id="cat1">Hé, mon [item=cat] Peri s'est encore enfui de moi! Pensez-vous que vous pourriez m'aider à la trouver?</text>
+		<text id="cat11">Donnez à Peri une [item=toothfish]?</text>
+		<text id="cat12">Elle n'a pas décollé aussi vite cette fois-ci.</text>
+		<text id="cat13">Viens ici Peri ... c'est une bonne fille ...</text>
+		<text id="cat15">Un chat capturé avec succès!</text>
+		<text id="cat2">Je pense qu'elle essaie d'éviter de naviguer. Pas un fan de l'eau.</text>
+		<text id="cat3">Si vous m'aidez, je vais vous apprendre ce que je sais de la pêche.</text>
+		<text id="cat4">Génial, merci! Voici une [item=fishing_rod] de réserve, parlez-moi si vous voulez des conseils de pêche!</text>
+		<text id="cat5">[item=toothfish] est la nourriture préférée de Peri, peut-être pourriez-vous la tenter avec certains d'entre eux?</text>
+		<text id="cat6">Hey, tu as trouvé mon [item=cat]! Merci, mec.</text>
+		<text id="cat7">Sheesh, on dirait que tu l'as complètement conquise. Je parie qu'elle serait plus heureuse avec toi. Pourquoi ne la gardes-tu pas?</text>
+		<text id="cat8">Le chat est trop rapide pour que tu l'attrape!</text>
+		<text id="cat9">Elle a arraché le [item=toothfish] de ma main, mais elle est trop rapide, je ne peux pas l'attraper.</text>
+		<text id="intro1">Enfin de retour sur terre! tu as l'air d'être arrivé aussi!</text>
+		<text id="intro1_alt">Hey! C'est agréable de voir d'autres survivants naviguer ici!</text>
+		<text id="intro2">Ne fais pas attention à elle, c'est juste la façon de dire bonjour de Polly. J'espère que cela ne te dérange pas un peu d'eau de mer sur vos bottes!</text>
+		<text id="intro3">Alors, as-tu déjà visité cette île?</text>
+		<text id="intro3_alt">Alors, savez-vous quelle île se trouve en avant?</text>
+		<text id="intro4">Bien sûr, cette île s'appelle Sunset Haven, et elle a plus de survivants que n'importe quelle autre île que j'ai vue.</text>
+		<text id="intro4_alt">Bien sûr, l'île s'appelle Sunset Haven, et il y a plus de survivants que n'importe quelle autre île que j'ai vue.</text>
+		<text id="intro5">Ça a du sens aussi - car c'est là que le vaisseau principal s'est écrasé.</text>
+		<text id="intro6">Mais regarde-toi. J'ai entendu de mauvaises rumeurs à propos de Sunset Haven dernièrement ...</text>
+		<text id="scene1">Moi, c'est tout ce dont j'ai besoin - un toit au-dessus de ma tête, le soleil et le vaste océan pour pêcher.</text>
+		<text id="scene2">Et tu? Quel est ton rêve?</text>
+		<text id="scene3">J'aimerais vraiment savoir s'il y a un moyen de quitter cette planète.</text>
+		<text id="scene4">Quoi, pourquoi !? as-tu un désir de mort? Ces choses n'ont aucune pitié.</text>
+		<text id="scene5">Je veux en savoir plus sur eux ... et pourquoi les choses se sont passées comme elles l'ont fait ...</text>
+		<text id="scene6">Écoute l'ami, j'en ai vu un de première main avant de partir de la Terre. Tout ce que tu dois savoir, c'est comment les éviter.</text>
+		<text id="tip1">La pêche est une question de timing. Utilise ta canne à pêche à la fin du quai, puis appuie sur [key=select] quand il y a quelque chose sur la ligne - trop tôt ou trop tard, et tu perdrez la prise!</text>
+		<text id="tip2">S'il est écrit "Attendez...", le poisson a besoin d'un peu plus de câlins. Attendez jusqu'à ce que ca dise "Tirez maintenant!" puis appuyez à nouveau sur [key=select]!</text>
+		<text id="tip3">Certains poissons sont plus difficiles à attraper et nécessitent plus de touches. Gardez un œil sur l'info-bulle et appuyez sur la touche qui s'affiche!</text>
+	</section>
+	<section id="mirrows">
+		<text id="defeat0">Incroyable! D'une façon ou d'une autre, vous êtes plus fort que moi, même avec notre cybernétique avancée!</text>
+		<text id="defeat1">Vous devez nous dire les secrets de votre force - vous pourriez être la clé pour sauver l'humanité!</text>
+		<text id="defeat2">Si je vous dis mes secrets, acceptez-vous d'arrêter de harceler les citadins et de leur demander de l'argent?</text>
+		<text id="defeat3">Bien sûr. Pourquoi aurions-nous besoin de ces spécimens ternes quand nous vous aurons!?</text>
+		<text id="defeat4">Ce sera une toute nouvelle ligne de recherche pour nous!</text>
+		<text id="defeat5">N'hésitez pas à utiliser notre laboratoire de chirurgie. Nous serions très intéressés de voir votre puissance avec nos améliorations cybernétiques!</text>		
+		<text id="intro1">Êtes-vous les Mirrows? Pourquoi avez-vous tourmenté Sunset Haven et créé ces étranges mutants?</text>
+		<text id="intro2">Vous ne comprenez pas! Nous faisons cela pour le bien de tout le monde! Nous ne pouvons pas survivre sans armes ultimes!</text>
+		<text id="intro3">Quand ils viendront nous exterminer, nous serons prêts! Les sacrifices faits ont été nécessaires.</text>
+		<text id="intro4">Vous ne pouvez pas vous contenter de sacrifier les gens pour un avenir qui ne sera peut-être jamais arrivé! Il y a de meilleurs moyens de sauver tout le monde!</text>
+		<text id="intro5">Si vous êtes déterminé à travailler contre nous, nous n'avons d'autre choix que de vous combattre.</text>
+		<text id="intro6">J'ai l'impression que votre corps est exactement ce dont j'ai besoin pour ma nouvelle invention Cyborg!</text>
+		<text id="nav1">On dirait que l'écran de navigation fonctionne toujours. D'après cela, nous sommes actuellement sur Unoiks 428e.</text>
+		<text id="nav2">Est-ce que les Mirrows ont ajouté cette note ?! Je dois leur demander à ce sujet...</text>
+		<text id="nav3">Nous sommes sur la terre de l'ennemi? Comment le savez-vous?</text>
+		<text id="nav4">Nous ne pouvons pas être certains ... mais nous avons pris des échantillons de nombreuses ruines sur cette planète. Non seulement ils correspondent à leur technologie, mais ils datent d'il y a plus d'un million d'années!</text>
+		<text id="nav5">Mais ils sont partis maintenant?</text>
+		<text id="nav6">Nous ne les avons pas détectés sur cette planète, mais même s'ils sont partis, ils sont sûrs de revenir finalement.</text>
+		<text id="nav7">C'est pourquoi nous étions prêts à tout sacrifier pour la force ... à partir du jour où nous avons atterri sur cette planète, une confrontation avec eux est devenue inévitable.</text>
+		<text id="tip1">Vous pouvez uniquement supprimer les améliorations cybernétiques au laboratoire de chirurgie. Sélectionnez l'emplacement que vous souhaitez supprimer, puis sélectionnez aucun. Vous pouvez réinstaller les améliorations plus tard, mais cela coûtera plus de ressources.</text>
+	</section>
+	<section id="scene.hut">
+		<text id="first1">Pas mal pour mon premier abri.</text>
+		<text id="first2">Aidez-moi…[pause=4]s'il vous plaît…[pause=4] un abri…</text>
+		<text id="first3">Quelqu'un est dehors! Je peux lui faire confiance?</text>
+		<text id="first4">Merci. Je te dois la vie. Mais que fais-t-on maintenant?</text>
+		<text id="first5">Pour l'instant, on reste au chaud et au sec.</text>
+		<text id="first6">Mais après ça? Comment va-t-on survivre sur cette île déserte?</text>
+		<text id="first7">As-t-on un point de départ? On est bloqué ici, il n'y a pas de retour en arrière.</text>
+		<text id="first8">Au moins, on peut essayer. Peut-être que la vie ici ne sera pas aussi mauvaise que ce que tu penses.</text>
+		<text id="first9">S'il vous plaît…[pause=4] aidez-moi…</text>
+		<text id="fourth1">Donc dit-nous ce que tu sais sur les autres survivants?</text>
+		<text id="fourth2">La plupart d'entre nous ont été dispersés à travers différentes îles, mais certaines des îles ont plus de survivants et même une technologie avancée.</text>
+		<text id="fourth3">J'ai entendu des rumeurs comme quoi il y aurait un bateau proche intact.</text>
+		<text id="fourth4">Pourrait-il encore naviguer?</text>
+		<text id="fourth5">Comme j'ai dis, tout ce que j'ai entendu sont des rumeurs. Mais même si cela se produisait, ce serait une mort certaine. Le mieux est de rester sur cette île, ils ne semblent pas se soucier de nous ici.</text>
+		<text id="hunter1">Vous êtes si bon dans ce domaine. Étiez-vous un chasseur avant le crash?</text>
+		<text id="hunter2">Heh. Jamais tué un animal dans ma vie avant cela. J'étais un scientifique. Travail de labo. Molécules.</text>
+		<text id="hunter3">Wow. Comment avez-vous tout compris alors?</text>
+		<text id="hunter4">C'est incroyable ce que vous pouvez faire quand vous avez besoin de survivre.</text>
+		<text id="hunter5">Vous changez. Vous devenez quelqu'un que votre vieil individu reconnaîtrait à peine.</text>
+		<text id="mirrows1">Ils ont reconstruit la technologie?</text>
+		<text id="mirrows2">Ouaip, Sunset Haven a de l'équipement électrique et industriel.</text>
+		<text id="mirrows3">Mais les gens là-bas ne sont pas trop heureux avec les Mirrows qui ont tout mis en place.</text>
+		<text id="mirrows4">Les Mirrows ont survécu!?</text>
+		<text id="mirrows5">Vous les connaissez?</text>
+		<text id="mirrows6">Malheureusement. Nous faisions partie du même groupe de recherche à la maison, étudiant la génétique.</text>
+		<text id="mirrows7">Après l'attaque, ils ont commencé à faire des choses horribles comme l'expérimentation humaine. Je ne pouvais plus travailler avec eux.</text>
+		<text id="mirrows8">Hé, nous devrions reconstruire de la technologie ici aussi! S'ils peuvent le faire, pourquoi pas nous??</text>
+		<text id="mirrows9">C'est l'idée! Cet endroit se sentira comme à la maison en un rien de temps.</text>
+		<text id="second1">… Alors quand je suis arrivé ici, j'ai commencé à explorer et je ne savais même pas qu'il y avait une tempête.</text>
+		<text id="second2">Mais je suis content que tu sois là. J'en avais marre de manger de la terre, et il n'y a rien de mieux qu'un feu chaud après une longue journée sous terre.</text>
+		<text id="second3">Tu penses qu'il y a d'autres survivants là dehors?</text>
+		<text id="second4">Franchement, je suis surpris que quelqu'un ait survécu au crash. Mais on est en vie, donc peut-être qu'il y en a d'autres?</text>
+		<text id="third1">Maintenant, je parie que le jeunot pense que c'est la fin du monde, mais la même chose est arrivé pendant la 3eme guerre mondiale et je suis toujours là.</text>
+		<text id="third2">Je suis optimiste, on doit juste voir le bon côté des choses, et soyons heureux qu'il y ait de la nourriture et de la compagnie.</text>
+		<text id="third3">Mais combien de temps faudra-t-il vivre sur cette île délaissée?</text>
+		<text id="third4">Qui sait? Mais tant qu'il y de la vie, il y a de l'espoir. Peut-être qu'ici c'est aussi bien qu'à la maison.</text>
+	</section>
+	<section id="medicom">
+		<text id="broken">Le panneau est brisé...</text>
+		<text id="panel1">3/15 - Nous n'avons eu d'autre choix que d'abandonner la Terre. Nos armes ne peuvent pas les blesser, et ils nous poursuivent avec une vengeance. Peut-être, sur une autre planète, nous pouvons enfin échapper à leur colère.</text>
+		<text id="panel10">1/6 - C a quitté le laboratoire et a précisé que nous n'étions plus les bienvenus en ville. Déplacement de la base des opérations dans un ancien laboratoire dans les vestiges du secteur 22.</text>
+		<text id="panel11">2/9 - Les citadins forcés pour aider à financer la recherche. Également obtenu de nouveaux sujets de test (vagabonds et parias). La recherche progresse à nouveau.</text>
+		<text id="panel12">2/27 - Ran hors de vagabonds, a donc dû rassembler des sujets de test des habitants de la ville. Si la recherche sur la viabilité n'est pas terminée bientôt, nous manquerons de nouveau de sujets de test.</text>
+		<text id="panel13">5/1 - Le navire a été lourdement endommagé lors de l'évasion, mais le moteur de saut a été activé avec succès. Cela devrait nous garder en avance sur les poursuivants, en supposant que le navire survit le voyage.</text>
+		<text id="panel14">12/14 - La recherche sur la viabilité des espèces est au point mort, mais la recherche sur le combat semble prometteuse. Les améliorations cybernétiques sont en mesure de transformer un civil moyen en une machine de guerre.</text>
+		<text id="panel15">1/31 - Appliquer la recherche cybernétique à nous-mêmes en raison du manque de sujets de test. Toujours aucun signe de l'ennemi, mais peut-être cette fois nous serons en mesure de les combattre.</text>
+		<text id="panel2">6/30 - Élaboration d'un nouveau plan pour l'augmentation et la survie humaines, y compris le nombre et le type de spécimens nécessaires pour atteindre nos objectifs. M. H a quitté le groupe de recherche.</text>
+		<text id="panel3">8/5 - Atteint la planète cible mais ne peut pas entrer dans l'atmosphère en toute sécurité et il n'y a pas assez de gousses de vie. Probabilité de survie faible, même pour les sujets augmentés. Aucun signe de l'ennemi.</text>
+		<text id="panel4">9/2 - Le renforcement de la coque progresse, mais la survie nécessite une augmentation. Les dissidents protestent contre la procédure, même si leur vie en dépend.</text>
+		<text id="panel5">9/26 - Ne peut plus maintenir l'orbite. Beaucoup ont accepté l'augmentation, et certains qui n'ont pas été lancés dans les gousses de vie. Espérons que le renforcement sera suffisant pour le reste.</text>
+		<text id="panel6">10/4 - Le renforcement d'urgence a été largement couronné de succès, mais le nombre estimé de survivants est bien inférieur à ce que l'on espérait, même en tenant compte des gousses de vie que nous ne pouvons pas expliquer..</text>
+		<text id="panel7">10/5 - La viabilité des espèces est maintenant une préoccupation majeure. Avec seulement quelques centaines d'individus, nous ne pouvons pas survivre sans une intervention drastique. Début d'une nouvelle ligne de recherche.</text>
+		<text id="panel8">11/20 - Infrastructure de base établie à l'est du site de l'écrasement. Rassembler de nouveaux spécimens pour l'expérimentation.</text>
+		<text id="panel9">12/24 - C désapprouve la recherche de combat. Au lieu de préparer leur retour et d'améliorer la viabilité des espèces, C veut retourner aux étoiles et chercher d'autres survivants.</text>
+	</section>
+	<section id="system">
+		<text id="start">Unoiks 428</text>
+	</section>
+	<section id="system.desc">
+		<text id="start">Étoile de type-G. 42 années-lumières de la Terre.\n6 Exoplanète confirmé.</text>
+	</section>
+	<section id="system.planet">
+		<text id="start">Unoiks 428e</text>
+	</section>
+	<section id="system.planet.desc">
+		<text id="start">Une planète semblable à la terre et habitable, emplacement de la colonie #21.\n\nsusceptible d'être[color=ff2222]Terre Natal de l'ennemi[/color].</text>
+	</section>
+	<section id="options">
+		<text id="achievements">Réussites</text>
+		<text id="back">Retour</text>
+		<text id="controller">Manette</text>
+		<text id="controls">Contrôles</text>
+		<text id="export">Exporter une sauvegarde</text>
+		<text id="export_fail">Impossible d'exporter: Sauvegarde corrompu.</text>
+		<text id="file_export">Où souhaitez-vous exporter la sauvegarde?</text>
+		<text id="file_import">Sélectionnez une sauvegarde à importer.</text>
+		<text id="fullscreen">Plein Écran:</text>
+		<text id="import">Importer une sauvegarde</text>
+		<text id="import_fail">Impossible d'importer: Sauvegarde corrompu.</text>
+		<text id="import_html5">Pour importer: glisser un fichier .asav file dans la fenêtre de jeu, puis sélectionnez un emplacement pour placer la sauvegarde.</text>
+		<text id="import_save">Peut seulement importer des sauvegardes sur l'écran de titre.</text>
+		<text id="keyboard">Clavier</text>
+		<text id="language">Langage:</text>
+		<text id="music">Vol Musique:</text>
+		<text id="options">Options</text>
+		<text id="paused">Jeu en Pause</text>
+		<text id="quitgame">Souhaitez-vous retourner au menu? Toute progression non-sauvegardé sera perdue.</text>
+		<text id="sfx">Vol SFX:</text>
+		<text id="textspeed">Vitesse Texte:</text>
+		<text id="title">Retour au menu Principal</text>
+	</section>
+	<section id="controls">
+		<text id="attack">Attaque:</text>
+		<text id="cancel">Annuler:</text>
+		<text id="defend">Defense:</text>
+		<text id="device">Config:</text>
+		<text id="down">Bas:</text>
+		<text id="equipment">Équipement:</text>
+		<text id="hotkey1">Rac 1:</text>
+		<text id="hotkey2">Rac 2:</text>
+		<text id="hotkey3">Rac 3:</text>
+		<text id="hotkey4">Rac 4:</text>
+		<text id="inventory">Sac:</text>
+		<text id="left">Gauche:</text>
+		<text id="mute">Muet:</text>
+		<text id="quest">Quêtes:</text>
+		<text id="right">Droite:</text>
+		<text id="select">Action:</text>
+		<text id="up">Haut:</text>
+	</section>
+	<section id="cloud">
+		<text id="all_synced">Toutes les sauvegardes sont synchronisées!</text>
+		<text id="button_login">Connectez-vous à Cloud Aground</text>
+		<text id="button_logout">Déconnexion du Cloud Aground</text>
+		<text id="close_syncing">Vos sauvegardes sont en cours de synchronisation. Êtes-vous sûr de vouloir quitter avant la fin de la synchronisation?</text>
+		<text id="connect_fail">Echec de la synchronisation du cloud.</text>
+		<text id="create">Créer un compte</text>
+		<text id="logged_in">Connecté en tant que: {nom d'utilisateur}</text>
+		<text id="logging_in">Connexion ... Veuillez patienter ...</text>
+		<text id="login">Connexion au cloud Aground</text>
+		<text id="login_fail">Nom d'utilisateur ou mot de passe incorrect.</text>
+		<text id="not_logged_in">Non connecté à Aground Cloud</text>
+		<text id="overwrite">Il y a deux sauvegardes dans ce slot! \ nQue voulez-vous garder?</text>
+		<text id="pass_error">Le mot de passe doit comporter entre 3 et 40 caractères.</text>
+		<text id="password">Mot de passe:</text>
+		<text id="remember">Se souvenir de moi?</text>
+		<text id="sync_fail">La synchronisation a échoué!</text>
+		<text id="sync_now">Synchroniser maintenant</text>
+		<text id="sync_slots">Synchronisation des logements</text>
+		<text id="unsynced">Vous avez des sauvegardes non synchronisées!</text>
+		<text id="user_error">Le nom d'utilisateur doit comporter entre 3 et 24 caractères.</text>
+		<text id="username">Nom d'utilisateur:</text>
+	</section>
+	<section id="world">
+		<text id="magic1">Îles de l'Est</text>
+		<text id="rename">Comment voudriez-vous nommer cette île?</text>
+		<text id="science1">Sunset Haven</text>
+		<text id="start">À l'Aventure</text>
+	</section>
+	<section id="create.character">
+		<text id="eyes">Couleur des yeux:</text>
+		<text id="hair">Couleur des cheveux:</text>
+		<text id="hair_style">Style de cheveux:</text>
+		<text id="pants">Couleur du pantalon:</text>
+		<text id="shirt">Couleur de chemise:</text>
+		<text id="skin">Couleur de peau:</text>
+		<text id="title">Créer un personnage</text>
+	</section>
+	<section id="colors">
+		<text id="black">noir</text>
+		<text id="blond">Blond</text>
+		<text id="blue">Bleu</text>
+		<text id="brown">Brun</text>
+		<text id="custom">Personnaliser</text>
+		<text id="dblond">Blond Foncé</text>
+		<text id="dblue">Bleu Foncé</text>
+		<text id="dbrown">Brun Foncé</text>
+		<text id="gray">Gris</text>
+		<text id="green">Vert</text>
+		<text id="lblue">Bleu Pale</text>
+		<text id="lbrown">Brun Pale</text>
+		<text id="lgreen">Vert Pale</text>
+		<text id="orange">Orange</text>
+		<text id="pink">Rose</text>
+		<text id="purple">Mauve</text>
+		<text id="red">Rouge</text>
+		<text id="teal">Turquoise</text>
+		<text id="white">Blanc</text>
+		<text id="yellow">Jaune</text>
+	</section>
+</lang>
