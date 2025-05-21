@@ -25,6 +25,75 @@ Welcome to MonkeyGG2, a feature-rich game site created for you! With over 150 ga
 -   Proxy
 -   And More...
 
+## Customization
+
+### Settings
+
+#### Cloaking
+
+Cloaking refers to opening the page in an `about:blank` tab. This behavior is forced by default, although it can be disabled. Presets are available for the redirect link however that can also be manually configured.
+
+#### Masking
+
+Masking refers to changing the icon and tab title of the about:blank tab. Presets are available for the icon and tab title however that can also be manually configured.
+
+#### Shortcuts
+
+Custom keyboard shortcuts can be created to perform a variety of tasks. For example, exiting the game, masking the tab, and executing custom JavaScript are all supported.
+> Note: if you want to execute custom JavaScript, make sure you know what you are doing. If you do break something, a page reload is always the solution.
+
+#### Theme
+
+The following theme customizations are supported currently:
+- Toggle Background Animation (if you are worried about performance mid-game, don't worry it's automatically disabled whenever you are playing a game)
+- Background Color
+- Block Color
+- Button Color
+- Games Color
+- Hover Color
+- Scrollbar Color
+- Scroll Track Color
+- Font Color
+
+> Note: if you accidentally change the colors so that the site is unusable, you'll have to clear your cookies and local storage.
+
+### Advanced Customization
+
+> Disclaimer: The following customizations are only available to owners of the repository or any fork of this repository.
+
+The `config.jsonc` file is formatted to include configuration for the entire site. Currently, the following items are supported:
+- Games
+- Themes (coming soon)
+- Proxy Configuration
+
+#### Games
+
+Each game entry has a key representing the display name of the game, and the value should be an object with three key-value pairs:
+- `"path"`: Path to the game from `./games` directory
+- `"aliases"`: List of alternative names for the game used to enhance search
+- `"categories"`: List of categories the game fits in (support for adding icons coming soon)
+
+Adding an entry manually is possible, but tedious especially if you want to alphanumerically order the list (not required for the configuration to work though!)
+This is why the script `add-game-entry.js` was created, an easy way to add a new game into the configuration without having to manually edit the file.
+
+```bash
+# You can use any js runtime such as node.js, bun, or deno
+# For this demonstration bun will be used as dependencies are automatically installed
+bun add-game-script.js
+# Answer the prompts that follow and the configuration will be updated
+```
+
+#### Themes
+
+Theme standard not implemented yet (TODO)
+
+#### Proxy
+
+Proxy configuration options are under the **"config"** key. 
+The value for key `"proxy"` is a boolean value that enables or disables the proxy function. If `"proxy"` is set to false, then the user will be greeted with an error dialog when attempting to access the proxy.
+The value for key `"proxyPath"` is the path to the proxy. It can be an absolute path or a relative path, but the proxy must support **CORS** as the proxy page will be displayed as an iframe on the site.
+
+
 ## Deployment
 
 ### Without Proxy
