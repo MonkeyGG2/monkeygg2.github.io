@@ -15,3 +15,4 @@ export URL=$(curl -s https://api.github.com/repos/ruffle-rs/ruffle/releases | jq
 wget "$URL" -O ruffle.zip
 unzip ruffle.zip "*.js" "*.wasm"
 rm ruffle.zip
+cd "$FORMER_DIR"
