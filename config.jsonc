@@ -736,6 +736,11 @@
             "aliases": [],
             "categories": []
         },
+        "Slice Master": {
+            "path": "slice-master",
+            "aliases": [],
+            "categories": []
+        },
         "Slope": {
             "path": "slope",
             "aliases": [],
