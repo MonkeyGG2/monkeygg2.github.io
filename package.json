@@ -1,0 +1,23 @@
+{
+    "name": "monkeygg2",
+    "version": "1.0.0",
+    "description": "<p align=\"center\"><img src=\"https://raw.githubusercontent.com/MonkeyGG2/monkeygg2.github.io/main/imgs/icon-256-256.png\" height=\"200\"></p>",
+    "homepage": "https://github.com/MonkeyGG2/monkeygg2.github.io#readme",
+    "bugs": {
+        "url": "https://github.com/MonkeyGG2/monkeygg2.github.io/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MonkeyGG2/monkeygg2.github.io.git"
+    },
+    "license": "WTFPL",
+    "author": "",
+    "type": "module",
+    "main": "add-game-entry.js",
+    "scripts": {
+        "add-game": "node add-game-entry.js"
+    },
+    "dependencies": {
+        "@inquirer/prompts": "^7.5.3"
+    }
+}
