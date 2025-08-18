@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<include id="mechanic.xml" />
+	<include id="fisher.xml" />
+	<include id="mirrows.xml" />
+	
+	<include id="townfolk.xml" includeRoot="true" />
+	<tile id="science1.townfolk" sheet="townfolk.png" />
+	<layers id="science1.townfolk" width="16" height="16" cols="5" rows="2">
+		<layer tile="science1.townfolk" color="skin"><!-- body -->
+			<frame x="8" length="10" />
+		</layer>
+		<layer tile="science1.townfolk" color="eyes"><!-- eyes -->
+			<frame visible="false" /><frame x="9" length="9" />
+		</layer>
+		<layer tile="science1.townfolk" color="hair" offset="hair"><!-- hair -->
+			<frame x="18" length="10" />
+		</layer>
+		<layer tile="science1.townfolk" color="skin"><!-- legs -->
+			<frame x="58" length="2" /><frame x="0" count="8" />
+		</layer>
+		<layer tile="science1.townfolk" color="shirt" offset="shirt"><!-- shirt -->
+			<frame x="34" length="10" />
+		</layer>
+		<layer tile="science1.townfolk" color="pants" offset="pants"><!-- pants -->
+			<frame x="26" length="10" />
+		</layer>
+		<layer tile="science1.townfolk" color="skin"><!-- arms -->
+			<frame x="45" length="2" /><frame x="42" count="8" />
+		</layer>
+		<layer tile="science1.townfolk" color="hat" offset="hat"><!-- uncolored -->
+			<frame x="50" length="10" />
+		</layer>
+	</layers>
+	
+	<colors type="hat" equals="shirt" />
+	<animation id="science1.townfolk.idle">
+		<frame x="1" y="0" length="4" />
+		<frame x="0" y="0" length="2" />
+		<frame x="1" y="0" length="32" />
+	</animation>
+	<animation id="science1.townfolk.walk" count="8" x="2" />
+	<npc id="science1.townfolk.base" layers="science1.townfolk" behind="true" fps="6" animation="science1.townfolk">
+		<idle class="wander" flee="true" />
+		<offset id="hair" count="8" /><offset id="shirt" count="8" /><offset id="pants" count="8" /><offset id="hat" count="8" hide="true" />
+		<color id="skin" /><color id="hair" /><color id="eyes" /><color id="shirt" /><color id="pants" /><color id="hat" />
+	</npc>
+	<npc id="science1.townfolk" extends="science1.townfolk.base">
+		<idle class="wander" fromX="124" toX="190" flee="true" />
+	</npc>
+	
+	<include id="lurker.xml" includeRoot="true" />
+	<tile id="lurker" sheet="lurker.png" />
+	<animation id="lurker.idle" count="18" />
+	<animation id="lurker.talk" x="18" count="26"><frame count="18" /></animation>
+	<animation id="lurker.walk" x="44" count="10" />
+	<procedure id="lurker.restock">
+		<action>
+			this.inventory.addItems(getItem("cockatiel"), 1); this.inventory.addItems(getItem("kitchen_blueprint"), 1); this.inventory.addItems(getItem("kitchen_upgrade"), 1);
+			this.inventory.addItems(getItem("jetpack"), 1); this.inventory.addItems(getItem("shadow_cape"), 1); this.inventory.addItems(getItem("owl"), 1);
+			this.inventory.addItems(getItem("horn"), 5); if(!getFlag('bombardment')){this.inventory.addItems(getItem("titanium"), 5); this.inventory.addItems(getItem("uranium"), 3);}
+			this.inventory.addItems(getItem("coral_cod"), 5); this.inventory.addItems(getItem("warehouse_blueprint"), 1);
+			this.inventory.addItems(getItem("powerline_blueprint"), 1);
+		</action>
+	</procedure>
+	<npc id="lurker" tile="lurker" action="talk" talk_sfx="talking1" night="true" sleepDay="true">
+		<idle class="wander" fromX="160" toX="172" />
+		<operate><section>
+			<section if="this.inventory.hasItem()">
+				<dialogue section="player" id="lurker" speaker="this" /><window type="store" inventory="this.inventory" price="5" />
+			</section><dialogue section="player" id="lurker_empty" speaker="this" />
+		</section></operate>
+		<addedToArea><action>this.inventory.clear();</action><run procedure="lurker.restock" /></addedToArea>
+		<awaken><action>this.inventory.clear();</action><run procedure="lurker.restock" /></awaken>
+	</npc>
+</data>

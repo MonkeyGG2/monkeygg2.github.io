@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<items>
+	<tile id="coal.ico" sheet="items.png" x="8" />
+	<tile id="iron.ico" sheet="items.png" x="4" />
+	<tile id="quartz.ico" sheet="items.png" x="3" />
+	<tile id="gold.ico" sheet="items.png" x="6" />
+	<tile id="diamond.ico" sheet="items.png" x="7" />
+	<tile id="sulfur.ico" sheet="items.png" x="0"  />
+	<tile id="oil.ico" sheet="items.png" x="5" />
+	<tile id="titanium.ico" sheet="items.png" x="1" />
+	<tile id="uranium.ico" sheet="items.png" x="2" />
+	<item id="wood" type="resource" cost="5" weight="3" icon="wood.ico" />
+	<item id="coal" type="resource" cost="10" weight="5" icon="coal.ico" />
+	<item id="iron" type="resource" cost="20" weight="5" icon="iron.ico" />
+	<item id="quartz" type="resource" cost="40" weight="5" icon="quartz.ico" />
+	<item id="gold" type="resource" cost="100" weight="5" icon="gold.ico" />
+	<item id="diamond" type="resource" cost="300" weight="5" icon="diamond.ico" />
+	<item id="sulfur" type="resource" cost="50" weight="5" icon="sulfur.ico" />
+	<item id="oil" type="resource" cost="100" weight="5" icon="oil.ico" />
+	<item id="titanium" type="resource" cost="150" weight="5" icon="titanium.ico" />
+	<item id="uranium" type="resource" cost="350" weight="5" icon="uranium.ico" />
+	
+	<tile id="iron_bar.ico" sheet="items.png" x="32" />
+	<tile id="steel_bar.ico" sheet="items.png" x="38" />
+	<tile id="gold_bar.ico" sheet="items.png" x="30" />
+	<item id="iron_bar" type="resource" cost="50" weight="5" icon="iron_bar.ico" />
+	<item id="steel_bar" type="resource" cost="75" weight="5" icon="steel_bar.ico" />
+	<item id="gold_bar" type="resource" cost="250" weight="5" icon="gold_bar.ico" />
+	
+	<include id="food.xml" />
+	<include id="equipment.xml" />
+	<include id="blueprints.xml" />
+	
+	<tile id="cotton.ico" sheet="items.png" x="111" />
+	<item id="cotton" type="resource" cost="5" weight="1" icon="cotton.ico" />
+	<item id="cloth" type="resource" cost="20" weight="1" icon="cloth.ico" />
+	<tile id="silk.ico" sheet="items.png" x="244" />
+	<item id="silk" type="resource" cost="30" weight="1" icon="silk.ico" />
+	<tile id="net.ico" sheet="items.png" x="34" />
+	<item id="net" type="object" cost="40" weight="1" icon="net.ico" action="place" object="trap" capture="1" />
+	
+	<tile id="magic_box.ico" sheet="items.png" x="65" />
+	<animation id="magic_box" count="3" length="2" />
+	<item id="magic_box" type="tool" cost="0" weight="0" icon="magic_box.ico" animation="magic_box" action="magic_box" />
+	<tile id="fence.ico" sheet="items.png" x="69" />
+	<item id="fence" type="object" cost="10" weight="2" icon="fence.ico" action="place" />
+	<itemObject id="fence" blocking="true" />
+	<tile id="torch.ico" sheet="items.png" x="70" />
+	<animation id="item2" count="2" />
+	<animation id="item3" count="3" />
+	<animation id="item4" count="4" />
+	<animation id="item6" count="6" />
+	<item id="torch" type="tool" slot="shield" action="equip" cost="15" weight="1" icon="torch.ico" animation="item4" durability="500" movement_walk="walk_lswing">
+		<light tile="light.large" color="fae1b5" flicker="true" /><equipCost durability="1" />
+	</item>
+	<tile id="torch" sheet="torch.png" />
+	<animation id="equipment.torch.idle" count="5" offsetX="1" />
+	
+	<tile id="lantern.ico" sheet="items.png" x="245" />
+	<item id="lantern" type="tool" slot="shield" cost="150" action="equip" weight="4" icon="lantern.ico" breakable="false" underground="true" durability="5000" durabilityName="common.fuel" object="fuelable" underwater="true" movement_walk="walk_lswing" onSwitch="true">
+		<action id="feed" alt="feed_all" alt_name="fuel_all" name="common.fuel" full="warning.max_fuel" auto="common.auto_fuel" select="common.add_fuel" sfx="fuel" /><action id="place" underwater="true" />
+		<light tile="light.largest" color="fae1b5" flicker="true" /><equipCost durability="1" />
+		<food id="coal" value="500" /><food id="refined_oil" value="5000" />
+	</item>
+	<tilesheet id="lantern.png" width="5" height="6" />
+	<tile id="lantern" sheet="lantern.png" />
+	<animation id="equipment.lantern.idle" count="5" offsetX="2" offsetY="4" />
+	<animation id="equipment.lantern.off" count="1" x="5" offsetX="2" offsetY="4" />
+	<animation id="lantern.on" x="1" count="1" offsetY="2" />
+	<animation id="lantern.off" x="0" count="1" offsetY="2" />
+	
+	<tile id="trap.ico" sheet="items.png" x="74" />
+	<animation id="trap.place" count="2" length="4" />
+	<animation id="trap.spring" x="2" count="5" />
+	<animation id="trap.below_surface" equals="single" />
+	<item id="trap" type="object" cost="30" weight="1" icon="trap.ico" action="place" object="trap" damage="4" />
+	<tile id="workbench.ico" sheet="items.png" x="97" />
+	<item id="workbench" type="object" cost="25" weight="5" icon="workbench.ico" action="craft" underground="true" tooltip="object.tooltip.use">
+		<action id="place" />
+		<recipe type="workbench" />
+		<craft><sound id="workshop" /></craft>
+	</item>
+	<tile id="steel_workbench.ico" sheet="items.png" x="243" />
+	<item id="steel_workbench" type="object" cost="250" weight="5" icon="steel_workbench.ico" action="craft" underground="true" tooltip="object.tooltip.use">
+		<action id="place" />
+		<recipe type="workshop" />
+		<recipe type="workbench" />
+		<craft><sound id="workshop" /></craft>
+	</item>
+	<tile id="anvil.ico" sheet="items.png" x="156" />
+	<item id="anvil" type="object" cost="50" weight="5" icon="anvil.ico" action="repair" underground="true" tooltip="object.tooltip.use"><action id="place" /></item>
+	<tile id="chest.ico" sheet="items.png" x="98" />
+	<animation id="chest.open" x="1" count="1" />
+	<item id="chest" type="object" cost="25" weight="5" icon="chest.ico" action="place" underground="true" underwater="true" place_floating="false" object="storehouse">
+		<operate><sound id="chest_open" /></operate>
+	</item>
+	<tile id="treasure_chest.ico" sheet="items.png" x="108" />
+	<item id="chest" alias="treasure_chest"><parameter id="t" value="treasure_chest.ico" /></item>
+	<tile id="ship_chest.ico" sheet="items.png" x="257" />
+	<item id="chest" alias="ship_chest"><parameter id="t" value="ship_chest.ico" /></item>
+	<tile id="ice_chest.ico" sheet="items.png" x="277" />
+	<item id="chest" alias="ice_chest"><parameter id="t" value="ice_chest.ico" /></item>
+	<tile id="furnace.ico" sheet="items.png" x="231" />
+	<animation id="furnace.off" count="1" x="8" />
+	<animation id="furnace.on" count="9" x="0" />
+	<item id="furnace" type="object" cost="400" weight="5" icon="furnace.ico" action="place" underground="true" durability="100" durabilityName="common.fuel" animation="furnace.on" object="smelter" smelt_sfx="smelter">
+		<recipe type="fuel" />
+		<recipe type="smelter" />
+	</item>
+	<itemObject id="furnace"><light tile="light.medium" color="fae1b5" flicker="true" /></itemObject>
+	<tile id="campfire.ico" sheet="items.png" x="240" />
+	<animation id="campfire.off" count="1" />
+	<animation id="campfire.on" count="1" length="5">
+		<append tile="flame3" animation="flame_smoke1" offsetX="-0.5" offsetY="-0.5" x="4" y="-2" />
+	</animation>
+	<tilesheet id="campfire.png" width="8" height="8" />
+	<tile id="campfire" sheet="campfire.png" />
+	<item id="campfire" type="object" cost="15" weight="3" icon="campfire.ico" action="place" underground="true" durability="50" durabilityName="common.fuel" object="smelter" tile="campfire" smelt_sfx="kitchen">
+		<recipe type="fuel" />
+		<recipe id="cook_steak" />
+	</item>
+	<itemObject id="campfire"><light tile="light.medium" color="fae1b5" flicker="true" /></itemObject>
+	<tile id="sign.ico" sheet="items.png" x="107" />
+	<item id="sign" type="object" cost="10" weight="3" icon="sign.ico" action="place" underground="true" object="sign" tooltip="object.tooltip.use">
+		<operate>
+			<menu section="actions" closeable="true">
+				<choice id="rename">
+					<window type="input" initial="this.message" message="common.sign_message">
+						<action>this.message=result; this.showMessage(this.message);</action>
+					</window>
+				</choice>
+				<choice id="collect"><stop complete="true" /></choice>
+				<choice id="common.cancel" />
+			</menu><stop/>
+		</operate>
+	</item>
+	<item id="area_name_sign" type="object" cost="100" weight="3" icon="sign.ico" action="place" underground="true" color="ffff66" colorScale="1.6" tooltip="object.tooltip.use">
+		<operate>
+			<menu section="actions" closeable="true">
+				<choice id="rename">
+					<window type="input" initial="area.vehicle != null?area.vehicle.getName():area.name" message="world.rename" maxLength="20">
+						<action>if(area.vehicle != null) area.vehicle.name="&amp;"+result; else area.name=result;</action>
+					</window>
+				</choice>
+				<choice id="collect"><stop complete="true" /></choice>
+				<choice id="common.cancel" />
+			</menu><stop/>
+		</operate>
+		<over><action>this.showMessage(area.name)</action></over>
+		<out><action>this.hideMessage()</action></out>
+	</item>
+	<tile id="fertilizer.ico" sheet="items.png" x="119" />
+	<animation id="fertilizer" count="8" />
+	<item id="fertilizer" type="animal" cost="25" weight="1" icon="fertilizer.ico" animation="fertilizer" fertilizer="500" fertilize_sfx="eat" />
+	<tile id="yeti_fur.ico" sheet="items.png" x="127" />
+	<item id="yeti_fur" type="potion" cost="40" weight="1" icon="yeti_fur.ico" element="ice" />
+	<item id="dark_fur" extends="yeti_fur" color="222222" element="" />
+	
+	<animation id="magic_gem" count="6" />
+	<tile id="fire_gem.ico" sheet="items.png" x="129" />
+	<item id="fire_gem" type="potion" cost="400" weight="0" icon="fire_gem.ico" animation="magic_gem" element="fire"><modifiers element="fire" /></item>
+	<tile id="water_gem.ico" sheet="items.png" x="206" />
+	<item id="water_gem" type="potion" cost="400" weight="0" icon="water_gem.ico" animation="magic_gem" element="water"><modifiers element="water" /></item>
+	<tile id="earth_gem.ico" sheet="items.png" x="212" />
+	<item id="earth_gem" type="potion" cost="400" weight="0" icon="earth_gem.ico" animation="magic_gem" element="earth"><modifyTransform from="golem" to="gold_golem" /><modifyTransform from="gold_golem" to="purple_golem" /><modifyTransform from="purple_golem" to="golem" /><modifiers element="earth" /></item>
+	<tile id="ice_gem.ico" sheet="items.png" x="218" />
+	<item id="ice_gem" type="potion" cost="400" weight="0" icon="ice_gem.ico" animation="magic_gem" element="ice"><modifiers element="ice" /></item>
+	<tile id="plant_gem.ico" sheet="items.png" x="224" />
+	<item id="plant_gem" type="potion" cost="400" weight="0" icon="plant_gem.ico" animation="magic_gem" element="plant"><modifiers element="plant" /></item>
+	
+	<tile id="jakolantern.ico" sheet="items.png" x="100" />
+	<animation id="jakolantern" count="7" />
+	<item id="jakolantern" type="object" cost="10" weight="1" icon="jakolantern.ico" animation="jakolantern" action="place" underground="true" />
+	<itemObject id="jakolantern"><light tile="light.medium" color="fae1b5" flicker="true" /></itemObject>
+	
+	<tile id="snowman.ico" sheet="items.png" x="157" />
+	<tilesheet id='snowman.png' width='16' height='16'>
+		<image frame='0' x='0' y='0' width='24' height='26' offsetX='-6' offsetY='-10' />
+	</tilesheet>
+	<tile id="snowman" sheet="snowman.png" x="0" y="0" />
+	<item id="snowman" type="object" cost="20" weight="2" icon="snowman.ico" action="place" />
+	<itemObject id="snowman" tile="snowman" />
+	
+	<tile id="fire_tusk.ico" sheet="items.png" x="161" />
+	<animation id="fire_tusk" count="10" />
+	<item id="fire_tusk" type="potion" cost="40" weight="2" icon="fire_tusk.ico" animation="fire_tusk" element="fire" />
+	
+	<tile id="horn.ico" sheet="items.png" x="276" />
+	<item id="horn" type="potion" cost="100" weight="2" icon="horn.ico" />
+	
+	<tile id="ice_heart.ico" sheet="items.png" x="285" />
+	<item id="ice_heart" type="potion" cost="250" weight="2" icon="ice_heart.ico" animation="item6" element="ice" />
+	
+	<tile id="plant_eye.ico" sheet="items.png" x="248" />
+	<item id="plant_eye" type="potion" cost="40" weight="1" icon="plant_eye.ico" element="plant" />
+	
+	<tile id="minecart.ico" sheet="items.png" x="186" />
+	<tilesheet id="rails.png" width="16" height="8" />
+	<autotile id="rail">
+		<group>
+			<tile neighbors="top,topleft,topright" x="8" />
+			<tile neighbors="top,topleft" x="2" />
+			<tile neighbors="top,topright" x="1" />
+			<tile neighbors="top" x="3" />
+		</group>
+		<group>
+			<tile neighbors="top,left,right" x="7" offsetY="8" />
+			<tile neighbors="top,left" x="5" offsetY="8" />
+			<tile neighbors="top,right" x="6" offsetY="8" />
+			<tile neighbors="top" x="4" offsetY="8" />
+		</group>
+		<group><tile neighbors="nbottom" x="0" offsetY="16" /></group>
+	</autotile>
+	<tile id="rail"><tile sheet="rails.png" x="0" autotile="rail"><neighbor id="cable_rail" /></tile></tile><ore id="rail" rail="rail" />
+	<item id="minecart" type="object" cost="100" weight="5" icon="minecart.ico" animation="item4" action="place" underground="true" rail="rail" object="minecart" />
+	<tile id="rail.ico" sheet="rails.png" x="0" offsetY="5" />
+	<item id="rail" type="object" cost="3" weight="1" icon="rail.ico">
+		<action id="place_rail" name="place" rail="rail"><tile id="cable" rail="cable_rail" /></action>
+	</item>
+	<tile id="crowbar.ico" sheet="items.png" x="192" />
+	<item id="crowbar" type="tool" cost="55" weight="8" icon="crowbar.ico" action="collect_rail" actionName="use" underwater="true" />
+	
+	<tile id="map.ico" sheet="items.png" x="190" />
+	<tile id="shovel.ico" sheet="items.png" x="191" />
+	<tile id="titanium_armor.ico" sheet="items.png" x="193" />
+	<item id="map" type="tool" cost="1000" weight="1" icon="map.ico">
+		<action id="use"><sound id="map" /><window type="map" /></action>
+	</item>
+	<item id="shovel" type="tool" cost="60" weight="6" icon="shovel.ico" action="fill" maxFill="5" underwater="true" />
+	
+	<tile id="helium_sac.ico" sheet="items.png" x="300" />
+	<item id="helium_sac" type="potion" cost="50" weight="0" icon="helium_sac.ico" />
+	<animation id="floating">
+		<frame x="0" />
+		<frame x="0" offsetY="-1" />
+		<frame x="0" offsetY="-2" />
+		<frame x="0" offsetY="-1" />
+		<frame x="0" />
+		<frame x="0" offsetY="1" />
+		<frame x="0" offsetY="2" />
+		<frame x="0" offsetY="1" />
+	</animation>
+	<itemObject id="helium_sac" tile="helium_sac.ico" animation="floating" fps="5" />
+	
+	<tile id="refined_oil.ico" sheet="items.png" x="35" />
+	<tile id="silicon.ico" sheet="items.png" x="36" />
+	<tile id="boat.ico" sheet="items.png" x="68" />
+	<tile id="vehicle.ico" equals="boat.ico" />
+	<tile id="battery.ico" sheet="items.png" x="171" />
+	<tile id="drill.ico" sheet="items.png" x="175" />
+	<tile id="revolver.ico" sheet="items.png" x="179" />
+	<tile id="shotgun.ico" sheet="items.png" x="180" />
+	<tile id="bullet.ico" sheet="items.png" x="181" />
+	<tile id="shell.ico" sheet="items.png" x="182" />
+	<tile id="chainsaw.ico" sheet="items.png" x="183" />
+	<tile id="tent.ico" sheet="items.png" x="185" />
+	<tile id="landmine.ico" sheet="items.png" x="194" />
+	<tile id="alter_gem.ico" sheet="items.png" x="195" />
+	<tile id="focus_gem.ico" sheet="items.png" x="196" />
+	<tile id="spirit_gem.ico" sheet="items.png" x="197" />
+	<tile id="blood_gem.ico" sheet="items.png" x="198" />
+	<tile id="baby_cannon.ico" sheet="items.png" x="199" />
+	<tile id="dragonflame.ico" sheet="items.png" x="200" />
+	<tile id="wyrm_drill.ico" sheet="items.png" x="204" />
+	<tile id="dragon_armor.ico" sheet="items.png" x="205" />
+	<tile id="goggles.ico" sheet="items.png" x="230" />
+	<tile id="bandage.ico" sheet="items.png" x="241" />
+	<tile id="dragonsword.ico" sheet="items.png" x="242" />
+	<tile id="headlamp.ico" sheet="items.png" x="247" />
+	<tile id="cyborg_body.ico" sheet="items.png" x="260" />
+	<tile id="cyborg_back.ico" sheet="items.png" x="261" />
+	<tile id="cyborg_eye.ico" sheet="items.png" x="265" />
+	<tile id="machine_gun_arm.ico" sheet="items.png" x="271" />
+	<tile id="spirit_detector.ico" sheet="items.png" x="312" />
+	
+	<tile id="mine.explosion" sheet="explosion.png" x="0" y="0" />
+	<animation id="mine.explosion" count="6" offsetY="-6">
+		<frame visible="false" />
+	</animation>
+	
+	<!-- These icons are for animals, but they must be defined here as the icons are packed into items.png -->
+	<tile id="wyrm.ico" sheet="items.png" x="62" />
+	<tile id="cocoon.ico" sheet="items.png" x="90" />
+	<tile id="baby_dragon.ico" sheet="items.png" x="96" />
+	<tile id="young_dragon.ico" sheet="items.png" x="150" />
+	<tile id="adult_dragon.ico" sheet="items.png" x="151" />
+	<tile id="ancient_dragon.ico" sheet="items.png" x="152" />
+	<tile id="pig.ico" sheet="items.png" x="53" />
+	<tile id="cow.ico" sheet="items.png" x="114" />
+	<tile id="chicken.ico" sheet="items.png" x="113" />
+	<tile id="cockatiel.ico" sheet="items.png" x="155" />
+	<tile id="wolf.ico" sheet="items.png" x="154" />
+	<tile id="cat.ico" sheet="items.png" x="153" />
+	<tile id="golem.ico" sheet="items.png" x="253" />
+	<tile id="diode_wolf.ico" sheet="items.png" x="259" />
+	<tile id="electric_eel.ico" sheet="items.png" x="272" />
+	<tile id="owl.ico" sheet="items.png" x="291" />
+	<tile id="seed.ico" sheet="items.png" x="294" />
+	<tile id="wheat_seed.ico" sheet="items.png" x="295" />
+	<tile id="apple_seed.ico" sheet="items.png" x="296" />
+	<tile id="pumpkin_seed.ico" sheet="items.png" x="297" />
+	<tile id="sugar_seed.ico" sheet="items.png" x="298" />
+	<tile id="cotton_seed.ico" sheet="items.png" x="299" />
+	<tile id="steel_wyrm.ico" sheet="items.png" x="301" />
+	<tile id="spider.ico" sheet="items.png" x="308" />
+	
+	<tile id="blood" sheet="items.png" x="14" />
+	<tile id="blood.ico" sheet="items.png" x="16" />
+	<animation id="blood" count="5" />
+	<animation id="meat" count="5" x="-4" />
+	
+	<item id="hide_slot" type="none" slot="any" cost="0" weight="0" icon="blood" equipOn="vanity" showCount="false" />
+</items>

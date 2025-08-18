@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+    <tile id="black" sheet="black.png" x="0" y="0" />
+	<tile id="sticky" sheet="sticky.png" x="0" y="0" />
+	<tilesheet id="ui.png" width="8" height="8" />
+	<tile id="stamina" sheet="ui.png" x="0" />
+	<tile id="health" sheet="ui.png" x="1" />
+    <tile id="power" sheet="ui.png" x="2" />
+	<tile id="vehicle_health" sheet="ui.png" x="3" />
+	<tile id="oxygen" sheet="ui.png" x="4" />
+	<bar id="power" tile="power" color="999900" />
+	<bar id="fuel+progress" color="ff9900" />
+	<tile id="fire.ico" sheet="ui.png" x="5" />
+	<tile id="water.ico" sheet="ui.png" x="6" />
+	<tile id="ice.ico" sheet="ui.png" x="7" />
+	<tile id="earth.ico" sheet="ui.png" x="8" />
+	<tile id="plant.ico" sheet="ui.png" x="9" />
+	<tilesheet id="achievement_flash.png" width="32" height="32" />
+	<tile id="achievement_flash" sheet="achievement_flash.png" x="0" y="0" />
+	<animation id="achievement_flash" count="7" x="1">
+		<frame visible="false" />
+	</animation>
+	
+	<tilesheet id="icons.png" width="20" height="20" />
+	<tile id="export_save" sheet="icons.png" />
+	<tile id="delete_save" sheet="icons.png" x="10" />
+	<animation id="export_save" count="10" />
+	<animation id="delete_save" equals="export_save" />
+	
+	<animation id="hidden"><frame visible="false" /></animation>
+	<animation id="single" count="1" />
+    <tile id="inventory.bag" sheet="inventory.png" />
+	<animation id="inventory.bag" count="5" />
+    <tile id="locator" sheet="inventory.png" x="5" />
+    
+	<autotile id="basic9">
+		<tile neighbors="top,left,right,bottom" x="4" y="0" />
+		<tile neighbors="left,bottom,right" x="1" y="0" />
+		<tile neighbors="left,top,right" x="7" y="0" />
+		<tile neighbors="top,right,bottom" x="3" y="0" />
+		<tile neighbors="top,left,bottom" x="5" y="0" />
+		<tile neighbors="bottom,right" x="0" y="0" />
+		<tile neighbors="bottom,left" x="2" y="0" />
+		<tile neighbors="top,right" x="6" y="0" />
+		<tile neighbors="top,left" x="8" y="0" />
+	</autotile>
+	
+	<difficultyMode id="creative" value="-1" maxShieldBlock="1000">
+		<damage a="0" /><overweight a="0" /><capacity a="10" />
+	</difficultyMode>
+	<difficultyMode id="easiest" value="0" maxShieldBlock="1000">
+		<damage a="0.75" b="0.85" /><overweight b="0.7" /><points a="1.5" /><capacity a="1.5" />
+	</difficultyMode>
+	<difficultyMode id="easier" value="1" maxShieldBlock="100">
+		<damage b="0.85" /><overweight b="0.85" />
+	</difficultyMode>
+	<difficultyMode id="default" value="2" />
+	<difficultyMode id="harder" value="3" eatCooldown="2"><damage a="1.5" /></difficultyMode>
+	<difficultyMode id="hardest" value="4" eatCooldown="5">
+		<damage a="2" /><capacity a="0.5" /><points a="0.5" /><overweight a="0.2" />
+	</difficultyMode>
+	<difficultyMode id="1hko" value="5"><damage a="100000" /></difficultyMode>
+	<lang id="en_US" name="English">
+		<section id="common"><text id="mods">Mods</text></section>
+	</lang>
+</data>

@@ -1,7 +1,3 @@
-let config;
-let games;
-let themes;
-
 function changeLoadingTip() {
     const tips = [
         'Welcome to the land of Nothing!',
@@ -24,88 +20,88 @@ let changeTip = setInterval(() => {
     changeLoadingTip();
 }, 3000);
 
-fetch('./config.jsonc')
-    .then((e) => e.text())
-    .then((jsonc) => {
-        // removing all the comments from the jsonc file
-        let json = JSON.parse(jsonc.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => (g ? '' : m)));
-        games = json['games'];
-        themes = json['themes'];
-        config = json['config'];
+let games = json['games'];
+let themes = json['themes'];
+let config = json['config'];
 
-        let gamesList = $('#gamesList');
-        for (game in games) {
-            gamesList.append(
-                `<li url="games/${games[game]['path']}" ${
-                    games[game]['aliases'] ? 'aliases="' + games[game]['aliases'].join(',') + '"' : ''
-                }>${game} <span class="star">★</span> </li>`
-            );
+let gamesList = $('#gamesList');
+for (game in games) {
+    gamesList.append(
+        `<li url="games/${games[game]['path']}" ${
+            games[game]['aliases'] ? 'aliases="' + games[game]['aliases'].join(',') + '"' : ''
+        }>${game} <span class="star">★</span> </li>`,
+    );
+}
+
+let starredGamesList = JSON.parse(localStorage.getItem('starredGamesList')) || [];
+const stars = document.querySelectorAll('.star');
+stars.forEach((star) => {
+    star.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        star.classList.toggle('filled');
+
+        const gameItem = star.parentNode;
+        var gameName = gameItem.textContent;
+        const isStarred = starredGamesList.includes(gameName);
+
+        if (isStarred) {
+            starredGamesList = starredGamesList.filter((gameName) => gameName !== gameName);
+
+            //THIS DOES NOT PUT THE GAME BACK IN ORDER ACCORDING TO THE WAY THE USER SORTED IT
+            //so for the weird ppl that sort by reverse alphabetical it should act pretty weird
+            //this is bc im layz and copy pasted this alphabetical sort thing, ill implement based off users sort later
+            const gameItem = star.closest('li');
+            const parent = gameItem.parentNode;
+
+            const originalPosition = Array.from(parent.children)
+                .sort((a, b) => a.textContent.localeCompare(b.textContent))
+                .findIndex((item) => item === gameItem);
+
+            parent.removeChild(gameItem);
+
+            parent.insertBefore(gameItem, parent.children[originalPosition]);
+        } else {
+            starredGamesList.unshift(gameName);
         }
 
-        let starredGamesList = JSON.parse(localStorage.getItem('starredGamesList')) || [];
-        const stars = document.querySelectorAll('.star');
-        stars.forEach((star) => {
-            star.addEventListener('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                star.classList.toggle('filled');
-
-                const gameItem = star.parentNode;
-                var gameName = gameItem.textContent;
-                const isStarred = starredGamesList.includes(gameName);
-
-                if (isStarred) {
-                    starredGamesList = starredGamesList.filter((gameName) => gameName !== gameName);
-
-                    //THIS DOES NOT PUT THE GAME BACK IN ORDER ACCORDING TO THE WAY THE USER SORTED IT
-                    //so for the weird ppl that sort by reverse alphabetical it should act pretty weird
-                    //this is bc im layz and copy pasted this alphabetical sort thing, ill implement based off users sort later
-                    const gameItem = star.closest('li');
-                    const parent = gameItem.parentNode;
-
-                    const originalPosition = Array.from(parent.children)
-                        .sort((a, b) => a.textContent.localeCompare(b.textContent))
-                        .findIndex((item) => item === gameItem);
-
-                    parent.removeChild(gameItem);
-
-                    parent.insertBefore(gameItem, parent.children[originalPosition]);
-                } else {
-                    starredGamesList.unshift(gameName);
-                }
-
-                localStorage.setItem('starredGamesList', JSON.stringify(starredGamesList));
-                updateGameList();
-            });
-        });
-        // Pushes all starred games to the top
-        function updateGameList() {
-            const gamesList = document.getElementById('gamesList');
-            const children = Array.from(gamesList.children);
-
-            children.forEach((gameItem) => {
-                const currentGameName = gameItem.textContent;
-                const stars = gameItem.querySelector('.star');
-
-                if (starredGamesList.includes(currentGameName)) {
-                    stars.classList.add('filled');
-                    gamesList.insertBefore(gameItem, gamesList.firstChild);
-                }
-            });
-        }
-
+        localStorage.setItem('starredGamesList', JSON.stringify(starredGamesList));
         updateGameList();
-
-        $('#gamesList li').on('click', function () {
-            let url = $(this).attr('url');
-            inGame = true;
-            $('#everything-else').fadeOut();
-            $('#page-loader').fadeIn();
-            $('#page-loader iframe').attr('src', url);
-            $('#page-loader iframe')[0].focus();
-            currentMenu = $('#page-loader');
-        });
     });
+});
+// Pushes all starred games to the top
+function updateGameList() {
+    const gamesList = document.getElementById('gamesList');
+    const children = Array.from(gamesList.children);
+
+    children.forEach((gameItem) => {
+        const currentGameName = gameItem.textContent;
+        const stars = gameItem.querySelector('.star');
+
+        if (starredGamesList.includes(currentGameName)) {
+            stars.classList.add('filled');
+            gamesList.insertBefore(gameItem, gamesList.firstChild);
+        }
+    });
+}
+
+updateGameList();
+
+$('#gamesList li').on('click', function () {
+    let url = $(this).attr('url');
+    if (window.location.protocol === 'file:' && !url.includes('.html')) {
+        const searchParamsIndex = url.indexOf('?');
+        if (searchParamsIndex !== -1)
+            url = url.substring(0, searchParamsIndex) + 'index.html' + url.substring(searchParamsIndex);
+        else url += '/index.html';
+    }
+    inGame = true;
+    $('#everything-else').fadeOut();
+    $('#page-loader').fadeIn();
+    $('#page-loader iframe').attr('src', url);
+    $('#page-loader iframe')[0].focus();
+    currentMenu = $('#page-loader');
+});
 
 $(window).on('load', () => {
     $('.track').attr('stroke', 'url(#grad2)');
@@ -122,7 +118,7 @@ $(window).on('load', () => {
                         duration: 500,
                         easing: 'swing',
                     },
-                    200
+                    200,
                 );
             }, 100);
         },

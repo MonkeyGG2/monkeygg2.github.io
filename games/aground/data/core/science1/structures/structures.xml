@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<structures>
+	<quest id="bandits" exp="250" achievement="bandits">
+		<kill id="bandit_heavy" name="quests.bandits" count="1" />
+		<kill id="bandit_ranged" name="quests.bandits" count="1" />
+		<kill id="bandit_combo" name="quests.bandits" count="1" />
+		<kill id="bandit_knives" name="quests.bandits" count="1" />
+	</quest>
+	<recipe id="sci1_coin_purse"><item id="sulfur" count="6" /></recipe>
+	<procedure id="sci1_coin_quest">
+		<section if="player.getMaxCoins() == 0">
+			<dialogue section="player" id="no_coin_purse" />
+			<menu section="common" if="player.inventory.canCraft(player, getRecipe('sci1_coin_purse'))">
+				<dialogue section="player" id="make_coin_purse" />
+				<choice id="yes">
+					<action>player.inventory.useIngredients(getRecipe('sci1_coin_purse'))</action>
+					<item id="coin_purse" value="0" />
+				</choice>
+				<choice id="no" />
+			</menu>
+			<stop />
+		</section>
+	</procedure>
+	<procedure id="sci1_market">
+		<choose>
+			<section if="isNight()"><dialogue section="market" id="closed" /><stop /></section>
+			<section if="!this.isPowered()"><dialogue section="market" id="no_power" /><stop /></section>
+			<section if="!player.hasQuest('bandits') && !getFlag('final_boss_defeat')">
+				<dialogue section="player" id="bandits1" />
+				<dialogue section="player" id="bandits2" />
+				<quest id="bandits">
+					<object id="bandit_knives" x="96+11" />
+					<object id="bandit_ranged" x="96+10" />
+					<object id="bandit_combo" x="96+12" />
+					<object id="bandit_heavy" x="96+13" />
+				</quest><stop />
+			</section>
+			<section if="!player.questComplete('bandits') && player.canCompleteQuest('bandits')">
+				<dialogue section="player" id="bandits3" />
+				<complete quest="bandits" />
+				<item id="coin_purse" value="200" modal="true" /><stop />
+			</section>
+			<run procedure="sci1_coin_quest" />
+		</choose>
+	</procedure>
+	
+	<animation id="inn.on" count="6" x="1" y="0" />
+	<animation id="inn.off" count="1" x="0" y="0" />
+	<animation id="inn.night.on" count="6" x="8" y="0" />
+	<animation id="inn.night.off" count="1" x="7" y="0" />
+	<tilesheet id="inn_door.png" width="24" height="23" />
+	<tile id="inn_door" sheet="inn_door.png" x="0" y="0" />
+	<animation id="inn_door.open"><frame visible="false" /></animation>
+	<animation id="inn_door.closing" count="6" shift="1" reverse="true"><frame visible="false" /></animation>
+	<animation id="inn_door.opening" count="6" shift="1"><frame visible="false" /></animation>
+	<structure id="inn" width="106" height="75" image="inn.png" powered="true" sleep="true" nightAnimation="inn.night">
+		<tile id="inn_door" animation="inn_door.open" x="41/Tile.SIZE" y="52/Tile.SIZE" fps="10" />
+		<operate>
+			<choose>
+				<section if="getFlag('inn_free') && this.isPowered() && !player.canCompleteQuest('mirrows')">
+					<action>player.fullRestore();</action>
+				</section><choose>
+					<scene id="inn" show="first" with="fade" if="!getFlag('inn.first') || (!player.hasQuest('mirrows') && area.getStructureById('inn').isPowered())" showToAll="true" />
+					<scene id="inn" show="mirrows" with="fade" if="!player.questComplete('mirrows') && player.hasQuest('mirrows') && player.canCompleteQuest('mirrows') && area.getStructureById('inn').isPowered()" showToAll="true" />
+					<scene id="inn" show="inn" with="fade" />
+				</choose>
+			</choose><save sleep="true" />
+		</operate>
+		<over><action>var door = this.getTileById("inn_door"); if(door != null) door.playAnimation("inn_door.opening", false)</action></over>
+		<out><action>var door = this.getTileById("inn_door"); if(door != null) door.playAnimation("inn_door.closing", false)</action></out>
+		<light tile="light.small" color="e2dca7" offsetX="53" offsetY="14" ifAnim="inn.night.on" />
+		<light tile="light.small" color="e2dca7" offsetX="52" offsetY="56" ifAnim="inn.night.on" />
+		<light tile="light.small" color="e2dca7" offsetX="52" offsetY="66" ifAnim="inn.night.on" />
+	</structure>
+	
+	<animation id="power_plant.off" count="1" x="1" y="0" />
+	<animation id="power_plant.on" count="7" x="2" y="0" />
+	
+	<recipe id="pp_fuel_coal" fuel="20" type="powerplant"><item id="coal" /></recipe>
+	<recipe id="pp_fuel_oil" fuel="200" type="powerplant"><item id="refined_oil" /></recipe>
+	<recipe id="pp_battery" creates="battery" type="powerplant"><item id="sulfur" /><item id="steel_bar" /></recipe>
+	
+	<structure id="power_plant" width="150" height="64" image="power_plant.png" type="powerplant">
+		<recipe type="powerplant" /><animal id="adult_dragon" />
+		<listItem icon="power" title="common.recharge_batteries" enabled="this.isPowered()" fail="warning.not_powered">
+			<action>player.restorePowerFrom(this, 25)</action>
+		</listItem>
+	</structure>
+	
+	<animation id="damaged_power_plant.idle" count="1" x="0" y="0" />
+	<structure id="damaged_power_plant" width="150" height="64" image="power_plant.png" />
+	
+	<tilesheet id="powerline2.png" width="16" height="75" />
+	<tile id="powerline2" sheet="powerline2.png" />
+	<animation id="powerline1.disconnected">
+		<frame visible="false" /><append tile="powerline2" />
+	</animation>
+	<structure id="powerline1" width="56" height="75" image="powerline1.png" tileWidth="1" offsetX="20" type="powerline" color="474747" back="true" powered="true" destroyRemove="true">
+		<line to="powerline" x="5" y="12" /><line to="structure" x="5" y="16" />
+	</structure>
+	<structure id="powerline2" extends="powerline1" animation="powerline1" display="powerline1" />
+	
+	<tilesheet id="dock.png" width="158" height="80" />
+	<tile id="sci1.dock" sheet="dock.png" x="0" y="0" />
+	<tilesheet id="dock_front.png" width="91" height="16" />
+	<tile id="sci1.dock_front" sheet="dock_front.png" x="0" y="0" />
+	<!--structure id="sci1.dock" extends="dock_base" tile="sci1.dock" offsetY="64" dockWidth="6" dockTopWidth="10" dockHeight="4">
+		<tile id="sci1.dock_front" top="true" x="63/Tile.SIZE" y="0" />
+	</structure-->
+	<structure id="sci1.dock_flip" extends="dock_base" tile="sci1.dock" offsetY="64" flip="true" dockWidth="6" dockTopWidth="10" dockHeight="4">
+		<tile id="sci1.dock_front" top="true" x="63/Tile.SIZE" y="0" />
+	</structure>
+	
+	<animation id="sci1.market.idle">
+		<frame x="0" y="0" length="16" />
+		<frame x="1" y="0" length="2" />
+	</animation>
+	<animation id="sci1.market.talk" count="8" x="2" />
+	<animation id="sci1.food_market.night.idle" count="1" x="10" />
+	<structure id="sci1.food_market" width="41" height="50" image="food_market.png" type="market" animation="sci1.market" restock="5000" name="food_market" powered="true" show_offers="this.isPowered() && !isNight()" nightAnimation="sci1.food_market.night">
+		<item id="red_berries" min="5" max="20" />
+		<item id="ice_berries" min="5" max="20" />
+		<item id="fruit" min="20" max="40" />
+		<item id="sugar" min="10" max="20" />
+		<item id="pig" min="0" max="1" />
+		<item id="chicken" min="0" max="2" />
+		<item id="cow" min="0" max="1" />
+		<item id="pie" min="40" max="60" />
+		<item id="toothfish" min="40" max="60" />
+		<item id="steak" min="10" max="20" />
+		<item id="bread" min="40" max="60" />
+		<item id="pancakes" min="40" max="60" />
+		<item id="hamburger" min="10" max="20" />
+		<item id="pizza" min="10" max="20" />
+		<item id="omelette" min="10" max="20" />
+		<item id="cheeseburger" min="10" max="20" />
+		<item id="cooking_oil" min="5" max="10" />
+		<item id="cloth" min="20" max="40" />
+		<item id="wheat_seed" min="2" max="4" />
+		<item id="orchard_seed" min="2" max="4" />
+		<item id="sugar_seed" min="1" max="1" />
+		<item id="cotton_seed" min="1" max="1" />
+		<item id="rice_seed" min="1" max="1" />
+		<item id="bush_seed" min="0" max="1" />
+		<item id="red_bush_seed" min="0" max="1" />
+		<buy type="food" /><buy type="animal" />
+		<over><action>this.loopAnimation("talk")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><run procedure="sci1_market" /></operate>
+	</structure>
+	<tilesheet id="markets.png" width="46" height="50" />
+	<tile id="sci1.weaps_market" sheet="markets.png" />
+	<animation id="sci1.weaps_market.night.idle" count="1" x="10" />
+	<structure id="sci1.weaps_market" tile="sci1.weaps_market" type="market" animation="sci1.market" restock="5000" name="weaps_market" powered="true" show_offers="this.isPowered() && !isNight()" nightAnimation="sci1.weaps_market.night">
+		<item id="mega_backpack" min="1" max="1" achievement="bigpack" if="true" />
+		<item id="ultra_backpack" min="1" max="1" if="true" />
+		<item id="revolver" min="1" max="1" />
+		<item id="shotgun" min="1" max="1" />
+		<item id="bullet" min="20" max="40" />
+		<item id="shell" min="10" max="20" />
+		<item id="steel_pickaxe" min="1" max="1" />
+		<item id="steel_axe" min="1" max="1" />
+		<item id="steel_hammer" min="1" max="1" />
+		<item id="steel_sword" min="1" max="1" />
+		<item id="steel_armor" min="1" max="1" />
+		<item id="kite_shield" min="1" max="1" />
+		<item id="net" min="10" max="15" />
+		<item id="trap" min="5" max="10" />
+		<item id="map" min="1" max="1" if="player.getItemCount('map') == 0" />
+		<item id="clock" min="1" max="1" if="player.getItemCount('clock') == 0" />
+		<buy type="equipment" /><buy type="tool" /><buy type="object" />
+		<over><action>this.loopAnimation("talk")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><run procedure="sci1_market" /></operate>
+	</structure>
+	<tile id="sci1.mineral_market" sheet="markets.png" x="11" />
+	<animation id="sci1.mineral_market.idle" equals="sci1.market.idle" />
+	<animation id="sci1.mineral_market.talk" count="8" x="8" />
+	<animation id="sci1.mineral_market.open" count="6" x="2" />
+	<animation id="sci1.mineral_market.close" count="6" x="2" reverse="true" />
+	<animation id="sci1.mineral_market.night.idle" count="1" x="16" />
+	<structure id="sci1.mineral_market" tile="sci1.mineral_market" type="market" restock="5000" name="mineral_market" powered="true" show_offers="this.isPowered() && !isNight()" nightAnimation="sci1.mineral_market.night">
+		<item id="wood" min="10" max="30" />
+		<item id="coal" min="10" max="20" />
+		<item id="iron" min="10" max="30" />
+		<item id="quartz" min="5" max="5" />
+		<item id="gold" min="5" max="5" />
+		<item id="diamond" min="5" max="5" />
+		<item id="iron_bar" min="5" max="5" />
+		<item id="steel_bar" min="5" max="5" />
+		<item id="sulfur" min="10" max="20" />
+		<item id="refined_oil" min="5" max="5" />
+		<buy type="resource" />
+		<over><play object="this" animation="open" /><action>this.loopAnimation("talk")</action></over>
+		<out><play object="this" animation="close" /><action>this.loopAnimation("idle")</action></out>
+		<operate><run procedure="sci1_market" /></operate>
+	</structure>
+	
+	<animation id="elevator.idle" count="3" x="0" />
+	<structure id="elevator" type="elevator" width="55" height="40" image="elevator_winch.png" tileWidth="3" powered="true" speed="2" includeInventory="true" priority="-1" only_select="true" sfx="elevator" saveItems="true">
+		<chain image="elevator_chain.png" offsetX="26" offsetY="13" />
+		<lift image="elevator.png" offsetX="19" floor="27" />
+		<powerline x="36" y="4" />
+		<operate><window type="storehouse" inventory="this.inventory" title="structure.elevator" includeStorehouse="this.elevator_dy == 0" /></operate>
+	</structure>
+	
+	<animation id="warehouse.idle" equals="single" />
+	<animation id="warehouse.closing" count="7" reverse="true" />
+	<animation id="warehouse.opening" count="7" />
+	<structure id="warehouse" width="125" height="80" image="warehouse.png" type="storehouse" main="true" title="common.warehouse">
+		<tooltip section="actions" id="build" if="player.getCenterX()-this.xPos > 90" />
+		<tooltip id="warehouse" />
+		<operate>
+			<action if="!player.hasItemStorehouse('stone_pickaxe')">this.inventory.addItems(Item.get("stone_pickaxe"), 1)</action>
+			<action if="!player.hasItemStorehouse('stone_axe')">this.inventory.addItems(Item.get("stone_axe"), 1)</action>
+			<section if="player.getCenterX()-this.xPos > 90">
+				<window type="craft" includeStorehouse="true" spawnX="this.tile_x+9"><recipe id="boat" /><recipe type="dock" /></window><stop />
+			</section>
+		</operate>
+	</structure>
+	<structure id="warehouse_flipped" width="125" height="80" image="warehouse.png" animation="warehouse" type="storehouse" main="true" display="warehouse" title="common.warehouse" flip="true">
+		<tooltip section="actions" id="build" if="player.getCenterX()-this.xPos < 35" />
+		<tooltip id="warehouse" />
+		<operate>
+			<action if="!player.hasItemStorehouse('stone_pickaxe')">this.inventory.addItems(Item.get("stone_pickaxe"), 1)</action>
+			<action if="!player.hasItemStorehouse('stone_axe')">this.inventory.addItems(Item.get("stone_axe"), 1)</action>
+			<section if="player.getCenterX()-this.xPos < 35">
+				<window type="craft" includeStorehouse="true" spawnX="this.tile_x-4"><recipe id="boat" /><recipe type="dock" /></window><stop />
+			</section>
+		</operate>
+	</structure>
+	
+	<recipe id="craft_drill" creates="drill" type="factory">
+		<item id="silicon" count="1" />
+		<item id="steel_bar" count="3" />
+	</recipe>
+	<recipe id="craft_chainsaw" creates="chainsaw" type="factory">
+		<item id="silicon" count="2" />
+		<item id="steel_bar" count="4" />
+		<item id="refined_oil" count="2" />
+	</recipe>
+	<recipe id="craft_titanium_armor" creates="titanium_armor" type="factory">
+		<type id="tech_resource" />
+		<item id="titanium" count="4" />
+	</recipe>
+	<recipe id="craft_revolver" creates="revolver" type="factory">
+		<item id="steel_bar" count="2" />
+		<item id="wood" count="1" />
+	</recipe>
+	<recipe id="craft_shotgun" creates="shotgun" type="factory">
+		<item id="steel_bar" count="3" />
+	</recipe>
+	<recipe id="craft_bullet" creates="bullet" count="4" type="factory">
+		<item id="sulfur" count="1" />
+		<item id="iron" count="1" />
+	</recipe>
+	<recipe id="craft_shell" creates="shell" count="2" type="factory">
+		<item id="sulfur" count="1" />
+		<item id="iron" count="2" />
+	</recipe>
+	<recipe id="craft_headlamp" creates="headlamp" type="factory">
+		<item id="silicon" count="1" />
+		<item id="steel_bar" count="1" />
+		<item id="cloth" count="1" />
+	</recipe>
+	<recipe id="craft_landmine" creates="landmine" type="factory">
+		<item id="sulfur" count="2" />
+		<item id="steel_bar" count="1" />
+		<item id="silicon" count="1" />
+	</recipe>
+	<recipe id="craft_bandage" creates="bandage" type="factory">
+		<item id="cloth" count="2" />
+	</recipe>
+	<recipe id="craft_silicon" creates="silicon" type="factory">
+		<type id="tech_resource" />
+		<item id="quartz" count="1" />
+	</recipe>
+	<recipe id="refine_oil" creates="refined_oil" type="factory">
+		<item id="oil" count="2" />
+	</recipe>
+	<recipe id="craft_tent" creates="tent" type="factory">
+		<item id="cloth" count="10" />
+		<item id="net" count="5" />
+		<item id="yeti_fur" count="5" />
+	</recipe>
+	<recipe id="craft_ship_chest" creates="chest" type="factory">
+		<parameter id="t" value="ship_chest.ico" /><parameter id="a" value="ship_chest" />
+		<item id="chest" count="1" />
+		<item id="titanium" count="1" />
+	</recipe>
+	
+	<tilesheet id="factory.png" width="106" height="80" /><tile id="factory" sheet="factory.png" />
+	<animation id="factory.off" count="1" x="3" />
+	<animation id="factory.on" equals="factory.off" />
+	<animation id="factory.operate" count="4" x="4" />
+	<animation id="factory.open" count="4" x="8" />
+	<animation id="factory.open.noflash" count="3" x="0" reverse="true" />
+	<animation id="factory.close" count="3" x="0" />
+	<tile id="factory_lights" sheet="factory.png" x="12" />
+	<structure id="factory" tile="factory" powered="true" type="crafting">
+		<recipe type="spfactory" />
+		<recipe type="factory" />
+		<recipe type="net" />
+		<recipe type="workshop" />
+		<recipe type="smelter" />
+		<recipe type="workbench" />
+		<over><play object="this" animation="allowFlash()?'open':'open.noflash'" /><action>this.loopAnimation("operate")</action></over>
+		<out><play object="this" animation="close" /><action>this.loopAnimation("idle")</action></out>
+		<operate><section if="!this.isPowered()"><dialogue section="warning" id="not_powered" /><stop /></section></operate>
+		<light tile="factory_lights" offsetX="53" offsetY="56" linkAnim="true" />
+	</structure>
+	
+	<structure id="crashed_ship" width="512" height="388" image="crashed_ship.png" priority="-2" behind="true" remove="false" />
+	<animation id="crashed_ship.door.opening" count="4" />
+	<animation id="crashed_ship.door.closing" count="4" reverse="true" />
+	
+	<tilesheet id="ship_door_light.png" width="35" height="43" />
+	<tile id="ship_door_light" sheet="ship_door_light.png" x="0" y="0" />
+	<animation id="ship_door_light">
+		<frame x="0" offsetX="41" offsetY="30" />
+		<frame x="1" offsetX="44" offsetY="34" />
+		<frame x="2" offsetX="35" offsetY="15" />
+		<frame x="3" offsetX="35" offsetY="15" />
+		<frame x="4" offsetX="35" offsetY="15" />
+		<frame x="5" offsetX="41" offsetY="24" />
+	</animation>
+	<tilesheet id="ship_door.png" width="31" height="33" /><tile id="ship_door" sheet="ship_door.png" />
+	<structure id="crashed_ship.door.locked" tile="ship_door" />
+	<structure id="crashed_ship.door" tile="ship_door" name="enter">
+		<operate><choose>
+			<scene id="mirrows" show="intro" with="fade" if="!getFlag('mirrow.defeat')" />
+			<teleport area="mirrows_lab" x="20.5" y="9" allowReturn="true" with="ellipse" />
+		</choose></operate>
+		<tile id="ship_door_light" animation="ship_door_light" fps="12" x="-3" y="-2.875" glow="true" />
+	</structure>
+	<structure id="crashed_ship.door.exit" tile="ship_door" behind="true" remove="false">
+		<tooltip id="enter" if="getFlag('mirrow.defeat')" />
+		<operate><return with="ellipse" if="getFlag('mirrow.defeat')" /></operate>
+		<over><action if="getFlag('mirrow.defeat') && this.renderer != null">this.renderer.playAnimation("crashed_ship.door.opening", false)</action></over>
+		<out><action if="getFlag('mirrow.defeat') && this.renderer != null">this.renderer.playAnimation("crashed_ship.door.closing", false)</action></out>
+	</structure>
+	<structure id="science1.bridge.entrance" tile="ship_door" behind="true" remove="false">
+		<tooltip id="enter" if="getFlag('mirrow.defeat') && player.areas.exists('mirrows_lab')" />
+		<operate><teleport area="science1.bridge" x="8" y="5.5" with="ellipse" if="getFlag('mirrow.defeat') && player.areas.exists('mirrows_lab')" /></operate>
+		<over><action if="getFlag('mirrow.defeat') && this.renderer != null && player.areas.exists('mirrows_lab')">this.renderer.playAnimation("crashed_ship.door.opening", false)</action></over>
+		<out><action if="getFlag('mirrow.defeat') && this.renderer != null && player.areas.exists('mirrows_lab')">this.renderer.playAnimation("crashed_ship.door.closing", false)</action></out>
+	</structure>
+	
+	<tilesheet id="ship_crack1.png" width="89" height="93" />
+	<tile id="crashed_ship.crack1" sheet="ship_crack1.png" x="0" y="0" />
+	<structure id="crashed_ship.crack1.ret" tile="crashed_ship.crack1" name="enter" miningVehicle="true">
+		<operate><teleport area="science1" x="55.5-((player.vehicle == null)?player._width:player.vehicle._width)/(Tile.SIZE*2)" y="12" with="ellipse" />
+			<dig x="player.tile_x" y="player.tile_y" speed="2" if="player.vehicle==null" /></operate>
+	</structure>
+	<structure id="crashed_ship.crack1" tile="crashed_ship.crack1" name="enter" miningVehicle="true">
+		<operate><teleport area="crashed_ship.cave1" x="33.5-((player.vehicle == null)?player._width:player.vehicle._width)/(Tile.SIZE*2)" y="21" with="ellipse" /></operate>
+	</structure>
+	
+	<tilesheet id="ship_crack2.png" width="58" height="71" />
+	<tile id="crashed_ship.crack2" sheet="ship_crack2.png" x="0" y="0" />
+	<structure id="crashed_ship.crack2.ret" tile="crashed_ship.crack2" name="enter">
+		<operate><return with="ellipse" /></operate>
+	</structure>
+	<structure id="crashed_ship.crack2" tile="crashed_ship.crack2" name="enter">
+		<operate><teleport area="crashed_ship.cave2" x="4" y="23" allowReturn="true" with="ellipse" /></operate>
+	</structure>
+	
+	<include id="medivat.xml" includeRoot="true" />
+	<tile id="medivat" sheet="medivat.png" x="0" y="0" />
+	<tile id="medivat.mutant1" sheet="medivat.png" x="12" />
+	<tile id="medivat.mutant2" sheet="medivat.png" x="13" />
+	<tile id="medivat.mutant3" sheet="medivat.png" x="14" />
+	<tile id="medivat.mutant4" sheet="medivat.png" x="15" />
+	<animation id="medivat1.idle" x="0" count="1" />
+	<animation id="medivat2.idle" x="1" count="1" />
+	<animation id="medivat3.idle" x="2" count="1" />
+	<animation id="medivat4.idle" x="3" count="1" />
+	<animation id="medivat.idle" x="4" count="8" glow="true" />
+	<structure id="medivat1" tile="medivat" behind="true" remove="false" />
+	<structure id="medivat2" tile="medivat" behind="true" remove="false" />
+	<structure id="medivat3" tile="medivat" behind="true" remove="false" />
+	<structure id="medivat4" tile="medivat" behind="true" remove="false" />
+	<structure id="medivat.full1" tile="medivat" animation="medivat" behind="true" remove="false"><tile id="medivat.mutant1" behind="true" glow="true" offsetY="1" /></structure>
+	<structure id="medivat.full2" tile="medivat" animation="medivat" behind="true" remove="false"><tile id="medivat.mutant2" behind="true" glow="true" offsetY="1" /></structure>
+	<structure id="medivat.full3" tile="medivat" animation="medivat" behind="true" remove="false"><tile id="medivat.mutant3" behind="true" glow="true" offsetY="1" /></structure>
+	<structure id="medivat.full4" tile="medivat" animation="medivat" behind="true" remove="false"><tile id="medivat.mutant4" behind="true" glow="true" offsetY="1" /></structure>
+	
+	<animation id="medicom.idle" count="8" glow="true" />
+	<structure id="medicom" width="11" height="12" image="medicom.png" name="read" type="dialogue">
+		<afterRead>
+			<set id="ct" value="0" />
+			<action>for(i in 1...16) if(getFlag('medicom.panel'+i+'.read')) ct++;</action>
+			<achievement id="medicom" if="ct == 15" />
+		</afterRead>
+	</structure>
+	
+	<include id="operate.xml" includeRoot="true" />
+	<tile id="operation_table" sheet="operate.png" />
+	<animation id="operation_table.idle" count="1" glow="true" />
+	<animation id="operation_table.hud" x="13" count="12" glow="true"><frame x="25" count="12" glow="true" /></animation>
+	<animation id="operation_table.active" x="1" count="12" repeat="2" glow="true">
+		<append tile="operation_table" animation="operation_table.hud" />
+	</animation>
+	<recipe id="machine_gun_arm" creates="machine_gun_arm" type="operation_table">
+		<item id="steel_bar" count="2" /><item id="titanium" count="1" />
+	</recipe>
+	<recipe id="cyborg_body" creates="cyborg_body" type="operation_table">
+		<item id="titanium_armor" count="1" />
+		<item id="silicon" count="1" />
+		<item id="dragonblood" count="2" />
+	</recipe>
+	<recipe id="cyborg_eye" creates="cyborg_eye" type="operation_table">
+		<item id="titanium" count="1" /><item id="silicon" count="2" />
+	</recipe>
+	<recipe id="cyborg_back" creates="cyborg_back" type="operation_table">
+		<item id="titanium" count="4" />
+		<item id="silicon" count="1" />
+		<item id="uranium" count="1" />
+	</recipe>
+	<recipe id="diode_wolf" creates="diode_wolf" type="operation_recipes">
+		<item id="wolf" count="1" /><item id="silicon" count="1" /><item id="battery" count="2" />
+	</recipe>
+	<recipe id="steel_wyrm" creates="steel_wyrm" type="operation_recipes">
+		<item id="wyrm" count="1" /><item id="silicon" count="1" /><item id="uranium" count="2" /><item id="steel_bar" count="9" />
+	</recipe>
+	<structure id="operation_table" tile="operation_table" behind="true" type="equipment" title="structure.tooltip.operate_self" craftTitle="structure.tooltip.operate_other">
+		<tooltip id="operate" if="getFlag('mirrow.defeat')" />
+		<equipment type="operation_table" />
+		<recipe type="operation_recipes" />
+		<selfItem icon="blood.ico" title="structure.change_appearance">
+			<window type="character" title="structure.change_appearance" />
+		</selfItem>
+		<operate>
+			<section if="player.info.id != 'player.ancient'">
+				<dialogue section="warning" id="operation_table_inhuman" />
+				<window type="craft" includeStorehouse="true" title="structure.tooltip.operate">
+					<listItem icon="blood.ico" title="structure.change_appearance">
+						<window type="character" title="structure.change_appearance" />
+					</listItem>
+					<recipe type="operation_recipes" />
+				</window><stop />
+			</section>
+		</operate>
+		<over><action if="getFlag('mirrow.defeat')">this.loopAnimation("active")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+	</structure>
+	
+	<include id="lights.xml" includeRoot="true" />
+	<tile id="sci1.lights" sheet="lights.png" />
+	<tilesheet id="light.png" width="72" height="32" />
+	<tile id="sci1.light" sheet="light.png" />
+	<animation id="sci1.light.broken.idle" x="0" count="1" glow="true" />
+	<structure id="sci1.light.broken" tile="sci1.lights" remove="false" />
+	<animation id="sci1.light.off.idle" x="1" count="1" glow="true" />
+	<structure id="sci1.light.off" tile="sci1.lights" remove="false" />
+	<animation id="sci1.light.idle" x="2" count="1" glow="true" />
+	<structure id="sci1.light" tile="sci1.lights" remove="false">
+		<light tile="sci1.light" color="fdf697" offsetX="16" offsetY="16" />
+	</structure>
+	
+	<animal id="diode_wolf">
+		<farmable item="sulfur" min="1" max="3" time="50" />
+		<tile id="diode_wolf" animation="diode_wolf.idle" x="-0.5" y="-0.875" />
+	</animal>
+	<animal id="steel_wyrm">
+		<farmable item="uranium" min="1" max="1" time="200" />
+		<tile id="steel_wyrm" animation="steel_wyrm.attack" x="-0.5" y="-0.875" />
+	</animal>
+	<structure id="diode_wolf_pen" tile="cage" animals="1" type="pen" name="cage">
+		<sprite>
+			<animal i="0" offsetX="21" offsetY="21" />
+			<tile x="0" y="0" />
+		</sprite>
+		<animal id="diode_wolf" />
+	</structure>
+	<animal id="golem">
+		<farmable item="coal" min="2" max="5" time="20" />
+		<farmable item="iron" min="1" max="1" time="20" />
+		<tile id="golem" animation="golem.idle" x="-0.5" y="-0.875" />
+	</animal>
+	<animal id="gold_golem">
+		<farmable item="gold" min="1" max="1" time="30" />
+		<tile id="golem" animation="gold_golem" x="-0.5" y="-0.875" />
+	</animal>
+	<animal id="purple_golem">
+		<farmable item="focus_gem" min="2" max="5" time="40" />
+		<farmable item="blood_gem" min="1" max="1" time="40" />
+		<tile id="golem" animation="purple_golem" x="-0.5" y="-0.875" />
+	</animal>
+	
+	<animation id="minodoor.opening" count="6" />
+	<animation id="minodoor.closing" count="6" reverse="true" />
+	<structure id="minodoor" width="32" height="32" image="minodoor.png" name="enter" type="door">
+		<operate><section if="this.area_id == 'labyrinth_end'"><setTime value="20" /><achievement id="labyrinth" /></section></operate>
+	</structure>
+	<structure id="minodoor_exit" width="32" height="32" image="minodoor.png" name="enter" animation="minodoor">
+		<operate>
+			<section with="ellipse" ><set id="minodoor" value="player.areas.get('science1').getStructureById('minodoor')" />
+			<teleport area="science1" x="minodoor.tile_x" y="minodoor.tile_y" /><dig x="player.tile_x" y="player.tile_y" speed="2" /></section>
+		</operate>
+	</structure>
+	
+	<include id="bridge.xml" includeRoot="true" />
+	<tile id="science1.bridge" sheet="bridge.png" />
+	<animation id="science1.bridge.nav_com" x="1" count="10" />
+	<animation id="science1.bridge.idle" x="0" count="1" length="10">
+		<append tile="science1.bridge" animation="science1.bridge.nav_com" />
+	</animation>
+	<structure id="science1.bridge" tile="science1.bridge" behind="true" remove="false" allowSpawn="true" />
+</structures>

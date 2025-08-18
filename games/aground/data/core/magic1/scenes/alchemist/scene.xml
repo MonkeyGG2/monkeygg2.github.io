@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<include id="alchemist.xml" includeRoot="true" />
+	<tile id="scene.alchemist.alchemist" sheet="alchemist.png" x="0" y="0" />
+	<animation id="scene.alchemist.alchemist.idle.top">
+		<frame visible="false" length="10" />
+		<frame x="0" count="20" />
+		<frame visible="false" length="11" />
+		<frame x="60" count="9" />
+	</animation>
+	
+	<animation id="scene.alchemist.alchemist.idle">
+		<append tile="scene.alchemist.alchemist" animation="scene.alchemist.alchemist.idle.top" />
+		<frame x="40" count="10" />
+		<frame x="20" count="20" />
+		<frame x="40" count="10" />
+		<frame x="69" count="10" />
+	</animation>
+	<animation id="scene.alchemist.alchemist.talk" x="50" count="10" />
+	<animation id="scene.alchemist.alchemist.injured.idle" x="79" count="10" />
+	<animation id="scene.alchemist.alchemist.injured.talk" x="89" count="10" />
+	<scene id="alchemist">
+        <animation id="bg" x="0" count="10" />
+		<layer id="bg" image="bg.png" width="256" height="144" animation="bg" />
+		<layer id="alchemist" tile="alchemist" animation="alchemist.idle" talk="alchemist.talk" x="0" y="0" />
+		
+		<show id="first">
+			<layer id="bg" />
+			<layer id="alchemist" />
+			<wait seconds="3" />
+			<dialogue section="alchemist" id="first1" speaker='player' />
+			<dialogue section="alchemist" id="first2" speaker='alchemist' />
+			<dialogue section="alchemist" id="first3" speaker='alchemist' />
+			<dialogue section="alchemist" id="first4" speaker='alchemist' />
+			<dialogue section="alchemist" id="first5" speaker='player' />
+			<dialogue section="alchemist" id="first6" speaker='alchemist' />
+			<wait seconds="1" />
+		</show>
+		<show id="second">
+			<layer id="bg" />
+			<layer id="alchemist" />
+			<wait seconds="1" />
+			<dialogue section="alchemist" id="second1" speaker='player' />
+			<dialogue section="alchemist" id="second2" speaker='alchemist' />
+			<dialogue section="alchemist" id="second3" speaker='alchemist' />
+			<dialogue section="alchemist" id="second4" speaker='player' />
+			<dialogue section="alchemist" id="second5" speaker='alchemist' />
+			<dialogue section="alchemist" id="second6" speaker='alchemist' />
+			<wait seconds="1" />
+		</show>
+	</scene>
+</scenes>

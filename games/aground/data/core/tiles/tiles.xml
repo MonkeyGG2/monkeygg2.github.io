@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<tiles>
+	<tile id="empty" /><tile id="no_place" />
+	<tile id="grass" sheet="tiles.png" x="0" />
+	<tile id="dirt" sheet="tiles.png" x="1" />
+	<tile id="dirt_sand1" sheet="tiles.png" x="1"><tile sheet="tiles.png" x="85" /></tile>
+	<tile id="dirt_sand2" sheet="tiles.png" x="1"><tile sheet="tiles.png" x="84" /></tile>
+	<tile id="dirt_sand3" sheet="tiles.png" x="1"><tile sheet="tiles.png" x="88" /></tile>
+	<tile id="sand_top" sheet="tiles.png" x="86" />
+	<tile id="sand" sheet="tiles.png" x="87" />
+	<tile id="bedrock" sheet="tiles.png" x="89" />
+	<tile id="stone" sheet="tiles.png" x="2" />
+	<tile id="snow_stone" sheet="tiles.png" x="90" />
+	<tile id="snow" sheet="tiles.png" x="91" />
+	<tile id="ice" sheet="tiles.png" x="124" />
+	<tile id="ice_wall" sheet="tiles.png" x="123" />
+	<tile id="obsidian" sheet="tiles.png" x="125" />
+	<tile id="blackstone" sheet="tiles.png" x="126" />
+	<dig id="dirt" cost="0" />
+	<dig id="grass" cost="0" grass="true" />
+	<dig id="dirt_sand1" cost="0" />
+	<dig id="dirt_sand2" cost="0" />
+	<dig id="dirt_sand3" cost="0" />
+	<dig id="stone" cost="1" />
+	<dig id="snow" cost="0" />
+	<dig id="snow_stone" cost="1" />
+	<dig id="sand" cost="4" />
+	<dig id="sand_top" cost="4" />
+	<dig id="bedrock" cost="8" />
+	<dig id="ice" cost="1" slide="true" shovel="false" />
+	<dig id="ice_wall" cost="6" slide="true" shovel="false"/>
+	<dig id="obsidian" cost="4" />
+	
+	<tile id="coal" sheet="tiles.png" x="3" />
+	<tile id="iron" sheet="tiles.png" x="12" />
+	<tile id="quartz" sheet="tiles.png" x="21" />
+	<tile id="gold" sheet="tiles.png" x="30" />
+	<tile id="diamond" sheet="tiles.png" x="39" />
+	<tile id="sulfur" sheet="tiles.png" x="48" />
+	<tile id="oil" sheet="tiles.png" x="57" />
+	<tile id="titanium" sheet="tiles.png" x="66" />
+	<tile id="uranium" sheet="tiles.png" x="75" />
+	<tile id="lava" sheet="tiles.png" x="92" />
+	<animation id="ore" count="9" />
+	<ore id="diamond" achievement="diamond" />
+	<tilesheet id="lava_glow.png" width="32" height="32" />
+	<tile id="lava.light" sheet="lava_glow.png" offsetX="-8" offsetY="-8" />
+	<ore id="lava" damage="6" hitEffect="fire_med" element="fire" light="lava.light" />
+	
+	<tile id="markings1" sheet="tiles.png" x="101" />
+	<tile id="markings2" sheet="tiles.png" x="102" />
+	<tile id="markings3" sheet="tiles.png" x="103" />
+	<tile id="markings4" sheet="tiles.png" x="104" />
+	<tile id="markings5" sheet="tiles.png" x="105" />
+	<tile id="markings6" sheet="tiles.png" x="106" />
+	<tile id="markings7" sheet="tiles.png" x="107" />
+	<tile id="markings8" sheet="tiles.png" x="108" />
+	<dig id="markings1" cost="2" />
+	<dig id="markings2" cost="2" />
+	<dig id="markings3" cost="2" />
+	<dig id="markings4" cost="2" />
+	<dig id="markings5" cost="2" />
+	<dig id="markings6" cost="2" />
+	<dig id="markings7" cost="2" />
+	<dig id="markings8" cost="2" />
+	
+	<autotile id="water">
+		<tile neighbors="ntop" x="7" />
+		<tile x="0" />
+	</autotile>
+	<tile id="water" sheet="tiles.png" x="109" autotile="water" />
+	<tile id="water_alt" sheet="tiles.png" x="192" autotile="water" />
+	<animation id="water" count="7" />
+	
+	<tile id="crack" sheet="crack.png" x="0" y="0" />
+	<tile id="tile_break" sheet="crack.png" x="2" y="1" />
+	<animation id="crack" count="7" shift="1">
+		<frame visible="false" />
+	</animation>
+	<animation id="tile_break" count="8" />
+	
+	<tilesheet id="mountain_snow.png" width="32" height="32" />
+	<tile id="mountain_snow" sheet="mountain_snow.png" x="0" y="0" />
+	
+	<tile id="wood_crate" sheet="debris.png" x="0" y="0" />
+	<tile id="wood_debris1" sheet="debris.png" x="1" y="0" />
+	<tile id="wood_debris2" sheet="debris.png" x="2" y="0" />
+	<tile id="metal_debris" sheet="debris.png" x="3" y="0" />
+	
+	<object id="wood_crate" tile="wood_crate" action="collect" layer="back" renderer="floating" waterLine="10">
+		<loot id="berries" count="10" p="4" />
+		<loot id="fruit" count="5" p="4" />
+		<loot id="bread" count="5" p="4" />
+		<loot id="cheese" count="5" p="2" />
+		<loot id="pie" count="5" p="2" />
+		<loot id="sugar" count="5" p="1" />
+		<loot id="toothfish" count="10" p="1" />
+		<operate><action>player.addLoot(this.getLoot(null,null))</action><remove object="this" /></operate>
+	</object>
+	<object id="wood_debris1" tile="wood_debris1" action="collect" layer="back" renderer="floating" waterLine="12">
+		<operate><action>player.addItem("wood", 2)</action><remove object="this" /></operate>
+	</object>
+	<object id="wood_debris2" tile="wood_debris2" extends="wood_debris1" />
+	<object id="metal_debris1" animation="debris3" tile="metal_debris" fps="2" action="collect" layer="item" submarine="true">
+		<operate><action>player.addItem("titanium", 1)</action><remove object="this" /></operate>
+	</object>
+	
+	<tilesheet id="whirlpool.png" width="64" height="10" />
+	<tile id="whirlpool" sheet="whirlpool.png" />
+	<animation id="whirlpool.idle" count="8" offsetY="7" />
+	<structure id="whirlpool" tile="whirlpool" width="32" type="door" name="enter" overlapVehicle="true">
+		<initRenderer><action>this.playSFX("whirlpool")</action></initRenderer>
+        <over>
+			<section if="player.vehicle != null && player.vehicle.info.xml.get('type') == 'boat'">
+				<set id="boat" value="player.vehicle" />
+				<function object="player.vehicle" run="moveY" args="Tile.SIZE,50" />
+				<choose>
+					<action if="player.vehicle != null && player.vehicle.info.xml.get('type') == 'boat'">this._onOperate(player);</action>
+					<section><remove object="boat" /><action>boat.renderer = null; boat._offsetY = 0; player.areas.get(this.area_id).addObject(boat);</action><move object="boat" x="this.x/Tile.SIZE" y="this.y/Tile.SIZE" /></section>
+				</choose>
+			</section>
+        </over>
+		<afterTeleport>
+			<section if="player.vehicle == null"><set id="oldParent" value="player.renderer.parent" /><action>area.renderer.back.addChild(player.renderer)</action></section>
+			<set id="object" value="player.vehicle == null?player:player.vehicle" />
+			<action>if(player.vehicle != null) player.vehicle.resetY(0); object.renderer.x += Tile.SIZE*2; object.renderer.y += Tile.SIZE;</action>
+			<lerp object="object" deltaX="-2" deltaY="-1" seconds="0.5" modal="true" />
+			<action if="player.vehicle == null">oldParent.addChild(player.renderer)</action>
+		</afterTeleport>
+		<out><action if="player.vehicle != null && player.vehicle.info.xml.get('type') == 'boat'">player.vehicle.resetY(10)</action></out>
+		<operate>
+			<section if="player.vehicle == null">
+				<action>area.renderer.back.addChild(player.renderer)</action>
+				<lerp object="player" deltaY="2" seconds="0.5" modal="true" />
+			</section><sound id="whirlpool_portal" />
+		</operate>
+	</structure>
+</tiles>

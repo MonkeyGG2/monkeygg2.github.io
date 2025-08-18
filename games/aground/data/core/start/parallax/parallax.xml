@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<tilesheet id="sun.png" width="32" height="32" />
+	<tile id="sun" sheet="sun.png" x="0" y="0" />
+	<animation id="sun" count="10" />
+	
+	<tilesheet id="clouds.png" width="53" height="20" />
+	<tile id="cloud1" sheet="clouds.png" x="0" y="0" />
+	<tile id="cloud2" sheet="clouds.png" x="1" y="0" />
+	<tile id="cloud3" sheet="clouds.png" x="2" y="0" />
+	
+	<tilesheet id="bg.png" width="256" height="80" />
+	<tilesheet id="moon1.png" width="45" height="42" />
+	<tilesheet id="moon2.png" width="24" height="23" />
+	<tile id="start_moon1" sheet="moon1.png" />
+	<tile id="start_moon2" sheet="moon2.png" />
+	<include id="tiles256.xml" includeRoot="true" />
+	<include id="tiles512.xml" includeRoot="true" />
+	<tilesheet id="night_bg.png" width="256" height="144" />
+	<procedure id="start.bg">
+		<layer p="0" day="false" storm="false" glow="true">
+			<tile sheet="{core}/start/parallax/night_bg.png" x="0" y="0" />
+		</layer>
+		<layer p="0" storm="false">
+			<tile id="sun" animation="sun" fps="5" rise="5" set="20" dir="left" pathHeight="96" pathTop="-16" sun="true" />
+		</layer>
+		<layer p="0" storm="false" glow="moon">
+			<tile id="start_moon1" rise="19" set="6" dir="left" pathHeight="96" pathTop="-16" />
+			<tile id="start_moon2" rise="22" set="4" dir="left" pathHeight="96" pathTop="-16" />
+		</layer>
+		<layer p="0" storm="false">
+			<clouds><tile id="cloud1" /><tile id="cloud2" /><tile id="cloud3" /></clouds>
+		</layer>
+	</procedure>
+	<procedure id="start.water">
+		<layer type="water" image="{core}/start/parallax/water.png" max_depth="80" background="0b3a5a" offsetY="12" />
+		<layer type="waves" image="{core}/start/parallax/waves.png" wave_height="4" />
+		<layer p="0.0625" py="0.09375" overWater="true" glow="true" scale_py="true"><tile sheet="{core}/start/parallax/tiles256.png" x="7" dy="144" /></layer>
+	</procedure>
+	<procedure id="start.doodad" />
+	<parallax id="start" mapBG="1b6a9d" mapBGHeight="80" waterLevel="0">
+		<layer p="0" day="true">
+			<tile sheet="bg.png" x="0" y="0" />
+			<rect color="438a9e" x="0" y="80" width="256" height="64" />
+		</layer>
+		<run procedure="start.bg" />
+		<layer p="0.046875" py="0.1875" scroll="0.0625"><tile sheet="tiles256.png" x="0" /></layer>
+		<layer p="0.0625" py="0.25"><tile sheet="tiles256.png" x="6" loop="false" offsetX="16" /></layer>
+		<layer p="0.09375" py="0.375" scroll="0.125"><tile sheet="tiles256.png" x="1" dy="8" /></layer>
+		<layer p="0.125" py="0.5"><tile sheet="tiles512.png" x="0" dy="56" loop="false" /></layer>
+		<layer p="0.25" py="0.75">
+			<tile sheet="tiles512.png" x="2" offsetX="-256" dy="32" loop="false" />
+			<tile sheet="tiles256.png" x="4" offsetX="256" dy="32" loop="false" />
+			<tile sheet="tiles512.png" x="1" offsetX="512" dy="32" loop="false" />
+		</layer>
+		<layer p="0.5" minLoop="1" maxLoop="3" py="1">
+			<tile sheet="tiles256.png" x="2" dy="48" cap="left" />
+			<tile sheet="tiles256.png" x="5" dy="48" cap="right" />
+			<tile sheet="tiles256.png" x="3" dy="48" />
+		</layer>
+		<run procedure="start.doodad" />
+		<layer type="back" /><run procedure="start.water" />
+	</parallax>
+	<parallax id="sky" mapBG="1b6a9d" mapBGHeight="80" waterLevel="0">
+		<layer p="0" day="true">
+			<tile sheet="bg.png" x="0" y="0" />
+			<rect color="438a9e" x="0" y="80" width="256" height="64" />
+		</layer>
+		<run procedure="start.bg" />
+		<layer p="0.046875" py="0.1875" scroll="0.0625"><tile sheet="tiles256.png" x="0" /></layer>
+		<layer p="0.09375" py="0.375" scroll="0.125"><tile sheet="tiles256.png" x="1" dy="8" /></layer>
+		<layer type="back" /><run procedure="start.water" />
+	</parallax>
+</data>

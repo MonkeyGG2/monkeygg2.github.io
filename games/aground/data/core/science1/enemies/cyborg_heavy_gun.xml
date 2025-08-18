@@ -1,0 +1,21 @@
+<tilesheet id='cyborg_heavy_gun.png' width='16' height='16' offsetX="-16">
+	<image frame='0' x='0' y='0' width='21' height='12' offsetX='10' offsetY='4' />
+	<image frame='1' x='21' y='0' width='25' height='12' offsetX='6' offsetY='4' />
+	<image frame='2' x='46' y='0' width='20' height='12' offsetX='11' offsetY='4' />
+	<image frame='3' x='0' y='12' width='24' height='12' offsetX='7' offsetY='4' />
+	<image frame='4' x='24' y='12' width='19' height='12' offsetX='12' offsetY='4' />
+	<image frame='5' x='43' y='12' width='22' height='12' offsetX='9' offsetY='4' />
+	<image frame='6' x='0' y='24' width='17' height='12' offsetX='14' offsetY='4' />
+	<image frame='7' x='0' y='36' width='16' height='15' offsetX='16' offsetY='1' />
+	<image frame='8' x='0' y='51' width='14' height='13' offsetX='17' offsetY='3' />
+	<image frame='9' x='17' y='24' width='16' height='12' offsetX='15' offsetY='4' />
+	<image frame='10' x='17' y='36' width='16' height='12' offsetX='15' offsetY='4' />
+	<image frame='11' x='17' y='48' width='16' height='12' offsetX='15' offsetY='4' />
+	<image frame='12' x='17' y='60' width='16' height='12' offsetX='15' offsetY='4' />
+	<image frame='13' x='33' y='24' width='16' height='12' offsetX='15' offsetY='4' />
+	<image frame='14' x='49' y='24' width='14' height='12' offsetX='16' offsetY='4' />
+	<image frame='15' x='33' y='36' width='14' height='12' offsetX='16' offsetY='4' />
+	<image frame='16' x='33' y='48' width='14' height='12' offsetX='16' offsetY='4' />
+	<image frame='17' x='33' y='60' width='14' height='12' offsetX='16' offsetY='4' />
+	<image frame='18' x='47' y='36' width='14' height='12' offsetX='16' offsetY='4' />
+</tilesheet>

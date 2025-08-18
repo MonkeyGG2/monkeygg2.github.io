@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<tile id="dismantle.ico" sheet="items.png" x="293" />
+	<item id="dismantle" type="blueprint" cost="0" weight="0" icon="dismantle.ico" action="dismantle" actionName="item.names.dismantle" />
+	<tile id="blueprint.ico" sheet="items.png" x="292" />
+	<item id="hut_blueprint" type="blueprint" cost="1500" weight="0" icon="blueprint.ico">
+		<action id="build" structure="hut">
+			<item id="wood" count="16" />
+		</action>
+	</item>
+	<item id="storehouse_blueprint" type="blueprint" cost="1500" weight="0" icon="blueprint.ico" achievement="storehouse">
+		<action id="build" structure="storehouse">
+			<item id="wood" count="16" />
+			<item id="berries" count="8" />
+		</action>
+	</item>
+	<item id="kitchen_blueprint" type="blueprint" cost="2000" weight="0" icon="blueprint.ico" achievement="kitchen">
+		<action id="build" structure="kitchen">
+			<item id="wood" count="20" />
+			<item id="coal" count="20" />
+		</action>
+	</item>
+	<item id="kitchen_upgrade" type="blueprint" cost="5000" weight="0" icon="blueprint.ico">
+		<action id="upgrade" upgrade="kitchen" structure="kitchen2">
+			<item id="wood" count="10" />
+			<item id="steel_bar" count="10" />
+		</action>
+	</item>
+	<item id="smelter_blueprint" type="blueprint" cost="2000" weight="0" icon="blueprint.ico" achievement="smelter">
+		<action id="build" structure="smelter">
+			<item id="coal" count="15" />
+		</action>
+	</item>
+	<item id="workshop_blueprint" type="blueprint" cost="2000" weight="0" icon="blueprint.ico" achievement="workshop">
+		<action id="build" structure="workshop">
+			<item id="wood" count="5" />
+			<item id="iron_bar" count="5" />
+		</action>
+	</item>
+	<item id="farm_blueprint" type="blueprint" cost="2000" weight="0" icon="blueprint.ico" achievement="farm">
+		<action id="build" structure="farm">
+			<item id="wood" count="30" />
+		</action>
+	</item>
+	<item id="pen_blueprint" type="blueprint" cost="1000" weight="0" icon="blueprint.ico" achievement="pen">
+		<action id="build" structure="stall">
+			<item id="wood" count="8" />
+		</action>
+	</item>
+	<item id="lab_blueprint" type="blueprint" cost="4000" weight="0" icon="blueprint.ico" achievement="lab">
+		<action id="build" structure="lab" underground="true">
+			<item id="dragonblood" count="5" />
+		</action>
+	</item>
+	<item id="wyrm_pen_blueprint" type="blueprint" cost="5000" weight="0" icon="blueprint.ico" achievement="wyrm_pen">
+		<action id="build" structure="wyrm_pen" underground="true">
+			<item id="steel_bar" count="10" />
+		</action>
+	</item>
+	<item id="dock_blueprint" type="blueprint" cost="5000" weight="0" icon="blueprint.ico" achievement="dock">
+		<action id="build" structure="dockhouse" constraints="or" fail="warning.structure_coast">
+			<constraint enabled="s != null && (s.info.id == 'dock_empty' || s.info.id == 'dock')" x="s.xPos+s.info.width">
+				s = area.getStructure(makeRect(x-Tile.SIZE*4, tile_y, width*0.5+Tile.SIZE*4, Tile.SIZE));
+			</constraint>
+			<constraint enabled="s != null && (s.info.id == 'dock_empty_flip' || s.info.id == 'dock_flip' || s.info.id == 'sci1.dock_flip')" x="s.xPos-100">
+				s = area.getStructure(makeRect(x+width*0.5, tile_y, width*0.5+Tile.SIZE*4, Tile.SIZE));
+			</constraint>
+			<item id="wood" count="20" />
+			<item id="cloth" count="5" />
+			<item id="net" count="5" />
+		</action>
+		<build>
+			<structure id="dock" x="this.tile_x-4" if="area.getStructureInTile(this.tile_x-4, this.tile_y).info.id == 'dock_empty'" />
+			<structure id="dock_flip" x="this.tile_x+6" if="area.getStructureInTile(this.tile_x+6, this.tile_y).info.id == 'dock_empty_flip'" />
+		</build>
+		<dismantle>
+			<structure id="dock_empty" x="this.tile_x-4" if="area.getStructureInTile(this.tile_x-4, this.tile_y).info.id == 'dock'" />
+			<structure id="dock_empty_flip" x="this.tile_x+6" if="area.getStructureInTile(this.tile_x+6, this.tile_y).info.id == 'dock_flip'" />
+		</dismantle>
+	</item>
+	<item id="warehouse_blueprint" type="blueprint" cost="7500" weight="0" icon="blueprint.ico">
+		<action id="build" structure="warehouse" constraints="or" fail="warning.structure_coast" alternate="warehouse_flipped">
+			<constraint enabled="s != null && (s.info.id == 'dock_empty' || s.info.id == 'dock')" x="s.xPos+s.info.width">
+				s = area.getStructure(makeRect(x-Tile.SIZE*6, tile_y, width*0.5+Tile.SIZE*6, Tile.SIZE));
+			</constraint>
+			<constraint enabled="s != null && (s.info.id == 'dock_empty_flip' || s.info.id == 'dock_flip' || s.info.id == 'sci1.dock_flip')" x="s.xPos-128">
+				s = area.getStructure(makeRect(x+width*0.5, tile_y, width*0.5+Tile.SIZE*6, Tile.SIZE));
+			</constraint>
+			<item id="wood" count="40" />
+			<item id="cloth" count="10" />
+			<item id="net" count="10" />
+		</action>
+		<build>
+			<section if="area.getStructureInTile(this.tile_x-4, this.tile_y).info.id == 'dock_empty'">
+				<structure id="dock" x="this.tile_x-4" /><action>this.structure = getStructure('warehouse_flipped')</action>
+			</section>
+			<structure id="dock_flip" x="this.tile_x+8" if="area.getStructureInTile(this.tile_x+8, this.tile_y).info.id == 'dock_empty_flip'" />
+		</build>
+	</item>
+	<item id="power_plant_blueprint" type="blueprint" cost="5000" weight="0" icon="blueprint.ico" achievement="powerplant">
+		<action id="build" structure="power_plant" underground="true">
+			<item id="steel_bar" count="10" />
+			<item id="titanium" count="5" />
+		</action>
+	</item>
+	<item id="elevator_blueprint" type="blueprint" cost="5000" weight="0" icon="blueprint.ico" achievement="elevator">
+		<action id="build" structure="elevator" alignTile="true" underground="true">
+			<item id="silicon" count="2" />
+			<item id="titanium" count="2" />
+			<item id="steel_bar" count="10" />
+			<item id="chest" count="1" />
+		</action>
+	</item>
+	<item id="workshop_upgrade" type="blueprint" cost="5000" weight="0" icon="blueprint.ico" achievement="factory">
+		<action id="build" structure="factory">
+			<item id="coal" count="15" />
+			<item id="sulfur" count="10" />
+			<item id="quartz" count="4" />
+		</action>
+	</item>
+	<item id="powerline_blueprint" type="blueprint" cost="5000" weight="0" icon="blueprint.ico">
+		<action id="build" structure="powerline1" alternate="powerline2">
+			<item id="wood" count="5" />
+			<item id="silicon" count="2" />
+		</action>
+	</item>
+</data>

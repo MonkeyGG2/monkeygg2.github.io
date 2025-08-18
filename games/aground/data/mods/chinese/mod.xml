@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mod>
+    <name>Chinese Translation</name>
+    <description>A chinese translation (traditional and simplified) of the core game.</description>
+    <author>[font=zpix]skps2010蘆筍</author>
+    <version>1.0.0</version>
+    <init multiplayerSync="false">
+		<font id="zpix" path="fonts/zpix.fnt.z" />
+        <include id="zh_CN.xml" includeRoot="true" />
+        <include id="zh_TW.xml" includeRoot="true" />
+    </init>
+</mod>
+

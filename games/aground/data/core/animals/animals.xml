@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<familiar id="ground_default" type="ground" costPerSecond="0.25" />
+	<familiar id="flying_default" type="flying" canWalk="true" costPerSecond="0.25" />
+	<familiar id="ground_collect" type="ground" costPerSecond="0.25" collect="0" />
+	<familiar id="flying_collect" type="flying" canWalk="true" costPerSecond="0.25" collect="0" />
+	
+	<animation id="pig">
+		<frame count="4" />
+		<frame x="4"  />
+		<frame x="1" count="3" />
+		<frame x="5" count="4" />
+		<frame count="4" />
+	</animation>
+	<item id="pig" type="animal" cost="75" weight="2" icon="pig.ico" animation="pig" action="rename" />
+	
+	<tilesheet id="rat.png" width="16" height="10" />
+	<tile id="rat" sheet="rat.png" x="0" y="0" />
+	<animation id="rat.idle" count="8">
+		<frame x="8" />
+		<frame x="1" count="7" />
+		<frame x="21" count="9" />
+		<frame x="8" />
+		<frame x="1" count="7" />
+		<frame x="0" count="8" />
+	</animation>
+	<animation id="rat.hit" x="9" count="2">
+		<frame x="2" count="2" />
+		<frame x="11" count="2" />
+		<frame x="6" count="4" />
+	</animation>
+	<animation id="rat.walk" count="8" x="13" />
+	<item id="rat" type="animal" cost="40" weight="1" slot="familiar" icon="rat" animation="rat.idle">
+		<action id="equip" /><action id="rename" />
+		<familiar id="ground_collect" tile="rat" animation="rat" />
+	</item>
+	
+	<tile id="chicken" sheet="chicken.png" x="0" y="0" />
+	<animation id="chicken.farm">
+		<frame x="0" />
+		<frame x="1" length="5" />
+		<frame x="2" count="11" />
+		<frame x="13" count="7" />
+		<frame x="13" count="7" />
+	</animation>
+	<animation id="chicken.idle">
+		<frame x="0" />
+		<frame x="1" length="10" />
+		<frame x="0" />
+		<frame x="1" length="5" />
+		<frame x="0" />
+		<frame x="28" count="5" />
+		<frame x="33" length="50" />
+		<frame x="28" count="5" reverse="true" />
+	</animation>
+	<animation id="chicken.walk" x="20" count="8" />
+	<animation id="chicken.lay" x="2" count="11" />
+	<familiar id="chicken" type="ground" costPerSecond="0.25">
+		<spawn item="eggs" cooldown="500" cost="50" animation="lay" />
+	</familiar>
+	<item id="chicken" type="animal" cost="100" weight="2" durability="800" slot="familiar" icon="chicken.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="chicken" tile="chicken" animation="chicken" />
+		<food id="berries" value="50" />
+		<food id="fruit" value="100" />
+		<food id="wheat" value="30" />
+		<food id="bread" value="100" />
+		<food id="pie" value="200" />
+	</item>
+	
+	<tilesheet id="cow.png" width="32" height="16" />
+	<tile id="cow" sheet="cow.png" x="0" y="0" />
+	<animation id="cow.idle">
+		<frame count="5" />
+		<frame count="10" />
+		<frame count="10" x="5" />
+		<frame count="5" x="10" />
+		<frame count="5" x="10" />
+		<frame count="5" />
+	</animation>
+	<item id="cow" type="animal" cost="300" weight="4" icon="cow.ico" action="rename" />
+	
+	<familiar id="wyrm" type="ground" costPerSecond="0.25">
+		<breakPower amount="1" cost="4" />
+		<attack type="melee" damage="3" cost="10" hit_sfx="wyrm_attack" />
+	</familiar>
+	<item id="wyrm" type="animal" cost="300" durability="1000" weight="4" icon="wyrm.ico" slot="familiar">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<action id="transform" into="cocoon" value="10000" enabled="value == 0" />
+		<familiar id="wyrm" tile="wyrm" animation="wyrm" fps="10" />
+		<food id="rat" value="200" />
+		<food id="pig" value="300" />
+		<food id="chicken" value="500" />
+		<food id="cow" value="1000" />
+		<food id="steak" value="125" />
+		<food id="coal" value="125" />
+	</item>
+	
+	<animation id="cocoon" count="6" />
+	<item id="cocoon" type="animal" cost="300" weight="4" durability="10000" durabilityName="none" icon="cocoon.ico" animation="cocoon">
+		<action id="rename" /><action id="transform" into="wyrm" value="0" />
+	</item>
+	
+	<include id="baby_dragon.xml" includeRoot="true" />
+	<tile id="baby_dragon" sheet="baby_dragon.png" x="0" y="0" />
+	<animation id="baby_dragon.walk" count="10" />
+	<animation id="baby_dragon.fire" x="16" count="24" />
+	<animation id="baby_dragon.prepareFire" x="16" count="15" />
+	<animation id="baby_dragon.doFire" count="9" x="31" />
+	<animation id="baby_dragon.fly">
+		<frame count="1" length="12" x="12" />
+		<frame count="6" x="10" repeat="2" />
+		<frame count="2" x="10" />
+		<frame count="1" length="12" x="12" />
+	</animation>
+	<animation id="baby_dragon.idle" x="40" count="26" />
+	<familiar id="baby_dragon" type="flying" canWalk="true" element="fire" standAttack="true" costPerSecond="0.25">
+		<attack type="melee" range="0.5" damage="3" cost="10" animation="doFire" hitEffect="fire_sm">
+			<pre><play object="this" animation="prepareFire" /></pre>
+		</attack>
+	</familiar>
+	<item id="dragon" type="animal" cost="400" durability="2000" weight="4" slot="familiar" icon="baby_dragon.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="baby_dragon" tile="baby_dragon" animation="baby_dragon" />
+		<food id="rat" value="200" />
+		<food id="pig" value="300" />
+		<food id="chicken" value="500" />
+		<food id="cow" value="1000" />
+		<food id="steak" value="125" />
+		<food id="coal" value="125" />
+	</item>
+	
+	<familiar id="young_dragon" type="flying" costPerSecond="0.5" element="fire">
+		<attack type="breath" damage="3" range="7" repeat="2" animation="fire" sfx="dragon_atk" cost="5">
+			<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="1" breakPower="8" scaleTo="2" offsetX="-24" offsetY="1" hitEffect="fire_sm" hitTrees="true" color="f9be0b" colorScale="2">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+	</familiar>
+	<item id="young_dragon" type="animal" cost="0" durability="4000" weight="20" slot="familiar" icon="young_dragon.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="young_dragon" tile="young_dragon" animation="young_dragon" />
+		<food id="pig" value="300" />
+		<food id="chicken" value="500" />
+		<food id="cow" value="1000" />
+		<food id="steak" value="125" />
+		<food id="coal" value="125" />
+	</item>
+	
+	<familiar id="adult_dragon" type="flying" costPerSecond="1" element="fire">
+		<attack type="breath" damage="4" range="13" repeat="2" animation="hover_fire" sfx="dragon_atk" cost="5">
+			<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-33" offsetY="-5" hitEffect="fire_med" hitTrees="true" color="f9be0b" colorScale="2">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+	</familiar>
+	<item id="adult_dragon" type="animal" cost="0" durability="8000" weight="60" slot="familiar" icon="adult_dragon.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<action id="plant" name="vehicle.deploy" object="fly_adult_dragon" onGrass="false" overlapBlueprints="true" overlapStructures="true" removeBushes="false" enabled="itemValue == null">
+			<action>
+				object.setFuel(this.getFeed()); object.name = this.getNameStr(); f = Item.getParameter(this.getNameStr(), "f"); if(f != null) object.setHealth(Std.parseInt(f));
+			</action>
+		</action>
+		<familiar id="adult_dragon" tile="adult_dragon" animation="adult_dragon" />
+		<food id="pig" value="300" />
+		<food id="chicken" value="500" />
+		<food id="cow" value="1000" />
+		<food id="steak" value="125" />
+		<food id="coal" value="125" />
+	</item>
+	
+	<include id="cockatiel.xml" includeRoot="true" />
+	<tile id="cockatiel" sheet="cockatiel.png" x="0" y="0" />
+	<animation id="cockatiel.idle" x="5" count="16" />
+	<animation id="cockatiel.fly" count="5" />
+	<animation id="cockatiel.walk" x="21" count="5" />
+	<item id="cockatiel" type="animal" cost="200" weight="1" slot="familiar" icon="cockatiel.ico">
+		<action id="equip" /><action id="rename" />
+		<familiar id="flying_collect" tile="cockatiel" animation="cockatiel" />
+	</item>
+	
+	<include id="owl.xml" includeRoot="true" />
+	<tile id="owl" sheet="owl.png" x="0" y="0" />
+	<animation id="owl.idle" x="23" count="56" />
+	<animation id="owl.fly" x="6" count="16" />
+	<animation id="owl.attack" x="0" count="6" />
+	<familiar id="owl" type="flying" canLand="true" costPerSecond="0.5" talk_sfx="owl">
+		<light tile="light.default" color="fafa66" />
+		<attack type="melee" damage="4" cost="10" />
+	</familiar>
+	<item id="owl" type="animal" cost="400" durability="2000" weight="2" slot="familiar" icon="owl.ico" desc="item.descriptions.sight_range">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="owl" tile="owl" animation="owl" />
+		<food id="rat" value="200" />
+		<food id="meat" value="75" />
+		<food id="steak" value="125" />
+		<food id="hamburger" value="300" />
+		<food id="cheeseburger" value="500" />
+		<onEquip><action if="player.vehicle==null">setGameScale(2)</action></onEquip>
+		<onUnequip><action if="player.vehicle==null">setGameScale(1)</action></onUnequip>
+	</item>
+	
+	<tile id="wolf" sheet="wolf.png" x="0" y="0" />
+	<animation id="wolf.idle" count="7">
+		<frame x="1" count="4" repeat="3" />
+	</animation>
+	<animation id="wolf.walk" x="7" count="8" />
+	<animation id="wolf.attack" x="15" count="7" />
+	<familiar id="dog" type="ground" costPerSecond="0.25" talk_sfx="bark">
+		<attack type="melee" damage="3" cost="10" />
+	</familiar>
+	<item id="wolf" type="animal" cost="100" weight="2" durability="2000" slot="familiar" icon="wolf.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="dog" tile="wolf" animation="wolf" />
+		<food id="rat" value="200" />
+		<food id="meat" value="75" />
+		<food id="steak" value="125" />
+		<food id="hamburger" value="300" />
+		<food id="cheeseburger" value="500" />
+		<food id="chicken" value="500" />
+	</item>
+	
+	<include id="cat.xml" includeRoot="true" />
+	<tile id="cat" sheet="cat.png" x="0" y="0" />
+	<animation id="cat.idle" x="12" count="16">
+		<frame x="12" count="8" repeat="2" />
+	</animation>
+	<animation id="cat.walk" x="28" count="6" />
+	<animation id="cat.attack1" count="6" />
+	<animation id="cat.attack2" count="6" x="6" />
+	<animation id="cat.talk" x="20" count="8" shift="3" />
+	<familiar id="cat" type="ground" costPerSecond="0.5" sight="4" talk_sfx="meow">
+		<ride item="flying_broom" x="-3" y="-2" />
+		<ride item="ftl_broom" x="-3" y="-2" />
+		<light tile="light.default" color="66fa66" />
+		<attack type="melee" damage="2" cost="10" overEnemy="true" hits="2" animation="attack1" hit_sfx="shadowcat_attack">
+			<cont animation="attack2" />
+		</attack>
+	</familiar>
+	<item id="cat" type="animal" cost="100" weight="2" durability="2000" slot="familiar" icon="cat.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="cat" tile="cat" animation="cat" />
+		<food id="rat" value="200" />
+		<food id="meat" value="75" />
+		<food id="steak" value="125" />
+		<food id="hamburger" value="300" />
+		<food id="cheeseburger" value="500" />
+		<food id="toothfish" value="125" />
+		<food id="rockfish" value="300" />
+		<food id="coral_cod" value="750" />
+		<food id="chicken" value="500" />
+	</item>
+	
+	
+	<tile id="seagull" sheet="seagull.png" x="0" y="0" />
+	<animation id="seagull.walk" count="7" />
+	<animation id="seagull.fly" x="7" count="9" />
+	
+	<tile id="redbreast" sheet="redbreast.png" x="0" y="0" />
+	<animation id="bird.idle">
+		<frame x="1" y="0" length="4" />
+		<frame x="0" y="0" length="2" />
+		<frame x="1" y="0" length="16" />
+		<frame x="9" y="0" length="4" />
+		<frame x="1" y="0" length="16" />
+		<frame x="10" y="0" length="2" />
+		<frame x="1" y="0" length="2" />
+		<frame x="10" y="0" length="2" />
+	</animation>
+	<animation id="bird.hop" x="1" count="8" />
+	<animation id="bird.leap" x="11" count="3" />
+	<animation id="bird.land" x="11" count="3" reverse="true" />
+	<animation id="bird.fly" x="14" count="2" />
+	
+	<familiar id="golem" type="ground" costPerSecond="0.25" element="earth" talk_sfx="golem">
+		<attack type="melee" damage="4" cost="10" afterAnimation="roar" hit_sfx="golem_attack" />
+	</familiar>
+	<item id="golem" type="animal" cost="0" weight="20" durability="8000" captureDurability="8000" slot="familiar" icon="golem.ico" breakable="true" durabilityName="common.enchantment" needsO2="false">
+		<action id="equip" /><action id="rename" />
+		<familiar id="golem" tile="golem" animation="golem" />
+	</item>
+	
+	<familiar id="gold_golem" type="ground" costPerSecond="0.25" element="earth" talk_sfx="golem">
+		<attack type="melee" damage="8" cost="10" afterAnimation="roar" hit_sfx="golem_attack" />
+	</familiar>
+	<item id="gold_golem" extends="golem" color="ffff66" colorScale="1.6">
+		<familiar id="gold_golem" tile="golem" animation="golem" />
+	</item>
+	<item id="purple_golem" extends="golem" color="ff66ff" colorScale="1.6">
+		<familiar id="gold_golem" tile="golem" animation="golem" />
+	</item>
+	
+	<familiar id="diode_wolf" type="ground" costPerSecond="0.25" talk_sfx="diode_wolf_howl">
+		<attack type="melee" damage="4" cost="10" hitEffect="fire_lg_dot" sfx="diode_wolf_attack" allowDefaultSfx="false" />
+	</familiar>
+	<item id="diode_wolf" type="animal" cost="0" durability="500" weight="5" slot="familiar" icon="diode_wolf.ico">
+		<action id="equip" /><action id="rename" /><equipCost storage="power" cost="5" durability="-20" full="false" />
+		<familiar id="diode_wolf" tile="diode_wolf" animation="diode_wolf" />
+	</item>
+	
+	<familiar id="steel_wyrm" type="ground" costPerSecond="0.25">
+		<breakPower amount="1" cost="4" />
+		<attack type="melee" damage="6" cost="10" hit_sfx="mecha_wyrm_attack" />
+		<attack type="projectile" damage="6" cost="10" range="8" sfx="radioactive_bolt">
+			<projectile tile="fireball_small" animation="fireball_small.acid" speed="3" offsetY="4" glow="true" hit_sfx="bolt_hit" underwater="true">
+				<light tile="light.small" color="00cc00" />
+			</projectile>
+		</attack>
+	</familiar>
+	<item id="steel_wyrm" type="animal" cost="0" durability="4000" weight="8" slot="familiar" icon="steel_wyrm.ico">
+		<action id="equip" /><action id="feed" alt="feed_all" sfx="eat" /><action id="rename" />
+		<familiar id="steel_wyrm" tile="steel_wyrm" animation="steel_wyrm" fps="10" />
+		<food id="coal" value="125" />
+		<food id="iron" value="250" />
+		<food id="silicon" value="300" />
+		<food id="sulfur" value="300" />
+		<food id="steel_bar" value="300" />
+		<food id="titanium" value="600" />
+		<food id="uranium" value="1000" />
+	</item>
+	
+	<tile id="electric_eel" equals="electric_eel.ico" />
+	<animation id="electric_eel.idle" equals="item4" />
+	<animation id="electric_eel.swim" equals="item4" />
+	<familiar id="electric_eel" type="swimming" collect="0">
+		<light tile="light.default" color="bafa66" />
+	</familiar>
+	<item id="electric_eel" type="animal" cost="300" weight="2" slot="familiar" icon="electric_eel.ico" animation="item4">
+		<action id="equip" /><action id="rename" /><equipCost storage="power" cost="-2" />
+		<familiar id="electric_eel" tile="electric_eel" animation="electric_eel" />
+	</item>
+	
+	<familiar id="spider" type="ground">
+		<attack type="melee" damage="2" sfx="spider_attack">
+			<pre><play object="this" animation="pre_attack" /></pre>
+			<hitEffect tile="spider" animation="spider.web" freeze="1" canFlip="true" />
+		</attack>
+	</familiar>
+	<item id="spider" type="animal" cost="50" weight="1" slot="familiar" icon="spider.ico" animation="item4">
+		<action id="equip" /><action id="rename" />
+		<familiar id="spider" tile="spider" animation="spider" fps="15" />
+	</item>
+</data>

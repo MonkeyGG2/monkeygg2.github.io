@@ -80,6 +80,11 @@
             "aliases": [],
             "categories": []
         },
+        "Aground": {
+            "path": "aground",
+            "aliases": [],
+            "categories": []
+        },
         "Amidst The Sky": {
             "path": "amidst-the-sky",
             "aliases": [],
@@ -171,7 +176,7 @@
             "categories": []
         },
         "Cat Ninja": {
-            "path": "w-flash/?game=cat-ninja",
+            "path": "flash/?game=cat-ninja",
             "aliases": [],
             "categories": []
         },
@@ -572,7 +577,7 @@
             "categories": []
         },
         "Papas Freezeria": {
-            "path": "w-flash/?game=papas-freezeria",
+            "path": "flash/?game=papas-freezeria",
             "aliases": [],
             "categories": []
         },
@@ -641,6 +646,11 @@
             "aliases": [],
             "categories": []
         },
+        "Rocket League 2D": {
+            "path": "rocket-league-2d",
+            "aliases": [],
+            "categories": []
+        },
         "Rogue Soul": {
             "path": "flash/?game=rogue-soul",
             "aliases": [],
@@ -706,6 +716,11 @@
             "aliases": [],
             "categories": []
         },
+        "Sabercut": {
+            "path": "sabercut",
+            "aliases": [],
+            "categories": []
+        },
         "Sandspiel": {
             "path": "sandspiel",
             "aliases": [],
@@ -718,6 +733,11 @@
         },
         "Shadow Fight": {
             "path": "shadow-fight",
+            "aliases": [],
+            "categories": []
+        },
+        "Slice Master": {
+            "path": "slice-master",
             "aliases": [],
             "categories": []
         },
@@ -832,7 +852,12 @@
             "categories": ["escape"]
         },
         "Sugar Sugar": {
-            "path": "w-flash/?game=sugar-sugar",
+            "path": "flash/?game=sugar-sugar",
+            "aliases": [],
+            "categories": []
+        },
+        "Swords and Souls": {
+            "path": "flash/?game=swords-and-souls",
             "aliases": [],
             "categories": []
         },
@@ -848,6 +873,11 @@
         },
         "There Is No Game": {
             "path": "there-is-no-game",
+            "aliases": [],
+            "categories": []
+        },
+        "Tic Tac What?": {
+            "path": "tic-tac-what",
             "aliases": [],
             "categories": []
         },
@@ -963,7 +993,6 @@
     "config": {
         "proxy": true, // proxy only works when self-hosted
         "proxyPath": "https://monkey.nordparrot.ro" // absolute or relative path to proxy; proxy must be set to true for this setting to have any effect.
-        // if you are using VioletGG2, all you need to do set proxy to true
-        // proxyPath is already set for you if you are using VioletGG2
+        // if you are using VioletGG2, all you need to do set proxy to "/proxy.html"
     }
 }

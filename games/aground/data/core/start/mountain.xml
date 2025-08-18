@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<areas>
+	<area id="mountain">
+		<shape type="trapezoid">
+			<top y="0" fromX="11" toX="29" />
+			<bottom y="10" fromX="8" toX="31" />
+		</shape>
+		<shape type="trapezoid" bottom="112">
+			<top y="10" fromX="2" toX="31" />
+			<bottom y="15" fromX="0" toX="32" />
+		</shape>
+		<tiles id="stone" start="0" end="1" />
+		<tiles id="snow" top="0" />
+		<tiles id="snow_stone" top="1" />
+		<tiles id="bedrock" y="111" />
+		<run procedure="mountain.dragon_cave" />
+		<object id="conifer_snow" x="2" y="9" />
+		<objects id="conifer_snow" y="-1" startX="7" endX="28" minDist="6" maxDist="6" />
+		<objects id="bush_snow" y="-1" fromX="12" toX="29" percent="0.25" />
+		<objects id="red_bush_snow" y="-1" fromX="12" toX="29" percent="0.175"  />
+		<shore x="32" y="16" top="sand_top" bottom="sand" dock="dock_empty_flip" />
+		<action>
+			for(i in 8...32){setOre(i, 96, "lava"); setOre(i, 98, "lava"); mine(i, 97);}
+			for(i in 96...111) setTile(7, i, "bedrock");
+		</action>
+		<ore id="diamond" start="0.8" end="1.0" percent="0.0025" tile="stone" />
+		<ore id="gold" start="0.3" end="1.0" percent="0.0125" tile="stone" />
+		<ore id="iron" start="0.0" end="0.8" percent="0.0375" tile="stone" />
+		<ore id="lava" start="0.65" end="0.75" percent="1" tile="stone" />
+		<objects id="golem" start="0.7" end="1.0" percent="0.005" tile="stone" />
+		<object id="yeti" x="19" y="-1" />
+		<objects id="fire_bird" startX="8" endX="31" minDist="6" maxDist="9" y="97" />
+		<spawner id="yeti" time="10000" count="1" fromX="13" toX="26" fromY="-1" toY="-1" />
+		<spawner id="fire_bird" time="4000" count="4" fromX="8" toX="31" fromY="97" toY="97" />
+		<appendArea id="mountain.rocks" offsetX="32" offsetY="16" />
+		<structure id="tent" x="4" y="9" />
+		<object id="hunter_hotspot" x="-4" y="15" />
+		<onLoad>
+			<action>_x = offsetX+13</action>
+			<repeat count="4">
+				<tile id="mountain_snow" tile_x="random()*8" x="_x" y="offsetY-2" back="true" />
+				<action>_x += 4;</action>
+			</repeat>
+			<setTile x="32" y="13" tile="empty" /><action>mine(offsetX+32,offsetY+13)</action>
+			<repeat count="6">
+				<tile id="mountain_snow" tile_x="random()*8" x="offsetX+11+random()*16" y="offsetY-2" back="true" />
+			</repeat>
+			<structure id="dragon_lair" x="offsetX+21" y="offsetY+13" if="area.getStructureById('dragon_lair') == null && area.getStructureById('dragon_lair2') == null" />
+			<section if="area.getStructureById('tent') == null">
+				<removeObjects layer="tree" x="offsetX+2" y="offsetY+9" width="4" />
+				<object id="conifer_snow" x="offsetX+2" y="offsetY+9" />
+				<structure id="tent" x="offsetX+4" y="offsetY+9" />
+				<object id="hunter_hotspot" x="offsetX-4" y="offsetY+15" />
+			</section>
+			<section if="area.getStructureById('recipe_pillar') == null">
+				<spreadTiles x="11" y="95" tile="invisible_block" on="stone" count="100" />
+				<structure id="recipe_pillar" x="offsetX+11" y="offsetY+95" recipe="make_fire_arrow" />
+			</section>
+		</onLoad>
+	</area>
+	<area id="mountain.rocks">
+		<shape type="rectangle" x="5" y="-1" width="1" height="16" />
+		<shape type="rectangle" x="8" y="0" width="1" height="31" />
+		<tiles id="bedrock" start="0" end="1" />
+		<onLoad>
+			<setTile x="5" y="-1" tile="bedrock" />
+			<setTile x="8" y="0" tile="bedrock" />
+			<setTile x="5" y="-2" tile="bedrock" />
+			<setTile x="8" y="-1" tile="bedrock" />
+			<setTile x="5" y="0" tile="bedrock" />
+			<setTile x="8" y="1" tile="bedrock" />
+		</onLoad>
+	</area>
+	<procedure id="mountain.dragon_cave">
+		<action>
+		for(y in 8...13) for(x in 20...31) mine(x, y);
+		for(x in 22...28) mine(x, 7); for(y in 9...12) mine(19, y);
+		</action>
+		<object id="adult_dragon" x="23.5" y="12" />
+		<structure id="dragon_lair" x="21" y="13" />
+	</procedure>
+</areas>

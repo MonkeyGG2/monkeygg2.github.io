@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<animation id="magic_house.idle" count="8" />
+	<animation id="magic_house.active" x="8" count="8" glow="true" />
+	<structure id="magic_house" width="60" height="55" image="house.png" name="enter" sleep="true">
+		<operate>
+			<section if="player.areas.get('start').getStructureById('dragon_lair2') == null">
+				<dialogue section="structure" id="activate_fail" /><stop />
+			</section>
+			<action>this.loopAnimation("active"); this.playSFX("fire");</action>
+			<choose if="!getFlag('final_boss_defeat')">
+				<scene id="alchemist" show="first" with="fade" if="player.questComplete('wyrm_hive') && !getFlag('alchemist_first')" showToAll="true">
+					<action>setFlag('alchemist_first', true);</action>
+				</scene>
+				<scene id="alchemist" show="second" with="fade" if="player.questComplete('spirit_gem') && !getFlag('alchemist_second')" showToAll="true">
+					<action>setFlag('alchemist_second', true);</action>
+				</scene>
+			</choose>
+			<action>player.restoreStamina();</action><save sleep="true" />
+		</operate>
+		<exit><action>this.loopAnimation("idle"); this.stopSFX()</action></exit>
+	</structure>
+	
+	<include id="struc.xml" />
+	<tile id="magic_farm" sheet="struc.1" />
+	<tile id="time_manipulator" x="13" sheet="struc.1" />
+	<tile id="magic_forge" sheet="struc.2" />
+	
+	<animation id="magic_forge_off.idle" count="1" />
+	<animation id="magic_forge.idle" x="1" count="6" />
+	<animation id="magic_forge.active" x="7" count="6" glow="true" />
+	<structure id="magic_forge_off" tile="magic_forge" name="activate">
+		<operate><set id="achievement" value="'forge'" /><set id="gem" value="'fire_gem'" /><set id="into" value="'magic_forge'" /><set id="sfx" value="null" /><run procedure="activate.gem_structure" /></operate>
+	</structure>
+	
+	<recipe id="forge_diamond" creates="diamond" type="magic_forge"><item id="quartz" count="5" /></recipe>
+	<recipe id="forge_diamond2" creates="diamond" type="magic_forge"><item id="dragonblood" count="2" /></recipe>
+	<recipe id="forge_focus_gem" creates="focus_gem" count="4" type="magic_forge"><item id="diamond" count="1" /></recipe>
+	<recipe id="forge_fire_tusk" creates="fire_tusk" type="magic_forge"><type id="no_uncraft" /><item id="diamond" count="1" /></recipe>
+	<recipe id="forge_yeti_fur" creates="yeti_fur" type="magic_forge"><type id="no_uncraft" /><item id="ice_berries" count="20" /></recipe>
+	<recipe id="forge_net" creates="net" type="magic_forge" count="4"><type id="no_uncraft" /><item id="diamond" count="1" /></recipe>
+	<recipe id="make_ice_sword" creates="ice_sword" type="enchantments">
+		<item id="steel_sword" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="repair_ice_sword" creates="ice_sword" type="enchantments" enchantOnly="true">
+		<item id="ice_sword" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_fire_sword" creates="fire_sword" type="enchantments">
+		<item id="steel_sword" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="repair_fire_sword" creates="fire_sword" type="enchantments" enchantOnly="true">
+		<item id="fire_sword" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="make_water_sword" creates="water_sword" type="enchantments">
+		<item id="steel_sword" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="repair_water_sword" creates="water_sword" type="enchantments" enchantOnly="true">
+		<item id="water_sword" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_plant_sword" creates="plant_sword" type="enchantments">
+		<item id="steel_sword" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="plant_eye" count="1" />
+	</recipe>
+	<recipe id="repair_plant_sword" creates="plant_sword" type="enchantments" enchantOnly="true">
+		<item id="plant_sword" count="1" />
+		<item id="plant_eye" count="1" />
+	</recipe>
+	<recipe id="make_drain_sword" creates="drain_sword" type="enchantments">
+		<item id="steel_sword" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+	<recipe id="repair_drain_sword" creates="drain_sword" type="enchantments" enchantOnly="true">
+		<item id="drain_sword" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+	<recipe id="make_ice_axe" creates="ice_axe" type="enchantments">
+		<item id="steel_axe" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+    <recipe id="repair_ice_axe" creates="ice_axe" type="enchantments" enchantOnly="true">
+      <item id="ice_axe" count="1" />
+      <item id="yeti_fur" count="1" />
+    </recipe>
+    <recipe id="make_fire_axe" creates="fire_axe" type="enchantments">
+      <item id="steel_axe" count="1" />
+      <item id="blood_gem" count="1" />
+      <item id="fire_tusk" count="1" />
+    </recipe>
+    <recipe id="repair_fire_axe" creates="fire_axe" type="enchantments" enchantOnly="true">
+      <item id="fire_axe" count="1" />
+      <item id="fire_tusk" count="1" />
+    </recipe>
+    <recipe id="make_water_axe" creates="water_axe" type="enchantments">
+      <item id="steel_axe" count="1" />
+      <item id="blood_gem" count="1" />
+      <item id="fire_tusk" count="1" />
+      <item id="yeti_fur" count="1" />
+    </recipe>
+    <recipe id="repair_water_axe" creates="water_axe" type="enchantments" enchantOnly="true">
+      <item id="water_axe" count="1" />
+      <item id="fire_tusk" count="1" />
+      <item id="yeti_fur" count="1" />
+    </recipe>
+    <recipe id="make_plant_axe" creates="plant_axe" type="enchantments">
+      <item id="steel_axe" count="1" />
+      <item id="blood_gem" count="1" />
+      <item id="plant_eye" count="1" />
+    </recipe>
+    <recipe id="repair_plant_axe" creates="plant_axe" type="enchantments" enchantOnly="true">
+      <item id="plant_axe" count="1" />
+      <item id="plant_eye" count="1" />
+    </recipe>
+    <recipe id="make_drain_axe" creates="drain_axe" type="enchantments">
+      <item id="steel_axe" count="1" />
+      <item id="blood_gem" count="1" />
+      <item id="dragonblood" count="1" />
+    </recipe>
+    <recipe id="repair_drain_axe" creates="drain_axe" type="enchantments" enchantOnly="true">
+      <item id="drain_axe" count="1" />
+      <item id="dragonblood" count="1" />
+    </recipe>
+	<recipe id="make_fire_arrow" creates="fire_arrow" type="enchantments">
+		<item id="arrow" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="make_water_arrow" creates="water_arrow" type="enchantments">
+		<item id="arrow" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_drain_arrow" creates="drain_arrow" type="enchantments">
+		<item id="arrow" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+	<recipe id="make_blood_gem" creates="blood_gem" type="enchantments">
+		<type id="no_uncraft" /><item id="alter_gem" count="1" />
+		<item id="dragonblood" count="2" />
+	</recipe>
+	<structure id="magic_forge" tile="magic_forge" type="enchant" slots="5" name="enter" title="actions.enchant" removeButton="structure.uproot">
+		<addedToArea><action>setFlag("activate_forge", true)</action></addedToArea>
+		<recipe type="magic_forge" />
+		<enchant type="enchantments" />
+		<item id="dragonblood" />
+		<item id="quartz" />
+		<item id="gold" />
+		<item id="diamond" />
+		<item id="alter_gem" />
+		<item id="focus_gem" />
+		<item id="spirit_gem" />
+		<item id="blood_gem" />
+		<item id="fire_gem" />
+		<item id="water_gem" />
+		<item id="earth_gem" />
+		<item id="ice_gem" />
+		<item id="plant_gem" />
+		<item id="yeti_fur" />
+		<item id="dark_fur" />
+		<item id="fire_tusk" />
+		<item id="plant_eye" />
+		<item id="ice_heart" />
+		<item id="horn" />
+		<over><action>this.loopAnimation("active")</action></over>
+		<out><action>this.loopAnimation("idle")</action></out>
+		<operate><achievement id="forge" /></operate>
+		<removeBy><action>this.onDismantle(player); player.addItem("forge_seed");</action></removeBy>
+	</structure>
+	
+	<recipe id="focus_gem" fuel="30" type="magic_fuel"><item id="focus_gem" count="1" /></recipe>
+	<recipe id="create_steak" creates="steak" type="magic_farm" incomplete="focus_gem"><type id="no_uncraft" /></recipe>
+	<recipe id="create_bread" creates="bread" type="magic_farm" incomplete="focus_gem"><type id="no_uncraft" /></recipe>
+	<recipe id="create_hamburger" creates="hamburger" type="magic_farm" incomplete="focus_gem">
+		<type id="no_uncraft" /><item id="steak" count="1" /><item id="bread" count="1" />
+	</recipe>
+	<recipe id="create_pie" creates="pie" type="magic_farm" incomplete="focus_gem">
+		<type id="no_uncraft" /><item id="ice_berries" count="1" />
+	</recipe>
+	<recipe id="create_pancakes" creates="pancakes" type="magic_farm" incomplete="focus_gem">
+		<type id="no_uncraft" /><item id="bread" count="1" /><item id="ice_berries" count="2" />
+	</recipe>
+	<recipe id="create_alter_gem" creates="alter_gem" type="magic_farm" incomplete="focus_gem" available="player.questComplete('alter_gem')">
+		<type id="no_uncraft" /><item id="fire_tusk" count="1" /><item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="create_spirit_goggles" creates="goggles" type="magic_farm" incomplete="focus_gem" available="player.questComplete('wyrm_hive')">
+		<type id="no_uncraft" /><item id="spirit_gem" count="2" />
+	</recipe>
+	
+	<animation id="magic_farm_off.idle" count="1" />
+	<animation id="magic_farm.off" x="1" count="6" />
+	<animation id="magic_farm.on" x="7" count="6" glow="true" />
+	<structure id="magic_farm_off" tile="magic_farm" name="activate">
+		<operate><set id="achievement" value="'synthesizer'" /><set id="gem" value="'water_gem'" /><set id="into" value="'magic_farm'" /><set id="sfx" value="null" /><run procedure="activate.gem_structure" /></operate>
+	</structure>
+	<structure id="magic_farm" tile="magic_farm" type="kitchen" max_fuel="1000" name="enter" animation="magic_farm" title="common.synthesizer" display="common.synthesizer" removeButton="structure.uproot" sfx="magic">
+		<addedToArea><action>setFlag("activate_synthesizer", true)</action></addedToArea>
+		<recipe type="magic_fuel" />
+		<recipe type="magic_farm" />
+		<operate><achievement id="synthesizer" /></operate>
+		<removeBy><action>this.onDismantle(player); player.addItem("synthesizer_seed");</action></removeBy>
+	</structure>
+	
+	<structure id="ice_structure" tile="time_manipulator" name="activate">
+		<operate><set id="gem" value="'ice_gem'" /><set id="into" value="'time_manipulator'" /><set id="achievement" value="'time_manipulator'" /><set id="sfx" value="null" /><run procedure="activate.gem_structure" /></operate>
+	</structure>
+	
+	<recipe id="craft_jakolantern" creates="jakolantern"><item id="pumpkin" /></recipe>
+	<recipe id="craft_snowman" creates="snowman"><item id="ice_berries" /></recipe>
+	<recipe id="craft_fire_gem" creates="fire_gem"><item id="spirit_gem" /></recipe>
+	<recipe id="craft_water_gem" creates="water_gem"><item id="spirit_gem" /></recipe>
+	<recipe id="craft_earth_gem" creates="earth_gem"><item id="spirit_gem" /></recipe>
+	<recipe id="craft_ice_gem" creates="ice_gem"><item id="spirit_gem" /></recipe>
+	<recipe id="craft_plant_gem" creates="plant_gem"><item id="spirit_gem" /></recipe>
+	
+	<recipe id="craft_cocoon" creates="cocoon"><item id="wyrm" /></recipe>
+	<recipe id="craft_baby_dragon" creates="dragon"><item id="cocoon" /></recipe>
+	<recipe id="craft_young_dragon" creates="young_dragon"><item id="dragon" /><item id="dragonblood" count="5" /></recipe>
+	<recipe id="craft_adult_dragon" creates="adult_dragon"><item id="young_dragon" /><item id="fire_gem" count="1" /></recipe>
+	
+	<animation id="time_manipulator.idle" x="1" count="6" />
+	<structure id="time_manipulator" tile="time_manipulator" type="smelter" sfx="magic" uncraft="true" max_fuel="300" name="enter" title="common.time_manipulator" removeButton="structure.uproot">
+		<recipe type="magic_fuel" />
+		<listItem icon="uncraft.ico" animation="uncraft.ico" title="actions.uncraft">
+			<window type="uncraft" title="actions.uncraft" exclude="no_uncraft" includeStorehouse="true">
+				<action>this.queue.addSmeltItem(recipe, count)</action>
+			</window>
+		</listItem>
+		<listItem icon="reset_skills.ico" animation="reset_skills.ico" title="actions.reset_skills" enabled="player.skills.points > 0" fail="this.fuel < 100?'warning.fuel':null">
+			<tooltip type="requires" requires="quests.requires">
+				<requirement title="common.fuel" count="this.fuel" of="100" />
+			</tooltip>
+			<action>player.skills.reset(); this.useFuel(100)</action>
+		</listItem>
+		<listItem icon="set_time.ico" animation="set_time.ico" title="actions.set_time" fail="'warning.fuel'">
+			<tooltip type="requires" requires="quests.requires">
+				<requirement title="common.fuel" count="this.fuel" of="5" />
+			</tooltip>
+			<window type="count" title="common.set_time" min="0" max="24" value="Math.round(getGameTime())">
+				<action>setBGMSpeed(0.5)</action><setTime value="value" frames="80" forwards="false"><action>setBGMSpeed(1)</action></setTime><action>this.useFuel(5)</action>
+			</window>
+		</listItem>
+		<operate><achievement id="time_manipulator" /></operate>
+		<removeBy><action>this.onDismantle(player); player.addItem("time_manipulator_seed");</action></removeBy>
+	</structure>
+	
+	<animation id="dragon_magic.idle" equals="adult_dragon.idle" />
+	<structure id="dragon_magic" tile="adult_dragon" type="fuelable" fuelName="feed" maxFuel="8000" name="fly_dragon" includeName="true" only_select="true">
+		<operate>
+			<set id="_name" value="this.name" />
+			<object id="fly_adult_dragon" x="this.xPos/Tile.SIZE" y="this.tile_y" pre="true">this.name = _name;</object>
+			<action>fly_adult_dragon.setFuel(this.fuel); fly_adult_dragon.onOperate(player);</action>
+			<remove structure="this" /><stop />
+		</operate>
+	</structure>
+	
+	<animation id="recipe_pillar.idle" count="6" glow="true" />
+	<structure id="recipe_pillar" image="pillar.png" width="40" height="80" type="enchantRecipe" message="structure.enchant_recipe" priority="-1" addTo="magic_forge" name="activate" renderer="spirit" remove="false" alpha="player.state.hasRecipe('magic_forge', this.recipe)?0.33:1">
+		<addRecipe><dialogue section="structure" id="enchant_added" if="getFlag('activate_forge')" /><action>this.updateAlpha()</action></addRecipe>
+		<addedToArea><displayAction>if(built) this.clearInvisibleBlocks(); player.state.addEventListener("add_recipe", recipe_pillar_alpha);</displayAction></addedToArea>
+		<removedFromArea><displayAction>player.state.removeEventListener("add_recipe", recipe_pillar_alpha);</displayAction></removedFromArea>
+		<init><displayAction>
+			function recipe_pillar_alpha(e){this.updateAlpha();}
+		</displayAction></init>
+	</structure>
+	<animation id="night_recipe_pillar.idle" equals="hidden" />
+	<structure id="night_recipe_pillar" extends="recipe_pillar" nightAnimation="recipe_pillar" />
+</data>

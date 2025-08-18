@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<include id="sheet.xml" includeRoot="true" />
+	<tile id="scene.mirrows.mr" sheet="sheet.png" x="0" y="0" />
+	<tile id="scene.mirrows.mrs" sheet="sheet.png" x="39" y="0" />
+	<tile id="scene.mirrows.mr_weap" sheet="sheet.png" x="13" y="0" />
+	<tile id="scene.mirrows.mrs_weap" sheet="sheet.png" x="50" y="0" />
+	<animation id="scene.mirrows.mr.idle">
+		<frame x="12" length="4" />
+		<frame x="0" count="12" />
+		<frame x="12" length="16" />
+	</animation>
+	<animation id="scene.mirrows.mr.talk" x="18" count="12" />
+	<animation id="scene.mirrows.mrs.idle">
+		<frame x="10" length="8" />
+		<frame x="0" count="10" />
+		<frame x="10" length="12" />
+	</animation>
+	<animation id="scene.mirrows.mrs.talk" x="17" count="10" />
+	<scene id="mirrows">
+		<animation id="weap.hidden"><frame visible="false" /></animation>
+		<animation id="mr_weap.raise" count="5" />
+		<animation id="mrs_weap.raise" count="6" />
+		<animation id="mr_weap.idle" count="1" x="25" />
+		<animation id="mrs_weap.idle" count="1" x="31" />
+		<animation id="mr_weap.active" count="8" x="17" />
+		<animation id="mrs_weap.activate" count="1" x="16">
+			<frame count="8" x="23" />
+		</animation>
+		<animation id="mrs_weap.active" count="6" x="17" />
+		<layer id="bg" image="bg.png" />
+		<layer id="mr" tile="mr" animation="mr.idle" talk="mr.talk" sfx="talking4" x="0" y="0" />
+		<layer id="mrs" tile="mrs" animation="mrs.idle" talk="mrs.talk" sfx="talking6" x="0" y="0" />
+		<layer id="mr_weap" tile="mr_weap" animation="weap.hidden" x="0" y="0" />
+		<layer id="mrs_weap" tile="mrs_weap" animation="weap.hidden" x="0" y="0" />
+		
+		<show id="intro">
+			<layer id="bg" />
+			<layer id="mr" />
+			<layer id="mrs" />
+			<layer id="mr_weap" />
+			<layer id="mrs_weap" />
+			<section if="!getFlag('mirrow.intro')">
+				<action>setFlag('mirrow.intro', true)</action>
+				<wait seconds="2" />
+				<dialogue section="mirrows" id="intro1" speaker='player' />
+				<dialogue section="mirrows" id="intro2" speaker='mr' />
+				<dialogue section="mirrows" id="intro3" speaker='mrs' />
+				<dialogue section="mirrows" id="intro4" speaker='player' />
+			</section>
+			<play object="mrs_weap" animation="mrs_weap.raise" />
+			<play object="mrs_weap" animation="mrs_weap.idle" loop="true" />
+			<dialogue section="mirrows" id="intro5" speaker='mrs' />
+			<play object="mr_weap" animation="mr_weap.raise" />
+			<play object="mr_weap" animation="mr_weap.idle" loop="true" />
+			<dialogue section="mirrows" id="intro6" speaker='mr' />
+			<menu section="common">
+				<choice id="fight">
+					<save if="!player.areas.exists('mirrows_lab')" /><remove quest="mirrows2" />
+					<teleport area="mirrows_lab" x="20.5" y="9" allowReturn="true" />
+					<music id="boss" seconds="1" />
+					<play object="mr_weap" animation="mr_weap.active" loop="true" />
+					<play object="mrs_weap" animation="mrs_weap.activate" />
+					<play object="mrs_weap" animation="mrs_weap.active" loop="true" />
+					<wait seconds="2" />
+				</choice>
+				<choice id="run_away" />
+			</menu>
+		</show>
+		<show id="defeat">
+			<layer id="bg" />
+			<layer id="mr" />
+			<layer id="mrs" />
+			<wait seconds="1" />
+			<action>setFlag('mirrow.defeat', true);</action>
+			<dialogue section="mirrows" id="defeat1" speaker='mrs' />
+			<dialogue section="mirrows" id="defeat2" speaker='player' />
+			<dialogue section="mirrows" id="defeat3" speaker='mr' />
+			<dialogue section="mirrows" id="defeat4" speaker='mrs' />
+			<dialogue section="mirrows" id="defeat5" speaker='mr' />
+		</show>
+	</scene>
+</scenes>

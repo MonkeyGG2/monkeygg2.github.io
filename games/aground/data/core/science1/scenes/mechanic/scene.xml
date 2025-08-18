@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<quest id="mirrows2" giver="mechanic" exp="100">
+		<item id="dragon_armor" count="1" hidden="true" defineLater="true" allowEquipped="true" />
+	</quest>
+	<include id="mechanic.xml" includeRoot="true" />
+	<tile id="scene.mechanic.mechanic" sheet="mechanic.png" x="0" y="0" />
+	<animation id="scene.mechanic.mechanic.repair.top">
+		<frame x="24" count="2" /><frame visible="false" length="7" /><frame x="26" count="3" />
+		<frame visible="false" length="2" /><frame x="15" count="9" /><frame visible="false" length="1" />
+	</animation>
+	<animation id="scene.mechanic.mechanic.highlights">
+		<frame visible="false" length="14" /><frame x="12" />
+		<frame visible="false" length="2" /><frame x="13" />
+		<frame visible="false" /><frame x="14" /><frame visible="false" length="4" />
+	</animation>
+	<animation id="scene.mechanic.mechanic.repair.top2">
+		<frame visible="false" length="48" />
+		<frame x="24" count="2" /><frame visible="false" length="7" /><frame x="26" count="3" />
+		<frame visible="false" length="2" /><frame x="15" count="9" /><frame visible="false" length="1" />
+	</animation>
+	<animation id="scene.mechanic.mechanic.highlights2">
+		<frame visible="false" length="62" /><frame x="12" />
+		<frame visible="false" length="2" /><frame x="13" />
+		<frame visible="false" /><frame x="14" /><frame visible="false" length="4" />
+	</animation>
+	<animation id="scene.mechanic.mechanic.repair">
+		<append tile="scene.mechanic.mechanic" animation="scene.mechanic.mechanic.repair.top" />
+		<append tile="scene.mechanic.mechanic" animation="scene.mechanic.mechanic.highlights" />
+		<frame x="29" count="12" />
+		<frame x="29" count="12" />
+	</animation>
+	<animation id="scene.mechanic.mechanic.idle">
+		<append tile="scene.mechanic.mechanic" animation="scene.mechanic.mechanic.repair.top2" />
+		<append tile="scene.mechanic.mechanic" animation="scene.mechanic.mechanic.highlights2" />
+		<frame x="0" count="12" /><frame x="0" count="12" /><frame x="41" count="12" />
+		<frame x="0" count="12" /><frame x="29" count="12" /><frame x="29" count="12" />
+	</animation>
+	<animation id="scene.mechanic.mechanic.talk" x="53" count="12" />
+	<animation id="scene.mechanic.mechanic.smile" x="41" count="12" />
+	<scene id="mechanic">
+		<layer id="bg" image="bg.png" />
+		<layer id="mechanic" tile="mechanic" animation="mechanic.idle" talk="mechanic.talk" x="0" y="0" />
+		<layer id="bg_mirrows" image="{core}/science1/scenes/mirrows/bg.png" />
+		<layer id="mr" tile="scene.mirrows.mr" animation="scene.mirrows.mr.idle" talk="scene.mirrows.mr.talk" sfx="talking4" x="-40" y="0" />
+		<layer id="mrs" tile="scene.mirrows.mrs" animation="scene.mirrows.mrs.idle" talk="scene.mirrows.mrs.talk" sfx="talking6" x="40" y="0" flip="true" />
+		<show id="intro">
+			<layer id="bg" />
+			<layer id="mechanic" />
+            <play object="mechanic" animation="mechanic.repair" />
+			<wait seconds="1" /><action>setFlag('mechanic.intro', true);</action>
+			<dialogue section="mechanic" id="intro1" speaker='player' />
+			<dialogue section="mechanic" id="intro2" speaker='mechanic' />
+			<dialogue section="mechanic" id="intro3" speaker='player' />
+			<dialogue section="mechanic" id="intro4" speaker='mechanic' />
+			<dialogue section="mechanic" id="intro5" speaker='player' />
+			<dialogue section="mechanic" id="intro6" speaker='mechanic' />
+			<wait seconds="1" />
+		</show>
+		<show id="mirrows">
+			<layer id="bg" />
+			<layer id="mechanic" />
+			<play object="mechanic" animation="mechanic.repair" />
+			<wait seconds="1" /><action>setFlag('mechanic.mirrows', true);</action>
+			<dialogue section="mechanic" id="mirrows1" speaker='mechanic' />
+			<dialogue section="mechanic" id="mirrows2" speaker='player' />
+			<dialogue section="mechanic" id="mirrows3" speaker='mechanic' />
+			<dialogue section="mechanic" id="mirrows4" speaker='player' />
+			<dialogue section="mechanic" id="mirrows5" speaker='mechanic' />
+		</show>
+		<show id="mirrows2">
+			<layer id="bg" />
+			<layer id="mechanic" />
+			<play object="mechanic" animation="mechanic.repair" />
+			<wait seconds="1" />
+			<dialogue section="mechanic" id="mirrows6" speaker='player' />
+			<dialogue section="mechanic" id="mirrows7" speaker='mechanic' />
+			<dialogue section="mechanic" id="mirrows8" speaker='player' />
+			<dialogue section="mechanic" id="mirrows9" speaker='mechanic' />
+			<dialogue section="mechanic" id="mirrows10" speaker='mechanic' />
+			<quest id="mirrows2" />
+		</show>
+		<show id="mirrows3">
+			<layer id="bg" />
+			<layer id="bg_mirrows" />
+			<layer id="mr" /><layer id="mrs" />
+			<layer id="mechanic" />
+			<hide id="bg_mirrows" /><hide id="mrs" /><hide id="mr" />
+			<set id="mirrow_n" value="player.areas.get('mirrows_lab').getObject('mirrow_n')" />
+			<set id="mirrow_d" value="player.areas.get('mirrows_lab').getObject('mirrow_d')" />
+			<object id="mirrow_n.npc" x="mirrow_n.xPos/Tile.SIZE" y="mirrow_n.yTile/Tile.SIZE" area="mirrows_lab" />
+			<object id="mirrow_d.npc" x="mirrow_d.xPos/Tile.SIZE" y="mirrow_d.yTile/Tile.SIZE" area="mirrows_lab" />
+			<remove object="mirrow_n" /><remove object="mirrow_d" />
+			<play object="mechanic" animation="mechanic.repair" />
+			<wait seconds="1" />
+			<dialogue section="mechanic" id="mirrows11" speaker='player' />
+			<dialogue section="mechanic" id="mirrows12" speaker='mechanic' />
+			<section with="fade">
+				<show id="bg_mirrows" /><show id="mrs" /><show id="mr" /><hide id="mechanic" />
+				<move object="player" x="46" y="4" />
+				<teleport area="mirrows_lab" x="20.5" y="9" allowReturn="true" />
+			</section>
+			<dialogue section="mechanic" id="mirrows13" speaker='mr' />
+			<lerp object="mechanic" alpha="1" seconds="0.25" />
+			<dialogue section="mechanic" id="mirrows14" speaker='mechanic' />
+			<dialogue section="mechanic" id="mirrows15" speaker='mrs' />
+			<dialogue section="mechanic" id="mirrows16" speaker='mechanic' />
+			<dialogue section="mechanic" id="mirrows17" speaker='mrs' />
+			<dialogue section="mechanic" id="mirrows18" speaker='player' />
+			<dialogue section="mechanic" id="mirrows19" speaker='mr' />
+			<dialogue section="mechanic" id="mirrows20" speaker='player' />
+			<dialogue section="mechanic" id="mirrows21" speaker='mrs' />
+			<action>setFlag('mirrow.defeat', true);</action>
+		</show>
+	</scene>
+</data>

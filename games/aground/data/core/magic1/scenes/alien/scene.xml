@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<structure id="evo_chamber" width="32" height="32" type="smelter" />
+	<procedure id="alien_talk">
+		<dialogue text="Leave, human. I may not exterminate you like my brethren, but do not disturb my solitude." font="drachenklaue" speaker='alien' />
+	</procedure>
+   	<animation id="alchemist.blast" count="5" x="90">
+		<append tile="magic_blast" x="8" y="8" offsetX="-0.5" offsetY="-0.5" animation="magic_blast" behind="true" />
+	</animation>
+   	<animation id="alchemist.charge" x="90" count="6">
+		<append tile="beam_charge" x="8" y="8" offsetX="-0.5" offsetY="-0.5" animation="beam_charge" />
+	</animation>
+	<procedure id="magic1.fight.alien">
+		<sound id="orb_spawn" object="alien" />
+		<object id="magic_orb" name="orb1" x="alien.tile_x-1" y="alien.tile_y">Movement.circle(this, alien, 1.25, 4, true)</object>
+		<object id="magic_orb" name="orb2" x="alien.tile_x+1" y="alien.tile_y">Movement.circle(this, alien, 1.25, 4, true)</object>
+		<object id="magic_orb" name="orb3" x="alien.tile_x" y="alien.tile_y-1">Movement.circle(this, alien, 1.25, 4, true)</object>
+		<object id="magic_orb" name="orb4" x="alien.tile_x" y="alien.tile_y+1">Movement.circle(this, alien, 1.25, 4, true)</object>
+		<play object="alien" animation="idle" modal="true" skippable="false" />
+		<action>Movement.seek(orb1, alchemist, 4, true)</action>
+		<play object="alien" animation="idle" modal="true" skippable="false" />
+		<action>Movement.seek(orb2, alchemist, 4, true)</action>
+		<play object="alien" animation="idle" modal="true" skippable="false" />
+		<action>Movement.seek(orb3, alchemist, 4, true)</action>
+		<play object="alien" animation="idle" modal="true" skippable="false" />
+		<action>Movement.seek(orb4, alchemist, 4, true)</action>
+		<repeat count="3"><play object="alien" animation="idle" modal="true" skippable="false" /></repeat>
+		<play object="alien" animation="charge" modal="true" skippable="false" />
+		<sound id="oldone_beam" object="alien" /><play object="alien" animation="beam" modal="true" skippable="false" />
+	</procedure>
+    <procedure id="magic1.alchemist_fight">
+        <displayAction>setControl(true)</displayAction><move object="player" x="21" y="7" />
+        <set id="alien" value="area.getObject('alien')" />
+		<invokeLater>
+        <invokeLater paused="true"><pan deltaX="2*16" deltaY="-3*16" seconds="1" /></invokeLater>
+        <invokeLater paused="true">
+			<run procedure="magic1.fight.alien" /><sound id="oldone_open" object="alien" /><play object="alien" animation="open" modal="true" skippable="false" />
+			<play object="alien" animation="hit" modal="true" skippable="false" />
+			<repeat count="2"><play object="alien" animation="idle" modal="true" skippable="false" /></repeat>
+			<run procedure="magic1.fight.alien" />
+		</invokeLater>
+        <invokeLater paused="true">
+			<object id="heal_circle" x="alchemist.tile_x-0.5" y="alchemist.tile_y+0.5" /><sound id="summon" />
+			<repeat count="4"><play object="alchemist" animation="cast" modal="true" skippable="false" /></repeat>
+			<remove object="heal_circle" />
+			<play object="alchemist" animation="teleport_out" modal="true" skippable="false" />
+			<move object="alchemist" x="17" y="11" /><play object="alchemist" animation="teleport_in" modal="true" skippable="false" />
+			<action>alien.setVulnerable(3,20);</action><damage object="alien" attacker="alchemist" damage="10" knockback="32" />
+			<sound id="fireball" /><play object="alchemist" animation="blast" modal="true" skippable="false" />
+			<play object="alchemist" animation="teleport_out" modal="true" skippable="false" />
+			<move object="alchemist" x="21" y="11" /><facing object="alchemist" dir="left" /><play object="alchemist" animation="teleport_in" modal="true" skippable="false" />
+			<object id="heal_circle" x="alchemist.tile_x-0.5" y="alchemist.tile_y+0.5" /><sound id="summon" />
+			<repeat count="3"><play object="alchemist" animation="cast" modal="true" skippable="false" /></repeat>
+			<remove object="heal_circle" /><play object="alien" animation="idle" loop="true" /><scene id="alien" show="signal2" with="fade" showToAll="true" />
+			<action>setFlag("oldone.hostile", false);</action>
+        </invokeLater>
+		</invokeLater>
+    </procedure>
+	<procedure id="magic_end">
+		<menu section="common">
+			<dialogue section="common" id="save_prompt_magic" />
+			<choice id="yes"><save fakeDismount="true" /></choice>
+			<choice id="no" />
+		</menu><credits /><title with="fade" />
+	</procedure>
+	<procedure id="magic1_end"><run procedure="magic_end" /></procedure>
+	<scene id="alien">
+		<include id="alien.xml" includeRoot="true" />
+		<tile id="alien" sheet="alien.png" x="0" y="0" />
+		<animation id="alien.idle" x="14" count="14" />
+		<animation id="alien.talk" x="0" count="14" />
+		<animation id="signal" x="28" count="7" repeat="2" />
+		<animation id="alien.signal" x="0" count="14">
+			<append tile="scene.alien.alien" animation="scene.alien.signal" />
+		</animation>
+		<layer id="bg" image="bg.png" width="256" height="144" />
+		<layer id="alchemist" tile="scene.alchemist.alchemist" animation="scene.alchemist.alchemist.idle" talk="scene.alchemist.alchemist.talk" x="-10" y="0" flip="true" />
+		<layer id="alien" tile="alien" animation="alien.idle" talk="alien.talk" x="50" y="0" />
+		<layer id="white" color="ffffff" width="256" height="144" />
+		
+		<show id="first">
+			<layer id="bg" />
+			<layer id="alchemist" />
+			<layer id="alien" /><hide id="alchemist" />
+			<wait seconds="2" />
+			<run procedure="alien_talk" />
+			<lerp object="alchemist" alpha="1" seconds="0.5" />
+			<dialogue section="alchemist" id="oldone3" speaker='alchemist' />
+			<dialogue section="alchemist" id="oldone4" speaker='player' />
+			<dialogue section="alchemist" id="oldone5" speaker='alien' />
+			<dialogue section="alchemist" id="oldone6" speaker='alchemist' />
+			<dialogue section="alchemist" id="oldone7" speaker='alien' />
+			<dialogue section="alchemist" id="oldone8" speaker='alchemist' />
+			<dialogue section="alchemist" id="oldone9" speaker='alien' />
+			<dialogue section="alchemist" id="oldone10" speaker='alien' />
+			<menu section="alchemist" width="120">
+				<dialogue section="alchemist" id="oldone_choice" speaker='alchemist' />
+				<choice id="work_together">
+					<run procedure="magic1.alien_battle" />
+				</choice>
+				<choice id="alchemist_fight">
+					<music id="boss" seconds="1" /><dialogue section="alchemist" id="battle" speaker="alchemist" />
+					<run procedure="magic1.alien_setup" />
+                    <run procedure="magic1.alchemist_fight" if="player == getLocalPlayer()" />
+				</choice>
+			</menu><wait seconds="1" />
+		</show>
+		<show id="signal">
+			<layer id="bg" />
+			<layer id="alchemist" />
+			<layer id="alien" />
+			<layer id="white" /><hide id="white" />
+			<wait seconds="1" />
+			<dialogue section="alchemist" id="oldone11" speaker='alien' />
+			<play object="alien" animation="alien.signal" loop="true" />
+			<shake count="10" dx="2" seconds="2" /><sound id="magic" />
+			<lerp object="white" alpha="1" seconds="0.5" />
+			<hide id="alien" />
+			<wait seconds="0.5" />
+			<lerp object="white" alpha="0" seconds="0.5" />
+			<dialogue section="alchemist" id="oldone12" speaker='alchemist' />
+			<dialogue section="alchemist" id="oldone13" speaker='player' />
+			<dialogue section="alchemist" id="oldone14" speaker='alchemist' />
+			<dialogue section="alchemist" id="oldone15" speaker='alchemist' />
+			<complete quest="oldone" /><structure id="evo_chamber" x="16" y="12" />
+			<wait seconds="1" /><invokeLater seconds="2"><run procedure="magic1_end" /></invokeLater>
+		</show>
+        <show id="signal2">
+			<layer id="bg" />
+			<layer id="alchemist" />
+			<layer id="alien" />
+			<layer id="white" /><hide id="white" />
+            <wait seconds="1" />
+            <dialogue section="alchemist" id="oldone16" speaker='alien' />
+			<play object="alien" animation="alien.signal" loop="true" />
+			<shake count="1000" dx="2" seconds="200" modal="false" />
+			<dialogue section="alchemist" id="oldone17" speaker='alchemist' />
+			<shake count="10" dx="2" seconds="2" /><sound id="magic" />
+			<lerp object="white" alpha="1" seconds="0.5" /><hide id="alien" />
+			<animate id="alchemist" idle="scene.alchemist.alchemist.injured.idle" talk="scene.alchemist.alchemist.injured.talk" />
+			<wait seconds="0.5" /><music id="Cutscene9" seconds="1" />
+			<lerp object="white" alpha="0" seconds="0.5" />
+			<dialogue section="alchemist" id="oldone18" speaker='player' />
+			<dialogue section="alchemist" id="oldone19" speaker='alchemist' />
+			<dialogue section="alchemist" id="oldone20" speaker='alchemist' />
+			<lerp object="alchemist" alpha="0" seconds="2" />
+			<set id="a" value="area.getNPC('alchemist_magic')" /><action>a.alpha = 0</action>
+            <remove object="area.getObject('alien')" killer="player" /><remove object="a" /><complete quest="oldone" />
+            <remove object="player.areas.get('start').getNPC('alchemist')" /><structure id="evo_chamber" x="16" y="12" />
+            <wait seconds="1" /><animate id="alchemist" idle="scene.alchemist.alchemist.idle" talk="scene.alchemist.alchemist.talk" />
+			<action>player.removeQuestsByGiver("alchemist");</action>
+			<invokeLater seconds="2"><run procedure="magic1_end" /></invokeLater>
+        </show>
+	</scene>
+</scenes>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<include id="hunter.xml" includeRoot="true" />
+	<tile id="hires.hunter" sheet="hunter.png" x="0" y="0" />
+	<animation id="hires.hunter.idle">
+		<frame x="12" count="11" />
+		<frame x="0" count="12" />
+		<frame x="12" count="11" />
+	</animation>
+	<animation id="hires.hunter.hood">
+		<frame x="23" length="15" />
+		<frame x="24" count="11" />
+	</animation>
+	<animation id="hires.hunter.talk" x="35" count="10" />
+	<animation id="hires.hunter.firelight" x="45" count="10" />
+
+	<scene id="hunter">
+		<tilesheet id="wolf.png" width="98" height="94" />
+		<tile id="wolf" sheet="wolf.png" x="0" y="0" />
+		<animation id="wolf.idle">
+			<frame x="0" y="0" length="4" />
+			<frame x="1" y="0" length="2" />
+			<frame x="0" y="0" length="32" />
+		</animation>
+		<layer id="tent" image="tent.png" />
+		<layer id="forest" image="forest.png" />
+		<layer id="hunter" tile="hires.hunter" animation="hires.hunter.idle" talk="hires.hunter.talk" x="0" y="0" />
+		<layer id="wolf" tile="wolf" animation="wolf.idle" x="152" y="50" />
+		
+		<show id="first">
+			<layer id="forest" />
+			<layer id="hunter" />
+			<play object="hunter" animation="hires.hunter.hood" />
+			<dialogue section="hunter" id="intro1" speaker='hunter' />
+			<dialogue section="hunter" id="intro2" speaker='player' />
+			<dialogue section="hunter" id="intro3" speaker='hunter' />
+			<menu section="trader">
+				<dialogue section="hunter" id="intro4" />
+				<choice id="accept">
+					<run procedure="hunter.deal" />
+				</choice>
+				<choice id="reject">
+					<dialogue section="hunter" id="reject1" speaker="player" />
+					<dialogue section="hunter" id="reject2" speaker="hunter" />
+				</choice>
+			</menu>
+			<wait seconds="0.5" />
+		</show>
+		<show id="second">
+			<layer id="tent" />
+			<layer id="hunter" />
+			<wait seconds="1" />
+			<dialogue section="hunter" id="tent3" speaker='hunter' />
+			<dialogue section="hunter" id="tent4" speaker='player' />
+			<dialogue section="hunter" id="tent5" speaker='hunter' />
+			<dialogue section="hunter" id="tent6" speaker='hunter' />
+			<wait seconds="1" />
+		</show>
+		<show id="third">
+			<layer id="tent" />
+			<layer id="hunter" />
+			<wait seconds="1" />
+			<dialogue section="hunter" id="tent7" speaker='player' />
+			<dialogue section="hunter" id="tent8" speaker='hunter' />
+			<dialogue section="hunter" id="tent9" speaker='player' />
+			<dialogue section="hunter" id="tent10" speaker='hunter' />
+			<dialogue section="hunter" id="tent11" speaker='player' />
+			<dialogue section="hunter" id="tent12" speaker='hunter' />
+			<wait seconds="1" />
+		</show>
+		<show id="fourth">
+			<layer id="forest" />
+			<layer id="hunter" />
+			<layer id="wolf" /><hide id="wolf" />
+			<wait seconds="1" />
+			<dialogue section="hunter" id="wolf5" speaker='hunter' />
+			<show id="wolf" with="fade" />
+			<dialogue section="hunter" id="wolf6" speaker='hunter' />
+			<item id="wolf" /><equip id="wolf" ifEmpty="true" />
+			<lerp object="wolf" alpha="0" seconds="0.5" />
+			<dialogue section="hunter" id="wolf7" speaker='hunter' />
+			<wait seconds="1" />
+		</show>
+	</scene>
+</scenes>

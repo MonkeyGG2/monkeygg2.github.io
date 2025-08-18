@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<scene id="intro">
+		<tilesheet id="sheet1.png" width="256" height="144" />
+		<tilesheet id="sheet2.png" width="256" height="144" />
+		<tilesheet id="sheet3.png" width="256" height="144" />
+		<tilesheet id="sheet4.png" width="256" height="144" />
+		<tile id="sheet1" sheet="sheet1.png" />
+		<tile id="sheet2" sheet="sheet2.png" />
+		<tile id="sheet3" sheet="sheet3.png" />
+		<tile id="sheet4" sheet="sheet4.png" />
+		
+		<animation id="scene1">
+			<frame visible="false" /><frame x="0" /><frame visible="false" length="3" />
+			<frame x="1" /><frame visible="false" length="2" /><frame x="1" />
+			<frame x="2" count="14" /><frame x="1" /><frame visible="false" />
+		</animation>
+		<animation id="scene2">
+			<frame visible="false" /><frame x="0" count="5" />
+			<frame visible="false" /><frame x="5" count="17" /><frame visible="false" />
+		</animation>
+		<animation id="scene3">
+			<frame visible="false" /><frame x="0" count="6" />
+			<frame visible="false" /><frame x="6" count="16" /><frame visible="false" />
+		</animation>
+		<animation id="scene4">
+			<frame visible="false" /><frame x="0" count="9" />
+			<frame visible="false" /><frame x="9" count="12" /><frame visible="false" />
+		</animation>
+		<animation id="scene5">
+			<frame visible="false" /><frame x="22" count="11" />
+			<frame visible="false" /><frame x="33" count="11" /><frame visible="false" />
+		</animation>
+		<animation id="scene6">
+			<frame visible="false" /><frame x="21" count="23" /><frame visible="false" />
+		</animation>
+		<layer id="sheet1" tile="sheet1" x="0" y="0" animation="single" fps="9" />
+		<layer id="sheet2" tile="sheet2" x="0" y="0" animation="single" fps="9" />
+		<layer id="sheet3" tile="sheet3" x="0" y="0" animation="single" fps="9" />
+		<layer id="sheet4" tile="sheet4" x="0" y="0" animation="single" fps="9" />
+		<layer id="black" color="0" width="256" height="144" />
+		
+		<show id="intro">
+			<music id="intro" loop="false" /><layer id="black" />
+			<layer id="sheet1" /><play object="sheet1" animation="scene1" />
+			<removeLayer id="sheet1" /><layer id="sheet2" /><play object="sheet2" animation="scene2" />
+			<removeLayer id="sheet2" /><layer id="sheet3" /><play object="sheet3" animation="scene3" />
+			<removeLayer id="sheet3" /><layer id="sheet4" /><play object="sheet4" animation="scene4" />
+			<removeLayer id="sheet4" /><layer id="sheet3" /><play object="sheet3" animation="scene5" />
+			<removeLayer id="sheet3" /><layer id="sheet4" /><play object="sheet4" animation="scene6" /><removeLayer id="sheet4" />
+			<wait seconds="2" />
+		</show>
+	</scene>
+</data>

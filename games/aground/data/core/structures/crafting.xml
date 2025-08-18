@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<recipes>
+	<recipe id="fuel_wood" fuel="10" type="fuel"><item id="wood" /></recipe>
+	<recipe id="fuel_coal" fuel="20" type="fuel"><item id="coal" /></recipe>
+	<recipe id="smelt_iron" creates="iron_bar" type="smelter">
+		<item id="iron" count="2" />
+	</recipe>
+	<recipe id="smelt_steel" creates="steel_bar" type="smelter">
+		<item id="iron_bar" count="1" />
+		<item id="coal" count="2" />
+	</recipe>
+	<recipe id="smelt_gold" creates="gold_bar" type="smelter">
+		<type id="tech_resource" />
+		<item id="gold" count="2" />
+	</recipe>
+	<recipe id="smelt_coal" creates="coal" type="smelter" fuel_cost="10"><item id="wood" count="3" /></recipe>
+	<recipe id="craft_fence" creates="fence" type="workbench">
+		<item id="wood" count="2" />
+	</recipe>
+	<recipe id="craft_sign" creates="sign" type="workbench">
+		<item id="wood" count="2" />
+	</recipe>
+	<recipe id="craft_area_name_sign" creates="area_name_sign" type="workbench" available="getFlag('area_name_sign') || getFlag('jump_water')">
+		<item id="wood" count="2" /><item id="gold_bar" count="1" />
+	</recipe>
+	<recipe id="craft_torch" creates="torch" type="workbench">
+		<item id="wood" count="1" />
+		<item id="coal" count="1" />
+	</recipe>
+	<recipe id="craft_campfire" creates="campfire" type="workbench" value="0">
+		<item id="wood" count="3" />
+	</recipe>
+	<recipe id="craft_workbench" creates="workbench" type="workbench">
+		<item id="wood" count="5" />
+	</recipe>
+	<recipe id="craft_anvil" creates="anvil" type="workbench">
+		<item id="iron_bar" count="1" />
+	</recipe>
+	<recipe id="craft_furnace" creates="furnace" type="workbench" value="0">
+		<item id="steel_bar" count="5" /><item id="coal" count="2" />
+	</recipe>
+	<recipe id="craft_chest" creates="chest" type="workbench">
+		<item id="wood" count="5" />
+	</recipe>
+	<recipe id="craft_trap" creates="trap" type="workbench">
+		<item id="wood" count="1" />
+		<item id="iron" count="1" />
+	</recipe>
+	<recipe id="craft_arrow" creates="arrow" count="2" type="workbench">
+		<item id="wood" count="1" />
+	</recipe>
+	<recipe id="craft_bow" creates="bow" type="workbench">
+		<item id="wood" count="4" />
+		<item id="iron_bar" count="1" />
+	</recipe>
+	<recipe id="craft_iron_pickaxe" creates="iron_pickaxe" type="workbench">
+		<item id="iron_bar" count="2" />
+	</recipe>
+	<recipe id="craft_iron_sword" creates="iron_sword" type="workbench">
+		<item id="iron_bar" count="1" />
+	</recipe>
+	<recipe id="craft_iron_armor" creates="iron_armor" type="workbench">
+		<item id="iron_bar" count="3" />
+	</recipe>
+	<recipe id="craft_buckler" creates="buckler" type="workbench">
+		<item id="wood" count="2" />
+		<item id="iron" count="1" />
+	</recipe>
+	<recipe id="craft_shovel" creates="shovel" type="workbench">
+		<item id="wood" count="2" /><item id="iron_bar" count="1" />
+	</recipe>
+	<recipe id="craft_steel_pickaxe" creates="steel_pickaxe" type="workshop">
+		<item id="steel_bar" count="3" />
+	</recipe>
+	<recipe id="craft_steel_sword" creates="steel_sword" type="workshop">
+		<item id="steel_bar" count="2" />
+	</recipe>
+	<recipe id="craft_steel_axe" creates="steel_axe" type="workshop">
+		<item id="steel_bar" count="2" />
+	</recipe>
+	<recipe id="craft_steel_hammer" creates="steel_hammer" type="workshop">
+		<item id="steel_bar" count="2" />
+	</recipe>
+	<recipe id="craft_steel_armor" creates="steel_armor" type="workshop">
+		<item id="steel_bar" count="4" />
+	</recipe>
+	<recipe id="craft_recurve_bow" creates="recurve_bow" type="workshop">
+		<item id="bow" count="1" />
+		<item id="silk" count="4" />
+		<item id="steel_bar" count="1" />
+	</recipe>
+	<recipe id="craft_kite_shield" creates="kite_shield" type="workshop">
+		<item id="steel_bar" count="2" />
+	</recipe>
+	<recipe id="craft_coin_purse" creates="coin_purse" value="0" type="workshop" available="player.questComplete('market') || player.questComplete('market2')">
+		<item id="silk" count="6" />
+	</recipe>
+	<recipe id="craft_steel_workbench" creates="steel_workbench" type="workshop">
+		<item id="workbench" count="1" />
+		<item id="steel_bar" count="5" />
+	</recipe>
+	<recipe id="craft_minecart" creates="minecart" type="workshop">
+		<item id="iron_bar" count="5" />
+	</recipe>
+	<recipe id="craft_rail" creates="rail" type="workshop" count="4">
+		<item id="iron" count="1" /><item id="wood" count="1" />
+	</recipe>
+	<recipe id="craft_crowbar" creates="crowbar" type="workshop">
+		<item id="iron_bar" count="1" />
+	</recipe>
+	<recipe id="craft_lantern" creates="lantern" type="workshop" value="0">
+		<item id="iron_bar" count="2" /><item id="quartz" count="1" />
+	</recipe>
+	<recipe id="cook_steak" creates="steak" type="kitchen">
+		<item id="meat" count="1" />
+	</recipe>
+	<recipe id="cook_bread" creates="bread" type="kitchen">
+		<item id="wheat" count="2" />
+	</recipe>
+	<recipe id="cook_hamburger" creates="hamburger" type="kitchen">
+		<item id="meat" count="1" /><item id="bread" count="2" />
+	</recipe>
+	<recipe id="cook_pie" creates="pie" type="kitchen">
+		<item id="wheat" count="1" /><item id="berries" count="2" />
+	</recipe>
+	<recipe id="cook_pancakes" creates="pancakes" type="kitchen">
+		<item id="wheat" count="1" /><item id="milk" count="1" /><item id="eggs" count="1" />
+	</recipe>
+	<recipe id="make_cheese" creates="cheese" type="kitchen2">
+		<item id="milk" count="2" />
+	</recipe>
+	<recipe id="cook_pizza" creates="pizza" type="kitchen2" achievement="pizza">
+		<item id="wheat" count="2" /><item id="cheese" count="1" />
+	</recipe>
+	<recipe id="cook_omelette" creates="omelette" type="kitchen2">
+		<item id="eggs" count="2" /><item id="meat" count="1" /><item id="cheese" count="1" />
+	</recipe>
+	<recipe id="cook_cheeseburger" creates="cheeseburger" type="kitchen2">
+		<item id="meat" count="1" /><item id="bread" count="2" /><item id="cheese" count="1" />
+	</recipe>
+	<recipe id="cook_cheeseburger2" creates="cheeseburger" type="kitchen2">
+		<item id="hamburger" count="1" /><item id="cheese" count="1" />
+	</recipe>
+	<recipe id="cook_cake" creates="cake" type="kitchen2">
+		<item id="wheat" count="2" /><item id="milk" count="1" /><item id="eggs" count="1" /><item id="sugar" count="1" />
+	</recipe>
+	<recipe id="cook_candy_apple" creates="candy_apple" type="kitchen2">
+		<item id="fruit" count="1" /><item id="sugar" count="1" />
+	</recipe>
+	<recipe id="boat" object="boat" description="item.descriptions.boat" available="(area.id != 'start' || (player.questComplete('market') || player.questComplete('market2'))) && area.getStructureById('boat') == null">
+		<item id="wood" count="9" />
+		<item id="steel_bar" count="9" />
+		<item id="cloth" count="9" />
+		<item id="net" count="9" />
+		<craft>
+			<section if="area.id == 'start' && player.tile_x < 7 && !player.questComplete('boat')">
+				<closeWindows /><complete quest="boat" inventory="inventory" /><structure id="boat" x="-4" /><stop />
+			</section>
+		</craft>
+	</recipe>
+	<recipe id="make_cloth" creates="cloth" type="dock">
+		<type id="net" /><item id="cotton" count="4" />
+	</recipe>
+	<recipe id="make_net" creates="net" type="dock">
+		<type id="net" /><item id="cloth" count="2" />
+	</recipe>
+	<recipe id="make_fishing_rod" creates="fishing_rod" type="dock">
+		<item id="wood" count="2" />
+		<item id="cotton" count="1" />
+	</recipe>
+	<recipe id="make_attack_potion" creates="attack_potion" type="lab">
+		<item id="red_berries" count="4" />
+	</recipe>
+	<recipe id="make_defense_potion" creates="defense_potion" type="lab">
+		<item id="ice_berries" count="2" />
+	</recipe>
+	<recipe id="make_health_potion" creates="health_potion" type="lab">
+		<item id="dragonblood" count="1" />
+		<item id="red_berries" count="2" />
+	</recipe>
+	<recipe id="make_stamina_potion" creates="stamina_potion" type="lab">
+		<item id="dragonblood" count="1" />
+		<item id="berries" count="4" />
+	</recipe>
+	<recipe id="make_speed_potion" creates="speed_potion" type="lab">
+		<item id="dragonblood" count="1" />
+		<item id="eggs" count="2" />
+	</recipe>
+	<recipe id="make_endurance_potion" creates="endurance_potion" type="lab">
+		<item id="dragonblood" count="1" />
+		<item id="meat" count="2" />
+	</recipe>
+	<recipe id="transmute_gold" creates="gold" type="enchantments">
+		<item id="iron" count="1" /><item id="alter_gem" count="1" defineLater="true" />
+	</recipe>
+	<recipe id="make_ice_arrow" creates="ice_arrow" type="enchantments">
+		<item id="arrow" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_shadow_cape" creates="shadow_cape" type="enchantments">
+		<type id="witch" />
+		<type id="lab" available="getFlag('alchemist.shadow_cape')" />
+		<item id="dark_fur" count="4" />
+	</recipe>
+	<recipe id="make_ice_shield" creates="ice_shield" type="lab">
+		<type id="enchantments" />
+		<item id="kite_shield" count="1" />
+		<item id="dragonblood" count="1" />
+		<item id="diamond" count="1" />
+	</recipe>
+	<recipe id="make_thunder_axe" creates="thunder_axe" type="enchantments" >
+		<type id="lab" available="player.questComplete('thunder_axe')" />
+		<item id="rusty_axe" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="diamond" count="1" />
+	</recipe>
+</recipes>

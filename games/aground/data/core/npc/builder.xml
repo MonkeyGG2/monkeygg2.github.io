@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<tile id="builder" sheet="npc.png" x="0" />
+	
+	<animation id="builder.build" count="8" x="19" />
+
+	<quest id="hut" achievement="hut">
+		<item id="wood" count="8" />
+	</quest>
+	<quest id="storehouse" giver="builder" exp="6" achievement="storehouse">
+		<item id="wood" count="8" />
+		<item id="berries" count="4" />
+	</quest>
+	<quest id="storehouse2" exp="6" achievement="storehouse">
+		<item id="wood" count="8" />
+		<item id="berries" count="4" />
+		<canComplete>
+			<dialogue section="player" id="storehouse3" />
+			<complete quest="storehouse2" />
+			<structure id="storehouse" x="28" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25" canCancel="false">
+				<onPlace>
+					<object id="miner" x="player.tile_x < 6?player.tile_x+5:player.tile_x-5" y="2" mine="true" />
+					<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+					<item id="storehouse_blueprint" hidden="true" />
+					<dialogue section="player" id="storehouse4" />
+				</onPlace>
+			</structure>
+		</canComplete>
+	</quest>
+	<quest id="kitchen" giver="builder" exp="20" achievement="kitchen">
+		<item id="wood" count="10" />
+		<item id="coal" count="10" />
+	</quest>
+	<quest id="kitchen2" giver="builder" exp="60">
+		<item id="wood" count="5" />
+		<item id="steel_bar" count="5" />
+	</quest>
+	
+	<npc id="builder" tile="builder" action="talk" talk_sfx="talking1">
+		<idle class="build">
+			<collect><loot id="wood" /></collect>
+			<collect>
+				<loot p="2" />
+				<loot id="berries" p="4" />
+				<loot id="red_berries" p="1" />
+			</collect>
+		</idle>
+		<operate>
+			<section if="!player.hasQuest('storehouse')">
+				<dialogue section="builder" id="intro" speaker="this" />
+				<dialogue section="builder" id="introduce1" speaker='player' />
+				<dialogue section="builder" id="introduce2" speaker='this' />
+				<quest id="storehouse">
+					<dialogue section="builder" id="accept1" speaker='player' />
+					<dialogue section="builder" id="accept2" speaker='this' />
+					<item id="stone_axe" /><equip id="stone_axe" ifEmpty="true" />
+				</quest>
+			</section>
+			<choose if="!player.questComplete('storehouse')">
+				<section if="!player.hasSeenItem('stone_axe')">
+					<quest />
+					<dialogue section="builder" id="intro" speaker="this" />
+					<dialogue section="builder" id="introduce1" speaker='player' />
+					<dialogue section="builder" id="introduce2" speaker='this' />
+					<dialogue section="builder" id="accept1" speaker='player' />
+					<dialogue section="builder" id="accept2" speaker='this' />
+					<item id="stone_axe" /><equip id="stone_axe" ifEmpty="true" />
+				</section>
+				<section if="player.canCompleteQuest('storehouse')">
+					<dialogue section="builder" id="storehouse1" speaker='this' />
+					<dialogue section="builder" id="storehouse2" speaker='player' />
+					<complete quest="storehouse" reserve="prepare" />
+					<structure id="storehouse" x="28" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+						<onPlace>
+							<complete quest="storehouse" reserve="finish" />
+							<object id="miner" x="player.tile_x < 6?player.tile_x+5:player.tile_x-5" y="2" mine="true" />
+							<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+							<item id="storehouse_blueprint" hidden="true" />
+							<dialogue section="builder" id="storehouse3" speaker='player' />
+							<dialogue section="builder" id="storehouse4" speaker='this' />
+							<dialogue section="builder" id="storehouse5" speaker="this" />
+						</onPlace>
+						<onCancel><complete quest="storehouse" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+					</structure>
+				</section>
+				<dialogue section="builder" id="stamina" if="player.getStaminaPercent() < 0.5" speaker='this' />
+				<group>
+					<dialogue section="builder" id="wood" speaker='this' />
+					<dialogue section="builder" id="hint1" speaker='this' />
+					<section>
+						<dialogue section="builder" id="hint2" speaker='this' />
+						<dialogue section="builder" id="hint3" speaker='this' />
+					</section>
+				</group>
+			</choose>
+			<choose if="player.questComplete('smelter')">
+				<choose if="player.questComplete('farm')">
+					<section if="!player.hasQuest('kitchen')">
+						<dialogue section="builder" id="kitchen1" speaker='this' />
+						<dialogue section="builder" id="kitchen2" speaker='this' />
+						<quest id="kitchen" />
+					</section>
+					<choose if="!player.questComplete('kitchen')">
+						<section if="player.canCompleteQuest('kitchen')">
+							<dialogue section="builder" id="kitchen3" speaker='this' />
+							<complete quest="kitchen" reserve="prepare" />
+							<structure id="kitchen" x="39" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+								<onPlace>
+									<complete quest="kitchen" reserve="finish" />
+									<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+									<item id="kitchen_blueprint" hidden="true" />
+									<dialogue section="builder" id="kitchen4" speaker='this' />
+								</onPlace>
+								<onCancel><complete quest="kitchen" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+							</structure>
+						</section>
+						<dialogue section="builder" id="kitchen2" speaker='this' />
+					</choose>
+					<dialogue section="builder" id="no_kitchen" if="!player.questComplete('kitchen2') && area.getStructureById('kitchen') == null" />
+					<choose if="player.questComplete('market') || player.questComplete('dock2')">
+						<section if="!player.hasQuest('kitchen2')">
+							<dialogue section="builder" id="kitchen5" speaker='this' />
+							<dialogue section="builder" id="kitchen6" speaker='this' />
+							<quest id="kitchen2" />
+						</section>
+						<choose if="!player.questComplete('kitchen2')">
+							<section if="player.canCompleteQuest('kitchen2')">
+								<set id="kitchen" value="area.getStructureById('kitchen')" />
+								<dialogue section="builder" id="kitchen7" speaker='this' />
+								<complete quest="kitchen2" />
+								<pan toStructure="kitchen" seconds="0.25" />
+								<sound id="build" /><wait seconds="0.5" />
+								<lerp object="kitchen" alpha="0" seconds="0.25" /><structure id="kitchen2" x="kitchen.xPos/Tile.SIZE" var="kitchen2" />
+								<action>kitchen2.renderer.alpha = 0;</action><lerp object="kitchen2" alpha="1" seconds="0.25" />
+								<wait seconds="0.5" /><pan toObject="player" seconds="0.25" />
+								<item id="kitchen_upgrade" hidden="true" />
+								<dialogue section="builder" id="kitchen8" speaker='this' />
+							</section>
+							<dialogue section="builder" id="kitchen6" speaker='this' />
+						</choose>
+						<dialogue section="builder" id="kitchen8" speaker='this' />
+					</choose>
+					<dialogue section="builder" id="kitchen4" speaker='this' />
+				</choose>
+				<dialogue section="builder" id="farmer" if="!player.hasQuest('farm')" speaker='this' />
+				<dialogue section="builder" id="farm" if="player.hasQuest('farm')" speaker='this' />
+			</choose>
+			<dialogue section="builder" id="miner" if="!getFlag('pickaxe')" speaker='this' />
+			<dialogue section="builder" id="stamina" speaker='this' />
+		</operate>
+	</npc>
+	
+	<tile id="builder.corpse" sheet="builder_dead.png" />
+	<animation id="builder.corpse" count="12" x="0" />
+	<object id="builder.corpse" tile="builder.corpse" action="loot" animation="builder.corpse" layer="item" networkRemove="false" projectileKillCollect="true">
+		<loot id="stone_axe" />
+		<operate>
+			<action>player.seen_items.set("stone_axe", true);</action>
+			<remove object="this" killer="player" modal="true" /><wait seconds="1.25" modal="false" /><equip id="stone_axe" ifEmpty="true" />
+			<dialogue section="player" id="storehouse1" />
+			<dialogue section="player" id="storehouse2" />
+			<quest id="storehouse2" ask="false" />
+		</operate>
+	</object>
+</npcs>

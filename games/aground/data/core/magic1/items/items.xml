@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<item id="alter_gem" type="potion" cost="75" weight="5" icon="alter_gem.ico">
+		<action id="transform_other" name="transform" consume="true">
+			<transform from="wyrm" to="wyrm_drill" />
+			<transform from="cocoon" to="dragon" />
+			<transform from="dragon" to="baby_cannon" />
+			<transform from="young_dragon" to="dragonflame" />
+			<transform from="adult_dragon" to="dragon_armor" />
+		</action>
+	</item>
+	<item id="focus_gem" type="potion" cost="50" weight="5" icon="focus_gem.ico" />
+	<item id="spirit_gem" type="potion" cost="300" weight="5" icon="spirit_gem.ico" action="place" object="trap" capture="1" captureType="spirit" underwater="true" />
+	<animation id="spirit_gem.caught"><frame visible="false" /></animation>
+	<item id="blood_gem" type="potion" cost="150" weight="5" icon="blood_gem.ico" />
+	
+	<item id="baby_cannon" type="equipment" durability="150" durabilityName="common.enchantment" slot="weapon" cost="0" weight="4" attack="5" behindPlayer="false" range="8" stamina="1" icon="baby_cannon.ico" broken="dragon" element="fire" retransform="alter_gem" movement_walk="walk_lswing">
+		<action id="equip" /><action id="rename" /><action id="transform" into="dragon" /><use slot="shield" />
+		<projectile tile="fireball_small" delay="8" animation="fireball_small" speed="3" offsetY="5" hitEffect="fire_sm_dot" fire_sfx="fireball" knockback="5">
+			<light tile="light.small" color="cc5500" />
+		</projectile>
+	</item>
+	<tile id="baby_cannon" sheet="{core}/items/weps.png" x="33" />
+	<animation id="equipment.baby_cannon.idle" count="1" x="8" />
+	<animation id="equipment.baby_cannon" count="9" shift="1" />
+	
+	<item id="dragonflame" type="equipment" durability="750" durabilityName="common.enchantment" slot="weapon" cost="0" weight="10" attack="4" behindPlayer="false" range="12" repeat="2" icon="dragonflame.ico" animation="item4" broken="young_dragon" element="fire" retransform="alter_gem" loop="flamethrower" movement_walk="walk_lswing">
+		<action id="equip" /><action id="rename" /><action id="transform" into="young_dragon" /><use slot="shield" />
+		<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-4" offsetY="5" hitEffect="fire_med" hitTrees="true" color="f9be0b" colorScale="2">
+			<light tile="light.small" color="cc5500" />
+		</projectile>
+	</item>
+	<tile id="dragonflame" sheet="{core}/items/weps.png" x="42" />
+	<animation id="equipment.dragonflame" count="4" />
+	<animation id="equipment.dragonflame.idle" x="4" count="4" />
+	
+	<item id="wyrm_drill" type="equipment" durability="2000" durabilityName="common.enchantment" slot="pickaxe" cost="0" mine="4" behindPlayer="false" weight="4" icon="wyrm_drill.ico" broken="wyrm" retransform="alter_gem" movement_walk="walk_lswing" hideOffhand="true" loop="wyrm_drill">
+		<action id="equip" /><action id="rename" /><action id="transform" into="wyrm" />
+		<vert><dig x="-1" y="0" /></vert><horiz><dig x="0" y="-1" /></horiz>
+	</item>
+	<tile id="wyrm_drill" sheet="{core}/items/weps.png" x="50" />
+	<animation id="equipment.wyrm_drill" count="4" />
+	<animation id="equipment.wyrm_drill.idle" x="4" count="1" />
+	
+	<item id="dragon_armor" type="equipment" slot="armor" cost="0" durability="1000" durabilityName="common.enchantment" weight="20" defense="3" icon="dragon_armor.ico" broken="adult_dragon" element="fire" retransform="alter_gem" hair="false">
+		<action id="equip" /><action id="rename" /><action id="transform" into="adult_dragon" />
+		<flight height="10" cost="0" speed="5" maxWeight="750"><equipCost durability="1" /></flight><use slot="head" />
+	</item>
+	<include id="dragarmor.xml" includeRoot="true" />
+	<tile id="dragon_armor" sheet="dragarmor.png" x="0" y="0" />
+	<animation id="equipment.dragon_armor.idle" offsetX="8" offsetY="-8" x="45" count="1" />
+	<animation id="equipment.dragon_armor.walk" offsetX="8" offsetY="-8" x="46" count="10" />
+	<animation id="equipment.dragon_armor.fly.self" offsetX="8" offsetY="-5" x="41" count="4" />
+	<animation id="equipment.dragon_armor.death" offsetX="4" offsetY="-8" x="0" count="41" />
+	<animation id="equipment.dragon_armor.hover.self" equals="equipment.dragon_armor.fly.self" />
+	
+	<item id="goggles" type="equipment" slot="head" cost="0" weight="0" icon="goggles.ico" action="equip" viewHidden="true">
+		<onEquip>
+			<sound id="goggles" />
+			<weather type="fog" alpha="0.25" color="00ff00" dx="0.5" dy="-0.5" id="goggles_g" />
+			<weather type="fog" alpha="0.25" color="0000ff" dx="-0.5" dy="-0.5" id="goggles_b" />
+			<weather type="fog" alpha="0.3" color="ff0000" dx="0.5" dy="0.5" id="goggles_r" />
+		</onEquip>
+		<onUnequip>
+			<weather clear="goggles_g" /><weather clear="goggles_b" /><weather clear="goggles_r" />
+		</onUnequip>
+	</item>
+	<tilesheet id="goggles.png" width="12" height="4" />
+	<tile id="goggles" sheet="goggles.png" x="0" y="0" />
+	<animation id="equipment.goggles.idle" count="20" offsetX="2" offsetY="2" />
+	
+	<item id="ice_sword" attack="5" durability="200" durabilityName="common.enchantment" extends="steel_sword" broken="steel_sword" brokenValue="0" color="55bbff" colorScale="2" hitEffect="freeze" repair="" element="ice" />
+	<item id="fire_sword" attack="5" durability="200" durabilityName="common.enchantment" extends="steel_sword" broken="steel_sword" brokenValue="0" color="ff9911" colorScale="2" hitEffect="fire_med_dot" repair="" element="fire" />
+	<item id="plant_sword" attack="5" durability="200" durabilityName="common.enchantment" extends="steel_sword" broken="steel_sword" brokenValue="0" color="66ff11" colorScale="2" repair="" element="plant" hitEffect="vines">
+		<equipCost stamina="-4" daylight="true" /><light tile="light.default" color="bafa66" offsetX="-16" />
+	</item>
+	<item id="water_sword" attack="5" durability="200" durabilityName="common.enchantment" extends="steel_sword" broken="steel_sword" brokenValue="0" color="4444ff" colorScale="1.5" hitEffect="splash" knockback="15" repair="" element="water" underwater="true" />
+	<item id="drain_sword" attack="5" durability="200" durabilityName="common.enchantment" extends="steel_sword" broken="steel_sword" brokenValue="0" color="9911ff" colorScale="2" hpSteal="1" repair="" />
+    <item id="ice_axe" attack="4" cut="6" durability="200" durabilityName="common.enchantment" extends="steel_axe" broken="steel_axe" brokenValue="0" color="55bbff" colorScale="2" hitEffect="freeze" repair="" element="ice" />
+    <item id="fire_axe" attack="4" cut="6" durability="200" durabilityName="common.enchantment" extends="steel_axe" broken="steel_axe" brokenValue="0" color="ff9911" colorScale="2" hitEffect="fire_med_dot" repair="" element="fire" />
+    <item id="plant_axe" attack="4" cut="6" durability="200" durabilityName="common.enchantment" extends="steel_axe" broken="steel_axe" brokenValue="0" color="66ff11" colorScale="2" repair="" element="plant" hitEffect="vines">
+      <equipCost stamina="-4" daylight="true" /><light tile="light.default" color="bafa66" offsetX="-16" />
+    </item>
+    <item id="water_axe" attack="4" cut="6" durability="200" durabilityName="common.enchantment" extends="steel_axe" broken="steel_axe" brokenValue="0" color="4444ff" colorScale="1.5" hitEffect="splash" knockback="15" repair="" element="water" underwater="true" />
+    <item id="drain_axe" attack="4" cut="6" durability="200" durabilityName="common.enchantment" extends="steel_axe" broken="steel_axe" brokenValue="0" color="9911ff" colorScale="2" hpSteal="1" repair="" />
+    
+	<item id="fire_arrow" extends="ice_arrow" action="fire" with="bow" color="ff9911" colorScale="2" element="fire">
+		<projectile tile="ice_arrow" speed="3" offsetY="4" color="ff9911" colorScale="2" hit_sfx="arrow_hit" hitEffect="fire_med_dot" glow="true" knockback="5" />
+	</item>
+	<item id="water_arrow" extends="ice_arrow" action="fire" with="bow" color="4444ff" colorScale="1.5" element="water">
+		<projectile tile="ice_arrow" speed="3" offsetY="4" color="4444ff" colorScale="1.5" hit_sfx="arrow_hit" hitEffect="splash" knockback="12" />
+	</item>
+	<item id="drain_arrow" extends="ice_arrow" action="fire" with="bow" color="9911ff" colorScale="2" element="">
+		<projectile tile="ice_arrow" speed="3" offsetY="4" color="9911ff" colorScale="2" hit_sfx="arrow_hit" hpSteal="2" knockback="5" />
+	</item>
+	
+	<item id="ice_bullet" extends="bullet" attack="7" color="6699ff" colorScale="3" element="ice">
+		<projectile tile="bullet" animation="bullet.idle" speed="5" delay="2" offsetY="4" color="6699ff" colorScale="3" hit_sfx="bullet" hitEffect="freeze" />
+	</item>
+	<item id="fire_bullet" extends="bullet" attack="7" color="ff9911" colorScale="2" element="fire">
+		<projectile tile="bullet" animation="bullet.idle" speed="5" delay="2" offsetY="4" color="ff9911" colorScale="2" hit_sfx="bullet" hitEffect="fire_med_dot" glow="true" />
+	</item>
+	<item id="water_bullet" extends="bullet" attack="7" color="3333ff" colorScale="3" element="water">
+		<projectile tile="bullet"  animation="bullet.idle" speed="5" delay="2" offsetY="4" color="3333ff" colorScale="3" hit_sfx="bullet" hitEffect="splash" knockback="10" />
+	</item>
+	<item id="drain_bullet" extends="bullet" attack="7" color="6611ff" colorScale="3">
+		<projectile tile="bullet" animation="bullet.idle" speed="5" delay="2" offsetY="4" color="6611ff" colorScale="3" hit_sfx="bullet" hpSteal="2" />
+	</item>
+	<recipe id="make_ice_bullet" creates="ice_bullet" type="enchantments">
+		<item id="bullet" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_fire_bullet" creates="fire_bullet" type="enchantments">
+		<item id="bullet" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="make_water_bullet" creates="water_bullet" type="enchantments">
+		<item id="bullet" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_drain_bullet" creates="drain_bullet" type="enchantments">
+		<item id="bullet" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+
+	<item id="ice_shell" extends="shell" attack="9" color="6699ff" colorScale="3" element="ice">
+		<projectile tile="shell" animation="shell.idle" speed="3" delay="5" offsetY="4" color="6699ff" colorScale="3" hit_sfx="shell" hitEffect="freeze" knockback="5" />
+	</item>
+	<item id="fire_shell" extends="shell" attack="9" color="ff9911" colorScale="2" element="fire">
+		<projectile tile="shell" animation="shell.idle" speed="3" delay="5" offsetY="4" color="ff9911" colorScale="2" hit_sfx="shell" hitEffect="fire_med_dot" glow="true" knockback="5" />
+	</item>
+	<item id="water_shell" extends="shell" attack="9" color="3333ff" colorScale="3" element="water">
+		<projectile tile="shell"  animation="shell.idle" speed="3" delay="5" offsetY="4" color="3333ff" colorScale="3" hit_sfx="shell" hitEffect="splash" knockback="12" />
+	</item>
+	<item id="drain_shell" extends="shell" attack="9" color="6611ff" colorScale="3">
+		<projectile tile="shell" animation="shell.idle" speed="3" delay="5" offsetY="4" color="6611ff" colorScale="3" hit_sfx="shell" hpSteal="2" knockback="5" />
+	</item>
+	<recipe id="make_ice_shell" creates="ice_shell" type="enchantments">
+		<item id="shell" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_fire_shell" creates="fire_shell" type="enchantments">
+		<item id="shell" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="make_water_shell" creates="water_shell" type="enchantments">
+		<item id="shell" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_drain_shell" creates="drain_shell" type="enchantments">
+		<item id="shell" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+	
+	<item id="ice_chainsaw" attack="7" cut="9" durability="200" durabilityName="common.enchantment" extends="chainsaw" broken="chainsaw" brokenValue="0" color="55bbff" colorScale="2" hitEffect="freeze" repair="" element="ice" />
+	<item id="fire_chainsaw" attack="7" cut="9" durability="200" durabilityName="common.enchantment" extends="chainsaw" broken="chainsaw" brokenValue="0" color="ff9911" colorScale="2" hitEffect="fire_med_dot" repair="" element="fire" />
+	<item id="water_chainsaw" attack="7" cut="9" durability="200" durabilityName="common.enchantment" extends="chainsaw" broken="chainsaw" brokenValue="0" color="4444ff" colorScale="1.5" hitEffect="splash" knockback="15" repair="" element="water" underwater="true" />
+	<item id="plant_chainsaw" attack="7" cut="9" durability="200" durabilityName="common.enchantment" extends="chainsaw" broken="chainsaw" brokenValue="0" color="66ff11" colorScale="1.5" repair="" element="plant" hitEffect="vines">
+		<equipCost stamina="-4" daylight="true" /><light tile="light.default" color="bafa66" offsetX="-16" />
+	</item>
+	<item id="drain_chainsaw" attack="7" cut="9" durability="200" durabilityName="common.enchantment" extends="chainsaw" broken="chainsaw" brokenValue="0" color="9911ff" colorScale="2" hpSteal="1" repair="" />
+	<recipe id="make_ice_chainsaw" creates="ice_chainsaw" type="enchantments" achievement="enchanted_chainsaw">
+		<item id="chainsaw" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="repair_ice_chainsaw" creates="ice_chainsaw" type="enchantments" enchantOnly="true">
+		<item id="ice_chainsaw" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_fire_chainsaw" creates="fire_chainsaw" type="enchantments" achievement="enchanted_chainsaw">
+		<item id="chainsaw" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="repair_fire_chainsaw" creates="fire_chainsaw" type="enchantments" enchantOnly="true">
+		<item id="fire_chainsaw" count="1" />
+		<item id="fire_tusk" count="1" />
+	</recipe>
+	<recipe id="make_water_chainsaw" creates="water_chainsaw" type="enchantments" achievement="enchanted_chainsaw">
+		<item id="chainsaw" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="repair_water_chainsaw" creates="water_chainsaw" type="enchantments" enchantOnly="true">
+		<item id="water_chainsaw" count="1" />
+		<item id="fire_tusk" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	<recipe id="make_plant_chainsaw" creates="plant_chainsaw" type="enchantments" achievement="enchanted_chainsaw">
+		<item id="chainsaw" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="plant_eye" count="1" />
+	</recipe>
+	<recipe id="repair_plant_chainsaw" creates="plant_chainsaw" type="enchantments" enchantOnly="true">
+		<item id="plant_chainsaw" count="1" />
+		<item id="plant_eye" count="1" />
+	</recipe>
+	<recipe id="make_drain_chainsaw" creates="drain_chainsaw" type="enchantments" achievement="enchanted_chainsaw">
+		<item id="chainsaw" count="1" />
+		<item id="blood_gem" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+	<recipe id="repair_drain_chainsaw" creates="drain_chainsaw" type="enchantments" enchantOnly="true">
+		<item id="drain_chainsaw" count="1" />
+		<item id="dragonblood" count="1" />
+	</recipe>
+	
+	<tile id="dragonsword.arms" equals="equipment.arms" />
+	<animation id="dragonsword.arms" x="18" count="5" ><frame visible="false" length="4" /><frame x="24" /><frame visible="false" /></animation>
+	<item id="dragonsword" type="equipment" slot="weapon" cost="0" weight="10" melee_range="0.5" icon="dragonsword.ico" attack="7" stamina="2" durability="1000" durabilityName="common.enchantment" broken="fire_sword" knockback="5" brokenValue="0" action="equip" hitEffect="fire_lg_dot" element="fire" movement_walk="walk_rswing" arms="dragonsword.arms" sfx="dragonsword" repair="fire_gem" />
+	<recipe id="make_dragonsword" creates="dragonsword" type="enchantments">
+		<item id="fire_sword" count="1" />
+		<item id="fire_gem" count="1" />
+		<item id="alter_gem" count="1" />
+		<item id="horn" count="3" />
+	</recipe>
+	<tile id="dragonsword" sheet="{core}/items/weps.png" x="69" />
+	<animation id="equipment.dragonsword" count="10" shift="2" glow="true" />
+	<animation id="equipment.dragonsword.idle" offsetX="15" offsetY="4" x="10" count="1" />
+	
+	<recipe id="make_plant_bag" creates="plant_bag" type="enchantments">
+		<item id="ultra_backpack" count="1" />
+		<item id="plant_eye" count="1" />
+		<item id="alter_gem" count="1" />
+		<item id="plant_gem" count="1" />
+	</recipe>
+	
+	<recipe id="make_frost_shield" creates="frost_shield" type="enchantments">
+		<item id="ice_shield" count="1" />
+		<item id="ice_gem" count="1" />
+		<item id="yeti_fur" count="1" />
+		<item id="ice_heart" count="3" />
+	</recipe>
+	
+	<recipe id="make_treasure_chest" creates="chest" type="enchantments">
+		<parameter id="t" value="treasure_chest.ico" /><parameter id="a" value="treasure_chest" />
+		<item id="chest" count="1" />
+		<item id="gold" count="1" />
+	</recipe>
+
+	<recipe id="make_ice_chest" creates="chest" type="enchantments">
+		<parameter id="t" value="ice_chest.ico" /><parameter id="a" value="ice_chest" />
+		<item id="chest" count="1" />
+		<item id="yeti_fur" count="1" />
+	</recipe>
+	
+	<animation id="item5" count="5" />
+	<tilesheet id="spirit_detector.png" width="64" height="32" /><tile id="spirit_detector" sheet="spirit_detector.png" /><animation id="spirit_detector" count="12" />
+	<procedure id="spirit.detector">
+		<invokeLater paused="true"><radar id="spirit_detector" tile="spirit_detector" animation="spirit_detector" padding="2" overwrite="false" centerOn="player" scale="16" structureId="spirit_detector_structure" objectId="spirit_detector_object" /></invokeLater>
+	</procedure>
+	<action>
+		function spirit_detector(e){runProcedure("spirit.detector", null, e.target);}
+		function spirit_detector_structure(s){
+			if(s.info.xml.get("type") == "door" || s.info.xml.get("remove") == "false" || s.info.xml.get("type") == "dock" || s.info.xml.get("renderer") == "spirit") return -1;
+			else return 6;
+		}
+		function spirit_detector_object(o){
+			if(o.isPlayer()) return 2;
+			else if(o.info.xml.get("allowModifier") == "true" || o.info.xml.nodeName() == "npc") return 3;
+			else if(o.attackPower(1,0,0,null,true) > 0) return 1;
+			else if(o.attackPower(0,0,1,null,true) > 0) return 5;
+			else if(o.renderer == null || o.info.xml.nodeName() == 'enemy') return -1;
+			else return 6;
+		}
+	</action>
+	<item id="spirit_detector" type="tool" cost="0" weight="0" icon="spirit_detector.ico" animation="item5" droppable="true">
+		<onGet><action>player.addEventListener("teleport", spirit_detector); player.addEventListener("mount", spirit_detector); spirit_detector({target:player});</action></onGet>
+		<onLose><action>player.removeEventListener("teleport", spirit_detector); player.removeEventListener("mount", spirit_detector);</action><radar id="spirit_detector" hide="true" /></onLose>
+	</item>
+</data>

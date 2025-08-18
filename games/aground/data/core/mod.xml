@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mod>
+	<name>Core</name>
+	<description>Core files for Aground.</description>
+	<author>Fancy Fish Games</author>
+	<version>2.0.7</version>
+	<versionCheck>http://fancyfishgames.com/Aground/version.html</versionCheck>
+	<website>http://fancyfishgames.com/Aground/</website>
+	<disableWarning>You will not be able to play Aground without a full replacement mod if you disable Core (until you re-enable it).</disableWarning>
+	<init>
+		<include id="lang/languages.xml" />
+		<include id="achievements.xml" />
+		<include id="sound/sounds.xml" />
+		<include id="music/music.xml" />
+		<include id="items/icons.xml" />
+		<include id="elements.xml" />
+		<include id="items/items.xml" />
+		<include id="animals/animals.xml" />
+		<include id="tiles/tiles.xml" />
+		<include id="farm/farm.xml" />
+		<include id="structures/structures.xml" />
+		<include id="player/player.xml" />
+		<include id="enemies/enemies.xml" />
+		<include id="trees/trees.xml" />
+		<include id="npc/npcs.xml" />
+		<include id="nav/navigation.xml" />
+		<include id="start/start.xml" />
+		<include id="science1/science1.xml" />
+		<include id="magic1/magic1.xml" />
+		<include id="scenes/scenes.xml" />
+		<include id="specials/specials.xml" />
+	</init>
+</mod>

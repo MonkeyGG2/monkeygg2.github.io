@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<element id="fire" icon="fire.ico"><resist id="ice" /><resist id="plant" /><resist id="fire" /><critical id="ice" /><critical id="plant" /><loot id="meat" becomes="steak" /></element>
+	<element id="water" icon="water.ico"><resist id="fire" /><resist id="earth" /><resist id="water" /><critical id="fire" /><critical id="earth" /></element>
+	<element id="ice" icon="ice.ico"><resist id="water" /><resist id="plant" /><resist id="ice" /><critical id="water" /><critical id="plant" /></element>
+	<element id="earth" icon="earth.ico"><resist id="fire" /><resist id="ice" /><resist id="earth" /><critical id="fire" /><critical id="ice" /></element>
+	<element id="plant" icon="plant.ico"><resist id="water" /><resist id="earth" /><resist id="plant" /><critical id="water" /><critical id="earth" /></element>
+	<element id="resist"><resist id="fire" /><resist id="water" /><resist id="ice" /><resist id="earth" /><resist id="plant" /></element>
+</data>

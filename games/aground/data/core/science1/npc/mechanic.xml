@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<npcs>
+	<tile id="mechanic" sheet="npcs.png" x="0" y="0" />
+	<animation id="mechanic.idle">
+		<frame x="0" y="0" length="4" />
+		<frame x="1" y="0" length="2" />
+		<frame x="0" y="0" length="32" />
+	</animation>
+	<animation id="mechanic.walk" count="10" x="2" />
+	<animation id="mechanic.talk" count="8" x="12" />
+	<animation id="mechanic.repair" count="19" x="20" />
+	
+	<quest id="powerplant" giver="mechanic" exp="150" achievement="powerplant">
+		<item id="titanium" count="2" />
+	</quest>
+	<quest id="factory" giver="mechanic" exp="200" achievement="factory">
+		<item id="coal" count="15" />
+		<item id="sulfur" count="10" />
+		<item id="quartz" count="4" />
+	</quest>
+	<quest id="elevator" giver="mechanic" exp="250" achievement="elevator">
+		<item id="silicon" count="2" />
+		<item id="titanium" count="2" />
+		<item id="steel_bar" count="10" />
+		<item id="chest" count="1" />
+	</quest>
+	
+	<procedure id="mechanic.tips">
+		<choose>
+			<section if="area.getStructureById('power_plant').animal != null && !getFlag('mechanic_dragon')">
+				<dialogue section="mechanic" id="dragon" speaker="this" /><action>setFlag('mechanic_dragon', true);</action>
+			</section>
+			<group>
+				<dialogue section="mechanic" id="mirrows5" speaker="this" if="getFlag('mechanic.mirrows') && !getFlag('mirrow.defeat')" />
+				<dialogue section="mechanic" id="battery" speaker='this' if="player.hasQuest('mirrows') && !player.hasQuest('factory')" />
+				<dialogue section="mechanic" id="tip1" speaker='this' />
+				<dialogue section="mechanic" id="tip2" speaker='this' />
+				<dialogue section="mechanic" id="tip3" speaker='this' />
+			</group>
+		</choose>
+	</procedure>
+	<procedure id="mechanic.repair">
+		<choose>
+			<section if="area.getStructureById('power_plant').animal != null && !getFlag('mechanic_dragon')">
+				<dialogue section="mechanic" id="dragon" speaker="this" /><action>setFlag('mechanic_dragon', true);</action>
+			</section>
+			<section>
+				<dialogue section="mechanic" id="repair" speaker='this' />
+				<window type="repair" includeStorehouse="true">
+					<craft><action>this.playAnimation("repair")</action></craft>
+				</window>
+			</section>
+		</choose>
+	</procedure>
+	
+	<npc id="mechanic" tile="mechanic" action="talk" talk_sfx="talking6">
+		<idle class="repair">
+			<repair structure="power_plant">
+				<addItem id="coal" if="player.hasQuest('factory')" />
+			</repair>
+			<repair structure="elevator" /><repair structure="factory" /><repair structure="powerline1" /><repair structure="powerline2" /><repair type="mechanic" />
+		</idle>
+		<operate>
+			<section if="!player.hasQuest('powerplant')">
+				<dialogue section="mechanic" id="introduce1" speaker='this' />
+				<dialogue section="mechanic" id="introduce2" speaker='player' />
+				<dialogue section="mechanic" id="introduce3" speaker='this' />
+				<dialogue section="mechanic" id="introduce4" speaker='this' />
+				<dialogue section="mechanic" id="introduce5" speaker='this' />
+				<quest id="powerplant" />
+			</section>
+			<choose if="!player.questComplete('powerplant')">
+				<section if="player.canCompleteQuest('powerplant')">
+					<dialogue section="mechanic" id="powerplant1" speaker='this' />
+					<dialogue section="mechanic" id="powerplant2" speaker='this' />
+					<set id="old" value="area.getStructureById('damaged_power_plant')" />
+					<complete quest="powerplant" /><pan toStructure="old" seconds="0.25" />
+					<item id="power_plant_blueprint" hidden="true" />
+					<sound id="build" /><wait seconds="0.5" />
+					<lerp object="old" alpha="0" seconds="0.25" /><structure id="power_plant" x="old.xPos/Tile.SIZE" var="pp" />
+					<action>pp.renderer.alpha = 0;</action><lerp object="pp" alpha="1" seconds="0.25" />
+					<wait seconds="0.5" /><pan toObject="player" seconds="0.25" />
+					<dialogue section="mechanic" id="powerplant3" speaker='this' />
+					<dialogue section="mechanic" id="powerplant4" speaker='this' />
+					<item id="steel_bar" modal="true" />
+				</section>
+				<dialogue section="mechanic" id="powerplant5" speaker='this' />
+			</choose>
+			<section if="(player.getMaxPower() > 0 || player.questComplete('bandits')) && !player.hasQuest('factory')">
+				<dialogue section="mechanic" id="factory1" speaker='this' />
+				<dialogue section="mechanic" id="factory2" speaker='this' />
+				<quest id="factory" />
+			</section>
+			<section if="player.hasQuest('factory') && player.canCompleteQuest('factory')">
+				<dialogue section="mechanic" id="factory3" speaker='this' />
+				<complete quest="factory" reserve="prepare" />
+				<structure id="factory" x="137" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25">
+					<onPlace>
+						<complete quest="factory" reserve="finish" />
+						<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+						<item id="workshop_upgrade" hidden="true" />
+						<dialogue section="mechanic" id="factory4" speaker='this' />
+					</onPlace>
+					<onCancel><complete quest="factory" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+				</structure>
+			</section>
+			<dialogue section="mechanic" id="sleep" speaker="this" if="isNight()" />
+			<scene id="mechanic" show="intro" if="!getFlag('mechanic.intro')" with="fade" showToAll="true" />
+			<choose if="player.hasQuest('mirrows')">
+				<section if="getFlag('mirrow.intro') && !getFlag('mirrow.defeat') && !getFlag('mechanic.mirrows')">
+					<quest /><scene id="mechanic" show="mirrows" with="fade" showToAll="true" />
+				</section>
+				<section if="getFlag('mirrow.intro') && getFlag('medicom.panel9.read') && getFlag('medicom.panel10.read') && !getFlag('mirrow.defeat') && !player.hasQuest('mirrows2')">
+					<quest /><scene id="mechanic" show="mirrows2" with="fade" showToAll="true" />
+				</section>
+				<section if="getFlag('mirrow.intro') && !getFlag('mirrow.defeat') && player.hasQuest('mirrows2') && !player.questComplete('mirrows2') && player.canCompleteQuest('mirrows2')">
+					<complete quest="mirrows2" useResources="false" /><scene id="mechanic" show="mirrows3" with="fade" showToAll="true" />
+				</section>
+				<run procedure="mechanic.tips" if="!player.questComplete('factory')" />
+				<choose if="player.getDigCount('sci1.stone') > 0">
+					<section if="!player.hasQuest('elevator')">
+						<dialogue section="mechanic" id="elevator1" speaker='this' />
+						<dialogue section="mechanic" id="elevator2" speaker='this' />
+						<quest id="elevator" />
+					</section>
+					<choose if="!player.questComplete('elevator')">
+						<section if="player.canCompleteQuest('elevator')">
+							<dialogue section="mechanic" id="elevator3" speaker='this' />
+							<complete quest="elevator" reserve="prepare" />
+							<structure id="elevator" x="145" place="true" rangeX="64" rangeY="0" sfx="build" seconds="0.25" alignTile="true">
+								<onPlace>
+									<complete quest="elevator" reserve="finish" />
+									<lerp object="object" alpha="1" seconds="0.25" /><pan toObject="player" seconds="0.25" />
+									<item id="elevator_blueprint" hidden="true" />
+									<dialogue section="mechanic" id="elevator4" speaker='this' />
+								</onPlace>
+								<onCancel><complete quest="elevator" reserve="cancel" /><pan toObject="player" seconds="0.25" /></onCancel>
+							</structure>
+						</section>
+						<run procedure="mechanic.repair" />
+					</choose>
+					<run procedure="mechanic.repair" />
+				</choose>
+				<run procedure="mechanic.tips" />
+			</choose>
+			<run procedure="mechanic.tips" />
+		</operate>
+	</npc>
+</npcs>

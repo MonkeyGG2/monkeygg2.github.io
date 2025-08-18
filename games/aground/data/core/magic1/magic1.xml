@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<include id="parallax/parallax.xml" />
+	<include id="items/items.xml" />
+	<include id="structures/structures.xml" />
+	<include id="enemies/enemies.xml" />
+    <include id="scenes/scenes.xml" />
+	<include id="npcs.xml" />
+	<tile id="magic1.grass" sheet="{core}/tiles/tiles.png" x="145"><tile sheet="{core}/tiles/tiles.png" x="144" /></tile>
+	<tile id="magic1.dirt" sheet="{core}/tiles/tiles.png" x="145" />
+	<tile id="magic1.stone" sheet="{core}/tiles/tiles.png" x="146" />
+	<tile id="magic1.stone2" sheet="{core}/tiles/tiles.png" x="147" />
+	<dig id="magic1.dirt" cost="0" />
+	<dig id="magic1.grass" cost="0" grass="true" />
+	<dig id="magic1.stone" cost="3" />
+	<dig id="magic1.stone2" cost="4" />
+	
+	<tile id="invisible_block" sheet="{core}/tiles/tiles.png" x="148" />
+	<animation id="invisible_block" count="8" glow="true" />
+	
+	<tile id="alter_gem" sheet="{core}/tiles/tiles.png" x="156" />
+	<tile id="focus_gem" sheet="{core}/tiles/tiles.png" x="165" />
+	<tile id="spirit_gem" sheet="{core}/tiles/tiles.png" x="174" />
+	<tile id="blood_gem" sheet="{core}/tiles/tiles.png" x="183" />
+	
+	<tile id="magic1.dirt_sand1" sheet="{core}/tiles/tiles.png" x="145"><tile sheet="{core}/tiles/tiles.png" x="85" /></tile>
+	<tile id="magic1.dirt_sand2" sheet="{core}/tiles/tiles.png" x="145"><tile sheet="{core}/tiles/tiles.png" x="84" /></tile>
+	<tile id="magic1.dirt_sand3" sheet="{core}/tiles/tiles.png" x="145"><tile sheet="{core}/tiles/tiles.png" x="88" /></tile>
+	<dig id="magic1.dirt_sand1" cost="0" />
+	<dig id="magic1.dirt_sand2" cost="0" />
+	<dig id="magic1.dirt_sand3" cost="0" />
+	
+	<tile id="jelly" sheet="enemies/jelly.png" x="0" y="0" />
+	<animation id="jelly" count="8" glow="true" />
+	
+	<structure id="dragon_lair3" width="192" height="112" image="{core}/structures/dragon_lair.png" allowFlying="true">
+		<tooltip id="summon_alchemist" if="area.canGetNPC('alchemist_magic')" />
+		<operate>
+			<set id="alchemist" value="area.getNPC('alchemist_magic')" />
+			<move object="alchemist" x="player.tile_x+0.5" />
+			<play object="alchemist" animation="teleport_in" modal="true" />
+			<dialogue section="alchemist" id="dragon15" speaker="alchemist" />
+			<structure id="wyrm_pen" x="this.tile_x-3" var="wyrm_pen" />
+			<structure id="dragon_lair2" x="this.tile_x" y="this.tile_y" />
+			<action>player.overlapChanged(); wyrm_pen.renderer.alpha = 0;</action>
+			<lerp object="wyrm_pen" alpha="1" seconds="0.25" modal="true" />
+			<dialogue section="alchemist" id="dragon16" speaker="alchemist" />
+			<play object="alchemist" animation="teleport_out" modal="true" />
+			<move object="alchemist" structure="area.getStructureById('magic_house')" />
+		</operate>
+	</structure>
+	
+	<area id="magic1" background="magic1" width="96" height="192" planet="start">
+		<tiles id="magic1.grass" y="0" empty="true" />
+		<tiles id="bedrock" y="191" empty="true" />
+		<tiles id="magic1.dirt" start="0" end="0.25" empty="true" />
+		<tiles id="magic1.stone" start="0.25" end="0.5" empty="true" />
+		<tiles id="magic1.stone2" start="0.5" end="0.75" empty="true" />
+		<tiles id="bedrock" start="0.75" end="1" empty="true" />
+		<mine y="10" fromX="33" />
+		<action>for(i in 64...96){setOre(i, 12, "lava"); mine(i, 13, 0, "magic1.stone"); setTile(i, 12, "invisible_block");} setOre(63, 13, "lava");</action>
+		<shore x="-1" top="sand_top" bottom="sand" flip="true" dock="dock_empty" trans1="magic1.dirt_sand1" trans2="magic1.dirt_sand2" />
+		<shore x="96" top="sand_top" bottom="sand" dock="dock_empty_flip" trans1="magic1.dirt_sand1" trans2="magic1.dirt_sand3" />
+		
+		<appendArea id="magic1.pyramid" offsetX="9" offsetY="2" />
+		<tiles eval="'markings'+randInt(1,9)" y="14" />
+		
+		<appendArea id="sea_floor"><params area_left="-250" area_right="260" area_width="96" area_height="192" /></appendArea>
+		
+		<appendArea id="magic1.floating" offsetX="50" offsetY="-7" />
+		<appendArea id="magic1.floating" offsetX="70" offsetY="-7" />
+		<appendArea id="magic1.floating.big" offsetX="10" offsetY="-14" />
+		<appendArea id="magic1.cave" offsetX="-71" offsetY="7" />
+		<spawner id="yeti" time="5000" count="2" fromX="50" toX="75" fromY="-8" toY="-8" />
+		
+		<ore id="quartz" start="0.2" end="0.25" percent="0.0075" tile="magic1.dirt" />
+		<ore id="focus_gem" start="0.1" end="0.25" percent="0.0125" tile="magic1.dirt" />
+		<ore id="focus_gem" start="0.05" end="0.1" percent="0.000625" tile="magic1.dirt" />
+		<ore id="coal" start="0.0" end="0.2" percent="0.0125" tile="magic1.dirt" />
+		<ore id="iron" start="0.0" end="0.2" percent="0.0125" tile="magic1.dirt" />
+		<ore id="alter_gem" start="0.2" end="0.25" percent="0.000625" tile="magic1.dirt" />
+		<ore id="spirit_gem" start="0.45" end="0.5" percent="0.000625" tile="magic1.stone" />
+		<ore id="diamond" start="0.45" end="0.5" percent="0.00625" tile="magic1.stone" />
+		<ore id="blood_gem" start="0.35" end="0.5" percent="0.00625" tile="magic1.stone" />
+		<ore id="alter_gem" start="0.25" end="0.5" percent="0.0125" tile="magic1.stone" />
+		<ore id="quartz" start="0.25" end="0.5" percent="0.0125" tile="magic1.stone" />
+		<ore id="focus_gem" start="0.25" end="0.5" percent="0.0125" tile="magic1.stone" />
+		<ore id="lava" start="0.425" end="0.5" percent="1" tile="magic1.stone" />
+		<ore id="spirit_gem" start="0.6" end="0.75" percent="0.00625" tile="magic1.stone2" />
+		<ore id="focus_gem" start="0.5" end="0.65" percent="0.02" tile="magic1.stone2" />
+		<ore id="diamond" start="0.5" end="0.65" percent="0.01" tile="magic1.stone2" />
+		<ore id="blood_gem" start="0.5" end="0.75" percent="0.01" tile="magic1.stone2" />
+		<ore id="alter_gem" start="0.5" end="0.75" percent="0.02" tile="magic1.stone2" />
+		<ore id="quartz" start="0.75" end="0.85" percent="0.0375" tile="bedrock" />
+		<ore id="diamond" start="0.75" end="0.85" percent="0.0125" tile="bedrock" />
+		<ore id="titanium" start="0.8" end="0.95" percent="0.0125" tile="bedrock" />
+		<ore id="blood_gem" start="0.8" end="1" percent="0.00625" tile="bedrock" />
+		<ore id="spirit_gem" start="0.9" end="0.95" percent="0.0125" tile="bedrock" />
+		<ore id="uranium" start="0.9" end="1" percent="0.00625" tile="bedrock" />
+		<objects id="treasure_chest" start="0.05" end="0.1" count="8" tile="magic1.dirt">
+			this.inventory.addItems(Item.get("focus_gem"), 2);
+		</objects>
+		<objects id="purple_golem" start="0.25" end="0.5" percent="0.0075" tile="magic1.stone" />
+		<objects id="purple_tree" y="-1" startX="25" endX="92" minDist="8" maxDist="10" array="trees" />
+		<object id="fire_boar" x="82" y="-1" />
+		<spawner id="fire_boar" time="5000" count="2" fromX="32" toX="92" fromY="-1" toY="-1" />
+		<spawner id="crawler" time="1000" count="5" fromX="32" toX="92" fromY="-1" toY="-1" enabled="isNight()" />
+		<spawner id="leech" time="4000" count="3" fromX="1" toX="94" fromY="3" toY="32" enabled="isNight()" />
+		<objects id="ice_bush" y="-1" between="trees" pos="0.4" percent="0.5" />
+		<objects id="ice_bush" y="-1" between="trees" pos="0.7" percent="0.5" />
+		<structure id="wyrm_door" x="90" y="10">
+			<teleport area="wyrm_hive" x="9" y="2" />
+		</structure>
+		<object id="wyrm" x="91" y="10" />
+		<spawner id="wyrm" time="4000" count="1" fromX="33" toX="94" fromY="10" toY="10" tile="magic1.dirt" />
+		<objects id="magic_wyrm" start="0.3" end="0.4" count="3" tile="magic1.stone" />
+		<spawner id="magic_wyrm" time="4000" count="5" fromX="1" toX="94" fromY="64" toY="75" tile="magic1.stone" />
+		<object id="water_elemental" x="91" y="-1" />
+		<spawner id="water_elemental" time="5000" count="1" fromX="64" toX="95" fromY="-1" toY="-1" enabled="!isNight()" />
+		<spawner id="plant_elemental" time="5000" count="1" fromX="64" toX="95" fromY="-1" toY="-1" enabled="isNight()" />
+		<object id="fire_elemental" x="91" y="13" />
+		<spawner id="fire_elemental" time="5000" count="1" fromX="64" toX="95" fromY="13" toY="13" />
+		<spawner id="skyfish" time="2000" count="6" fromX="-220" toX="-50" fromY="-10" toY="-3" ground="false" />
+		<structure id="magic_house" x="10" y="1" />
+		<structure id="magic_forge_off" x="15" y="1" />
+		<structure id="magic_farm_off" x="22" y="1" />
+		<object id="alien" x="16" y="11" />
+		<action>for(y in 2...8) setTile(21, y, "invisible_block")</action>
+		<structure id="recipe_pillar" x="7" recipe="make_thunder_axe" />
+		<set id="pillar_x" value="randInt(2, 93)" />
+		<spreadTiles x="pillar_x" y="68" tile="invisible_block" on="magic1.stone" count="100" />
+		<structure id="recipe_pillar" x="pillar_x" y="68" recipe="make_fire_sword" />
+		<object id="alchemist_magic_hotspot" x="4" y="120" />
+		<fishing>
+			<loot id="rusty_axe" p="6" />
+			<loot id="toothfish" p="16" difficulty="1" />
+			<loot id="rockfish" p="4" difficulty="2" />
+			<loot id="cocoon" p="1" difficulty="4" />
+		</fishing>
+		<init><runAreaLoad /><action>area.spawner.spawnAll('skyfish'); setFlag('jump_water', true);</action></init>
+		<onLoad>
+			<quest id="spirit_gem" ask="false" if="getFlag('alchemist_spirit_gem') && !player.hasQuest('spirit_gem')" />
+			<complete quest="spirit_gem" if="player.hasQuest('spirit_gem') && player.canCompleteQuest('spirit_gem') && getFlag('alchemist_second')" />
+			<action if="area.getObject('alien') != null && !getFlag('oldone.hostile')">area.getObject('alien').restoreHealth()</action>
+			<structure id="night_recipe_pillar" x="91" recipe="make_plant_bag" if="area.getStructureById('night_recipe_pillar') == null" />
+			<music id="magic1" seconds="1" /><weather type="snow" fromY="-50" toY="-7" />
+			<action>_x = 2.0</action>
+			<repeat count="12">
+				<tile id="jelly" animation="jelly" renderer="spirit" bob="true" x="_x+random()*5" y="-5+random()*3.5" fromX="2" toX="92" onTop="true" />
+				<action>_x += 7.5;</action>
+			</repeat>
+			<action if="version < 56">area.spawner.spawnAll('skyfish');</action>
+			<appendArea id="sea_floor" if="area.getObject('seaweed') == null"><params area_left="-250" area_right="260" area_width="96" area_height="192" /></appendArea>
+			<action if="area.isEmptyTile(15,-7)">for(x in 15...27) setTile(x, -7, "stone")</action>
+			<section if="area.getStructureById('dragon_lair3') == null && area.getStructureById('dragon_lair2') == null">
+				<structure id="dragon_lair3" x="68" y="0" /><action>
+					for(x in 69...76){setBack(x, -6, "stone"); area.setLit(x, -6);} for(x in 68...77){setBack(x, -5, "stone"); area.setLit(x, -5);}
+					for(y in -4...0) for(x in 68...78){setBack(x, y, "stone"); area.setLit(x, y);} setBack(78, -1, "stone"); area.setLit(78, -1);
+				</action>
+			</section>
+		</onLoad>
+		<connection area="start" fromX="-250" toX="280" />
+		<connection area="magic1" fromX="260" toX="-250" />
+	</area>
+	<area id="magic1.pyramid">
+		<shape type="trapezoid">
+			<top y="0" fromX="0" toX="20" />
+			<bottom y="12" fromX="-5" toX="25" />
+		</shape>
+		<tiles eval="'markings'+randInt(1,9)" start="0" end="1" />
+	</area>
+	<area id="magic1.floating">
+		<shape type="trapezoid">
+			<top y="0" fromX="0" toX="6" />
+			<bottom y="3" fromX="3" toX="3" />
+		</shape>
+		<tiles id="stone" start="0" end="1" />
+		<tiles id="snow" top="0" />
+		<tiles id="snow_stone" top="1" />
+		<setTile x="2" y="1" tile="spirit_gem" layer="ore" />
+		<objects id="bush_snow" y="-1" fromX="0" toX="6" count="1" />
+		<objects id="yeti" fromX="1" toX="5" y="-1" count="1" />
+	</area>
+	<structure id="ice_doorway" width="32" height="32" image="structures/ice_door.png" name="enter" renderer="spirit" alphaPulse="true">
+		<operate><teleport area="magic1.ice_cave" x="29" y="28" with="ellipse" /></operate>
+	</structure>
+	<structure id="ice_doorway_exit" width="32" height="32" image="structures/ice_door.png" name="enter">
+		<operate><teleport area="magic1" x="17" y="-10" with="ellipse" /></operate>
+	</structure>
+	<structure id="wyrm_door" width="48" height="32" image="structures/wyrm_door.png" name="enter" type="door" allowReturn="false">
+		<return area="magic1" x="91" y="10" />
+	</structure>
+	<area id="magic1.floating.big">
+		<shape type="trapezoid">
+			<top y="0" fromX="0" toX="18" />
+			<bottom y="7" fromX="6" toX="12" />
+		</shape>
+		<tiles id="stone" start="0" end="1" />
+		<tiles id="snow" top="0" />
+		<tiles id="snow_stone" top="1" />
+		<object id="ice_elemental" x="10" y="-1" />
+		<spawner id="ice_elemental" time="5000" count="1" fromX="2" toX="16" fromY="-1" toY="-1" />
+		<action>
+			for(y in 2...6) for(x in 6...10) setTile(x, y, "bedrock"); for(y in 3...5) for(x in 7...9) mine(x, y);
+			for(x in 10...15){for(y in 3...6) setTile(x, y, "bedrock"); mine(x, 4);}
+			mine(9, 4); for(x in 13...15) setTile(x, 6, "stone");
+			for(x in 15...18){setTile(x, 5, "snow"); setTile(x, 6, "snow_stone");} setTile(18, 5, "snow");
+		</action>
+		<structure id="ice_doorway" x="7" y="4" />
+		<objects id="conifer_snow" y="-1" startX="-4" endX="17" minDist="6" maxDist="6" />
+		<objects id="bush_snow" y="-1" fromX="1" toX="18" percent="0.25" />
+		<objects id="red_bush_snow" y="-1" fromX="1" toX="18" percent="0.175"  />
+		<structure id="ice_structure" x="6" />
+	</area>
+	<structure id="wyrm_hive" width="272" height="180" image="structures/wyrm_hive.png" behind="true" remove="false" allowSpawn="true" />
+	<area id="wyrm_hive" width="19" height="15" background="black">
+		<tiles id="magic1.dirt" start="0" end="1" />
+		<mine start="0" end="1" />
+		<structure id="wyrm_hive" x="1" y="13" />
+		<structure id="recipe_pillar" x="8" y="13" recipe="make_drain_sword" />
+		<object id="wyrm_queen" x="11" y="10" />
+		<tiles id="bedrock" x="0" />
+		<tiles id="bedrock" x="18" />
+		<tiles id="bedrock" y="0" />
+		<tiles id="bedrock" y="14" />
+		<object id="treasure_chest" x="1" y="12">this.inventory.addItems(Item.get("spirit_gem"), 1);</object>
+		<object id="treasure_chest" x="17" y="12">this.inventory.addItems(Item.get("spirit_gem"), 1);</object>
+		<appendArea id="wyrm_hive.rocks" offsetX="1" offsetY="1" />
+		<structure id="wyrm_door" x="8" y="2" />
+		<objects id="wyrm" start="0" end="1" count="3" tile="magic1.dirt" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<structure id="wyrm_tunnel" x="1" y="1" if="area.getStructureById('wyrm_tunnel') == null && area.getObject('wyrm_queen') == null"><teleport area="wyrm_tunnels" x="48" y="48" /></structure>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 1...14){setTile(0, y, "blackstone"); setTile(18, y, "blackstone");} for(x in 0...19){setTile(x, 0, "blackstone"); setTile(x, 14, "blackstone");}</action>
+		</onLoad>
+	</area>
+	<area id="wyrm_hive.rocks">
+		<setTile x="4" y="11" tile="bedrock" /><setTile x="5" y="11" tile="bedrock" /><setTile x="6" y="11" tile="bedrock" />
+		<setTile x="10" y="11" tile="bedrock" /><setTile x="11" y="11" tile="bedrock" /><setTile x="12" y="11" tile="bedrock" />
+		<setTile x="2" y="10" tile="bedrock" /><setTile x="3" y="10" tile="bedrock" />
+		<setTile x="13" y="10" tile="bedrock" /><setTile x="14" y="10" tile="bedrock" />
+		<setTile x="0" y="9" tile="bedrock" /><setTile x="1" y="9" tile="bedrock" />
+		<setTile x="15" y="9" tile="bedrock" /><setTile x="16" y="9" tile="bedrock" />
+		<setTile x="0" y="7" tile="bedrock" /><setTile x="1" y="7" tile="bedrock" />
+		<setTile x="15" y="7" tile="bedrock" /><setTile x="16" y="7" tile="bedrock" />
+		<setTile x="1" y="5" tile="bedrock" /><setTile x="2" y="5" tile="bedrock" />
+		<setTile x="14" y="5" tile="bedrock" /><setTile x="15" y="5" tile="bedrock" />
+		<setTile x="1" y="4" tile="bedrock" /><setTile x="15" y="4" tile="bedrock" />
+		<setTile x="1" y="3" tile="bedrock" /><setTile x="15" y="3" tile="bedrock" />
+		<setTile x="5" y="2" tile="bedrock" /><setTile x="6" y="2" tile="bedrock" /><setTile x="7" y="2" tile="bedrock" />
+		<setTile x="9" y="2" tile="bedrock" /><setTile x="10" y="2" tile="bedrock" /><setTile x="11" y="2" tile="bedrock" />
+		<setTile x="2" y="1" tile="bedrock" /><setTile x="3" y="1" tile="bedrock" /><setTile x="4" y="1" tile="bedrock" />
+		<setTile x="12" y="1" tile="bedrock" /><setTile x="13" y="1" tile="bedrock" /><setTile x="14" y="1" tile="bedrock" />
+        <setTile x="2" y="0" tile="bedrock" /><setTile x="3" y="0" tile="bedrock" /><setTile x="4" y="0" tile="bedrock" />
+		<setTile x="12" y="0" tile="bedrock" /><setTile x="13" y="0" tile="bedrock" /><setTile x="14" y="0" tile="bedrock" />
+        <mine x="7" y="0" light="3" /><mine x="8" y="0" light="3" /><mine x="9" y="0" light="3" />
+		<mine x="7" y="1" light="3" /><mine x="8" y="1" light="3" /><mine x="9" y="1" light="3" />
+	</area>
+	<area id="magic1.cave">
+		<set id="light" value="0" />
+		<run procedure="alchemist_cave" />
+		<setTile x="92" y="0" tile="markings6" />
+	</area>
+		
+	<recipe id="craft_golem" creates="golem" type="golem_factory"><type id="no_uncraft" /><item id="diamond" count="5" /><item id="blood_gem" count="1" /></recipe>
+	<recipe id="craft_earth_armor" creates="earth_armor" type="golem_factory"><item id="earth_gem" count="1" /><item id="diamond" count="5" /><item id="blood_gem" count="3" /></recipe>
+	<recipe id="craft_earth_helm" creates="earth_helm" type="golem_factory"><item id="diamond" count="5" /><item id="blood_gem" count="1" /></recipe>
+	<recipe id="craft_earth_hammer" creates="earth_hammer" type="golem_factory"><item id="diamond" count="5" /><item id="blood_gem" count="1" /></recipe>
+	
+	<animation id="wyrm_tunnel.idle" count="6" />
+	<structure id="wyrm_tunnel" width="16" height="16" image="structures/wyrm_tunnel.png" name="enter" type="door" allowReturn="false">
+        <operate>
+            <section if="area.id != this.area_id">
+                <set id="toArea" value="player.areas.get(this.area_id)" />
+                <set id="tx" value="Math.round(this.x/Tile.SIZE)" /><set id="ty" value="Math.round(this.y/Tile.SIZE)" />
+                <set id="struc" value="toArea.getStructureInTile(tx, ty)" />
+                <section if="(struc == null || struc.info.id != 'wyrm_tunnel') && (toArea.overlapsStructure(tx, ty, 1, 4) || toArea.hasObjectInTile(tx, ty))">
+                    <set id="ar" value="[]" />
+                    <action>
+                        var t = toArea.getBaseTile(tx, ty); for(dy in -6...7) for(dx in -6...7){
+                            var _x = tx+dx; var _y = ty+dy;
+                            if(!toArea.overlapsStructure(_x, _y, 1, 4) &amp;&amp; !toArea.hasObjectInTile(_x, _y) &amp;&amp; toArea.getBaseTile(_x, _y) == t) ar.push({x:_x, y:_y});
+                        }
+                    </action>
+                    <stop if="ar.length == 0" />
+                    <action>var n = ar[randInt(0, ar.length)]; this.x = n.x*Tile.SIZE; this.y = n.y*Tile.SIZE;</action>
+                </section>
+            </section>
+		</operate>
+		<afterTeleport><action if="!area.overlapsStructure(player.tile_x, player.tile_y, 1, 4)">var s = buildStructure("wyrm_tunnel", player.tile_x, player.tile_y); s.area_id = "wyrm_tunnels"; s.x = this.xPos; s.y = this.yPos;</action><dig x="player.tile_x" y="player.tile_y" speed="2" /></afterTeleport>
+    </structure>
+	<area id="wyrm_tunnels">
+		<exit area="wyrm_hive" x="1" y="1" />
+        <action>setBack(48, 48, "magic1.stone");</action>
+		<structure id="wyrm_tunnel" x="48" y="48"><teleport area="wyrm_hive" x="1" y="1" /></structure>
+		<set id="exits" value="[]" /><set id="structures" value="[]" /><set id="i" value="0" />
+		<action>
+			for(i in 0...2) exits.push({area:"wyrm_tunnels", x:0, y:0}); exits.push({area:"wyrm_tunnels2", x:32, y:32});
+			exits.push({area:"wyrm_hive", x:17, y:1}); exits.push({area:"magic1", x:14, y:-11});
+			for(i in 0...2) exits.push({area:"wyrm_hive2", x:9, y:2});
+			for(i in 0...2) exits.push({area:"magic_ore", x:randInt(2,62), y:randInt(2,15)});
+			function add(area_id, x, y, w, h){
+				exits.push({area:area_id, x:randInt(x, x+w), y:randInt(y, y+h)});
+			} add("farming", 2, 2, 124, 9); add("water_cave", 24, 35, 7, 10); add("start", 25, 2, 21, 9);
+			add("start", 2, 64, 92, 30); add("start", 106, 0, 21, 9); add("start", 104, 86, 21, 8);
+			add("magic1", 2, 2, 32, 5); add("magic1", 2, 60, 92, 20); add("magic1", 2, 120, 92, 20); 
+			add("science1", 140, 2, 50, 5); add("science1", (random() &lt; 0.5)?2:70, 2, 20, 9);
+            add("science1", 140, 70, 50, 20); add("science1", 2, 70, 88, 20);
+		</action>
+		<place x="1" y="1" width="94" height="94" count="exits.length" pad="5" accept="Math.abs(x-48) > 5 || Math.abs(y-48) > 5">
+			setBack(x, y, "magic1.stone"); var s = buildStructure("wyrm_tunnel", x, y);
+			var exit = exits[i++]; s.area_id = exit.area; s.x = exit.x*Tile.SIZE; s.y = exit.y*Tile.SIZE;
+			structures.push(s);
+		</place>
+		<action>i = 0; while(i &lt; 2){var s1 = structures[i]; var s2 = structures[i+1]; s1.x = s2.xPos; s1.y = s2.yPos; s2.x = s1.xPos; s2.y = s1.yPos; i += 2;}</action>
+		<maze floor="magic1.stone" wall="bedrock" width="96" height="96" /><light x="48" y="48" size="3" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 1...95){setTile(0, y, "blackstone"); setTile(95, y, "blackstone");} for(x in 0...96){setTile(x, 0, "blackstone"); setTile(x, 95, "blackstone");}</action>
+		</onLoad>
+	</area>
+	<area id="wyrm_tunnels2" width="64" height="64" temporary="true">
+		<action>for(y in 31...34) for(x in 31...34) setBack(x, y, "magic1.dirt");</action>
+		<set id="exits" value="[]" /><set id="structures" value="[]" /><set id="i" value="0" />
+		<action>for(i in 0...8) exits.push({area:"wyrm_tunnels2", x:0, y:0});</action>
+		<action>exits.push({area:"lab_blueprint", x:1, y:-1});</action>
+		<action>exits.push({area:"wyrm_pen_blueprint", x:1, y:-1});</action>
+		<action>exits.push({area:"spirit_gem", x:5, y:-1});</action>
+		<place x="1" y="1" width="62" height="62" count="exits.length" pad="5" accept="Math.abs(x-32) > 5 || Math.abs(y-32) > 5">
+			setBack(x, y, "magic1.stone"); var exit = exits[i++]; if(exit.y &lt; 0){
+				var o = ObjectInfo.make("treasure_chest", x*Tile.SIZE, y*Tile.SIZE); area.addObject(o);
+				o.inventory.addItems(Item.get(exit.area), exit.x);
+			} else {
+				var s = buildStructure("wyrm_tunnel", x, y);
+				s.area_id = exit.area; s.x = exit.x*Tile.SIZE; s.y = exit.y*Tile.SIZE; structures.push(s);
+			}
+		</place>
+		<action>i = 0; while(i &lt; 8){var s1 = structures[i]; var s2 = structures[i+1]; s1.x = s2.xPos; s1.y = s2.yPos; s2.x = s1.xPos; s2.y = s1.yPos; i += 2;}</action>
+		<maze floor="magic1.stone" wall="bedrock" width="64" height="64" /><light x="32" y="32" size="3" />
+		<objects id="leech" start="0" end="1" count="16" tile="magic1.stone" />
+		<init><runAreaLoad /></init>
+		<onLoad>
+			<action if="area.getTileString(0,0,BASE_LAYER) == 'bedrock'">for(y in 1...63){setTile(0, y, "blackstone"); setTile(63, y, "blackstone");} for(x in 0...64){setTile(x, 0, "blackstone"); setTile(x, 63, "blackstone");}</action>
+		</onLoad>
+	</area>
+	<procedure id="random_recipe_pillar">
+		<set id="recipes" value="['make_ice_sword','make_water_sword','make_plant_sword','make_ice_arrow','make_water_arrow','make_drain_arrow']" />
+		<structure id="recipe_pillar" x="pillar_x" y="pillar_y" recipe="recipes[randInt(0, recipes.length)]" />
+	</procedure>
+	<area id="wyrm_hive2" width="19" height="15" background="black" temporary="true">
+		<tiles id="magic1.dirt" start="0" end="1" />
+		<mine start="0" end="1" />
+		<structure id="wyrm_hive" x="1" y="13" />
+		<set id="pillar_x" value="8" /><set id="pillar_y" value="13" /><run procedure="random_recipe_pillar" />
+		<object id="wyrm_queen" x="11" y="10" />
+		<tiles id="blackstone" x="0" />
+		<tiles id="blackstone" x="18" />
+		<tiles id="blackstone" y="0" />
+		<tiles id="blackstone" y="14" />
+		<appendArea id="wyrm_hive.rocks" offsetX="1" offsetY="1" />
+		<objects id="wyrm" start="0" end="1" count="3" tile="magic1.dirt" />
+	</area>
+  	<area id="magic_ore" width="64" height="64" background="black" temporary="true">
+		<tiles id="magic1.dirt" start="0" end="0.5" />
+		<tiles id="magic1.stone" start="0.5" end="1" />
+		<tiles id="blackstone" y="0" />
+		<tiles id="blackstone" y="63" />
+		<tiles id="blackstone" x="0" />
+		<tiles id="blackstone" x="63" />
+		<ore id="quartz" start="0.4" end="0.5" percent="0.0075" tile="magic1.dirt" />
+		<ore id="focus_gem" start="0.2" end="0.5" percent="0.0125" tile="magic1.dirt" />
+		<ore id="coal" start="0.0" end="0.4" percent="0.0125" tile="magic1.dirt" />
+		<ore id="iron" start="0.0" end="0.4" percent="0.0125" tile="magic1.dirt" />
+		<ore id="spirit_gem" start="0.9" end="1" percent="0.000625" tile="magic1.stone" />
+		<ore id="diamond" start="0.9" end="1" percent="0.00625" tile="magic1.stone" />
+		<ore id="blood_gem" start="0.7" end="1" percent="0.00625" tile="magic1.stone" />
+		<ore id="alter_gem" start="0.5" end="1" percent="0.0125" tile="magic1.stone" />
+		<ore id="quartz" start="0.5" end="1" percent="0.0125" tile="magic1.stone" />
+		<ore id="focus_gem" start="0.5" end="1" percent="0.0125" tile="magic1.stone" />
+		<ore id="lava" start="0.85" end="1" percent="1" tile="magic1.stone" />
+        <objects id="purple_golem" start="0.5" end="1" percent="0.0075" tile="magic1.stone" />
+		<objects id="magic_wyrm" start="0.6" end="0.8" count="4" tile="magic1.stone" />
+        <set id="pillar_x" value="randInt(2, 62)" /><set id="pillar_y" value="randInt(40, 63)" /><run procedure="random_recipe_pillar" />
+		<spreadTiles x="pillar_x" y="pillar_y" tile="invisible_block" on="magic1.stone" count="100" />
+	</area>
+	<object id="ice_cave_exit.hotspot">
+		<over>
+			<remove object="this" /><dig x="27" y="25" speed="2" /><dig x="27" y="26" speed="2" /><dig x="27" y="27" speed="2" />
+		</over>
+	</object>
+	<area id="magic1.ice_cave" width="32" height="32" background="black" canFly="false">
+		<exit area="magic1" x="17" y="-10" />
+		<tiles id="ice_wall" start="0" end="1" />
+		<appendArea id="ice_puzzle1" offsetX="18" offsetY="25" />
+		<appendArea id="ice_puzzle2" offsetX="4" offsetY="15" />
+		<appendArea id="ice_puzzle3" offsetX="1" offsetY="3" />
+		<appendArea id="ice_puzzle4" offsetX="18" offsetY="0" />
+		<action>
+			for(x in 27...29) mine(x, 28, 0, "snow"); for(y in 27...29) for(x in 29...31) mine(x, y, 3, "snow");
+			for(y in 27...30) for(x in 5...18) mine(x, y, 0, "snow"); replaceTile(5, 27, "ice_wall");
+			replaceTile(8, 29, "ice_wall"); for(x in 16...18) replaceTile(x, 29, "ice_wall");
+			for(y in 13...15) for(x in 4...13) mine(x, y, 0, "snow"); for(x in 4...7) mine(x, 12, 0, "snow");
+			for(y in 1...3) for(x in 1...13) mine(x, y, 0, "snow"); for(y in 3...6) for(x in 11...13) mine(x, y, 0, "snow");
+			for(y in 4...9) for(x in 12...18) mine(x, y, 0, "snow"); replaceTile(17, 4, "ice_wall");
+			for(y in 9...11) for(x in 13...17) mine(x, y, 0, "snow"); replaceTile(13, 10, "ice_wall");
+			for(x in 15...18) mine(x, 11, 0, "snow"); for(x in 1...5) mine(x, 19, 0, "snow");
+			for(y in 16...23) for(x in 20...28) mine(x, y, 0, "snow"); replaceTile(27, 16, "ice_wall");
+			replaceTile(20, 22, "ice_wall"); replaceTile(21, 22, "ice_wall"); mine(27, 23, 0, "snow"); mine(27, 24, 0, "snow");
+			for(y in 18...22) mine(28, y, 0, "snow"); for(y in 16...21) mine(19, y, 0, "snow"); for(y in 18...21) mine(18, y, 0, "snow");
+			for(y in 13...15) mine(23, y, 0, "snow"); for(x in 20...24) mine(x, 15, 0, "snow");
+		</action>
+		<structure id="ice_doorway_exit" x="29" y="28" />
+		<object id="ice_chest" x="1" y="19">this.inventory.addItems(Item.get("ice_arrow"), 10);</object>
+		<object id="ice_chest" x="2" y="2">this.inventory.addItems(Item.get("ice_sword"), 1);</object>
+		<object id="ice_chest" x="26" y="24">this.inventory.addItems(Item.get("frost_shield"), 1);</object><light x="26" y="24" size="1" />
+		<structure id="recipe_pillar" x="23" y="22" recipe="make_frost_shield" />
+		<object id="ice_cave_exit.hotspot" x="27" y="24" />
+		<object id="yeti" x="8" y="14" /><object id="yeti" x="5" y="2" />
+		<setTile x="18" y="-1" tile="ice_wall" /><object id="yeti" x="21" /><object id="yeti" x="27" />
+		<spawner id="icer" time="5000" count="3" fromX="1" toX="31" fromY="1" toY="31" spawnWidth="32" tile="snow" />
+		<init><runAreaLoad /><action>area.spawner.spawnAll("icer")</action></init>
+		<onLoad><action if="area.getTile(0, 32, BASE_LAYER) == null">for(x in 0...32) setTile(x, 32, "blackstone"); setBack(31, 28, "snow");</action></onLoad>
+	</area>
+	<area id="ice_puzzle1" x="1" y="1" width="7" height="4">
+		<tiles id="ice" start="0" end="1" /><mine start="0" end="1" />
+		<tiles id="ice_wall" x="0" /><tiles id="ice_wall" x="8" />
+		<tiles id="ice_wall" y="0" /><tiles id="ice_wall" y="5" />
+		<setTile tile="ice_wall" x="2" y="3" /><setTile tile="ice_wall" x="5" y="1" />
+		<setTile tile="ice_wall" x="6" y="4" /><setTile tile="ice_wall" x="7" y="4" />
+		<mine tile="snow" x="0" y="2" /><mine tile="snow" x="8" y="3" />
+	</area>
+	<area id="ice_puzzle2" x="1" y="1" width="7" height="10">
+		<tiles id="ice" start="0" end="1" /><mine start="0" end="1" />
+		<tiles id="ice_wall" x="0" /><tiles id="ice_wall" x="8" />
+		<tiles id="ice_wall" y="0" /><tiles id="ice_wall" y="11" />
+		<setTile tile="ice_wall" x="1" y="1" /><setTile tile="ice_wall" x="1" y="2" />
+		<setTile tile="ice_wall" x="4" y="3" /><setTile tile="ice_wall" x="2" y="5" />
+		<setTile tile="ice_wall" x="3" y="8" /><setTile tile="ice_wall" x="6" y="7" />
+		<setTile tile="ice_wall" x="7" y="10" /><mine tile="snow" x="5" y="0" /><mine tile="snow" x="6" y="11" />
+	</area>
+	<area id="ice_puzzle3" x="1" y="1" width="8" height="7">
+		<tiles id="ice" start="0" end="1" /><mine start="0" end="1" />
+		<tiles id="ice_wall" x="0" /><tiles id="ice_wall" x="9" />
+		<tiles id="ice_wall" y="0" /><tiles id="ice_wall" y="8" />
+		<setTile tile="ice_wall" x="1" y="3" /><setTile tile="ice_wall" x="1" y="4" />
+		<setTile tile="ice_wall" x="2" y="5" /><setTile tile="ice_wall" x="4" y="2" />
+		<setTile tile="ice_wall" x="5" y="7" /><setTile tile="ice_wall" x="8" y="7" />
+		<setTile tile="snow" x="4" y="1" layer="back" /><setTile tile="snow" x="6" y="2" layer="back" />
+		<setTile tile="snow" x="5" y="3" layer="back" /><setTile tile="snow" x="7" y="4" layer="back" />
+		<setTile tile="snow" x="4" y="5" layer="back" /><mine tile="snow" x="4" y="8" /><mine tile="snow" x="9" y="2" />
+	</area>
+	<area id="ice_puzzle4" x="1" y="1" width="11" height="11">
+		<tiles id="ice" start="0" end="1" /><mine start="0" end="1" />
+		<tiles id="ice_wall" x="0" /><tiles id="ice_wall" x="12" />
+		<tiles id="ice_wall" y="0" /><tiles id="ice_wall" y="12" />
+		<setTile tile="ice_wall" x="4" y="11" /><setTile tile="ice_wall" x="6" y="11" />
+		<setTile tile="ice_wall" x="3" y="7" /><setTile tile="ice_wall" x="7" y="8" />
+		<setTile tile="ice_wall" x="6" y="6" /><setTile tile="ice_wall" x="3" y="2" />
+		<setTile tile="ice_wall" x="8" y="2" /><setTile tile="snow" x="9" y="9" layer="back" />
+		<setTile tile="snow" x="9" y="6" layer="back" /><setTile tile="snow" x="9" y="3" layer="back" />
+		<setTile tile="snow" x="3" y="5" layer="back" /><setTile tile="snow" x="6" y="3" layer="back" />
+		<setTile tile="snow" x="6" y="2" layer="back" /><mine tile="snow" x="0" y="11" /><mine tile="snow" x="5" y="12" />
+	</area>
+</data>

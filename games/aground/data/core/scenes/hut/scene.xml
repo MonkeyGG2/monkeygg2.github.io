@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<scenes>
+	<scene id="hut">
+		<tilesheet id="builder.png" width="92" height="67" />
+		<tile id="builder" sheet="builder.png" x="0" y="0" />
+		<animation id="builder.idle" count="13">
+			<frame x="13" count="24" />
+			<frame x="25" count="12" />
+			<frame x="1" count="12" />
+		</animation>
+		<animation id="builder.talk" x="37" count="12" />
+		
+		<tilesheet id="miner.png" width="77" height="60" />
+		<tile id="miner" sheet="miner.png" x="0" y="0" />
+		<animation id="miner.idle" count="13">
+			<frame x="13" count="15" />
+			<frame x="1" count="12" />
+		</animation>
+		<animation id="miner.talk" x="28" count="12" />
+		
+		<tilesheet id="farmer.png" width="102" height="83" />
+		<tile id="farmer" sheet="farmer.png" x="0" y="0" />
+		<animation id="farmer.idle" count="12">
+			<frame x="12" count="15" />
+			<frame x="1" count="11" />
+			<frame x="12" count="15" />
+			<frame x="27" count="15" />
+			<frame x="27" count="15" />
+			<frame x="12" count="15" />
+			<frame x="1" count="11" />
+		</animation>
+		<animation id="farmer.talk">
+			<frame x="42" count="6" offsetX="-4" />
+			<frame x="48" count="9" />
+		</animation>
+		
+		<tilesheet id="trader.png" width="108" height="80" />
+		<tile id="trader" sheet="trader.png" x="0" y="0" />
+		<animation id="trader.idle" count="13">
+			<frame x="13" count="8" />
+			<frame x="13" count="8" />
+			<frame x="1" count="12" />
+		</animation>
+		<animation id="trader.talk" x="21" count="12" />
+		
+		<tilesheet id="alchemist.png" width="62" height="74" />
+		<tile id="alchemist" sheet="alchemist.png" x="0" y="0" />
+		<animation id="alchemist.idle">
+			<frame visible="false" length="20" />
+			<frame x="0" count="7" />
+			<frame x="7" length="4" />
+			<frame x="8" length="2" />
+			<frame x="7" length="4" />
+			<frame x="9" count="8" repeat="2" />
+			<frame x="7" length="4" />
+			<frame x="8" length="2" />
+			<frame x="7" length="4" />
+			<frame x="9" count="8" repeat="2" />
+			<frame x="7" length="4" />
+			<frame x="0" count="7" reverse="true" />
+		</animation>
+		
+		<tilesheet id="fire.png" width="91" height="122" />
+		<tile id="fire" sheet="fire.png" x="0" y="0" />
+		<animation id="fire">
+			<frame x="0" y="0" offsetX="97" />
+			<frame x="1" y="0" offsetX="81" />
+			<frame x="2" y="0" offsetX="82" />
+			<frame x="3" y="0" offsetX="74" />
+			<frame x="0" y="1" offsetX="82" />
+			<frame x="1" y="1" offsetX="75" />
+			<frame x="2" y="1" offsetX="78" />
+			<frame x="3" y="1" offsetX="79" />
+			<frame x="0" y="2" offsetX="88" />
+			<frame x="1" y="2" offsetX="85" />
+			<frame x="2" y="2" offsetX="82" />
+			<frame x="3" y="2" offsetX="96" />
+		</animation>
+		<layer id="bg" image="hut.png" />
+		<layer id="builder" tile="builder" animation="builder.idle" talk="builder.talk" x="164" y="77" />
+		<layer id="miner" tile="miner" animation="miner.idle" talk="miner.talk" y="84" />
+		<layer id="farmer" tile="farmer" animation="farmer.idle" talk="farmer.talk" x="48" y="61" />
+		<layer id="trader" tile="trader" animation="trader.idle" talk="trader.talk" x="92" y="64" />
+		<layer id="alchemist" tile="alchemist" animation="alchemist.idle" x="194" y="18" />
+		<layer id="hunter" tile="hires.hunter" animation="hires.hunter.idle" talk="hires.hunter.talk" x="0" y="5" />
+		<layer id="hunter_firelight" tile="hires.hunter" animation="hires.hunter.firelight" x="0" y="5" />
+		<layer id="fire" tile="fire" animation="fire" y="22" />
+		
+		<show id="first" sound="fire">
+			<layer id="bg" />
+			<layer id="builder" />
+			<layer id="fire" /><hide id="builder" />
+			<action>player.fullRestore(); mine(92, 0);</action>
+			<structure id="hut" x="34" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="first1" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="first2" speaker="builder" />
+			<menu section="common">
+				<dialogue section="scene.hut" id="first3" />
+				<choice id="yes">
+					<object id="builder" x="40" name="builder_object" />
+					<lerp object="builder" alpha="1" seconds="0.25" />
+					<dialogue section="scene.hut" id="first4" speaker='builder' />
+					<dialogue section="scene.hut" id="first5" speaker="player" />
+					<dialogue section="scene.hut" id="first6" speaker='builder' />
+					<dialogue section="scene.hut" id="first7" speaker='builder' />
+					<dialogue section="scene.hut" id="first8" speaker="player" />
+					<wait seconds="1" />
+				</choice>
+				<choice id="no">
+					<object id="builder.corpse" x="40" />
+					<dialogue section="scene.hut" id="first9" speaker="builder" />
+					<wait seconds="2" />
+					<object id="rat" x="39" facing="right" />
+					<object id="rat" x="41" />
+				</choice>
+			</menu>
+			<weather type="storm" stop="0" />
+			<save /><setTime value="6" frames="40" />
+			<runAreaLoad />
+		</show>
+		<show id="second">
+			<layer id="bg" />
+			<layer id="alchemist" if="player.hasQuest('lab') && area.getNPC('alchemist') != null" />
+			<layer id="farmer" if="player.hasQuest('farm')" />
+			<layer id="trader" if="player.hasQuest('market')" />
+			<layer id="miner" />
+			<layer id="builder" if="player.hasQuest('storehouse')" />
+			<layer id="fire" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="second1" speaker="miner" />
+			<dialogue section="scene.hut" id="second2" speaker="miner" />
+			<dialogue section="scene.hut" id="second3" speaker="player" />
+			<dialogue section="scene.hut" id="second4" speaker="miner" />
+			<wait seconds="1" />
+		</show>
+		<show id="third">
+			<layer id="bg" />
+			<layer id="alchemist" if="player.hasQuest('lab') && area.getNPC('alchemist') != null" />
+			<layer id="farmer" />
+			<layer id="trader" if="player.hasQuest('market')" />
+			<layer id="miner" />
+			<layer id="builder" if="player.hasQuest('storehouse')" />
+			<layer id="fire" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="third1" speaker="farmer" />
+			<dialogue section="scene.hut" id="third2" speaker="farmer" />
+			<section if="player.hasQuest('storehouse')">
+				<dialogue section="scene.hut" id="third3" speaker="builder" />
+				<dialogue section="scene.hut" id="third4" speaker="farmer" />
+			</section>
+			<wait seconds="1" />
+		</show>
+		<show id="fourth">
+			<layer id="bg" />
+			<layer id="alchemist" if="player.hasQuest('lab') && area.getNPC('alchemist') != null" />
+			<layer id="farmer" />
+			<layer id="trader" />
+			<layer id="miner" />
+			<layer id="builder" if="player.hasQuest('storehouse')" />
+			<layer id="fire" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="fourth1" speaker="player" />
+			<dialogue section="scene.hut" id="fourth2" speaker="trader" />
+			<dialogue section="scene.hut" id="fourth3" speaker="trader" />
+			<dialogue section="scene.hut" id="fourth4" speaker="player" />
+			<dialogue section="scene.hut" id="fourth5" speaker="trader" />
+			<wait seconds="1" />
+		</show>
+		<show id="hunter">
+			<layer id="bg" />
+			<layer id="alchemist" if="player.hasQuest('lab') && area.getNPC('alchemist') != null" />
+			<layer id="hunter" />
+			<layer id="hunter_firelight" />
+			<layer id="trader" if="player.hasQuest('market')" />
+			<layer id="miner" />
+			<layer id="builder" if="player.hasQuest('storehouse')" />
+			<layer id="fire" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="hunter1" speaker="player" />
+			<dialogue section="scene.hut" id="hunter2" speaker="hunter" />
+			<dialogue section="scene.hut" id="hunter3" speaker="player" />
+			<dialogue section="scene.hut" id="hunter4" speaker="hunter" />
+			<dialogue section="scene.hut" id="hunter5" speaker="hunter" />
+			<wait seconds="1" />
+		</show>
+		<show id="mirrows">
+			<layer id="bg" />
+			<layer id="alchemist" if="player.hasQuest('lab') && area.getNPC('alchemist') != null" />
+			<choose>
+				<section if="player.hasQuest('hunt') && area.getObject('hunter') != null">
+					<layer id="hunter" />
+					<layer id="hunter_firelight" />
+				</section>
+				<layer id="farmer" />
+			</choose>
+			<layer id="trader" if="player.hasQuest('market')" />
+			<layer id="miner" />
+			<layer id="builder" if="player.hasQuest('storehouse')" />
+			<layer id="fire" />
+			<wait seconds="1" />
+			<dialogue section="scene.hut" id="mirrows1" speaker="player.hasQuest('storehouse')?builder:miner" />
+			<dialogue section="scene.hut" id="mirrows2" speaker="player" />
+			<dialogue section="scene.hut" id="mirrows3" speaker="player" />
+			<section if="player.hasQuest('hunt') && area.getObject('hunter') != null">
+				<dialogue section="scene.hut" id="mirrows4" speaker="hunter" />
+				<dialogue section="scene.hut" id="mirrows5" speaker="player" />
+				<dialogue section="scene.hut" id="mirrows6" speaker="hunter" />
+				<dialogue section="scene.hut" id="mirrows7" speaker="hunter" />
+			</section>
+			<dialogue section="scene.hut" id="mirrows8" speaker="miner" />
+			<dialogue section="scene.hut" id="mirrows9" speaker="farmer" if="!player.hasQuest('hunt')" />
+			<wait seconds="1" />
+		</show>
+	</scene>
+</scenes>

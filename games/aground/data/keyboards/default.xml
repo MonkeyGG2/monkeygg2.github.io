@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<keyboard>
+	<key name="KEY_A" type="small">A</key>
+    <key name="KEY_B" type="small">B</key>
+    <key name="KEY_C" type="small">C</key>
+    <key name="KEY_D" type="small">D</key>
+    <key name="KEY_E" type="small">E</key>
+    <key name="KEY_F" type="small">F</key>
+    <key name="KEY_G" type="small">G</key>
+    <key name="KEY_H" type="small">H</key>
+    <key name="KEY_I" type="small">I</key>
+    <key name="KEY_J" type="small">J</key>
+    <key name="KEY_K" type="small">K</key>
+    <key name="KEY_L" type="small">L</key>
+    <key name="KEY_M" type="small">M</key>
+    <key name="KEY_N" type="small">N</key>
+    <key name="KEY_O" type="small">O</key>
+    <key name="KEY_P" type="small">P</key>
+    <key name="KEY_Q" type="small">Q</key>
+    <key name="KEY_R" type="small">R</key>
+    <key name="KEY_S" type="small">S</key>
+    <key name="KEY_T" type="small">T</key>
+    <key name="KEY_U" type="small">U</key>
+    <key name="KEY_V" type="small">V</key>
+    <key name="KEY_W" type="small">W</key>
+    <key name="KEY_X" type="small">X</key>
+    <key name="KEY_Y" type="small">Y</key>
+    <key name="KEY_Z" type="small">Z</key>
+
+    <key name="KEY_1" type="small">1</key>
+    <key name="KEY_2" type="small">2</key>
+    <key name="KEY_3" type="small">3</key>
+    <key name="KEY_4" type="small">4</key>
+    <key name="KEY_5" type="small">5</key>
+    <key name="KEY_6" type="small">6</key>
+    <key name="KEY_7" type="small">7</key>
+    <key name="KEY_8" type="small">8</key>
+    <key name="KEY_9" type="small">9</key>
+    <key name="KEY_0" type="small">0</key>
+
+    <key name="ENTER" type="medium">Enter</key>
+    <key name="ESCAPE" type="small">Esc</key>
+    <key name="BACKSPACE" type="medium">Bksp</key>
+    <key name="TAB" type="medium">Tab</key>
+    <key name="SPACE" type="large">Space</key>
+
+    <key name="MINUS" type="small">-</key>
+    <key name="EQUALS" type="small">=</key>
+    <key name="LEFT_BRACKET" type="small">[</key>
+    <key name="RIGHT_BRACKET" type="small">]</key>
+	
+	<key name="LSHIFT" type="medium">Shift</key>
+	<key name="LCTRL" type="medium">Ctrl</key>
+	<key name="LALT" type="small">Alt</key>
+
+    <key name="BACKSLASH" type="small">\</key>
+
+    <key name="SEMICOLON" type="small">;</key>
+    <key name="QUOTE" type="small">'</key>
+	<key name="BACK_QUOTE" type="small">`</key>
+
+    <key name="COMMA" type="small">,</key>
+    <key name="PERIOD" type="small">.</key>
+    <key name="SLASH" type="small">/</key>
+
+    <key name="CAPS_LOCK" type="medium">Caps Lock</key>
+
+    <key name="F1" type="small">F1</key>
+    <key name="F2" type="small">F2</key>
+    <key name="F3" type="small">F3</key>
+    <key name="F4" type="small">F4</key>
+    <key name="F5" type="small">F5</key>
+    <key name="F6" type="small">F6</key>
+    <key name="F7" type="small">F7</key>
+    <key name="F8" type="small">F8</key>
+    <key name="F9" type="small">F9</key>
+    <key name="F10" type="small">F10</key>
+    <key name="F11" type="small">F11</key>
+    <key name="F12" type="small">F12</key>
+
+    <key name="PRINT_SCREEN" type="small">Print\nScreen</key>
+    <key name="SCROLL_LOCK" type="small">Scroll\nLock</key>
+    <key name="PAUSE" type="small">Pause</key>
+
+    <key name="INSERT" type="small">Insert</key>
+    <key name="HOME" type="small">Home</key>
+    <key name="PAGE_UP" type="small">Page\nUp</key>
+    <key name="DELETE" type="small">Delete</key>
+    <key name="END" type="small">End</key>
+    <key name="PAGE_DOWN" type="small">Page\nDown</key>
+    <key name="RIGHT" type="small" icon="right_arrow" />
+    <key name="LEFT" type="small" icon="left_arrow" />
+    <key name="DOWN" type="small" icon="down_arrow" />
+    <key name="UP" type="small" icon="up_arrow" />
+
+    <key name="NUM_LOCK" type="small">Num\nLock</key>
+    <key name="NUMPAD_1" type="small">Num 1</key>
+    <key name="NUMPAD_2" type="small">Num 2</key>
+    <key name="NUMPAD_3" type="small">Num 3</key>
+    <key name="NUMPAD_4" type="small">Num 4</key>
+    <key name="NUMPAD_5" type="small">Num 5</key>
+    <key name="NUMPAD_6" type="small">Num 6</key>
+    <key name="NUMPAD_7" type="small">Num 7</key>
+    <key name="NUMPAD_8" type="small">Num 8</key>
+    <key name="NUMPAD_9" type="small">Num 9</key>
+    <key name="NUMPAD_0" type="small">Num 0</key>
+</keyboard>

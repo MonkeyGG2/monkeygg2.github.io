@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<farm>
+	<animation id="wheat.idle" count="20">
+		<frame x="3" y="5" length="32" />
+	</animation>
+	<animation id="wheat.grow" count="3" x="0" y="5" />
+	<animation id="wheat.harvest" count="40" x="0" y="6" />
+	<crop id="wheat" width="90" height="18" image="wheat.png" cost="100" icon="wheat_seed.ico" attachFarm="farm">
+		<farmable item="wheat" min="2" max="8" time="20" />
+	</crop>
+	
+	<animation id="orchard.grow" count="5" />
+	<animation id="orchard.idle" count="1" x="5" />
+	<crop id="orchard" width="120" height="48" image="orchard.png" achievement="orchard" cost="100" icon="apple_seed.ico" attachFarm="farm">
+		<farmable item="wood" min="1" max="4" time="20" />
+		<farmable item="fruit" min="1" max="4" time="20" />
+	</crop>
+	
+	<animation id="sugar.grow" count="5" x="0" y="0" />
+	<animation id="sugar.harvest" count="24" x="1" y="1" />
+	<animation id="sugar.idle" count="1" x="0" y="1" />
+	<crop id="sugar" width="118" height="70" image="sugar.png" cost="250" icon="sugar_seed.ico" attachFarm="farm">
+		<farmable item="sugar" min="1" max="4" time="20" />
+	</crop>
+
+	<animation id="cotton.grow" count="8" x="0" y="0" />
+	<animation id="cotton.harvest" count="14" x="1" y="2" />
+	<animation id="cotton.idle" count="1" x="0" y="2" />
+	<crop id="cotton" width="110" height="32" image="cotton.png" cost="250" icon="cotton_seed.ico" attachFarm="farm">
+		<farmable item="cotton" min="2" max="8" time="20" />
+	</crop>
+	
+	<animation id="pumpkin.grow" count="8" x="0" y="0" />
+	<animation id="pumpkin.idle" count="1" x="2" y="2" />
+	<tilesheet id="pumpkin.png" width="115" height="32" />
+	<tile id="pumpkin_field" sheet="pumpkin.png" x="0" y="0" />
+	<crop id="pumpkin" tile="pumpkin_field" cost="0" icon="pumpkin_seed.ico" attachFarm="farm">
+		<farmable item="pumpkin" min="1" max="4" time="20" />
+	</crop>
+	
+	<animal id="pig">
+		<farmable item="meat" min="1" max="2" time="20" />
+		<farmable item="milk" min="1" max="2" time="20" />
+		<farmable item="fertilizer" min="1" max="1" time="10" />
+	</animal>
+	<animal id="cow">
+		<farmable item="meat" min="2" max="4" time="20" />
+		<farmable item="milk" min="4" max="8" time="20" />
+		<farmable item="fertilizer" min="2" max="3" time="5" />
+		<tile id="cow" animation="cow.idle" y="-0.87" />
+	</animal>
+	<animal id="chicken">
+		<farmable item="meat" min="1" max="1" time="20" />
+		<farmable item="eggs" min="3" max="6" time="20" />
+		<tile id="chicken" animation="chicken.farm" y="-0.87" />
+	</animal>
+	<animal id="wyrm">
+		<farmable item="dragonblood" min="1" max="1" time="100" />
+		<grow to="cocoon" value="10000" />
+	</animal>
+	<animal id="cocoon" flip="false">
+		<grow time="5" to="dragon" achievement="dragon" />
+	</animal>
+	<animal id="dragon" flip="pos" >
+		<farmable item="dragonblood" min="1" max="1" time="80" />
+		<tile id="baby_dragon" animation="baby_dragon.fire" x="-0.5" y="-2.9" />
+	</animal>
+	<animal id="spider">
+		<farmable item="silk" min="1" max="2" time="20" />
+		<tile id="spider" animation="spider.idle" y="-0.87" />
+	</animal>
+</farm>

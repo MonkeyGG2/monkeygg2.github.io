@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<include id="explosion.xml" includeRoot="true" />
+	<tile id="vehicle.death" sheet="explosion.png" />
+	<animation id="vehicle.death" count="5" glow="true" />
+	
+	<hitEffect id="explosion" tile="vehicle.death" animation="vehicle.death" color="ffdd99" />
+	<hitEffect id="explosion_dmg" extends="explosion" damage="12" damageName="vehicle.damage_bonus" />
+
+	<enemy id="rat" tile="rat" health="1" range="5" type="surface" trapped="rat" capture="1" death_sfx="rat_death">
+		<flee id="player" />
+		<loot p="2" />
+		<loot id="meat" p="1" />
+	</enemy>
+	
+	<tile id="boar" sheet="boar.png" x="0" y="0" />
+	<animation id="boar.idle" count="9">
+		<frame count="2" />
+		<frame x="1" y="2" />
+		<frame x="3" y="0" count="6" />
+		<frame count="9" />
+		<frame count="9" />
+	</animation>
+	<animation id="boar.roar" count="4">
+		<frame x="2" y="2" count="5" />
+	</animation>
+	<animation id="boar.walk" count="7" x="3" y="3" />
+	<animation id="boar.attack" count="6" x="2" y="5" />
+	<animation id="boar.hit" count="5" x="0" y="7"><frame x="0" count="3" /></animation>
+	<enemy id="boar" tile="boar" health="4" range="7" type="surface" trapped="pig" capture="2" kill_achievement="boar" night="false" death_sfx="boar_death" attack_sfx="boar_attack">
+		<run><play object="this" animation="roar" /></run><target id="rat" />
+		<attack type="melee" damage="2" spawnLoot="false" knockback="3" />
+		<loot p="4" />
+		<loot id="milk" p="1" />
+		<loot id="meat" p="16" />
+	</enemy>
+	
+	<tilesheet id="fire_boar.png" width="32" height="16" />
+	<tile id="fire_boar" sheet="fire_boar.png" x="0" y="0" />
+	<animation id="fire_boar.idle" count="11" />
+	<animation id="fire_boar.roar" x="11" count="10" />
+	<animation id="fire_boar.walk" x="21" count="8" />
+	<animation id="fire_boar.attack" count="6" x="29" />
+	<animation id="fire_boar.hit" count="1" length="3" x="35" />
+	<enemy id="fire_boar" tile="fire_boar" health="16" defense="2" range="7" type="surface" element="fire" death_sfx="fire_boar_death" attack_sfx="boar_attack">
+		<attack type="melee" damage="8" hitEffect="fire_lg_dot" knockback="5" />
+		<lootSet><loot id="fire_tusk" count="2" /></lootSet>
+		<lootSet><loot id="meat" /></lootSet>
+		<run><play object="this" animation="roar" /></run>
+	</enemy>
+	
+	<tile id="wyrm" sheet="wyrm.png" x="0" y="0" />
+	<animation id="wyrm.idle" equals="single" />
+	<animation id="wyrm.walk" count="6" x="0" y="0" />
+	<animation id="wyrm.dig" count="5" x="2" y="1" />
+	<animation id="wyrm.attack" count="3" x="3" y="2"><frame count="1" length="10" x="0" y="0" /></animation>
+	<animation id="wyrm.hit" count="3" x="2" y="3">
+		<frame x="0" y="0" length="2" />
+	</animation>
+	<enemy id="wyrm" tile="wyrm" health="8" defense="2" damage="6" type="wyrm" eatTile="dirt" trapped="wyrm" capture="6" kill_achievement="wyrm" trap_achievement="capture_wyrm" attack_sfx="wyrm_attack">
+		<loot id="dragonblood" /><sound id="death" value="wyrm_death" />
+	</enemy>
+	
+	<tile id="golem" sheet="golem.png" x="0" y="0" />
+	<animation id="golem.idle">
+		<frame x="0" y="1" length="4" />
+		<frame x="1" y="1" length="2" />
+		<frame x="0" y="1" length="8" />
+	</animation>
+	<animation id="golem.walk" x="3" y="1" count="6" />
+	<animation id="golem.form" count="5" x="0" y="0" />
+	<animation id="golem.attack" count="5" x="1" y="3" />
+	<animation id="golem.hit" count="3" x="2" y="4">
+		<frame x="2" y="1" length="2" />
+	</animation>
+	<animation id="golem.roar" count="1" length="10" x="2" y="1" />
+	<animation id="golem.talk" equals="golem.roar" />
+	<enemy id="golem" tile="golem" health="12" defense="1" damage="4" type="golem" kill_achievement="golem" element="earth" capture="8" death_sfx="golem_death" attack_sfx="golem_attack">
+		<capture trapped="golem" minCapture="3" />
+		<loot id="iron" p="4" />
+		<loot id="gold" p="4" />
+		<loot id="diamond" p="16" />
+		<loot id="titanium" p="1" />
+	</enemy>
+	<animation id="gold_golem" color="ffff66" colorScale="1.6">
+		<frame x="0" y="1" length="4" />
+		<frame x="1" y="1" length="2" />
+		<frame x="0" y="1" length="8" />
+	</animation>
+	<enemy id="gold_golem" extends="golem" defense="3" damage="8" speed="2" color="ffff66" colorScale="1.6" kill_achievement="" capture="24" death_sfx="ggolem_death">
+		<capture trapped="gold_golem" minCapture="3" /><loot id="gold" stop="true" />
+	</enemy>
+	
+	<tile id="fire_bird" sheet="fire_bird.png" x="0" y="0" />
+	<animation id="fire_bird.idle" count="14">
+		<frame count="1" length="9" />
+	</animation>
+	<animation id="fire_bird.walk" x="14" count="8" />
+	<animation id="fire_bird.fire" x="22" count="4">
+		<frame x="26" length="4" />
+	</animation>
+	<animation id="fire_bird.hit" x="27" count="1" length="3" />
+	
+	<tilesheet id="fireball_small.png" width="16" height="5" />
+	<tile id="fireball_small" sheet="fireball_small.png" x="0" y="0" />
+	<animation id="fireball_small" count="6" glow="true" />
+	
+	<enemy id="fire_bird" tile="fire_bird" health="12" range="3" speed="1.5" type="surface" trapped="chicken" capture="4" element="fire" death_sfx="fire_bird_death">
+		<lootSet><loot id="eggs" /></lootSet>
+		<lootSet><loot id="meat" /></lootSet>
+		<flee id="player" />
+		<attack type="projectile" damage="5" range="8" animation="fire">
+			<projectile tile="fireball_small" animation="fireball_small" speed="3" offsetY="4" hitEffect="fire_sm_dot" fire_sfx="fireball" knockback="5">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+	</enemy>
+	
+	<include id="yeti.xml" includeRoot="true" />
+	<tile id="yeti" sheet="yeti.png" x="0" y="0" />
+	<animation id="yeti.walk" count="10" length="3" />
+	<animation id="yeti.inhale" count="9" x="10" />
+	<animation id="yeti.exhale" count="3" x="19" length="3" />
+	<animation id="yeti.exhale_loop" count="6" x="22" length="3" />
+	<animation id="yeti.throw" count="20" x="28" />
+	<animation id="yeti.release" count="4" x="48" />
+	<animation id="yeti.hit" count="1" length="9" x="52" />
+	<animation id="yeti.idle" count="1" length="9" x="10" />
+	
+	<tilesheet id="icy_wind.png" width="32" height="16" />
+	<tile id="icy_wind" sheet="icy_wind.png" x="0" y="0" />
+	<tile id="snowball" sheet="snowball.png" x="0" y="0" />
+	<animation id="icy_wind" count="12" />
+	<animation id="snowball" count="4" />
+	
+	<enemy id="yeti" tile="yeti" health="16" defense="2" speed="0.5" range="6" fps="30" type="surface" friendlyFire="false" element="ice" death_sfx="yeti_death">
+		<lootSet><loot id="yeti_fur" count="3" /></lootSet>
+		<lootSet><loot id="meat" /></lootSet>
+		<attack type="bomb" damage="20" range="7" animation="release" sfx="yeti_snowball">
+			<pre><play object="this" animation="throw" /></pre>
+			<projectile tile="snowball" animation="snowball" speed="3" passTile="true" hit_sfx="arrow_hit" />
+		</attack>
+		<attack type="melee" damage="10" range="1" animation="exhale" hits="4" knockback="10" sfx="yeti_breath">
+			<pre><play object="this" animation="inhale" /></pre>
+			<cont animation="exhale_loop" />
+			<effect id="icy_wind" offsetX="-44" offsetY="-6" />
+		</attack>
+	</enemy>
+	
+	<include id="young_dragon.xml" includeRoot="true" />
+	<tile id="young_dragon" sheet="young_dragon.png" x="0" y="0" />
+	<animation id="young_dragon.fly" x="6" count="10" />
+	<animation id="young_dragon.fire">
+		<frame x="0" count="6" repeat="2" />
+	</animation>
+	<animation id="young_dragon.idle" x="16" count="1" length="6">
+		<frame x="17" count="9" />
+	</animation>
+	
+	<include id="adult_dragon.xml" includeRoot="true" />
+	<tile id="adult_dragon" sheet="adult_dragon.png" x="0" y="0" />
+	<animation id="adult_dragon.fly" count="16" />
+	<animation id="adult_dragon.hit" x="16" count="1" length="3" />
+	<animation id="adult_dragon.hover_hit" x="38" count="1" length="3" />
+	<animation id="adult_dragon.hover_fire">
+		<frame x="17" count="7" repeat="3" />
+	</animation>
+	<animation id="adult_dragon.hover" x="24" count="7" />
+	<animation id="adult_dragon.idle">
+		<frame x="31" length="4" />
+		<frame x="32" length="2" />
+		<frame x="31" length="4" />
+		<frame x="33" length="4" />
+		<frame x="31" length="4" />
+	</animation>
+	<animation id="adult_dragon.roar">
+		<frame x="31" length="4" />
+		<frame x="33" length="4" />
+	</animation>
+	<animation id="adult_dragon.listen" equals="adult_dragon.idle" />
+	<animation id="adult_dragon.talk" equals="adult_dragon.roar" />
+	<animation id="adult_dragon.sleep" x="32" count="1" />
+	<animation id="adult_dragon.fire">
+		<frame x="34" count="4" repeat="5" />
+	</animation>
+	
+	<tilesheet id="fire.png" width="5" height="5" />
+	<tile id="fire" sheet="fire.png" x="0" y="0" />
+	
+	<enemy id="adult_dragon" tile="adult_dragon" health="30" defense="3" fps="10" type="dragon" bgm="boss" element="fire" knockback="false">
+		<lootSet><loot id="fire_gem" /></lootSet><sound id="death" value="dragon_death" /><sound id="hit" value="dragon_hit" />
+		<lootSet><loot id="dragonblood" count="3" /></lootSet>
+		<attack type="breath" damage="5" range="13" repeat="2" animation="fire" state="standing" sfx="dragon_atk">
+			<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-40" offsetY="8" hitEffect="fire_med" color="f9be0b" colorScale="2">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+		<attack type="breath" damage="5" range="13" repeat="2" animation="hover_fire" state="flying" sfx="dragon_atk">
+			<projectile tile="fire" glow="true" speed="2" frames="8" breakTile="2" breakPower="4" scaleTo="3" offsetX="-33" offsetY="-5" hitEffect="fire_med" color="f9be0b" colorScale="2">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+	</enemy>
+	
+	<tile id="ghost" sheet="ghost.png" x="0" y="0" />
+	<animation id="ghost.idle" count="8" />
+	<animation id="ghost.walk" equals="ghost.idle" />
+	
+	<tile id="freeze" sheet="freeze.png" x="0" y="0" />
+	<animation id="freeze" count="16" />
+	<animation id="freeze_break" x="16" length="2" count="10" />
+	
+	<tile id="flame1" sheet="flame.png" x="0" y="0" />
+	<tile id="flame2" sheet="flame.png" x="0" y="1" />
+	<tile id="flame3" sheet="flame.png" x="0" y="2" />
+	<animation id="flame" count="5" glow="true" />
+	
+	<include id="smoke.xml" includeRoot="true" />
+	<tile id="smoke1" sheet="smoke.png" x="0" y="0" />
+	<tile id="smoke2" sheet="smoke.png" x="5" y="0" />
+	<animation id="smoke" count="5" />
+	
+	<animation id="flame_smoke1" count="5" glow="true">
+		<append tile="smoke1" animation="smoke" offsetY="-1" y="8" />
+	</animation>
+	<animation id="flame_smoke2" count="5" glow="true">
+		<append tile="smoke2" animation="smoke" offsetY="-1" y="8" />
+	</animation>
+	
+	<!-- NIGHT CREATURES -->
+	
+	<include id="shadow_cat.xml" includeRoot="true" />
+	<tile id="shadow_cat" sheet="shadow_cat.png" x="0" y="0" />
+	<animation id="shadow_cat.attack" count="3" />
+	<animation id="shadow_cat.attack1" x="3" count="6" />
+	<animation id="shadow_cat.attack2" x="9" count="6" />
+	<animation id="shadow_cat.hit" count="1" x="15" length="3" />
+	<animation id="shadow_cat.idle" count="8" x="16" />
+	<animation id="shadow_cat.roar" count="8" x="24" />
+	<animation id="shadow_cat.walk" count="9" x="32" />
+	<animation id="shadow_cat.ambush" count="6" x="41"><frame x="0" count="3" /></animation>
+
+	<enemy id="shadow_cat" tile="shadow_cat" health="16" speed="2" range="10" type="surface" seeHidden="true" trapped="cat" capture="6" passEnemies="true" night="true" glow="true" death_sfx="shadowcat_death" attack_sfx="shadowcat_attack">
+		<run><play object="this" animation="roar" /></run> 
+		<lootSet><loot id="dark_fur" /></lootSet>
+		<lootSet><loot id="meat" /></lootSet>
+		<idle>
+			<section if="random()<0.5 && !this.isHidden()"><lerp object="this" alpha="0" seconds="0.2" modal="unpaused" /><action>this.setHidden(true); this.alpha = 1;</action></section>
+		</idle>
+		<attack type="melee" damage="4" range="0.25" overEnemy="true" hits="2" animation="attack1">
+			<pre><choose><section if="!this.isVisible()">
+				<action>this.setHidden(false); this.alpha = 0;</action><lerp object="this" alpha="1" seconds="0.3" modal="false" />
+				<play object="this" animation="ambush" />
+			</section><play object="this" animation="attack" /></choose></pre>
+			<cont animation="attack2" />
+		</attack>
+	</enemy>
+	
+	<include id="spider.xml" includeRoot="true" />
+	<tile id="spider" sheet="spider.png" x="0" y="0" />
+	<animation id="spider.pre_attack" x="8" count="8" />
+	<animation id="spider.attack" x="16" count="8" />
+	<animation id="spider.hit" x="24" count="1" length="3" />
+	<animation id="spider.idle" x="25" count="10" />
+	<animation id="spider.walk" x="35" count="4" />
+	<animation id="spider.web" count="8" offsetX="-6" />
+	
+	<enemy id="spider" tile="spider" health="8" speed="2" range="7" type="surface" passEnemies="true" night="true" glow="true" capture="10" trapped="spider" death_sfx="spider_death" attack_sfx="spider_attack">
+		<loot p="1" /><loot id="silk" p="2" />
+		<attack type="melee" damage="3">
+			<pre><play object="this" animation="pre_attack" /></pre>
+			<hitEffect tile="spider" animation="spider.web" freeze="1" canFlip="true" />
+		</attack>
+	</enemy>
+	
+	<tile id="wall_trap" sheet="traps.png" />
+	<animation id="wall_trap.idle"><frame visible="false" /></animation>
+	<animation id="wall_trap.attack" count="2"><frame x="2" length="2" /><frame count="2" reverse="true" /><frame visible="false" length="6" /></animation>
+	
+	<enemy id="wall_trap" tile="wall_trap" type="trap" friendlyFire="false" fps="10" onWall="true">
+		<attack type="projectile" damage="8" range="16">
+			<projectile tile="fireball_small" animation="fireball_small" speed="3" delay="2" hitEffect="fire_sm_dot" fire_sfx="fireball" knockback="5" underwater="true">
+				<light tile="light.small" color="cc5500" />
+			</projectile>
+		</attack>
+	</enemy>
+</info>

@@ -1,0 +1,14 @@
+<tilesheet id='dragon_lair_fx.png' width='192' height='112'>
+	<image frame='0' x='0' y='0' width='119' height='84' offsetX='17' offsetY='17' />
+	<image frame='1' x='119' y='0' width='123' height='83' offsetX='15' offsetY='17' />
+	<image frame='2' x='0' y='84' width='123' height='89' offsetX='15' offsetY='13' />
+	<image frame='3' x='0' y='173' width='120' height='94' offsetX='16' offsetY='11' />
+	<image frame='4' x='0' y='267' width='121' height='90' offsetX='16' offsetY='14' />
+	<image frame='5' x='123' y='84' width='121' height='85' offsetX='16' offsetY='13' />
+	<image frame='6' x='123' y='169' width='65' height='98' offsetX='58' offsetY='12' />
+	<image frame='7' x='123' y='267' width='64' height='101' offsetX='56' offsetY='9' />
+	<image frame='8' x='188' y='169' width='71' height='100' offsetX='56' offsetY='10' />
+	<image frame='9' x='188' y='269' width='69' height='101' offsetX='60' offsetY='9' />
+	<image frame='10' x='259' y='169' width='69' height='103' offsetX='64' offsetY='7' />
+	<image frame='11' x='259' y='272' width='68' height='99' offsetX='64' offsetY='11' />
+</tilesheet>
