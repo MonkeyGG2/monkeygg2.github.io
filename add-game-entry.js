@@ -1,6 +1,7 @@
 import { exit } from 'process';
+import { fork } from 'child_process'
 import { readFileSync, existsSync, writeFileSync } from 'fs';
-import { input } from '@inquirer/prompts';
+import { input, confirm } from '@inquirer/prompts';
 
 if (!existsSync('config.jsonc')) {
     console.log('config.jsonc not found! Are you in the right directory?');
@@ -102,5 +103,17 @@ if (!existsSync('config.jsonc')) {
 
     writeFileSync('config.jsonc', jsonc);
     console.log('Saved to config.jsonc!');
+
+
+    const shouldRebuildConfig = await confirm({ message: 'Do you want to rebuild the config now? (the site will not see the game until you do this)' });
+
+    if (shouldRebuildConfig) {
+        if (!existsSync('build-config.js')) {
+            console.log("`build-config.js` not found! Are you in the right directory?");
+
+        } else {
+            fork("build-config.js");
+        };
+    }
     exit(0);
 })();
