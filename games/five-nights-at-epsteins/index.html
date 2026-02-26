@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Five Nights At Epstein's - Web Version</title>
+  <base href="/">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 预加载动画 -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">FIVE NIGHTS<br>AT EPSTEIN'S</div>
+      <div class="preloader-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+      </div>
+      <div class="preloader-text">LOADING<span class="loading-dots">...</span></div>
+      <div class="preloader-progress">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="preloader-percentage" id="preloader-percentage">0%</div>
+    </div>
+  </div>
+
+  <div id="game-container">
+    <!-- 主游戏画面 -->
+    <div id="game-screen">
+      <img id="current-scene" src="" alt="" style="display: none;">
+
+      <!-- 交互热区 -->
+      <div id="hotspots"></div>
+
+      <!-- UI 覆盖层 -->
+      <div id="ui-overlay">
+        <!-- 左上角：时间和夜数 -->
+        <div id="top-left-ui">
+          <div id="time-display"><span id="time-value">12 AM</span></div>
+          <div id="night-display">NIGHT <span id="night-value">1</span></div>
+        </div>
+
+        <!-- 右下角：氧气和通风管图标 -->
+        <div id="bottom-right-ui">
+          <div id="oxygen-display">
+            <img src="/assets/images/fa3.png" alt="Vent" class="vent-icon">
+            <span id="power-value">100</span><span class="percent-sign">%</span><span
+              class="oxygen-unit">O<sub>2</sub></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 摄像头面板 -->
+    <div id="camera-panel" class="hidden">
+      <div id="current-cam-label">CAM 11</div>
+      <div id="camera-error-label">ERR</div>
+      <!-- 角色图层容器 -->
+      <div id="character-overlay"></div>
+      <div id="camera-grid"></div>
+      <button id="shock-hawking-btn">ELECTROCUTE</button>
+      <button id="play-sound-btn">PLAY SOUND</button>
+      <!-- 摄像头故障雪花视频 -->
+      <video id="camera-static-video" loop muted playsinline>
+        <source src="/assets/vedio/202512191935.webm" type="video/webm">
+      </video>
+    </div>
+
+    <!-- 过场动画 -->
+    <div id="cutscene" class="hidden">
+      <img src="/assets/images/cutscene.png" alt="Cutscene">
+      <div class="cutscene-hint">Click to continue...</div>
+    </div>
+
+    <!-- 每晚开始场景 -->
+    <div id="night-intro" class="hidden">
+      <div id="night-intro-text">NIGHT 1</div>
+    </div>
+
+    <!-- 主菜单 -->
+    <div id="main-menu">
+      <img id="star-icon" class="hidden" src="/assets/images/star.png" alt="Star">
+      <img id="star-icon-2" class="hidden" src="/assets/images/star.png" alt="Star 2">
+      <img id="star-icon-3" class="hidden" src="/assets/images/star.png" alt="Star 3">
+
+      <h1>FIVE<br>NIGHTS<br>AT<br>EPSTEIN'S</h1>
+      <button id="start-game">NEW GAME</button>
+      <button id="continue-game" class="hidden">CONTINUE</button>
+      <button id="special-night-btn" class="hidden">EPSTEIN'S SPECIAL NIGHT</button>
+      <button id="custom-night-btn" class="hidden">CUSTOM NIGHT</button>
+      <div class="copyright">© EVAN PRODUCTIONS | HTML5 remake by <a
+          href="https://fivenightsatepsteins.org/fivenightsatepsteins-online" target="_blank"
+          style="color: inherit; text-decoration: underline;">killlala1213</a></div>
+      <div class="version">v1.2.3</div>
+    </div>
+
+    <!-- 音量控制按钮 - 独立于主菜单 -->
+    <button id="volume-btn" title="Volume Settings">SOUND SETTINGS</button>
+
+    <!-- 音量设置面板 -->
+    <div id="volume-panel" class="hidden">
+      <h3>VOLUME SETTINGS</h3>
+
+      <div class="volume-item">
+        <label>Master Volume</label>
+        <div class="volume-slider-container">
+          <input type="range" id="master-volume" min="0" max="100" value="70" />
+          <span class="volume-percent">70%</span>
+        </div>
+      </div>
+
+      <div class="volume-item">
+        <label>Game Background Music</label>
+        <div class="volume-slider-container">
+          <input type="range" id="game-bg-volume" min="0" max="100" value="70" />
+          <span class="volume-percent">70%</span>
+        </div>
+      </div>
+
+      <div class="volume-item">
+        <label>Menu Music</label>
+        <div class="volume-slider-container">
+          <input type="range" id="menu-music-volume" min="0" max="100" value="70" />
+          <span class="volume-percent">70%</span>
+        </div>
+      </div>
+
+      <div class="volume-item">
+        <label>Jumpscare Sounds</label>
+        <div class="volume-slider-container">
+          <input type="range" id="jumpscare-volume" min="0" max="100" value="70" />
+          <span class="volume-percent">70%</span>
+        </div>
+      </div>
+
+      <div class="volume-item">
+        <label>Trump Vent Crawling</label>
+        <div class="volume-slider-container">
+          <input type="range" id="vent-crawling-volume" min="0" max="100" value="70" />
+          <span class="volume-percent">70%</span>
+        </div>
+      </div>
+
+      <button id="close-volume-panel">CLOSE</button>
+    </div>
+
+    <!-- Custom Night 选择界面 -->
+    <div id="custom-night-menu" class="hidden">
+      <h1>CUSTOM NIGHT</h1>
+      <div class="custom-night-controls">
+        <!-- Epstein AI -->
+        <div class="ai-control">
+          <div class="ai-name">EPSTEIN</div>
+          <div class="ai-slider-container">
+            <button class="ai-btn-minus" data-ai="epstein">-</button>
+            <input type="range" id="epstein-slider" class="ai-slider" min="0" max="20" value="0">
+            <button class="ai-btn-plus" data-ai="epstein">+</button>
+          </div>
+          <div class="ai-value" id="epstein-value">0</div>
+        </div>
+
+        <!-- Trump AI -->
+        <div class="ai-control">
+          <div class="ai-name">TRUMP</div>
+          <div class="ai-slider-container">
+            <button class="ai-btn-minus" data-ai="trump">-</button>
+            <input type="range" id="trump-slider" class="ai-slider" min="0" max="20" value="0">
+            <button class="ai-btn-plus" data-ai="trump">+</button>
+          </div>
+          <div class="ai-value" id="trump-value">0</div>
+        </div>
+
+        <!-- Hawking AI -->
+        <div class="ai-control">
+          <div class="ai-name">HAWKING</div>
+          <div class="ai-slider-container">
+            <button class="ai-btn-minus" data-ai="hawking">-</button>
+            <input type="range" id="hawking-slider" class="ai-slider" min="0" max="20" value="0">
+            <button class="ai-btn-plus" data-ai="hawking">+</button>
+          </div>
+          <div class="ai-value" id="hawking-value">0</div>
+        </div>
+      </div>
+
+      <div class="custom-night-buttons">
+        <button id="start-custom-night">START</button>
+        <button id="back-to-menu">BACK</button>
+      </div>
+    </div>
+
+    <!-- 静态噪点层 -->
+    <canvas id="static-canvas"></canvas>
+
+    <!-- 背景音乐 -->
+    <audio id="menu-music" loop>
+      <source src="/assets/sounds/music3.ogg" type="audio/ogg">
+    </audio>
+
+    <!-- 游戏结束画面 -->
+    <div id="game-over" class="hidden">
+      <!-- 雪花视频背景 -->
+      <video id="game-over-static" loop muted playsinline autoplay>
+        <source src="/assets/vedio/202512191935.webm" type="video/webm">
+      </video>
+      <div id="game-over-content">
+        <h2 id="game-over-text"></h2>
+        <p id="game-over-subtitle" class="hidden"></p>
+        <button id="restart">Restart</button>
+        <button id="main-menu-btn">Main Menu</button>
+      </div>
+    </div>
+
+    <!-- 游戏教程提示 -->
+    <div id="tutorial-overlay" class="hidden">
+      <div id="tutorial-content">
+        <h2>DEFEND YOURSELF AGAINST EPSTEIN</h2>
+        <p>
+          EPSTEIN ALWAYS STARTS AT CAM 11. USE THE CAMERA'S AUDIO LURE TO KEEP EPSTEIN FAR AWAY FROM YOU.
+          MAKE SURE THE CAMERA YOU'RE PLAYING THE SOUND IN IS NEXT TO THE CAMERA WHERE EPSTEIN IS.
+          PLAYING SOUND IN ONLY ONE SPOT WILL NOT WORK IF YOU DO IT TWICE OR MORE IN A ROW.
+          USING THE AUDIO LURE TOO MUCH WILL LEAD TO THE CAMERAS BREAKING.
+          TO FIX THEM HEAD TO THE CONTROL PANEL AND RESTART THE CAMERAS LIKE YOU JUST DID.
+          EPSTEIN DOES NOT ATTACK THROUGH THE VENTS SO DON'T BOTHER CLOSING THEM FOR THIS NIGHT.
+        </p>
+        <button id="tutorial-got-it">GOT IT</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/GameState.js"></script>
+  <script src="js/AssetManager.js"></script>
+  <script src="js/UIManager.js"></script>
+  <script src="js/CameraSystem.js"></script>
+  <script src="js/EnemyAI.js"></script>
+  <script src="js/InputHandler.js"></script>
+  <script src="js/StaticNoise.js"></script>
+  <script src="js/ScaryFaceFlicker.js"></script>
+  <script src="js/Game.js"></script>
+  <script src="js/main.js"></script>
+  <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v67327c56f0bb4ef8b305cae61679db8f1769101564043" integrity="sha512-rdcWY47ByXd76cbCFzznIcEaCN71jqkWBBqlwhF1SY7KubdLKZiEGeP7AyieKZlGP9hbY/MhGrwXzJC/HulNyg==" data-cf-beacon='{"version":"2024.11.0","token":"469f83475e2048ccb6d048799adda2a6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script> -->
+</body>
+
+</html>
