@@ -423,7 +423,7 @@ class CameraSystem {
         // 显示霍金（如果激活且在cam6）
         if (hawkingActive && currentCam === 'cam6') {
             const hawkingImg = document.createElement('img');
-            hawkingImg.src = '/assets/images/mrstephen.png';
+            hawkingImg.src = 'assets/images/mrstephen.png';
             hawkingImg.style.position = 'absolute';
             hawkingImg.className = 'visible hawking-character';
             hawkingImg.style.zIndex = '3'; // Hawking 在最上层
@@ -545,7 +545,7 @@ class CameraSystem {
 
         // 添加地图图片
         const mapImg = document.createElement('img');
-        mapImg.src = '/assets/images/FNAE-Map-layout.png';
+        mapImg.src = 'assets/images/FNAE-Map-layout.png';
         mapImg.style.width = '100%';
         mapImg.style.height = 'auto';
         mapImg.style.display = 'block';
